@@ -1,0 +1,52 @@
+<project name="node_build" default="e2e">
+     <import file="${TIBCO_AMXADMIN_HOME}/bin/taskdef.xml" />
+      
+        <import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+          
+	<target name="create.node">
+		<AMXAdminTask
+			action="add"
+			objectSelector="Environment/Node"
+			remote="true"
+			propsFile="${remotePropsFile}"
+			dataFile="${amxConfigFile2}"
+			overwrite="true"
+			merge="true"
+			createIfNotExists="true"
+			force="true"
+			failOnError="true"/>
+	</target>
+	
+	<target name="install.node">
+		<AMXAdminTask
+			action="install"
+			objectSelector="Environment/Node"
+			remote="true"
+			propsFile="${remotePropsFile}"
+			dataFile="${amxConfigFile2}"
+			overwrite="true"
+			merge="true"
+			createIfNotExists="true"
+			force="true"
+			failOnError="true"/>
+	</target>
+	
+	<target name="start.node">
+		<AMXAdminTask
+			action="start"
+			objectSelector="Environment/Node"
+			remote="true"
+			propsFile="${remotePropsFile}"
+			dataFile="${amxConfigFile2}"
+			failOnError="true"/>
+	</target>
+
+	<target name="clean">
+		<stop.node dataFile="${amxConfigFile2}" objectSelector="Environment/Node" failOnError="false" force="true"/>
+		<uninstall.node dataFile="${amxConfigFile2}" objectSelector="Environment/Node" failOnError="false" force="true"/>
+		<delete.node dataFile="${amxConfigFile2}" objectSelector="Environment/Node" failOnError="false" force="true"/>
+	          
+	</target>
+	
+	
+</project>

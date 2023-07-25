@@ -1,0 +1,46 @@
+<project default="deploy.myapp">
+	<import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+
+	<target name="deploy.myapp">
+		<upload.daa dataFile="${amxConfigFile}" />
+		<create.app appName="AMXTestCase1.9" dataFile="${amxConfigFile}" />
+		<map.component.to.node appName="AMXTestCase1.9" dataFile="${amxConfigFile}"/>
+		<map.service.binding.to.node appName="AMXTestCase1.9" dataFile="${amxConfigFile}" />
+		<set.service.binding.property appName="AMXTestCase1.9" dataFile="${amxConfigFile}" />
+		<deploy.app appName="AMXTestCase1.9" dataFile="${amxConfigFile}"/>
+</target>
+	<target name="deploy.mynewapp">
+		<upload.daa dataFile="${amxConfigFile}" />
+		<create.app appName="AMXTestCase1.9.1" dataFile="${amxConfigFile}" />
+		<map.component.to.node appName="AMXTestCase1.9.1" dataFile="${amxConfigFile}"/>
+		<map.service.binding.to.node appName="AMXTestCase1.9.1" dataFile="${amxConfigFile}" />
+		<set.service.binding.property appName="AMXTestCase1.9.1" dataFile="${amxConfigFile}" />
+		<map.reference.binding.to.node appName="AMXTestCase1.9.1" dataFile="${amxConfigFile}"/>
+                <set.reference.wiring appName="AMXTestCase1.9.1" dataFile="${amxConfigFile}" />
+
+		<deploy.app appName="AMXTestCase1.9.1" dataFile="${amxConfigFile}"/>
+</target>
+
+	<target name="undeploy.mynewapp">
+		<undeploy.app appName="AMXTestCase1.9.1" dataFile="${amxConfigFile}"  />
+	</target>
+
+<target name="deploy.myrenewapp">
+		<upload.daa dataFile="${amxConfigFile}" />
+		<create.app appName="AMXNewTestCase1.9.1" dataFile="${amxConfigFile}" />
+		<map.component.to.node appName="AMXNewTestCase1.9.1" dataFile="${amxConfigFile}"/>
+		<map.service.binding.to.node appName="AMXNewTestCase1.9.1" dataFile="${amxConfigFile}" />
+		<set.service.binding.property appName="AMXNewTestCase1.9.1" dataFile="${amxConfigFile}" />
+		<map.reference.binding.to.node appName="AMXNewTestCase1.9.1" dataFile="${amxConfigFile}"/>
+                <set.reference.wiring appName="AMXNewTestCase1.9.1" dataFile="${amxConfigFile}" />
+
+		<deploy.app appName="AMXNewTestCase1.9.1" dataFile="${amxConfigFile}"/>
+</target>
+<target name="undeploy.myrenewapp">
+		<undeploy.app dataFile="${amxConfigFile}"  />
+	</target>
+
+
+		
+</project>
+

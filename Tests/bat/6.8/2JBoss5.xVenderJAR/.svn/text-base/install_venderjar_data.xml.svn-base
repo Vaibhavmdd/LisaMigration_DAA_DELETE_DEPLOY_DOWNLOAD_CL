@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+	<Environment xsi:type="amxdata:Environment"
+	       name="[[env.name]]"
+	       description="Dev environment"
+	       contact="TIBCO">
+		<Node xsi:type="amxdata:Node" name="[[env.node1.name]]" hostName="[[host.name]]">
+		    <Feature xsi:type="amxdata_base:FeatureID" componentID="com.tibco.jboss.venderjar.feature" version="1.0.0" />
+		</Node>
+		<Node xsi:type="amxdata:Node" name="[[env.node2.name]]" hostName="[[host.name]]">
+		    <Feature xsi:type="amxdata_base:FeatureID" componentID="com.tibco.jboss.venderjar.feature" version="1.0.0" />
+		</Node>
+		<Application
+			xsi:type="amxdata:Application"
+			name="jbossvenderjar.app"
+			contact="TIBCO Inc."
+			description="Jboss vender jar">
+			<Node name="[[env.node1.name]]" environmentName="[[env.name]]"/>
+			<Node name="[[env.node2.name]]" environmentName="[[env.name]]"/>
+			<ApplicationTemplate 
+				xsi:type="amxdata_reference:ApplicationTemplate_reference"
+				name="jbossvenderjar">
+			</ApplicationTemplate>
+		</Application>
+	</Environment>	
+	<DAA
+		xsi:type="amxdata:DAA"
+		description="Binding EJB"
+		location="./2JBoss5.xVenderJAR/daa/jbossvenderjar.daa"
+		importResourceTemplates="true">
+	</DAA>
+</amxdata_base:Enterprise>

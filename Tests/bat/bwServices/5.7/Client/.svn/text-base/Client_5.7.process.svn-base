@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:pfx="http://www.example.com/HelloWorld1/sayHelloWorld1Impl_gen" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://ns.tibco.com/Hello1/" xmlns:ns1="http://www.tibco.com/pe/DeployedVarsType">
+    <wsdl:import namespace="http://www.example.com/HelloWorld1/sayHelloWorld1Impl_gen" location="/5.7/Client/HelloWorld_Matrix_EP.wsdl"/>
+    <pd:name>5.7/Client/Client_5.7.process</pd:name>
+    <pd:startName>Timer</pd:startName>
+    <pd:startX>0</pd:startX>
+    <pd:startY>0</pd:startY>
+    <pd:returnBindings/>
+    <pd:starter name="Timer">
+        <pd:type>com.tibco.plugin.timer.TimerEventSource</pd:type>
+        <pd:resourceType>ae.activities.timer</pd:resourceType>
+        <pd:x>153</pd:x>
+        <pd:y>52</pd:y>
+        <config>
+            <StartTime>1276238856000</StartTime>
+            <Frequency>false</Frequency>
+            <TimeInterval>30</TimeInterval>
+            <FrequencyIndex>Second</FrequencyIndex>
+        </config>
+        <pd:inputBindings/>
+    </pd:starter>
+    <pd:endName>End</pd:endName>
+    <pd:endX>450</pd:endX>
+    <pd:endY>64</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1269895671349</pd:targetNamespace>
+    <pd:activity name="SOAPRequestReply">
+        <pd:type>com.tibco.plugin.soap.SOAPSendReceiveActivity</pd:type>
+        <pd:resourceType>ae.activities.SOAPSendReceiveUI</pd:resourceType>
+        <pd:x>287</pd:x>
+        <pd:y>95</pd:y>
+        <config>
+            <timeout>0</timeout>
+            <service>pfx:HelloWorld1PT</service>
+            <servicePort>soap.bindingBinding1</servicePort>
+            <operation>sayHelloWorld</operation>
+            <soapAction>sayHelloWorld</soapAction>
+            <endpointURL>https://localhost:6765/helloWorld1PT/</endpointURL>
+            <ns0:ssl xmlns:ns0="http://www.tibco.com/xmlns/aemeta/services/2002">
+                <ns0:strongCipherSuitesOnly>true</ns0:strongCipherSuitesOnly>
+                <ns0:cert isRef="true">/5.7/Client/KeyStore_Client/.folder</ns0:cert>
+                <ns0:identity isRef="true">/5.7/Client/Identity_Client/Identity_Client.id</ns0:identity>
+            </ns0:ssl>
+        </config>
+        <pd:inputBindings>
+            <sayHelloWorld>
+                <name>
+                    <ns:HelloWorldRequest>
+                        <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/bw5.7/InputName"/>
+                    </ns:HelloWorldRequest>
+                </name>
+            </sayHelloWorld>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>Timer</pd:from>
+        <pd:to>SOAPRequestReply</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>SOAPRequestReply</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>

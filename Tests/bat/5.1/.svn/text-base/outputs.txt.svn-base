@@ -1,0 +1,135 @@
+Undeclared Fault - BW
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+    <SOAP-ENV:Body>
+        <SOAP-ENV:Fault>
+            <faultcode>SOAP-ENV:Server</faultcode>
+            <faultstring>java.lang.NullPointerException</faultstring>
+            <faultactor>DefaultRole</faultactor>
+            <detail>
+                <tibco:myFaultDetail xmlns:tibco="http://tibcouri/">org.osoa.sca.ServiceRuntimeException: java.lang.NullPointerException&#xD;
+	at com.tibco.amf.platform.runtime.componentframework.internal.proxies.operation.AsyncToAsyncOperationHandler.invoke(AsyncToAsyncOperationHandler.java:179)&#xD;
+	at com.tibco.amf.platform.runtime.componentframework.internal.proxies.ProxyInvocationHandler.invoke(ProxyInvocationHandler.java:458)&#xD;
+	at $Proxy24.onRemoteMessage(Unknown Source)&#xD;
+	at com.tibco.amf.platform.runtime.componentframework.internal.messagingbus.ems.inbound.AbstractMessagingContext.run(AbstractMessagingContext.java:112)&#xD;
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:886)&#xD;
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:908)&#xD;
+	at java.lang.Thread.run(Thread.java:619)&#xD;
+Caused by: java.lang.NullPointerException&#xD;
+	at com.tibco.amf.spline.impl.context.helpers.ConversionHelpers.checkForDeclaredFault(ConversionHelpers.java:199)&#xD;
+	at com.tibco.amf.binding.soap.runtime.transport.http.SoapHttpOutboundEndpoint.invoke(SoapHttpOutboundEndpoint.java:440)&#xD;
+	at com.tibco.amf.binding.soap.runtime.transport.http.SoapHttpOutboundEndpoint.invoke(SoapHttpOutboundEndpoint.java:1)&#xD;
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)&#xD;
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)&#xD;
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)&#xD;
+	at java.lang.reflect.Method.invoke(Method.java:597)&#xD;
+	at com.tibco.amf.platform.runtime.componentframework.internal.proxies.operation.OperationHandler.invokeMethodWithThreadContext(OperationHandler.java:485)&#xD;
+	at com.tibco.amf.platform.runtime.componentframework.internal.proxies.operation.AsyncToAsyncOperationHandler.invoke(AsyncToAsyncOperationHandler.java:122)&#xD;
+	... 6 more&#xD;
+                </tibco:myFaultDetail>
+            </detail>
+        </SOAP-ENV:Fault>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+Declared Fault - BW:
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+    <SOAP-ENV:Body>
+        <SOAP-ENV:Fault>
+            <faultcode>SOAP-ENV:Server</faultcode>
+            <faultstring>This is an operation implementation generated fault</faultstring>
+            <faultactor>PROVIDER</faultactor>
+            <detail>
+                <ns:BookStoreFault xmlns:ns="http://tibco.com/matrix/qa/xsd/group" xmlns:ns0="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Invalid Author DeclaredFault</ns:BookStoreFault>
+            </detail>
+        </SOAP-ENV:Fault>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+
+Valid -BW 
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+    <SOAP-ENV:Header/>
+    <SOAP-ENV:Body>
+        <ns0:BookStore xmlns:ns0="http://tibco.com/matrix/qa/xsd/group" ServiceProvider="Response received from BW">
+            <ns0:Title>Power of Now</ns0:Title>
+            <ns0:Author>Vivek</ns0:Author>
+            <ns0:Date>1999-06-11</ns0:Date>
+            <ns0:ISBN>111111</ns0:ISBN>
+            <ns0:Publisher>McGraw-Hill</ns0:Publisher>
+        </ns0:BookStore>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+Consumer unDeclared:
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+    <SOAP-ENV:Body>
+        <SOAP-ENV:Fault>
+            <faultcode>SOAP-ENV:Server</faultcode>
+            <faultstring>java.lang.RuntimeException: RuntimeException : Undeclared fault from Consumer</faultstring>
+            <faultactor>DefaultRole</faultactor>
+            <detail>
+                <tibco:myFaultDetail xmlns:tibco="http://tibcouri/">org.osoa.sca.ServiceRuntimeException: java.lang.RuntimeException: RuntimeException : Undeclared fault from Consumer&#xD;
+	at com.tibco.amf.platform.runtime.componentframework.internal.proxies.operation.AsyncToSyncOperationHandler.invoke(AsyncToSyncOperationHandler.java:221)&#xD;
+	at com.tibco.amf.platform.runtime.componentframework.internal.proxies.ProxyInvocationHandler.invoke(ProxyInvocationHandler.java:428)&#xD;
+	at $Proxy28.onRemoteMessage(Unknown Source)&#xD;
+	at com.tibco.amf.platform.runtime.componentframework.internal.messagingbus.ems.inbound.AbstractMessagingContext.run(AbstractMessagingContext.java:112)&#xD;
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:886)&#xD;
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:908)&#xD;
+	at java.lang.Thread.run(Thread.java:619)&#xD;
+Caused by: java.lang.RuntimeException: RuntimeException : Undeclared fault from Consumer&#xD;
+	at com.tibco.qa.amx30.bat_11.Java1.getBooksOperation(Java1.java:66)&#xD;
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)&#xD;
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)&#xD;
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)&#xD;
+	at java.lang.reflect.Method.invoke(Method.java:597)&#xD;
+	at com.tibco.amf.platform.runtime.componentframework.internal.proxies.operation.OperationHandler.invokeMethodWithThreadContext(OperationHandler.java:485)&#xD;
+	at com.tibco.amf.platform.runtime.componentframework.internal.proxies.operation.AsyncToSyncOperationHandler.invoke(AsyncToSyncOperationHandler.java:93)&#xD;
+	... 6 more&#xD;
+                </tibco:myFaultDetail>
+            </detail>
+        </SOAP-ENV:Fault>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+
+Consumer - declared
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+    <SOAP-ENV:Body>
+        <SOAP-ENV:Fault>
+            <faultcode>SOAP-ENV:Server</faultcode>
+            <faultstring>Fault returned from Consumer</faultstring>
+            <faultactor>PROVIDER</faultactor>
+            <detail>
+                <BookStoreFault xmlns="http://tibco.com/matrix/qa/xsd/group">Fault returned from Consumer</BookStoreFault>
+            </detail>
+        </SOAP-ENV:Fault>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+Declared fault - AMX
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+    <SOAP-ENV:Body>
+        <SOAP-ENV:Fault>
+            <faultcode>SOAP-ENV:Server</faultcode>
+            <faultstring>Fault from AMX Provider</faultstring>
+            <faultactor>PROVIDER</faultactor>
+            <detail>
+                <BookStoreFault xmlns="http://tibco.com/matrix/qa/xsd/group">Invalid Author DeclaredFault</BookStoreFault>
+            </detail>
+        </SOAP-ENV:Fault>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+Undeclared fault - AMX ???

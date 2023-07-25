@@ -1,0 +1,683 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpel:process exitOnStandardFault="yes" name="MediationFlow"
+    suppressJoinFailure="no"
+    targetNamespace="http://com.tibco.amsb/mediation"
+    variableAccessSerializable="no"
+    xmlns:amsb="http://schemas.tibco.com/amsb/3.1.0/mediation"
+    xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+    xmlns:ns="http://xmlns.example.com/Company/sendCompanyMsgImpl/Services"
+    xmlns:ns0="http://www.example.org/helloworld/"
+    xmlns:ns1="http:///com.tibco.amsb.core.common.exchange/mediationcontext"
+    xmlns:ns2="http://schemas.tibco.com/amsb/rt/exceptions"
+    xmlns:ns3="http://www.tibco.com/PrimitiveGroup" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <plnk:partnerLinkType
+        name="ns0:helloworld-helloworldConsumer-partnerLinkType" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+        <plnk:role name="Consumer" portType="ns0:helloworld"/>
+    </plnk:partnerLinkType>
+    <plnk:partnerLinkType
+        name="ns:Company-CompanyConsumer-partnerLinkType" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+        <plnk:role name="Consumer" portType="ns:Company"/>
+    </plnk:partnerLinkType>
+    <plnk:partnerLinkType
+        name="ns:Company-CompanyProvider-partnerLinkType" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+        <plnk:role name="Provider" portType="ns:Company"/>
+    </plnk:partnerLinkType>
+    <mediationmodel:MediationService name="MediationFlow"
+        targetNamespace="http://com.tibco.amsb/mediation"
+        xmi:id="_dQ9nkGS7Ed-3brTRdbJBaw" xmi:version="2.0"
+        xmlns:medct="http://xsd.tns.tibco.com/amsb/core/models/componentType"
+        xmlns:mediationmodel="http://xsd.tns.tibco.com/amsb/core/models/mediationmodel"
+        xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <interfaces name="Company" xmi:id="_ouGZQGS7Ed-3brTRdbJBaw">
+            <interface xsi:type="medct:Wsdl11Interface">
+                <portType href="platform:/resource/BAT62/Service%20Descriptors/Company.wsdl#//@ePortTypes.0"/>
+            </interface>
+            <intents>{http://www.osoa.org/xmlns/sca/1.0}atLeastOnce</intents>
+        </interfaces>
+        <operationImplementations operationName="Company^sendCompanyMsg" useExchangeVariables="true">
+            <mediationContextConfig hideStaticSecurityContext="true" hideStaticTransportContext="true"/>
+        </operationImplementations>
+        <targetEndpoints xmi:id="_owe-4GS7Ed-3brTRdbJBaw">
+            <abstractTarget name="Company" xmi:id="_owe-4WS7Ed-3brTRdbJBaw">
+                <interface xsi:type="medct:Wsdl11Interface">
+                    <portType href="platform:/resource/BAT62/Service%20Descriptors/Company.wsdl#//@ePortTypes.0"/>
+                </interface>
+            </abstractTarget>
+            <targetOperationConfig operationName="sendCompanyMsg">
+                <contextConfig hideStaticSecurityContext="true" hideStaticTransportContext="true"/>
+            </targetOperationConfig>
+        </targetEndpoints>
+        <targetEndpoints xmi:id="_pWen4GS7Ed-3brTRdbJBaw">
+            <abstractTarget name="helloworld" xmi:id="_pWen4WS7Ed-3brTRdbJBaw">
+                <interface xsi:type="medct:Wsdl11Interface">
+                    <portType href="platform:/resource/BAT62/Service%20Descriptors/HelloWorld.wsdl#//@ePortTypes.0"/>
+                </interface>
+            </abstractTarget>
+            <targetOperationConfig operationName="sayHello">
+                <contextConfig hideStaticSecurityContext="true" hideStaticTransportContext="true"/>
+            </targetOperationConfig>
+        </targetEndpoints>
+    </mediationmodel:MediationService>
+    <bpel:documentation>MediationFlow</bpel:documentation>
+    <bpel:import importType="http://schemas.xmlsoap.org/wsdl/"
+        location="../Service%20Descriptors/Company.wsdl" namespace="http://xmlns.example.com/Company/sendCompanyMsgImpl/Services"/>
+    <bpel:import importType="http://schemas.xmlsoap.org/wsdl/"
+        location="../Service%20Descriptors/HelloWorld.wsdl" namespace="http://www.example.org/helloworld/"/>
+    <bpel:import importType="http://www.w3.org/2001/XMLSchema"
+        location="../../com.tibco.mediation.it.common/schema/mediationcontext.xsd" namespace="http:///com.tibco.amsb.core.common.exchange/mediationcontext"/>
+    <bpel:import importType="http://www.w3.org/2001/XMLSchema"
+        location="../../com.tibco.mediation.it.common/schema/exceptions.xsd" namespace="http://schemas.tibco.com/amsb/rt/exceptions"/>
+    <bpel:import importType="http://www.w3.org/2001/XMLSchema"
+        location="../../com.tibco.mediation.it.common/schema/ws-bpel_serviceref.xsd" namespace="http://docs.oasis-open.org/wsbpel/2.0/serviceref"/>
+    <bpel:import importType="http://www.w3.org/2001/XMLSchema"
+        location="../Service%20Descriptors/PrimitiveGroup.xsd" namespace="http://www.tibco.com/PrimitiveGroup"/>
+    <bpel:partnerLinks>
+        <bpel:partnerLink myRole="Provider" name="CompanyProvider" partnerLinkType="ns:Company-CompanyProvider-partnerLinkType">
+            <bpel:documentation>MyRole</bpel:documentation>
+        </bpel:partnerLink>
+        <bpel:partnerLink name="CompanyConsumer"
+            partnerLinkType="ns:Company-CompanyConsumer-partnerLinkType" partnerRole="Consumer">
+            <bpel:documentation>PartnerRole</bpel:documentation>
+        </bpel:partnerLink>
+        <bpel:partnerLink name="helloworldConsumer"
+            partnerLinkType="ns0:helloworld-helloworldConsumer-partnerLinkType" partnerRole="Consumer">
+            <bpel:documentation>PartnerRole</bpel:documentation>
+        </bpel:partnerLink>
+    </bpel:partnerLinks>
+    <bpel:variables>
+        <bpel:variable messageType="ns:CompanyInfo" name="CompanyInfoVar"/>
+    </bpel:variables>
+    <bpel:extensions>
+        <bpel:extension mustUnderstand="no" namespace="http://xsd.tns.tibco.com/amsb/task/sev/models/sevmediationtaskmodel"/>
+        <bpel:extension mustUnderstand="no" namespace="http://xsd.tns.tibco.com/amsb/task/route/models/routemediationtaskmodel"/>
+        <bpel:extension mustUnderstand="no" namespace="http://xsd.tns.tibco.com/amsb/task/log/models/logmediationtaskmodel"/>
+        <bpel:extension mustUnderstand="no" namespace="http://xsd.tns.tibco.com/amsb/core/models/mediationmodel"/>
+        <bpel:extension mustUnderstand="no" namespace="http://xsd.tns.tibco.com/amsb/task/transform/models/transformmediationtaskmodel"/>
+    </bpel:extensions>
+    <bpel:pick>
+        <bpel:onMessage operation="sendCompanyMsg"
+            partnerLink="CompanyProvider" portType="ns:Company" variable="CompanyInfoVar">
+            <bpel:scope name="sendCompanyMsg">
+                <bpel:variables>
+                    <bpel:variable element="ns1:MessageContext" name="MessageContextVar"/>
+                    <bpel:variable element="ns2:MediationFault" name="MediationFaultVar"/>
+                    <bpel:variable element="ns2:MediationRuntimeFault" name="MediationRuntimeFaultVar"/>
+                    <bpel:variable element="ns2:MediationTaskFault" name="MediationTaskFaultVar"/>
+                    <bpel:variable
+                        element="ns2:MediationTaskRuntimeFault" name="MediationTaskRuntimeFaultVar"/>
+                    <bpel:variable element="ns2:UndeclaredFault" name="UndeclaredFaultVar"/>
+                    <bpel:variable element="ns2:DefaultMediationFault" name="DefaultMediationFaultVar"/>
+                    <bpel:variable messageType="ns0:sayHelloRequest" name="sayHelloRequestVar"/>
+                    <bpel:variable messageType="ns0:sayHelloResponse" name="sayHelloResponseVar"/>
+                    <bpel:variable element="ns3:PrimitiveGroup" name="MediationExchangeVariable">
+                        <mediationmodel:Variable
+                            name="MediationExchangeVariable"
+                            xmi:id="_K7-X0WS8Ed-3brTRdbJBaw"
+                            xmi:version="2.0"
+                            xmlns:mediationmodel="http://xsd.tns.tibco.com/amsb/core/models/mediationmodel" xmlns:xmi="http://www.omg.org/XMI">
+                            <elementDeclaration href="platform:/resource/BAT62/Service%20Descriptors/PrimitiveGroup.xsd#//PrimitiveGroup;XSDElementDeclaration"/>
+                        </mediationmodel:Variable>
+                        <bpel:documentation>ExchangeVariable</bpel:documentation>
+                    </bpel:variable>
+                </bpel:variables>
+                <bpel:faultHandlers>
+                    <bpel:catch faultName="ns2:MediationTaskFault">
+                        <bpel:flow>
+                            <bpel:links/>
+                            <bpel:exit name="End-MediationTaskFault">
+                                <mediationmodel:End
+                                    description="End Mediation Task"
+                                    endType="normal"
+                                    name="End-MediationTaskFault"
+                                    xmi:id="_oxrRwWS7Ed-3brTRdbJBaw"
+                                    xmi:version="2.0"
+                                    xmlns:mediationmodel="http://xsd.tns.tibco.com/amsb/core/models/mediationmodel" xmlns:xmi="http://www.omg.org/XMI"/>
+                            </bpel:exit>
+                        </bpel:flow>
+                    </bpel:catch>
+                    <bpel:catch faultName="ns2:MediationTaskRuntimeFault">
+                        <bpel:flow>
+                            <bpel:links/>
+                            <bpel:exit name="End-MediationTaskRuntimeFault">
+                                <mediationmodel:End
+                                    description="End Mediation Task"
+                                    endType="normal"
+                                    name="End-MediationTaskRuntimeFault"
+                                    xmi:id="_oxrRxWS7Ed-3brTRdbJBaw"
+                                    xmi:version="2.0"
+                                    xmlns:mediationmodel="http://xsd.tns.tibco.com/amsb/core/models/mediationmodel" xmlns:xmi="http://www.omg.org/XMI"/>
+                            </bpel:exit>
+                        </bpel:flow>
+                    </bpel:catch>
+                </bpel:faultHandlers>
+                <bpel:flow>
+                    <bpel:links>
+                        <bpel:link name="SEV-to-Route"/>
+                    </bpel:links>
+                    <bpel:assign name="SEV" validate="no">
+
+                        <sevmediationtaskmodel:SetExchangeVariableMediationTask
+                            contributeData="true"
+                            description="Set Exchange Variable Mediation Task"
+                            name="SEV" taskId="1274434519376"
+                            xmi:id="_K7-X0GS8Ed-3brTRdbJBaw"
+                            xmi:version="2.0"
+                            xmlns:sevmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/sev/models/sevmediationtaskmodel" xmlns:xmi="http://www.omg.org/XMI">
+                            <inputDataBinding queryLanguage="xslt" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.tibco.com/PrimitiveGroup&quot; xmlns:ns=&quot;http://www.tibco.com/schemas&quot; xmlns:ns1=&quot;http://xmlns.example.com/Company/sendCompanyMsgImpl/Services&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;MediationFlowProperties&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageData&quot;/>&#xa;    &lt;xsl:template name=&quot;Task Input&quot; match=&quot;/&quot;>&#xa;        &lt;tns:PrimitiveGroup>&#xa;            &lt;primitiveBoolean>&#xa;                &lt;xsl:value-of select=&quot;true()&quot;/>&#xa;            &lt;/primitiveBoolean>&#xa;            &lt;primitiveDecimal>&#xa;                &lt;xsl:value-of select=&quot;1.23456789&quot;/>&#xa;            &lt;/primitiveDecimal>&#xa;            &lt;primitiveDouble>&#xa;                &lt;xsl:value-of select=&quot;xsd:double(123.456789)&quot;/>&#xa;            &lt;/primitiveDouble>&#xa;            &lt;primitiveInteger>&#xa;                &lt;xsl:value-of select=&quot;123456789&quot;/>&#xa;            &lt;/primitiveInteger>&#xa;            &lt;primitiveFloat>&#xa;                &lt;xsl:value-of select=&quot;xsd:float(12345.6789)&quot;/>&#xa;            &lt;/primitiveFloat>&#xa;            &lt;primitiveString>&#xa;                &lt;xsl:value-of select=&quot;$MessageData/ns1:CompanyInfo/ns1:companyinfo/ns:CompanyInfo/ns:City&quot;/>&#xa;            &lt;/primitiveString>&#xa;            &lt;primitiveTime>&#xa;                &lt;xsl:value-of select=&quot;current-time()&quot;/>&#xa;            &lt;/primitiveTime>&#xa;            &lt;primitiveDate>&#xa;                &lt;xsl:value-of select=&quot;current-date()&quot;/>&#xa;            &lt;/primitiveDate>&#xa;        &lt;/tns:PrimitiveGroup>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>"/>
+                            <variable href="platform:/resource/BAT62/Mediation%20Flows/MediationFlow.mediation#_K7-X0WS8Ed-3brTRdbJBaw"/>
+                        </sevmediationtaskmodel:SetExchangeVariableMediationTask>
+                        <bpel:sources>
+                            <bpel:source linkName="SEV-to-Route"/>
+                        </bpel:sources>
+                        <bpel:copy>
+                            <bpel:from><![CDATA[bpel:doXslTransform("SEV.xsl",$MediationExchangeVariable,"MessageData",$CompanyInfoVar)]]></bpel:from>
+                            <bpel:to variable="MediationExchangeVariable"/>
+                        </bpel:copy>
+                    </bpel:assign>
+                    <bpel:scope name="Route">
+                        <bpel:targets>
+                            <bpel:target linkName="SEV-to-Route"/>
+                        </bpel:targets>
+                        <bpel:variables>
+                            <bpel:variable name="inputCity" type="xsd:string"/>
+                        </bpel:variables>
+                        <bpel:sequence>
+                            <bpel:assign validate="no">
+                                <bpel:documentation>RuleVariablePreAssign</bpel:documentation>
+                                <bpel:copy>
+                                    <bpel:from><![CDATA[bpel:doXslTransform("Route.xsl",$inputCity,"MediationExchangeVariable",$MediationExchangeVariable)]]></bpel:from>
+                                    <bpel:to variable="inputCity"/>
+                                </bpel:copy>
+                            </bpel:assign>
+                            <bpel:if name="Route">
+
+                                <routemediationtaskmodel:RouteMediationTask
+                                    description="Route Mediation Task"
+                                    name="Route"
+                                    xmi:id="_qlwecGS7Ed-3brTRdbJBaw"
+                                    xmi:version="2.0"
+                                    xmlns:routemediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/route/models/routemediationtaskmodel"
+                                    xmlns:rulesmodel="http://xsd.tns.tibco.com/amsb/core/models/rulesmodel"
+                                    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                    <configuration>
+                                    <embeddedRuleSet name="embedded">
+                                    <variables name="inputCity" type="string"/>
+                                    <rules xsi:type="rulesmodel:ListRules">
+                                    <ruleCases name="Case1">
+                                    <expression xsi:type="rulesmodel:SimpleRuleExpression">
+                                    <conditions variable="//@configuration/@embeddedRuleSet/@variables.0">
+                                    <value
+                                    queryLanguage="XPath" value="='PA'"/>
+                                    </conditions>
+                                    </expression>
+                                    </ruleCases>
+                                    <ruleCases name="Case2">
+                                    <expression xsi:type="rulesmodel:SimpleRuleExpression">
+                                    <conditions variable="//@configuration/@embeddedRuleSet/@variables.0">
+                                    <value
+                                    queryLanguage="XPath" value="='BJ'"/>
+                                    </conditions>
+                                    </expression>
+                                    </ruleCases>
+                                    <ruleCases name="Case3">
+                                    <expression xsi:type="rulesmodel:SimpleRuleExpression">
+                                    <conditions variable="//@configuration/@embeddedRuleSet/@variables.0">
+                                    <value
+                                    queryLanguage="XPath" value="='NC'"/>
+                                    </conditions>
+                                    </expression>
+                                    </ruleCases>
+                                    </rules>
+                                    </embeddedRuleSet>
+                                    <variableBindingSet
+                                    xsi:type="rulesmodel:XsltVariableBindingSet" xsltContent="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.tibco.com/PrimitiveGroup&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;MediationFlowProperties&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageData&quot;/>&#xa;    &lt;xsl:param name=&quot;MediationExchangeVariable&quot;/>&#xa;    &lt;xsl:template name=&quot;MessageData&quot; match=&quot;/&quot;>&#xa;        &lt;rule>&#xa;            &lt;inputCity>&#xa;                &lt;xsl:value-of select=&quot;$MediationExchangeVariable/tns:PrimitiveGroup/primitiveString&quot;/>&#xa;            &lt;/inputCity>&#xa;        &lt;/rule>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>"/>
+                                    </configuration>
+                                </routemediationtaskmodel:RouteMediationTask>
+                                <bpel:documentation>Case1</bpel:documentation>
+                                <bpel:condition><![CDATA[$inputCity='PA']]></bpel:condition>
+                                <bpel:flow name="Case1">
+                                    <bpel:links>
+                                    <bpel:link name="Log-Route-Case1-to-CompanysendCompanyMsg"/>
+                                    </bpel:links>
+                                    <bpel:extensionActivity>
+
+                                    <tibco-bpel-log:tibcoLogExtensionActivity
+                                    name="Log-Route-Case1" xmlns:tibco-bpel-log="http://xsd.tns.tibco.com/bpel/extension/activity/log/models/logtaskmodel">
+                                    <bpel:sources>
+                                    <bpel:source linkName="Log-Route-Case1-to-CompanysendCompanyMsg"/>
+                                    </bpel:sources>
+
+                                    <logmediationtaskmodel:LogMediationTask
+                                    description="Log Mediation Task"
+                                    name="Log-Route-Case1"
+                                    taskId="1274434827892"
+                                    xmi:id="_485GoGS8Ed-3brTRdbJBaw"
+                                    xmi:version="2.0"
+                                    xmlns:logmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/log/models/logmediationtaskmodel"
+                                    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                    <logConfiguration xsi:type="logmediationtaskmodel:ListLogConfigurationType">
+                                    <items
+                                    queryLanguage="xpath" value="child::root"/>
+                                    </logConfiguration>
+                                    </logmediationtaskmodel:LogMediationTask>
+                                    </tibco-bpel-log:tibcoLogExtensionActivity>
+                                    </bpel:extensionActivity>
+                                    <bpel:invoke
+                                    inputVariable="CompanyInfoVar"
+                                    name="CompanysendCompanyMsg"
+                                    operation="sendCompanyMsg"
+                                    partnerLink="CompanyConsumer" portType="ns:Company">
+                                    <bpel:targets>
+                                    <bpel:target linkName="Log-Route-Case1-to-CompanysendCompanyMsg"/>
+                                    </bpel:targets>
+                                    <bpel:catch faultName="ns2:TimeoutFault">
+                                    <bpel:flow>
+                                    <bpel:exit name="End-TimeoutFault">
+                                    <mediationmodel:End
+                                    description="End Mediation Task"
+                                    endType="normal"
+                                    name="End-TimeoutFault"
+                                    xmi:id="_oxrRuGS7Ed-3brTRdbJBaw"
+                                    xmi:version="2.0"
+                                    xmlns:mediationmodel="http://xsd.tns.tibco.com/amsb/core/models/mediationmodel" xmlns:xmi="http://www.omg.org/XMI"/>
+                                    </bpel:exit>
+                                    </bpel:flow>
+                                    </bpel:catch>
+                                    <bpel:catch faultName="ns2:UndeclaredFault">
+                                    <bpel:flow>
+                                    <bpel:exit name="End-UndeclaredFault">
+                                    <mediationmodel:End
+                                    description="End Mediation Task"
+                                    endType="normal"
+                                    name="End-UndeclaredFault"
+                                    xmi:id="_oxrRvGS7Ed-3brTRdbJBaw"
+                                    xmi:version="2.0"
+                                    xmlns:mediationmodel="http://xsd.tns.tibco.com/amsb/core/models/mediationmodel" xmlns:xmi="http://www.omg.org/XMI"/>
+                                    </bpel:exit>
+                                    </bpel:flow>
+                                    </bpel:catch>
+                                    </bpel:invoke>
+                                </bpel:flow>
+                                <bpel:elseif>
+                                    <bpel:documentation>Case2</bpel:documentation>
+                                    <bpel:condition><![CDATA[$inputCity='BJ']]></bpel:condition>
+                                    <bpel:flow name="Case2">
+                                    <bpel:links>
+                                    <bpel:link name="Transform-to-Log-Route-Case2"/>
+                                    <bpel:link name="Log-Route-Case2-to-helloworldsayHello"/>
+                                    <bpel:link name="helloworldsayHello-to-AdLog-OutPut"/>
+                                    <bpel:link name="AdLog-OutPut-to-end"/>
+                                    </bpel:links>
+                                    <bpel:assign name="Transform" validate="no">
+
+                                    <transformmediationtaskmodel:MapperTransformationMediationTask
+                                    description="Transform Mediation Task"
+                                    name="Transform"
+                                    taskId="1274434587923"
+                                    xmi:id="_VJ1S8GS8Ed-3brTRdbJBaw"
+                                    xmi:version="2.0"
+                                    xmlns:transformmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/transform/models/transformmediationtaskmodel" xmlns:xmi="http://www.omg.org/XMI">
+                                    <transform
+                                    queryLanguage="xslt" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:ns=&quot;http://www.tibco.com/schemas&quot; xmlns:ns1=&quot;http://xmlns.example.com/Company/sendCompanyMsgImpl/Services&quot; xmlns:ns2=&quot;http://www.example.org/helloworld/&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;MediationFlowProperties&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageData&quot;/>&#xa;    &lt;xsl:param name=&quot;MediationExchangeVariable&quot;/>&#xa;    &lt;xsl:template name=&quot;MessageData&quot; match=&quot;/&quot;>&#xa;        &lt;ns2:sayHelloRequest>&#xa;            &lt;ns2:parameters>&#xa;                &lt;ns2:sayHello>&#xa;                    &lt;in>&#xa;                        &lt;xsl:value-of select=&quot;$MessageData/ns1:CompanyInfo/ns1:companyinfo/ns:CompanyInfo/ns:Name&quot;/>&#xa;                    &lt;/in>&#xa;                &lt;/ns2:sayHello>&#xa;            &lt;/ns2:parameters>&#xa;        &lt;/ns2:sayHelloRequest>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>"/>
+
+                                    <externalStylesheetConfig
+                                    inputStyle="text"
+                                    outputStyle="text"
+                                    stylesheetLocation="" stylesheetReferenceType="static"/>
+                                    </transformmediationtaskmodel:MapperTransformationMediationTask>
+                                    <bpel:sources>
+                                    <bpel:source linkName="Transform-to-Log-Route-Case2"/>
+                                    </bpel:sources>
+                                    <bpel:copy>
+                                    <bpel:from><![CDATA[bpel:doXslTransform("Transform.xsl",$sayHelloRequestVar,"MessageData",$CompanyInfoVar)]]></bpel:from>
+                                    <bpel:to variable="sayHelloRequestVar"/>
+                                    </bpel:copy>
+                                    </bpel:assign>
+                                    <bpel:extensionActivity>
+
+                                    <tibco-bpel-log:tibcoLogExtensionActivity
+                                    name="Log-Route-Case2" xmlns:tibco-bpel-log="http://xsd.tns.tibco.com/bpel/extension/activity/log/models/logtaskmodel">
+                                    <bpel:targets>
+                                    <bpel:target linkName="Transform-to-Log-Route-Case2"/>
+                                    </bpel:targets>
+                                    <bpel:sources>
+                                    <bpel:source linkName="Log-Route-Case2-to-helloworldsayHello"/>
+                                    </bpel:sources>
+
+                                    <logmediationtaskmodel:LogMediationTask
+                                    description="Log Mediation Task"
+                                    name="Log-Route-Case2"
+                                    role="warn"
+                                    taskId="1274434867970"
+                                    xmi:id="_-3YIEGS8Ed-3brTRdbJBaw"
+                                    xmi:version="2.0"
+                                    xmlns:logmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/log/models/logmediationtaskmodel"
+                                    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                    <logConfiguration xsi:type="logmediationtaskmodel:ListLogConfigurationType">
+                                    <items
+                                    queryLanguage="xpath" value="child::root"/>
+                                    </logConfiguration>
+                                    </logmediationtaskmodel:LogMediationTask>
+                                    </tibco-bpel-log:tibcoLogExtensionActivity>
+                                    </bpel:extensionActivity>
+                                    <bpel:invoke
+                                    inputVariable="sayHelloRequestVar"
+                                    name="helloworldsayHello"
+                                    operation="sayHello"
+                                    outputVariable="sayHelloResponseVar"
+                                    partnerLink="helloworldConsumer" portType="ns0:helloworld">
+                                    <bpel:targets>
+                                    <bpel:target linkName="Log-Route-Case2-to-helloworldsayHello"/>
+                                    </bpel:targets>
+                                    <bpel:sources>
+                                    <bpel:source linkName="helloworldsayHello-to-AdLog-OutPut"/>
+                                    </bpel:sources>
+                                    <bpel:catch
+                                    faultMessageType="ns0:sayHello_faultMsg" faultName="ns0:fault">
+                                    <bpel:flow>
+                                    <bpel:links>
+                                    <bpel:link name="Log-sayHello_faultMsg1-to-Log-sayHello_faultMsg2"/>
+                                    <bpel:link name="Log-sayHello_faultMsg2-to-End-sayHello_faultMsg"/>
+                                    </bpel:links>
+                                    <bpel:extensionActivity>
+
+                                    <tibco-bpel-log:tibcoLogExtensionActivity
+                                    name="Log-sayHello_faultMsg1" xmlns:tibco-bpel-log="http://xsd.tns.tibco.com/bpel/extension/activity/log/models/logtaskmodel">
+                                    <bpel:sources>
+
+                                    <bpel:source linkName="Log-sayHello_faultMsg1-to-Log-sayHello_faultMsg2"/>
+                                    </bpel:sources>
+
+                                    <logmediationtaskmodel:LogMediationTask
+                                    description="Log Mediation Task"
+                                    name="Log-sayHello_faultMsg1"
+                                    taskId="1274434958688"
+                                    xmi:id="_MY1h8GS9Ed-3brTRdbJBaw"
+                                    xmi:version="2.0"
+                                    xmlns:logmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/log/models/logmediationtaskmodel"
+                                    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+                                    <logConfiguration xsi:type="logmediationtaskmodel:ListLogConfigurationType">
+
+                                    <items
+                                    queryLanguage="xpath" value="child::root"/>
+                                    </logConfiguration>
+                                    </logmediationtaskmodel:LogMediationTask>
+                                    </tibco-bpel-log:tibcoLogExtensionActivity>
+                                    </bpel:extensionActivity>
+                                    <bpel:extensionActivity>
+
+                                    <tibco-bpel-log:tibcoLogExtensionActivity
+                                    name="Log-sayHello_faultMsg2" xmlns:tibco-bpel-log="http://xsd.tns.tibco.com/bpel/extension/activity/log/models/logtaskmodel">
+                                    <bpel:targets>
+
+                                    <bpel:target linkName="Log-sayHello_faultMsg1-to-Log-sayHello_faultMsg2"/>
+                                    </bpel:targets>
+                                    <bpel:sources>
+
+                                    <bpel:source linkName="Log-sayHello_faultMsg2-to-End-sayHello_faultMsg"/>
+                                    </bpel:sources>
+
+                                    <logmediationtaskmodel:LogMediationTask
+                                    description="Log Mediation Task"
+                                    name="Log-sayHello_faultMsg2"
+                                    role="warn"
+                                    taskId="1274435013142"
+                                    xmi:id="_Uf2FUGS9Ed-3brTRdbJBaw"
+                                    xmi:version="2.0"
+                                    xmlns:logmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/log/models/logmediationtaskmodel"
+                                    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+                                    <logConfiguration xsi:type="logmediationtaskmodel:QueryLogConfigurationType">
+
+                                    <query
+                                    queryLanguage="xslt" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.tibco.com/PrimitiveGroup&quot; xmlns:tns1=&quot;http://xsd.tns.tibco.com/amsb/task/log/xsd/input&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;MediationFlowProperties&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageData&quot;/>&#xa;    &lt;xsl:param name=&quot;MediationExchangeVariable&quot;/>&#xa;    &lt;xsl:template name=&quot;TaskInput&quot; match=&quot;/&quot;>&#xa;        &lt;tns1:logParameters>&#xa;            &lt;tns1:message>&#xa;                &lt;tns1:xmlString>&#xa;                    &lt;xsl:value-of select=&quot;xsd:string($MediationExchangeVariable/tns:PrimitiveGroup/primitiveDate)&quot;/>&#xa;                &lt;/tns1:xmlString>&#xa;            &lt;/tns1:message>&#xa;            &lt;tns1:messageID>&#xa;                &lt;tns1:name>&#xa;                    &lt;xsl:value-of select=&quot;'AdLog-sayHello_faultMsg'&quot;/>&#xa;                &lt;/tns1:name>&#xa;                &lt;tns1:code>&#xa;                    &lt;xsl:value-of select=&quot;xsd:int(1)&quot;/>&#xa;                &lt;/tns1:code>&#xa;            &lt;/tns1:messageID>&#xa;            &lt;tns1:role>&#xa;                &lt;xsl:value-of select=&quot;'ERROR'&quot;/>&#xa;            &lt;/tns1:role>&#xa;        &lt;/tns1:logParameters>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>"/>
+                                    </logConfiguration>
+                                    </logmediationtaskmodel:LogMediationTask>
+                                    </tibco-bpel-log:tibcoLogExtensionActivity>
+                                    </bpel:extensionActivity>
+                                    <bpel:exit name="End-sayHello_faultMsg">
+
+                                    <mediationmodel:End
+                                    description="End Mediation Task"
+                                    endType="normal"
+                                    name="End-sayHello_faultMsg"
+                                    xmi:id="_yfWQ6GS7Ed-3brTRdbJBaw"
+                                    xmi:version="2.0"
+                                    xmlns:mediationmodel="http://xsd.tns.tibco.com/amsb/core/models/mediationmodel" xmlns:xmi="http://www.omg.org/XMI"/>
+                                    <bpel:targets>
+                                    <bpel:target linkName="Log-sayHello_faultMsg2-to-End-sayHello_faultMsg"/>
+                                    </bpel:targets>
+                                    </bpel:exit>
+                                    </bpel:flow>
+                                    </bpel:catch>
+                                    <bpel:catch faultName="ns2:TimeoutFault">
+                                    <bpel:flow>
+                                    <bpel:exit name="End-TimeoutFault(1)">
+
+                                    <mediationmodel:End
+                                    description="End Mediation Task"
+                                    endType="normal"
+                                    name="End-TimeoutFault"
+                                    xmi:id="_yfWQ7GS7Ed-3brTRdbJBaw"
+                                    xmi:version="2.0"
+                                    xmlns:mediationmodel="http://xsd.tns.tibco.com/amsb/core/models/mediationmodel" xmlns:xmi="http://www.omg.org/XMI"/>
+                                    </bpel:exit>
+                                    </bpel:flow>
+                                    </bpel:catch>
+                                    <bpel:catch faultName="ns2:UndeclaredFault">
+                                    <bpel:flow>
+                                    <bpel:links>
+                                    <bpel:link name="Log-UndeclaredFault1-to-Log-UndeclaredFault2"/>
+                                    <bpel:link name="Log-UndeclaredFault2-to-End-UndeclaredFault(1)"/>
+                                    </bpel:links>
+                                    <bpel:extensionActivity>
+
+                                    <tibco-bpel-log:tibcoLogExtensionActivity
+                                    name="Log-UndeclaredFault1" xmlns:tibco-bpel-log="http://xsd.tns.tibco.com/bpel/extension/activity/log/models/logtaskmodel">
+                                    <bpel:sources>
+
+                                    <bpel:source linkName="Log-UndeclaredFault1-to-Log-UndeclaredFault2"/>
+                                    </bpel:sources>
+
+                                    <logmediationtaskmodel:LogMediationTask
+                                    description="Log Mediation Task"
+                                    name="Log-UndeclaredFault1"
+                                    taskId="1274434961298"
+                                    xmi:id="_MxbBEGS9Ed-3brTRdbJBaw"
+                                    xmi:version="2.0"
+                                    xmlns:logmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/log/models/logmediationtaskmodel"
+                                    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+                                    <logConfiguration xsi:type="logmediationtaskmodel:ListLogConfigurationType">
+
+                                    <items
+                                    queryLanguage="xpath" value="child::root"/>
+                                    </logConfiguration>
+                                    </logmediationtaskmodel:LogMediationTask>
+                                    </tibco-bpel-log:tibcoLogExtensionActivity>
+                                    </bpel:extensionActivity>
+                                    <bpel:extensionActivity>
+
+                                    <tibco-bpel-log:tibcoLogExtensionActivity
+                                    name="Log-UndeclaredFault2" xmlns:tibco-bpel-log="http://xsd.tns.tibco.com/bpel/extension/activity/log/models/logtaskmodel">
+                                    <bpel:targets>
+
+                                    <bpel:target linkName="Log-UndeclaredFault1-to-Log-UndeclaredFault2"/>
+                                    </bpel:targets>
+                                    <bpel:sources>
+
+                                    <bpel:source linkName="Log-UndeclaredFault2-to-End-UndeclaredFault(1)"/>
+                                    </bpel:sources>
+
+                                    <logmediationtaskmodel:LogMediationTask
+                                    description="Log Mediation Task"
+                                    name="Log-UndeclaredFault2"
+                                    role="warn"
+                                    taskId="1274435015798"
+                                    xmi:id="_U5LLUGS9Ed-3brTRdbJBaw"
+                                    xmi:version="2.0"
+                                    xmlns:logmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/log/models/logmediationtaskmodel"
+                                    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+                                    <logConfiguration xsi:type="logmediationtaskmodel:QueryLogConfigurationType">
+
+                                    <query
+                                    queryLanguage="xslt" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://xsd.tns.tibco.com/amsb/task/log/xsd/input&quot; xmlns:tns1=&quot;http://www.tibco.com/PrimitiveGroup&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;MediationFlowProperties&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageData&quot;/>&#xa;    &lt;xsl:param name=&quot;MediationExchangeVariable&quot;/>&#xa;    &lt;xsl:template name=&quot;TaskInput&quot; match=&quot;/&quot;>&#xa;        &lt;tns:logParameters>&#xa;            &lt;tns:message>&#xa;                &lt;tns:xmlString>&#xa;                    &lt;xsl:value-of select=&quot;xsd:string($MediationExchangeVariable/tns1:PrimitiveGroup/primitiveDecimal)&quot;/>&#xa;                &lt;/tns:xmlString>&#xa;            &lt;/tns:message>&#xa;            &lt;tns:messageID>&#xa;                &lt;tns:name>&#xa;                    &lt;xsl:value-of select=&quot;'AdLog-UndeclaredFault'&quot;/>&#xa;                &lt;/tns:name>&#xa;                &lt;tns:code>&#xa;                    &lt;xsl:value-of select=&quot;xsd:int(1)&quot;/>&#xa;                &lt;/tns:code>&#xa;            &lt;/tns:messageID>&#xa;            &lt;tns:role>&#xa;                &lt;xsl:value-of select=&quot;'DEBUG'&quot;/>&#xa;            &lt;/tns:role>&#xa;        &lt;/tns:logParameters>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>"/>
+                                    </logConfiguration>
+                                    </logmediationtaskmodel:LogMediationTask>
+                                    </tibco-bpel-log:tibcoLogExtensionActivity>
+                                    </bpel:extensionActivity>
+                                    <bpel:exit name="End-UndeclaredFault(1)">
+
+                                    <mediationmodel:End
+                                    description="End Mediation Task"
+                                    endType="normal"
+                                    name="End-UndeclaredFault"
+                                    xmi:id="_yfWQ8GS7Ed-3brTRdbJBaw"
+                                    xmi:version="2.0"
+                                    xmlns:mediationmodel="http://xsd.tns.tibco.com/amsb/core/models/mediationmodel" xmlns:xmi="http://www.omg.org/XMI"/>
+                                    <bpel:targets>
+                                    <bpel:target linkName="Log-UndeclaredFault2-to-End-UndeclaredFault(1)"/>
+                                    </bpel:targets>
+                                    </bpel:exit>
+                                    </bpel:flow>
+                                    </bpel:catch>
+                                    </bpel:invoke>
+                                    <bpel:extensionActivity>
+
+                                    <tibco-bpel-log:tibcoLogExtensionActivity
+                                    name="AdLog-OutPut" xmlns:tibco-bpel-log="http://xsd.tns.tibco.com/bpel/extension/activity/log/models/logtaskmodel">
+                                    <bpel:targets>
+                                    <bpel:target linkName="helloworldsayHello-to-AdLog-OutPut"/>
+                                    </bpel:targets>
+                                    <bpel:sources>
+                                    <bpel:source linkName="AdLog-OutPut-to-end"/>
+                                    </bpel:sources>
+
+                                    <logmediationtaskmodel:LogMediationTask
+                                    description="Log Mediation Task"
+                                    name="AdLog-OutPut"
+                                    taskId="1274434917188"
+                                    xmi:id="_GND8MGS9Ed-3brTRdbJBaw"
+                                    xmi:version="2.0"
+                                    xmlns:logmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/log/models/logmediationtaskmodel"
+                                    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                    <logConfiguration xsi:type="logmediationtaskmodel:QueryLogConfigurationType">
+                                    <query
+                                    queryLanguage="xslt" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.tibco.com/PrimitiveGroup&quot; xmlns:tns1=&quot;http://xsd.tns.tibco.com/amsb/task/log/xsd/input&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;MediationFlowProperties&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageData&quot;/>&#xa;    &lt;xsl:param name=&quot;MediationExchangeVariable&quot;/>&#xa;    &lt;xsl:template name=&quot;TaskInput&quot; match=&quot;/&quot;>&#xa;        &lt;tns1:logParameters>&#xa;            &lt;tns1:message>&#xa;                &lt;xsl:copy-of select=&quot;$MediationExchangeVariable/tns:PrimitiveGroup/primitiveBoolean&quot;/>&#xa;            &lt;/tns1:message>&#xa;        &lt;/tns1:logParameters>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>"/>
+                                    </logConfiguration>
+                                    </logmediationtaskmodel:LogMediationTask>
+                                    </tibco-bpel-log:tibcoLogExtensionActivity>
+                                    </bpel:extensionActivity>
+                                    <bpel:exit name="end">
+                                    <mediationmodel:End
+                                    description="End Mediation Task"
+                                    endType="normal"
+                                    name="end"
+                                    xmi:id="_yfWQ42S7Ed-3brTRdbJBaw"
+                                    xmi:version="2.0"
+                                    xmlns:mediationmodel="http://xsd.tns.tibco.com/amsb/core/models/mediationmodel" xmlns:xmi="http://www.omg.org/XMI"/>
+                                    <bpel:targets>
+                                    <bpel:target linkName="AdLog-OutPut-to-end"/>
+                                    </bpel:targets>
+                                    </bpel:exit>
+                                    </bpel:flow>
+                                </bpel:elseif>
+                                <bpel:elseif>
+                                    <bpel:documentation>Case3</bpel:documentation>
+                                    <bpel:condition><![CDATA[$inputCity='NC']]></bpel:condition>
+                                    <bpel:flow name="Case3">
+                                    <bpel:links>
+                                    <bpel:link name="Log-Route-Case3-to-NormalEnd"/>
+                                    </bpel:links>
+                                    <bpel:extensionActivity>
+
+                                    <tibco-bpel-log:tibcoLogExtensionActivity
+                                    name="Log-Route-Case3" xmlns:tibco-bpel-log="http://xsd.tns.tibco.com/bpel/extension/activity/log/models/logtaskmodel">
+                                    <bpel:sources>
+                                    <bpel:source linkName="Log-Route-Case3-to-NormalEnd"/>
+                                    </bpel:sources>
+
+                                    <logmediationtaskmodel:LogMediationTask
+                                    description="Log Mediation Task"
+                                    name="Log-Route-Case3"
+                                    role="debug"
+                                    taskId="1274434869126"
+                                    xmi:id="__CaTYGS8Ed-3brTRdbJBaw"
+                                    xmi:version="2.0"
+                                    xmlns:logmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/log/models/logmediationtaskmodel"
+                                    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                    <logConfiguration xsi:type="logmediationtaskmodel:ListLogConfigurationType">
+                                    <items
+                                    queryLanguage="xpath" value="child::root"/>
+                                    </logConfiguration>
+                                    </logmediationtaskmodel:LogMediationTask>
+                                    </tibco-bpel-log:tibcoLogExtensionActivity>
+                                    </bpel:extensionActivity>
+                                    <bpel:exit name="NormalEnd">
+                                    <mediationmodel:End
+                                    description="End Mediation Task"
+                                    endType="normal"
+                                    name="NormalEnd"
+                                    xmi:id="_0j0qEGS7Ed-3brTRdbJBaw"
+                                    xmi:version="2.0"
+                                    xmlns:mediationmodel="http://xsd.tns.tibco.com/amsb/core/models/mediationmodel" xmlns:xmi="http://www.omg.org/XMI"/>
+                                    <bpel:targets>
+                                    <bpel:target linkName="Log-Route-Case3-to-NormalEnd"/>
+                                    </bpel:targets>
+                                    </bpel:exit>
+                                    </bpel:flow>
+                                </bpel:elseif>
+                                <bpel:else>
+                                    <bpel:documentation>otherwise</bpel:documentation>
+                                    <bpel:flow name="otherwise">
+                                    <bpel:links>
+                                    <bpel:link name="Log-Route-Otherwise-to-RedeliverMsgEnd"/>
+                                    </bpel:links>
+                                    <bpel:extensionActivity>
+
+                                    <tibco-bpel-log:tibcoLogExtensionActivity
+                                    name="Log-Route-Otherwise" xmlns:tibco-bpel-log="http://xsd.tns.tibco.com/bpel/extension/activity/log/models/logtaskmodel">
+                                    <bpel:sources>
+                                    <bpel:source linkName="Log-Route-Otherwise-to-RedeliverMsgEnd"/>
+                                    </bpel:sources>
+
+                                    <logmediationtaskmodel:LogMediationTask
+                                    description="Log Mediation Task"
+                                    name="Log-Route-Otherwise"
+                                    role="error"
+                                    taskId="1274434870188"
+                                    xmi:id="__MifwGS8Ed-3brTRdbJBaw"
+                                    xmi:version="2.0"
+                                    xmlns:logmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/log/models/logmediationtaskmodel"
+                                    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                    <logConfiguration xsi:type="logmediationtaskmodel:ListLogConfigurationType">
+                                    <items
+                                    queryLanguage="xpath" value="child::root"/>
+                                    </logConfiguration>
+                                    </logmediationtaskmodel:LogMediationTask>
+                                    </tibco-bpel-log:tibcoLogExtensionActivity>
+                                    </bpel:extensionActivity>
+                                    <bpel:exit name="RedeliverMsgEnd">
+                                    <mediationmodel:End
+                                    description="End Mediation Task"
+                                    endType="redeliver"
+                                    name="RedeliverMsgEnd"
+                                    xmi:id="_079dQGS7Ed-3brTRdbJBaw"
+                                    xmi:version="2.0"
+                                    xmlns:mediationmodel="http://xsd.tns.tibco.com/amsb/core/models/mediationmodel" xmlns:xmi="http://www.omg.org/XMI"/>
+                                    <bpel:targets>
+                                    <bpel:target linkName="Log-Route-Otherwise-to-RedeliverMsgEnd"/>
+                                    </bpel:targets>
+                                    </bpel:exit>
+                                    </bpel:flow>
+                                </bpel:else>
+                            </bpel:if>
+                        </bpel:sequence>
+                    </bpel:scope>
+                </bpel:flow>
+            </bpel:scope>
+        </bpel:onMessage>
+    </bpel:pick>
+</bpel:process>

@@ -1,0 +1,146 @@
+<project default="all">
+	<!-- TIBCO ActiveMatrix installation location-->
+	<property name="ADMIN-HOME" value="C:\tibco\amx-3.2.1\v05\administrator\3.2"/>
+	<property name="remote-properties.file" value="${basedir}/remote_props.properties"/>
+	
+	
+	<!-- Import TIBCO Administrator CLI tasks and classes -->
+	<import file="${ADMIN-HOME}/scripts/basic_cli.xml" />
+	
+	<!-- Default task for this build file -->
+	<target name="all" 
+		depends="upload.daa, create.app, edit.properties, wire.application, distribute.app, deploy.app, start.app"
+		description="Default target group, execute following targets: upload.daa, create.app, edit.properties, wire.application, distribute.app, deploy.app, start.app"/>
+	
+
+	<target name="delete.oldAppTemplates" description="Delete Existing Application Templates">
+		<AMXAdminTask remote="true" propsFile="${remote-properties.file}" 
+		action="delete" dataFile="${basedir}/jms.binding.helloworld.soa-queue.deployment-config.xml" 
+		objectSelector="AppTemplate" 
+		overwrite="false" merge="true"
+		createIfNotExists="true" force="false" failOnError="false"/>
+	</target>
+
+	<target name="delete.oldFeatures" description="Delete Existing Features">
+		<AMXAdminTask remote="true" propsFile="${remote-properties.file}" 
+		action="delete" dataFile="${basedir}/jms.binding.helloworld.soa-queue.deployment-config.xml" 
+		objectSelector="Feature" 
+		overwrite="false" merge="true"
+		createIfNotExists="true" force="false" failOnError="false"/>
+	</target>
+
+	<!-- Upload DAA specified in the data file -->
+	<target name="upload.daa" description="Uploading Application">
+  		<AMXAdminTask 
+			action="add" 
+			objectSelector="DAA" 
+			remote="true" 
+			propsFile="${remote-properties.file}" 
+			dataFile="${basedir}/jms.binding.helloworld.soa-queue.deployment-config.xml" 
+			overwrite="false" merge="true" createIfNotExists="true" 
+			force="false" failOnError="false" /> 
+	</target>  		
+
+	<!-- create the application -->
+	<target name="create.app" description="Creating Application">
+		<AMXAdminTask remote="true" propsFile="${remote-properties.file}" 
+			action="add" dataFile="${basedir}/jms.binding.helloworld.soa-queue.deployment-config.xml" 
+			objectSelector="Environment//Application" 
+			overwrite="false" merge="true" 
+			createIfNotExists="true" force="false" failOnError="true" />
+	</target>
+
+
+	<!-- configure properties of the application, and create resource instances if needed -->
+	<target name="edit.properties" description="Editing Properties" depends="createResourceInstances">		
+	
+	  <!-- override values for properties -->
+		<AMXAdminTask remote="true" propsFile="${remote-properties.file}" 
+			action="edit" dataFile="${basedir}/jms.binding.helloworld.soa-queue.deployment-config.xml" 
+			objectSelector="//Property" 
+			overwrite="false" merge="true" 
+			createIfNotExists="true" force="false" failOnError="true" />			
+		
+			
+		
+	</target>
+	
+	<!-- createResourceInstances target will not get executed if property 'doNotInstallInstances' is set to any value -->
+	<target name="createResourceInstances" description="creates resource templates and instances" unless="ignoreResourceInstances">
+		
+		<!-- create resource template -->
+		<AMXAdminTask remote="true" propsFile="${remote-properties.file}" 
+			action="add" dataFile="${basedir}/jms.binding.helloworld.soa-queue.deployment-config.xml"
+			objectSelector="ResourceTemplate" overwrite="false" merge="true"
+			createIfNotExists="true" force="false" failOnError="true" /> 
+		
+		<!-- add all require resource instances -->
+		<AMXAdminTask remote="true" propsFile="${remote-properties.file}" 
+			action="add" dataFile="${basedir}/jms.binding.helloworld.soa-queue.deployment-config.xml" 
+			objectSelector="Environment/Node/ResourceInstance" 
+			overwrite="false" merge="true" 
+			createIfNotExists="true" force="false" failOnError="true" />
+			
+		<!-- install instances added above -->
+		<!-- Notes on 'resolve mode' for install: -->
+		<!--     The attribute 'options' is set to 'autoresolve' by default. -->
+		<!--     The options attribute controls what the Administrator does if new drivers need to be resolved -->
+		<!--     The following options are valid for this attribute (see documentation for more information): -->
+		<!--                                                                                                  -->
+		<!--     auto-resolve - May cause node to reset.  The Administrator will try to resolve new drivers that need to be resolved. -->
+		<!--     resolve - May cause node to reset.  The Administrator will try resolve all drivers -->
+		<!--     stable (or no options attribute) - The Adminstrator will not try to resolve drivers.  This may cause deployment to fail if resolving is required -->
+		<AMXAdminTask remote="true" propsFile="${remote-properties.file}" 
+			action="install" dataFile="${basedir}/jms.binding.helloworld.soa-queue.deployment-config.xml" 
+			objectSelector="Environment/Node/ResourceInstance" 
+			overwrite="false" merge="true" options="auto-resolve"
+			createIfNotExists="true" force="false" failOnError="true" />
+		
+		
+	</target>
+
+	<!-- create wires to other applications -->
+	<target name="wire.application" description="Wiring Application">
+		<AMXAdminTask remote="true" propsFile="${remote-properties.file}" 
+			action="set" dataFile="${basedir}/jms.binding.helloworld.soa-queue.deployment-config.xml" 
+			objectSelector="//PromotedReference/Wire" 
+			overwrite="false" merge="true" 
+			createIfNotExists="true" force="false" failOnError="true" />
+	</target>
+
+ 
+	<target name="distribute.app" description="Distributing Application">
+	<AMXAdminTask
+			action="set"
+			objectSelector="Environment//Application//Component/Node | Environment//Application//PromotedService//Binding/Node | Environment//Application//PromotedReference//Binding/Node"
+			remote="true"
+			propsFile="${remote-properties.file}"
+			dataFile="${basedir}/jms.binding.helloworld.soa-queue.deployment-config.xml"
+			overwrite="false"
+			merge="true"
+			createIfNotExists="true"
+			force="false"
+			failOnError="false"/>
+	
+	</target>
+
+
+	<!-- deploy the application -->
+	<target name="deploy.app" description="Deploying Application">
+		<AMXAdminTask remote="true" propsFile="${remote-properties.file}" 
+			action="deploy" dataFile="${basedir}/jms.binding.helloworld.soa-queue.deployment-config.xml" 
+			objectSelector="Environment//Application" 
+			overwrite="false" merge="true" 
+			createIfNotExists="true" force="false" failOnError="true"
+			options="handleDependencies"/>
+	</target>
+
+	<target name="start.app" description="Starting Application">
+		<AMXAdminTask remote="true" propsFile="${remote-properties.file}" 
+			action="start" dataFile="${basedir}/jms.binding.helloworld.soa-queue.deployment-config.xml" 
+			objectSelector="Environment//Application" 
+			overwrite="false" merge="true" 
+			createIfNotExists="true" force="false" failOnError="true" />
+	</target>
+
+</project>

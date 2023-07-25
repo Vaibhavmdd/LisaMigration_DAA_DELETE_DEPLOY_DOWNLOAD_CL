@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<configuration>
+  <system.serviceModel>
+   <extensions>
+          <bindingElementExtensions>
+            <add name="MSFTITTransport" type="com.tibco.matrix.clr.MSFTITChannel.MSFTITTransportElement, amx_msft_runtime" />
+          </bindingElementExtensions>
+          <bindingExtensions>
+            <add name="MSFTITBinding" type="com.tibco.matrix.clr.MSFTITChannel.MSFTITBindingCollectionElement, amx_msft_runtime" />
+          </bindingExtensions>
+        </extensions>
+        
+    <services>
+      <service name="CalculatorImpl" behaviorConfiguration="CalculatorImpl.ServiceBehavior">
+        <host>
+          <!-- An HTTP base address serves the application endpoint as well as the WS-MetadataExchage one. -->
+          <baseAddresses>
+            <add baseAddress="http://localhost:9086/"/>
+          </baseAddresses>
+        </host>
+        <endpoint address="Calculator1" binding="customBinding" bindingConfiguration="AMX" contract="ISimpleCalculator">
+        </endpoint>
+        <!--<endpoint address="Calculator1" binding="wsHttpBinding" contract="ISimpleCalculator">
+        </endpoint>
+        <endpoint address="Calculator2" binding="wsHttpBinding" contract="ISimpleCalculator">
+        </endpoint>
+        <endpoint address="Calculator3" binding="wsHttpBinding" contract="ISimpleCalculator">
+        </endpoint>
+        <endpoint address="Calculator4" binding="wsHttpBinding" contract="ISimpleCalculator">
+        </endpoint>
+        <endpoint address="Calculator5" binding="wsHttpBinding" contract="ISimpleCalculator">
+        </endpoint>
+        <endpoint address="Calculator/Mex" binding="mexHttpBinding" contract="IMetadataExchange">
+        </endpoint>-->
+      </service>
+      <service name="NS_HelloWorld.HelloWorldImpl" behaviorConfiguration="HelloWorldImpl.ServiceBehavior">
+        <host>
+          <!-- An HTTP base address serves the application endpoint as well as the WS-MetadataExchage one. -->
+          <baseAddresses>
+            <add baseAddress="http://localhost:9086/HelloWorld"/>
+          </baseAddresses>
+        </host>
+        <endpoint address="" binding="customBinding" bindingConfiguration="AMX" contract="NS_HelloWorldContract.IHelloWorld">
+        </endpoint>
+        <!--<endpoint address="Mex" binding="mexHttpBinding" contract="IMetadataExchange">
+        </endpoint>-->
+      </service>
+    </services>
+      <bindings>
+      <customBinding>
+	       <binding name="AMX">
+	           <textMessageEncoding />
+	             <MSFTITTransport/>
+	       </binding>
+          </customBinding>
+           </bindings>
+    <behaviors>
+      <serviceBehaviors>
+        <behavior name="CalculatorImpl.ServiceBehavior">
+          <serviceMetadata httpGetEnabled="True"/>
+          <serviceDebug includeExceptionDetailInFaults="True"/> 
+        </behavior>
+        <behavior name="HelloWorldImpl.ServiceBehavior">
+          <serviceMetadata httpGetEnabled="True"/>
+<!--          <serviceDebug includeExceptionDetailInFaults="True" /> -->
+        </behavior>
+      </serviceBehaviors>
+    </behaviors>
+  </system.serviceModel>
+</configuration>

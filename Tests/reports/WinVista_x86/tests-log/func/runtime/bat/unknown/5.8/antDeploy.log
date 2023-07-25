@@ -1,0 +1,197 @@
+     [echo] Script base is: "C:\AMX-315HF15-V122\administrator\3.1/scripts/basic_cli.xml"
+
+deploy.app:
+     [echo] 
+     [echo] 
+     [echo] Upload DAA using:
+     [echo] dataFile: W:/3.0/reports/WinVista_x86/tests-log/func/runtime/bat/unknown/5.8/amxconfig.xml
+     [echo] remotePropsFile: W:/3.0/tests/func/runtime/bat/2node_hsql.config
+     [echo] objectSelector: DAA
+     [echo] action: add
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+[AMXAdminTask]  INFO - Processing 2 objects
+[AMXAdminTask]  INFO - Uploading DAA...
+[AMXAdminTask]  INFO - DAA location: project/upgrade/sds_project/upgrade-it-daa/Deployment Artifacts/implementation-upgrade.daa
+[AMXAdminTask]  WARN - importResourceTemplates option is deprecated
+[AMXAdminTask]  INFO - Successfully added Application Template 'it.upgrade.daa' (version: '1.0.0.201007071750') to the Administrator Staging Area
+[AMXAdminTask]  INFO - Successfully added Feature 'com.tibco.amx.it.upgrade.runtime.product.feature' (version: '1.0.0.201007071750') to the Administrator Staging Area
+[AMXAdminTask]  INFO - Uploading DAA...
+[AMXAdminTask]  INFO - DAA location: project/upgrade/sds_project/upgrade-it-daa/Deployment Artifacts/upgrade.example.daa
+[AMXAdminTask]  WARN - importResourceTemplates option is deprecated
+[AMXAdminTask]  INFO - Successfully added Application Template 'upgrade.sample' (version: '1.0.0.201007071740') to the Administrator Staging Area
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Add node svars using:
+     [echo] envName: 
+     [echo] nodeName: 
+     [echo] svarName: 
+     [echo] description: 
+     [echo] dataFile: W:/3.0/reports/WinVista_x86/tests-log/func/runtime/bat/unknown/5.8/amxconfig.xml
+     [echo] remotePropsFile: W:/3.0/tests/func/runtime/bat/2node_hsql.config
+     [echo] objectSelector: 
+     [echo] action: add
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] Invoking Admin task using the objectselector: Environment/Node/SVar
+[AMXAdminTask]  INFO - Processing 2 objects
+[AMXAdminTask]  INFO - Adding substitution varible(s) for 'Node'...
+[AMXAdminTask]  INFO - Successfully added substitution varible(s) for 'QANode1': 
+[AMXAdminTask]           NodeName, String, QANode1
+[AMXAdminTask]  INFO - Adding substitution varible(s) for 'Node'...
+[AMXAdminTask]  INFO - Successfully added substitution varible(s) for 'QANode2': 
+[AMXAdminTask]           NodeName, String, QANode2
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Create an Application using:
+     [echo] envName: 
+     [echo] appName: bat5.8.it
+     [echo] dataFile: W:/3.0/reports/WinVista_x86/tests-log/func/runtime/bat/unknown/5.8/amxconfig.xml
+     [echo] remotePropsFile: W:/3.0/tests/func/runtime/bat/2node_hsql.config
+     [echo] objectSelector: 
+     [echo] action: add
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] Invoking Admin task using the objectselector: Environment//Application[@name='bat5.8.it']
+[AMXAdminTask]  INFO - Processing 1 objects
+[AMXAdminTask]  INFO - Adding application...
+[AMXAdminTask]  INFO - Successfully added Application 'bat5.8.it'
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Map an application component to a node explicitly:
+     [echo] envName: 
+     [echo] componentName: 
+     [echo] nodeName: 
+     [echo] appName: bat5.8.it
+     [echo] dataFile: W:/3.0/reports/WinVista_x86/tests-log/func/runtime/bat/unknown/5.8/amxconfig.xml
+     [echo] remotePropsFile: W:/3.0/tests/func/runtime/bat/2node_hsql.config
+     [echo] objectSelector: 
+     [echo] overwrite: true
+     [echo] action: add
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] Invoking Admin task using the objectselector: Environment//Application[@name='bat5.8.it']/Component/Node
+[AMXAdminTask]  INFO - Processing 1 objects
+[AMXAdminTask]  INFO - Adding component to nodes...
+[AMXAdminTask]  INFO - Successfully added component 'implementation.upgrade' to node 'QANode1' 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Deploy an application using:
+     [echo] envName: 
+     [echo] appName: bat5.8.it
+     [echo] dataFile: W:/3.0/reports/WinVista_x86/tests-log/func/runtime/bat/unknown/5.8/amxconfig.xml
+     [echo] remotePropsFile: W:/3.0/tests/func/runtime/bat/2node_hsql.config
+     [echo] objectSelector: 
+     [echo] action: deploy
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] options: 
+     [echo] startAfterDeploy: true
+     [echo] timeout: 600
+     [echo] Invoking Admin task using the objectselector: Environment//Application[@name='bat5.8.it']
+[AMXAdminTask]  INFO - Processing 1 objects
+[AMXAdminTask]  INFO - Deploying application...
+[AMXAdminTask]  INFO - Deploying application 'bat5.8.it' in background : Deployment succeeded for application 'bat5.8.it' at 3/16/15 11:48 AM on node(s): 'QANode1'
+[AMXAdminTask]  INFO - .
+[AMXAdminTask]  INFO - .
+[AMXAdminTask]  INFO - Application Deploy with Start finished successfully
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Create an Application using:
+     [echo] envName: 
+     [echo] appName: bat5.8.user
+     [echo] dataFile: W:/3.0/reports/WinVista_x86/tests-log/func/runtime/bat/unknown/5.8/amxconfig.xml
+     [echo] remotePropsFile: W:/3.0/tests/func/runtime/bat/2node_hsql.config
+     [echo] objectSelector: 
+     [echo] action: add
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] Invoking Admin task using the objectselector: Environment//Application[@name='bat5.8.user']
+[AMXAdminTask]  INFO - Processing 1 objects
+[AMXAdminTask]  INFO - Adding application...
+[AMXAdminTask]  INFO - Successfully added Application 'bat5.8.user'
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Setting the Http Connector property for Service binding using:
+     [echo] envName: 
+     [echo] appName: bat5.8.user
+     [echo] promotedServiceName: 
+     [echo] bindingName: 
+     [echo] propertyName: 
+     [echo] dataFile: W:/3.0/reports/WinVista_x86/tests-log/func/runtime/bat/unknown/5.8/amxconfig.xml
+     [echo] remotePropsFile: W:/3.0/tests/func/runtime/bat/2node_hsql.config
+     [echo] objectSelector: 
+     [echo] action: edit
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] Invoking Admin task using the objectselector: Environment//Application[@name='bat5.8.user']/PromotedService/Binding/Property
+[AMXAdminTask]  INFO - Processing 1 objects
+[AMXAdminTask]  INFO - Editing properties..
+[AMXAdminTask]  INFO - Successfully edited property 'HttpInboundConnectionConfig' : Successfully updated property 'HttpInboundConnectionConfig' to 'httpConnector1'
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Deploy an application using:
+     [echo] envName: 
+     [echo] appName: bat5.8.user
+     [echo] dataFile: W:/3.0/reports/WinVista_x86/tests-log/func/runtime/bat/unknown/5.8/amxconfig.xml
+     [echo] remotePropsFile: W:/3.0/tests/func/runtime/bat/2node_hsql.config
+     [echo] objectSelector: 
+     [echo] action: deploy
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] options: 
+     [echo] startAfterDeploy: true
+     [echo] timeout: 600
+     [echo] Invoking Admin task using the objectselector: Environment//Application[@name='bat5.8.user']
+[AMXAdminTask]  INFO - Processing 1 objects
+[AMXAdminTask]  INFO - Deploying application...
+[AMXAdminTask]  INFO - Deploying application 'bat5.8.user' in background : Deployment succeeded for application 'bat5.8.user' at 3/16/15 11:48 AM on node(s): 'QANode1'
+[AMXAdminTask]  INFO - .
+[AMXAdminTask]  INFO - .
+[AMXAdminTask]  INFO - .
+[AMXAdminTask]  INFO - .
+[AMXAdminTask]  INFO - .
+[AMXAdminTask]  INFO - .
+[AMXAdminTask]  INFO - Application Deploy with Start finished successfully
+     [echo] 
+     [echo] 
+
+BUILD SUCCESSFUL
+Total time: 59 seconds

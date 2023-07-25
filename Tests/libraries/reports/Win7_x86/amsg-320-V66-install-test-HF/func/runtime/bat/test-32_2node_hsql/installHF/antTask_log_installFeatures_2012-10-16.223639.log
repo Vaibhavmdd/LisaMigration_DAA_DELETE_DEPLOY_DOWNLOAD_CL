@@ -1,0 +1,52 @@
+
+_initOSPlatform:
+     [echo]  Installation platform: os=win32,ws=win32,arch=x86
+
+_runChecks:
+     [echo] Product installed: true
+     [echo] Product destination: C:\tibco\matrix\test-Install-download-320-HF\studio\3.6\eclipse
+
+_processUnpackedRepoDir:
+
+createCompositeRespo:
+
+_setLocalRepo:
+     [echo] Updating: C:\tibco\matrix\test-Install-download-320-HF/p2repos/product_tibco_tbs_product_p2_repo_1.0.0.012/content.jar
+    [unzip] Expanding: C:\tibco\matrix\test-Install-download-320-HF\p2repos\product_tibco_tbs_product_p2_repo_1.0.0.012\content.jar into C:\tibco\matrix\test-Install-download-320-HF\p2repos\product_tibco_tbs_product_p2_repo_1.0.0.012
+     [echo] Escaped local repo location URL: file${#58}/C${#58}/tibco/matrix/test-Install-download-320-HF/tools/p2scripts/p2repository/
+     [echo] Updating done for: C:\tibco\matrix\test-Install-download-320-HF/p2repos/product_tibco_tbs_product_p2_repo_1.0.0.012/content.jar
+
+_setBsRepoUrls:
+     [echo] bs.repo.urls='file:/C:/tibco/matrix/test-Install-download-320-HF/tools/p2scripts/p2repository/'
+
+init:
+
+_listInstalledRoots:
+     [echo] 
+     [echo] 			Checking installed components ...
+     [echo] 		
+     [echo] 
+     [echo] 		   Checking installed components finished.
+     [echo] 		
+
+_createInstallUpdateIULists:
+
+_internalInstallFeatures:
+     [echo] 
+     [echo] 			Installing features...
+     [echo] 		
+     [java] Installing com.tibco.amx.bt.ejb.design.feature.feature.group 1.2.0.015.
+     [java] Installing com.tibco.amxext.core.design.feature.eclipse.feature.group 1.3.0.007.
+     [java] Installing com.tibco.amx.bt.ejb.help.doc.feature.feature.group 3.2.0.002.
+     [java] Installing com.tibco.amx.bt.ejb.cheatsheet.feature.feature.group 3.4.0.002.
+     [java] Operation completed in 18871 ms.
+     [echo] 
+     [echo] 			Features installation finished.
+     [echo] 		
+
+_internalInstallUpdateFeatures:
+
+installFeatures:
+
+BUILD SUCCESSFUL
+Total time: 27 seconds

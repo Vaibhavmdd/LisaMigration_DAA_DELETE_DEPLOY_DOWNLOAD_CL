@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise 
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types" 
+	xmlns:amxdata_binding="http://tibco.com/amxadministrator/command/line/types_binding" 
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base" 
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd http://tibco.com/amxadministrator/command/line/types_binding ../schemas/bindingdata.xsd" >
+
+<Environment 
+	xsi:type="amxdata:Environment" 
+	name="QAEnvironment_jpandya-dt" 
+	description="QA BAT Environment" 
+	contact="TIBCO">
+    
+	<Application 
+		xsi:type="amxdata:Application" 
+		name="BAT_5_1_consumer" 
+		contact="TIBCO Inc." 
+		description="Declared Fault - SOAP -> JAVA -> SOAP">
+		<Component 
+			xsi:type="amxdata:Component" 
+			name="Java1">
+		    <Node 
+				name="QANode2" 
+				environmentName="QAEnvironment_jpandya-dt"/>
+		</Component>
+		<Component 
+			xsi:type="amxdata:Component" 
+			name="Java3">
+		    <Node 
+				name="QANode2" 
+				environmentName="QAEnvironment_jpandya-dt"/>
+		</Component>
+		<PromotedService 
+			xsi:type="amxdata_base:Service_base" 
+			name="BookServiceConsumer">
+			<Binding 
+				xsi:type="amxdata:Binding" 
+				name="soap.consumer.Binding1" >
+                <Node 
+					name="QANode1" 
+					environmentName="QAEnvironment_jpandya-dt" />
+				<Property  
+					xsi:type="amxdata:Property" 
+					name="HttpInboundConnectionConfig"  
+					value="http_1"/>						
+			</Binding>
+		</PromotedService>
+		<PromotedReference 
+			xsi:type="amxdata_base:Reference_base" 
+			name="BookPortType1">
+			<Binding 
+				xsi:type="amxdata:Binding" 
+				name="soap.provider.Binding1">
+                <Node 
+					name="QANode1" 
+					environmentName="QAEnvironment_jpandya-dt" />               
+				<Property  
+					xsi:type="amxdata:Property" 
+					name="HttpOutboundConnectionConfig"  
+					value="http_client_1"/>						
+			</Binding>
+		</PromotedReference>
+		<PromotedReference 
+			xsi:type="amxdata_base:Reference_base" 
+			name="BW_BookService" >
+			<Binding 
+				xsi:type="amxdata:Binding" 
+				name="BookPortTypeEndpoint" >
+                <Node 
+					name="QANode1" 
+					environmentName="QAEnvironment_jpandya-dt" />    
+				<Property  
+					xsi:type="amxdata:Property" 
+					name="HttpOutboundConnectionConfig"  
+					value="http_client_2"/>
+			</Binding>
+		</PromotedReference>
+        <ApplicationTemplate 
+			xsi:type="amxdata_reference:ApplicationTemplate_reference" 
+			name="DeclaredFault"/>
+    </Application>
+		
+	<Application 
+		xsi:type="amxdata:Application" 
+		name="BAT_5_1_provider" 
+		contact="TIBCO Inc." 
+		description="Declared Fault - SOAP -> JAVA">
+		<Component 
+			xsi:type="amxdata:Component" 
+			name="Java2">
+		    <Node 
+				name="QANode2" 
+				environmentName="QAEnvironment_jpandya-dt"/>
+		</Component>
+	    <PromotedService 
+			xsi:type="amxdata_base:Service_base" 
+			name="BookServiceProvider" >
+			<Binding 
+				xsi:type="amxdata:Binding" 
+				name="soap.provider.Binding1" >
+                <Node 
+					name="QANode1" 
+					environmentName="QAEnvironment_jpandya-dt" />                
+				<Property  
+					xsi:type="amxdata:Property" 
+					name="HttpInboundConnectionConfig"  
+					value="http_2"/>
+			</Binding>
+		</PromotedService>
+            <ApplicationTemplate 
+				xsi:type="amxdata_reference:ApplicationTemplate_reference" 
+				name="DeclaredFault_Provider"/>
+    </Application>
+</Environment>
+
+	<DAA 
+		xsi:type="amxdata:DAA" 
+		description="SOAP - JAVA - Addressing Enabled" 
+		location="./DeclaredFault/Deployment Artifacts/DeclaredFault_Consumer.daa" 
+		importResourceTemplates="false"/>
+	<DAA 
+		xsi:type="amxdata:DAA" 
+		description="SOAP - JAVA - SOAP - Addressing Enabled" 
+		location="./DeclaredFault/Deployment Artifacts/DeclaredFault_Provider.daa" 
+		importResourceTemplates="false"/>
+</amxdata_base:Enterprise>

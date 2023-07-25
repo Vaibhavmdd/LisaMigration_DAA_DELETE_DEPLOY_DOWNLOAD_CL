@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created by TIBCO WSDL-->
+<wsdl:definitions xmlns:ns0="http://ns.tibco.com/Hello/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:amx:rad_Administrator_test/SOAPMediationJava/sayHelloImpl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="Untitled" targetNamespace="urn:amx:rad_Administrator_test/SOAPMediationJava/sayHelloImpl">
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ns.tibco.com/Hello/">
+            <xs:element name="HelloRequest" type="xs:string"/>
+            <xs:element name="HelloResponse" type="xs:string"/>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:service name="Server">
+        <wsdl:port binding="tns:SOAPEventSourceBinding" name="SOAPEventSource">
+            <soap:address location="http://10.107.172.166:4545/Server"/>
+        </wsdl:port>
+    </wsdl:service>
+    <wsdl:portType name="HelloWorldPT">
+        <wsdl:operation name="sayHello">
+            <wsdl:input message="tns:OperationRequest"/>
+            <wsdl:output message="tns:OperationResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="SOAPEventSourceBinding" type="tns:HelloWorldPT">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="sayHello">
+            <soap:operation soapAction="/Server" style="document"/>
+            <wsdl:input>
+                <soap:body parts="firstName" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="greeting" use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:message name="OperationRequest">
+        <wsdl:part element="ns0:HelloRequest" name="firstName"/>
+    </wsdl:message>
+    <wsdl:message name="OperationResponse">
+        <wsdl:part element="ns0:HelloResponse" name="greeting"/>
+    </wsdl:message>
+</wsdl:definitions>

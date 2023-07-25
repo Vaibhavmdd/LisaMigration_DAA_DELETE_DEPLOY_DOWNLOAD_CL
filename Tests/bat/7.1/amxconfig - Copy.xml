@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise 
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types" 
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base" 
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference" 
+	xmlns:amxdata_jmsssr="http://tibco.com/amxadministrator/command/line/types_jmssr" 
+	xmlns:amxdata_jmssr_base="http://tibco.com/amxadministrator/command/line/types_jmssr_base"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd
+	http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd 
+	http://tibco.com/amxadministrator/command/line/types_reference ../schemas/amxdata_reference.xsd 
+	http://tibco.com/amxadministrator/command/line/types_jmssr ../schemas/jmssr.xsd 
+	http://tibco.com/amxadministrator/command/line/types_jmssr_base ../schemas/jmssr_base.xsd">
+	
+	<Environment xsi:type="amxdata:Environment" 
+		name="[[env.name]]"
+		description="integration environment" 
+		contact="TIBCO">
+		<Node xsi:type="amxdata:Node" name="[[env.node1.name]]">
+
+			<ResourceInstance xsi:type="amxdata:ResourceInstance"
+				name="BAT7.1ClientIdentityKeystoreResourceTemplate"
+				resourceTemplateName="BAT7.1ClientIdentityKeystoreResourceTemplate" />
+
+			<ResourceInstance xsi:type="amxdata:ResourceInstance"
+				name="BAT7.1TrustedCAsKeystoreResourceTemplate" 
+				resourceTemplateName="BAT7.1TrustedCAsKeystoreResourceTemplate" />
+				
+			<ResourceInstance xsi:type="amxdata:ResourceInstance"
+				name="BAT7.1SSLClientResourceTemplate"
+				resourceTemplateName="BAT7.1SSLClientResourceTemplate" />
+				
+			<ResourceInstance xsi:type="amxdata:ResourceInstance"
+				name="BAT7.1JndiConnConf"
+				resourceTemplateName="BAT7.1JndiConnConf" />
+
+			<ResourceInstance xsi:type="amxdata:ResourceInstance"
+				name="BAT7.1JmsConnFactory"
+				resourceTemplateName="BAT7.1JmsConnFactory" />
+				
+			<ResourceInstance xsi:type="amxdata:ResourceInstance"
+				name="BAT7.1JmsConnFactoryConf"
+				resourceTemplateName="BAT7.1JmsConnFactoryConf" />
+				
+			<ResourceInstance xsi:type="amxdata:ResourceInstance"
+				name="BAT7.1QueueDestConf"
+				resourceTemplateName="BAT7.1QueueDestConf" />
+				
+			<ResourceInstance xsi:type="amxdata:ResourceInstance"
+				name="BAT7.1TopicDestConf"
+				resourceTemplateName="BAT7.1TopicDestConf" />			
+		</Node>
+		
+		<Application xsi:type="amxdata:Application" 
+			name="BAT7.1_New" 
+			contact="TIBCO Inc." 
+			description="Soap/JMS - CPP - Spring - JMS with SSL">				
+			<Component 
+				xsi:type="amxdata:Component" 
+				name="Cpp1">
+				<Node 
+					name="[[env.node2.name]]" 
+					environmentName="[[env.name]]"/>
+			</Component>   
+			<Component 
+				xsi:type="amxdata:Component" 
+				name="Spring1">
+				<Node 
+					name="[[env.node2.name]]" 
+					environmentName="[[env.name]]"/>
+			</Component>
+			<SVar xsi:type="amxdata_base:SubstitutionVariable" 
+				name="Cpp1LibPath_Svar" 
+				type="String" 
+				value="[[tibco.test.case.source.dir]]/Libraries/[[compiler]]" 
+				description="dd"/>
+			<PromotedService 
+				xsi:type="amxdata_base:Service_base" 
+				name="AllMEPsWSDLFile1">
+				<Binding xsi:type="amxdata:Binding" 
+					name="SOAPService_Binding1" >
+		            <Node 
+						name="[[env.node1.name]]" 
+						environmentName="[[env.name]]" />
+				</Binding>
+			</PromotedService>	
+			<PromotedReference 
+				xsi:type="amxdata_base:Reference_base" 
+				name="AllMEPsWSDLFile1">
+				<Binding 
+					xsi:type="amxdata:Binding" 
+					name="JMSReference_Binding1">
+		            <Node 
+						name="[[env.node1.name]]" 
+						environmentName="[[env.name]]" />
+					</Binding>
+			</PromotedReference>
+		    <ApplicationTemplate 
+				xsi:type="amxdata_reference:ApplicationTemplate_reference" 
+				name="BAT7.1"/>   
+	    </Application>
+	    
+		<Application
+			xsi:type="amxdata:Application"
+			name="com.tibco.amx.it.cpp.app"
+			contact="TIBCO Software Inc."
+			description="TIBCO ActiveMatrix Mediation Implementation Type">
+			<Node name="[[env.node2.name]]" environmentName="[[env.name]]"/>
+			<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="com.tibco.amxext.cpp.application"/>
+		</Application>		
+    
+	</Environment>
+	
+	<ResourceTemplate 
+		xsi:type="amxdata:KeystoreCspResourceTemplate" 
+		name="BAT7.1ClientIdentityKeystoreResourceTemplate"
+		description="JndiDestinationConfiguration"
+		keyStoreLocation="[[tibco.test.case.source.dir]]/../keystore/BAT71_client.JKS" 
+		keyStorePassword="password" 
+		keyStoreType="JCEKS" 
+		keyStoreRefreshInterval="6000"/>
+			
+	<ResourceTemplate 
+		xsi:type="amxdata:KeystoreCspResourceTemplate" 
+		name="BAT7.1TrustedCAsKeystoreResourceTemplate"
+		description="JndiDestinationConfiguration"
+		keyStoreLocation="[[tibco.test.case.source.dir]]/../keystore/BAT71_server-CAs.JKS" 
+		keyStorePassword="password" 
+		keyStoreType="JCEKS" 
+		keyStoreRefreshInterval="6000"/>
+						
+	<ResourceTemplate 
+		xsi:type="amxdata:SslClientResourceTemplate" 
+		name="BAT7.1SSLClientResourceTemplate" 
+		description="This is SSL client RT">      
+		<GeneralConfiguration 
+		    xsi:type="amxdata:SslClientResourceTemplate_General" 
+		    trustStoreServiceProvider="BAT7.1TrustedCAsKeystoreResourceTemplate" 
+		    enableAccessToTrustStore="true">        
+		    <EnableMutualAuthentication 
+		       	xsi:type="amxdata:SslClientResourceTemplate_EnableMutualAuthentication" 
+		       	identityStoreServiceProvider="BAT7.1ClientIdentityKeystoreResourceTemplate" 
+		       	keyAlias="client" 
+		       	keyPassword="password" 
+		       	enableCredentialStoreAccess="true"/> 
+		</GeneralConfiguration>
+	</ResourceTemplate>
+
+			
+	<DAA
+		xsi:type="amxdata:DAA"
+		description="Usecase29c_JavaHibernateSecure"
+		location="BAT7.1/Deployment Artifacts/BAT7.1_New.daa"
+		importResourceTemplates="false">
+	</DAA>
+
+	<amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate
+		xsi:type="amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate"
+		name="BAT7.1JndiConnConf"
+		initialContextFactory="com.tibco.tibjms.naming.TibjmsInitialContextFactory"
+		providerUrl="[[jndicontexturlSSL]]"
+		sslJNDIName="BAT7.1SSLClientResourceTemplate"
+		description="JndiConnectionConfiguration">
+		<InlineCredentials 
+			username="[[jndiuser]]" 
+			password="[[jndipwd]]"/>
+	</amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate>
+	
+	<amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate
+		xsi:type="amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate"
+		name="BAT7.1JmsConnFactory"
+		jndiName="SSLGenericConnectionFactory"
+		jndiConnectionConfigurationName="BAT7.1JndiConnConf"
+		sslJNDIName="BAT7.1SSLClientResourceTemplate"
+		description="JndiConnectionFactory">
+		<InlineCredentials 
+			username="[[jmsuser]]" 
+			password="[[jmspwd]]"/>
+	</amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate>
+	
+	<amxdata_jmsssr:JNDIDestinationResourceTemplate 
+		xsi:type="amxdata_jmsssr:JNDIDestinationResourceTemplate" 
+		name="BAT7.1QueueDestConf" 
+		jndiName="[[jndiName1]]" 
+		jndiConnectionConfigurationName="BAT7.1JndiConnConf"
+		description="JndiDestination"/> 
+	
+	<amxdata_jmsssr:JNDIConnectionFactoryConfigurationResourceTemplate
+		xsi:type="amxdata_jmsssr:JNDIConnectionFactoryConfigurationResourceTemplate"
+		name="BAT7.1JmsConnFactoryConf"
+		jndiName="SSLGenericConnectionFactory"
+		jndiConnectionConfigurationName="BAT7.1JndiConnConf"
+		sslJNDIName="BAT7.1SSLClientResourceTemplate"
+		description="JndiConnectionFactoryConfiguration">
+		<InlineCredentials 
+			username="[[jmsuser]]" 
+			password="[[jmspwd]]"/>
+	</amxdata_jmsssr:JNDIConnectionFactoryConfigurationResourceTemplate>
+	
+	<amxdata_jmsssr:JNDIDestinationConfigurationResourceTemplate 
+		xsi:type="amxdata_jmsssr:JNDIDestinationConfigurationResourceTemplate" 
+		name="BAT7.1TopicDestConf"
+		jndiName="[[jndiName2]]" 
+		jndiConnectionConfigurationName="BAT7.1JndiConnConf"
+		description="JndiDestinationConfiguration"/>
+			
+</amxdata_base:Enterprise>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://companyaddress.iqatest.ejbbt.amx.tibco.com" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ax26="http://companyaddress.iqatest.ejbbt.amx.tibco.com/xsd" xmlns:ax21="http://rmi.java/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ax22="http://io.java/xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://companyaddress.iqatest.ejbbt.amx.tibco.com">
+    <wsdl:types>
+        <xs:schema xmlns:ax25="http://rmi.java/xsd" xmlns:ax27="http://companyaddress.iqatest.ejbbt.amx.tibco.com/xsd" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://companyaddress.iqatest.ejbbt.amx.tibco.com">
+            <xs:import namespace="http://rmi.java/xsd"/>
+            <xs:import namespace="http://companyaddress.iqatest.ejbbt.amx.tibco.com/xsd"/>
+            <xs:complexType name="Exception">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="Exception" nillable="true" type="xs:anyType"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="RemoteException">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="RemoteException" nillable="true" type="ax21:RemoteException"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="addressRequestResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax26:AddressResponse"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="addressRequestargs0" nillable="true" type="ax26:AddressRequest"/>
+        </xs:schema>
+        <xs:schema xmlns:ax24="http://io.java/xsd" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://rmi.java/xsd">
+            <xs:import namespace="http://io.java/xsd"/>
+            <xs:complexType name="RemoteException">
+                <xs:complexContent>
+                    <xs:extension base="ax22:IOException">
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="cause" nillable="true" type="xs:anyType"/>
+                            <xs:element minOccurs="0" name="message" nillable="true" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:ax23="http://companyaddress.iqatest.ejbbt.amx.tibco.com" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://io.java/xsd">
+            <xs:import namespace="http://companyaddress.iqatest.ejbbt.amx.tibco.com"/>
+            <xs:complexType name="IOException">
+                <xs:complexContent>
+                    <xs:extension base="ax23:Exception">
+                        <xs:sequence/>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://companyaddress.iqatest.ejbbt.amx.tibco.com/xsd">
+            <xs:complexType name="AddressRequest">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="addressRequestElement" nillable="true" type="ax26:AddressRequestElement"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="AddressRequestElement">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="address" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="callService" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="city" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="companyName" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="state" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="zip" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="AddressResponse">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="addressResponseElement" nillable="true" type="ax26:AddressResponseElement"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="AddressResponseElement">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="address" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="calledService" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="city" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="companyName" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="state" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="zip" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="addressRequestRequest">
+        <wsdl:part name="addressRequestargs0" element="ns:addressRequestargs0"/>
+    </wsdl:message>
+    <wsdl:message name="RemoteException">
+        <wsdl:part name="parameters" element="ns:RemoteException"/>
+    </wsdl:message>
+    <wsdl:message name="addressRequestResponse">
+        <wsdl:part name="parameters" element="ns:addressRequestResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="AddressRemotePortType">
+        <wsdl:operation name="addressRequest">
+            <wsdl:input message="ns:addressRequestRequest" wsaw:Action="urn:addressRequest"/>
+            <wsdl:output message="ns:addressRequestResponse" wsaw:Action="urn:addressRequestResponse"/>
+            <wsdl:fault name="RemoteException" message="ns:RemoteException" wsaw:Action="urn:addressRequestRemoteException"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:service name="AddressRemote"/>
+</wsdl:definitions>

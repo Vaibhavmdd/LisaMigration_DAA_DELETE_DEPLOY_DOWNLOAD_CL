@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://tibco.com/qa/xsd/address" xmlns:tibex="http://www.tibco.com/bs3.2/extensions" xmlns:tns="http://tibco.com/qa/wsdl/echoaddress" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Address" targetNamespace="http://tibco.com/qa/wsdl/echoaddress" tibex:src="file:/C:/amx_ci_tests/SoapJavaSpring/SOAProject/SoapJavaSpring/Service%20Descriptors/Address.wsdl">
+    <import location="Address.xsd" namespace="http://tibco.com/qa/xsd/address"/>
+    <types>
+        <xsd:schema>
+            <xsd:import namespace="http://tibco.com/qa/xsd/address" schemaLocation="Address.xsd"/>
+        </xsd:schema>
+    </types>
+    <message name="Address_Element_Request">
+        <part element="ns:Address_Request_Element" name="InPart"/>
+    </message>
+    <message name="Address_Element_Response">
+        <part element="ns:Address_Response_Element" name="OutPart"/>
+    </message>
+    <message name="Address_Fault">
+        <part element="ns:Address_Fault" name="FaultPart"/>
+    </message>
+    <message name="Address_Type_Request">
+        <part name="InPart" type="ns:Address_Request_Type"/>
+    </message>
+    <message name="Address_Type_Response">
+        <part name="OutPart" type="ns:Address_Response_Type"/>
+    </message>
+    <portType name="AddressPort">
+        <operation name="AddressElementOperation">
+            <input message="tns:Address_Element_Request" name="In1"/>
+            <output message="tns:Address_Element_Response" name="Out1"/>
+            <fault message="tns:Address_Fault" name="Fault"/>
+        </operation>
+        <operation name="AddressTypeOperation">
+            <input message="tns:Address_Type_Request" name="In2"/>
+            <output message="tns:Address_Type_Response" name="Out2"/>
+            <fault message="tns:Address_Fault" name="Fault"/>
+        </operation>
+    </portType>
+</definitions>

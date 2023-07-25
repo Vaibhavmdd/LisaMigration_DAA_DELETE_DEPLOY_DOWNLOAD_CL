@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types" xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base" xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+
+    <Environment xsi:type="amxdata:Environment" name="QAEnvironment_pkaur-z600" description="QA BAT Environment" contact="TIBCO">
+        	
+		<Application xsi:type="amxdata:Application" name="BAT_5_4_Consumer.app" contact="TIBCO Inc." description="WS Addressing Enabled SOAP -> JAVA -> SOAP">
+			<Component xsi:type="amxdata:Component" name="Java1">
+		        	<Node name="QANode2" environmentName="QAEnvironment_pkaur-z600"/>
+	        </Component>
+	        <PromotedService xsi:type="amxdata_base:Service_base" name="HelloPT1">
+				<Binding xsi:type="amxdata:Binding" name="SOAPService_Binding1">
+                        <Node name="QANode1" environmentName="QAEnvironment_pkaur-z600" />                
+						<Property  xsi:type="amxdata:Property" name="HttpInboundConnectionConfig"  value="httpConnector1"/>
+				</Binding>
+			</PromotedService>
+			<PromotedReference xsi:type="amxdata_base:Reference_base" name="AddressPort1">
+				<Binding xsi:type="amxdata:Binding" name="SOAPReference_Binding1">
+                        <Node name="QANode1" environmentName="QAEnvironment_pkaur-z600" />                
+						<Property  xsi:type="amxdata:Property" name="HttpOutboundConnectionConfig"  value="httpClient1"/>						
+				</Binding>
+			</PromotedReference>
+            
+            <ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="BAT_5_4_Consumer"/>
+        </Application>
+		
+		<Application xsi:type="amxdata:Application" name="BAT_5_4_Provider.app" contact="TIBCO Inc." description="WS Addressing Enabled SOAP -> JAVA">
+			<Component xsi:type="amxdata:Component" name="Java2">
+			    <Node name="QANode2" environmentName="QAEnvironment_pkaur-z600"/>
+	        </Component>
+	        <PromotedService xsi:type="amxdata_base:Service_base" name="AddressPort1">
+				<Binding xsi:type="amxdata:Binding" name="SOAPService_Binding1">
+                    <Node name="QANode1" environmentName="QAEnvironment_pkaur-z600" />
+					<Property  xsi:type="amxdata:Property" name="HttpInboundConnectionConfig"  value="httpConnector2"/>					
+				</Binding>
+			</PromotedService>
+            <ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="BAT_5_4_Provider"/>
+        </Application>
+    </Environment>
+
+	
+	<DAA xsi:type="amxdata:DAA" description="SOAP - JAVA - Addressing Enabled" location="BAT_5_4/Deployment Artifacts/BAT_5_4_Consumer.daa" importResourceTemplates="true"/>
+	<DAA xsi:type="amxdata:DAA" description="SOAP - JAVA - SOAP - Addressing Enabled" location="BAT_5_4/Deployment Artifacts/BAT_5_4_Provider.daa" importResourceTemplates="true"/>
+		
+	
+</amxdata_base:Enterprise>

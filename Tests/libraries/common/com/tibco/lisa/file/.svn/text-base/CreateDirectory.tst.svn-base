@@ -1,0 +1,152 @@
+<?xml version="1.0" ?>
+
+
+<!-- TestCase created by LISA Test Editor -->
+<!-- On: Wed Oct 10 01:50:36 PDT 2007 -->
+
+
+<TestCase name="CreateDirectory" version="2">
+<id>4144f1ec</id>
+<Documentation>Creates a directory, including any necessary but nonexistent parent directories.&#10;Returns the directory path if successfully created.</Documentation>
+<sig>ZWQ9MyZ0Y3Y9MiZsaXNhdj0zLjZjICg0MDkyKSZub2Rlcz0xMzAzMzU5NjM3</sig>
+<rootNode>Log</rootNode>
+<subprocess>true</subprocess>
+
+<initState>
+    <Parameter>
+    <key>directory</key>
+    <value></value>
+    <name>Directory to be created</name>
+    </Parameter>
+</initState>
+
+<resultState>
+    <Parameter>
+    <key>lisa.continue.rsp</key>
+    <value>Set in Step continue</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.continue.rsp.time</key>
+    <value>Set in Step continue</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.deleteFile.rsp</key>
+    <value>Set in Step deleteFile</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.deleteFile.rsp.time</key>
+    <value>Set in Step deleteFile</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.end.rsp</key>
+    <value>Set in Step end</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.end.rsp.time</key>
+    <value>Set in Step end</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.fail.rsp</key>
+    <value>Set in Step fail</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.fail.rsp.time</key>
+    <value>Set in Step fail</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.createFile.rsp</key>
+    <value>Set in Step createFile</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.createFile.rsp.time</key>
+    <value>Set in Step createFile</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.createDirectory.rsp</key>
+    <value>Set in Step createDirectory</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.createDirectory.rsp.time</key>
+    <value>Set in Step createDirectory</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.Log.rsp</key>
+    <value>Set in Step Log</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.Log.rsp.time</key>
+    <value>Set in Step Log</value>
+    </Parameter>
+</resultState>
+
+<Configurations>
+<Configuration>
+<name>default</name>
+<external>false</external>
+<props>
+</props>
+</Configuration>
+</Configurations>
+    <Node name="Log" log=""
+          type="com.itko.lisa.test.TestNodeLogger" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="createDirectory" > 
+
+<graphx>-1</graphx>
+<graphy>-1</graphy>
+      <log>Creating directory &quot;{{directory}}&quot; ...</log>
+    </Node>
+
+
+    <Node name="createDirectory" log=""
+          type="com.itko.lisa.test.ScriptNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="end" > 
+
+<graphx>100</graphx>
+<graphy>0</graphy>
+<script>import java.io.File;&#10;&#10;// This function create a directory&#10;createDirectory(String strFile) {&#10; File f = new File(strFile);&#10; &#10; if(f.exists())&#10;  return true;  &#10; else&#10;  return f.mkdirs();           &#10;}&#10;&#10;// Main&#10;//String baseSuccessMsg = &quot;Directory Creation Success&quot;; // Do not modify. Test engineers might assert on this string. &#10;String baseErrorMsg = &quot;Directory Creation Error&quot;; // Do not modify. Test engineers might assert on this string.&#10;String dir = testExec.getStateString(&quot;directory&quot;, &quot;&lt;&lt;null&gt;&gt;&quot;).replace(&apos;\\&apos;, &apos;/&apos;);&#10;dir = testExec.parseInState(dir).replace(&apos;\\&apos;, &apos;/&apos;);&#10;try {&#10; if(createDirectory(dir))&#10;  return dir;&#10; else&#10;  return baseErrorMsg;&#10;}&#10;catch(Exception e) {&#10; return baseErrorMsg + &quot;: &quot; + e.getMessage();&#10;}</script>
+
+      <!-- Result Elements -->
+<CheckResult assertTrue="true" type="com.itko.lisa.test.CheckResultContains" name="Assert78" >
+<log>{{lisa.createDirectory.rsp}}</log>
+<then>fail</then>
+        <param>Directory Creation Error</param>
+</CheckResult>
+
+    </Node>
+
+
+    <Node name="end" log=""
+          type="com.itko.lisa.test.NormalEnd" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="true" 
+          next="fail" > 
+
+<graphx>100</graphx>
+<graphy>200</graphy>
+    </Node>
+
+
+    <Node name="fail" log=""
+          type="com.itko.lisa.test.Abend" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="true" 
+          next="unknown" > 
+
+<graphx>250</graphx>
+<graphy>250</graphy>
+    </Node>
+
+
+</TestCase>

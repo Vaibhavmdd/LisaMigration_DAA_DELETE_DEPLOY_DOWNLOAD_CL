@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created by TIBCO WSDL-->
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tibco.com/matrix/qa/wsdl/echostring/OperationImpl/OperationImpl/OperationImpl/Server" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns0="http://tibco.com/matrix/qa/xsd/echostring" name="Untitled" targetNamespace="http://tibco.com/matrix/qa/wsdl/echostring/OperationImpl/OperationImpl/OperationImpl/Server">
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://tibco.com/matrix/qa/xsd/echostring" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:element name="FaultString" type="xs:string"/>
+            <xs:element name="InString" type="xs:string"/>
+            <xs:element name="OutString" type="xs:string"/>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:service name="EchoStringServer">
+        <wsdl:port name="SOAPEventSource" binding="tns:SOAPEventSourceBinding">
+            <soap:address location="http://192.168.67.170:9105/Server/EchoStringServer"/>
+        </wsdl:port>
+    </wsdl:service>
+    <wsdl:portType name="EchoStringPort">
+        <wsdl:operation name="Operation">
+            <wsdl:input message="tns:InMessage"/>
+            <wsdl:output message="tns:OutMessage"/>
+            <wsdl:fault name="fault1" message="tns:FaultMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="SOAPEventSourceBinding" type="tns:EchoStringPort">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="Operation">
+            <soap:operation style="rpc" soapAction="/Server/EchoStringInOut"/>
+            <wsdl:input>
+                <soap:body use="literal" namespace="http://InputMessageNamespace" parts="InPart"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" namespace="http://OutputMessageNamespace" parts="OutPart"/>
+            </wsdl:output>
+            <wsdl:fault name="fault1">
+                <soap:fault use="literal" namespace="http://FaultMessageNamespace" name="fault1"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:message name="InMessage">
+        <wsdl:part name="InPart" element="ns0:InString"/>
+    </wsdl:message>
+    <wsdl:message name="OutMessage">
+        <wsdl:part name="OutPart" element="ns0:OutString"/>
+    </wsdl:message>
+    <wsdl:message name="FaultMessage">
+        <wsdl:part name="part1" element="ns0:FaultString"/>
+    </wsdl:message>
+</wsdl:definitions>

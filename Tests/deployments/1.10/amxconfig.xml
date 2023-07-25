@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise 
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types" 
+	xmlns:amxdata_binding="http://tibco.com/amxadministrator/command/line/types_binding" 
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base" 
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd http://tibco.com/amxadministrator/command/line/types_binding ../schemas/bindingdata.xsd" >
+
+<Environment 
+	xsi:type="amxdata:Environment" 
+	name="QAEnvironment_na2devasgora03" 
+	description="Development Environment" 
+	contact="TIBCO">
+    
+	<Application 
+		xsi:type="amxdata:Application" 
+		name="AMXTestCase1.10" 
+		contact="TIBCO Inc." 
+		description="AMXTestCase1.10 - SOAP -> JAVA">
+		<Component 
+			xsi:type="amxdata:Component" 
+			name="JavaComponent5">
+		    <Node 
+				name="QANode2" 
+				environmentName="QAEnvironment_na2devasgora03"/>
+		</Component>
+			<PromotedService 
+			xsi:type="amxdata_base:Service_base" 
+			name="AMXService5">
+			<Binding 
+				xsi:type="amxdata:Binding" 
+				name="AMXServiceBinding5">
+                <Node 
+					name="QANode1" 
+					environmentName="QAEnvironment_na2devasgora03" />
+<Property  
+					xsi:type="amxdata:Property" 
+					name="HttpInboundConnectionConfig"  
+					value="httpConnector2"/>
+</Binding>
+<PromoteService>AMXPromotedService5</PromoteService>	
+</PromotedService>
+
+
+<ApplicationTemplate 
+				xsi:type="amxdata_reference:ApplicationTemplate_reference" 
+				name="AMXTestCase1.5"/>
+    </Application>
+
+
+
+</Environment>
+
+
+
+
+
+<Environment 
+	xsi:type="amxdata:Environment" 
+	name="NewDevEnvironment" 
+	description="New Development Environment" 
+	contact="TIBCO">
+
+<Node xsi:type="amxdata:Node" name="AutomationNode2" hostName="SystemHost"
+			description="My first node" contact="TIBCO" enableDebug="true"
+			debugPortNumber="2113" portNumber="5107" >
+</Node>
+<Node xsi:type="amxdata:Node" name="AutomationNode1" hostName="SystemHost"
+			description="My first node" contact="TIBCO" enableDebug="true"
+			debugPortNumber="2112" portNumber="5106">
+<ResourceInstance xsi:type="amxdata:ResourceInstance"
+				name="httpnewConnector" resourceTemplateName="httpnewConnector" />
+			<ResourceInstance xsi:type="amxdata:ResourceInstance"
+				name="HttpClientSharedResource" resourceTemplateName="HttpClientSharedResource" />
+</Node>
+
+
+
+<Application 
+		xsi:type="amxdata:Application" 
+		name="AMXTestCase1.10.1" 
+		contact="TIBCO Inc." 
+		description="AMXTestCase1.10.1 - SOAP -> JAVA->HttpBinding">
+
+
+<Component 
+			xsi:type="amxdata:Component" 
+			name="JavaComponentref3">
+		    <Node 
+				name="AutomationNode1" 
+				environmentName="NewDevEnvironment"/>
+		</Component>
+
+<PromotedService 
+			xsi:type="amxdata_base:Service_base" 
+			name="AMXService3.2">
+			<Binding 
+				xsi:type="amxdata:Binding" 
+				name="AMXServiceBinding3.2" >
+                <Node 
+					name="AutomationNode1" 
+					environmentName="NewDevEnvironment" />
+<Property  
+					xsi:type="amxdata:Property" 
+					name="HttpInboundConnectionConfig"  
+					value="httpnewConnector"/>
+</Binding>
+</PromotedService>
+
+
+<PromotedReference 
+			xsi:type="amxdata_base:Reference_base" 
+			name="AMXNewReference" >
+<Binding xsi:type="amxdata_base:Binding_base" name="AMXReferenceBinding10">
+					<Property xsi:type="amxdata:Property" name="HttpOutboundConnectionConfig"
+						value="HttpClientSharedResource" />
+				</Binding>
+
+
+<PromoteReference>AMXNewPromotedReference</PromoteReference>
+
+</PromotedReference>
+
+ <ApplicationTemplate 
+			xsi:type="amxdata_reference:ApplicationTemplate_reference" 
+			name="AMXTestCase1.3.1"/>
+    </Application>
+
+<Reference xsi:type="amxdata_base:Reference_base" name="AMXNewPromotedReference">
+			<Wire xsi:type="amxdata:Wire" >
+				<ServiceBinding xsi:type="amxdata_reference:Binding_reference"
+					bindingName="AMXServiceBinding5" serviceName="AMXPromotedService5" ownerName="QAEnvironment_na2devasgora03" ownerType="Environment" />
+			</Wire>
+		</Reference>
+
+
+
+
+</Environment>
+<ResourceTemplate xsi:type="amxdata:HttpConnectorResourceTemplate"
+		name="httpnewConnector" host="0.0.0.0" port="9777"  description="This is HttpConnector RT" />
+	<ResourceTemplate xsi:type="amxdata:HttpClientResourceTemplate"
+		name="HtppClientSharedResource" host="0.0.0.0" port="9778"  description="This is HttpConnector RT" />
+
+	<DAA 
+		xsi:type="amxdata:DAA" 
+		description="SOAP - JAVA" 
+		location="C:/Lisa1072/Projects/AMX/Tests/deployments/1.10/AMXTestCase1.10/Deployment Artifacts/AMXTestCase1.5.daa"/> 
+
+	<DAA 
+		xsi:type="amxdata:DAA" 
+		description="SOAP - JAVA-No Binding" 
+		location="C:/Lisa1072/Projects/AMX/Tests/deployments/1.10/AMXTestCase1.10.1/Deployment Artifacts/AMXTestCase1.3.1.daa"/> 
+
+	</amxdata_base:Enterprise>

@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise 
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types" 
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base" 
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference" 
+	xmlns:amxdata_jmsssr="http://tibco.com/amxadministrator/command/line/types_jmssr" 
+	xmlns:amxdata_jmssr_base="http://tibco.com/amxadministrator/command/line/types_jmssr_base"
+	xmlns:amxdata_binding_jms="http://tibco.com/amxadministrator/command/line/types_binding_jms"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd
+	http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd 
+	http://tibco.com/amxadministrator/command/line/types_reference ../schemas/amxdata_reference.xsd 
+	http://tibco.com/amxadministrator/command/line/types_jmssr ../schemas/jmssr.xsd 
+	http://tibco.com/amxadministrator/command/line/types_jmssr_base ../schemas/jmssr_base.xsd">
+	
+	<Environment 
+		xsi:type="amxdata:Environment" 
+		name="QAEnvironment_pkaur-z600"
+		description="QA environment" contact="TIBCO">
+
+		<Node xsi:type="amxdata:Node" name="QANode1">
+	
+			<ResourceInstance xsi:type="amxdata:ResourceInstance"
+				name="BAT_52_JndiConnConf"
+				resourceTemplateName="BAT_52_JndiConnConf" />
+	
+				
+			<ResourceInstance xsi:type="amxdata:ResourceInstance"
+				name="BAT_52_QueueSample_JmsDest"
+				resourceTemplateName="BAT_52_QueueSample_JmsDest" />
+					
+			<ResourceInstance xsi:type="amxdata:ResourceInstance"
+				name="BAT_52_QueueSample1_JmsDest"
+				resourceTemplateName="BAT_52_QueueSample1_JmsDest" />
+					
+			<ResourceInstance xsi:type="amxdata:ResourceInstance"
+				name="BAT_52_TopicSample_JmsDestConf"
+				resourceTemplateName="BAT_52_TopicSample_JmsDestConf" />
+					
+			<ResourceInstance xsi:type="amxdata:ResourceInstance"
+				name="BAT_52_QueueSample1_JmsDestConf"
+				resourceTemplateName="BAT_52_QueueSample1_JmsDestConf" />
+					
+			<ResourceInstance xsi:type="amxdata:ResourceInstance"
+				name="BAT_52_JmsConnFactoryConf" 
+				resourceTemplateName="BAT_52_JmsConnFactoryConf" />
+
+			<ResourceInstance xsi:type="amxdata:ResourceInstance"
+				name="BAT_52_JmsConnFactory" 
+				resourceTemplateName="BAT_52_JmsConnFactory" />
+						
+		</Node>
+			
+		<Application 
+			xsi:type="amxdata:Application" 
+			name="BAT_52_SOA_JMSJava"
+			contact="TIBCO Inc." 
+			description="BAT TC 5.2 JMS-Java application">
+						
+			<Component xsi:type="amxdata:Component" name="NewComponent">
+				<Node name="QANode2" environmentName="QAEnvironment_pkaur-z600"/>
+			</Component>
+			    
+			<PromotedService xsi:type="amxdata_base:Service_base" name="NewService">
+				<Binding xsi:type="amxdata:Binding" name="JMSService_Binding1" >
+					<Node name="QANode1" environmentName="QAEnvironment_pkaur-z600" />
+				</Binding>
+			</PromotedService>				    	
+								
+			<ApplicationTemplate
+				xsi:type="amxdata_reference:ApplicationTemplate_reference" 
+				name="BAT_52_SOA_JMSJava" />
+		</Application>
+		
+		<Application xsi:type="amxdata:Application" 
+			name="BAT_52_SOA"
+			contact="TIBCO Inc." 
+			description="BAT TC 5.2 JMS-Spring-JMS application">
+
+			<Component xsi:type="amxdata:Component" name="Spring1">
+				<Node name="QANode2" environmentName="QAEnvironment_pkaur-z600"/>
+			</Component>
+			
+			<PromotedService xsi:type="amxdata_base:Service_base" name="NewService">
+				<Binding xsi:type="amxdata:Binding" name="JMSService_Binding1" >
+					<Node name="QANode1" environmentName="QAEnvironment_pkaur-z600" />
+				</Binding>
+			</PromotedService>
+
+			<PromotedService xsi:type="amxdata_base:Service_base" name="NewService">
+				<Binding xsi:type="amxdata_binding_jms:JMSServiceBinding" name="JMSService_Binding1" description="new JMS Service Binding" interfaceName="{http://www.example.org/AllMEPsWSDLFile/}AllMEPsWSDLFile" wsdlLocation="../Service%20Descriptors/AllMEPsWSDLFile.wsdl">
+					<Property  xsi:type="amxdata:Property" name="ConnectionFactoryConfiguration"  value="BAT_52_JmsConnFactoryConf"/>
+					<Property  xsi:type="amxdata:Property" name="ConnectionFactory"  value="BAT_52_JmsConnFactory"/>
+					<Property  xsi:type="amxdata:Property" name="InboundDestination"  value="BAT_52_TopicSample_JmsDestConf"/>
+					<defaultInboundConfiguration>
+							<acknowledgeMode>auto</acknowledgeMode>
+					</defaultInboundConfiguration>
+					<defaultOutboundConfiguration timeToLive = "0">
+							<deliveryMode>persistent</deliveryMode>
+							<priority>zero</priority>
+					</defaultOutboundConfiguration>
+					<defaultMessageConfiguration>
+							<messageType>xmlText</messageType>
+					</defaultMessageConfiguration>							
+
+					<operationConfigurations operationName="InOut" timeout="60000">
+						<messageConfigurations messageName="{http://www.example.org/AllMEPsWSDLFile/}NewOperationRequest">
+							<messageDirection>INPUT</messageDirection>
+							<messageType>xmlText</messageType>
+						</messageConfigurations>
+						<messageConfigurations messageName="{http://www.example.org/AllMEPsWSDLFile/}NewOperationResponse">
+							<messageDirection>OUTPUT</messageDirection>
+							<messageType>xmlText</messageType>
+						</messageConfigurations>
+					</operationConfigurations>
+
+				</Binding>	
+			</PromotedService>								
+
+			
+			<PromotedReference xsi:type="amxdata_base:Reference_base" name="NewReference">
+					<Binding xsi:type="amxdata:Binding" name="JMSReference_Binding1">
+				<Node name="QANode1" environmentName="QAEnvironment_pkaur-z600" />
+					</Binding>
+			</PromotedReference>								
+
+			<PromotedReference xsi:type="amxdata_base:Reference_base" name="AllMEPsWSDLFile1">
+						<Binding xsi:type="amxdata:Binding" name="JMSReferenceBinding1">
+					<Node name="QANode1" environmentName="QAEnvironment_pkaur-z600" />
+						</Binding>
+			</PromotedReference>						
+
+			<PromotedReference xsi:type="amxdata_base:Reference_base" name="AllMEPsWSDLFile1">
+				<Binding xsi:type="amxdata_binding_jms:JMSRefBinding" name="JMSReferenceBinding1" description="new JMS Reference Binding" interfaceName="{http://www.example.org/AllMEPsWSDLFile/}AllMEPsWSDLFile" wsdlLocation="../Service%20Descriptors/AllMEPsWSDLFile.wsdl">
+					<Property  xsi:type="amxdata:Property" name="ConnectionFactoryConfiguration"  value="BAT_52_JmsConnFactoryConf"/>
+					<Property  xsi:type="amxdata:Property" name="ConnectionFactory"  value="BAT_52_JmsConnFactory"/>
+					<Property  xsi:type="amxdata:Property" name="OutboundDestination"  value="BAT_52_QueueSample1_JmsDest"/>
+					<defaultInboundConfiguration>
+							<acknowledgeMode>auto</acknowledgeMode>
+					</defaultInboundConfiguration>
+					<defaultOutboundConfiguration timeToLive = "0">
+							<deliveryMode>persistent</deliveryMode>
+							<priority>zero</priority>
+					</defaultOutboundConfiguration>
+					<defaultMessageConfiguration>
+							<messageType>xmlText</messageType>
+					</defaultMessageConfiguration>							
+
+					<operationConfigurations operationName="InOut" timeout="60000">
+						<messageConfigurations messageName="{http://www.example.org/AllMEPsWSDLFile/}NewOperationRequest">
+							<messageDirection>OUTPUT</messageDirection>
+							<messageType>xmlText</messageType>
+						</messageConfigurations>
+						<messageConfigurations messageName="{http://www.example.org/AllMEPsWSDLFile/}NewOperationResponse">
+							<messageDirection>INPUT</messageDirection>
+							<messageType>xmlText</messageType>
+						</messageConfigurations>
+					</operationConfigurations>
+				</Binding>
+			</PromotedReference>									
+		<ApplicationTemplate 
+			xsi:type="amxdata_reference:ApplicationTemplate_reference" 
+			name="BAT_52_SOA" />
+	</Application>
+	</Environment>
+	
+	<DAA xsi:type="amxdata:DAA"
+		description="BAT_52_SOA_JMSJava JMS-Java application"
+		location="BAT_52_SOA_JMSJava/Deployment Artifacts/BAT_52_SOA_JMSJava.daa"
+		importResourceTemplates="false" />
+	 
+	<DAA xsi:type="amxdata:DAA" 
+		description="BAT TC 52 JMS-Spring-JMS application"
+		location="BAT_52_SOA/Deployment Artifacts/BAT_52_SOA.daa"
+		importResourceTemplates="false" />
+		
+		<!--Create ResourceTemplates-->
+		<amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate
+			xsi:type="amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate"
+			name="BAT_52_JndiConnConf"
+			initialContextFactory="com.tibco.tibjms.naming.TibjmsInitialContextFactory"
+			providerUrl="tibjmsnaming://AMX-BACKEND.na.tibco.com:7622"
+			description="JndiConnectionConfiguration">
+			<InlineCredentials
+				username="amxjndipwd"
+				password="amxjndipwd"/>
+	    </amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate>
+			     
+	    <amxdata_jmsssr:JNDIDestinationConfigurationResourceTemplate 
+		    xsi:type="amxdata_jmsssr:JNDIDestinationConfigurationResourceTemplate" 
+		    name="BAT_52_TopicSample_JmsDestConf" 
+		    jndiName="BAT52_TopicDestination" 
+		    jndiConnectionConfigurationName="BAT_52_JndiConnConf"
+			description="JndiDestinationConfiguration"/> 
+	     		   		
+		<amxdata_jmsssr:JNDIDestinationResourceTemplate 
+			xsi:type="amxdata_jmsssr:JNDIDestinationResourceTemplate" 
+			name="BAT_52_QueueSample_JmsDest" 
+			jndiName="BAT52_QueueDestination" 
+			jndiConnectionConfigurationName="BAT_52_JndiConnConf"
+			description="JndiDestination"/> 
+	         
+		<amxdata_jmsssr:JNDIDestinationResourceTemplate 
+		    xsi:type="amxdata_jmsssr:JNDIDestinationResourceTemplate" 
+		    name="BAT_52_QueueSample1_JmsDest" 
+		    jndiName="BAT52_QueueDestination1" 
+		    jndiConnectionConfigurationName="BAT_52_JndiConnConf"
+			description="JndiDestination"/> 
+	     		    		        
+		<amxdata_jmsssr:JNDIDestinationConfigurationResourceTemplate 
+			xsi:type="amxdata_jmsssr:JNDIDestinationConfigurationResourceTemplate" 
+			name="BAT_52_QueueSample1_JmsDestConf" 
+			jndiName="BAT52_QueueDestination1" 
+			jndiConnectionConfigurationName="BAT_52_JndiConnConf"
+			description="JndiDestinationConfiguration"/> 
+						
+		<amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate
+			xsi:type="amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate"
+			name="BAT_52_JmsConnFactory"
+			jndiName="GenericConnectionFactory"
+			jndiConnectionConfigurationName="BAT_52_JndiConnConf"
+			description="JndiConnectionFactory">
+			<InlineCredentials
+				username="amxemspwd"
+				password="amxemspwd"/>
+		</amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate>
+				
+		<amxdata_jmsssr:JNDIConnectionFactoryConfigurationResourceTemplate
+			xsi:type="amxdata_jmsssr:JNDIConnectionFactoryConfigurationResourceTemplate"
+			name="BAT_52_JmsConnFactoryConf"
+			jndiName="GenericConnectionFactory"
+			jndiConnectionConfigurationName="BAT_52_JndiConnConf"
+			description="JndiConnectionFactoryConfiguration">
+			<InlineCredentials
+				username="amxemspwd"
+				password="amxemspwd"/>
+		</amxdata_jmsssr:JNDIConnectionFactoryConfigurationResourceTemplate>
+		
+</amxdata_base:Enterprise>

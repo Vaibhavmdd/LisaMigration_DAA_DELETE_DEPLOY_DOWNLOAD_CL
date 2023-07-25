@@ -1,0 +1,676 @@
+<?xml version="1.0" ?>
+
+
+<!-- Test Case created by LISA Test Editor -->
+<!-- On: Tue Sep 14 22:26:49 PDT 2010 -->
+
+
+<TestCase name="6.6" version="2">
+<id>9b080233</id>
+<Documentation>Mediation IT with Custom XPath Function.&#13;&#10;JMS RT with keystore credentials.&#13;&#10;&#13;&#10;Scenario: JMS BT &lt;-&gt; Mediation&#13;&#10;MEP: In-Out</Documentation>
+<sig>ZWQ9MiZ0Y3Y9MiZsaXNhdj00LjYuNyAoNC42LjcuMTYpJm5vZGVzPTE4NDI1NjI4MDg=</sig>
+<rootNode>deleteJMSQueue</rootNode>
+<subprocess>false</subprocess>
+
+<initState>
+</initState>
+
+<resultState>
+    <Parameter>
+    <key>lisa.deployApp.rsp</key>
+    <value>Set in Step deployApp</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.deployApp.rsp.time</key>
+    <value>Set in Step deployApp</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.fail.rsp</key>
+    <value>Set in Step fail</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.fail.rsp.time</key>
+    <value>Set in Step fail</value>
+    </Parameter>
+    <Parameter>
+    <key>tenDataSor</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>bwport1</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>smtpPort</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>connFacName</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>bwhost1</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>tenInhMap</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>adminURL</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>env.node2.name</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>emshost</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>ldapPwd</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>admin.group.name</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>portssl1</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>hibDataSor</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>connFacConfName</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>port4</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>bwportssl1</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>port3</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>port2</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>port1</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>tibco.amx.datafile.template</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>hibSchemaGen</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>ldapProUrl</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>host1</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>host.instance</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>smtpHost</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>jdbcUser</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>jdbcUrl</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>ldapUser</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>tibco.test.suite.config.path</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>jdbcPwd</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>admin.instance.name</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>emsuser</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>tenSchemaGen</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>env.node1.name</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>password</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>smtpPwd</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>emspwd</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>username</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>tenDialect</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>jdbcDriver</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>emsport</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>env.name</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>destConfName</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>destName</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>host.name</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>smtpUser</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>hibDialect</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.end.rsp</key>
+    <value>Set in Step end</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.end.rsp.time</key>
+    <value>Set in Step end</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.undeployApp.rsp</key>
+    <value>Set in Step undeployApp</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.undeployApp.rsp.time</key>
+    <value>Set in Step undeployApp</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.InvokeService.rsp</key>
+    <value>Set in Step InvokeService</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.InvokeService.rsp.time</key>
+    <value>Set in Step InvokeService</value>
+    </Parameter>
+    <Parameter>
+    <key>host.jmx.port</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>JBOSSServerForEJBBT</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>JBOSSPortForEJBBT</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.createJndiName.rsp</key>
+    <value>Set in Step createJndiName</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.createJndiName.rsp.time</key>
+    <value>Set in Step createJndiName</value>
+    </Parameter>
+</resultState>
+
+      <Companion type="com.itko.lisa.test.PropReaderCompanion" >
+<type>Name-Value-Pairs</type>
+<file>{{LISA_TC_PATH}}/data{{g11n}}.txt</file>
+      </Companion>
+
+      <Companion type="com.tibco.lisa.amx.AmxCompanion" >
+    <datafile>{{LISA_TC_PATH}}/amxconfig.xml</datafile>
+    <clidatafileppty>tibco.amx.datafile.tc</clidatafileppty>
+    <buildfile>{{LISA_TC_PATH}}/amxbuild.xml</buildfile>
+    <clibuildfileppty>tibco.amx.buildfile.tc</clibuildfileppty>
+      </Companion>
+
+      <Companion type="com.itko.lisa.test.PropReaderCompanion" >
+<type>Name-Value-Pairs</type>
+<file>{{LISA_TC_PATH}}/config.txt</file>
+      </Companion>
+
+<Configurations>
+<Configuration>
+<name>default</name>
+<external>true</external>
+<doc>{{LISA_TC_PATH}}/../2node_hsql.config</doc>
+</Configuration>
+<Configuration>
+<name>CDC</name>
+<external>true</external>
+<doc>{{LISA_TC_PATH}}/../2node_hsql_cdc.config</doc>
+</Configuration>
+<Configuration>
+<name>silver</name>
+<external>true</external>
+<doc>{{LISA_TC_PATH}}/../silver/1machine_2node.config</doc>
+</Configuration>
+</Configurations>
+    <Node name="deleteJMSQueue" log=""
+          type="com.itko.lisa.utils.ExecSubProcessNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="createJndiName" > 
+
+<graphx>10</graphx>
+<graphy>10</graphy>
+<Subprocess>{{TIBCO_COMMON_LIBRARY}}/com/tibco/lisa/ems/DeleteQueue.tst</Subprocess>
+<getEvents>0</getEvents>
+<sendConfig>true</sendConfig>
+<fullyParseProps>true</fullyParseProps>
+<sendCommonState>false</sendCommonState>
+<getCommonState>false</getCommonState>
+<onFail>fail</onFail>
+<Parameters>
+    <Parameter>
+    <key>url</key>
+    <value>tcp://{{jmshost}}:{{jmsport}}</value>
+    <name>Url to connect to.</name>
+    </Parameter>
+    <Parameter>
+    <key>username</key>
+    <value>admin</value>
+    <name>User name to connect to server.</name>
+    </Parameter>
+    <Parameter>
+    <key>password</key>
+    <value></value>
+    <name>User password to connect to server.</name>
+    </Parameter>
+    <Parameter>
+    <key>queueName</key>
+    <value>{{queueName}}</value>
+    <name>Queue name to be deleted</name>
+    </Parameter>
+</Parameters>
+<SaveProps>
+</SaveProps>
+    </Node>
+
+
+    <Node name="createJndiName" log=""
+          type="com.itko.lisa.utils.ExecSubProcessNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="deployApp" > 
+
+<graphx>10</graphx>
+<graphy>10</graphy>
+<Subprocess>{{TIBCO_COMMON_LIBRARY}}/com/tibco/lisa/ems/CreateQueue.tst</Subprocess>
+<getEvents>0</getEvents>
+<sendConfig>true</sendConfig>
+<fullyParseProps>true</fullyParseProps>
+<sendCommonState>false</sendCommonState>
+<getCommonState>false</getCommonState>
+<onFail>fail</onFail>
+<Parameters>
+    <Parameter>
+    <key>url</key>
+    <value>tcp://{{jndihost}}:{{jndiport}}</value>
+    <name>Url to connect to.</name>
+    </Parameter>
+    <Parameter>
+    <key>username</key>
+    <value>admin</value>
+    <name>User name to connect to server.</name>
+    </Parameter>
+    <Parameter>
+    <key>password</key>
+    <value></value>
+    <name>User password to connect to server.</name>
+    </Parameter>
+    <Parameter>
+    <key>queueName</key>
+    <value>{{queueName}}</value>
+    <name>Queue name to be created</name>
+    </Parameter>
+    <Parameter>
+    <key>jndiName</key>
+    <value>{{destinationName}}</value>
+    <name>JNDI name to which the queue will be bound. Optional</name>
+    </Parameter>
+</Parameters>
+<SaveProps>
+</SaveProps>
+    </Node>
+
+
+    <Node name="deployApp" log=""
+          type="com.itko.lisa.utils.ExecSubProcessNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="InvokeService" > 
+
+<graphx>1885</graphx>
+<graphy>4145</graphy>
+<Subprocess>{{TIBCO_COMMON_LIBRARY}}/com/tibco/lisa/util/InvokeAnt.tst</Subprocess>
+<getEvents>0</getEvents>
+<sendConfig>true</sendConfig>
+<fullyParseProps>true</fullyParseProps>
+<sendCommonState>false</sendCommonState>
+<getCommonState>false</getCommonState>
+<onFail>fail</onFail>
+<Parameters>
+    <Parameter>
+    <key>projectBaseDirName</key>
+    <value></value>
+    <name>Absolute path of the project base Directory. Optional.</name>
+    </Parameter>
+    <Parameter>
+    <key>buildFileName</key>
+    <value>{{tibco.amx.buildfile.tc}}</value>
+    <name>Absolute path of the Ant build file. Required.</name>
+    </Parameter>
+    <Parameter>
+    <key>logFileName</key>
+    <value>{{tibco.test.case.log.dir}}/antDeploy.log</value>
+    <name>Absolute path to the Ant log file. Optional.</name>
+    </Parameter>
+    <Parameter>
+    <key>targetName</key>
+    <value>deploy.app</value>
+    <name>Name of the build target to be invoked. Optional.</name>
+    </Parameter>
+    <Parameter>
+    <key>propertyFileName</key>
+    <value></value>
+    <name>Absolute path of the file which contains the property name/value pairs. Optional</name>
+    </Parameter>
+    <Parameter>
+    <key>propertyList</key>
+    <value>deployTimeout=300,TIBCO_HOME={{TIBCO_HOME}},TIBCO_AMXADMIN_HOME={{TIBCO_AMXADMIN_HOME}},TIBCO_AMX_LIBRARY={{TIBCO_AMX_LIBRARY}},amxConfigFile={{tibco.amx.datafile.tc}},remotePropsFile={{tibco.test.suite.config.path}}</value>
+    <name>Name value pairs seperated by comma. ex: name1=value1,name2=value2,.. etc. This can be used in addition to passing property file. Optional</name>
+    </Parameter>
+    <Parameter>
+    <key>antOpts</key>
+    <value>-Djava.classes.dir=/{{TIBCO_JAVA_HOME}}/jre/lib</value>
+    <name>ANT_OPTS environment variable. Optional. Ex: -Xms128m -Xmx512m -XX:PermSize=256m</name>
+    </Parameter>
+    <Parameter>
+    <key>additionalAntCmdLineArgs</key>
+    <value></value>
+    <name>Additional ant commandline options. Optional. See ant --help for these options.</name>
+    </Parameter>
+    <Parameter>
+    <key>additionalClasspath</key>
+    <value></value>
+    <name>Additional classpath to add to Ant. Optional.</name>
+    </Parameter>
+    <Parameter>
+    <key>waitForCompletion</key>
+    <value>true</value>
+    </Parameter>
+    <Parameter>
+    <key>timeout</key>
+    <value>600</value>
+    <name>Timeout in seconds for ant command. Required only if waitForCompletion is true</name>
+    </Parameter>
+</Parameters>
+<SaveProps>
+</SaveProps>
+
+      <!-- Result Elements -->
+<CheckResult assertTrue="false" name="Assert145" type="com.itko.lisa.test.CheckResultContains">
+<log>Configuration and Deployment of Application on host finished.....</log>
+<then>fail</then>
+<valueToAssertKey></valueToAssertKey>
+        <param>BUILD SUCCESSFUL</param>
+</CheckResult>
+
+    </Node>
+
+
+    <Node name="InvokeService" log=""
+          type="com.itko.lisa.esb.tibco.TibcoEMSStep" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="undeployApp" > 
+
+<graphx>130</graphx>
+<graphy>130</graphy>
+<msgVersion>2</msgVersion>
+<autoExtractPayLoad>true</autoExtractPayLoad>
+<pubEnabledType>true</pubEnabledType>
+<subEnabledType>true</subEnabledType>
+<repEnabledType>false</repEnabledType>
+<repTempQ>true</repTempQ>
+<pubWithTrans>false</pubWithTrans>
+<subWithTrans>false</subWithTrans>
+<keepConnection>false</keepConnection>
+<sharePublisher>false</sharePublisher>
+<connectionType>JNDI</connectionType>
+<lisa.prefill.jndiFactories>com.tibco.tibjms.naming.TibjmsInitialContextFactory</lisa.prefill.jndiFactories>
+<lisa.prefill.jndiServerURLs>tibjmsnaming://{{jndihost}}:{{jndiport}}</lisa.prefill.jndiServerURLs>
+<jndiDataSourceName>QueueConnectionFactory</jndiDataSourceName>
+<lisa.prefill.jndiServerUsers>{{jndiuser}}</lisa.prefill.jndiServerUsers>
+<lisa.prefill.jndiServerPWD_enc>34217a08786790ce9aa26862f7885c16</lisa.prefill.jndiServerPWD_enc>
+<mqPort></mqPort>
+<mqCCID>-1</mqCCID>
+<mqConnMode>JMS</mqConnMode>
+<mqOverrideQMan></mqOverrideQMan>
+<mqUseCorrelationIDOnSubscribe>false</mqUseCorrelationIDOnSubscribe>
+<mqEnvProperties>
+</mqEnvProperties>
+<mqExtMsgProperties>
+</mqExtMsgProperties>
+<tibRvService>7522:7524</tibRvService>
+<tibRvConnMode>Native Client</tibRvConnMode>
+<tibRvUseCMsg>false</tibRvUseCMsg>
+<tibRvInBoxType>false</tibRvInBoxType>
+<tibRvInBoxReplyMode>false</tibRvInBoxReplyMode>
+<tibRvCmConfirmAdvisorySubject>_RV.INFO.RVCM.DELIVERY.CONFIRM.&gt;</tibRvCmConfirmAdvisorySubject>
+<secondLevelAuthEnabled>true</secondLevelAuthEnabled>
+<secondLevelAuthUser>{{jmsuser}}</secondLevelAuthUser>
+<secondLevelAuthPwd>{{jmspwd}}</secondLevelAuthPwd>
+<wmBrokerHost>localhost</wmBrokerHost>
+<wmBrokerPort>6849</wmBrokerPort>
+<wmBrokerClientAppName>LISA</wmBrokerClientAppName>
+<wmBrokerDeliverEnabled>false</wmBrokerDeliverEnabled>
+<wmBrokerEventConvertRsp>false</wmBrokerEventConvertRsp>
+<wmBrokerEventConvertRspXML>false</wmBrokerEventConvertRspXML>
+<sonicBrokerHost>localhost</sonicBrokerHost>
+<sonicBrokerPort>2506</sonicBrokerPort>
+<pubDestType>Queue</pubDestType>
+<pubDestination>{{queueName}}</pubDestination>
+<subDestType>Queue</subDestType>
+<subDestination>{{queueName}}</subDestination>
+<subTimeout>30</subTimeout>
+<repDestination>BAT66_Destination</repDestination>
+<repDestType>Queue</repDestType>
+<sendMsgType>Text</sendMsgType>
+<sendMessage>&lt;?xml version = &quot;1.0&quot; encoding = &quot;UTF-8&quot;?&gt;&#13;&#10;&lt;sch:StudentNumber xmlns:sch=&quot;http://www.tibco.com/schemas/Class/Schema.xsd&quot; xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;{{InputText}}&lt;/sch:StudentNumber&gt;</sendMessage>
+<jmsMessageObject>
+</jmsMessageObject>
+<onExNode>fail</onExNode>
+<customProperties>
+</customProperties>
+<customConnProperties>
+</customConnProperties>
+
+      <!-- Result Elements -->
+<CheckResult assertTrue="false" name="Assert153" type="com.itko.lisa.test.CheckResultContains">
+<log>Assert [Assert153] fired false of type Result as String Contains Given String</log>
+<then>fail</then>
+<valueToAssertKey></valueToAssertKey>
+        <param>{{ResponseText}}</param>
+</CheckResult>
+
+    </Node>
+
+
+    <Node name="undeployApp" log=""
+          type="com.itko.lisa.utils.ExecSubProcessNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="end" > 
+
+<graphx>3328</graphx>
+<graphy>419</graphy>
+<Subprocess>{{TIBCO_COMMON_LIBRARY}}/com/tibco/lisa/util/InvokeAnt.tst</Subprocess>
+<getEvents>0</getEvents>
+<sendConfig>true</sendConfig>
+<fullyParseProps>true</fullyParseProps>
+<sendCommonState>false</sendCommonState>
+<getCommonState>false</getCommonState>
+<onFail>fail</onFail>
+<Parameters>
+    <Parameter>
+    <key>projectBaseDirName</key>
+    <value></value>
+    <name>Absolute path of the project base Directory. Optional.</name>
+    </Parameter>
+    <Parameter>
+    <key>buildFileName</key>
+    <value>{{tibco.amx.buildfile.tc}}</value>
+    <name>Absolute path of the Ant build file. Required.</name>
+    </Parameter>
+    <Parameter>
+    <key>logFileName</key>
+    <value>{{tibco.test.case.log.dir}}/antUndeploy.log</value>
+    <name>Absolute path to the Ant log file. Optional.</name>
+    </Parameter>
+    <Parameter>
+    <key>targetName</key>
+    <value>undeploy.app</value>
+    <name>Name of the build target to be invoked. Optional.</name>
+    </Parameter>
+    <Parameter>
+    <key>propertyFileName</key>
+    <value></value>
+    <name>Absolute path of the file which contains the property name/value pairs. Optional</name>
+    </Parameter>
+    <Parameter>
+    <key>propertyList</key>
+    <value>deployTimeout=300,TIBCO_HOME={{TIBCO_HOME}},TIBCO_AMXADMIN_HOME={{TIBCO_AMXADMIN_HOME}},TIBCO_AMX_LIBRARY={{TIBCO_AMX_LIBRARY}},amxConfigFile={{tibco.amx.datafile.tc}},remotePropsFile={{tibco.test.suite.config.path}}</value>
+    <name>Name value pairs seperated by comma. ex: name1=value1,name2=value2,.. etc. This can be used in addition to passing property file. Optional</name>
+    </Parameter>
+    <Parameter>
+    <key>antOpts</key>
+    <value>-Djava.classes.dir=/{{TIBCO_JAVA_HOME}}/jre/lib</value>
+    <name>ANT_OPTS environment variable. Optional. Ex: -Xms128m -Xmx512m -XX:PermSize=256m</name>
+    </Parameter>
+    <Parameter>
+    <key>additionalAntCmdLineArgs</key>
+    <value></value>
+    <name>Additional ant commandline options. Optional. See ant --help for these options.</name>
+    </Parameter>
+    <Parameter>
+    <key>additionalClasspath</key>
+    <value></value>
+    <name>Additional classpath to add to Ant. Optional.</name>
+    </Parameter>
+    <Parameter>
+    <key>waitForCompletion</key>
+    <value>true</value>
+    </Parameter>
+    <Parameter>
+    <key>timeout</key>
+    <value>600</value>
+    <name>Timeout in seconds for ant command. Required only if waitForCompletion is true</name>
+    </Parameter>
+</Parameters>
+<SaveProps>
+</SaveProps>
+
+      <!-- Result Elements -->
+<CheckResult assertTrue="false" name="Assert145" type="com.itko.lisa.test.CheckResultContains">
+<log>Configuration and Deployment of Application on host finished.....</log>
+<then>fail</then>
+<valueToAssertKey></valueToAssertKey>
+        <param>BUILD SUCCESSFUL</param>
+</CheckResult>
+
+    </Node>
+
+
+    <Node name="end" log=""
+          type="com.itko.lisa.test.NormalEnd" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="true" 
+          next="fail" > 
+
+<graphx>490</graphx>
+<graphy>490</graphy>
+    </Node>
+
+
+    <Node name="fail" log=""
+          type="com.itko.lisa.test.Abend" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="true" 
+          next="unknown" > 
+
+<graphx>370</graphx>
+<graphy>370</graphy>
+    </Node>
+
+
+</TestCase>

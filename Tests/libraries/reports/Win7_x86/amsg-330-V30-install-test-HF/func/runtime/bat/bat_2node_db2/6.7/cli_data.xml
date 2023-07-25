@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+	<Environment 
+		xsi:type="amxdata:Environment" 
+	    name="QAEnvironment_pkaur-z600" 
+	    description="QA Environment" 
+	    contact="TIBCO">
+		<Application
+			xsi:type="amxdata:Application"
+			name="com.tibco.amx.bt.adapter.app"
+			contact="TIBCO"
+			description="adapter application">
+			<Node 
+				name="QANode1" 
+				environmentName="QAEnvironment_pkaur-z600"/>				
+			<Node 
+				name="QANode2" 
+				environmentName="QAEnvironment_pkaur-z600"/>
+			<ApplicationTemplate 
+				xsi:type="amxdata_reference:ApplicationTemplate_reference" 
+				name="com.tibco.amx.bt.adapter.application"/>
+		</Application> 
+		<Application
+			xsi:type="amxdata:Application"
+			name="bat67"
+			contact="Patrick Pei"
+			description="This applicaton tests generic RPCC/RPC adapter BT">
+			<Component 
+				xsi:type="amxdata:Component" 
+				name="Component1">
+				<Node 
+					name="QANode2" 
+					environmentName="QAEnvironment_pkaur-z600"/>				
+			</Component>        	
+			<PromotedService 
+				xsi:type="amxdata_base:Service_base" 
+				name="QueryExternalCustomer">
+				<Binding 
+					xsi:type="amxdata:Binding" 
+					name="ADAPTERService_Binding1">
+					<Node 
+						name="QANode1" 
+						environmentName="QAEnvironment_pkaur-z600"/>				
+				</Binding>
+			</PromotedService>			    
+			<PromotedReference 
+				xsi:type="amxdata_base:Reference_base" 
+				name="GetSalesOrderById1">
+				<Binding 
+					xsi:type="amxdata:Binding" 
+					name="ADAPTERReference_Binding1">
+					<Node 
+						name="QANode1" 
+						environmentName="QAEnvironment_pkaur-z600"/>		
+					<Property  
+						xsi:type="amxdata:Property" 
+						name="rvDaemon"  
+						value="tcp:AMX-BACKEND-2.na.tibco.com:7500"/>							
+				</Binding>
+			</PromotedReference>
+			<ApplicationTemplate 
+				xsi:type="amxdata_reference:ApplicationTemplate_reference" 
+				name="GAC_RPCC_RPC_RV"/>
+		</Application> 
+	</Environment>
+
+	<DAA
+		xsi:type="amxdata:DAA"
+		description="DAA AppNameSDR"
+		location="./SOA/GAC_RPCC_RPC_RV/Deployment Artifacts/GAC_RPCC_RPC_RV.daa">
+	</DAA>
+</amxdata_base:Enterprise>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="tibcohost" default="start-th">
+	<target name="start-th" >
+		<fail unless="tibco.config.mgmt.home" message="Please declare the 'tibco.config.mgmt.home' property"/>
+        <fail unless="tibcohost.properties.file" message="Please declare the 'tibcohost.properties.file' property"/>
+        <ant dir="${TIBCO_HOST_HOME}/scripts" antfile="instance-mgmt.xml" target="create-and-start" >
+            <property name="instance.properties.file" value="${tibcohost.properties.file}"/>
+        </ant>
+    </target>
+</project>

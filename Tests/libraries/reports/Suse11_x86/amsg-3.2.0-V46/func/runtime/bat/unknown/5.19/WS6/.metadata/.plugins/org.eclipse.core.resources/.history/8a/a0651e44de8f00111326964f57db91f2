@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:java="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/java" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmi:id="_QDutMY_eEeG01bsKBLWe1Q" targetNamespace="http://www.example.com/BAT5_19" name="BAT5_19" compositeext:version="1.0.0.qualifier" compositeext:formatVersion="2">
+  <sca:component xmi:id="_QlVlcI_eEeG01bsKBLWe1Q" name="Java1" compositeext:version="1.0.0.qualifier">
+    <sca:implementation.java xmi:id="_QlVlcY_eEeG01bsKBLWe1Q" class="com.sample.bat5_19.Java1">
+      <scaext:packageVersionRange xmi:id="_QlVlco_eEeG01bsKBLWe1Q" lower="1.0.0" upper="2.0.0"/>
+      <java:featureDependency xmi:id="_Q9-H4I_eEeG01bsKBLWe1Q" name="BAT5_19.BAT5_19A.customfeature.id">
+        <range xmi:id="_Q9-H4Y_eEeG01bsKBLWe1Q" lower="1.0.0" upper="2.0.0"/>
+      </java:featureDependency>
+    </sca:implementation.java>
+    <sca:service xmi:id="_Q-ZlsI_eEeG01bsKBLWe1Q" name="HelloWorldPT">
+      <sca:interface.wsdl xmi:id="_Q-ZlsY_eEeG01bsKBLWe1Q" interface="http://ns.tibco.com/Hello/#wsdl.interface(HelloWorldPT)" scaext:wsdlLocation="../Service%20Descriptors/HelloWorld.wsdl"/>
+    </sca:service>
+    <sca:reference xmi:id="_Q-nBEI_eEeG01bsKBLWe1Q" name="HelloWorldPT" wiredByImpl="false">
+      <sca:interface.wsdl xmi:id="_Q-nBEY_eEeG01bsKBLWe1Q" interface="urn:amx:rad_Administrator_test/SOAPMediationJava/sayHelloImpl#wsdl.interface(HelloWorldPT)" scaext:wsdlLocation="../Service%20Descriptors/HWService.wsdl"/>
+    </sca:reference>
+  </sca:component>
+</sca:composite>

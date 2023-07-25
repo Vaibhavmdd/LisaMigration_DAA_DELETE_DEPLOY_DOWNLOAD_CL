@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+	<Environment xsi:type="amxdata:Environment" 
+	       name="[[env.name]]" 
+	       description="Dev environment" 
+	       contact="TIBCO">
+		<Node xsi:type="amxdata:Node" name="[[env.node1.name]]" hostName="[[host.name]]" description="My first node" contact="TIBCO" > </Node>
+		<Node xsi:type="amxdata:Node" name="[[env.node2.name]]" hostName="[[host.name]]" description="My second node" contact="TIBCO" > </Node>
+		<Application
+			xsi:type="amxdata:Application"
+			name="amx.ejbbt-app"
+			contact="TIBCO Software Inc."
+			description="com.tibco.amx.bt.ejb.application">
+			<Node name="[[env.node1.name]]" environmentName="[[env.name]]"/>
+			<Node name="[[env.node2.name]]" environmentName="[[env.name]]"/>
+			<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="com.tibco.amx.bt.ejb.application"/>
+		</Application>		
+	</Environment>
+
+</amxdata_base:Enterprise>
+
+
+

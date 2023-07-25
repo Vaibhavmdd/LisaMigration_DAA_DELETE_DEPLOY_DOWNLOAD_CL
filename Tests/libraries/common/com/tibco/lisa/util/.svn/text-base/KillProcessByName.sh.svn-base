@@ -1,0 +1,33 @@
+#!/bin/sh
+processName=$1
+processKilled=false
+OS=`uname`
+export OS
+case $OS in
+ Darwin)
+  processIds=`ps -ec | awk "/$processName/ "'{print $1}'`
+  ;;
+ *)
+  processIds=`ps -e | awk "/$processName/ "'{print $1}'`
+  ;;
+esac
+#echo "process id \"$processIds\" ."
+
+if [ "$processIds" == "" ]; then
+	echo "The process \"$processName\" not found."
+else
+	for processId in $processIds
+	do
+		kill -9 $processId
+		if [ $? -eq 0 ]; then
+			processKilled=true
+			echo Killed process $processName with pid $processId
+		else
+			echo ERROR: Not allowed to kill process $processName with pid $processId
+			exit 1		
+		fi    
+	done
+fi	
+#if [ $processKilled = "false" ]; then
+# echo "ERROR: The process \"$processName\" not found."
+#fi

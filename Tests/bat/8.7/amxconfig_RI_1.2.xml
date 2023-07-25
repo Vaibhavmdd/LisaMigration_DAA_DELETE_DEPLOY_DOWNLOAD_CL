@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+
+	<Environment xsi:type="amxdata:Environment" 
+		name="[[env.name]]" 
+		description="QA Environment" 
+		contact="TIBCO">
+		
+		<Node xsi:type="amxdata:Node" name="[[env.node1.name]]" >		 
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="BAT8.7_oracle11gJDBC1_Direct_Good" 	resourceTemplateName="BAT8.7_oracle11gJDBC1_Direct_Good"/>				
+		</Node>	
+    </Environment>
+	
+	<ResourceTemplate 
+		xsi:type="amxdata:JdbcResourceTemplate"
+		name="BAT8.7_oracle11gJDBC1_Direct_Good" 
+		description="JDBC Resource Template Direct" 		
+		disableValidateConnectionOnInit="false" 
+		maxConnections="10">		
+        <Direct dbUrl="jdbc:oracle:thin:@10.69.76.108:1521:ORCL" 
+			isTransactional="false" 
+			jdbcDriver="oracle.jdbc.OracleDriver" 
+			loginTimeOut="2"/>
+        <InlineCredentials username="amxuser1" 
+		password="amxuser1"/>
+	</ResourceTemplate>	
+	  
+</amxdata_base:Enterprise>
+
+
+

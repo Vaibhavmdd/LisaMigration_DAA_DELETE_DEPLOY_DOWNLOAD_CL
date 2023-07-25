@@ -1,0 +1,304 @@
+     [echo] Script base is: "/opt/tibco/amx3x/administrator/3.3/scripts/basic_cli.xml"
+
+deploy-logservice:
+     [echo] ------ Deploying Log Service to Administrator ------
+     [echo] 
+     [echo] 
+     [echo] Create the resource template using:
+     [echo] resourceTemplateName: 
+     [echo] dataFile: /groupfiler/tests/tests/amsg/3.0/reports/Linux_2.6_amd64/tests-log/func/runtime/bat/unknown/amxdata_2node_hsql.xml
+     [echo] remotePropsFile: /groupfiler/tests/tests/amsg/3.0/reports/Linux_2.6_amd64/tests-log/func/runtime/bat/unknown/admin.properties
+     [echo] objectSelector: ResourceTemplate[@name='TIBCO_ActiveMatrix_LogService_JDBC_Resource' or @name='TIBCO_ActiveMatrix_LogService_Teneo_Resource' or @name='TIBCO_ActiveMatrix_LogService_HttpClient_Resource' or @name='TIBCO_ActiveMatrix_LogService_SSLClient_Resource' or @name='TIBCO_ActiveMatrix_LogService_Keystore_Resource'] | JNDIConnectionFactoryResourceTemplate[@name='TIBCO_ActiveMatrix_LogService_JMSConnectionFactory_Resource'] | JNDIConnectionConfigurationResourceTemplate[@name='TIBCO_ActiveMatrix_LogService_JNDIConnectionConfiguration_Resource'] | JNDIDestinationResourceTemplate[@name='TIBCO_ActiveMatrix_LogService_JMSDestination_Resource']
+     [echo] action: add
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] Invoking Admin task using the objectselector: ResourceTemplate[@name='TIBCO_ActiveMatrix_LogService_JDBC_Resource' or @name='TIBCO_ActiveMatrix_LogService_Teneo_Resource' or @name='TIBCO_ActiveMatrix_LogService_HttpClient_Resource' or @name='TIBCO_ActiveMatrix_LogService_SSLClient_Resource' or @name='TIBCO_ActiveMatrix_LogService_Keystore_Resource'] | JNDIConnectionFactoryResourceTemplate[@name='TIBCO_ActiveMatrix_LogService_JMSConnectionFactory_Resource'] | JNDIConnectionConfigurationResourceTemplate[@name='TIBCO_ActiveMatrix_LogService_JNDIConnectionConfiguration_Resource'] | JNDIDestinationResourceTemplate[@name='TIBCO_ActiveMatrix_LogService_JMSDestination_Resource']
+[AMXAdminTask] 05-14@14:26:36  INFO - Processing 6 objects
+[AMXAdminTask] 05-14@14:26:38  INFO - Creating HttpClientResourceTemplate : 'TIBCO_ActiveMatrix_LogService_HttpClient_Resource'
+[AMXAdminTask] 05-14@14:26:38  INFO - 'TIBCO_ActiveMatrix_LogService_HttpClient_Resource' resource template created in 'Global' scope.
+[AMXAdminTask] 05-14@14:26:38  INFO - Action finished at 5/14/13 2:26 PM in 0.067 seconds
+[AMXAdminTask] 05-14@14:26:38  INFO - Creating JdbcResourceTemplate : 'TIBCO_ActiveMatrix_LogService_JDBC_Resource'
+[AMXAdminTask] 05-14@14:26:38  INFO - 'TIBCO_ActiveMatrix_LogService_JDBC_Resource' resource template created in 'Global' scope.
+[AMXAdminTask] 05-14@14:26:38  INFO - Action finished at 5/14/13 2:26 PM in 0.108 seconds
+[AMXAdminTask] 05-14@14:26:38  INFO - Creating TeneoResourceTemplate : 'TIBCO_ActiveMatrix_LogService_Teneo_Resource'
+[AMXAdminTask] 05-14@14:26:38  INFO - 'TIBCO_ActiveMatrix_LogService_Teneo_Resource' resource template created in 'Global' scope.
+[AMXAdminTask] 05-14@14:26:38  INFO - Action finished at 5/14/13 2:26 PM in 0.108 seconds
+[AMXAdminTask] 05-14@14:26:38  INFO - Adding JNDIConnectionConfiguration...
+[AMXAdminTask] 05-14@14:26:38  INFO - Successfully added jms JNDIConnectionConfiguration 'TIBCO_ActiveMatrix_LogService_JNDIConnectionConfiguration_Resource' in 'Global' scope
+[AMXAdminTask] 05-14@14:26:38  INFO - Action finished at 5/14/13 2:26 PM in 0.102 seconds
+[AMXAdminTask] 05-14@14:26:39  INFO - Adding jms JNDIConnectionFactory...
+[AMXAdminTask] 05-14@14:26:39  INFO - Successfully added jms JNDIConnectionFactory 'TIBCO_ActiveMatrix_LogService_JMSConnectionFactory_Resource' in 'Global' scope
+[AMXAdminTask] 05-14@14:26:39  INFO - Action finished at 5/14/13 2:26 PM in 0.093 seconds
+[AMXAdminTask] 05-14@14:26:39  INFO - Adding JNDIDestination...
+[AMXAdminTask] 05-14@14:26:39  INFO - Successfully added jms JNDIDestination 'TIBCO_ActiveMatrix_LogService_JMSDestination_Resource' in 'Global' scope
+[AMXAdminTask] 05-14@14:26:39  INFO - Action finished at 5/14/13 2:26 PM in 0.046 seconds
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Create the resource instance using:
+     [echo] resourceInstanceName: 
+     [echo] envName: 
+     [echo] nodeName: 
+     [echo] hostName: 
+     [echo] dataFile: /groupfiler/tests/tests/amsg/3.0/reports/Linux_2.6_amd64/tests-log/func/runtime/bat/unknown/amxdata_2node_hsql.xml
+     [echo] remotePropsFile: /groupfiler/tests/tests/amsg/3.0/reports/Linux_2.6_amd64/tests-log/func/runtime/bat/unknown/admin.properties
+     [echo] objectSelector: Environment[1]/Node/ResourceInstance[@name='TIBCO_ActiveMatrix_LogService_JDBC_Resource' or @name='TIBCO_ActiveMatrix_LogService_Teneo_Resource' or @name='TIBCO_ActiveMatrix_LogService_HttpClient_Resource' or @name='TIBCO_ActiveMatrix_LogService_SSLClient_Resource' or @name='TIBCO_ActiveMatrix_LogService_Keystore_Resource' or @name='TIBCO_ActiveMatrix_LogService_JNDIConnectionConfiguration_Resource' or @name='TIBCO_ActiveMatrix_LogService_JMSConnectionFactory_Resource' or @name='TIBCO_ActiveMatrix_LogService_JMSDestination_Resource']
+     [echo] action: add
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] Invoking Admin task using the objectselector: Environment[1]/Node/ResourceInstance[@name='TIBCO_ActiveMatrix_LogService_JDBC_Resource' or @name='TIBCO_ActiveMatrix_LogService_Teneo_Resource' or @name='TIBCO_ActiveMatrix_LogService_HttpClient_Resource' or @name='TIBCO_ActiveMatrix_LogService_SSLClient_Resource' or @name='TIBCO_ActiveMatrix_LogService_Keystore_Resource' or @name='TIBCO_ActiveMatrix_LogService_JNDIConnectionConfiguration_Resource' or @name='TIBCO_ActiveMatrix_LogService_JMSConnectionFactory_Resource' or @name='TIBCO_ActiveMatrix_LogService_JMSDestination_Resource']
+[AMXAdminTask] 05-14@14:26:39  INFO - Processing 6 objects
+[AMXAdminTask] 05-14@14:26:39  INFO - Adding Resource Instances...
+[AMXAdminTask] 05-14@14:26:40  INFO - TIBCO-AMX-ADMIN-030052: Resource Instance TIBCO_ActiveMatrix_LogService_JDBC_Resource created on Node SystemNode.
+[AMXAdminTask] 05-14@14:26:40  INFO - Action finished at 5/14/13 2:26 PM in 0.227 seconds
+[AMXAdminTask] 05-14@14:26:40  INFO - Adding Resource Instances...
+[AMXAdminTask] 05-14@14:26:40  INFO - TIBCO-AMX-ADMIN-030052: Resource Instance TIBCO_ActiveMatrix_LogService_Teneo_Resource created on Node SystemNode.
+[AMXAdminTask] 05-14@14:26:40  INFO - Action finished at 5/14/13 2:26 PM in 0.161 seconds
+[AMXAdminTask] 05-14@14:26:40  INFO - Adding Resource Instances...
+[AMXAdminTask] 05-14@14:26:40  INFO - TIBCO-AMX-ADMIN-030052: Resource Instance TIBCO_ActiveMatrix_LogService_JNDIConnectionConfiguration_Resource created on Node SystemNode.
+[AMXAdminTask] 05-14@14:26:40  INFO - Action finished at 5/14/13 2:26 PM in 0.161 seconds
+[AMXAdminTask] 05-14@14:26:40  INFO - Adding Resource Instances...
+[AMXAdminTask] 05-14@14:26:40  INFO - TIBCO-AMX-ADMIN-030052: Resource Instance TIBCO_ActiveMatrix_LogService_JMSConnectionFactory_Resource created on Node SystemNode.
+[AMXAdminTask] 05-14@14:26:40  INFO - Action finished at 5/14/13 2:26 PM in 0.16 seconds
+[AMXAdminTask] 05-14@14:26:40  INFO - Adding Resource Instances...
+[AMXAdminTask] 05-14@14:26:40  INFO - TIBCO-AMX-ADMIN-030052: Resource Instance TIBCO_ActiveMatrix_LogService_JMSDestination_Resource created on Node SystemNode.
+[AMXAdminTask] 05-14@14:26:40  INFO - Action finished at 5/14/13 2:26 PM in 0.172 seconds
+[AMXAdminTask] 05-14@14:26:40  INFO - Adding Resource Instances...
+[AMXAdminTask] 05-14@14:26:41  INFO - TIBCO-AMX-ADMIN-030052: Resource Instance TIBCO_ActiveMatrix_LogService_HttpClient_Resource created on Node SystemNode.
+[AMXAdminTask] 05-14@14:26:41  INFO - Action finished at 5/14/13 2:26 PM in 0.16 seconds
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Install the resource instance using:
+     [echo] resourceInstanceName: 
+     [echo] envName: 
+     [echo] nodeName: 
+     [echo] hostName: 
+     [echo] dataFile: /groupfiler/tests/tests/amsg/3.0/reports/Linux_2.6_amd64/tests-log/func/runtime/bat/unknown/amxdata_2node_hsql.xml
+     [echo] remotePropsFile: /groupfiler/tests/tests/amsg/3.0/reports/Linux_2.6_amd64/tests-log/func/runtime/bat/unknown/admin.properties
+     [echo] objectSelector: Environment[1]/Node/ResourceInstance[@name='TIBCO_ActiveMatrix_LogService_JDBC_Resource' or @name='TIBCO_ActiveMatrix_LogService_Teneo_Resource' or @name='TIBCO_ActiveMatrix_LogService_HttpClient_Resource' or @name='TIBCO_ActiveMatrix_LogService_SSLClient_Resource' or @name='TIBCO_ActiveMatrix_LogService_Keystore_Resource' or @name='TIBCO_ActiveMatrix_LogService_JNDIConnectionConfiguration_Resource' or @name='TIBCO_ActiveMatrix_LogService_JMSConnectionFactory_Resource' or @name='TIBCO_ActiveMatrix_LogService_JMSDestination_Resource']
+     [echo] action: install
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] options: auto-resolve
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] timeout: 600
+     [echo] Invoking Admin task using the objectselector: Environment[1]/Node/ResourceInstance[@name='TIBCO_ActiveMatrix_LogService_JDBC_Resource' or @name='TIBCO_ActiveMatrix_LogService_Teneo_Resource' or @name='TIBCO_ActiveMatrix_LogService_HttpClient_Resource' or @name='TIBCO_ActiveMatrix_LogService_SSLClient_Resource' or @name='TIBCO_ActiveMatrix_LogService_Keystore_Resource' or @name='TIBCO_ActiveMatrix_LogService_JNDIConnectionConfiguration_Resource' or @name='TIBCO_ActiveMatrix_LogService_JMSConnectionFactory_Resource' or @name='TIBCO_ActiveMatrix_LogService_JMSDestination_Resource']
+[AMXAdminTask] 05-14@14:26:41  INFO - Processing 6 objects
+[AMXAdminTask] 05-14@14:26:41  INFO - Options set for resource instance are : auto-resolve
+[AMXAdminTask] 05-14@14:26:44  INFO - Start to install Resource Instance 'TIBCO_ActiveMatrix_LogService_JMSDestination_Resource'
+[AMXAdminTask] 05-14@14:26:44  INFO - Start to install Resource Instance 'TIBCO_ActiveMatrix_LogService_JNDIConnectionConfiguration_Resource'
+[AMXAdminTask] 05-14@14:26:44  INFO - Start to install Resource Instance 'TIBCO_ActiveMatrix_LogService_HttpClient_Resource'
+[AMXAdminTask] 05-14@14:26:44  INFO - Start to install Resource Instance 'TIBCO_ActiveMatrix_LogService_JNDIConnectionConfiguration_Resource'
+[AMXAdminTask] 05-14@14:26:44  INFO - Start to install Resource Instance 'TIBCO_ActiveMatrix_LogService_JDBC_Resource'
+[AMXAdminTask] 05-14@14:26:44  INFO - Start to install Resource Instance 'TIBCO_ActiveMatrix_LogService_Teneo_Resource'
+[AMXAdminTask] 05-14@14:26:44  INFO - Start to install Resource Instance 'TIBCO_ActiveMatrix_LogService_JMSConnectionFactory_Resource'
+[AMXAdminTask] 05-14@14:26:44  INFO - Action finished in Admin at 5/14/13 2:26 PM in 2.807 seconds. Waiting for runtime tasks to be finished.
+[AMXAdminTask] 05-14@14:26:45  INFO - .
+[AMXAdminTask] 05-14@14:26:49  INFO - .
+[AMXAdminTask] 05-14@14:26:52  INFO - Resource Instance Install finished successfully
+[AMXAdminTask] 05-14@14:26:52  INFO - Action finished at 5/14/13 2:26 PM in 11.123 seconds
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Create an Application using:
+     [echo] envName: 
+     [echo] appName: 
+     [echo] dataFile: /groupfiler/tests/tests/amsg/3.0/reports/Linux_2.6_amd64/tests-log/func/runtime/bat/unknown/amxdata_2node_hsql.xml
+     [echo] remotePropsFile: /groupfiler/tests/tests/amsg/3.0/reports/Linux_2.6_amd64/tests-log/func/runtime/bat/unknown/admin.properties
+     [echo] objectSelector: Environment[1]/Application[@name='com.tibco.amx.commonlogging.logservice.app']
+     [echo] action: add
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] Invoking Admin task using the objectselector: Environment[1]/Application[@name='com.tibco.amx.commonlogging.logservice.app']
+[AMXAdminTask] 05-14@14:26:52  INFO - Processing 1 objects
+[AMXAdminTask] 05-14@14:26:52  INFO - Adding application...
+[AMXAdminTask] 05-14@14:26:53  INFO - Successfully added Application 'com.tibco.amx.commonlogging.logservice.app': Successfully created application 'com.tibco.amx.commonlogging.logservice.app' from Application Template 'com.tibco.commonlogging.logservice.daa' (version: 2.2.0.024)
+[AMXAdminTask] 05-14@14:26:53  INFO - 	TIBCO-AMX-ADMIN-012438: Application Property 'cl_logservice_teneo' added.
+[AMXAdminTask] 05-14@14:26:53  INFO - 	TIBCO-AMX-ADMIN-012438: Application Property 'cl_logservice_jmsDestination' added.
+[AMXAdminTask] 05-14@14:26:53  INFO - 	TIBCO-AMX-ADMIN-012438: Application Property 'cl_logservice_jmsConnectionFactory' added.
+[AMXAdminTask] 05-14@14:26:53  INFO - 	TIBCO-AMX-ADMIN-012438: Application Property 'defaultConnector' added.
+[AMXAdminTask] 05-14@14:26:53  INFO - 	TIBCO-AMX-ADMIN-012438: Application Property 'cl_logservice_timeinterval' added.
+[AMXAdminTask] 05-14@14:26:53  INFO - 	TIBCO-AMX-ADMIN-012438: Application Property 'cl_logservice_largeMessagesToPayload' added.
+[AMXAdminTask] 05-14@14:26:53  INFO - 	TIBCO-AMX-ADMIN-012406: Component 'LogServiceInstanceManager' (version: 1.2.0.qualifier) added.
+[AMXAdminTask] 05-14@14:26:53  INFO - 	TIBCO-AMX-ADMIN-012406: Component 'WTPLogService' (version: 1.1.0.qualifier) added.
+[AMXAdminTask] 05-14@14:26:53  INFO - 	TIBCO-AMX-ADMIN-012419: Application Reference 'payloadservicereference' added.
+[AMXAdminTask] 05-14@14:26:53  INFO - 	TIBCO-AMX-ADMIN-012426: Application Service 'LogServiceInstanceManager' added.
+[AMXAdminTask] 05-14@14:26:53  INFO - Action finished at 5/14/13 2:26 PM in 0.459 seconds
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Mapping Application to specified nodes using:
+     [echo] envName: 
+     [echo] appName: 
+     [echo] nodeName: 
+     [echo] dataFile: /groupfiler/tests/tests/amsg/3.0/reports/Linux_2.6_amd64/tests-log/func/runtime/bat/unknown/amxdata_2node_hsql.xml
+     [echo] remotePropsFile: /groupfiler/tests/tests/amsg/3.0/reports/Linux_2.6_amd64/tests-log/func/runtime/bat/unknown/admin.properties
+     [echo] objectSelector: Environment[1]/Application[@name='com.tibco.amx.commonlogging.logservice.app']/Node
+     [echo] action: set
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] Invoking Admin task using the objectselector: Environment[1]/Application[@name='com.tibco.amx.commonlogging.logservice.app']/Node
+[AMXAdminTask] 05-14@14:26:53  INFO - Processing 1 objects
+[AMXAdminTask] 05-14@14:26:53  INFO - Mapping application to nodes...  
+[AMXAdminTask] 05-14@14:26:53  INFO - Successfully mapped application 'com.tibco.amx.commonlogging.logservice.app' to node 'SystemNode'
+[AMXAdminTask] 05-14@14:26:53  INFO - Action finished at 5/14/13 2:26 PM in 0.264 seconds
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Create Log Appender using:
+     [echo] dataFile: /groupfiler/tests/tests/amsg/3.0/reports/Linux_2.6_amd64/tests-log/func/runtime/bat/unknown/amxdata_2node_hsql.xml
+     [echo] remotePropsFile: /groupfiler/tests/tests/amsg/3.0/reports/Linux_2.6_amd64/tests-log/func/runtime/bat/unknown/admin.properties
+     [echo] objectSelector: LogAppender[@name='TIBCO ActiveMatrix CommonLogging LogService FileAppender'or @name='CommonLogging_HSqlLogServiceAppender_System' or @name='TIBCO ActiveMatrix CommonLogging LogService JmsAppender']
+     [echo] action: add
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+[AMXAdminTask] 05-14@14:26:53  INFO - Processing 3 objects
+[AMXAdminTask] 05-14@14:26:53  INFO - Successfully created File log appender with name TIBCO ActiveMatrix CommonLogging LogService FileAppender and Id 7
+[AMXAdminTask] 05-14@14:26:53  INFO - Action finished at 5/14/13 2:26 PM in 0.034 seconds
+[AMXAdminTask] 05-14@14:26:54  INFO - Successfully created File log appender with name CommonLogging_HSqlLogServiceAppender_System and Id 8
+[AMXAdminTask] 05-14@14:26:54  INFO - Action finished at 5/14/13 2:26 PM in 0.028 seconds
+[AMXAdminTask] 05-14@14:26:54  INFO - Successfully created Jms log appender with name TIBCO ActiveMatrix CommonLogging LogService JmsAppender and Id 9
+[AMXAdminTask] 05-14@14:26:54  INFO - Action finished at 5/14/13 2:26 PM in 0.121 seconds
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Setting Application Properties using:
+     [echo] envName: 
+     [echo] appName: 
+     [echo] propertyName: 
+     [echo] dataFile: /groupfiler/tests/tests/amsg/3.0/reports/Linux_2.6_amd64/tests-log/func/runtime/bat/unknown/amxdata_2node_hsql.xml
+     [echo] remotePropsFile: /groupfiler/tests/tests/amsg/3.0/reports/Linux_2.6_amd64/tests-log/func/runtime/bat/unknown/admin.properties
+     [echo] objectSelector: Environment[1]/Application[@name='com.tibco.amx.commonlogging.logservice.app']/Property
+     [echo] action: edit
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] Invoking Admin task using the objectselector: Environment[1]/Application[@name='com.tibco.amx.commonlogging.logservice.app']/Property
+[AMXAdminTask] 05-14@14:26:54  INFO - Processing 3 objects
+[AMXAdminTask] 05-14@14:26:54  INFO - Editing properties..
+[AMXAdminTask] 05-14@14:26:54  INFO - Successfully edited property 'cl_logservice_teneo' : TIBCO-AMX-ADMIN-012292: Successfully updated property 'cl_logservice_teneo' to 'TIBCO_ActiveMatrix_LogService_Teneo_Resource'.
+[AMXAdminTask] 05-14@14:26:54  INFO - Successfully edited property 'cl_logservice_jmsConnectionFactory' : TIBCO-AMX-ADMIN-012292: Successfully updated property 'cl_logservice_jmsConnectionFactory' to 'TIBCO_ActiveMatrix_LogService_JMSConnectionFactory_Resource'.
+[AMXAdminTask] 05-14@14:26:54  INFO - Successfully edited property 'cl_logservice_jmsDestination' : TIBCO-AMX-ADMIN-012292: Successfully updated property 'cl_logservice_jmsDestination' to 'TIBCO_ActiveMatrix_LogService_JMSDestination_Resource'.
+[AMXAdminTask] 05-14@14:26:54  INFO - Action finished at 5/14/13 2:26 PM in 0.065 seconds
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Setting property for Reference binding using:
+     [echo] envName: 
+     [echo] appName: 
+     [echo] promotedReferenceName: 
+     [echo] bindingName: 
+     [echo] dataFile: /groupfiler/tests/tests/amsg/3.0/reports/Linux_2.6_amd64/tests-log/func/runtime/bat/unknown/amxdata_2node_hsql.xml
+     [echo] remotePropsFile: /groupfiler/tests/tests/amsg/3.0/reports/Linux_2.6_amd64/tests-log/func/runtime/bat/unknown/admin.properties
+     [echo] objectSelector: Environment[1]/Application[@name='com.tibco.amx.commonlogging.logservice.app']/PromotedReference/Binding/Property
+     [echo] action: edit
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: false
+     [echo] Invoking Admin task using the objectselector: Environment[1]/Application[@name='com.tibco.amx.commonlogging.logservice.app']/PromotedReference/Binding/Property
+[AMXAdminTask] 05-14@14:26:54  INFO - Processing 1 objects
+[AMXAdminTask] 05-14@14:26:54  INFO - Editing properties..
+[AMXAdminTask] 05-14@14:26:54  INFO - Successfully edited property 'HttpOutboundConnectionConfig' : Successfully updated property 'HttpOutboundConnectionConfig' to 'TIBCO_ActiveMatrix_LogService_HttpClient_Resource'
+[AMXAdminTask] 05-14@14:26:54  INFO - Action finished at 5/14/13 2:26 PM in 0.056 seconds
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Deploy an application using:
+     [echo] envName: 
+     [echo] appName: 
+     [echo] dataFile: /groupfiler/tests/tests/amsg/3.0/reports/Linux_2.6_amd64/tests-log/func/runtime/bat/unknown/amxdata_2node_hsql.xml
+     [echo] remotePropsFile: /groupfiler/tests/tests/amsg/3.0/reports/Linux_2.6_amd64/tests-log/func/runtime/bat/unknown/admin.properties
+     [echo] objectSelector: Environment[1]/Application[@name='com.tibco.amx.commonlogging.logservice.app']
+     [echo] action: deploy
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: true
+     [echo] failOnError: true
+     [echo] options: 
+     [echo] startAfterDeploy: true
+     [echo] timeout: 600
+     [echo] Invoking Admin task using the objectselector: Environment[1]/Application[@name='com.tibco.amx.commonlogging.logservice.app']
+[AMXAdminTask] 05-14@14:26:54  INFO - Processing 1 objects
+[AMXAdminTask] 05-14@14:26:54  INFO - Deploying application...
+[AMXAdminTask] 05-14@14:26:56  INFO - Deploying Application 'com.tibco.amx.commonlogging.logservice.app' in background : TIBCO-AMX-ADMIN-012015: Deployment succeeded for application 'com.tibco.amx.commonlogging.logservice.app' at 5/14/13 2:26 PM on node(s): 'SystemNode'.
+[AMXAdminTask] 05-14@14:26:56  INFO - 	TIBCO-AMX-ADMIN-012146: Feature 'com.tibco.commonlogging.logservice.product.feature.1.3.0.000' was auto-enabled in node 'SystemNode'
+[AMXAdminTask] 05-14@14:26:56  INFO - Action finished in Admin at 5/14/13 2:26 PM in 1.52 seconds. Waiting for runtime tasks to be finished.
+[AMXAdminTask] 05-14@14:26:57  INFO - .
+[AMXAdminTask] 05-14@14:27:01  INFO - .
+[AMXAdminTask] 05-14@14:27:03  INFO - Application Deploy with Start finished successfully
+[AMXAdminTask] 05-14@14:27:03  INFO - Action finished at 5/14/13 2:27 PM in 8.744 seconds
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Set Logger for Application using:
+     [echo] envName: 
+     [echo] appName: 
+     [echo] loggerName: 
+     [echo] dataFile: /groupfiler/tests/tests/amsg/3.0/reports/Linux_2.6_amd64/tests-log/func/runtime/bat/unknown/amxdata_2node_hsql.xml
+     [echo] remotePropsFile: /groupfiler/tests/tests/amsg/3.0/reports/Linux_2.6_amd64/tests-log/func/runtime/bat/unknown/admin.properties
+     [echo] objectSelector: Environment[1]/Application[@name='com.tibco.amx.commonlogging.logservice.app']/Logger
+     [echo] action: set
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] Invoking Admin task using the objectselector: Environment[1]/Application[@name='com.tibco.amx.commonlogging.logservice.app']/Logger
+[AMXAdminTask] 05-14@14:27:03  INFO - Processing 2 objects
+[AMXAdminTask] 05-14@14:27:03  INFO - Set logging configuration of Application...
+[AMXAdminTask] 05-14@14:27:03  INFO - Successfully set log configuration to Application 'com.tibco.amx.commonlogging.logservice.app'
+[AMXAdminTask] 05-14@14:27:03  INFO - Action finished at 5/14/13 2:27 PM in 0.121 seconds
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Action name: deploy
+     [echo] description: Apply Log Service Application Logging Configuration
+     [echo] objector: Environment[1]/Application[@name='com.tibco.amx.commonlogging.logservice.app']
+     [echo] propsFile: /groupfiler/tests/tests/amsg/3.0/reports/Linux_2.6_amd64/tests-log/func/runtime/bat/unknown/admin.properties
+     [echo] dataFile: /groupfiler/tests/tests/amsg/3.0/reports/Linux_2.6_amd64/tests-log/func/runtime/bat/unknown/amxdata_2node_hsql.xml
+[AMXAdminTask] 05-14@14:27:03  INFO - Processing 1 objects
+[AMXAdminTask] 05-14@14:27:03  INFO - Deploying application...
+[AMXAdminTask] 05-14@14:27:04  INFO - Deploying Application 'com.tibco.amx.commonlogging.logservice.app' in background : TIBCO-AMX-ADMIN-012015: Deployment succeeded for application 'com.tibco.amx.commonlogging.logservice.app' at 5/14/13 2:27 PM on node(s): 'SystemNode'.
+[AMXAdminTask] 05-14@14:27:04  INFO - Action finished in Admin at 5/14/13 2:27 PM in 0.782 seconds. Waiting for runtime tasks to be finished.
+[AMXAdminTask] 05-14@14:27:05  INFO - .
+[AMXAdminTask] 05-14@14:27:08  INFO - Application Deploy with Start finished successfully
+[AMXAdminTask] 05-14@14:27:08  INFO - Action finished at 5/14/13 2:27 PM in 4.998 seconds
+     [echo] 
+     [echo] 
+     [echo] ------ Finished Deploying Log Service to Administrator ------
+
+BUILD SUCCESSFUL
+Total time: 38 seconds

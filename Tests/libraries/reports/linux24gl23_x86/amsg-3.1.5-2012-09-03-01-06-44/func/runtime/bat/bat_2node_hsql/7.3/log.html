@@ -1,0 +1,19 @@
+<html> <body><FONT FACE='arial'> <table width='100%' border='2' cellpadding='4' cellspacing='3'><tr bgcolor='yellow'> <th width='10%'>Event</th> <th width='14%'>Short Description</th> <th width='42%'>Long Description</th><th width='21%'>TimeStamp</th><tr bgcolor='lime'><td>EVENT_START</td><td></td><td></td><td>Mon Sep 03 21:50:33 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>verifyCLRexists</td><td><pre></pre></td><td>Mon Sep 03 21:50:34 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>verifyCLRexists</td><td><pre></pre></td><td>Mon Sep 03 21:50:34 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/file/CheckFileExists.tst</pre></td><td>Mon Sep 03 21:50:34 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>verifyCLRexists-Log</td><td><pre></pre></td><td>Mon Sep 03 21:50:34 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>verifyCLRexists-Log</td><td><pre></pre></td><td>Mon Sep 03 21:50:34 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>verifyCLRexists-Log</td><td><pre>Checking existence of file "/opt/tibco/amx31x/amx_it_clr" ...</pre></td><td>Mon Sep 03 21:50:34 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>verifyCLRexists-checkFileExists</td><td><pre></pre></td><td>Mon Sep 03 21:50:34 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>verifyCLRexists-checkFileExists</td><td><pre></pre></td><td>Mon Sep 03 21:50:34 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.io.File;
+
+// This function checks for file existence
+checkFileExists(String strFile) {
+ File f = new File(strFile);
+ return f.exists();         
+}
+
+// Main 
+String baseErrorMsg = "File Check Error"; // Do not modify. Test engineers might assert on this string.
+file = testExec.parseInState(file).replace('\\','/');
+
+try {
+ return checkFileExists(file);
+}
+catch(Exception e) {
+ return baseErrorMsg + ": " + e.getMessage();
+}</pre></td><td>Mon Sep 03 21:50:34 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>verifyCLRexists-checkFileExists</td><td><pre>false</pre></td><td>Mon Sep 03 21:50:34 PDT 2012</td> </tr><tr bgcolor='#CC9933'><td>EVENT_ASSERT</td><td>verifyCLRexists [Assert121] </td><td><pre>Assert [Assert121] fired false of type Result as String Contains Given String
+Result did not contain string. Looked for 'true' in result 'false'</pre></td><td>Mon Sep 03 21:50:34 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>SkipCLRtest</td><td><pre>Either CLR-IT is not installed or it's not supported on this OS, Your OS is: Linux</pre></td><td>Mon Sep 03 21:50:34 PDT 2012</td> </tr><tr bgcolor='lime'><td>EVENT_NORMALEND</td><td></td><td></td><td>Mon Sep 03 21:50:34 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TESTEND</td><td></td><td></td><td>Mon Sep 03 21:50:34 PDT 2012</td> </tr></table></body></html>

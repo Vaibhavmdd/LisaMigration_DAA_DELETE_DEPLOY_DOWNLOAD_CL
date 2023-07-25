@@ -1,0 +1,755 @@
+<html> <body><FONT FACE='arial'> <table width='100%' border='2' cellpadding='4' cellspacing='3'><tr bgcolor='yellow'> <th width='10%'>Event</th> <th width='14%'>Short Description</th> <th width='42%'>Long Description</th><th width='21%'>TimeStamp</th><tr bgcolor='lime'><td>EVENT_START</td><td></td><td></td><td>Mon Sep 03 21:46:52 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>supportedOrNot</td><td><pre></pre></td><td>Mon Sep 03 21:46:52 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>supportedOrNot</td><td><pre></pre></td><td>Mon Sep 03 21:46:52 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/*
+if (os_name.contains("Linux")) { // supported
+ return true;
+}
+
+if (os_name.contains("Windows")) { // supported 
+ return true;
+}
+
+if (os_name.contains("SunOS")) { // supported
+ return true;
+}
+
+if (os_name.contains("HP-UX")) { // not supported
+ return false;
+}
+
+if (os_name.contains("AIX")) { // not supported
+ return false;
+}
+
+if (os_name.contains("Mac")) { // not supported
+ return false;
+}
+
+// by default, just skip that test case
+return false;
+*/
+import java.io.File;
+String ext = "";
+if (os_name.contains("Windows"))
+ ext = ".exe";
+File exe = new File(TIBCO_BS_HOME.replace("\\","/") + "/eclipse/amx_eclipse_ant" + ext);
+if (exe.exists())
+ return true;
+else
+ return false;</pre></td><td>Mon Sep 03 21:46:52 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>supportedOrNot</td><td><pre>true</pre></td><td>Mon Sep 03 21:46:52 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createDAA</td><td><pre></pre></td><td>Mon Sep 03 21:46:52 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createDAA</td><td><pre></pre></td><td>Mon Sep 03 21:46:52 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/amx/com/tibco/amx/design/InvokeEclipseAnt.tst</pre></td><td>Mon Sep 03 21:46:52 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createDAA-log</td><td><pre></pre></td><td>Mon Sep 03 21:46:52 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createDAA-log</td><td><pre></pre></td><td>Mon Sep 03 21:46:52 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>createDAA-log</td><td><pre>Invoking ant with following variables:
+studioHome=/opt/tibco/amx31x/studio/3.5
+buildFile=/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/build.xml
+data=/groupfiler/tests/tests/amsg/3.0/reports/linux24gl23_x86/amsg-3.1.5-2012-09-03-01-06-44/func/runtime/bat/bat_2node_hsql/5.19/WS1
+propertyFile=
+propertyList=soa.project.loc=/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19,java.project.loc=/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19,projectName=BAT5_19,compositeName=BAT5_19A,newCompositeName=BAT5_19,daaLoc=/BAT5_19/BAT5_19.daa,componentName=Java1,implementationLoc=/com.sample.bat5_19/src/com/sample/bat5_19/Java1.java,sourceProject=BAT5_19,referenceProject=com.sample.bat5_19,featureid=BAT5_19.BAT5_19A.customfeature,RT=HttpClient_SOAPEventSource
+target=
+projectBaseDir=
+</pre></td><td>Mon Sep 03 21:46:52 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createDAA-verifyInputVariables</td><td><pre>This step verifies the input variables for the invokeAnt subprocess.</pre></td><td>Mon Sep 03 21:46:52 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createDAA-verifyInputVariables</td><td><pre>This step verifies the input variables for the invokeAnt subprocess.</pre></td><td>Mon Sep 03 21:46:52 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
+import java.util.Enumeration;
+import java.util.Properties;
+import java.util.Set;
+
+String checkInputVariables() {
+		String errorStr = "Fail: ";
+		try {
+            if ((studioHome == null) || (studioHome.equals("")) ) {
+				throw new Exception("studioHome cannot be null.");
+			}
+           
+			File studioHome2 = new File(testExec.parseInState(studioHome).replace('\\', '/'));
+			if (!studioHome2.exists()) {
+				throw new Exception("Studio home not found: "+studioHome);
+			}
+
+			if ((buildFile == null) || (buildFile.equals("")) ) {
+				throw new Exception("buildFile cannot be null.");
+			}
+           
+			File buildFile2 = new File(testExec.parseInState(buildFile).replace('\\', '/'));
+			if (!buildFile2.canRead()) {
+				throw new Exception("Build file not found/cannot be read: "+buildFile);
+			}
+			if (!buildFile2.isFile()) {				
+				throw new Exception("build file is not a normal file: "+buildFile);
+			}
+			
+            if ((data == null) || (data.equals("")) ) {
+				throw new Exception("data cannot be null.");
+			}
+			
+			File propertyFile2 = null;
+			if ((propertyFile != null) && (!propertyFile.equals(""))) {
+				propertyFile = new File(testExec.parseInState(propertyFile).replace('\\', '/'));
+				if (!propertyFile2.canRead()) {
+					throw new Exception("Property file not found/cannot be read it: "+propertyFile);
+				}
+				if (!propertyFile.isFile()) {
+					throw new Exception("property file is not a normal file: "+propertyFile);
+				}
+				
+			}
+
+			File projectBaseDir2 = null;
+			if ((projectBaseDir != null) && (!projectBaseDir.equals(""))) {
+				projectBaseDir2 = new File(testExec.parseInState(projectBaseDir).replace('\\', '/'));
+				if((!projectBaseDir2.exists()) || (!projectBaseDir2.isDirectory())) {
+					throw new Exception("The project base directory is not valid: "+projectBaseDir);
+				}
+			}
+             
+			response = "Pass: Input variables are valid.";
+
+		}catch(Exception e) {
+			response = errorStr + e.getLocalizedMessage();
+		}
+		return response;
+	}
+
+return checkInputVariables();</pre></td><td>Mon Sep 03 21:46:52 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>createDAA-verifyInputVariables</td><td><pre>Pass: Input variables are valid.</pre></td><td>Mon Sep 03 21:46:52 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createDAA-getAntArguments</td><td><pre>This step gets the arguments to be passed to the ant invocation.</pre></td><td>Mon Sep 03 21:46:52 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createDAA-getAntArguments</td><td><pre>This step gets the arguments to be passed to the ant invocation.</pre></td><td>Mon Sep 03 21:46:52 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
+import java.util.Enumeration;
+import java.util.Properties;
+import java.util.Set;
+
+//import org.apache.tools.ant.DefaultLogger;
+//import org.apache.tools.ant.Project;
+//import org.apache.tools.ant.ProjectHelper;
+
+	
+			String getAntArgs() {
+			String response = "";
+			FileInputStream fis = null;
+			try {
+				File propertyFile = null;
+						
+				Properties props = null;
+							
+				if ((propertyFile != null) && (!propertyFile.equals(""))) {
+					response = response+" -propertyfile "+propertyFile.replace("\\","/");
+				}
+				
+				if ((propertyList != null) && (!propertyList.equals(""))) {
+					String [] propArray = propertyList.split(",");
+					for (int i =0; i &lt; propArray.length; i++) {
+						String [] keyPair = propArray[i].split("=");
+						if (keyPair.length == 1) continue;
+							//should we trim empty spaces?
+						response = response+" -D"+(String)keyPair[0]+"="+(String)keyPair[1];
+					}
+				}
+                if ((projectBaseDir != null) && (!projectBaseDir.equals(""))) {
+                    response = response+" -D"+"basedir=\""+(String)projectBaseDir.replace("\\","/") + "\"";
+                }
+				
+			}catch(Exception e) {
+				response = "Fail: "+e;
+			}finally {
+				try {				
+					if (fis != null) fis.close();				
+				}catch(Exception ioe) {
+					//ignore.
+				}
+			}
+			//System.out.println("response is:"+response);
+			return response;
+		}
+return getAntArgs();</pre></td><td>Mon Sep 03 21:46:52 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>createDAA-getAntArguments</td><td><pre> -Dsoa.project.loc=/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19 -Djava.project.loc=/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19 -DprojectName=BAT5_19 -DcompositeName=BAT5_19A -DnewCompositeName=BAT5_19 -DdaaLoc=/BAT5_19/BAT5_19.daa -DcomponentName=Java1 -DimplementationLoc=/com.sample.bat5_19/src/com/sample/bat5_19/Java1.java -DsourceProject=BAT5_19 -DreferenceProject=com.sample.bat5_19 -Dfeatureid=BAT5_19.BAT5_19A.customfeature -DRT=HttpClient_SOAPEventSource</pre></td><td>Mon Sep 03 21:46:52 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt</td><td><pre></pre></td><td>Mon Sep 03 21:46:52 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt</td><td><pre></pre></td><td>Mon Sep 03 21:46:52 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/util/JVMWrapper.tst</pre></td><td>Mon Sep 03 21:46:53 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt-validate</td><td><pre></pre></td><td>Mon Sep 03 21:46:53 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt-validate</td><td><pre></pre></td><td>Mon Sep 03 21:46:53 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>String baseErrorMsg = "Wrapper Validation Error";
+String baseSuccessMsg = "Wrapper Validation Success";
+
+// Check Timeout function
+String checkTimeout(String timeout) {
+ if (timeout.equals("") || timeout.equals("&lt;&lt;null&gt;&gt;"))
+  return baseErrorMsg + ": Timeout is required.";
+ try {
+  int t = Integer.parseInt(timeout);
+  return baseSuccessMsg;
+ }
+ catch (NumberFormatException nfe) {
+  return baseErrorMsg + ": Timeout format Exception: " + nfe.getMessage();
+ }
+}
+
+// Check wrapper exists
+wrapperName = testExec.parseInState(wrapperName).replace('\\','/');
+if (com.itko.util.Utilities.isWindows() && !wrapperName.endsWith(".exe"))
+ wrapperName = wrapperName + ".exe";
+File f = new File(wrapperName);
+if (!f.exists()) 
+ return baseErrorMsg + ": Wrapper (" + wrapperName + ") does not exist.";
+
+// Check working directory exists
+startInDir = testExec.parseInState(startInDir).replace('\\','/');
+f = new File(startInDir);
+if (!f.exists())
+ return baseErrorMsg + ": Start-In directory (" + startInDir + ") does not exist.";
+
+// Check prop file
+propFile = testExec.parseInState(propFile).replace('\\','/');
+
+// all the timeout parameters
+checkTimeout(testExec.parseInState(waitBeforeOnWindows.toString()));
+checkTimeout(testExec.parseInState(waitAfterOnWindows.toString()));
+checkTimeout(testExec.parseInState(waitBeforeOnUnix.toString()));
+checkTimeout(testExec.parseInState(waitAfterOnUnix.toString()));
+
+// Ok
+return baseSuccessMsg;</pre></td><td>Mon Sep 03 21:46:53 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>createDAA-executeEclipseAnt-validate</td><td><pre>Wrapper Validation Success</pre></td><td>Mon Sep 03 21:46:53 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt-getPropFile</td><td><pre></pre></td><td>Mon Sep 03 21:46:53 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt-getPropFile</td><td><pre></pre></td><td>Mon Sep 03 21:46:53 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>String propFileStr = "";
+if (!propFile.equals("&lt;&lt;null&gt;&gt;")) {
+  if (com.itko.util.Utilities.isWindows()) {
+    // Support for blank space in path on Windows
+    propFileStr = "--propFile \"" + propFile + "\""; // that does not work on Unix (tried on solaris)
+  }
+  else { // Unix. No support for blank space
+    propFileStr = "--propFile " + propFile;
+  }
+}
+return propFileStr.replace('\\','/');</pre></td><td>Mon Sep 03 21:46:53 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>createDAA-executeEclipseAnt-getPropFile</td><td><pre>--propFile /opt/tibco/amx31x/studio/3.5/eclipse/amx_eclipse_ant.tra</pre></td><td>Mon Sep 03 21:46:53 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt-getCommand</td><td><pre></pre></td><td>Mon Sep 03 21:46:53 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt-getCommand</td><td><pre></pre></td><td>Mon Sep 03 21:46:53 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>String commandStr = "";
+if (!command.equals("&lt;&lt;null&gt;&gt;"))
+  commandStr = command;
+
+return commandStr;</pre></td><td>Mon Sep 03 21:46:53 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>createDAA-executeEclipseAnt-getCommand</td><td><pre></pre></td><td>Mon Sep 03 21:46:53 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt-getExtraCommand</td><td><pre></pre></td><td>Mon Sep 03 21:46:53 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt-getExtraCommand</td><td><pre></pre></td><td>Mon Sep 03 21:46:53 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>String extraCommandStr = "";
+if (!extraCommand.equals("&lt;&lt;null&gt;&gt;"))
+  extraCommandStr = extraCommand;
+
+return extraCommandStr;</pre></td><td>Mon Sep 03 21:46:53 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>createDAA-executeEclipseAnt-getExtraCommand</td><td><pre> -Dsoa.project.loc=/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19 -Djava.project.loc=/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19 -DprojectName=BAT5_19 -DcompositeName=BAT5_19A -DnewCompositeName=BAT5_19 -DdaaLoc=/BAT5_19/BAT5_19.daa -DcomponentName=Java1 -DimplementationLoc=/com.sample.bat5_19/src/com/sample/bat5_19/Java1.java -DsourceProject=BAT5_19 -DreferenceProject=com.sample.bat5_19 -Dfeatureid=BAT5_19.BAT5_19A.customfeature -DRT=HttpClient_SOAPEventSource -buildfile "/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/build.xml"  -data "/groupfiler/tests/tests/amsg/3.0/reports/linux24gl23_x86/amsg-3.1.5-2012-09-03-01-06-44/func/runtime/bat/bat_2node_hsql/5.19/WS1"</pre></td><td>Mon Sep 03 21:46:53 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt-waitBefore</td><td><pre></pre></td><td>Mon Sep 03 21:46:53 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt-waitBefore</td><td><pre></pre></td><td>Mon Sep 03 21:46:53 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/util/Sleep.tst</pre></td><td>Mon Sep 03 21:46:53 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt-waitBefore-Log</td><td><pre></pre></td><td>Mon Sep 03 21:46:53 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt-waitBefore-Log</td><td><pre></pre></td><td>Mon Sep 03 21:46:53 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>createDAA-executeEclipseAnt-waitBefore-Log</td><td><pre>Sleeping for 0 on Windows or 0 on Unix ...</pre></td><td>Mon Sep 03 21:46:53 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt-waitBefore-sleep</td><td><pre></pre></td><td>Mon Sep 03 21:46:53 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt-waitBefore-sleep</td><td><pre></pre></td><td>Mon Sep 03 21:46:53 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>sleep(secStr) {
+  try {
+    int secInt = Integer.parseInt(secStr);
+    if (secInt &lt; 0) Thread.sleep(0);
+    else Thread.sleep(secInt*1000);
+  }
+  catch(NumberFormatException nfe) {
+    Thread.sleep(0);
+  }
+}
+
+if (System.getProperty("os.name").toLowerCase().indexOf("windows") &gt; -1)
+  sleep("0");
+else
+  sleep("0");</pre></td><td>Mon Sep 03 21:46:53 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>createDAA-executeEclipseAnt-waitBefore-sleep</td><td><pre>(no response)</pre></td><td>Mon Sep 03 21:46:53 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt-Log</td><td><pre></pre></td><td>Mon Sep 03 21:46:53 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt-Log</td><td><pre></pre></td><td>Mon Sep 03 21:46:53 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>createDAA-executeEclipseAnt-Log</td><td><pre>Executing "/opt/tibco/amx31x/studio/3.5/eclipse/amx_eclipse_ant  --propFile /opt/tibco/amx31x/studio/3.5/eclipse/amx_eclipse_ant.tra  -Dsoa.project.loc=/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19 -Djava.project.loc=/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19 -DprojectName=BAT5_19 -DcompositeName=BAT5_19A -DnewCompositeName=BAT5_19 -DdaaLoc=/BAT5_19/BAT5_19.daa -DcomponentName=Java1 -DimplementationLoc=/com.sample.bat5_19/src/com/sample/bat5_19/Java1.java -DsourceProject=BAT5_19 -DreferenceProject=com.sample.bat5_19 -Dfeatureid=BAT5_19.BAT5_19A.customfeature -DRT=HttpClient_SOAPEventSource -buildfile "/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/build.xml"  -data "/groupfiler/tests/tests/amsg/3.0/reports/linux24gl23_x86/amsg-3.1.5-2012-09-03-01-06-44/func/runtime/bat/bat_2node_hsql/5.19/WS1""...</pre></td><td>Mon Sep 03 21:46:53 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt-getWaitAfterProperty</td><td><pre></pre></td><td>Mon Sep 03 21:46:53 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt-getWaitAfterProperty</td><td><pre></pre></td><td>Mon Sep 03 21:46:53 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>if (com.itko.util.Utilities.isWindows())
+  return waitAfterOnWindows;
+else
+  return waitAfterOnUnix;</pre></td><td>Mon Sep 03 21:46:53 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>createDAA-executeEclipseAnt-getWaitAfterProperty</td><td><pre>1800</pre></td><td>Mon Sep 03 21:46:53 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt-escape command line params</td><td><pre></pre></td><td>Mon Sep 03 21:46:53 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt-escape command line params</td><td><pre></pre></td><td>Mon Sep 03 21:46:53 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>commandProp = commandProp.replaceAll("\\\\", "\\\\\\\\");
+propFileProp = propFileProp.replaceAll("\\\\", "\\\\\\\\");
+extraCommandProp = extraCommandProp.replaceAll("\\\\", "\\\\\\\\");</pre></td><td>Mon Sep 03 21:46:53 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>createDAA-executeEclipseAnt-escape command line params</td><td><pre> -Dsoa.project.loc=/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19 -Djava.project.loc=/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19 -DprojectName=BAT5_19 -DcompositeName=BAT5_19A -DnewCompositeName=BAT5_19 -DdaaLoc=/BAT5_19/BAT5_19.daa -DcomponentName=Java1 -DimplementationLoc=/com.sample.bat5_19/src/com/sample/bat5_19/Java1.java -DsourceProject=BAT5_19 -DreferenceProject=com.sample.bat5_19 -Dfeatureid=BAT5_19.BAT5_19A.customfeature -DRT=HttpClient_SOAPEventSource -buildfile "/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/build.xml"  -data "/groupfiler/tests/tests/amsg/3.0/reports/linux24gl23_x86/amsg-3.1.5-2012-09-03-01-06-44/func/runtime/bat/bat_2node_hsql/5.19/WS1"</pre></td><td>Mon Sep 03 21:46:53 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt-callWrapper</td><td><pre></pre></td><td>Mon Sep 03 21:46:53 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt-callWrapper</td><td><pre></pre></td><td>Mon Sep 03 21:46:53 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/opt/tibco/amx31x/studio/3.5/eclipse/amx_eclipse_ant  --propFile /opt/tibco/amx31x/studio/3.5/eclipse/amx_eclipse_ant.tra  -Dsoa.project.loc=/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19 -Djava.project.loc=/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19 -DprojectName=BAT5_19 -DcompositeName=BAT5_19A -DnewCompositeName=BAT5_19 -DdaaLoc=/BAT5_19/BAT5_19.daa -DcomponentName=Java1 -DimplementationLoc=/com.sample.bat5_19/src/com/sample/bat5_19/Java1.java -DsourceProject=BAT5_19 -DreferenceProject=com.sample.bat5_19 -Dfeatureid=BAT5_19.BAT5_19A.customfeature -DRT=HttpClient_SOAPEventSource -buildfile "/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/build.xml"  -data "/groupfiler/tests/tests/amsg/3.0/reports/linux24gl23_x86/amsg-3.1.5-2012-09-03-01-06-44/func/runtime/bat/bat_2node_hsql/5.19/WS1"</pre></td><td>Mon Sep 03 21:46:53 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>createDAA-executeEclipseAnt-callWrapper</td><td><pre>Buildfile: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/build.xml
+
+importProjects:
+[sds.importProject] 
+[sds.importProject] Importing Project 'BAT5_19' Importing: Generate Folder Opening 'BAT5_19'.
+[sds.importProject] Importing Project 'BAT5_19' Importing: Generate Folder Refreshing '/BAT5_19'.
+[sds.importProject] Importing Project 'BAT5_19' Importing: Generate Folder 
+[sds.importProject] Importing Project 'BAT5_19' Importing: Generate Folder 
+[sds.importProject] Importing Project 'BAT5_19' Importing: Generate Folder 
+[sds.importProject] Importing Project 'BAT5_19' Importing: 
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/.svn
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/.svn/text-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/.svn/text-base/.config.svn-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/.svn/text-base/.project.svn-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/.svn/prop-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/.svn/props
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/.svn/tmp
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/.svn/tmp/text-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/.svn/tmp/prop-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/.svn/tmp/props
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/.svn/entries
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/.svn/all-wcprops
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Deployment Artifacts
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Deployment Artifacts/.svn
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Deployment Artifacts/.svn/text-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Deployment Artifacts/.svn/text-base/BAT5_19.BAT5_19A.customfeature.svn-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Deployment Artifacts/.svn/prop-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Deployment Artifacts/.svn/props
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Deployment Artifacts/.svn/tmp
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Deployment Artifacts/.svn/tmp/text-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Deployment Artifacts/.svn/tmp/prop-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Deployment Artifacts/.svn/tmp/props
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Deployment Artifacts/.svn/entries
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Deployment Artifacts/.svn/all-wcprops
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Deployment Artifacts/BAT5_19.BAT5_19A.customfeature
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Service Descriptors
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Service Descriptors/.svn
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Service Descriptors/.svn/text-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Service Descriptors/.svn/text-base/HelloWorld.wsdl.svn-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Service Descriptors/.svn/text-base/HWService.wsdl.svn-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Service Descriptors/.svn/prop-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Service Descriptors/.svn/props
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Service Descriptors/.svn/tmp
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Service Descriptors/.svn/tmp/text-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Service Descriptors/.svn/tmp/prop-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Service Descriptors/.svn/tmp/props
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Service Descriptors/.svn/entries
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Service Descriptors/.svn/all-wcprops
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Service Descriptors/HelloWorld.wsdl
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Service Descriptors/HWService.wsdl
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Mediation Flows
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Mediation Flows/.svn
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Mediation Flows/.svn/text-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Mediation Flows/.svn/prop-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Mediation Flows/.svn/props
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Mediation Flows/.svn/tmp
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Mediation Flows/.svn/tmp/text-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Mediation Flows/.svn/tmp/prop-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Mediation Flows/.svn/tmp/props
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Mediation Flows/.svn/entries
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Mediation Flows/.svn/all-wcprops
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Composites
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Composites/.svn
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Composites/.svn/text-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Composites/.svn/text-base/BAT5_19A.composite.svn-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Composites/.svn/prop-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Composites/.svn/props
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Composites/.svn/tmp
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Composites/.svn/tmp/text-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Composites/.svn/tmp/prop-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Composites/.svn/tmp/props
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Composites/.svn/entries
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Composites/.svn/all-wcprops
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Composites/BAT5_19A.composite
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Resource Templates
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Resource Templates/.svn
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Resource Templates/.svn/text-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Resource Templates/.svn/text-base/SubstitutionVariables.substvar.svn-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Resource Templates/.svn/prop-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Resource Templates/.svn/props
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Resource Templates/.svn/tmp
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Resource Templates/.svn/tmp/text-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Resource Templates/.svn/tmp/prop-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Resource Templates/.svn/tmp/props
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Resource Templates/.svn/entries
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Resource Templates/.svn/all-wcprops
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Resource Templates/SubstitutionVariables.substvar
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/.config
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/.project
+[sds.importProject] Importing Project 'BAT5_19' Importing: 
+[sds.importProject] Importing Project 'BAT5_19' 
+[sds.importProject] Importing Project 'BAT5_19' Building imported projects...
+[sds.importProject] 
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: Generate Folder Opening 'com.sample.bat5_19'.
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: Generate Folder Refreshing '/com.sample.bat5_19'.
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: Generate Folder 
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: Generate Folder 
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: Generate Folder 
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: 
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/.svn
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/.svn/text-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/.svn/text-base/.classpath.svn-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/.svn/text-base/.project.svn-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/.svn/text-base/build.properties.svn-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/.svn/prop-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/.svn/props
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/.svn/tmp
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/.svn/tmp/text-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/.svn/tmp/prop-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/.svn/tmp/props
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/.svn/entries
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/.svn/all-wcprops
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/META-INF
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/META-INF/.svn
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/META-INF/.svn/text-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/META-INF/.svn/text-base/MANIFEST.MF.svn-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/META-INF/.svn/prop-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/META-INF/.svn/props
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/META-INF/.svn/tmp
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/META-INF/.svn/tmp/text-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/META-INF/.svn/tmp/prop-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/META-INF/.svn/tmp/props
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/META-INF/.svn/entries
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/META-INF/.svn/all-wcprops
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/META-INF/MANIFEST.MF
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/text-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/text-base/HelloWorldPT-a1fc9ee0-service-beans_src.jar.svn-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/text-base/HelloWorldPT-a1fc9ee0-service-interface.jar.svn-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/text-base/HelloWorldPT-d463dcb5-service-beans_src.jar.svn-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/text-base/HelloWorldPT-d463dcb5-service-interface.jar.svn-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/text-base/HelloWorldPT-a1fc9ee0-service-interface_src.jar.svn-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/text-base/HelloWorldPT-a1fc9ee0-service-beans.jar.svn-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/text-base/HelloWorldPT-d463dcb5-service-interface_src.jar.svn-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/text-base/HelloWorldPT-d463dcb5-service-beans.jar.svn-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/prop-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/prop-base/HelloWorldPT-a1fc9ee0-service-beans_src.jar.svn-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/prop-base/HelloWorldPT-a1fc9ee0-service-interface.jar.svn-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/prop-base/HelloWorldPT-d463dcb5-service-beans_src.jar.svn-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/prop-base/HelloWorldPT-d463dcb5-service-interface.jar.svn-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/prop-base/HelloWorldPT-a1fc9ee0-service-interface_src.jar.svn-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/prop-base/HelloWorldPT-a1fc9ee0-service-beans.jar.svn-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/prop-base/HelloWorldPT-d463dcb5-service-interface_src.jar.svn-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/prop-base/HelloWorldPT-d463dcb5-service-beans.jar.svn-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/props
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/tmp
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/tmp/text-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/tmp/prop-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/tmp/props
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/entries
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/all-wcprops
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/HelloWorldPT-a1fc9ee0-service-beans_src.jar
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/HelloWorldPT-a1fc9ee0-service-interface.jar
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/HelloWorldPT-d463dcb5-service-beans_src.jar
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/HelloWorldPT-d463dcb5-service-interface.jar
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/HelloWorldPT-a1fc9ee0-service-interface_src.jar
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/HelloWorldPT-a1fc9ee0-service-beans.jar
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/HelloWorldPT-d463dcb5-service-interface_src.jar
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/HelloWorldPT-d463dcb5-service-beans.jar
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/.svn
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/.svn/text-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/.svn/prop-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/.svn/props
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/.svn/tmp
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/.svn/tmp/text-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/.svn/tmp/prop-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/.svn/tmp/props
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/.svn/entries
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/.svn/all-wcprops
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/.svn
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/.svn/text-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/.svn/prop-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/.svn/props
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/.svn/tmp
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/.svn/tmp/text-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/.svn/tmp/prop-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/.svn/tmp/props
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/.svn/entries
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/.svn/all-wcprops
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/.svn
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/.svn/text-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/.svn/prop-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/.svn/props
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/.svn/tmp
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/.svn/tmp/text-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/.svn/tmp/prop-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/.svn/tmp/props
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/.svn/entries
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/.svn/all-wcprops
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/bat5_19
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/bat5_19/.svn
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/bat5_19/.svn/text-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/bat5_19/.svn/text-base/Java1.java.svn-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/bat5_19/.svn/text-base/AbstractJava1.java.svn-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/bat5_19/.svn/prop-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/bat5_19/.svn/props
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/bat5_19/.svn/tmp
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/bat5_19/.svn/tmp/text-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/bat5_19/.svn/tmp/prop-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/bat5_19/.svn/tmp/props
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/bat5_19/.svn/entries
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/bat5_19/.svn/all-wcprops
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/bat5_19/Java1.java
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/bat5_19/AbstractJava1.java
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/bin
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/bin/.svn
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/bin/.svn/text-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/bin/.svn/prop-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/bin/.svn/props
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/bin/.svn/tmp
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/bin/.svn/tmp/text-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/bin/.svn/tmp/prop-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/bin/.svn/tmp/props
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/bin/.svn/entries
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/bin/.svn/all-wcprops
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/.classpath
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/.project
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/build.properties
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: 
+[sds.importProject] Importing Project 'com.sample.bat5_19' 
+[sds.importProject] Importing Project 'com.sample.bat5_19' Building imported projects...
+
+createComposite:
+     [echo] Create composite
+[sds.createComposite] 
+[sds.createComposite] Exception in thread "Java indexing" java.lang.NullPointerException
+[sds.createComposite] 	at java.util.zip.ZipFile.getZipEntry(ZipFile.java:529)
+[sds.createComposite] 	at java.util.zip.ZipFile.access$900(ZipFile.java:56)
+[sds.createComposite] 	at java.util.zip.ZipFile$1.nextElement(ZipFile.java:511)
+[sds.createComposite] 	at java.util.zip.ZipFile$1.nextElement(ZipFile.java:481)
+[sds.createComposite] 	at org.eclipse.jdt.internal.core.search.indexing.AddJarFileToIndex.execute(AddJarFileToIndex.java:198)
+[sds.createComposite] 	at org.eclipse.jdt.internal.core.search.processing.JobManager.run(JobManager.java:394)
+[sds.createComposite] 	at java.lang.Thread.run(Thread.java:722)
+
+createComponent:
+     [echo] Create Component
+[sds.createComponent] Creating new component Java1
+
+promoteService:
+     [echo] Promote service
+[sds.promoteAll] Promoting...
+[sds.promoteAll] Loading Composite...
+[sds.promoteAll] Promoting All Services, References & Properties...
+[sds.promoteAll] Saving file...
+
+createDAA:
+     [echo] Create DAA
+
+BUILD FAILED
+/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/build.xml:42: Component "Java1" is not configured.
+
+Total time: 45 seconds
+</pre></td><td>Mon Sep 03 21:47:45 PDT 2012</td> </tr><tr bgcolor='#CC9933'><td>EVENT_ASSERT</td><td>createDAA [Assert142] </td><td><pre>Assert [Assert142] fired false of type Result as String Contains Given String
+Result did not contain string. Looked for 'BUILD SUCCESSFUL' in result 'Buildfile: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/build.xml
+
+importProjects:
+[sds.importProject] 
+[sds.importProject] Importing Project 'BAT5_19' Importing: Generate Folder Opening 'BAT5_19'.
+[sds.importProject] Importing Project 'BAT5_19' Importing: Generate Folder Refreshing '/BAT5_19'.
+[sds.importProject] Importing Project 'BAT5_19' Importing: Generate Folder 
+[sds.importProject] Importing Project 'BAT5_19' Importing: Generate Folder 
+[sds.importProject] Importing Project 'BAT5_19' Importing: Generate Folder 
+[sds.importProject] Importing Project 'BAT5_19' Importing: 
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/.svn
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/.svn/text-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/.svn/text-base/.config.svn-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/.svn/text-base/.project.svn-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/.svn/prop-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/.svn/props
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/.svn/tmp
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/.svn/tmp/text-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/.svn/tmp/prop-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/.svn/tmp/props
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/.svn/entries
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/.svn/all-wcprops
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Deployment Artifacts
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Deployment Artifacts/.svn
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Deployment Artifacts/.svn/text-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Deployment Artifacts/.svn/text-base/BAT5_19.BAT5_19A.customfeature.svn-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Deployment Artifacts/.svn/prop-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Deployment Artifacts/.svn/props
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Deployment Artifacts/.svn/tmp
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Deployment Artifacts/.svn/tmp/text-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Deployment Artifacts/.svn/tmp/prop-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Deployment Artifacts/.svn/tmp/props
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Deployment Artifacts/.svn/entries
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Deployment Artifacts/.svn/all-wcprops
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Deployment Artifacts/BAT5_19.BAT5_19A.customfeature
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Service Descriptors
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Service Descriptors/.svn
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Service Descriptors/.svn/text-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Service Descriptors/.svn/text-base/HelloWorld.wsdl.svn-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Service Descriptors/.svn/text-base/HWService.wsdl.svn-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Service Descriptors/.svn/prop-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Service Descriptors/.svn/props
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Service Descriptors/.svn/tmp
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Service Descriptors/.svn/tmp/text-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Service Descriptors/.svn/tmp/prop-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Service Descriptors/.svn/tmp/props
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Service Descriptors/.svn/entries
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Service Descriptors/.svn/all-wcprops
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Service Descriptors/HelloWorld.wsdl
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Service Descriptors/HWService.wsdl
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Mediation Flows
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Mediation Flows/.svn
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Mediation Flows/.svn/text-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Mediation Flows/.svn/prop-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Mediation Flows/.svn/props
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Mediation Flows/.svn/tmp
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Mediation Flows/.svn/tmp/text-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Mediation Flows/.svn/tmp/prop-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Mediation Flows/.svn/tmp/props
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Mediation Flows/.svn/entries
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Mediation Flows/.svn/all-wcprops
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Composites
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Composites/.svn
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Composites/.svn/text-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Composites/.svn/text-base/BAT5_19A.composite.svn-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Composites/.svn/prop-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Composites/.svn/props
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Composites/.svn/tmp
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Composites/.svn/tmp/text-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Composites/.svn/tmp/prop-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Composites/.svn/tmp/props
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Composites/.svn/entries
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Composites/.svn/all-wcprops
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Composites/BAT5_19A.composite
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Resource Templates
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Resource Templates/.svn
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Resource Templates/.svn/text-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Resource Templates/.svn/text-base/SubstitutionVariables.substvar.svn-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Resource Templates/.svn/prop-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Resource Templates/.svn/props
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Resource Templates/.svn/tmp
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Resource Templates/.svn/tmp/text-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Resource Templates/.svn/tmp/prop-base
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Resource Templates/.svn/tmp/props
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Resource Templates/.svn/entries
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Resource Templates/.svn/all-wcprops
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/Resource Templates/SubstitutionVariables.substvar
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/.config
+[sds.importProject] Importing Project 'BAT5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19/.project
+[sds.importProject] Importing Project 'BAT5_19' Importing: 
+[sds.importProject] Importing Project 'BAT5_19' 
+[sds.importProject] Importing Project 'BAT5_19' Building imported projects...
+[sds.importProject] 
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: Generate Folder Opening 'com.sample.bat5_19'.
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: Generate Folder Refreshing '/com.sample.bat5_19'.
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: Generate Folder 
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: Generate Folder 
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: Generate Folder 
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: 
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/.svn
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/.svn/text-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/.svn/text-base/.classpath.svn-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/.svn/text-base/.project.svn-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/.svn/text-base/build.properties.svn-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/.svn/prop-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/.svn/props
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/.svn/tmp
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/.svn/tmp/text-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/.svn/tmp/prop-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/.svn/tmp/props
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/.svn/entries
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/.svn/all-wcprops
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/META-INF
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/META-INF/.svn
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/META-INF/.svn/text-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/META-INF/.svn/text-base/MANIFEST.MF.svn-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/META-INF/.svn/prop-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/META-INF/.svn/props
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/META-INF/.svn/tmp
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/META-INF/.svn/tmp/text-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/META-INF/.svn/tmp/prop-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/META-INF/.svn/tmp/props
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/META-INF/.svn/entries
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/META-INF/.svn/all-wcprops
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/META-INF/MANIFEST.MF
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/text-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/text-base/HelloWorldPT-a1fc9ee0-service-beans_src.jar.svn-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/text-base/HelloWorldPT-a1fc9ee0-service-interface.jar.svn-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/text-base/HelloWorldPT-d463dcb5-service-beans_src.jar.svn-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/text-base/HelloWorldPT-d463dcb5-service-interface.jar.svn-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/text-base/HelloWorldPT-a1fc9ee0-service-interface_src.jar.svn-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/text-base/HelloWorldPT-a1fc9ee0-service-beans.jar.svn-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/text-base/HelloWorldPT-d463dcb5-service-interface_src.jar.svn-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/text-base/HelloWorldPT-d463dcb5-service-beans.jar.svn-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/prop-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/prop-base/HelloWorldPT-a1fc9ee0-service-beans_src.jar.svn-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/prop-base/HelloWorldPT-a1fc9ee0-service-interface.jar.svn-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/prop-base/HelloWorldPT-d463dcb5-service-beans_src.jar.svn-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/prop-base/HelloWorldPT-d463dcb5-service-interface.jar.svn-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/prop-base/HelloWorldPT-a1fc9ee0-service-interface_src.jar.svn-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/prop-base/HelloWorldPT-a1fc9ee0-service-beans.jar.svn-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/prop-base/HelloWorldPT-d463dcb5-service-interface_src.jar.svn-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/prop-base/HelloWorldPT-d463dcb5-service-beans.jar.svn-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/props
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/tmp
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/tmp/text-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/tmp/prop-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/tmp/props
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/entries
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/.svn/all-wcprops
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/HelloWorldPT-a1fc9ee0-service-beans_src.jar
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/HelloWorldPT-a1fc9ee0-service-interface.jar
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/HelloWorldPT-d463dcb5-service-beans_src.jar
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/HelloWorldPT-d463dcb5-service-interface.jar
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/HelloWorldPT-a1fc9ee0-service-interface_src.jar
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/HelloWorldPT-a1fc9ee0-service-beans.jar
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/HelloWorldPT-d463dcb5-service-interface_src.jar
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/lib/HelloWorldPT-d463dcb5-service-beans.jar
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/.svn
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/.svn/text-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/.svn/prop-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/.svn/props
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/.svn/tmp
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/.svn/tmp/text-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/.svn/tmp/prop-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/.svn/tmp/props
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/.svn/entries
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/.svn/all-wcprops
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/.svn
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/.svn/text-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/.svn/prop-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/.svn/props
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/.svn/tmp
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/.svn/tmp/text-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/.svn/tmp/prop-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/.svn/tmp/props
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/.svn/entries
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/.svn/all-wcprops
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/.svn
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/.svn/text-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/.svn/prop-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/.svn/props
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/.svn/tmp
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/.svn/tmp/text-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/.svn/tmp/prop-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/.svn/tmp/props
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/.svn/entries
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/.svn/all-wcprops
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/bat5_19
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/bat5_19/.svn
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/bat5_19/.svn/text-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/bat5_19/.svn/text-base/Java1.java.svn-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/bat5_19/.svn/text-base/AbstractJava1.java.svn-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/bat5_19/.svn/prop-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/bat5_19/.svn/props
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/bat5_19/.svn/tmp
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/bat5_19/.svn/tmp/text-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/bat5_19/.svn/tmp/prop-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/bat5_19/.svn/tmp/props
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/bat5_19/.svn/entries
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/bat5_19/.svn/all-wcprops
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/bat5_19/Java1.java
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/src/com/sample/bat5_19/AbstractJava1.java
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/bin
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/bin/.svn
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/bin/.svn/text-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/bin/.svn/prop-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/bin/.svn/props
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/bin/.svn/tmp
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/bin/.svn/tmp/text-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/bin/.svn/tmp/prop-base
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/bin/.svn/tmp/props
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/bin/.svn/entries
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/bin/.svn/all-wcprops
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/.classpath
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/.project
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19/build.properties
+[sds.importProject] Importing Project 'com.sample.bat5_19' Importing: 
+[sds.importProject] Importing Project 'com.sample.bat5_19' 
+[sds.importProject] Importing Project 'com.sample.bat5_19' Building imported projects...
+
+createComposite:
+     [echo] Create composite
+[sds.createComposite] 
+[sds.createComposite] Exception in thread "Java indexing" java.lang.NullPointerException
+[sds.createComposite] 	at java.util.zip.ZipFile.getZipEntry(ZipFile.java:529)
+[sds.createComposite] 	at java.util.zip.ZipFile.access$900(ZipFile.java:56)
+[sds.createComposite] 	at java.util.zip.ZipFile$1.nextElement(ZipFile.java:511)
+[sds.createComposite] 	at java.util.zip.ZipFile$1.nextElement(ZipFile.java:481)
+[sds.createComposite] 	at org.eclipse.jdt.internal.core.search.indexing.AddJarFileToIndex.execute(AddJarFileToIndex.java:198)
+[sds.createComposite] 	at org.eclipse.jdt.internal.core.search.processing.JobManager.run(JobManager.java:394)
+[sds.createComposite] 	at java.lang.Thread.run(Thread.java:722)
+
+createComponent:
+     [echo] Create Component
+[sds.createComponent] Creating new component Java1
+
+promoteService:
+     [echo] Promote service
+[sds.promoteAll] Promoting...
+[sds.promoteAll] Loading Composite...
+[sds.promoteAll] Promoting All Services, References & Properties...
+[sds.promoteAll] Saving file...
+
+createDAA:
+     [echo] Create DAA
+
+BUILD FAILED
+/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/build.xml:42: Component "Java1" is not configured.
+
+Total time: 45 seconds
+'</pre></td><td>Mon Sep 03 21:47:45 PDT 2012</td> </tr><tr bgcolor='red'><td>EVENT_TESTFAILED</td><td></td><td></td><td>Mon Sep 03 21:47:45 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TESTEND</td><td></td><td></td><td>Mon Sep 03 21:47:46 PDT 2012</td> </tr></table></body></html>

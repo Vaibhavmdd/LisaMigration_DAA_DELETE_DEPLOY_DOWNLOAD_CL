@@ -1,0 +1,140 @@
+<project name="EnterpriseDeploymentHealthcheck" default="health.ent">
+<import file="${TIBCO_AMXADMIN_HOME}/bin/taskdef.xml" />
+<import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+<import file="enterprise_healthcheck_targets.xml" />
+	
+		<basename file="${ant.file}" property="build_file_name"/>
+	<description>For information about available targets, please re-run the Ant script with the 
+    'help' target: 'ant -f ${build_file_name} help'</description>
+	<!--
+        This property lets you safely define all paths relative to the absolute location
+        of this Ant file.
+	-->
+	<dirname property="admin.samples.directory" file="${ant.file.enterprise_healthcheck_build}"/>
+	<!-- START: Check if script is being run from TIBCO_HOME or in TIBCO_CONFIG_HOME; if TIBCO_HOME then set property tibco.home. -->
+	<property name="probable.tibco.home" location="../../../"/>
+	<condition property="tibco.home" value="${probable.tibco.home}">
+		<and>
+			<resourceexists>
+				<!-- if found, then script is being run from TIBC0_HOME -->
+				<file file="${probable.tibco.home}\components\shared\1.0.0"/>
+			</resourceexists>
+			<not>
+				<isset property="${tibco.home}"/>
+			</not>
+		</and>
+	</condition>
+	<!-- END: Check if script is being run from TIBCO_HOME or in TIBCO_CONFIG_HOME; if TIBCO_HOME then set property tibco.home.  -->
+	<condition property="application.processid" value="N/A">
+	<not>  
+		  <isset property="application.processid"/>
+		</not>
+	</condition>
+	<!-- When you use ant.exe to start build TIBCO/Wrapper sets below property that holds PID of this process/build -->
+	<echo>PID: ${application.processid}</echo>
+	<!-- Defalut data file , input to Health check -->
+	<property name="dataFile" value="${basedir}/enterprise_healthcheck_data.xml"/>
+
+	<!--Predefine ${instanceProperties} to control a different Administrator server with this script.-->
+	<property name="instanceProperties" value="${remotePropsFile}"/>
+	
+	<fail>
+		Error:${line.separator}
+It appears that the .properties file [${admin.samples.directory}/remote_props.properties] 
+
+is missing, please provide one. 
+Typically you can find one pre-configured in your &lt;TIBCO_CONFIG_HOME>/admin/&lt;ENTERPRISE_NAME>/samples 
+
+directory: 
+        ENTERPRISE_NAME: Enterprise-name of TIBCO ActiveMatrix Administrator Server on which 
+Health Check is being run.
+        TIBCO_CONFIG_HOME: Path to Configuration Home where above TIBCO ActiveMatrix 
+Administrator Server is running.
+ 
+Please copy &lt;TIBCO_CONFIG_HOME>/admin/&lt;ENTERPRISE_NAME>/samples/remote_props.properties 
+
+to [${admin.samples.directory}] and re-run Enterprise Deployment Health Check script.
+		<condition>
+			<not>
+				<resourceexists>
+					<file file="${remotePropsFile}"/>
+				</resourceexists>
+			</not>
+		</condition>
+	</fail>
+	<echo>Using TIBCO_HOME: ${tibco.home}</echo>
+	<echo>Using remote_props.properties: ${instanceProperties}</echo>
+	<echo>For information about available targets, please re-run the Ant script with the</echo>
+	<echo>'help' option: 'ant -f ${build_file_name} help'</echo>
+	
+
+	<target name="-upload.daa" unless="no_Upload">
+		<AMXAdminTask action="add" 
+			objectSelector="DAA" 
+			remote="true" 
+			propsFile="${instanceProperties}" 
+			dataFile="${dataFile}" 
+			overwrite="true" 
+			merge="true" 
+			createIfNotExists="true" 
+			force="false" 
+			failOnError="false"/>
+	</target>
+	<target name="health.ent" depends="-test.targets.order,-upload.daa">
+	<echoproperties/>
+		<AMXAdminTask 
+			remote="true" 
+			propsFile="${instanceProperties}" 
+			action="checkDeploymentHealth" 
+			dataFile="${dataFile}" 
+			objectSelector="Enterprise" 
+			overwrite="true" 
+			merge="false" 
+			createIfNotExists="true" 
+			force="false" 
+			failOnError="true"/>
+		<!-- options="reportDir /opt/tibco/healthCheckoutput" -->
+	</target>
+	<target name="health.envs" depends="-test.targets.order,-upload.daa">
+		<AMXAdminTask 
+			remote="true" 
+			propsFile="${instanceProperties}" 
+			action="checkDeploymentHealth" 
+			dataFile="${dataFile}" 
+			objectSelector="//Environment" 
+			overwrite="true" 
+			merge="false" 
+			createIfNotExists="true" 
+			force="false" 
+			failOnError="true"/>
+		<!-- options="reportDir /opt/tibco/healthCheckoutput" -->
+	</target>
+	<target name="health.nodes" depends="-test.targets.order,-upload.daa">
+		<AMXAdminTask 
+			remote="true" 
+			propsFile="${instanceProperties}" 
+			action="checkDeploymentHealth" 
+			dataFile="${dataFile}" 
+			objectSelector="//Node" 
+			overwrite="true" 
+			merge="false" 
+			createIfNotExists="true" 
+			force="false" 
+			failOnError="false"/>
+		<!-- options="reportDir /opt/tibco/healthCheckoutput" -->
+	</target>
+	<target name="health.hosts" depends="-test.targets.order,-upload.daa">
+		<AMXAdminTask 
+			remote="true" 
+			propsFile="${instanceProperties}" 
+			action="checkDeploymentHealth" 
+			dataFile="${dataFile}" 
+			objectSelector="//Host" 
+			overwrite="true" 
+			merge="false" 
+			createIfNotExists="true" 
+			force="false" 
+			failOnError="true"/>
+		<!-- options="reportDir /opt/tibco/healthCheckoutput" -->
+	</target>
+</project>

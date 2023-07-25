@@ -1,0 +1,46 @@
+<html>
+<body>
+<h4 align="right">
+<i><a href="../../../../index.html" target="_top">TIBCO Common Library for LISA</a></i>
+</h4>
+<h4>com.tibco.lisa.bw</h4>
+<hr>
+<table border="0">
+<tr>
+<td style="font-size=20;"><b>JMXStopEngine</b></td>
+</tr>
+<tr valign="top">
+<td>Stop a BW Engine using JMX on the given host name and port number.<br>
+<br>Requirements:<br>------------------<br>-Need to use BW 5.6 or later version, which supports JMX.<br>
+<br>-The following JMX properties need to be set in the bwengine.tra file to enable JMX:<br>java.property.com.sun.management.jmxremote=true<br>java.property.com.sun.management.jmxremote.port=1111<br>java.property.com.sun.management.jmxremote.authenticate=false<br>java.property.com.sun.management.jmxremote.ssl=false<br>Jmx.Enabled=true<br>
+<br>-The last property: Jmx.Enabled=true can actually be put into a config file and referred to accordingly<br>
+<br>For example, one can start bwengine:<br>
+<br>C:\tibco\bw\5.6\bin&gt;bwengine -p bwengine.tra C:\tsi-tests\tests\bw\func\engine\bpel\1.1\1_1<br> 
+<br>-The machine host name and port number (e.g. 1111 above) are accessed in order to use JMX to stop the BW engine<br>
+</td>
+</tr>
+<tr></tr>
+<tr></tr>
+<tr>
+<td>
+<table border="0.5" width="550">
+<tr bgcolor="#CCCCFF" valign="top">
+<th width="25%" align="left">
+										Parameter
+									</th><th width="75%" align="left">
+										Description
+									</th>
+</tr>
+<tr valign="top">
+<td>host</td><td>host where bw is running</td>
+</tr>
+<tr valign="top">
+<td>port</td><td>port number of host</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<hr>
+</body>
+</html>

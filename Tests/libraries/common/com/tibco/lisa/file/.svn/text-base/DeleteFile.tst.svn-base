@@ -1,0 +1,284 @@
+<?xml version="1.0" ?>
+
+
+<!-- Test Case created by LISA Test Editor -->
+<!-- On: Wed Oct 27 13:10:47 PDT 2010 -->
+
+
+<TestCase name="DeleteFile" version="2">
+<id>65476564</id>
+<Documentation>Delete file or directory. &#13;&#10;Recursive deletion occurs on directory.</Documentation>
+<sig>ZWQ9MiZ0Y3Y9MiZsaXNhdj00LjYuNyAoNC42LjcuMTYpJm5vZGVzPTk0NTU4NjkyMg==</sig>
+<rootNode>Log</rootNode>
+<subprocess>true</subprocess>
+
+<initState>
+    <Parameter>
+    <key>file</key>
+    <value></value>
+    <name>File or directory to be deleted</name>
+    </Parameter>
+</initState>
+
+<resultState>
+    <Parameter>
+    <key>lisa.continue.rsp</key>
+    <value>Set in Step continue</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.continue.rsp.time</key>
+    <value>Set in Step continue</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.deleteFile.rsp</key>
+    <value>Set in Step deleteFile</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.deleteFile.rsp.time</key>
+    <value>Set in Step deleteFile</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.end.rsp.time</key>
+    <value>Set in Step end</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.fail.rsp</key>
+    <value>Set in Step fail</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.fail.rsp.time</key>
+    <value>Set in Step fail</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.Log.rsp</key>
+    <value>Set in Step Log</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.Log.rsp.time</key>
+    <value>Set in Step Log</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.whichPlatform.rsp</key>
+    <value>Set in Step whichPlatform</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.whichPlatform.rsp.time</key>
+    <value>Set in Step whichPlatform</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.executeOnUnix.rsp</key>
+    <value>Set in Step executeOnUnix</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.executeOnUnix.rsp.time</key>
+    <value>Set in Step executeOnUnix</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.command.exit.code</key>
+    <value>Set in Step executeOnUnix</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.command.pid_handle</key>
+    <value>Set in Step executeOnUnix</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.executeOnWindows.rsp</key>
+    <value>Set in Step executeOnWindows</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.executeOnWindows.rsp.time</key>
+    <value>Set in Step executeOnWindows</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.end.rsp</key>
+    <value>Set in Step end</value>
+    </Parameter>
+</resultState>
+
+<Configurations>
+<Configuration>
+<name>default</name>
+<external>false</external>
+<props>
+</props>
+</Configuration>
+</Configurations>
+    <Node name="Log" log=""
+          type="com.itko.lisa.test.TestNodeLogger" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="deleteFile" > 
+
+<graphx>10</graphx>
+<graphy>10</graphy>
+      <log>Deleting {{file}} ...</log>
+    </Node>
+
+
+    <Node name="deleteFile" log=""
+          type="com.itko.lisa.test.ScriptNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="end" > 
+
+<graphx>100</graphx>
+<graphy>0</graphy>
+<onerror>fail</onerror>
+<script>import java.io.File;&#13;&#10;&#13;&#10;// This function delete a file or directory recursively&#13;&#10;deleteFile(String strFile) {&#13;&#10;&#13;&#10; File f = new File(strFile);&#13;&#10; String[] strChildren = null;&#13;&#10; boolean deletionOk = false;&#13;&#10; &#13;&#10; if(!f.exists())&#13;&#10;  return true;&#13;&#10;              &#13;&#10; if (f.isDirectory()) {&#13;&#10;  // Get children&#13;&#10;  strChildren = f.list();            &#13;&#10;  // Go through each child&#13;&#10;  for (int i = 0; i &lt; strChildren.length; i++) {&#13;&#10;   deletionOk = deleteFile(new File(f, strChildren[i]).getAbsolutePath());&#13;&#10;   if (!deletionOk) {&#13;&#10;    return false;&#13;&#10;   }&#13;&#10;  }&#13;&#10; }&#13;&#10; // The directory is now empty so delete it&#13;&#10; return f.delete();&#13;&#10;}&#13;&#10;&#13;&#10;// Main&#13;&#10;String baseSuccessMsg = &quot;Delete File Success&quot;; // Do not modify. Assertions might exist on this string.&#13;&#10;String baseErrorMsg = &quot;Delete File Error&quot;; // Do not modify. Assertions might exist on this string.&#13;&#10;fileS = testExec.parseInState(file).replace(&apos;\\&apos;,&apos;/&apos;);&#13;&#10;try {&#13;&#10; File fileF = new File(fileS);&#13;&#10; String file = fileF.getCanonicalPath();&#13;&#10; if(deleteFile(file))&#13;&#10;  return baseSuccessMsg + &quot;: &quot; + file;&#13;&#10; else&#13;&#10;  return baseErrorMsg;&#13;&#10;}&#13;&#10;catch(Exception e) {&#13;&#10; return baseErrorMsg + &quot;: &quot; + e.getMessage();&#13;&#10;}</script>
+
+      <!-- Result Elements -->
+<CheckResult assertTrue="true" name="Assert78" type="com.itko.lisa.test.CheckResultContains">
+<log>{{lisa.deleteFile.rsp}}</log>
+<then>whichPlatform</then>
+<valueToAssertKey></valueToAssertKey>
+        <param>Delete File Error</param>
+</CheckResult>
+
+    </Node>
+
+
+    <Node name="whichPlatform" log=""
+          type="com.itko.lisa.test.ScriptNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="executeOnUnix" > 
+
+<graphx>-1</graphx>
+<graphy>-1</graphy>
+<onerror>fail</onerror>
+<script>if (com.itko.util.Utilities.isWindows())&#13;&#10;    return &quot;Windows&quot;;&#13;&#10;else &#13;&#10;    return &quot;Unix&quot;;</script>
+
+      <!-- Result Elements -->
+<CheckResult assertTrue="true" name="Any Exception Then Fail" type="com.itko.lisa.dynexec.CheckInvocationEx">
+<log>Assert [Any Exception Then Fail] fired true of type Assert on Invocation Exception</log>
+<then>fail</then>
+<valueToAssertKey></valueToAssertKey>
+        <param>.*</param>
+</CheckResult>
+
+<CheckResult assertTrue="true" name="Assert144" type="com.itko.lisa.test.CheckResultContains">
+<log>Assert [Assert144] fired true of type Result as String Contains Given String</log>
+<then>executeOnWindows</then>
+<valueToAssertKey></valueToAssertKey>
+        <param>Windows</param>
+</CheckResult>
+
+    </Node>
+
+
+    <Node name="executeOnUnix" log=""
+          type="com.itko.lisa.utils.CommandLineExecNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="end" > 
+
+<graphx>-1</graphx>
+<graphy>-1</graphy>
+<cmd>/bin/rm -rf {{=testExec.parseInState(file).replace(&apos;\\&apos;,&apos;/&apos;)}}</cmd>
+<basedir>{{user.home}}</basedir>
+<toNode>fail</toNode>
+<exceptionNode>fail</exceptionNode>
+<timeOut>300</timeOut>
+<killAtEnd>false</killAtEnd>
+<wait>true</wait>
+<addToEnv>false</addToEnv>
+<spawn>false</spawn>
+<execShell>false</execShell>
+<env>
+</env>
+<exitCodes>
+</exitCodes>
+
+      <!-- Result Elements -->
+<CheckResult assertTrue="true" name="Assert180" type="com.itko.lisa.test.CheckResultAny">
+<log>Unix deletion failed</log>
+<then>fail</then>
+<valueToAssertKey></valueToAssertKey>
+</CheckResult>
+
+    </Node>
+
+
+    <Node name="executeOnWindows" log=""
+          type="com.itko.lisa.utils.CommandLineExecNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="end" > 
+
+<graphx>-1</graphx>
+<graphy>-1</graphy>
+<cmd>{{=(((new File(testExec.parseInState(file))).isDirectory())?&quot;rmdir /s /q&quot;:&quot;del /f /s /q&quot;)}} {{=testExec.parseInState(file).replace(&apos;/&apos;,&apos;\\&apos;)}}</cmd>
+<basedir>{{user.home}}</basedir>
+<toNode>fail</toNode>
+<exceptionNode>fail</exceptionNode>
+<timeOut>300</timeOut>
+<killAtEnd>false</killAtEnd>
+<wait>true</wait>
+<addToEnv>false</addToEnv>
+<spawn>false</spawn>
+<execShell>true</execShell>
+<env>
+</env>
+<exitCodes>
+</exitCodes>
+
+      <!-- Result Elements -->
+<CheckResult assertTrue="true" name="Assert264" type="com.itko.lisa.test.CheckResultContains">
+<log>The system cannot find the file specified</log>
+<then>end</then>
+<valueToAssertKey></valueToAssertKey>
+        <param>The system cannot find the file specified</param>
+</CheckResult>
+
+<CheckResult assertTrue="true" name="Assert137" type="com.itko.lisa.test.CheckResultContains">
+<log>The directory name is invalid</log>
+<then>end</then>
+        <param>The directory name is invalid</param>
+</CheckResult>
+
+<CheckResult assertTrue="true" name="Assert172" type="com.itko.lisa.test.CheckResultContains">
+<log>The process cannot access the file because it is being used by another process</log>
+<then>fail</then>
+        <param>The process cannot access the file because it is being used by another process</param>
+</CheckResult>
+
+    </Node>
+
+
+    <Node name="end" log=""
+          type="com.itko.lisa.test.NormalEnd" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="true" 
+          next="fail" > 
+
+<graphx>100</graphx>
+<graphy>200</graphy>
+    </Node>
+
+
+    <Node name="fail" log=""
+          type="com.itko.lisa.test.Abend" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="true" 
+          next="unknown" > 
+
+<graphx>250</graphx>
+<graphy>250</graphy>
+    </Node>
+
+
+</TestCase>

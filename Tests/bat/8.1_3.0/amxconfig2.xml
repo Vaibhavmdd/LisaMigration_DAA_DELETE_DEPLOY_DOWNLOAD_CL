@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+
+	<Environment 
+		xsi:type="amxdata:Environment" 
+	    name="[[env.name]]" 
+	    description="QAEnvironment_Administrator environment" 
+	    contact="TIBCO">
+	
+		<Application 
+			xsi:type="amxdata:Application" 
+			name="BAT8.1_SOAP2JavaCallJava3Stop_Server"
+			contact="Boen Zhang"
+			description="SOAP-Java1-Java2 -Reference Call SOAP-Java3 (Stop Java3)">
+			
+			<Component xsi:type="amxdata_base:Component_base" name="JavaHelloComponent">
+				<Node xsi:type="amxdata_reference:Node_reference" name="[[env.node2.name]]" environmentName="[[env.name]]"/>
+			</Component>
+			<PromotedService xsi:type="amxdata_base:Service_base" name="HelloWorldPT">
+				<Binding xsi:type="amxdata_base:Binding_base" name="SOAPService_Binding1">
+					<Node xsi:type="amxdata_reference:Node_reference" name="[[env.node2.name]]" environmentName="[[env.name]]"/>
+					<Property xsi:type="amxdata:Property" name="HttpInboundConnectionConfig" value="HttpConnector_BAT8.1_Provider"/>
+				</Binding>
+			</PromotedService>
+			<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="server"/>
+		</Application>
+	</Environment>
+</amxdata_base:Enterprise>

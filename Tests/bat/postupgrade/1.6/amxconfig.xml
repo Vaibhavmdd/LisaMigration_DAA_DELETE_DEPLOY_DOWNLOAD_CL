@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise 
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types" 
+	xmlns:amxdata_binding="http://tibco.com/amxadministrator/command/line/types_binding" 
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base" 
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd http://tibco.com/amxadministrator/command/line/types_binding ../schemas/bindingdata.xsd" >
+<Environment xsi:type="amxdata:Environment" name="[[new.env.name]]">
+	<Node xsi:type="amxdata:Node" hostName="[[host.name]]" name="[[new.env.node2.name]]" portNumber="8021">
+
+			<Permissions>
+				<Permission user="User4" allow="view, edit, owner, start_stop, deploy_app_to, create_ri"/>
+				<Permission user="User2" allow="view"/>
+				<Permission user="User3" allow="view, edit, edit_logging_config, edit_software"/>
+			</Permissions>
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="http_1" resourceTemplateName="http_1"/>
+			
+			</Node>
+			
+			<Application xsi:type="amxdata:Application" 
+			name="app1.sample" 
+			contact="" description="">
+			<Component xsi:type="amxdata:Component" name="Java1">
+				<Node 
+					name="[[new.env.node2.name]]" 
+					environmentName="[[new.env.name]]"/>
+			</Component>
+		
+		<Permissions>
+				<Permission user="User4" allow="view, edit, owner, start_stop, deploy_undeploy"/>
+				<Permission user="User2" allow="view"/>
+				<Permission user="User3" allow="view, edit, edit_logging_config"/>
+				
+				
+			</Permissions>
+		
+		<ApplicationTemplate 
+				xsi:type="amxdata_reference:ApplicationTemplate_reference" 
+				name="globallocal"/>
+		</Application>
+			<Permissions>
+			<Permission user="User4" allow="view, edit, owner, create_node, create_app, promote_demote_svs_ref"/>
+            <Permission user="User2" allow="view"/>
+			<Permission user="User3" allow="view, edit"/>
+        </Permissions>
+		
+    </Environment>
+	
+	<ResourceTemplate 
+		xsi:type="amxdata:HttpConnectorResourceTemplate"
+		name="http_1" 
+		host="localhost" 
+		port="9060" 
+		headerBufferSize="4096"
+		requestBufferSize="8192" 
+		responseBufferSize="24576" 
+		maxIdleTime="200000"
+		lowResourceMaxIdleTime="-1" 
+		description="This is HttpConnector RT for test">
+		<Permissions>
+            <Permission user="User4" allow="view, edit, owner"/>
+            <Permission user="User2" allow="view"/>
+			<Permission user="User3" allow="view, edit"/>
+        </Permissions>
+	</ResourceTemplate>
+	
+	<DAA 
+		xsi:type="amxdata:DAA" 
+		description="App1"
+		location="C:\Users\pkaur\Downloads\app1.daa"/>
+		
+		
+		</amxdata_base:Enterprise>

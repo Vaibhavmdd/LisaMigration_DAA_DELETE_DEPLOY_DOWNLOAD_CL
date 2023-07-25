@@ -1,0 +1,129 @@
+<?xml version="1.0" ?>
+
+
+<!-- TestCase created by LISA Test Editor -->
+<!-- On: Wed May 09 12:38:38 PDT 2007 -->
+
+
+<TestCase name="Sleep" version="2">
+<id>a4d60a76</id>
+<Documentation>Sleep for a number of seconds.</Documentation>
+<sig>ZWQ9MiZ0Y3Y9MiZsaXNhdj0zLjVlICgzMjM1KSZub2Rlcz0tNDU0MzY3NTg5</sig>
+<rootNode>Log</rootNode>
+<subprocess>true</subprocess>
+
+<initState>
+    <Parameter>
+    <key>windowsSleep</key>
+    <value></value>
+    <name>Number of seconds to sleep on Windows platforms</name>
+    </Parameter>
+    <Parameter>
+    <key>unixSleep</key>
+    <value></value>
+    <name>Number of seconds to sleep on Unix platforms</name>
+    </Parameter>
+</initState>
+
+<resultState>
+    <Parameter>
+    <key>lisa.continue.rsp</key>
+    <value>Set in Step continue</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.continue.rsp.time</key>
+    <value>Set in Step continue</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.sleep.rsp</key>
+    <value>Set in Step sleep</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.sleep.rsp.time</key>
+    <value>Set in Step sleep</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.end.rsp</key>
+    <value>Set in Step end</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.end.rsp.time</key>
+    <value>Set in Step end</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.Log.rsp</key>
+    <value>Set in Step Log</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.Log.rsp.time</key>
+    <value>Set in Step Log</value>
+    </Parameter>
+</resultState>
+
+<Configurations>
+<Configuration>
+<name>default</name>
+<external>false</external>
+<props>
+</props>
+</Configuration>
+</Configurations>
+    <Node name="Log" log=""
+          type="com.itko.lisa.test.TestNodeLogger" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="sleep" > 
+
+<graphx>-1</graphx>
+<graphy>-1</graphy>
+<Documentation></Documentation>
+<remoteServer>local</remoteServer>
+      <log>Sleeping for {{windowsSleep}} on Windows or {{unixSleep}} on Unix ...</log>
+    </Node>
+
+
+    <Node name="sleep" log=""
+          type="com.itko.lisa.test.ScriptNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="end" > 
+
+<graphx>-1</graphx>
+<graphy>-1</graphy>
+<Documentation></Documentation>
+<remoteServer>local</remoteServer>
+<script>sleep(secStr) {&#10;  try {&#10;    int secInt = Integer.parseInt(secStr);&#10;    if (secInt &lt; 0) Thread.sleep(0);&#10;    else Thread.sleep(secInt*1000);&#10;  }&#10;  catch(NumberFormatException nfe) {&#10;    Thread.sleep(0);&#10;  }&#10;}&#10;&#10;if (System.getProperty(&quot;os.name&quot;).toLowerCase().indexOf(&quot;windows&quot;) &gt; -1)&#10;  sleep(&quot;{{windowsSleep}}&quot;);&#10;else&#10;  sleep(&quot;{{unixSleep}}&quot;);</script>
+    </Node>
+
+
+    <Node name="end" log=""
+          type="com.itko.lisa.test.NormalEnd" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="true" 
+          next="fail" > 
+
+<graphx>-1</graphx>
+<graphy>-1</graphy>
+    </Node>
+
+
+    <Node name="fail" log=""
+          type="com.itko.lisa.test.Abend" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="true" 
+          next="unknown" > 
+
+<graphx>-1</graphx>
+<graphy>-1</graphy>
+    </Node>
+
+
+</TestCase>

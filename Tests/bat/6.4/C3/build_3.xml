@@ -1,0 +1,26 @@
+<project default="deploy.app">
+	<import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+	
+	<target name="deploy.app" >
+		<upload.daa dataFile="${amxConfigFile}" />
+		<create.app dataFile="${amxConfigFile}" />
+		<map.app.to.node dataFile="${amxConfigFile}" />
+		<create.rt dataFile="${amxConfigFile}" objectSelector="JNDIConnectionFactoryResourceTemplate | JNDIConnectionConfigurationResourceTemplate | JNDIDestinationResourceTemplate" />
+		<create.ri dataFile="${amxConfigFile}" />
+		<install.ri dataFile="${amxConfigFile}" />
+		<deploy.app dataFile="${amxConfigFile}" appName="bat64_c3" timeout="${deployTimeout}" />
+	</target>
+	<target name="undeploy.app">
+		<undeploy.app dataFile="${amxConfigFile}" appName="bat64_c3" timeout="${deployTimeout}" />
+		<delete.app dataFile="${amxConfigFile}" />
+		<uninstall.ri dataFile="${amxConfigFile}" resourceInstanceName = "BAT64_JmsDest"/>
+		<delete.ri dataFile="${amxConfigFile}" resourceInstanceName = "BAT64_JmsDest"/>
+		<uninstall.ri dataFile="${amxConfigFile}" resourceInstanceName = "BAT64_JmsDestReply"/>
+		<delete.ri dataFile="${amxConfigFile}" resourceInstanceName = "BAT64_JmsDestReply"/>
+		<uninstall.ri dataFile="${amxConfigFile}" resourceInstanceName = "BAT64_JmsConnFactory"/>
+		<delete.ri dataFile="${amxConfigFile}" resourceInstanceName = "BAT64_JmsConnFactory"/>
+		<uninstall.ri dataFile="${amxConfigFile}" resourceInstanceName = "BAT64_JndiConnConf"/>
+		<delete.ri dataFile="${amxConfigFile}" resourceInstanceName = "BAT64_JndiConnConf"/>
+		<delete.rt dataFile="${amxConfigFile}" objectSelector="JNDIConnectionFactoryResourceTemplate | JNDIDestinationResourceTemplate | JNDIConnectionConfigurationResourceTemplate" />
+	</target>
+</project>

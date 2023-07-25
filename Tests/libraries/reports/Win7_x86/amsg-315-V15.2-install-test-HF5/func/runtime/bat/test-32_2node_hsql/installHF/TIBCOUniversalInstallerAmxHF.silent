@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>---Universal Installer Silent Installation Properties---</comment>
+
+<!--accept the license agreement-->
+<entry key="acceptLicense">true</entry>
+
+<!--If multiple environments are supported, create a new one or use an existing one. Set createNewEnvironment to false if using an existing environment -->
+<!--If the product does not support multiple environments, then the values below are ignored-->
+<entry key="createNewEnvironment">false</entry>
+
+<!--the root installation directory-->
+<!--if the product does not support multiple instances and TIBCO_HOME has already been set then-->
+<!--this value is ignored and the existing TIBCO_HOME is used as the installation root-->
+<entry key="installationRoot">C:/tibco/matrix/test-Install-download-315-HF</entry>
+
+<!--If using an existing environment then the installationRoot AND environmentName MUST match a pre-existing environment-->
+<!--If creating a new environment then the installationRoot AND environmentName MUST BE UNIQUE and not match a pre-existing environment-->
+<entry key="environmentName">AMX3-QA-BAT</entry>
+
+<!-- configDirectoryRoot - location of configuration files if it is not already defined for the TIBCO HOME instance. Configuration files will be added to configDirectoryRoot/tibco/cfgmgmt -->
+<entry key="configDirectoryRoot">C:/tibco/matrix/test-Install-download-315-HF/data</entry>
+
+<entry key="reinstallFeatures">true</entry>
+
+<!-- A prerequistite is to install hibernate. This can be done by downloading hibernate or specifying the absolute path to the hibernate location on the system. To download hibernate, please specify downloadHibernate to true. To specify the absolute path of hibernate on the system instead, set downloadHibernate to false and hibernatePath value should be set to <absolute directory path>/hibernate_zip_assembly_3.2.300.001.zip -->
+<entry key="downloadHibernate">true</entry>
+<entry key="hibernatePath"></entry>
+
+<!-- LGPL License download -->
+<entry key="LGPLAssemblyLicenseAccepted">true</entry>
+<entry key="LGPLAssemblyDownload">true</entry>
+<entry key="LGPLAssemblyPath"></entry>
+
+<!--Profiles Selection-->
+<!-- The 'selectedProfiles' value is a comma separated list of profiles to install. If a profile is listed which does not exist, then it is ignored. At least one profile must be listed if useInstallProfile is set to true -->
+<entry key="useInstallProfile">false</entry>
+<entry key="selectedProfiles">Administration,Runtime Host,SOA Development</entry>
+
+</properties>

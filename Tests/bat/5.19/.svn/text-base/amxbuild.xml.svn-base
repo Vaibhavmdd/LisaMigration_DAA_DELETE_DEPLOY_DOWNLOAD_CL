@@ -1,0 +1,28 @@
+<project default="deploy.app">
+	<import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+
+	<target name="deploy.app">
+		<upload.daa dataFile="${amxConfigFile}" />
+		<create.app dataFile="${amxConfigFile}" />
+		<setup.ri dataFile="${amxConfigFile}" timeout="${deployTimeout}" />
+		<map.component.to.node action="set" dataFile="${amxConfigFile}" />		
+		<create.service.binding dataFile="${amxConfigFile}" />
+		<create.reference.binding dataFile="${amxConfigFile}" />
+		<map.service.binding.to.node action="set" dataFile="${amxConfigFile}" />
+		<map.reference.binding.to.node action="set" dataFile="${amxConfigFile}" />		
+		<!--
+		<set.service.binding.property dataFile="${amxConfigFile}" />
+		<set.reference.binding.property dataFile="${amxConfigFile}" />
+		-->
+		<!--update.service.binding dataFile="${amxConfigFile}" />
+		<update.reference.binding dataFile="${amxConfigFile}" /-->
+		<deploy.app dataFile="${amxConfigFile}" timeout="${deployTimeout}"/>
+	</target>
+
+	<target name="undeploy.app">
+		<undeploy.app dataFile="${amxConfigFile}" timeout="${deployTimeout}" />
+	</target>
+
+		
+</project>
+

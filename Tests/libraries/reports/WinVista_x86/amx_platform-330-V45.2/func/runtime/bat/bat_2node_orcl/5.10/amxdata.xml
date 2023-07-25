@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise 
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types" 
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base" 
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference" 
+	xmlns:amxdata_jmsssr="http://tibco.com/amxadministrator/command/line/types_jmssr" 
+	xmlns:amxdata_jmssr_base="http://tibco.com/amxadministrator/command/line/types_jmssr_base"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd
+	http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd 
+	http://tibco.com/amxadministrator/command/line/types_reference ../schemas/amxdata_reference.xsd 
+	http://tibco.com/amxadministrator/command/line/types_jmssr ../schemas/jmssr.xsd 
+	http://tibco.com/amxadministrator/command/line/types_jmssr_base ../schemas/jmssr_base.xsd">
+
+    <Environment xsi:type="amxdata:Environment" 
+		name="QAEnvironment_KPHAPUNK-Z820" 
+		description="integration environment" 
+		contact="TIBCO">
+		
+		<Node xsi:type="amxdata:Node"
+			name="QANode1">						
+
+		<ResourceInstance xsi:type="amxdata:ResourceInstance" name="teneo" resourceTemplateName="teneo"/>
+		<ResourceInstance xsi:type="amxdata:ResourceInstance" name="jdbc" resourceTemplateName="jdbc"/>
+		<ResourceInstance xsi:type="amxdata:ResourceInstance" name="ldapConn" resourceTemplateName="ldapConn"/>
+		<ResourceInstance xsi:type="amxdata:ResourceInstance" name="jdbc_identity" resourceTemplateName="jdbc_identity"/>
+		<ResourceInstance xsi:type="amxdata:ResourceInstance" name="ldapConn_identity" resourceTemplateName="ldapConn_identity"/>
+		<ResourceInstance xsi:type="amxdata:ResourceInstance" name="keystore" resourceTemplateName="keystore"/>				
+		</Node>
+		
+		<Node xsi:type="amxdata:Node"
+			name="QANode2">
+		<ResourceInstance xsi:type="amxdata:ResourceInstance" name="smtp" resourceTemplateName="smtp"/>
+		<ResourceInstance xsi:type="amxdata:ResourceInstance" name="smtp_identity" resourceTemplateName="smtp_identity"/>
+		<ResourceInstance xsi:type="amxdata:ResourceInstance" name="keystore" resourceTemplateName="keystore"/>
+		<ResourceInstance xsi:type="amxdata:ResourceInstance" name="jmsConnFactory" resourceTemplateName="jmsConnFactory"/>
+		<ResourceInstance xsi:type="amxdata:ResourceInstance" name="jmsDest" resourceTemplateName="jmsDest"/>
+		<ResourceInstance xsi:type="amxdata:ResourceInstance" name="jmsConnFactoryConf" resourceTemplateName="jmsConnFactoryConf"/>				
+		<ResourceInstance xsi:type="amxdata:ResourceInstance" name="jmsDestConf" resourceTemplateName="jmsDestConf"/>
+		<ResourceInstance xsi:type="amxdata:ResourceInstance" name="jmsDest2" resourceTemplateName="jmsDest2"/>				
+		<ResourceInstance xsi:type="amxdata:ResourceInstance" name="jmsDestConf2" resourceTemplateName="jmsDestConf2"/>
+		<ResourceInstance xsi:type="amxdata:ResourceInstance" name="jndiConnConf" resourceTemplateName="jndiConnConf"/>
+        </Node>
+        
+		<Application xsi:type="amxdata:Application" 
+			name="BAT_5_10" 
+			contact="TIBCO" 
+			description="BAT 5.10 Service" importBindings="true" importResourceTemplates="false">
+			
+				<Component xsi:type="amxdata:Component" name="Java1">
+	    			<Node name="QANode1" environmentName="QAEnvironment_KPHAPUNK-Z820" />	    	              
+	            </Component>
+				<Component xsi:type="amxdata:Component" name="Java4">
+	    			<Node name="QANode1" environmentName="QAEnvironment_KPHAPUNK-Z820" />	    	              
+	            </Component>
+				<Component xsi:type="amxdata:Component" name="Java2">
+	    			<Node name="QANode2" environmentName="QAEnvironment_KPHAPUNK-Z820" />	    	              
+	            </Component>
+				<Component xsi:type="amxdata:Component" name="Java3">
+	    			<Node name="QANode2" environmentName="QAEnvironment_KPHAPUNK-Z820" />	    	              
+	            </Component>
+			
+        		<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference"			
+				name="BAT_5_10"/>					
+        </Application>		
+
+    </Environment>
+	
+	<ResourceTemplate 
+		xsi:type="amxdata:SmtpResourceTemplate" 
+		name="smtp" 
+		host="AMX-BACKEND-1.na.tibco.com" 
+		port="25" 
+		description="This is SMTP RT">
+		<ReferencedCredentials identityJNDIName="smtp_identity"/>
+	</ResourceTemplate>
+	<ResourceTemplate 
+		xsi:type="amxdata:JdbcResourceTemplate" 
+		name="jdbc" 
+		description="jdbc non xa tx" 
+		maxConnections="10"> 
+		<Direct xsi:type="amxdata:Direct" 
+			dbUrl="jdbc:hsqldb:hsql://batman.na.tibco.com:1234/amx" 
+			jdbcDriver="org.hsqldb.jdbcDriver" 
+			isTransactional="true" 
+			loginTimeOut="30000"/>
+		<ReferencedCredentials identityJNDIName="jdbc_identity"/>
+	</ResourceTemplate>	
+	<ResourceTemplate 
+		xsi:type="amxdata:LdapQueryResourceTemplate" 
+		name="ldapConn" 
+		connectionFactory="com.sun.jndi.ldap.LdapCtxFactory" 
+		providerURL="ldap://AMX-BACKEND-1.na.tibco.com:1389" 
+		connectionTimeOutInMilliSec="30000" 
+		poolPrefSize="10" 
+		poolMaxSize="15" 
+		poolInitialSize="5" 
+		poolTimeOutInMilliSec="0" 
+		description="This is LdapQuery RT">		
+		<ReferencedCredentials identityJNDIName="ldapConn_identity"/>			
+	</ResourceTemplate>
+	<ResourceTemplate 
+		xsi:type="amxdata:TeneoResourceTemplate" 
+		name="teneo" 
+		description="This is Teneo RT" 
+		contact="admin" 
+		dialect="org.hibernate.dialect.HSQLDialect" 
+		schemaGeneration="create-drop" 
+		sqlLogging="true" 
+		statementBatchSize="1" 
+		inheritanceMapping="SINGLE-TABLE" 
+		datasourceName="jdbc"/>
+	<ResourceTemplate 
+		xsi:type="amxdata:SubjectIspResourceTemplate" 
+		name="smtp_identity" 
+		description="This is Subject Isp RT" 
+		identityStoreServiceProvider="keystore" 
+		keyAlias="smtp_alias" 
+		keyPassword="alias_password" 
+		enableCredentialStoreAccess="true"/>
+	<ResourceTemplate 
+		xsi:type="amxdata:SubjectIspResourceTemplate" 
+		name="jdbc_identity" 
+		description="This is Subject Isp RT" 
+		identityStoreServiceProvider="keystore" 
+		keyAlias="hsqldb_alias" 
+		keyPassword="alias_password" 
+		enableCredentialStoreAccess="true"/>	
+	<ResourceTemplate 
+		xsi:type="amxdata:SubjectIspResourceTemplate" 
+		name="ldapConn_identity" 
+		description="This is Subject Isp RT" 
+		identityStoreServiceProvider="keystore" 
+		keyAlias="sunone_alias" 
+		keyPassword="alias_password" 
+		enableCredentialStoreAccess="true"/>	
+	<ResourceTemplate 
+		xsi:type="amxdata:KeystoreCspResourceTemplate" 
+		name="keystore" 
+		description="This is Keystore RT" 
+		keyStoreLocation="Z:\tests\amsg\3.0\tests\func\runtime/bat/keystore/bat_keystore.jceks" 
+		keyStorePassword="password" 
+		keyStoreType="JCEKS" 
+		keyStoreProvider="" 
+		keyStoreRefreshInterval="1000"/> 
+	
+	<DAA xsi:type="amxdata:DAA" 
+		description="BAT 5.10 - SOAPService-Java1(Teneo SR)-Java2(JMS SR) ; JMSService-Java3(SMTP SR)-Java4(LdapConn SR)" 
+		location="BAT_5_10/Deployment Artifacts/BAT_5_10.daa" 
+		importResourceTemplates="false"/>	
+		
+	<amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate 
+		xsi:type="amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate" 
+		name="jndiConnConf" 
+		initialContextFactory="com.tibco.tibjms.naming.TibjmsInitialContextFactory" 
+		providerUrl="tibjmsnaming://spiderman.na.tibco.com:7622" 
+		description="JndiConnectionConfiguration">
+		<InlineCredentials 
+			username="amxjndipwd" 
+			password="amxjndipwd"/>
+	</amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate>
+	<amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate 
+		xsi:type="amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate" 
+		name="jmsConnFactory" 
+		jndiName="GenericConnectionFactory" 
+		jndiConnectionConfigurationName="jndiConnConf" 
+		description="JmsConnectionFactory">	
+		<InlineCredentials 
+			username="amxemspwd" 
+			password="amxemspwd"/>
+	</amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate>
+	<amxdata_jmsssr:JNDIDestinationResourceTemplate 
+		xsi:type="amxdata_jmsssr:JNDIDestinationResourceTemplate" 
+		name="jmsDest" 
+		jndiName="BAT510_Destination" 
+		jndiConnectionConfigurationName="jndiConnConf" 
+		description="JmsDestination"/> 
+	<amxdata_jmsssr:JNDIDestinationResourceTemplate 
+		xsi:type="amxdata_jmsssr:JNDIDestinationResourceTemplate" 
+		name="jmsDest2" 
+		jndiName="BAT510_Destination2" 
+		jndiConnectionConfigurationName="jndiConnConf" 
+		description="JmsDestination"/>		
+	<amxdata_jmsssr:JNDIConnectionFactoryConfigurationResourceTemplate 
+		xsi:type="amxdata_jmsssr:JNDIConnectionFactoryConfigurationResourceTemplate" 
+		name="jmsConnFactoryConf" 
+		jndiName="GenericConnectionFactory" 
+		jndiConnectionConfigurationName="jndiConnConf" 
+		description="JmsConnectionFactoryConfiguration">	
+		<InlineCredentials 
+			username="amxemspwd" 
+			password="amxemspwd"/>
+	</amxdata_jmsssr:JNDIConnectionFactoryConfigurationResourceTemplate>
+	<amxdata_jmsssr:JNDIDestinationConfigurationResourceTemplate 
+		xsi:type="amxdata_jmsssr:JNDIDestinationConfigurationResourceTemplate" 
+		name="jmsDestConf" 
+		jndiName="BAT510_Destination" 
+		jndiConnectionConfigurationName="jndiConnConf" 
+		description="JmsDestinationConfiguration"/>
+	<amxdata_jmsssr:JNDIDestinationConfigurationResourceTemplate 
+		xsi:type="amxdata_jmsssr:JNDIDestinationConfigurationResourceTemplate" 
+		name="jmsDestConf2" 
+		jndiName="BAT510_Destination2" 
+		jndiConnectionConfigurationName="jndiConnConf" 
+		description="JmsDestinationConfiguration"/>
+	
+</amxdata_base:Enterprise>

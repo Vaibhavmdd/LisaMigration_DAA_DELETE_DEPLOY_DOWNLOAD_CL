@@ -1,0 +1,34 @@
+<project default="deploy.app">
+	<import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+	
+	<target name="deploy.app">
+	  <create.rt dataFile="${amxConfigFile}" objectSelector="ResourceTemplate | JNDIConnectionConfigurationResourceTemplate | JNDIConnectionFactoryResourceTemplate | JNDIDestinationResourceTemplate" /> 
+	  <setup.ri dataFile="${amxConfigFile}" />
+	  <upload.daa dataFile="${amxConfigFile}" force="true" />
+		<create.app dataFile="${amxConfigFile}" />
+		<map.app.to.node dataFile="${amxConfigFile}" />
+		<deploy.app dataFile="${amxConfigFile}" timeout="${timeout}" />
+	</target>
+	
+  <target name="conf.logging">
+    <create.log.appender dataFile="${amxConfigFile}"/>
+		<set.logger.to.app dataFile="${amxConfigFile}" />
+		<deploy.action objector="Environment[2]/Application[@name='cl03_24']" description="Apply Application Logger" dataFile="${amxConfigFile}" />
+	</target>
+	
+	<target name="undeploy.app">
+    <undeploy.app dataFile="${amxConfigFile}" timeout="${timeout}" objectSelector="Environment[2]/Application" />
+		<delete.app dataFile="${amxConfigFile}" objectSelector="Environment[2]/Application" />
+		<uninstall.ri dataFile="${amxConfigFile}" />
+		<delete.ri dataFile="${amxConfigFile}" />
+		<delete.log.appender objectSelector="LogAppender[@name='FileAppender0324']" dataFile="${amxConfigFile}" />
+	  <delete.log.appender objectSelector="LogAppender[@name='JMSAppender0324']" dataFile="${amxConfigFile}" />
+	  <delete.rt dataFile="${amxConfigFile}" objectSelector="ResourceTemplate | JNDIConnectionConfigurationResourceTemplate | JNDIConnectionFactoryResourceTemplate | JNDIDestinationResourceTemplate"/>        
+	</target>
+  
+  <target name="set.largeMessagesToPayloadProperty">
+    <set.app.property dataFile="${amxConfigFile}" objectSelector="Environment[1]/Application/Property"/>
+    <undeploy.app dataFile="${amxConfigFile}" timeout="${timeout}" objectSelector="Environment[1]/Application" />
+	  <deploy.action objector="Environment[1]/Application" description="Deploy Log Service Application After Property Change" dataFile="${amxConfigFile}" />
+	</target>
+</project>

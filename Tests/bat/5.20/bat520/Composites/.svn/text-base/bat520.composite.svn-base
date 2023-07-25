@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bat520.composite="http://www.example.com/bat520.composite" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:compositenotation="http://www.tibco.com/models/compositenotation" xmlns:java="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/java" xmlns:jms="http://xsd.tns.tibco.com/amf/models/sharedresource/jms" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.1/notation" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmlns:soapbt="http://xsd.tns.tibco.com/amf/models/sca/binding/soap" xmlns:systempolicy="http://xsd.tns.tibco.com/amf/models/sca/policy/system" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmi:id="_ZPZMwJFMEeC_1awynrXzHg" targetNamespace="http://www.example.com/bat520.composite" name="bat520" compositeext:version="1.0.0.qualifier" compositeext:formatVersion="2">
+  <sca:service xmi:id="_e3ePkJFMEeC_1awynrXzHg" name="Service" promote="Java1/NewWSDLFile">
+    <sca:interface.wsdl xmi:id="_e3e2oJFMEeC_1awynrXzHg" interface="http://www.example.org/NewWSDLFile/#wsdl.interface(NewWSDLFile)" scaext:wsdlLocation="../Service%20Descriptors/NewWSDLFile.wsdl"/>
+    <sca:binding.sca xmi:id="_e3e2oZFMEeC_1awynrXzHg" name="Virtualization"/>
+    <soapbt:binding.soap.service xmi:id="_OZ-BcJu3EeC6Bvjv-slJJw" name="SOAPService_Binding1" transportBindingType="HTTP" attachmentStyle="DOCUMENT" portType="../Service%20Descriptors/NewWSDLFile.wsdl#//@ePortTypes.0">
+      <operationConfiguration xmi:id="_OaN5EJu3EeC6Bvjv-slJJw" operation="../Service%20Descriptors/NewWSDLFile.wsdl#//@ePortTypes.0/@eOperations.0" action="NewOperation">
+        <messageConfiguration xmi:id="_OaN5EZu3EeC6Bvjv-slJJw" message="../Service%20Descriptors/NewWSDLFile.wsdl#//@eMessages.0">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_OaN5Epu3EeC6Bvjv-slJJw" messagePart="../Service%20Descriptors/NewWSDLFile.wsdl#//@eMessages.0/@eParts.0"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_OaN5E5u3EeC6Bvjv-slJJw" message="../Service%20Descriptors/NewWSDLFile.wsdl#//@eMessages.1" messageDirection="OUTPUT">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_OaN5FJu3EeC6Bvjv-slJJw" messagePart="../Service%20Descriptors/NewWSDLFile.wsdl#//@eMessages.1/@eParts.0"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_OaN5FZu3EeC6Bvjv-slJJw" message="../Service%20Descriptors/NewWSDLFile.wsdl#//@eMessages.2" messageDirection="FAULT">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_OaN5Fpu3EeC6Bvjv-slJJw" messagePart="../Service%20Descriptors/NewWSDLFile.wsdl#//@eMessages.2/@eParts.0"/>
+        </messageConfiguration>
+        <bindingType xmi:id="_OaN5F5u3EeC6Bvjv-slJJw"/>
+      </operationConfiguration>
+      <operationConfiguration xmi:id="_OaN5GJu3EeC6Bvjv-slJJw" operation="../Service%20Descriptors/NewWSDLFile.wsdl#//@ePortTypes.0/@eOperations.1" action="NewOperationIn">
+        <messageConfiguration xmi:id="_OaN5GZu3EeC6Bvjv-slJJw" message="../Service%20Descriptors/NewWSDLFile.wsdl#//@eMessages.3">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_OaN5Gpu3EeC6Bvjv-slJJw" messagePart="../Service%20Descriptors/NewWSDLFile.wsdl#//@eMessages.3/@eParts.0"/>
+        </messageConfiguration>
+        <bindingType xmi:id="_OaN5G5u3EeC6Bvjv-slJJw"/>
+      </operationConfiguration>
+      <inboundConfiguration xsi:type="soapbt:HttpTransportConfiguration" xmi:id="_OaQVUJu3EeC6Bvjv-slJJw" endpointURI="/newWSDLFile/"/>
+      <defaultBindingType xmi:id="_OaKOsJu3EeC6Bvjv-slJJw"/>
+    </soapbt:binding.soap.service>
+    <scact:bindingAdjunct xmi:id="_e3e2opFMEeC_1awynrXzHg" bindingName="Virtualization"/>
+    <scact:bindingAdjunct xmi:id="_OaQVUZu3EeC6Bvjv-slJJw" bindingName="SOAPService_Binding1">
+      <sca:property xmi:id="_OaQVUpu3EeC6Bvjv-slJJw" mustSupply="true" name="HttpInboundConnectionConfig" type="xs:string" scaext:simpleValue="httpConnector1"/>
+    </scact:bindingAdjunct>
+  </sca:service>
+  <sca:component xmi:id="_dtyqsJFMEeC_1awynrXzHg" name="Java1" compositeext:version="1.0.0.qualifier">
+    <sca:implementation.java xmi:id="_dt1G8JFMEeC_1awynrXzHg" class="com.sample.bat520.Java1">
+      <scaext:packageVersionRange xmi:id="_dt1G8ZFMEeC_1awynrXzHg" lower="1.0.0" upper="2.0.0"/>
+      <java:featureDependency xmi:id="_5SDxYJHjEeCTj46fOCQteg" name="bat520.bat520.customfeature.id">
+        <range xmi:id="_5SDxYZHjEeCTj46fOCQteg" lower="1.0.0" upper="2.0.0"/>
+      </java:featureDependency>
+    </sca:implementation.java>
+    <sca:service xmi:id="_eTVAsJFMEeC_1awynrXzHg" name="NewWSDLFile" policySets="bat520.composite:AtLeastOnce_Java1_NewWSDLFile" requires="sca:atLeastOnce" scaext:policySetLocations="#embedded">
+      <sca:interface.wsdl xmi:id="_eTVAsZFMEeC_1awynrXzHg" interface="http://www.example.org/NewWSDLFile/#wsdl.interface(NewWSDLFile)" scaext:wsdlLocation="../Service%20Descriptors/NewWSDLFile.wsdl"/>
+    </sca:service>
+    <sca:reference xmi:id="_u7hFgJFNEeC_1awynrXzHg" name="NewWSDLFile" policySets="bat520.composite:AtLeastOnce_Java1_NewWSDLFile1" requires="sca:atLeastOnce" scaext:policySetLocations="#embedded">
+      <sca:interface.wsdl xmi:id="_u7hFgZFNEeC_1awynrXzHg" interface="http://www.example.org/NewWSDLFile/#wsdl.interface(NewWSDLFile)" scaext:wsdlLocation="../Service%20Descriptors/NewWSDLFile.wsdl"/>
+    </sca:reference>
+    <sca:property xmi:id="_OTdYgJHtEeCTj46fOCQteg" mustSupply="true" name="bat520_out_jd" type="jms:JMSDestination" scaext:simpleValue="bat520_out_jd" source="$"/>
+    <sca:property xmi:id="_OpfS4JHtEeCTj46fOCQteg" mustSupply="true" name="bat520_out_jcf" type="jms:JMSConnectionFactory" scaext:simpleValue="bat520_out_jcf" source="$"/>
+  </sca:component>
+  <sca:component xmi:id="_NQBl0JFOEeC_1awynrXzHg" name="Java2" compositeext:version="1.0.0.qualifier">
+    <sca:implementation.java xmi:id="_NQBl0ZFOEeC_1awynrXzHg" class="com.sample.bat520.Java2">
+      <scaext:packageVersionRange xmi:id="_NQBl0pFOEeC_1awynrXzHg" lower="1.0.0" upper="2.0.0"/>
+      <java:featureDependency xmi:id="_8_HR8JHjEeCTj46fOCQteg" name="bat520.bat520.customfeature.id">
+        <range xmi:id="_8_HR8ZHjEeCTj46fOCQteg" lower="1.0.0" upper="2.0.0"/>
+      </java:featureDependency>
+    </sca:implementation.java>
+    <sca:service xmi:id="_OtjTwJFOEeC_1awynrXzHg" name="NewWSDLFile" policySets="bat520.composite:AtLeastOnce_Java2_NewWSDLFile" requires="sca:atLeastOnce" scaext:policySetLocations="#embedded">
+      <sca:interface.wsdl xmi:id="_OuaPYJFOEeC_1awynrXzHg" interface="http://www.example.org/NewWSDLFile/#wsdl.interface(NewWSDLFile)" scaext:wsdlLocation="../Service%20Descriptors/NewWSDLFile.wsdl"/>
+    </sca:service>
+    <sca:reference xmi:id="_PeIcIJFOEeC_1awynrXzHg" name="NewWSDLFile" policySets="bat520.composite:AtLeastOnce_Java2_NewWSDLFile1" requires="sca:atLeastOnce" scaext:policySetLocations="#embedded">
+      <sca:interface.wsdl xmi:id="_PeIcIZFOEeC_1awynrXzHg" interface="http://www.example.org/NewWSDLFile/#wsdl.interface(NewWSDLFile)" scaext:wsdlLocation="../Service%20Descriptors/NewWSDLFile.wsdl"/>
+    </sca:reference>
+    <sca:property xmi:id="_iOrw0JHtEeCTj46fOCQteg" mustSupply="true" name="bat520_out_jd" type="jms:JMSDestination" scaext:simpleValue="bat520_out_jd" source="$"/>
+    <sca:property xmi:id="_tl788JHtEeCTj46fOCQteg" mustSupply="true" name="bat520_out_jcf" type="jms:JMSConnectionFactory" scaext:simpleValue="bat520_out_jcf" source="$"/>
+  </sca:component>
+  <sca:component xmi:id="_Nr63oJFOEeC_1awynrXzHg" name="Java3" compositeext:version="1.0.0.qualifier">
+    <sca:implementation.java xmi:id="_Nr63oZFOEeC_1awynrXzHg" class="com.sample.bat520.Java3">
+      <scaext:packageVersionRange xmi:id="_Nr7esJFOEeC_1awynrXzHg" lower="1.0.0" upper="2.0.0"/>
+      <java:featureDependency xmi:id="__NKd4JHjEeCTj46fOCQteg" name="bat520.bat520.customfeature.id">
+        <range xmi:id="__NKd4ZHjEeCTj46fOCQteg" lower="1.0.0" upper="2.0.0"/>
+      </java:featureDependency>
+    </sca:implementation.java>
+    <sca:service xmi:id="_PfJIwJFOEeC_1awynrXzHg" name="NewWSDLFile" policySets="bat520.composite:AtLeastOnce_Java3_NewWSDLFile" requires="sca:atLeastOnce" scaext:policySetLocations="#embedded">
+      <sca:interface.wsdl xmi:id="_PgBSgZFOEeC_1awynrXzHg" interface="http://www.example.org/NewWSDLFile/#wsdl.interface(NewWSDLFile)" scaext:wsdlLocation="../Service%20Descriptors/NewWSDLFile.wsdl"/>
+    </sca:service>
+    <sca:property xmi:id="_7iqWgJHtEeCTj46fOCQteg" mustSupply="true" name="bat520_out_jd" type="jms:JMSDestination" scaext:simpleValue="bat520_out_jd" source="$"/>
+    <sca:property xmi:id="_8RS-IJHtEeCTj46fOCQteg" mustSupply="true" name="bat520_out_jcf" type="jms:JMSConnectionFactory" scaext:simpleValue="bat520_out_jcf" source="$"/>
+  </sca:component>
+  <sca:wire xmi:id="_OuYaMJFOEeC_1awynrXzHg" source="Java1/NewWSDLFile" target="Java2/NewWSDLFile"/>
+  <sca:wire xmi:id="_PgBSgJFOEeC_1awynrXzHg" source="Java2/NewWSDLFile" target="Java3/NewWSDLFile"/>
+  <notation:diagram xsi:type="notation:Diagram" xmi:id="_ZQIzoJFMEeC_1awynrXzHg" type="Composite" element="#/" name="SCA Composite" measurementUnit="Pixel">
+    <children xmi:id="_Zd5i0JFMEeC_1awynrXzHg" type="2001" element="#_ZPZMwJFMEeC_1awynrXzHg">
+      <children xmi:id="_Zd7YAJFMEeC_1awynrXzHg" type="5004"/>
+      <children xmi:id="_Zd9NMJFMEeC_1awynrXzHg" type="7001">
+        <children xmi:id="_e3gr0JFMEeC_1awynrXzHg" type="3001" element="#_e3ePkJFMEeC_1awynrXzHg">
+          <children xmi:id="_e3h58JFMEeC_1awynrXzHg" type="5002"/>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_e3gr0ZFMEeC_1awynrXzHg" fontName="Ubuntu" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_e3gr0pFMEeC_1awynrXzHg" gradStartColor="14150097" gradEndColor="7844710"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_e3gr05FMEeC_1awynrXzHg"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_e3gr1JFMEeC_1awynrXzHg"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_Zd9NMZFMEeC_1awynrXzHg"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_Zd9NMpFMEeC_1awynrXzHg"/>
+      </children>
+      <children xmi:id="_Zd90QJFMEeC_1awynrXzHg" type="7002">
+        <styles xsi:type="notation:SortingStyle" xmi:id="_Zd90QZFMEeC_1awynrXzHg"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_Zd90QpFMEeC_1awynrXzHg"/>
+      </children>
+      <children xmi:id="_Zd-bUJFMEeC_1awynrXzHg" type="7003">
+        <children xmi:id="_duM6YJFMEeC_1awynrXzHg" type="3003" element="#_dtyqsJFMEeC_1awynrXzHg">
+          <children xmi:id="_duOIgJFMEeC_1awynrXzHg" type="5001"/>
+          <children xmi:id="_duOvkJFMEeC_1awynrXzHg" type="7004">
+            <children xmi:id="_eTq-8JFMEeC_1awynrXzHg" type="3004" element="#_eTVAsJFMEeC_1awynrXzHg">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_eTq-8ZFMEeC_1awynrXzHg" fontName="Ubuntu" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_eTq-8pFMEeC_1awynrXzHg"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_duOvkZFMEeC_1awynrXzHg"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_duOvkpFMEeC_1awynrXzHg"/>
+          </children>
+          <children xmi:id="_duPWoJFMEeC_1awynrXzHg" type="7005">
+            <children xmi:id="_u7i6sJFNEeC_1awynrXzHg" type="3005" element="#_u7hFgJFNEeC_1awynrXzHg">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_u7i6sZFNEeC_1awynrXzHg" fontName="Ubuntu" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_u7i6spFNEeC_1awynrXzHg"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_duPWoZFMEeC_1awynrXzHg"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_duPWopFMEeC_1awynrXzHg"/>
+          </children>
+          <children xmi:id="_duPWo5FMEeC_1awynrXzHg" type="7006">
+            <children xmi:id="_duPWp5FMEeC_1awynrXzHg" visible="false" type="7600">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_duPWqJFMEeC_1awynrXzHg" fontName="Ubuntu" fontHeight="10"/>
+              <element xsi:nil="true"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_duPWqZFMEeC_1awynrXzHg"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_duPWpJFMEeC_1awynrXzHg"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_duPWpZFMEeC_1awynrXzHg"/>
+            <styles xsi:type="compositenotation:CollapseStyle" xmi:id="_duPWppFMEeC_1awynrXzHg"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_duM6YZFMEeC_1awynrXzHg" fontName="Ubuntu" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_duM6YpFMEeC_1awynrXzHg" gradStartColor="16642791" gradEndColor="14072216"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_duM6Y5FMEeC_1awynrXzHg"/>
+          <styles xsi:type="compositenotation:CustomComponentIconStyle" xmi:id="_duM6ZJFMEeC_1awynrXzHg"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_duM6ZZFMEeC_1awynrXzHg" x="295" y="198"/>
+        </children>
+        <children xmi:id="_NQmNkJFOEeC_1awynrXzHg" type="3003" element="#_NQBl0JFOEeC_1awynrXzHg">
+          <children xmi:id="_NQm0oJFOEeC_1awynrXzHg" type="5001"/>
+          <children xmi:id="_NQm0oZFOEeC_1awynrXzHg" type="7004">
+            <children xmi:id="_OuUv0JFOEeC_1awynrXzHg" type="3004" element="#_OtjTwJFOEeC_1awynrXzHg">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_OuUv0ZFOEeC_1awynrXzHg" fontName="Ubuntu" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_OuUv0pFOEeC_1awynrXzHg"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_NQm0opFOEeC_1awynrXzHg"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_NQm0o5FOEeC_1awynrXzHg"/>
+          </children>
+          <children xmi:id="_NQnbsJFOEeC_1awynrXzHg" type="7005">
+            <children xmi:id="_PfH6oJFOEeC_1awynrXzHg" type="3005" element="#_PeIcIJFOEeC_1awynrXzHg">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_PfH6oZFOEeC_1awynrXzHg" fontName="Ubuntu" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_PfH6opFOEeC_1awynrXzHg"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_NQnbsZFOEeC_1awynrXzHg"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_NQnbspFOEeC_1awynrXzHg"/>
+          </children>
+          <children xmi:id="_NQnbs5FOEeC_1awynrXzHg" type="7006">
+            <children xmi:id="_NQnbt5FOEeC_1awynrXzHg" visible="false" type="7600">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_NQnbuJFOEeC_1awynrXzHg" fontName="Ubuntu" fontHeight="10"/>
+              <element xsi:nil="true"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_NQnbuZFOEeC_1awynrXzHg"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_NQnbtJFOEeC_1awynrXzHg"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_NQnbtZFOEeC_1awynrXzHg"/>
+            <styles xsi:type="compositenotation:CollapseStyle" xmi:id="_NQnbtpFOEeC_1awynrXzHg"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_NQmNkZFOEeC_1awynrXzHg" fontName="Ubuntu" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_NQmNkpFOEeC_1awynrXzHg" gradStartColor="16642791" gradEndColor="14072216"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_NQmNk5FOEeC_1awynrXzHg"/>
+          <styles xsi:type="compositenotation:CustomComponentIconStyle" xmi:id="_NQmNlJFOEeC_1awynrXzHg"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_NQmNlZFOEeC_1awynrXzHg" x="600" y="97"/>
+        </children>
+        <children xmi:id="_NsZYwJFOEeC_1awynrXzHg" type="3003" element="#_Nr63oJFOEeC_1awynrXzHg">
+          <children xmi:id="_Nsam4JFOEeC_1awynrXzHg" type="5001"/>
+          <children xmi:id="_NsbN8JFOEeC_1awynrXzHg" type="7004">
+            <children xmi:id="_Pf7L4JFOEeC_1awynrXzHg" type="3004" element="#_PfJIwJFOEeC_1awynrXzHg">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_Pf7L4ZFOEeC_1awynrXzHg" fontName="Ubuntu" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_Pf7L4pFOEeC_1awynrXzHg"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_NsbN8ZFOEeC_1awynrXzHg"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_NsbN8pFOEeC_1awynrXzHg"/>
+          </children>
+          <children xmi:id="_Nsb1AJFOEeC_1awynrXzHg" type="7005">
+            <styles xsi:type="notation:SortingStyle" xmi:id="_Nsb1AZFOEeC_1awynrXzHg"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_Nsb1ApFOEeC_1awynrXzHg"/>
+          </children>
+          <children xmi:id="_Nsb1A5FOEeC_1awynrXzHg" type="7006">
+            <children xmi:id="_NsccEJFOEeC_1awynrXzHg" visible="false" type="7600">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_NsccEZFOEeC_1awynrXzHg" fontName="Ubuntu" fontHeight="10"/>
+              <element xsi:nil="true"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_NsccEpFOEeC_1awynrXzHg"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_Nsb1BJFOEeC_1awynrXzHg"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_Nsb1BZFOEeC_1awynrXzHg"/>
+            <styles xsi:type="compositenotation:CollapseStyle" xmi:id="_Nsb1BpFOEeC_1awynrXzHg"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_NsZYwZFOEeC_1awynrXzHg" fontName="Ubuntu" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_NsZYwpFOEeC_1awynrXzHg" gradStartColor="16642791" gradEndColor="14072216"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_NsZYw5FOEeC_1awynrXzHg"/>
+          <styles xsi:type="compositenotation:CustomComponentIconStyle" xmi:id="_NsZYxJFOEeC_1awynrXzHg"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_NsZYxZFOEeC_1awynrXzHg" x="880" y="252"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_Zd-bUZFMEeC_1awynrXzHg"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_Zd-bUpFMEeC_1awynrXzHg"/>
+      </children>
+      <children xmi:id="_Zd_CYJFMEeC_1awynrXzHg" type="7007">
+        <children xmi:id="_Zd_pcJFMEeC_1awynrXzHg" visible="false" type="7600">
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_Zd_pcZFMEeC_1awynrXzHg" fontName="Ubuntu" fontHeight="10"/>
+          <element xsi:nil="true"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_Zd_pcpFMEeC_1awynrXzHg"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_Zd_CYZFMEeC_1awynrXzHg"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_Zd_CYpFMEeC_1awynrXzHg"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" xmi:id="_Zd5i0ZFMEeC_1awynrXzHg" fontName="Ubuntu" fontHeight="10"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_Zd6J4JFMEeC_1awynrXzHg" x="10" y="10" width="1431" height="675"/>
+    </children>
+    <styles xsi:type="notation:DiagramStyle" xmi:id="_ZQIzoZFMEeC_1awynrXzHg"/>
+    <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_ZQIzopFMEeC_1awynrXzHg"/>
+    <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_ZQIzo5FMEeC_1awynrXzHg"/>
+    <edges xmi:id="_e3mLYJFMEeC_1awynrXzHg" type="4002" source="#_e3gr0JFMEeC_1awynrXzHg" target="#_eTq-8JFMEeC_1awynrXzHg">
+      <styles xsi:type="notation:ConnectorStyle" xmi:id="_e3mLYZFMEeC_1awynrXzHg" routing="Rectilinear"/>
+      <styles xsi:type="notation:FontStyle" xmi:id="_e3mLYpFMEeC_1awynrXzHg" fontName="Ubuntu" fontHeight="10"/>
+      <element xsi:nil="true"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_e3mLY5FMEeC_1awynrXzHg" points="[0, 30, -390, -228]$[384, 261, -6, 3]"/>
+    </edges>
+    <edges xmi:id="_OuaPYZFOEeC_1awynrXzHg" type="4001" element="#_OuYaMJFOEeC_1awynrXzHg" source="#_u7i6sJFNEeC_1awynrXzHg" target="#_OuUv0JFOEeC_1awynrXzHg">
+      <styles xsi:type="notation:ConnectorStyle" xmi:id="_OuaPYpFOEeC_1awynrXzHg" routing="Rectilinear"/>
+      <styles xsi:type="notation:FontStyle" xmi:id="_OuaPY5FOEeC_1awynrXzHg" fontName="Ubuntu" fontHeight="10"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_Oua2cJFOEeC_1awynrXzHg" points="[12, 3, 430, 228]$[-412, -209, 6, 16]"/>
+    </edges>
+    <edges xmi:id="_PgB5kJFOEeC_1awynrXzHg" type="4001" element="#_PgBSgJFOEeC_1awynrXzHg" source="#_PfH6oJFOEeC_1awynrXzHg" target="#_Pf7L4JFOEeC_1awynrXzHg">
+      <styles xsi:type="notation:ConnectorStyle" xmi:id="_PgB5kZFOEeC_1awynrXzHg" routing="Rectilinear"/>
+      <styles xsi:type="notation:FontStyle" xmi:id="_PgB5kpFOEeC_1awynrXzHg" fontName="Ubuntu" fontHeight="10"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_PgB5k5FOEeC_1awynrXzHg" points="[0, 16, 0, 16]$[6, 16, 6, 16]"/>
+    </edges>
+  </notation:diagram>
+  <scaext:EmbeddedPolicySet xmi:id="_Al1gQJFQEeC_1awynrXzHg" name="AtLeastOnce_Java1_NewWSDLFile" appliesTo="sca:binding.sca.reference | sca:binding.sca.service" provides="sca:atLeastOnce">
+    <systempolicy:atLeastOnce xmi:id="_pGXaEJxQEeC-uch11M0kNg" scaext:label="At Least Once">
+      <messageRedeliveryConfig xmi:id="_pGXaEZxQEeC-uch11M0kNg" maxRedeliveryCount="5" errorQueueName="Java1_atLeastOnce" enableErrorQueue="true">
+        <stopRedeliveryExceptions>java.lang.SecurityException</stopRedeliveryExceptions>
+      </messageRedeliveryConfig>
+      <scaext:description>This indicates that a message sent by a client is always delivered to the component. No Message Loss, messages are persisted. No Transaction involved in message delivery although component can process the message under transaction. Messages are removed from persistent store only after successful processing.If this policy is applied to any binding other than Virtualization, then it will take effect on the virtualization proxy between the binding and the component.</scaext:description>
+    </systempolicy:atLeastOnce>
+  </scaext:EmbeddedPolicySet>
+  <scaext:EmbeddedPolicySet xmi:id="_uTOPEJFQEeC_1awynrXzHg" name="AtLeastOnce_Java1_NewWSDLFile1" appliesTo="sca:binding.sca.reference | sca:binding.sca.service" provides="sca:atLeastOnce">
+    <systempolicy:atLeastOnce xmi:id="_uTOPEZFQEeC_1awynrXzHg" scaext:label="At Least Once">
+      <messageRedeliveryConfig xmi:id="_uTOPEpFQEeC_1awynrXzHg" errorQueueName="Default" enableErrorQueue="true"/>
+      <scaext:description>This indicates that a message sent by a client is always delivered to the component. No Message Loss, messages are persisted. No Transaction involved in message delivery although component can process the message under transaction. Messages are removed from persistent store only after successful processing.If this policy is applied to any binding other than Virtualization, then it will take effect on the virtualization proxy between the binding and the component.</scaext:description>
+    </systempolicy:atLeastOnce>
+  </scaext:EmbeddedPolicySet>
+  <scaext:EmbeddedPolicySet xmi:id="_w-Pq4JFQEeC_1awynrXzHg" name="AtLeastOnce_Java2_NewWSDLFile" appliesTo="sca:binding.sca.reference | sca:binding.sca.service" provides="sca:atLeastOnce">
+    <systempolicy:atLeastOnce xmi:id="_w-Pq4ZFQEeC_1awynrXzHg" scaext:label="At Least Once">
+      <messageRedeliveryConfig xmi:id="_w-Pq4pFQEeC_1awynrXzHg" errorQueueName="Default" enableErrorQueue="true"/>
+      <scaext:description>This indicates that a message sent by a client is always delivered to the component. No Message Loss, messages are persisted. No Transaction involved in message delivery although component can process the message under transaction. Messages are removed from persistent store only after successful processing.If this policy is applied to any binding other than Virtualization, then it will take effect on the virtualization proxy between the binding and the component.</scaext:description>
+    </systempolicy:atLeastOnce>
+  </scaext:EmbeddedPolicySet>
+  <scaext:EmbeddedPolicySet xmi:id="_6fjCAJFQEeC_1awynrXzHg" name="AtLeastOnce_Java2_NewWSDLFile1" appliesTo="sca:binding.sca.reference | sca:binding.sca.service" provides="sca:atLeastOnce">
+    <systempolicy:atLeastOnce xmi:id="_6fjCAZFQEeC_1awynrXzHg" scaext:label="At Least Once">
+      <messageRedeliveryConfig xmi:id="_6fjCApFQEeC_1awynrXzHg" maxRedeliveryCount="3" errorQueueName=""/>
+      <scaext:description>This indicates that a message sent by a client is always delivered to the component. No Message Loss, messages are persisted. No Transaction involved in message delivery although component can process the message under transaction. Messages are removed from persistent store only after successful processing.If this policy is applied to any binding other than Virtualization, then it will take effect on the virtualization proxy between the binding and the component.</scaext:description>
+    </systempolicy:atLeastOnce>
+  </scaext:EmbeddedPolicySet>
+  <scaext:EmbeddedPolicySet xmi:id="_CrgW0JFREeC_1awynrXzHg" name="AtLeastOnce_Java3_NewWSDLFile" appliesTo="sca:binding.sca.reference | sca:binding.sca.service" provides="sca:atLeastOnce">
+    <systempolicy:atLeastOnce xmi:id="_CrgW0ZFREeC_1awynrXzHg" scaext:label="At Least Once">
+      <messageRedeliveryConfig xmi:id="_CrgW0pFREeC_1awynrXzHg" maxRedeliveryCount="3" errorQueueName=""/>
+      <scaext:description>This indicates that a message sent by a client is always delivered to the component. No Message Loss, messages are persisted. No Transaction involved in message delivery although component can process the message under transaction. Messages are removed from persistent store only after successful processing.If this policy is applied to any binding other than Virtualization, then it will take effect on the virtualization proxy between the binding and the component.</scaext:description>
+    </systempolicy:atLeastOnce>
+  </scaext:EmbeddedPolicySet>
+</sca:composite>

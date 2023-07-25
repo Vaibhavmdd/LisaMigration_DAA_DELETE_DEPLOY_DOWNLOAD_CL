@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created by TIBCO WSDL-->
+<wsdl:definitions xmlns:ns1="http://com.tibco.amx.it.mediation.sample/HelloWorld/definitions" xmlns:tns="http://com.tibco.amx.it.mediation.sample/HelloWorld/definitions_gen" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns0="http://com.tibco.amx.it.mediation.sample/HelloWorld/schemas" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="HelloWorld" targetNamespace="http://com.tibco.amx.it.mediation.sample/HelloWorld/definitions_gen">
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://com.tibco.amx.it.mediation.sample/HelloWorld/definitions" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:element name="NoGreetingFoundFault">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="ErrorMessage" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="NoSuchNameFault">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="ErrorMessage" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="TimeoutFault">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="ErrorMessage" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://com.tibco.amx.it.mediation.sample/HelloWorld/schemas" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:element name="Greeting">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Message" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="Name">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="FirstName" type="xs:string"/>
+                        <xs:element name="MiddleInitial" minOccurs="0">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:pattern value="[A-Z]"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="LastName" type="xs:string" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="sayHelloRequest">
+        <wsdl:part name="name" element="ns0:Name"/>
+    </wsdl:message>
+    <wsdl:message name="sayHelloResponse">
+        <wsdl:part name="greeting" element="ns0:Greeting"/>
+    </wsdl:message>
+    <wsdl:message name="sayHelloNoSuchNameFault">
+        <wsdl:part name="no_such_name_fault" element="ns1:NoSuchNameFault"/>
+    </wsdl:message>
+    <wsdl:message name="sayHelloNoGreetingFoundFault">
+        <wsdl:part name="no_greeting_found_fault" element="ns1:NoGreetingFoundFault"/>
+    </wsdl:message>
+    <wsdl:message name="sayHelloTimeoutFault">
+        <wsdl:part name="timeout_fault" element="ns1:TimeoutFault"/>
+    </wsdl:message>
+    <wsdl:portType name="HelloWorld">
+        <wsdl:operation name="sayHello">
+            <wsdl:input message="tns:sayHelloRequest"/>
+            <wsdl:output message="tns:sayHelloResponse"/>
+            <wsdl:fault name="no_such_name_fault" message="tns:sayHelloNoSuchNameFault"/>
+            <wsdl:fault name="no_greeting_found_fault" message="tns:sayHelloNoGreetingFoundFault"/>
+            <wsdl:fault name="timeout_fault" message="tns:sayHelloTimeoutFault"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="helloworld.soap.binding" type="tns:HelloWorld">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="sayHello">
+            <wsdl:documentation/>
+            <soap:operation style="document" soapAction="sayHello"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="name"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="greeting"/>
+            </wsdl:output>
+            <wsdl:fault name="no_such_name_fault">
+                <soap:fault use="literal" name="no_such_name_fault"/>
+            </wsdl:fault>
+            <wsdl:fault name="no_greeting_found_fault">
+                <soap:fault use="literal" name="no_greeting_found_fault"/>
+            </wsdl:fault>
+            <wsdl:fault name="timeout_fault">
+                <soap:fault use="literal" name="timeout_fault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="HelloWorld">
+        <wsdl:port name="helloworld.soap.binding" binding="tns:helloworld.soap.binding">
+            <soap:address location="http://localhost:8666/helloWorld/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

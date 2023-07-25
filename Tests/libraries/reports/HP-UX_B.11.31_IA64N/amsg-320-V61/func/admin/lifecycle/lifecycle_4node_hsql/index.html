@@ -1,0 +1,220 @@
+<hr><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>TIBCO Product Engineering Test Report</title>
+</head>
+<body>
+<center>
+<h1>
+<font color="0000ff">TIBCO ActiveMatrix Service Grid</font>
+</h1>
+<h1>
+<font color="0000ff">Automation Tests Report</font>
+</h1>
+<table cellspacing="1" cellpadding="5" border="1">
+<tr>
+<th>Report Time</th><th>Product Version</th><th>Platform</th><th>Test Machine</th><th>User Name</th>
+</tr>
+<tr>
+<td>2012/08/09 Thu 08:00:28</td><td>Version 3.2.0 build V61</td><td>HP-UX_B.11.31_IA64N</td><td><a target="_blank" href="http://qa.na.tibco.com/php/tsi_tests_host.php?oracle_sid=bwqadb&amp;hostname=hpita17">hpita17</a></td><td>superuser</td>
+</tr>
+</table>
+</center>
+<hr>
+<h2>
+<font color="0000ff">Test Set Summary</font>
+</h2>
+<table cellspacing="1" cellpadding="5" border="1">
+<tr>
+<th>Test Set Name</th><th>PASSED</th><th>FAILED</th><th>ERROR</th><th>TOTAL</th><th>Product Quality</th>
+</tr>
+<tr>
+<td>lifecycle_4node_hsql</td><td align="right">0</td><td align="right">11</td><td align="right">0</td><td align="right">11</td><td><applet height="68" width="250" code="barchart.class"><param value="3" name="columns"><param value="horizontal" name="orientation"><param value="2" name="scale"><param value="%" name="unit_string"><param value="0" name="c1"><param value="green" name="c1_color"><param value="solid" name="c1_style"><param value="100" name="c2"><param value="red" name="c2_color"><param value="solid" name="c2_style"><param value="0" name="c3"><param value="gray" name="c3_color"><param value="solid" name="c3_style"></applet></td>
+</tr>
+</table>
+<hr>
+<h3>
+<a name="#testSet-lifecycle_4node_hsql"></a><font color="0000ff">lifecycle_4node_hsql Detailed Test Case Report</font>
+</h3>
+<table cellspacing="1" cellpadding="5" border="1">
+<tr>
+<th>Case ID</th><th>Description</th><th>Test Result</th><th>Diagnostic Files</th><th>Test Directories</th>
+</tr>
+<tr>
+<td><a name="#lifecycle_4node_hsql-install"><font color="red">install</font></a></td><td><font color="red">
+<pre>Install ActiveMatrix in silent mode.</pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/runtime/bat/install">Source</a>&nbsp;
+				<a href="install">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#lifecycle_4node_hsql-setup"><font color="red">setup</font></a></td><td><font color="red">
+<pre>Create TPShell and Provision DB driver if Oracle/SQLServer/DB2
+Bootstrap TIBCOHost 
+Bootstrap Admin SystemNode
+Setup Nodes (osgi console port 1129 and 1139)
+Set Node Loggers
+Install Resources Instances
+Deploy Dashboard
+Deploy MCR (optional) 
+Deploy Log Service (optional)
+Deploy Payload Service (optional)
+Deploy Mediation</pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/runtime/bat/setup">Source</a>&nbsp;
+				<a href="setup">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#lifecycle_4node_hsql-postsetup"><font color="red">postsetup</font></a></td><td><font color="red">
+<pre>Delete Existing RT/RIs
+Setup Nodes
+Setup RI/RIs
+Restart TIBCO Host</pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/admin/lifecycle/postsetup">Source</a>&nbsp;
+				<a href="postsetup">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#lifecycle_4node_hsql-1.0"><font color="red">1.0</font></a></td><td><font color="red">
+<pre>Lifecycle Test, deploy apps - restart nodes
+ 1) Configure and Deploy Apps with start = true
+ 2) Check SOAP Request Reply (should get response)
+ 3) Stop and Start Nodes
+ 4) Sleep for completion
+ 5) Check SOAP Request Reply (should get response)
+ 6) Cleanup Apps 
+</pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/admin/lifecycle/1.0">Source</a>&nbsp;
+				<a href="1.0">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#lifecycle_4node_hsql-1.1"><font color="red">1.1</font></a></td><td><font color="red">
+<pre>Lifecyle Test, Offline deployment online start
+ 1) Stop Nodes
+ 2) Configure and Deploy Apps with start = false
+ 3) Start Nodes and Apps
+ 4) Sleep for completion
+ 5) Check SOAP Request Reply (should get response)
+ 6) Cleanup Apps 
+</pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/admin/lifecycle/1.1">Source</a>&nbsp;
+				<a href="1.1">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#lifecycle_4node_hsql-1.2"><font color="red">1.2</font></a></td><td><font color="red">
+<pre>Lifecyle Test, Offline deployment offline start
+ 1) Stop Nodes
+ 2) Configure and Deploy Apps with start = true
+ 3) Start Nodes and Apps
+ 4) Sleep for completion
+ 5) Check SOAP Request Reply (should get response)
+ 6) Cleanup Apps  </pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/admin/lifecycle/1.2">Source</a>&nbsp;
+				<a href="1.2">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#lifecycle_4node_hsql-1.3"><font color="red">1.3</font></a></td><td><font color="red">
+<pre>Lifecyle Test, Offline Stop
+1) Start Nodes
+2) Configure and Deploy Apps with start = true
+3) Check SOAP Request Reply (should get response)
+4) Stop Nodes and Apps
+5) Restart Nodes
+6) Check SOAP Request Reply (response page not found)
+7) Cleanup Apps </pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/admin/lifecycle/1.3">Source</a>&nbsp;
+				<a href="1.3">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#lifecycle_4node_hsql-1.4"><font color="red">1.4</font></a></td><td><font color="red">
+<pre>Lifecyle Test, Offline Undeploy
+1) Start Nodes
+2) Configure and Deploy Apps with start = true
+3) Check SOAP Request Reply (should get response)
+4) Stop Nodes and Undeploy Apps
+5) Restart Nodes
+6) Check SOAP Request Reply (response page not found)
+7) Cleanup Apps</pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/admin/lifecycle/1.4">Source</a>&nbsp;
+				<a href="1.4">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#lifecycle_4node_hsql-1.5"><font color="red">1.5</font></a></td><td><font color="red">
+<pre>Lifecyle Test, standard deploy-undeploy-deploy sequence
+1) Start Nodes
+2) Configure and Deploy Apps with start = true
+3) Check SOAP Request Reply (should get response)
+4) Undeploy Apps
+5) Check SOAP Request Reply (response page not found)
+6) Redeploy Apps
+7) Check SOAP Request Reply (should get response)
+8) Cleanup Apps 
+ </pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/admin/lifecycle/1.5">Source</a>&nbsp;
+				<a href="1.5">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#lifecycle_4node_hsql-1.6"><font color="red">1.6</font></a></td><td><font color="red">
+<pre>Lifecycle Test, stop apps - restart nodes - undeploy apps
+ 1) Configure and Deploy Apps with start = true
+ 2) Check SOAP Request Reply (should get response)
+ 3) Stop Apps
+ 4) Stop and start Nodes
+ 5) Cleanup Apps (undeploy + delete Apps)
+</pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/admin/lifecycle/1.6">Source</a>&nbsp;
+				<a href="1.6">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#lifecycle_4node_hsql-1.7"><font color="red">1.7</font></a></td><td><font color="red">
+<pre>Lifecycle Test, stop apps - restart node - start apps
+ 1) Configure and Deploy Apps with start = true
+ 2) Check SOAP Request Reply (should get response)
+ 3) Stop Apps
+ 4) Stop and Start Nodes
+ 5) Start Apps
+ 6) Check SOAP Request Reply (should get response)
+ 7) Cleanup Apps 
+</pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/admin/lifecycle/1.7">Source</a>&nbsp;
+				<a href="1.7">Log</a>&nbsp;
+			</td>
+</tr>
+</table>
+<hr>
+<center>
+<h2>
+<font color="0000ff">End of Test Set Detailed Report</font>
+</h2>
+</center>
+</body>
+</html>

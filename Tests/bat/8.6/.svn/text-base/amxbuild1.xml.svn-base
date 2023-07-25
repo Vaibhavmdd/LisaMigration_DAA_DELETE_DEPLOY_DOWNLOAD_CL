@@ -1,0 +1,87 @@
+<project name="host_build" default="e2e">
+        <import file="${TIBCO_AMXADMIN_HOME}/bin/taskdef.xml" />
+        <!--import file="C:\AMX330HF5HF6\administrator\3.3\samples\admin-scripts-base.xml"/-->
+        <import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+          
+	<target name="create.host">
+		<echoproperties/>
+		<AMXAdminTask
+			remote="true"
+			propsFile="${remotePropsFile}"
+			action="add"
+			dataFile="${amxConfigFile1}"
+			objectSelector="Host"
+			overwrite="true"
+			merge="true"
+			createIfNotExists="true"
+			failOnError="true"/>
+	</target>
+	
+	<target name="install.host">
+		 <AMXAdminTask
+			remote="true"
+			propsFile="${remotePropsFile}"
+			action="install"
+			dataFile="${amxConfigFile1}"
+			objectSelector="Host"
+			failOnError="true"/>
+		  </target>
+			
+	  <target name="start.host">
+		 <AMXAdminTask
+			remote="true"
+			propsFile="${remotePropsFile}"
+			action="start"
+			dataFile="${amxConfigFile1}"
+			objectSelector="Host"
+			failOnError="true"/>
+	  </target>
+	  
+	    <target name="stop.host">
+		 <AMXAdminTask
+			remote="true"
+			propsFile="${remotePropsFile}"
+			action="stop"
+			dataFile="${amxConfigFile1}"
+			objectSelector="Host"
+			failOnError="true"/>
+	  </target>
+	  
+	   <target name="update.host">
+		 <AMXAdminTask
+			remote="true"
+			propsFile="${remotePropsFile}"
+			action="edit"
+			dataFile="${amxConfigFile1}"
+			objectSelector="Host"
+			options="mergeJvmArgs"
+			failOnError="true"/>
+	  </target>
+	  
+	   
+	 
+	  
+	  <target name="uninstall.host">
+		 <AMXAdminTask
+			remote="true"
+			propsFile="${remotePropsFile}"
+			action="install"
+			dataFile="${amxConfigFile1}"
+			objectSelector="Host"
+			failOnError="true"/>
+		  </target>
+	  
+	
+	<target name="clean">
+	            
+	           <stop.host dataFile="${amxConfigFile1}" objectSelector="Host" failOnError="true"/>
+			   <uninstall.host dataFile="${amxConfigFile1}" objectSelector="Host" failOnError="true"/>
+			   <delete.host dataFile="${amxConfigFile1}" objectSelector="Host" failOnError="true"/>
+	</target>
+			   
+        
+	 
+	  
+	
+	
+</project>

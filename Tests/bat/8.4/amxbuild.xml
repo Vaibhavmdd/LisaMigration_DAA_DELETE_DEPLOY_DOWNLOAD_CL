@@ -1,0 +1,43 @@
+<project name="host_build" default="e2e">
+        <import file="${TIBCO_AMXADMIN_HOME}/bin/taskdef.xml" />
+      
+        <import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+          
+	<target name="create.host">
+		<AMXAdminTask
+			remote="true"
+			propsFile="${remotePropsFile}"
+			action="add"
+			dataFile="${amxConfigFile}"
+			objectSelector="Host"
+			overwrite="true"
+			merge="true"
+			createIfNotExists="true"
+			failOnError="true"/>
+	</target>
+	<target name="install.host">
+		<AMXAdminTask
+			remote="true"
+			propsFile="${remotePropsFile}"
+			action="install"
+			dataFile="${amxConfigFile}"
+			objectSelector="Host"
+			failOnError="true"/>
+	</target>
+	<target name="start.host">
+		<AMXAdminTask
+			remote="true"
+			propsFile="${remotePropsFile}"
+			action="start"
+			dataFile="${amxConfigFile}"
+			objectSelector="Host"
+			failOnError="true"/>
+		<!-- options="clearCache" -->
+	</target>
+	<target name="clean">
+	            <stop.host dataFile="${amxConfigFile}" objectSelector="Host" failOnError="true"/>
+	            <uninstall.host dataFile="${amxConfigFile}" objectSelector="Host" failOnError="true"/>
+			    <delete.host dataFile="${amxConfigFile}" objectSelector="Host" failOnError="true"/>
+	</target>
+	
+</project>

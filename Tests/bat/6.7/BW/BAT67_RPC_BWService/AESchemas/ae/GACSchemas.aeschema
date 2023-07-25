@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Repository:repository xmlns:Repository="http://www.tibco.com/xmlns/repo/types/2002" xmlns="http://www.tibco.com/xmlns/aemeta/types/2002" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <designer>
+        <lockedProperties/>
+        <fixedChildren/>
+        <resourceDescriptions/>
+    </designer>
+    <rpcClass name="GetSalesOrderById">
+        <operation>
+            <raises>
+                <name>OrderNotFound</name>
+                <raisesType isRef="true">#class.OrderNotFoundException</raisesType>
+            </raises>
+            <parameter>
+                <direction>in</direction>
+                <name>orderID</name>
+                <parameterType isRef="true">/AESchemas/ae.aeschema#scalar.string</parameterType>
+            </parameter>
+            <parameter>
+                <direction>out</direction>
+                <name>order</name>
+                <parameterType isRef="true">#class.Order</parameterType>
+            </parameter>
+            <oneway>false</oneway>
+            <name>GetSalesOrderById</name>
+            <returnType isRef="true">/AESchemas/ae.aeschema#scalar.string</returnType>
+        </operation>
+    </rpcClass>
+    <class name="Order">
+        <attribute>
+            <isReadable>true</isReadable>
+            <isWriteable>true</isWriteable>
+            <name>orderID</name>
+            <attributeType isRef="true">/AESchemas/ae.aeschema#scalar.string</attributeType>
+        </attribute>
+        <attribute>
+            <isReadable>true</isReadable>
+            <isWriteable>true</isWriteable>
+            <name>item</name>
+            <attributeType isRef="true">/AESchemas/ae.aeschema#scalar.string</attributeType>
+        </attribute>
+    </class>
+    <class name="Address">
+        <attribute>
+            <isReadable>true</isReadable>
+            <isWriteable>true</isWriteable>
+            <name>street</name>
+            <attributeType isRef="true">/AESchemas/ae.aeschema#scalar.string</attributeType>
+        </attribute>
+        <attribute>
+            <isReadable>true</isReadable>
+            <isWriteable>true</isWriteable>
+            <name>city</name>
+            <attributeType isRef="true">/AESchemas/ae.aeschema#scalar.string</attributeType>
+        </attribute>
+        <attribute>
+            <isReadable>true</isReadable>
+            <isWriteable>true</isWriteable>
+            <name>state</name>
+            <attributeType isRef="true">/AESchemas/ae.aeschema#scalar.string</attributeType>
+        </attribute>
+        <attribute>
+            <isReadable>true</isReadable>
+            <isWriteable>true</isWriteable>
+            <name>zip</name>
+            <attributeType isRef="true">/AESchemas/ae.aeschema#scalar.string</attributeType>
+        </attribute>
+    </class>
+    <class name="Customer">
+        <attribute>
+            <isReadable>true</isReadable>
+            <isWriteable>true</isWriteable>
+            <name>firstName</name>
+            <attributeType isRef="true">/AESchemas/ae.aeschema#scalar.string</attributeType>
+        </attribute>
+        <attribute>
+            <isReadable>true</isReadable>
+            <isWriteable>true</isWriteable>
+            <name>lastName</name>
+            <attributeType isRef="true">/AESchemas/ae.aeschema#scalar.string</attributeType>
+        </attribute>
+    </class>
+    <class name="OrderNotFoundException">
+        <attribute>
+            <isReadable>true</isReadable>
+            <isWriteable>true</isWriteable>
+            <name>code</name>
+            <attributeType isRef="true">/AESchemas/ae.aeschema#scalar.string</attributeType>
+        </attribute>
+        <attribute>
+            <isReadable>true</isReadable>
+            <isWriteable>true</isWriteable>
+            <name>message</name>
+            <attributeType isRef="true">/AESchemas/ae.aeschema#scalar.string</attributeType>
+        </attribute>
+    </class>
+    <rpcClass name="QueryExternalCustomer">
+        <operation>
+            <raises>
+                <name>CustomerNotFound</name>
+                <raisesType isRef="true">#class.CustomerNotFound</raisesType>
+            </raises>
+            <parameter>
+                <direction>out</direction>
+                <name>Customer</name>
+                <parameterType isRef="true">#class.Customer</parameterType>
+            </parameter>
+            <parameter>
+                <direction>in</direction>
+                <name>CustomerNumber</name>
+                <parameterType isRef="true">/AESchemas/ae.aeschema#scalar.string</parameterType>
+            </parameter>
+            <oneway>false</oneway>
+            <name>QueryExternalCustomer</name>
+            <returnType isRef="true">/AESchemas/ae.aeschema#scalar.string</returnType>
+        </operation>
+    </rpcClass>
+    <class name="CustomerNotFound">
+        <attribute>
+            <isReadable>true</isReadable>
+            <isWriteable>true</isWriteable>
+            <name>Code</name>
+            <attributeType isRef="true">/AESchemas/ae.aeschema#scalar.string</attributeType>
+        </attribute>
+        <attribute>
+            <isReadable>true</isReadable>
+            <isWriteable>true</isWriteable>
+            <name>Message</name>
+            <attributeType isRef="true">/AESchemas/ae.aeschema#scalar.string</attributeType>
+        </attribute>
+    </class>
+</Repository:repository>

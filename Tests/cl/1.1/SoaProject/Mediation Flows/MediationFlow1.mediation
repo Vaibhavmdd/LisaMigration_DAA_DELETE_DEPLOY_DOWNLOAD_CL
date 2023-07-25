@@ -1,0 +1,781 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpel:process exitOnStandardFault="yes" name="MediationFlow1"
+    suppressJoinFailure="no"
+    targetNamespace="http://com.tibco.amsb/mediation/flow"
+    variableAccessSerializable="no"
+    xmlns:amsb="http://schemas.tibco.com/amsb/3.3.0/mediation"
+    xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+    xmlns:ns="http://tibco.com/matrix/qa/wsdl/mathservice"
+    xmlns:ns0="http:///com.tibco.amsb.core.common.exchange/mediationcontext" xmlns:ns1="http://schemas.tibco.com/amsb/rt/exceptions">
+    <plnk:partnerLinkType
+        name="ns:MathServiceSoap-MathServiceSoapConsumer-partnerLinkType" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+        <plnk:role name="Consumer" portType="ns:MathServiceSoap"/>
+    </plnk:partnerLinkType>
+    <plnk:partnerLinkType
+        name="ns:MathServiceSoap-MathServiceSoapProvider-partnerLinkType" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+        <plnk:role name="Provider" portType="ns:MathServiceSoap"/>
+    </plnk:partnerLinkType>
+    <mediationmodel:MediationService name="MediationFlow1"
+        targetNamespace="http://com.tibco.amsb/mediation/flow"
+        version="3.3.0" xmi:id="_0iOdMAmDEeCLesW-HfbqkQ"
+        xmi:version="2.0"
+        xmlns:medct="http://xsd.tns.tibco.com/amsb/core/models/componentType"
+        xmlns:mediationmodel="http://xsd.tns.tibco.com/amsb/core/models/mediationmodel"
+        xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <interfaces name="MathServiceSoap" xmi:id="_29ygsAmDEeCLesW-HfbqkQ">
+            <interface xsi:type="medct:Wsdl11Interface">
+                <portType href="platform:/resource/SoaProject/Service%20Descriptors/MathService.wsdl#//@ePortTypes.0"/>
+            </interface>
+        </interfaces>
+        <operationImplementations operationName="MathServiceSoap^Add">
+            <mediationContextConfig hideStaticSecurityContext="true" hideStaticTransportContext="true"/>
+        </operationImplementations>
+        <operationImplementations operationName="MathServiceSoap^Subtract">
+            <mediationContextConfig hideStaticSecurityContext="true" hideStaticTransportContext="true"/>
+        </operationImplementations>
+        <operationImplementations operationName="MathServiceSoap^Multiply">
+            <mediationContextConfig hideStaticSecurityContext="true" hideStaticTransportContext="true"/>
+        </operationImplementations>
+        <operationImplementations operationName="MathServiceSoap^Divide">
+            <mediationContextConfig hideStaticSecurityContext="true" hideStaticTransportContext="true"/>
+        </operationImplementations>
+        <targetEndpoints xmi:id="_2-PMoAmDEeCLesW-HfbqkQ">
+            <abstractTarget name="MathServiceSoap" xmi:id="_2-PMoQmDEeCLesW-HfbqkQ">
+                <interface xsi:type="medct:Wsdl11Interface">
+                    <portType href="platform:/resource/SoaProject/Service%20Descriptors/MathService.wsdl#//@ePortTypes.0"/>
+                </interface>
+            </abstractTarget>
+            <targetOperationConfig operationName="Add">
+                <contextConfig hideStaticSecurityContext="true" hideStaticTransportContext="true"/>
+            </targetOperationConfig>
+            <targetOperationConfig operationName="Subtract">
+                <contextConfig hideStaticSecurityContext="true" hideStaticTransportContext="true"/>
+            </targetOperationConfig>
+            <targetOperationConfig operationName="Multiply">
+                <contextConfig hideStaticSecurityContext="true" hideStaticTransportContext="true"/>
+            </targetOperationConfig>
+            <targetOperationConfig operationName="Divide">
+                <contextConfig hideStaticSecurityContext="true" hideStaticTransportContext="true"/>
+            </targetOperationConfig>
+        </targetEndpoints>
+    </mediationmodel:MediationService>
+    <bpel:documentation>MediationFlow1</bpel:documentation>
+    <bpel:import importType="http://schemas.xmlsoap.org/wsdl/"
+        location="../Service%20Descriptors/MathService.wsdl" namespace="http://tibco.com/matrix/qa/wsdl/mathservice"/>
+    <bpel:import importType="http://www.w3.org/2001/XMLSchema"
+        location="../../com.tibco.mediation.it.common/schema/mediationcontext.xsd" namespace="http:///com.tibco.amsb.core.common.exchange/mediationcontext"/>
+    <bpel:import importType="http://www.w3.org/2001/XMLSchema"
+        location="../../com.tibco.mediation.it.common/schema/exceptions.xsd" namespace="http://schemas.tibco.com/amsb/rt/exceptions"/>
+    <bpel:import importType="http://www.w3.org/2001/XMLSchema"
+        location="../../com.tibco.mediation.it.common/schema/ws-bpel_serviceref.xsd" namespace="http://docs.oasis-open.org/wsbpel/2.0/serviceref"/>
+    <bpel:partnerLinks>
+        <bpel:partnerLink myRole="Provider"
+            name="MathServiceSoapProvider" partnerLinkType="ns:MathServiceSoap-MathServiceSoapProvider-partnerLinkType">
+            <bpel:documentation>MyRole</bpel:documentation>
+        </bpel:partnerLink>
+        <bpel:partnerLink name="MathServiceSoapConsumer"
+            partnerLinkType="ns:MathServiceSoap-MathServiceSoapConsumer-partnerLinkType" partnerRole="Consumer">
+            <bpel:documentation>PartnerRole</bpel:documentation>
+        </bpel:partnerLink>
+    </bpel:partnerLinks>
+    <bpel:variables>
+        <bpel:variable messageType="ns:AddSoapIn" name="AddSoapInVar"/>
+        <bpel:variable messageType="ns:AddSoapOut" name="AddSoapOutVar"/>
+        <bpel:variable messageType="ns:SubtractSoapIn" name="SubtractSoapInVar"/>
+        <bpel:variable messageType="ns:SubtractSoapOut" name="SubtractSoapOutVar"/>
+        <bpel:variable messageType="ns:MultiplySoapIn" name="MultiplySoapInVar"/>
+        <bpel:variable messageType="ns:MultiplySoapOut" name="MultiplySoapOutVar"/>
+        <bpel:variable messageType="ns:DivideSoapIn" name="DivideSoapInVar"/>
+        <bpel:variable messageType="ns:DivideSoapOut" name="DivideSoapOutVar"/>
+    </bpel:variables>
+    <bpel:extensions>
+        <bpel:extension mustUnderstand="no" namespace="http://xsd.tns.tibco.com/amsb/task/log/models/logmediationtaskmodel"/>
+        <bpel:extension mustUnderstand="no" namespace="http://xsd.tns.tibco.com/amsb/task/transform/models/transformmediationtaskmodel"/>
+    </bpel:extensions>
+    <bpel:pick>
+        <bpel:onMessage operation="Add"
+            partnerLink="MathServiceSoapProvider"
+            portType="ns:MathServiceSoap" variable="AddSoapInVar">
+            <bpel:scope name="Add">
+                <bpel:variables>
+                    <bpel:variable element="ns0:MessageContext" name="MessageContextVar"/>
+                    <bpel:variable element="ns1:MediationFault" name="MediationFaultVar"/>
+                    <bpel:variable element="ns1:MediationRuntimeFault" name="MediationRuntimeFaultVar"/>
+                    <bpel:variable element="ns1:MediationTaskFault" name="MediationTaskFaultVar"/>
+                    <bpel:variable
+                        element="ns1:MediationTaskRuntimeFault" name="MediationTaskRuntimeFaultVar"/>
+                    <bpel:variable element="ns1:UndeclaredFault" name="UndeclaredFaultVar"/>
+                    <bpel:variable element="ns1:DefaultMediationFault" name="DefaultMediationFaultVar"/>
+                    <bpel:variable messageType="ns:AddSoapOut" name="AddSoapOutVar"/>
+                </bpel:variables>
+                <bpel:faultHandlers>
+                    <bpel:catch faultName="ns1:MediationTaskFault">
+                        <bpel:flow>
+                            <bpel:links>
+                                <bpel:link name="transform-to-SendFault-MediationTaskFaultReplyWithFault"/>
+                            </bpel:links>
+                            <bpel:assign name="transform" validate="no">
+
+                                <transformmediationtaskmodel:MapperTransformationMediationTask
+                                    description="" name="transform"
+                                    xmi:id="_2-r4pwmDEeCLesW-HfbqkQ"
+                                    xmi:version="2.0"
+                                    xmlns:transformmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/transform/models/transformmediationtaskmodel" xmlns:xmi="http://www.omg.org/XMI">
+                                    <transform queryLanguage="xslt" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:tns=&quot;http://schemas.tibco.com/amsb/rt/exceptions&quot; xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;MediationFlowProperties&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageContext&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageData&quot;/>&#xa;    &lt;xsl:template name=&quot;MessageData&quot; match=&quot;/&quot;>&#xa;        &lt;tns:UndeclaredFault>&#xa;            &lt;xsl:if test=&quot;$MessageData/tns:MediationTaskFault/message&quot;>&#xa;                &lt;message>&#xa;                    &lt;xsl:value-of select=&quot;$MessageData/tns:MediationTaskFault/message&quot;/>&#xa;                &lt;/message>&#xa;            &lt;/xsl:if>&#xa;        &lt;/tns:UndeclaredFault>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>&#xa;"/>
+                                </transformmediationtaskmodel:MapperTransformationMediationTask>
+                                <bpel:sources>
+                                    <bpel:source linkName="transform-to-SendFault-MediationTaskFaultReplyWithFault"/>
+                                </bpel:sources>
+                                <bpel:copy>
+                                    <bpel:from><![CDATA[bpel:doXslTransform("transform.xsl",$UndeclaredFaultVar,"MessageData",$MediationTaskFaultVar)]]></bpel:from>
+                                    <bpel:to variable="UndeclaredFaultVar"/>
+                                </bpel:copy>
+                            </bpel:assign>
+                            <bpel:reply faultName="ns1:UndeclaredFault"
+                                name="SendFault-MediationTaskFaultReplyWithFault"
+                                operation="Add"
+                                partnerLink="MathServiceSoapProvider"
+                                portType="ns:MathServiceSoap" variable="UndeclaredFaultVar">
+                                <bpel:targets>
+                                    <bpel:target linkName="transform-to-SendFault-MediationTaskFaultReplyWithFault"/>
+                                </bpel:targets>
+                            </bpel:reply>
+                        </bpel:flow>
+                    </bpel:catch>
+                    <bpel:catch faultName="ns1:MediationTaskRuntimeFault">
+                        <bpel:flow>
+                            <bpel:links>
+                                <bpel:link name="transform1-to-SendFault-MediationTaskRuntimeFaultReplyWithFault"/>
+                            </bpel:links>
+                            <bpel:assign name="transform1" validate="no">
+
+                                <transformmediationtaskmodel:MapperTransformationMediationTask
+                                    description="" name="transform1"
+                                    xmi:id="_2-r4rgmDEeCLesW-HfbqkQ"
+                                    xmi:version="2.0"
+                                    xmlns:transformmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/transform/models/transformmediationtaskmodel" xmlns:xmi="http://www.omg.org/XMI">
+                                    <transform queryLanguage="xslt" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:tns=&quot;http://schemas.tibco.com/amsb/rt/exceptions&quot; xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;MediationFlowProperties&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageContext&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageData&quot;/>&#xa;    &lt;xsl:template name=&quot;MessageData&quot; match=&quot;/&quot;>&#xa;        &lt;tns:UndeclaredFault>&#xa;            &lt;xsl:if test=&quot;$MessageData/tns:MediationTaskRuntimeFault/message&quot;>&#xa;                &lt;message>&#xa;                    &lt;xsl:value-of select=&quot;$MessageData/tns:MediationTaskRuntimeFault/message&quot;/>&#xa;                &lt;/message>&#xa;            &lt;/xsl:if>&#xa;        &lt;/tns:UndeclaredFault>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>&#xa;"/>
+                                </transformmediationtaskmodel:MapperTransformationMediationTask>
+                                <bpel:sources>
+                                    <bpel:source linkName="transform1-to-SendFault-MediationTaskRuntimeFaultReplyWithFault"/>
+                                </bpel:sources>
+                                <bpel:copy>
+                                    <bpel:from><![CDATA[bpel:doXslTransform("transform1.xsl",$UndeclaredFaultVar,"MessageData",$MediationTaskRuntimeFaultVar)]]></bpel:from>
+                                    <bpel:to variable="UndeclaredFaultVar"/>
+                                </bpel:copy>
+                            </bpel:assign>
+                            <bpel:reply faultName="ns1:UndeclaredFault"
+                                name="SendFault-MediationTaskRuntimeFaultReplyWithFault"
+                                operation="Add"
+                                partnerLink="MathServiceSoapProvider"
+                                portType="ns:MathServiceSoap" variable="UndeclaredFaultVar">
+                                <bpel:targets>
+                                    <bpel:target linkName="transform1-to-SendFault-MediationTaskRuntimeFaultReplyWithFault"/>
+                                </bpel:targets>
+                            </bpel:reply>
+                        </bpel:flow>
+                    </bpel:catch>
+                </bpel:faultHandlers>
+                <bpel:flow>
+                    <bpel:links>
+                        <bpel:link name="Log1-Add-to-MathServiceSoapAdd"/>
+                        <bpel:link name="MathServiceSoapAdd-to-AddReply"/>
+                    </bpel:links>
+                    <bpel:extensionActivity>
+                        <tibco-bpel-log:tibcoLogExtensionActivity
+                            name="Log1-Add" xmlns:tibco-bpel-log="http://xsd.tns.tibco.com/bpel/extension/activity/log/models/logtaskmodel">
+                            <bpel:sources>
+                                <bpel:source linkName="Log1-Add-to-MathServiceSoapAdd"/>
+                            </bpel:sources>
+                            <logmediationtaskmodel:LogMediationTask
+                                description="" name="Log1-Add"
+                                taskId="1292552439546"
+                                xmi:id="_QLI58AmEEeCLesW-HfbqkQ"
+                                xmi:version="2.0"
+                                xmlns:logmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/log/models/logmediationtaskmodel"
+                                xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                <logConfiguration xsi:type="logmediationtaskmodel:ListLogConfigurationType">
+                                    <items queryLanguage="xpath" value="child::root"/>
+                                </logConfiguration>
+                            </logmediationtaskmodel:LogMediationTask>
+                        </tibco-bpel-log:tibcoLogExtensionActivity>
+                    </bpel:extensionActivity>
+                    <bpel:invoke inputVariable="AddSoapInVar"
+                        name="MathServiceSoapAdd" operation="Add"
+                        outputVariable="AddSoapOutVar"
+                        partnerLink="MathServiceSoapConsumer" portType="ns:MathServiceSoap">
+                        <bpel:targets>
+                            <bpel:target linkName="Log1-Add-to-MathServiceSoapAdd"/>
+                        </bpel:targets>
+                        <bpel:sources>
+                            <bpel:source linkName="MathServiceSoapAdd-to-AddReply"/>
+                        </bpel:sources>
+                        <bpel:catch faultName="ns1:TimeoutFault">
+                            <bpel:flow>
+                                <bpel:links>
+                                    <bpel:link name="transform-TimeoutFault-MathServiceSoap-Add-to-SendFault-TimeoutFaultReplyWithFault"/>
+                                </bpel:links>
+                                <bpel:assign
+                                    name="transform-TimeoutFault-MathServiceSoap-Add" validate="no">
+
+                                    <transformmediationtaskmodel:MapperTransformationMediationTask
+                                    description=""
+                                    name="transform-TimeoutFault-MathServiceSoap-Add"
+                                    xmi:id="_2-r4mgmDEeCLesW-HfbqkQ"
+                                    xmi:version="2.0"
+                                    xmlns:transformmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/transform/models/transformmediationtaskmodel" xmlns:xmi="http://www.omg.org/XMI">
+                                    <transform queryLanguage="xslt" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://schemas.tibco.com/amsb/rt/exceptions&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;MediationFlowProperties&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageData&quot;/>&#xa;    &lt;xsl:template name=&quot;MessageData&quot; match=&quot;/&quot;>&#xa;        &lt;tns:UndeclaredFault>&#xa;            &lt;xsl:if test=&quot;$MessageData/tns:TimeoutFault/message&quot;>&#xa;                &lt;message>&#xa;                    &lt;xsl:value-of select=&quot;$MessageData/tns:TimeoutFault/message&quot;/>&#xa;                &lt;/message>&#xa;            &lt;/xsl:if>&#xa;        &lt;/tns:UndeclaredFault>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>&#xa;"/>
+                                    </transformmediationtaskmodel:MapperTransformationMediationTask>
+                                    <bpel:sources>
+                                    <bpel:source linkName="transform-TimeoutFault-MathServiceSoap-Add-to-SendFault-TimeoutFaultReplyWithFault"/>
+                                    </bpel:sources>
+                                </bpel:assign>
+                                <bpel:reply
+                                    faultName="ns1:UndeclaredFault"
+                                    name="SendFault-TimeoutFaultReplyWithFault"
+                                    operation="Add"
+                                    partnerLink="MathServiceSoapProvider"
+                                    portType="ns:MathServiceSoap" variable="UndeclaredFaultVar">
+                                    <bpel:targets>
+                                    <bpel:target linkName="transform-TimeoutFault-MathServiceSoap-Add-to-SendFault-TimeoutFaultReplyWithFault"/>
+                                    </bpel:targets>
+                                </bpel:reply>
+                            </bpel:flow>
+                        </bpel:catch>
+                        <bpel:catch faultName="ns1:UndeclaredFault">
+                            <bpel:flow>
+                                <bpel:reply
+                                    faultName="ns1:UndeclaredFault"
+                                    name="SendFault-UndeclaredFaultReplyWithFault"
+                                    operation="Add"
+                                    partnerLink="MathServiceSoapProvider"
+                                    portType="ns:MathServiceSoap" variable="UndeclaredFaultVar"/>
+                            </bpel:flow>
+                        </bpel:catch>
+                    </bpel:invoke>
+                    <bpel:reply name="AddReply" operation="Add"
+                        partnerLink="MathServiceSoapProvider"
+                        portType="ns:MathServiceSoap" variable="AddSoapOutVar">
+                        <bpel:targets>
+                            <bpel:target linkName="MathServiceSoapAdd-to-AddReply"/>
+                        </bpel:targets>
+                    </bpel:reply>
+                </bpel:flow>
+            </bpel:scope>
+        </bpel:onMessage>
+        <bpel:onMessage operation="Subtract"
+            partnerLink="MathServiceSoapProvider"
+            portType="ns:MathServiceSoap" variable="SubtractSoapInVar">
+            <bpel:scope name="Subtract">
+                <bpel:variables>
+                    <bpel:variable element="ns0:MessageContext" name="MessageContextVar"/>
+                    <bpel:variable element="ns1:MediationFault" name="MediationFaultVar"/>
+                    <bpel:variable element="ns1:MediationRuntimeFault" name="MediationRuntimeFaultVar"/>
+                    <bpel:variable element="ns1:MediationTaskFault" name="MediationTaskFaultVar"/>
+                    <bpel:variable
+                        element="ns1:MediationTaskRuntimeFault" name="MediationTaskRuntimeFaultVar"/>
+                    <bpel:variable element="ns1:UndeclaredFault" name="UndeclaredFaultVar"/>
+                    <bpel:variable element="ns1:DefaultMediationFault" name="DefaultMediationFaultVar"/>
+                    <bpel:variable messageType="ns:SubtractSoapOut" name="SubtractSoapOutVar"/>
+                </bpel:variables>
+                <bpel:faultHandlers>
+                    <bpel:catch faultName="ns1:MediationTaskFault">
+                        <bpel:flow>
+                            <bpel:links>
+                                <bpel:link name="transform(1)-to-SendFault-MediationTaskFaultReplyWithFault"/>
+                            </bpel:links>
+                            <bpel:assign name="transform(1)" validate="no">
+
+                                <transformmediationtaskmodel:MapperTransformationMediationTask
+                                    description="" name="transform"
+                                    xmi:id="_2-1ppwmDEeCLesW-HfbqkQ"
+                                    xmi:version="2.0"
+                                    xmlns:transformmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/transform/models/transformmediationtaskmodel" xmlns:xmi="http://www.omg.org/XMI">
+                                    <transform queryLanguage="xslt" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:tns=&quot;http://schemas.tibco.com/amsb/rt/exceptions&quot; xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;MediationFlowProperties&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageContext&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageData&quot;/>&#xa;    &lt;xsl:template name=&quot;MessageData&quot; match=&quot;/&quot;>&#xa;        &lt;tns:UndeclaredFault>&#xa;            &lt;xsl:if test=&quot;$MessageData/tns:MediationTaskFault/message&quot;>&#xa;                &lt;message>&#xa;                    &lt;xsl:value-of select=&quot;$MessageData/tns:MediationTaskFault/message&quot;/>&#xa;                &lt;/message>&#xa;            &lt;/xsl:if>&#xa;        &lt;/tns:UndeclaredFault>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>&#xa;"/>
+                                </transformmediationtaskmodel:MapperTransformationMediationTask>
+                                <bpel:sources>
+                                    <bpel:source linkName="transform(1)-to-SendFault-MediationTaskFaultReplyWithFault"/>
+                                </bpel:sources>
+                                <bpel:copy>
+                                    <bpel:from><![CDATA[bpel:doXslTransform("transform.xsl",$UndeclaredFaultVar,"MessageData",$MediationTaskFaultVar)]]></bpel:from>
+                                    <bpel:to variable="UndeclaredFaultVar"/>
+                                </bpel:copy>
+                            </bpel:assign>
+                            <bpel:reply faultName="ns1:UndeclaredFault"
+                                name="SendFault-MediationTaskFaultReplyWithFault"
+                                operation="Subtract"
+                                partnerLink="MathServiceSoapProvider"
+                                portType="ns:MathServiceSoap" variable="UndeclaredFaultVar">
+                                <bpel:targets>
+                                    <bpel:target linkName="transform(1)-to-SendFault-MediationTaskFaultReplyWithFault"/>
+                                </bpel:targets>
+                            </bpel:reply>
+                        </bpel:flow>
+                    </bpel:catch>
+                    <bpel:catch faultName="ns1:MediationTaskRuntimeFault">
+                        <bpel:flow>
+                            <bpel:links>
+                                <bpel:link name="transform1(1)-to-SendFault-MediationTaskRuntimeFaultReplyWithFault"/>
+                            </bpel:links>
+                            <bpel:assign name="transform1(1)" validate="no">
+
+                                <transformmediationtaskmodel:MapperTransformationMediationTask
+                                    description="" name="transform1"
+                                    xmi:id="_2-1prgmDEeCLesW-HfbqkQ"
+                                    xmi:version="2.0"
+                                    xmlns:transformmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/transform/models/transformmediationtaskmodel" xmlns:xmi="http://www.omg.org/XMI">
+                                    <transform queryLanguage="xslt" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:tns=&quot;http://schemas.tibco.com/amsb/rt/exceptions&quot; xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;MediationFlowProperties&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageContext&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageData&quot;/>&#xa;    &lt;xsl:template name=&quot;MessageData&quot; match=&quot;/&quot;>&#xa;        &lt;tns:UndeclaredFault>&#xa;            &lt;xsl:if test=&quot;$MessageData/tns:MediationTaskRuntimeFault/message&quot;>&#xa;                &lt;message>&#xa;                    &lt;xsl:value-of select=&quot;$MessageData/tns:MediationTaskRuntimeFault/message&quot;/>&#xa;                &lt;/message>&#xa;            &lt;/xsl:if>&#xa;        &lt;/tns:UndeclaredFault>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>&#xa;"/>
+                                </transformmediationtaskmodel:MapperTransformationMediationTask>
+                                <bpel:sources>
+                                    <bpel:source linkName="transform1(1)-to-SendFault-MediationTaskRuntimeFaultReplyWithFault"/>
+                                </bpel:sources>
+                                <bpel:copy>
+                                    <bpel:from><![CDATA[bpel:doXslTransform("transform1.xsl",$UndeclaredFaultVar,"MessageData",$MediationTaskRuntimeFaultVar)]]></bpel:from>
+                                    <bpel:to variable="UndeclaredFaultVar"/>
+                                </bpel:copy>
+                            </bpel:assign>
+                            <bpel:reply faultName="ns1:UndeclaredFault"
+                                name="SendFault-MediationTaskRuntimeFaultReplyWithFault"
+                                operation="Subtract"
+                                partnerLink="MathServiceSoapProvider"
+                                portType="ns:MathServiceSoap" variable="UndeclaredFaultVar">
+                                <bpel:targets>
+                                    <bpel:target linkName="transform1(1)-to-SendFault-MediationTaskRuntimeFaultReplyWithFault"/>
+                                </bpel:targets>
+                            </bpel:reply>
+                        </bpel:flow>
+                    </bpel:catch>
+                </bpel:faultHandlers>
+                <bpel:flow>
+                    <bpel:links>
+                        <bpel:link name="Log1-Sub-to-MathServiceSoapSubtract"/>
+                        <bpel:link name="MathServiceSoapSubtract-to-SubtractReply"/>
+                    </bpel:links>
+                    <bpel:extensionActivity>
+                        <tibco-bpel-log:tibcoLogExtensionActivity
+                            name="Log1-Sub" xmlns:tibco-bpel-log="http://xsd.tns.tibco.com/bpel/extension/activity/log/models/logtaskmodel">
+                            <bpel:sources>
+                                <bpel:source linkName="Log1-Sub-to-MathServiceSoapSubtract"/>
+                            </bpel:sources>
+                            <logmediationtaskmodel:LogMediationTask
+                                description="" name="Log1-Sub"
+                                taskId="1292552479921"
+                                xmi:id="_VbTzEAmEEeCLesW-HfbqkQ"
+                                xmi:version="2.0"
+                                xmlns:logmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/log/models/logmediationtaskmodel"
+                                xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                <logConfiguration xsi:type="logmediationtaskmodel:ListLogConfigurationType">
+                                    <items queryLanguage="xpath" value="child::root"/>
+                                </logConfiguration>
+                            </logmediationtaskmodel:LogMediationTask>
+                        </tibco-bpel-log:tibcoLogExtensionActivity>
+                    </bpel:extensionActivity>
+                    <bpel:invoke inputVariable="SubtractSoapInVar"
+                        name="MathServiceSoapSubtract"
+                        operation="Subtract"
+                        outputVariable="SubtractSoapOutVar"
+                        partnerLink="MathServiceSoapConsumer" portType="ns:MathServiceSoap">
+                        <bpel:targets>
+                            <bpel:target linkName="Log1-Sub-to-MathServiceSoapSubtract"/>
+                        </bpel:targets>
+                        <bpel:sources>
+                            <bpel:source linkName="MathServiceSoapSubtract-to-SubtractReply"/>
+                        </bpel:sources>
+                        <bpel:catch faultName="ns1:TimeoutFault">
+                            <bpel:flow>
+                                <bpel:links>
+                                    <bpel:link name="transform-TimeoutFault-MathServiceSoap-Subtract-to-SendFault-TimeoutFaultReplyWithFault"/>
+                                </bpel:links>
+                                <bpel:assign
+                                    name="transform-TimeoutFault-MathServiceSoap-Subtract" validate="no">
+
+                                    <transformmediationtaskmodel:MapperTransformationMediationTask
+                                    description=""
+                                    name="transform-TimeoutFault-MathServiceSoap-Subtract"
+                                    xmi:id="_2-1pmgmDEeCLesW-HfbqkQ"
+                                    xmi:version="2.0"
+                                    xmlns:transformmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/transform/models/transformmediationtaskmodel" xmlns:xmi="http://www.omg.org/XMI">
+                                    <transform queryLanguage="xslt" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://schemas.tibco.com/amsb/rt/exceptions&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;MediationFlowProperties&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageData&quot;/>&#xa;    &lt;xsl:template name=&quot;MessageData&quot; match=&quot;/&quot;>&#xa;        &lt;tns:UndeclaredFault>&#xa;            &lt;xsl:if test=&quot;$MessageData/tns:TimeoutFault/message&quot;>&#xa;                &lt;message>&#xa;                    &lt;xsl:value-of select=&quot;$MessageData/tns:TimeoutFault/message&quot;/>&#xa;                &lt;/message>&#xa;            &lt;/xsl:if>&#xa;        &lt;/tns:UndeclaredFault>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>&#xa;"/>
+                                    </transformmediationtaskmodel:MapperTransformationMediationTask>
+                                    <bpel:sources>
+                                    <bpel:source linkName="transform-TimeoutFault-MathServiceSoap-Subtract-to-SendFault-TimeoutFaultReplyWithFault"/>
+                                    </bpel:sources>
+                                </bpel:assign>
+                                <bpel:reply
+                                    faultName="ns1:UndeclaredFault"
+                                    name="SendFault-TimeoutFaultReplyWithFault"
+                                    operation="Subtract"
+                                    partnerLink="MathServiceSoapProvider"
+                                    portType="ns:MathServiceSoap" variable="UndeclaredFaultVar">
+                                    <bpel:targets>
+                                    <bpel:target linkName="transform-TimeoutFault-MathServiceSoap-Subtract-to-SendFault-TimeoutFaultReplyWithFault"/>
+                                    </bpel:targets>
+                                </bpel:reply>
+                            </bpel:flow>
+                        </bpel:catch>
+                        <bpel:catch faultName="ns1:UndeclaredFault">
+                            <bpel:flow>
+                                <bpel:reply
+                                    faultName="ns1:UndeclaredFault"
+                                    name="SendFault-UndeclaredFaultReplyWithFault"
+                                    operation="Subtract"
+                                    partnerLink="MathServiceSoapProvider"
+                                    portType="ns:MathServiceSoap" variable="UndeclaredFaultVar"/>
+                            </bpel:flow>
+                        </bpel:catch>
+                    </bpel:invoke>
+                    <bpel:reply name="SubtractReply"
+                        operation="Subtract"
+                        partnerLink="MathServiceSoapProvider"
+                        portType="ns:MathServiceSoap" variable="SubtractSoapOutVar">
+                        <bpel:targets>
+                            <bpel:target linkName="MathServiceSoapSubtract-to-SubtractReply"/>
+                        </bpel:targets>
+                    </bpel:reply>
+                </bpel:flow>
+            </bpel:scope>
+        </bpel:onMessage>
+        <bpel:onMessage operation="Multiply"
+            partnerLink="MathServiceSoapProvider"
+            portType="ns:MathServiceSoap" variable="MultiplySoapInVar">
+            <bpel:scope name="Multiply">
+                <bpel:variables>
+                    <bpel:variable element="ns0:MessageContext" name="MessageContextVar"/>
+                    <bpel:variable element="ns1:MediationFault" name="MediationFaultVar"/>
+                    <bpel:variable element="ns1:MediationRuntimeFault" name="MediationRuntimeFaultVar"/>
+                    <bpel:variable element="ns1:MediationTaskFault" name="MediationTaskFaultVar"/>
+                    <bpel:variable
+                        element="ns1:MediationTaskRuntimeFault" name="MediationTaskRuntimeFaultVar"/>
+                    <bpel:variable element="ns1:UndeclaredFault" name="UndeclaredFaultVar"/>
+                    <bpel:variable element="ns1:DefaultMediationFault" name="DefaultMediationFaultVar"/>
+                    <bpel:variable messageType="ns:MultiplySoapOut" name="MultiplySoapOutVar"/>
+                </bpel:variables>
+                <bpel:faultHandlers>
+                    <bpel:catch faultName="ns1:MediationTaskFault">
+                        <bpel:flow>
+                            <bpel:links>
+                                <bpel:link name="transform(2)-to-SendFault-MediationTaskFaultReplyWithFault"/>
+                            </bpel:links>
+                            <bpel:assign name="transform(2)" validate="no">
+
+                                <transformmediationtaskmodel:MapperTransformationMediationTask
+                                    description="" name="transform"
+                                    xmi:id="_2-1pygmDEeCLesW-HfbqkQ"
+                                    xmi:version="2.0"
+                                    xmlns:transformmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/transform/models/transformmediationtaskmodel" xmlns:xmi="http://www.omg.org/XMI">
+                                    <transform queryLanguage="xslt" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:tns=&quot;http://schemas.tibco.com/amsb/rt/exceptions&quot; xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;MediationFlowProperties&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageContext&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageData&quot;/>&#xa;    &lt;xsl:template name=&quot;MessageData&quot; match=&quot;/&quot;>&#xa;        &lt;tns:UndeclaredFault>&#xa;            &lt;xsl:if test=&quot;$MessageData/tns:MediationTaskFault/message&quot;>&#xa;                &lt;message>&#xa;                    &lt;xsl:value-of select=&quot;$MessageData/tns:MediationTaskFault/message&quot;/>&#xa;                &lt;/message>&#xa;            &lt;/xsl:if>&#xa;        &lt;/tns:UndeclaredFault>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>&#xa;"/>
+                                </transformmediationtaskmodel:MapperTransformationMediationTask>
+                                <bpel:sources>
+                                    <bpel:source linkName="transform(2)-to-SendFault-MediationTaskFaultReplyWithFault"/>
+                                </bpel:sources>
+                                <bpel:copy>
+                                    <bpel:from><![CDATA[bpel:doXslTransform("transform.xsl",$UndeclaredFaultVar,"MessageData",$MediationTaskFaultVar)]]></bpel:from>
+                                    <bpel:to variable="UndeclaredFaultVar"/>
+                                </bpel:copy>
+                            </bpel:assign>
+                            <bpel:reply faultName="ns1:UndeclaredFault"
+                                name="SendFault-MediationTaskFaultReplyWithFault"
+                                operation="Multiply"
+                                partnerLink="MathServiceSoapProvider"
+                                portType="ns:MathServiceSoap" variable="UndeclaredFaultVar">
+                                <bpel:targets>
+                                    <bpel:target linkName="transform(2)-to-SendFault-MediationTaskFaultReplyWithFault"/>
+                                </bpel:targets>
+                            </bpel:reply>
+                        </bpel:flow>
+                    </bpel:catch>
+                    <bpel:catch faultName="ns1:MediationTaskRuntimeFault">
+                        <bpel:flow>
+                            <bpel:links>
+                                <bpel:link name="transform1(2)-to-SendFault-MediationTaskRuntimeFaultReplyWithFault"/>
+                            </bpel:links>
+                            <bpel:assign name="transform1(2)" validate="no">
+
+                                <transformmediationtaskmodel:MapperTransformationMediationTask
+                                    description="" name="transform1"
+                                    xmi:id="_2-1p0QmDEeCLesW-HfbqkQ"
+                                    xmi:version="2.0"
+                                    xmlns:transformmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/transform/models/transformmediationtaskmodel" xmlns:xmi="http://www.omg.org/XMI">
+                                    <transform queryLanguage="xslt" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:tns=&quot;http://schemas.tibco.com/amsb/rt/exceptions&quot; xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;MediationFlowProperties&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageContext&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageData&quot;/>&#xa;    &lt;xsl:template name=&quot;MessageData&quot; match=&quot;/&quot;>&#xa;        &lt;tns:UndeclaredFault>&#xa;            &lt;xsl:if test=&quot;$MessageData/tns:MediationTaskRuntimeFault/message&quot;>&#xa;                &lt;message>&#xa;                    &lt;xsl:value-of select=&quot;$MessageData/tns:MediationTaskRuntimeFault/message&quot;/>&#xa;                &lt;/message>&#xa;            &lt;/xsl:if>&#xa;        &lt;/tns:UndeclaredFault>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>&#xa;"/>
+                                </transformmediationtaskmodel:MapperTransformationMediationTask>
+                                <bpel:sources>
+                                    <bpel:source linkName="transform1(2)-to-SendFault-MediationTaskRuntimeFaultReplyWithFault"/>
+                                </bpel:sources>
+                                <bpel:copy>
+                                    <bpel:from><![CDATA[bpel:doXslTransform("transform1.xsl",$UndeclaredFaultVar,"MessageData",$MediationTaskRuntimeFaultVar)]]></bpel:from>
+                                    <bpel:to variable="UndeclaredFaultVar"/>
+                                </bpel:copy>
+                            </bpel:assign>
+                            <bpel:reply faultName="ns1:UndeclaredFault"
+                                name="SendFault-MediationTaskRuntimeFaultReplyWithFault"
+                                operation="Multiply"
+                                partnerLink="MathServiceSoapProvider"
+                                portType="ns:MathServiceSoap" variable="UndeclaredFaultVar">
+                                <bpel:targets>
+                                    <bpel:target linkName="transform1(2)-to-SendFault-MediationTaskRuntimeFaultReplyWithFault"/>
+                                </bpel:targets>
+                            </bpel:reply>
+                        </bpel:flow>
+                    </bpel:catch>
+                </bpel:faultHandlers>
+                <bpel:flow>
+                    <bpel:links>
+                        <bpel:link name="Log1-Mul-to-MathServiceSoapMultiply"/>
+                        <bpel:link name="MathServiceSoapMultiply-to-MultiplyReply"/>
+                    </bpel:links>
+                    <bpel:extensionActivity>
+                        <tibco-bpel-log:tibcoLogExtensionActivity
+                            name="Log1-Mul" xmlns:tibco-bpel-log="http://xsd.tns.tibco.com/bpel/extension/activity/log/models/logtaskmodel">
+                            <bpel:sources>
+                                <bpel:source linkName="Log1-Mul-to-MathServiceSoapMultiply"/>
+                            </bpel:sources>
+                            <logmediationtaskmodel:LogMediationTask
+                                description="" name="Log1-Mul"
+                                taskId="1292552554140"
+                                xmi:id="_gfHewAmEEeCLesW-HfbqkQ"
+                                xmi:version="2.0"
+                                xmlns:logmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/log/models/logmediationtaskmodel"
+                                xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                <logConfiguration xsi:type="logmediationtaskmodel:ListLogConfigurationType">
+                                    <items queryLanguage="xpath" value="child::root"/>
+                                </logConfiguration>
+                            </logmediationtaskmodel:LogMediationTask>
+                        </tibco-bpel-log:tibcoLogExtensionActivity>
+                    </bpel:extensionActivity>
+                    <bpel:invoke inputVariable="MultiplySoapInVar"
+                        name="MathServiceSoapMultiply"
+                        operation="Multiply"
+                        outputVariable="MultiplySoapOutVar"
+                        partnerLink="MathServiceSoapConsumer" portType="ns:MathServiceSoap">
+                        <bpel:targets>
+                            <bpel:target linkName="Log1-Mul-to-MathServiceSoapMultiply"/>
+                        </bpel:targets>
+                        <bpel:sources>
+                            <bpel:source linkName="MathServiceSoapMultiply-to-MultiplyReply"/>
+                        </bpel:sources>
+                        <bpel:catch faultName="ns1:TimeoutFault">
+                            <bpel:flow>
+                                <bpel:links>
+                                    <bpel:link name="transform-TimeoutFault-MathServiceSoap-Multiply-to-SendFault-TimeoutFaultReplyWithFault"/>
+                                </bpel:links>
+                                <bpel:assign
+                                    name="transform-TimeoutFault-MathServiceSoap-Multiply" validate="no">
+
+                                    <transformmediationtaskmodel:MapperTransformationMediationTask
+                                    description=""
+                                    name="transform-TimeoutFault-MathServiceSoap-Multiply"
+                                    xmi:id="_2-1pvQmDEeCLesW-HfbqkQ"
+                                    xmi:version="2.0"
+                                    xmlns:transformmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/transform/models/transformmediationtaskmodel" xmlns:xmi="http://www.omg.org/XMI">
+                                    <transform queryLanguage="xslt" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://schemas.tibco.com/amsb/rt/exceptions&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;MediationFlowProperties&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageData&quot;/>&#xa;    &lt;xsl:template name=&quot;MessageData&quot; match=&quot;/&quot;>&#xa;        &lt;tns:UndeclaredFault>&#xa;            &lt;xsl:if test=&quot;$MessageData/tns:TimeoutFault/message&quot;>&#xa;                &lt;message>&#xa;                    &lt;xsl:value-of select=&quot;$MessageData/tns:TimeoutFault/message&quot;/>&#xa;                &lt;/message>&#xa;            &lt;/xsl:if>&#xa;        &lt;/tns:UndeclaredFault>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>&#xa;"/>
+                                    </transformmediationtaskmodel:MapperTransformationMediationTask>
+                                    <bpel:sources>
+                                    <bpel:source linkName="transform-TimeoutFault-MathServiceSoap-Multiply-to-SendFault-TimeoutFaultReplyWithFault"/>
+                                    </bpel:sources>
+                                </bpel:assign>
+                                <bpel:reply
+                                    faultName="ns1:UndeclaredFault"
+                                    name="SendFault-TimeoutFaultReplyWithFault"
+                                    operation="Multiply"
+                                    partnerLink="MathServiceSoapProvider"
+                                    portType="ns:MathServiceSoap" variable="UndeclaredFaultVar">
+                                    <bpel:targets>
+                                    <bpel:target linkName="transform-TimeoutFault-MathServiceSoap-Multiply-to-SendFault-TimeoutFaultReplyWithFault"/>
+                                    </bpel:targets>
+                                </bpel:reply>
+                            </bpel:flow>
+                        </bpel:catch>
+                        <bpel:catch faultName="ns1:UndeclaredFault">
+                            <bpel:flow>
+                                <bpel:reply
+                                    faultName="ns1:UndeclaredFault"
+                                    name="SendFault-UndeclaredFaultReplyWithFault"
+                                    operation="Multiply"
+                                    partnerLink="MathServiceSoapProvider"
+                                    portType="ns:MathServiceSoap" variable="UndeclaredFaultVar"/>
+                            </bpel:flow>
+                        </bpel:catch>
+                    </bpel:invoke>
+                    <bpel:reply name="MultiplyReply"
+                        operation="Multiply"
+                        partnerLink="MathServiceSoapProvider"
+                        portType="ns:MathServiceSoap" variable="MultiplySoapOutVar">
+                        <bpel:targets>
+                            <bpel:target linkName="MathServiceSoapMultiply-to-MultiplyReply"/>
+                        </bpel:targets>
+                    </bpel:reply>
+                </bpel:flow>
+            </bpel:scope>
+        </bpel:onMessage>
+        <bpel:onMessage operation="Divide"
+            partnerLink="MathServiceSoapProvider"
+            portType="ns:MathServiceSoap" variable="DivideSoapInVar">
+            <bpel:scope name="Divide">
+                <bpel:variables>
+                    <bpel:variable element="ns0:MessageContext" name="MessageContextVar"/>
+                    <bpel:variable element="ns1:MediationFault" name="MediationFaultVar"/>
+                    <bpel:variable element="ns1:MediationRuntimeFault" name="MediationRuntimeFaultVar"/>
+                    <bpel:variable element="ns1:MediationTaskFault" name="MediationTaskFaultVar"/>
+                    <bpel:variable
+                        element="ns1:MediationTaskRuntimeFault" name="MediationTaskRuntimeFaultVar"/>
+                    <bpel:variable element="ns1:UndeclaredFault" name="UndeclaredFaultVar"/>
+                    <bpel:variable element="ns1:DefaultMediationFault" name="DefaultMediationFaultVar"/>
+                    <bpel:variable messageType="ns:DivideSoapOut" name="DivideSoapOutVar"/>
+                </bpel:variables>
+                <bpel:faultHandlers>
+                    <bpel:catch faultName="ns1:MediationTaskFault">
+                        <bpel:flow>
+                            <bpel:links>
+                                <bpel:link name="transform(3)-to-SendFault-MediationTaskFaultReplyWithFault"/>
+                            </bpel:links>
+                            <bpel:assign name="transform(3)" validate="no">
+
+                                <transformmediationtaskmodel:MapperTransformationMediationTask
+                                    description="" name="transform"
+                                    xmi:id="_2-1p7QmDEeCLesW-HfbqkQ"
+                                    xmi:version="2.0"
+                                    xmlns:transformmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/transform/models/transformmediationtaskmodel" xmlns:xmi="http://www.omg.org/XMI">
+                                    <transform queryLanguage="xslt" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:tns=&quot;http://schemas.tibco.com/amsb/rt/exceptions&quot; xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;MediationFlowProperties&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageContext&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageData&quot;/>&#xa;    &lt;xsl:template name=&quot;MessageData&quot; match=&quot;/&quot;>&#xa;        &lt;tns:UndeclaredFault>&#xa;            &lt;xsl:if test=&quot;$MessageData/tns:MediationTaskFault/message&quot;>&#xa;                &lt;message>&#xa;                    &lt;xsl:value-of select=&quot;$MessageData/tns:MediationTaskFault/message&quot;/>&#xa;                &lt;/message>&#xa;            &lt;/xsl:if>&#xa;        &lt;/tns:UndeclaredFault>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>&#xa;"/>
+                                </transformmediationtaskmodel:MapperTransformationMediationTask>
+                                <bpel:sources>
+                                    <bpel:source linkName="transform(3)-to-SendFault-MediationTaskFaultReplyWithFault"/>
+                                </bpel:sources>
+                                <bpel:copy>
+                                    <bpel:from><![CDATA[bpel:doXslTransform("transform.xsl",$UndeclaredFaultVar,"MessageData",$MediationTaskFaultVar)]]></bpel:from>
+                                    <bpel:to variable="UndeclaredFaultVar"/>
+                                </bpel:copy>
+                            </bpel:assign>
+                            <bpel:reply faultName="ns1:UndeclaredFault"
+                                name="SendFault-MediationTaskFaultReplyWithFault"
+                                operation="Divide"
+                                partnerLink="MathServiceSoapProvider"
+                                portType="ns:MathServiceSoap" variable="UndeclaredFaultVar">
+                                <bpel:targets>
+                                    <bpel:target linkName="transform(3)-to-SendFault-MediationTaskFaultReplyWithFault"/>
+                                </bpel:targets>
+                            </bpel:reply>
+                        </bpel:flow>
+                    </bpel:catch>
+                    <bpel:catch faultName="ns1:MediationTaskRuntimeFault">
+                        <bpel:flow>
+                            <bpel:links>
+                                <bpel:link name="transform1(3)-to-SendFault-MediationTaskRuntimeFaultReplyWithFault"/>
+                            </bpel:links>
+                            <bpel:assign name="transform1(3)" validate="no">
+
+                                <transformmediationtaskmodel:MapperTransformationMediationTask
+                                    description="" name="transform1"
+                                    xmi:id="_2-1p9AmDEeCLesW-HfbqkQ"
+                                    xmi:version="2.0"
+                                    xmlns:transformmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/transform/models/transformmediationtaskmodel" xmlns:xmi="http://www.omg.org/XMI">
+                                    <transform queryLanguage="xslt" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:tns=&quot;http://schemas.tibco.com/amsb/rt/exceptions&quot; xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;MediationFlowProperties&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageContext&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageData&quot;/>&#xa;    &lt;xsl:template name=&quot;MessageData&quot; match=&quot;/&quot;>&#xa;        &lt;tns:UndeclaredFault>&#xa;            &lt;xsl:if test=&quot;$MessageData/tns:MediationTaskRuntimeFault/message&quot;>&#xa;                &lt;message>&#xa;                    &lt;xsl:value-of select=&quot;$MessageData/tns:MediationTaskRuntimeFault/message&quot;/>&#xa;                &lt;/message>&#xa;            &lt;/xsl:if>&#xa;        &lt;/tns:UndeclaredFault>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>&#xa;"/>
+                                </transformmediationtaskmodel:MapperTransformationMediationTask>
+                                <bpel:sources>
+                                    <bpel:source linkName="transform1(3)-to-SendFault-MediationTaskRuntimeFaultReplyWithFault"/>
+                                </bpel:sources>
+                                <bpel:copy>
+                                    <bpel:from><![CDATA[bpel:doXslTransform("transform1.xsl",$UndeclaredFaultVar,"MessageData",$MediationTaskRuntimeFaultVar)]]></bpel:from>
+                                    <bpel:to variable="UndeclaredFaultVar"/>
+                                </bpel:copy>
+                            </bpel:assign>
+                            <bpel:reply faultName="ns1:UndeclaredFault"
+                                name="SendFault-MediationTaskRuntimeFaultReplyWithFault"
+                                operation="Divide"
+                                partnerLink="MathServiceSoapProvider"
+                                portType="ns:MathServiceSoap" variable="UndeclaredFaultVar">
+                                <bpel:targets>
+                                    <bpel:target linkName="transform1(3)-to-SendFault-MediationTaskRuntimeFaultReplyWithFault"/>
+                                </bpel:targets>
+                            </bpel:reply>
+                        </bpel:flow>
+                    </bpel:catch>
+                </bpel:faultHandlers>
+                <bpel:flow>
+                    <bpel:links>
+                        <bpel:link name="Log1-Div-to-MathServiceSoapDivide"/>
+                        <bpel:link name="MathServiceSoapDivide-to-DivideReply"/>
+                    </bpel:links>
+                    <bpel:extensionActivity>
+                        <tibco-bpel-log:tibcoLogExtensionActivity
+                            name="Log1-Div" xmlns:tibco-bpel-log="http://xsd.tns.tibco.com/bpel/extension/activity/log/models/logtaskmodel">
+                            <bpel:sources>
+                                <bpel:source linkName="Log1-Div-to-MathServiceSoapDivide"/>
+                            </bpel:sources>
+                            <logmediationtaskmodel:LogMediationTask
+                                description="" name="Log1-Div"
+                                taskId="1292552556250"
+                                xmi:id="_gzOtkAmEEeCLesW-HfbqkQ"
+                                xmi:version="2.0"
+                                xmlns:logmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/log/models/logmediationtaskmodel"
+                                xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                <logConfiguration xsi:type="logmediationtaskmodel:ListLogConfigurationType">
+                                    <items queryLanguage="xpath" value="child::root"/>
+                                </logConfiguration>
+                            </logmediationtaskmodel:LogMediationTask>
+                        </tibco-bpel-log:tibcoLogExtensionActivity>
+                    </bpel:extensionActivity>
+                    <bpel:invoke inputVariable="DivideSoapInVar"
+                        name="MathServiceSoapDivide" operation="Divide"
+                        outputVariable="DivideSoapOutVar"
+                        partnerLink="MathServiceSoapConsumer" portType="ns:MathServiceSoap">
+                        <bpel:targets>
+                            <bpel:target linkName="Log1-Div-to-MathServiceSoapDivide"/>
+                        </bpel:targets>
+                        <bpel:sources>
+                            <bpel:source linkName="MathServiceSoapDivide-to-DivideReply"/>
+                        </bpel:sources>
+                        <bpel:catch faultName="ns1:TimeoutFault">
+                            <bpel:flow>
+                                <bpel:links>
+                                    <bpel:link name="transform-TimeoutFault-MathServiceSoap-Divide-to-SendFault-TimeoutFaultReplyWithFault"/>
+                                </bpel:links>
+                                <bpel:assign
+                                    name="transform-TimeoutFault-MathServiceSoap-Divide" validate="no">
+
+                                    <transformmediationtaskmodel:MapperTransformationMediationTask
+                                    description=""
+                                    name="transform-TimeoutFault-MathServiceSoap-Divide"
+                                    xmi:id="_2-1p4AmDEeCLesW-HfbqkQ"
+                                    xmi:version="2.0"
+                                    xmlns:transformmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/transform/models/transformmediationtaskmodel" xmlns:xmi="http://www.omg.org/XMI">
+                                    <transform queryLanguage="xslt" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://schemas.tibco.com/amsb/rt/exceptions&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;MediationFlowProperties&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageData&quot;/>&#xa;    &lt;xsl:template name=&quot;MessageData&quot; match=&quot;/&quot;>&#xa;        &lt;tns:UndeclaredFault>&#xa;            &lt;xsl:if test=&quot;$MessageData/tns:TimeoutFault/message&quot;>&#xa;                &lt;message>&#xa;                    &lt;xsl:value-of select=&quot;$MessageData/tns:TimeoutFault/message&quot;/>&#xa;                &lt;/message>&#xa;            &lt;/xsl:if>&#xa;        &lt;/tns:UndeclaredFault>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>&#xa;"/>
+                                    </transformmediationtaskmodel:MapperTransformationMediationTask>
+                                    <bpel:sources>
+                                    <bpel:source linkName="transform-TimeoutFault-MathServiceSoap-Divide-to-SendFault-TimeoutFaultReplyWithFault"/>
+                                    </bpel:sources>
+                                </bpel:assign>
+                                <bpel:reply
+                                    faultName="ns1:UndeclaredFault"
+                                    name="SendFault-TimeoutFaultReplyWithFault"
+                                    operation="Divide"
+                                    partnerLink="MathServiceSoapProvider"
+                                    portType="ns:MathServiceSoap" variable="UndeclaredFaultVar">
+                                    <bpel:targets>
+                                    <bpel:target linkName="transform-TimeoutFault-MathServiceSoap-Divide-to-SendFault-TimeoutFaultReplyWithFault"/>
+                                    </bpel:targets>
+                                </bpel:reply>
+                            </bpel:flow>
+                        </bpel:catch>
+                        <bpel:catch faultName="ns1:UndeclaredFault">
+                            <bpel:flow>
+                                <bpel:reply
+                                    faultName="ns1:UndeclaredFault"
+                                    name="SendFault-UndeclaredFaultReplyWithFault"
+                                    operation="Divide"
+                                    partnerLink="MathServiceSoapProvider"
+                                    portType="ns:MathServiceSoap" variable="UndeclaredFaultVar"/>
+                            </bpel:flow>
+                        </bpel:catch>
+                    </bpel:invoke>
+                    <bpel:reply name="DivideReply" operation="Divide"
+                        partnerLink="MathServiceSoapProvider"
+                        portType="ns:MathServiceSoap" variable="DivideSoapOutVar">
+                        <bpel:targets>
+                            <bpel:target linkName="MathServiceSoapDivide-to-DivideReply"/>
+                        </bpel:targets>
+                    </bpel:reply>
+                </bpel:flow>
+            </bpel:scope>
+        </bpel:onMessage>
+    </bpel:pick>
+</bpel:process>

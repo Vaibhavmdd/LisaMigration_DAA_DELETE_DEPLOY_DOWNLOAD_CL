@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise
+        xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+        xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+        xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+        <Environment xsi:type="amxdata:Environment"
+        	name="QAEnvironment_na2devasgora03"
+                description="QA Environment"
+                contact="TIBCO">
+               
+                <Node xsi:type="amxdata:Node"
+                	name="QANode1">
+       		</Node>
+                <Application xsi:type="amxdata:Application"
+                        name="ServiceContract"
+                        contact="TIBCO"
+                        description="1.0 Service Contract Attribute" importBindings="true" importResourceTemplates="true">
+                       
+                        <Component xsi:type="amxdata:Component" name="ServiceContract">
+                        	<Node name="QANode2" environmentName="QAEnvironment_na2devasgora03" />                            
+                    	</Component>
+                        
+                        <PromotedService xsi:type="amxdata_base:Service_base" name="MyCalculatorConfiguration">
+				<Binding xsi:type="amxdata:Binding" name="SOAPService_Binding1" >
+					<Node name="QANode1" environmentName="QAEnvironment_na2devasgora03"/>
+				</Binding>
+			</PromotedService>
+                       
+                        <ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference"                
+                                name="ServiceContract"/>                                 
+        	</Application>         
+
+	</Environment>
+        <DAA
+        	xsi:type="amxdata:DAA"
+                description="8.0 Service Contract Attribute"
+                location="C:/Lisa1072/Projects/AMX/Tests/downloadDAA-TAP-12760/hf_330_5.12.17/ServiceContract/BS_Proj/dotnet35/ServiceContract/Deployment Artifacts/ServiceContract.daa"
+                importResourceTemplates="false" >
+        </DAA>
+
+		
+		<AppTemplate xsi:type="amxdata_base:AppTemplateID"                
+                                name="ServiceContract" version="1.0.0.v2013-01-09-1425" downloadLocation="C:/Lisa1072/Projects/AMX/Tests/downloadDAA-TAP-12760/hf_330_5.12.17/DownloadedDAA" /> 
+		
+</amxdata_base:Enterprise>

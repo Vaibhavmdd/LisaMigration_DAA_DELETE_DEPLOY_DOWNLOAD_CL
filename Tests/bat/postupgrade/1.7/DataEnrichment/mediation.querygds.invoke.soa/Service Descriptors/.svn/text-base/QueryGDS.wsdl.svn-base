@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created by TIBCO WSDL-->
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.tibco.com/mediation/QueryGDS" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns0="http://www.xyzcorp/procureservice/QueryGDS/" name="QueryGDS" targetNamespace="http://www.tibco.com/mediation/QueryGDS">
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.xyzcorp/procureservice/QueryGDS/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:complexType name="Address">
+                <xs:sequence>
+                    <xs:element name="street" type="xs:string"/>
+                    <xs:element name="city" type="xs:string"/>
+                    <xs:element name="state" type="xs:string"/>
+                    <xs:element name="zip" type="xs:string"/>
+                    <xs:element name="country" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="AirlineSearch">
+                <xs:sequence>
+                    <xs:element name="roundTrip" type="xs:boolean"/>
+                    <xs:element name="origin" type="ns0:AirportCode"/>
+                    <xs:element name="destination" type="ns0:AirportCode"/>
+                    <xs:element name="departureDate" type="xs:date"/>
+                    <xs:element name="returnDate" type="xs:date" minOccurs="0"/>
+                    <xs:element name="noOfPassengers" type="xs:int"/>
+                    <xs:element name="timePreference" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="AirlineSearchResults">
+                <xs:sequence>
+                    <xs:element name="departingFlights" type="ns0:DepartingFlights"/>
+                    <xs:element name="returningFlights" type="ns0:ReturningFlights" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:simpleType name="AirportCode">
+                <xs:restriction base="xs:string">
+                    <xs:length value="3"/>
+                    <xs:pattern value="[A-Z]+"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:complexType name="CarOptions">
+                <xs:sequence>
+                    <xs:element name="car" maxOccurs="unbounded">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="carType" type="xs:string"/>
+                                <xs:element name="carMake" type="xs:string" minOccurs="0"/>
+                                <xs:element name="navigation" type="xs:boolean" minOccurs="0"/>
+                                <xs:element name="otherFeatures" type="xs:string" minOccurs="0"/>
+                                <xs:element name="avgCostPerDay" type="xs:string"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="CarSearch">
+                <xs:sequence>
+                    <xs:element name="country" type="xs:string"/>
+                    <xs:element name="state" type="xs:string"/>
+                    <xs:element name="pickUpCity" type="xs:string"/>
+                    <xs:element name="dropOffCity" type="xs:string" minOccurs="0"/>
+                    <xs:element name="pickUpDate" type="xs:dateTime"/>
+                    <xs:element name="dropOffDate" type="xs:dateTime"/>
+                    <xs:element name="rentalAgency" type="xs:string" minOccurs="0"/>
+                    <xs:element name="carType" type="xs:string" minOccurs="0"/>
+                    <xs:element name="carMake" type="xs:string" minOccurs="0"/>
+                    <xs:element name="nonSmoking" type="xs:boolean" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="CarSearchResults">
+                <xs:sequence>
+                    <xs:element name="pickUpCity" type="xs:string"/>
+                    <xs:element name="pickUpDate" type="xs:dateTime"/>
+                    <xs:element name="dropOffDate" type="xs:dateTime"/>
+                    <xs:element name="noOfDays" type="xs:int"/>
+                    <xs:element name="rentalAgencies" type="ns0:RentalAgencies"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="DepartingFlights">
+                <xs:sequence>
+                    <xs:element name="flightPlan" type="ns0:FlightPlan" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element name="origin" type="xs:string"/>
+                    <xs:element name="destination" type="xs:string"/>
+                    <xs:element name="date" type="xs:date"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="FlightPlan">
+                <xs:sequence>
+                    <xs:element name="airline" type="xs:string"/>
+                    <xs:element name="flightNumber" type="xs:string"/>
+                    <xs:element name="departureTime" type="xs:time"/>
+                    <xs:element name="arrivalTime" type="xs:time"/>
+                    <xs:element name="stops" type="xs:int"/>
+                    <xs:element name="travelTimeMin" type="xs:int"/>
+                    <xs:element name="fareFull" type="xs:float"/>
+                    <xs:element name="fareRestricted" type="xs:float"/>
+                    <xs:element name="fareSpecial" type="xs:float"/>
+                    <xs:element name="farePromotion" type="xs:float"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="HotelDetail">
+                <xs:sequence>
+                    <xs:element name="hotelName" type="xs:string"/>
+                    <xs:element name="address" type="ns0:Address"/>
+                    <xs:element name="starRating" type="xs:string"/>
+                    <xs:element name="amenities" type="xs:string"/>
+                    <xs:element name="directions" type="xs:string"/>
+                    <xs:element name="comments" type="xs:string"/>
+                    <xs:element name="roomOptions" type="ns0:RoomOptions"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="HotelSearch">
+                <xs:sequence>
+                    <xs:element name="country" type="xs:string"/>
+                    <xs:element name="city" type="xs:string"/>
+                    <xs:element name="state" type="xs:string"/>
+                    <xs:element name="nearAddress" type="xs:string" minOccurs="0"/>
+                    <xs:element name="hotelName" type="xs:string" minOccurs="0"/>
+                    <xs:element name="checkInDate" type="xs:date"/>
+                    <xs:element name="checkOutDate" type="xs:date"/>
+                    <xs:element name="rooms" type="xs:int"/>
+                    <xs:element name="nonSmoking" type="xs:boolean" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="HotelSearchResults">
+                <xs:sequence>
+                    <xs:element name="city" type="xs:string"/>
+                    <xs:element name="checkInDate" type="xs:date"/>
+                    <xs:element name="checkOutDate" type="xs:date"/>
+                    <xs:element name="noOfNights" type="xs:int"/>
+                    <xs:element name="hotels" type="ns0:Hotels"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Hotels">
+                <xs:sequence>
+                    <xs:element name="hotel" type="ns0:HotelDetail" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="RentalAgencies">
+                <xs:sequence>
+                    <xs:element name="rentalAgency" minOccurs="0" maxOccurs="unbounded">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="name" type="xs:string"/>
+                                <xs:element name="address" type="ns0:Address"/>
+                                <xs:element name="comment" type="xs:string"/>
+                                <xs:element name="carOptions" type="ns0:CarOptions"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ReturningFlights">
+                <xs:sequence>
+                    <xs:element name="flightPlan" type="ns0:FlightPlan" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element name="origin" type="xs:string"/>
+                    <xs:element name="destination" type="xs:string"/>
+                    <xs:element name="date" type="xs:date"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="RoomOptions">
+                <xs:sequence>
+                    <xs:element name="room" maxOccurs="unbounded">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="roomType" type="xs:string"/>
+                                <xs:element name="avgCostPerNight" type="xs:string"/>
+                                <xs:element name="roomAmenities" type="xs:string"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="searchAirline" type="ns0:AirlineSearch"/>
+            <xs:element name="searchAirlineResponse" type="ns0:AirlineSearchResults"/>
+            <xs:element name="searchAirline_fault">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="searchAirline_fault" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="searchCar" type="ns0:CarSearch"/>
+            <xs:element name="searchCarResponse" type="ns0:CarSearchResults"/>
+            <xs:element name="searchCar_fault">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="searchCar_fault" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="searchHotel" type="ns0:HotelSearch"/>
+            <xs:element name="searchHotelResponse" type="ns0:HotelSearchResults"/>
+            <xs:element name="searchHotel_fault">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="searchHotel_fault" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="searchAirlineRequest">
+        <wsdl:part name="parameters" element="ns0:searchAirline"/>
+    </wsdl:message>
+    <wsdl:message name="searchAirlineResponse">
+        <wsdl:part name="parameters" element="ns0:searchAirlineResponse"/>
+    </wsdl:message>
+    <wsdl:message name="searchAirline_faultMsg">
+        <wsdl:part name="parameters" element="ns0:searchAirline_fault"/>
+    </wsdl:message>
+    <wsdl:message name="searchCarRequest">
+        <wsdl:part name="parameters" element="ns0:searchCar"/>
+    </wsdl:message>
+    <wsdl:message name="searchCarResponse">
+        <wsdl:part name="parameters" element="ns0:searchCarResponse"/>
+    </wsdl:message>
+    <wsdl:message name="searchCar_faultMsg">
+        <wsdl:part name="parameters" element="ns0:searchCar_fault"/>
+    </wsdl:message>
+    <wsdl:message name="searchHotelRequest">
+        <wsdl:part name="parameters" element="ns0:searchHotel"/>
+    </wsdl:message>
+    <wsdl:message name="searchHotelResponse">
+        <wsdl:part name="parameters" element="ns0:searchHotelResponse"/>
+    </wsdl:message>
+    <wsdl:message name="searchHotel_faultMsg">
+        <wsdl:part name="parameters" element="ns0:searchHotel_fault"/>
+    </wsdl:message>
+    <wsdl:portType name="QueryGDS">
+        <wsdl:operation name="searchAirline">
+            <wsdl:input message="tns:searchAirlineRequest"/>
+            <wsdl:output message="tns:searchAirlineResponse"/>
+            <wsdl:fault name="fault" message="tns:searchAirline_faultMsg"/>
+        </wsdl:operation>
+        <wsdl:operation name="searchCar">
+            <wsdl:input message="tns:searchCarRequest"/>
+            <wsdl:output message="tns:searchCarResponse"/>
+            <wsdl:fault name="fault" message="tns:searchCar_faultMsg"/>
+        </wsdl:operation>
+        <wsdl:operation name="searchHotel">
+            <wsdl:input message="tns:searchHotelRequest"/>
+            <wsdl:output message="tns:searchHotelResponse"/>
+            <wsdl:fault name="fault" message="tns:searchHotel_faultMsg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="querygds.soap.binding" type="tns:QueryGDS">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="searchAirline">
+            <wsdl:documentation/>
+            <soap:operation style="document" soapAction="searchAirline"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="parameters"/>
+            </wsdl:output>
+            <wsdl:fault name="fault">
+                <soap:fault use="literal" name="fault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="searchCar">
+            <wsdl:documentation/>
+            <soap:operation style="document" soapAction="searchCar"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="parameters"/>
+            </wsdl:output>
+            <wsdl:fault name="fault">
+                <soap:fault use="literal" name="fault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="searchHotel">
+            <wsdl:documentation/>
+            <soap:operation style="document" soapAction="searchHotel"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="parameters"/>
+            </wsdl:output>
+            <wsdl:fault name="fault">
+                <soap:fault use="literal" name="fault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="QueryGDS">
+        <wsdl:port name="querygds.soap.binding" binding="tns:querygds.soap.binding">
+            <soap:address location="http://localhost:8666/queryGDS/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

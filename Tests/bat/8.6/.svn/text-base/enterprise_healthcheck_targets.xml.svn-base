@@ -1,0 +1,214 @@
+<project name="Enterprisedeploymenthealthcheck_targets">
+
+
+	<!-- Shortcut verbs for options.targets -->
+	<target name="dp" depends="do.ping" />
+	<target name="gamd" depends="get.adminMetaData" />
+	<target name="gai" depends="get.adminInfo" />
+	<target name="gahi" depends="get.adminHostInfo" />
+	<target name="td" depends="test.deploy" />
+	<target name="tde" depends="test.deploy.envBasis" />
+	<target name="tdn" depends="test.deploy.nodeBasis" />
+	<target name="he" depends="health.ent" />
+	<target name="hes" depends="health.envs" />
+	<target name="hns" depends="health.nodes" />
+	<target name="hhs" depends="health.hosts" />
+
+	<target name="rn" depends="report.none" />
+	<target name="rx" depends="report.XML" />
+	<target name="rj" depends="report.JSON" />
+
+	<!-- options.targets -->
+	<target name="do.ping" depends="-test.targets.order,-noUpload">
+		<property name="option_ping" value="ping" />
+	</target>
+	<target name="get.adminMetaData" depends="-test.targets.order,-noUpload">
+		<property name="option_adminMetaData" value="adminMetaData" />
+	</target>
+	<target name="get.adminInfo" depends="-test.targets.order,-noUpload">
+		<property name="option_adminInfo" value="adminInfo" />
+	</target>
+	<target name="get.adminHostInfo" depends="-test.targets.order,-noUpload">
+		<property name="option_adminHostInfo" value="adminHostInfo" />
+	</target>
+
+	<target name="test.deploy">
+		<property name="option_deployment" value="deployment" />
+	</target>
+	<target name="test.deploy.envBasis">
+		<property name="option_deployment" value="deployment" />
+		<property name="option_basis" value="envBasis" />
+	</target>
+	<target name="test.deploy.nodeBasis">
+		<property name="option_deployment" value="deployment" />
+		<property name="option_basis" value="nodeBasis" />
+	</target>
+	<target name="report.none">
+		<property name="option_noReport" value="noReport" />
+	</target>
+
+	<target name="report.XML">
+		<property name="option_xmlReport" value="xmlReport" />
+	</target>
+
+	<target name="report.JSON">
+		<property name="option_jsonReport" value="jsonReport" />
+	</target>
+
+	<!-- If one of the invoked targets are test.deploy then we need to upload sample DAA -->
+	<target name="-decide.should.we.upload.Sample.daa.or.not">
+	<condition property="doUpload">
+	<or>
+		<matches pattern="td" string="${ant.project.invoked-targets}" />
+		<matches pattern="test.deploy" string="${ant.project.invoked-targets}" />
+	</or>
+	</condition>				
+	</target>
+
+	<!-- Set a property that will cause upload target to not execute -->
+	<target name="-noUpload" depends="-decide.should.we.upload.Sample.daa.or.not" unless="doUpload">
+		<property name="no_Upload" value="true" />
+	</target>
+
+
+	<property name="usageMainText"
+		value="${line.separator}
+        Please note the expected sequence and cardinality for Enterprise Deployment Health Check targets.
+        ${line.separator} 
+        Sample Usage: ant -f ${build_file_name} [options.targets] [main.targets]
+        ${line.separator}
+            Value set for [options.targets]: ${line.separator}
+                get.adminMetaData (gamd)${line.separator}
+                get.adminInfo (gai)${line.separator}
+                get.adminHostInfo (gahi)${line.separator}
+                do.ping (dp)${line.separator}
+                test.deploy (td)${line.separator}
+                test.deploy.envBasis (tde)${line.separator}
+                test.deploy.nodeBasis (tdn)${line.separator}
+                report.none (rn)${line.separator}
+                report.JSON (rj)${line.separator}
+                report.XML (rx)${line.separator}
+            Value set for [main.targets]: ${line.separator}
+                health.ent (he)${line.separator}
+                health.envs (hes)${line.separator}
+                health.node (hns)${line.separator}
+                health.hosts (hhs)${line.separator}
+${line.separator}
+        **NOTE**: The Option targets (options.targets) must precede the Main targets (main.targets).${line.separator}
+        **NOTE**: At Most ONE Main target (main.targets) is permitted.${line.separator}" />
+
+	<property name="failuremessage" value="Error: ${usageMainText}" />
+
+	<target name="-test.targets.order" unless="hastargetsInOrder">
+		<echo>Invoked targets: ${ant.project.invoked-targets}</echo>
+
+		<condition property="hasDuplicateTargets">
+			<not>
+				<or><!-- This or condition makes sure there is only one(1) main target 
+						is in invoked targets else throw Error -->
+					<and>
+						<matches pattern="health.ent" string="${ant.project.invoked-targets}]" />
+						<matches pattern="health.envs" string="${ant.project.invoked-targets}]" />
+					</and>
+					<and>
+						<matches pattern="\bhe\b" string="${ant.project.invoked-targets}]" />
+						<matches pattern="\bhes\b" string="${ant.project.invoked-targets}]" />
+					</and>
+
+					<and>
+						<matches pattern="health.ent" string="${ant.project.invoked-targets}]" />
+						<matches pattern="health.hosts" string="${ant.project.invoked-targets}]" />
+					</and>
+					<and>
+						<matches pattern="he" string="${ant.project.invoked-targets}]" />
+						<matches pattern="hhs" string="${ant.project.invoked-targets}]" />
+					</and>
+
+					<and>
+						<matches pattern="health.ent" string="${ant.project.invoked-targets}]" />
+						<matches pattern="health.nodes" string="${ant.project.invoked-targets}]" />
+					</and>
+					<and>
+						<matches pattern="he" string="${ant.project.invoked-targets}]" />
+						<matches pattern="hns" string="${ant.project.invoked-targets}]" />
+					</and>
+
+					<and>
+						<matches pattern="health.envs" string="${ant.project.invoked-targets}]" />
+						<matches pattern="health.hosts" string="${ant.project.invoked-targets}]" />
+					</and>
+					<and>
+						<matches pattern="hes" string="${ant.project.invoked-targets}]" />
+						<matches pattern="hhs" string="${ant.project.invoked-targets}]" />
+					</and>
+
+					<and>
+						<matches pattern="health.envs" string="${ant.project.invoked-targets}]" />
+						<matches pattern="health.nodes" string="${ant.project.invoked-targets}]" />
+					</and>
+					<and>
+						<matches pattern="hes" string="${ant.project.invoked-targets}]" />
+						<matches pattern="hns" string="${ant.project.invoked-targets}]" />
+					</and>
+
+					<and>
+						<matches pattern="health.hosts" string="${ant.project.invoked-targets}]" />
+						<matches pattern="health.nodes" string="${ant.project.invoked-targets}]" />
+					</and>
+					<and>
+						<matches pattern="hhs" string="${ant.project.invoked-targets}]" />
+						<matches pattern="hns" string="${ant.project.invoked-targets}]" />
+					</and>
+
+				</or>
+			</not>
+		</condition>
+		<fail
+			message="${failuremessage}${line.separator}          It appears that more than one (1) Main target (main.targets) was used to invoke the Ant script [specified targets: ${ant.project.invoked-targets}]"
+			unless="hasDuplicateTargets" />
+
+
+		<condition property="hastargetsInOrder">
+
+			<or>
+				<!-- This or condition makes sure main target is always the last one 
+					in invoked targets else throw Error -->
+				<matches pattern=",health.ent]" string="${ant.project.invoked-targets}]" />
+				<matches pattern=",health.envs]" string="${ant.project.invoked-targets}]" />
+				<matches pattern=",health.nodes]" string="${ant.project.invoked-targets}]" />
+				<matches pattern=",health.hosts]" string="${ant.project.invoked-targets}]" />
+				<equals arg1="${ant.project.invoked-targets}" arg2="health.hosts" />
+				<equals arg1="${ant.project.invoked-targets}" arg2="health.nodes" />
+				<equals arg1="${ant.project.invoked-targets}" arg2="health.envs" />
+				<equals arg1="${ant.project.invoked-targets}" arg2="health.ent" />
+
+				<matches pattern=",he]" string="${ant.project.invoked-targets}]" />
+				<matches pattern=",hes]" string="${ant.project.invoked-targets}]" />
+				<matches pattern=",hns]" string="${ant.project.invoked-targets}]" />
+				<matches pattern=",hhs]" string="${ant.project.invoked-targets}]" />
+				<equals arg1="${ant.project.invoked-targets}" arg2="he" />
+				<equals arg1="${ant.project.invoked-targets}" arg2="hes" />
+				<equals arg1="${ant.project.invoked-targets}" arg2="hns" />
+				<equals arg1="${ant.project.invoked-targets}" arg2="hhs" />
+			</or>
+
+		</condition>
+		<fail
+			message="${failuremessage}${line.separator}          The list of specified targets must end with a Main target (main.targets) when invoking the Ant script [specified targets: ${ant.project.invoked-targets}]"
+			unless="hastargetsInOrder" />
+
+
+		<!-- Move on if no failture -->
+		<echo
+			message="Specified Ant targets are in order hence proceeding with Enterprise Deployment Health Check." />
+	</target>
+
+
+	<!-- Advance target : Only use if instructed by support -->
+	<target name="clean.apps">
+		<AMXAdminTask remote="true" propsFile="${instanceProperties}"
+			action="cleanDeploymentHealth" dataFile="${basedir}/enterprise_healthcheck_data.xml"
+			objectSelector="Enterprise" overwrite="true" merge="false"
+			createIfNotExists="true" force="false" failOnError="true" />
+	</target>
+</project>

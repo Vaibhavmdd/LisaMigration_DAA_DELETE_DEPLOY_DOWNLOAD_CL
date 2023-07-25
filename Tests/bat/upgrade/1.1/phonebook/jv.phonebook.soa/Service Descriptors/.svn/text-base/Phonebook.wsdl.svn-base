@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://ns.tibco.com/Phonebook/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ns.tibco.com/Phonebook/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://ns.tibco.com/Phonebook/">
+      <xsd:element name="AddPhoneRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element name="firstName" type="xsd:string"/>
+          	<xsd:element name="lastName" type="xsd:string"/>
+          	<xsd:element name="phone" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddPhoneResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="entryId" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetPhoneRequest">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element maxOccurs="1" minOccurs="0" name="entryId" type="xsd:string"/>
+      			<xsd:element maxOccurs="1" minOccurs="0" name="firstName" type="xsd:string"/>
+      			<xsd:element maxOccurs="1" minOccurs="0" name="lastName" type="xsd:string"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetPhoneResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element maxOccurs="unbounded" minOccurs="0" name="out" type="tns:PhoneEntryType"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>  
+      <xsd:complexType name="PhoneEntryType">
+      	<xsd:sequence>
+      		<xsd:element name="entryId" type="xsd:string"/>
+      		<xsd:element name="firstName" type="xsd:string"/>
+      		<xsd:element name="lastName" type="xsd:string"/>
+      		<xsd:element name="phone" type="xsd:string"/>
+      	</xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="AddPhoneRequest">
+    <wsdl:part element="tns:AddPhoneRequest" name="addPhoneParameters"/>
+  </wsdl:message>
+  <wsdl:message name="AddPhoneResponse">
+    <wsdl:part element="tns:AddPhoneResponse" name="addPhoneResult"/>
+  </wsdl:message>
+  <wsdl:message name="GetPhoneRequest">
+  	<wsdl:part element="tns:GetPhoneRequest" name="getPhoneParameters"/>
+  </wsdl:message>
+  <wsdl:message name="GetPhoneResponse">
+  	<wsdl:part element="tns:GetPhoneResponse" name="getPhoneResult"/>
+  </wsdl:message>
+  <wsdl:portType name="PhonebookPT">
+    <wsdl:operation name="AddPhone">
+      <wsdl:input message="tns:AddPhoneRequest"/>
+      <wsdl:output message="tns:AddPhoneResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetPhone">
+    	<wsdl:input message="tns:GetPhoneRequest"/>
+    	<wsdl:output message="tns:GetPhoneResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

@@ -1,0 +1,33 @@
+<project default="deploy.myapp">
+	<import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+
+	<target name="deploy.myapp">
+	<create.rt dataFile="${amxConfigFile}"/>
+	<create.ri  nodeName="QANode2" dataFile="${amxConfigFile}"/>
+		<install.ri  dataFile="${amxConfigFile}"/>
+		<upload.daa dataFile="${amxConfigFile}" />
+		<create.app appName="AMXTestCase1.12" dataFile="${amxConfigFile}" />
+		<map.component.to.node appName="AMXTestCase1.12" dataFile="${amxConfigFile}"/>
+		<map.service.binding.to.node appName="AMXTestCase1.12" dataFile="${amxConfigFile}" />
+		<set.service.binding.property appName="AMXTestCase1.12" dataFile="${amxConfigFile}" />
+		<add.action objector="Environment//Node/SVar" dataFile="${amxConfigFile}"  description="Add SVar %%connector%% to node level for the binding of AMXServiceBinding"  />
+		<set.action objector="Environment//Application[@name='AMXTestCase1.12']/PromotedService/Binding/Node"   dataFile="${amxConfigFile}" description="Distribute the service binding of application AMXServiceBinding to node: QANode1 and QANode2"/>
+		<deploy.app appName="AMXTestCase1.12" dataFile="${amxConfigFile}"/>
+	</target>
+	<target name="deploy.mynewapp">
+		<upload.daa dataFile="${amxConfigFile}" />
+		<create.app appName="AMXTestCase1.12.1" dataFile="${amxConfigFile}" />
+		<map.component.to.node appName="AMXTestCase1.12.1" dataFile="${amxConfigFile}"/>
+		<map.service.binding.to.node appName="AMXTestCase1.12.1" dataFile="${amxConfigFile}" />
+		<set.service.binding.property appName="AMXTestCase1.12.1" dataFile="${amxConfigFile}" />
+		<set.reference.wiring  dataFile="${amxConfigFile}" />
+		<deploy.app appName="AMXTestCase1.12.1" dataFile="${amxConfigFile}"/>
+</target>
+
+	<target name="undeploy.myapp">
+		<undeploy.app dataFile="${amxConfigFile}"  />
+	</target>
+
+		
+</project>
+

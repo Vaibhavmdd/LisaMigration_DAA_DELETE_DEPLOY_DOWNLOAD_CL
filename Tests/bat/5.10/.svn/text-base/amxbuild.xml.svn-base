@@ -1,0 +1,20 @@
+<project default="setup.app">
+	<import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+
+	<target name="setup.app">
+		<upload.daa  dataFile="${amxConfigFile}"/>
+		<create.app dataFile="${amxConfigFile}"/>
+		<create.rt dataFile="${amxConfigFile}" objectSelector="declare namespace amxdata_jmsssr='http://tibco.com/amxadministrator/command/line/types_jmssr'; amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate | amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate | amxdata_jmsssr:JNDIDestinationResourceTemplate | amxdata_jmsssr:JNDIConnectionFactoryConfigurationResourceTemplate | amxdata_jmsssr:JNDIDestinationConfigurationResourceTemplate" />
+		<create.rt dataFile="${amxConfigFile}" />
+		<create.ri dataFile="${amxConfigFile}" />
+		<install.ri dataFile="${amxConfigFile}" timeout="${deployTimeout}" />
+		<map.component.to.node dataFile="${amxConfigFile}" /> 
+		<deploy.app dataFile="${amxConfigFile}" timeout="${deployTimeout}" /> 
+	</target>
+
+	<target name="undeploy.app">
+		<undeploy.app dataFile="${amxConfigFile}" options="refresh" timeout="${deployTimeout}" />
+	</target>
+
+		
+</project>

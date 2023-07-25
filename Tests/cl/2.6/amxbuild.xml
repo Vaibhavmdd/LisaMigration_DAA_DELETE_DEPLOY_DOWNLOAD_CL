@@ -1,0 +1,48 @@
+<project default="deploy.app">
+	<import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+	
+	<target name="CreateAppender">
+		<create.log.appender dataFile="${amxConfigFile}"/>
+	</target>
+	
+	 <target name="stop.QANode">
+           <stop.node description="stop QA Node" dataFile="${amxConfigFile}" objectSelector="Environment/Node"  timeout="${timeout}"/>
+     </target>
+     
+     <target name="start.QANode">
+           <start.node description="restart QA node"  dataFile="${amxConfigFile}" objectSelector="Environment/Node" timeout="${timeout}"/>    
+     </target>
+		 
+	 <target name="conf.logging">
+		<deploy.action objector="Environment/Node" description="Apply Node Logger" dataFile="${amxConfigFile}" />
+	 </target>
+	
+	<target name="addappendertoLogger">
+    <AMXAdminTask
+        remote="true"
+        propsFile="C:\Lisa1072\Projects\AMX\Tests\cl\remote_props.properties"
+        action="add"
+        dataFile="${amxConfigFile}"
+        objectSelector="Environment//Node/Logger[@name='com.tibco']"/>
+    </target>
+	
+	<target name="deleteAppender">
+    <AMXAdminTask
+        remote="true"
+        propsFile="${basedir}/remote_props.properties"
+        action="delete"
+        dataFile="${amxConfigFile}"
+        objectSelector="Environment//Node/Logger[@name='com.tibco']"/>
+	   <delete.log.appender objectSelector="LogAppender[@name='CL02_06_rollingup']" dataFile="${amxConfigFile}" />
+	 </target>
+	 
+	<target name="addappendertoLogger315">
+     <AMXAdminTask
+        remote="true"
+        propsFile="${basedir}/remote_props.properties"
+        action="set"
+        dataFile="${amxConfigFile}"
+        objectSelector="Environment//Node/Logger[@name='com.tibco']"/>
+    </target>
+
+</project>

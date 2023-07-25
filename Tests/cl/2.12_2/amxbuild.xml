@@ -1,0 +1,25 @@
+<project default="deploy.app">
+  <import file="${TIBCO_AMXADMIN_HOME}/bin/taskdef.xml" />
+	<import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+
+	<target name="deleteAppender">
+    <AMXAdminTask
+        remote="true"
+        propsFile="C:\Lisa1072\Projects\AMX\Tests\cl\remote_props.properties"
+        action="delete"
+        dataFile="${amxConfigFile}"
+        objectSelector="Environment//Application[@name='cl2_12']/Logger[@name='com.tibco']"/>
+	   <delete.log.appender objectSelector="LogAppender[@name='qaFileLogAppender2_12']" dataFile="${amxConfigFile}" />
+	   <deploy.action objector="Environment/Application" description="Apply Application Logger" dataFile="${amxConfigFile}" />
+	 </target>
+	 
+	 <target name="undeploy.app">
+		<undeploy.app dataFile="${amxConfigFile}" timeout="${timeout}" />
+		<delete.app dataFile="${amxConfigFile}" />
+		<uninstall.ri dataFile="${amxConfigFile}" />
+		<delete.ri dataFile="${amxConfigFile}" />
+		<delete.rt dataFile="${amxConfigFile}" />
+		<delete.log.appender objectSelector="LogAppender[@name='qaFileLogAppender2_12_2']" dataFile="${amxConfigFile}" />
+	</target>
+
+</project>

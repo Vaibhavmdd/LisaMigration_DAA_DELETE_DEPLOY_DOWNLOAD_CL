@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+	<Environment xsi:type="amxdata:Environment" 
+		name="[[env.name]]" 
+		description="integration environment" 
+		contact="TIBCO">
+		
+		<Node xsi:type="amxdata:Node"
+			name="[[env.node2.name]]">
+		<ResourceInstance xsi:type="amxdata:ResourceInstance" name="hibernate" resourceTemplateName="hibernate"/>
+		<ResourceInstance xsi:type="amxdata:ResourceInstance" name="jdbc" resourceTemplateName="jdbc"/>
+		<ResourceInstance xsi:type="amxdata:ResourceInstance" name="jdbc_identity" resourceTemplateName="jdbc_identity"/>
+		<ResourceInstance xsi:type="amxdata:ResourceInstance" name="keystore" resourceTemplateName="keystore"/>
+        </Node>
+        
+		<Application xsi:type="amxdata:Application" 
+			name="BAT_5_11" 
+			contact="TIBCO" 
+			description="BAT 5.11 Service" importBindings="true" importResourceTemplates="true">
+			
+				<Component xsi:type="amxdata:Component" name="Webapp1">
+	    			<Node name="[[env.node1.name]]" environmentName="[[env.name]]" />	    	              
+	            </Component>
+				<Component xsi:type="amxdata:Component" name="Java1">
+	    			<Node name="[[env.node2.name]]" environmentName="[[env.name]]" />	    	              
+	            </Component>
+			
+        		<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference"			
+				name="webapp_hibernate_final"/>					
+        </Application>		
+
+    </Environment>
+	
+	<ResourceTemplate 
+		xsi:type="amxdata:HibernateResourceTemplate" 
+		name="hibernate" 
+		description="This is Hibernate RT" 
+		contact="admin" 
+		dialect="[[hibernateDialect]]" 
+		schemaGeneration="create-drop" 
+		sqlLogging="true" 
+		statementBatchSize="1" 
+		datasourceName="jdbc" /> 
+	<ResourceTemplate 
+		xsi:type="amxdata:JdbcResourceTemplate" 
+		name="jdbc" 
+		description="jdbc non xa tx" 
+		maxConnections="10"> 
+		<Direct xsi:type="amxdata:Direct" 
+			dbUrl="[[dbUrl]]" 
+			jdbcDriver="[[dbDriver]]" 
+			isTransactional="true" 
+			loginTimeOut="30000"/>
+		<ReferencedCredentials 
+			identityJNDIName="jdbc_identity"/>
+	</ResourceTemplate>	
+	<ResourceTemplate 
+		xsi:type="amxdata:SubjectIspResourceTemplate" 
+		name="jdbc_identity" 
+		description="This is Subject Isp RT" 
+		identityStoreServiceProvider="keystore" 
+		keyAlias="hsqldb_alias" 
+		keyPassword="alias_password" 
+		enableCredentialStoreAccess="true"/>	
+	<ResourceTemplate 
+		xsi:type="amxdata:KeystoreCspResourceTemplate" 
+		name="keystore" 
+		description="This is Keystore RT" 
+		keyStoreLocation="[[keystore.location]]/bat_keystore.jceks" 
+		keyStorePassword="password" 
+		keyStoreType="JCEKS" 
+		keyStoreProvider="" 
+		keyStoreRefreshInterval="1000"/> 
+	
+	<DAA
+		xsi:type="amxdata:DAA"
+		description="BAT 5.11 - Webapp-Java(Hibernate SR)"
+		location="webapp_hibernate_final/Deployment Artifacts/webapp_hibernate_final.daa"
+		importResourceTemplates="false">
+	</DAA>
+
+</amxdata_base:Enterprise>

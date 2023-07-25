@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types" xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base" xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+
+
+    <Environment xsi:type="amxdata:Environment" name="{{env.name}}" description="QA environment" contact="TIBCO"> 
+		<Node  xsi:type="amxdata:Node" name="{{env.node1.name}}"/> 
+		<!--Node  xsi:type="amxdata:Node" name="DevNode2"/--> 
+    </Environment>
+ 
+ 	<Host xsi:type="amxdata:Host" name="SystemHost" 
+		hostType="TibcoHost"
+		username="root"
+		password="t"
+		bindIP="0.0.0.0"
+		sourceHost="SystemHost"
+		managementUrl="service:jmx:jmxmp://localhost:36923"/>
+		
+		
+	<DAA xsi:type="amxdata:DAA" description="DAA for deployment health check" location="C:/Lisa1072/Projects/BATAutomation/Tests/bat/8.6/com.tibco.amf.admin.deployment.health.app.daa" /> 
+</amxdata_base:Enterprise>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:compositenotation="http://www.tibco.com/models/compositenotation" xmlns:java="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/java" xmlns:jms="http://xsd.tns.tibco.com/amf/models/sharedresource/jms" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.1/notation" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmlns:soapbt="http://xsd.tns.tibco.com/amf/models/sca/binding/soap" xmlns:systempolicy="http://xsd.tns.tibco.com/amf/models/sca/policy/system" xmlns:upgrade="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/upgrade" xmlns:upgrade.sample="http://www.example.com/upgrade.sample" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmi:id="_q1kA0b4OEd6Vrqec3MbS1Q" targetNamespace="http://www.example.com/upgrade.sample" name="upgrade.sample" compositeext:version="1.0.0.201007071740">
+  <sca:service xmi:id="_1VRFwF3DEd-vVoiXx-_HAA" name="upgrade.mock.it.case11" promote="UpgradeITProxy/upgradeMockItCase1">
+    <sca:interface.wsdl xmi:id="_1VRFwV3DEd-vVoiXx-_HAA" interface="http://www.example.org/upgrade.mock.it.case1/#wsdl.interface(upgrade.mock.it.case1)" scaext:wsdlLocation="../Service%20Descriptors/upgrade.mock.it.case1.wsdl"/>
+    <sca:binding.sca xmi:id="_1VRFwl3DEd-vVoiXx-_HAA" name="virtualization"/>
+    <soapbt:binding.soap.service xmi:id="_QGAkYF3EEd-vVoiXx-_HAA" name="SOAPService_Binding1" transportBindingType="HTTP" attachmentStyle="DOCUMENT" portType="../Service%20Descriptors/upgrade.mock.it.case1.wsdl#//@ePortTypes.0">
+      <operationConfiguration xmi:id="_QGAkYl3EEd-vVoiXx-_HAA" operation="../Service%20Descriptors/upgrade.mock.it.case1.wsdl#//@ePortTypes.0/@eOperations.0" action="NewOperation">
+        <messageConfiguration xmi:id="_QGAkY13EEd-vVoiXx-_HAA" message="../Service%20Descriptors/upgrade.mock.it.case1.wsdl#//@eMessages.0">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_QGAkZF3EEd-vVoiXx-_HAA" messagePart="../Service%20Descriptors/upgrade.mock.it.case1.wsdl#//@eMessages.0/@eParts.0"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_QGAkZV3EEd-vVoiXx-_HAA" message="../Service%20Descriptors/upgrade.mock.it.case1.wsdl#//@eMessages.0" messageDirection="OUTPUT">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_QGAkZl3EEd-vVoiXx-_HAA" messagePart="../Service%20Descriptors/upgrade.mock.it.case1.wsdl#//@eMessages.0/@eParts.0"/>
+        </messageConfiguration>
+        <bindingType xmi:id="_QGAkZ13EEd-vVoiXx-_HAA"/>
+      </operationConfiguration>
+      <inboundConfiguration xsi:type="soapbt:HttpTransportConfiguration" xmi:id="_QGAkaF3EEd-vVoiXx-_HAA" endpointURI="/upgrade.mock.it.case1/"/>
+      <defaultBindingType xmi:id="_QGAkYV3EEd-vVoiXx-_HAA"/>
+    </soapbt:binding.soap.service>
+    <scact:bindingAdjunct xmi:id="_1VRFw13DEd-vVoiXx-_HAA" bindingName="virtualization"/>
+    <scact:bindingAdjunct xmi:id="_QGAkaV3EEd-vVoiXx-_HAA" bindingName="SOAPService_Binding1">
+      <sca:property xmi:id="_QGAkal3EEd-vVoiXx-_HAA" mustSupply="true" name="HttpInboundConnectionConfig" type="xsd:string" scaext:simpleValue="httpConnector"/>
+    </scact:bindingAdjunct>
+  </sca:service>
+  <sca:property xmi:id="_q18AIF3DEd-vVoiXx-_HAA" mustSupply="true" name="ProcessTime" type="xsd:int" scaext:simpleValue="10"/>
+  <sca:property xmi:id="_t84i8F3DEd-vVoiXx-_HAA" mustSupply="true" name="NodeName" type="xsd:string" scaext:simpleValue="%%NodeName%%"/>
+  <sca:property xmi:id="_x2Wu4F3DEd-vVoiXx-_HAA" mustSupply="true" name="VersionNumber" type="xsd:string" scaext:simpleValue="1.0.0"/>
+  <sca:component xmi:id="_3osYAL6xEd6UgoohZd9XrQ" name="UpgradeITProxy" compositeext:version="1.0.0.201007071740" policySets="upgrade.sample:PrepareBeforeUndeploy_UpgradeITProxy" requires="scaext:prepareBeforeUndeploy" scaext:policySetLocations="#embedded">
+    <upgrade:implementation.upgrade xmi:id="_3osYAb6xEd6UgoohZd9XrQ" configFile="../proxy.upgrade"/>
+    <sca:service xmi:id="_4wz2oL6xEd6UgoohZd9XrQ" name="upgradeMockItCase1">
+      <sca:interface.wsdl xmi:id="_FFyYMF3EEd-vVoiXx-_HAA" interface="http://www.example.org/upgrade.mock.it.case1/#wsdl.interface(upgrade.mock.it.case1)" scaext:wsdlLocation="../Service%20Descriptors/upgrade.mock.it.case1.wsdl"/>
+    </sca:service>
+    <sca:property xmi:id="_HYJcYF3EEd-vVoiXx-_HAA" mustSupply="true" name="NodeName" type="xsd:string" scaext:simpleValue="%%NodeName%%" source="$NodeName"/>
+    <sca:property xmi:id="_JgtrYF3EEd-vVoiXx-_HAA" mustSupply="true" name="ProcessTime" type="xsd:int" scaext:simpleValue="10" source="$ProcessTime"/>
+    <sca:property xmi:id="_K9UMQF3EEd-vVoiXx-_HAA" mustSupply="true" name="VersionNumber" type="xsd:string" scaext:simpleValue="1.0.0" source="$VersionNumber"/>
+  </sca:component>
+  <notation:diagram xsi:type="notation:Diagram" xmi:id="_FUOTgCdjEd-YzOOMw3KMEg" type="Composite" element="#/" name="SCA Composite" measurementUnit="Pixel">
+    <children xmi:id="_FU96YCdjEd-YzOOMw3KMEg" type="2001" element="#_q1kA0b4OEd6Vrqec3MbS1Q">
+      <children xmi:id="_FU96YydjEd-YzOOMw3KMEg" type="5004"/>
+      <children xmi:id="_FVHrYCdjEd-YzOOMw3KMEg" type="7001">
+        <children xmi:id="_1VuYwF3DEd-vVoiXx-_HAA" type="3001" element="#_1VRFwF3DEd-vVoiXx-_HAA">
+          <children xmi:id="_1VuYxV3DEd-vVoiXx-_HAA" type="5002"/>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_1VuYwV3DEd-vVoiXx-_HAA" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_1VuYwl3DEd-vVoiXx-_HAA" gradStartColor="14150097" gradEndColor="7844710"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_1VuYw13DEd-vVoiXx-_HAA"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_1VuYxF3DEd-vVoiXx-_HAA"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_FVHrYSdjEd-YzOOMw3KMEg"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_FVHrYidjEd-YzOOMw3KMEg"/>
+      </children>
+      <children xmi:id="_FVHrYydjEd-YzOOMw3KMEg" type="7002">
+        <styles xsi:type="notation:SortingStyle" xmi:id="_FVHrZCdjEd-YzOOMw3KMEg"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_FVHrZSdjEd-YzOOMw3KMEg"/>
+      </children>
+      <children xmi:id="_FVHrZidjEd-YzOOMw3KMEg" type="7003">
+        <children xmi:id="_FV3SVCdjEd-YzOOMw3KMEg" type="3003" element="#_3osYAL6xEd6UgoohZd9XrQ">
+          <children xmi:id="_FV3SWidjEd-YzOOMw3KMEg" type="5001"/>
+          <children xmi:id="_FV3SWydjEd-YzOOMw3KMEg" type="7004">
+            <children xmi:id="_FWBDQydjEd-YzOOMw3KMEg" type="3004" element="#_4wz2oL6xEd6UgoohZd9XrQ">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_FWBDRCdjEd-YzOOMw3KMEg" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_FWBDRSdjEd-YzOOMw3KMEg"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_FV3SXCdjEd-YzOOMw3KMEg"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_FV3SXSdjEd-YzOOMw3KMEg"/>
+          </children>
+          <children xmi:id="_FV3SXidjEd-YzOOMw3KMEg" type="7005">
+            <styles xsi:type="notation:SortingStyle" xmi:id="_FV3SXydjEd-YzOOMw3KMEg"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_FV3SYCdjEd-YzOOMw3KMEg"/>
+          </children>
+          <children xmi:id="_FV3SYSdjEd-YzOOMw3KMEg" type="7006">
+            <children xmi:id="_FV3SZSdjEd-YzOOMw3KMEg" visible="false" type="7600">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_FV3SZidjEd-YzOOMw3KMEg" fontHeight="10"/>
+              <element xsi:nil="true"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_FV3SZydjEd-YzOOMw3KMEg"/>
+            </children>
+            <children xmi:id="_HYmIUF3EEd-vVoiXx-_HAA" type="3006" element="#_HYJcYF3EEd-vVoiXx-_HAA">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_HYmIUV3EEd-vVoiXx-_HAA" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_HYmIUl3EEd-vVoiXx-_HAA"/>
+            </children>
+            <children xmi:id="_Jg3cYF3EEd-vVoiXx-_HAA" type="3006" element="#_JgtrYF3EEd-vVoiXx-_HAA">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_Jg3cYV3EEd-vVoiXx-_HAA" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_Jg3cYl3EEd-vVoiXx-_HAA"/>
+            </children>
+            <children xmi:id="_K-0oIF3EEd-vVoiXx-_HAA" type="3006" element="#_K9UMQF3EEd-vVoiXx-_HAA">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_K-0oIV3EEd-vVoiXx-_HAA" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_K-0oIl3EEd-vVoiXx-_HAA"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_FV3SYidjEd-YzOOMw3KMEg"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_FV3SYydjEd-YzOOMw3KMEg"/>
+            <styles xsi:type="compositenotation:CollapseStyle" xmi:id="_FV3SZCdjEd-YzOOMw3KMEg"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_FV3SVSdjEd-YzOOMw3KMEg" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_FV3SVidjEd-YzOOMw3KMEg" gradStartColor="16642791" gradEndColor="14072216"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_FV3SVydjEd-YzOOMw3KMEg"/>
+          <styles xsi:type="compositenotation:CustomComponentIconStyle" xmi:id="_FV3SWCdjEd-YzOOMw3KMEg"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_FV3SWSdjEd-YzOOMw3KMEg" x="184" y="99"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_FVHrZydjEd-YzOOMw3KMEg"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_FVHraCdjEd-YzOOMw3KMEg"/>
+      </children>
+      <children xmi:id="_FVHraSdjEd-YzOOMw3KMEg" type="7007">
+        <children xmi:id="_FVHrbCdjEd-YzOOMw3KMEg" visible="false" type="7600">
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_FVHrbSdjEd-YzOOMw3KMEg" fontHeight="10"/>
+          <element xsi:nil="true"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_FVHrbidjEd-YzOOMw3KMEg"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_FVHraidjEd-YzOOMw3KMEg"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_FVHraydjEd-YzOOMw3KMEg"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" xmi:id="_FU96YSdjEd-YzOOMw3KMEg" fontHeight="10"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_FU96YidjEd-YzOOMw3KMEg" x="10" y="10" width="798" height="351"/>
+    </children>
+    <styles xsi:type="notation:DiagramStyle" xmi:id="_FUOTgSdjEd-YzOOMw3KMEg"/>
+    <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_FUOTgidjEd-YzOOMw3KMEg"/>
+    <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_FUOTgydjEd-YzOOMw3KMEg"/>
+    <edges xmi:id="_3floQF3DEd-vVoiXx-_HAA" type="4002" source="#_1VuYwF3DEd-vVoiXx-_HAA" target="#_FWBDQydjEd-YzOOMw3KMEg">
+      <styles xsi:type="notation:ConnectorStyle" xmi:id="_3floQV3DEd-vVoiXx-_HAA" routing="Rectilinear"/>
+      <styles xsi:type="notation:FontStyle" xmi:id="_3floQl3DEd-vVoiXx-_HAA" fontHeight="10"/>
+      <element xsi:nil="true"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_3floQ13DEd-vVoiXx-_HAA" points="[33, -5, -96, -70]$[123, 68, -6, 3]"/>
+    </edges>
+  </notation:diagram>
+  <scaext:EmbeddedPolicySet xmi:id="_nbTlcGPbEd-1F8IDucUuXw" name="PrepareBeforeUndeploy_UpgradeITProxy" appliesTo="sca:implementation" provides="scaext:prepareBeforeUndeploy">
+    <systempolicy:prepareBeforeUndeploy xmi:id="_nbTlcWPbEd-1F8IDucUuXw" scaext:label="Prepare Before Undeploy">
+      <scaext:description>Used to indicate that a component might require an arbitrarily long time to prepare (allow ongoing work to complete) before it can be undeployed. A typical example would be a business process involving human tasks, which might take months to complete.</scaext:description>
+    </systempolicy:prepareBeforeUndeploy>
+  </scaext:EmbeddedPolicySet>
+</sca:composite>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created by TIBCO WSDL-->
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://xmlns.example.com/1213065333875/GetAddressImpl/Service" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns0="http://www.tibco.com/schemas/InvokeSanityTest/WSDL/Schema.xsd" name="Untitled" targetNamespace="http://xmlns.example.com/1213065333875/GetAddressImpl/Service">
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.tibco.com/schemas/InvokeSanityTest/WSDL/Schema.xsd" targetNamespace="http://www.tibco.com/schemas/InvokeSanityTest/WSDL/Schema.xsd" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:element name="Address">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element ref="ns0:City"/>
+                        <xs:element ref="ns0:ZIP"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="City" type="xs:string"/>
+            <xs:element name="FirstName" type="xs:string"/>
+            <xs:element name="LastName" type="xs:string"/>
+            <xs:element name="Name">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element ref="ns0:FirstName"/>
+                        <xs:element ref="ns0:LastName"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="ZIP" type="xs:int"/>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:service name="ProcessHTTP">
+        <wsdl:port name="SOAPEventSource" binding="tns:SOAPEventSourceBinding">
+            <soap:address location="http://localhost:1999/Service/ProcessHTTP"/>
+        </wsdl:port>
+    </wsdl:service>
+    <wsdl:portType name="PortType1">
+        <wsdl:operation name="GetAddress">
+            <wsdl:input message="tns:Name"/>
+            <wsdl:output message="tns:Address"/>
+            <wsdl:fault name="fault1" message="tns:Address"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="SOAPEventSourceBinding" type="tns:PortType1">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="GetAddress">
+            <soap:operation style="document" soapAction="/Service/ProcessHTTP"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="part1"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="part1"/>
+            </wsdl:output>
+            <wsdl:fault name="fault1">
+                <soap:fault use="literal" name="fault1"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:message name="Name">
+        <wsdl:part name="part1" element="ns0:Name"/>
+    </wsdl:message>
+    <wsdl:message name="Address">
+        <wsdl:part name="part1" element="ns0:Address"/>
+    </wsdl:message>
+</wsdl:definitions>

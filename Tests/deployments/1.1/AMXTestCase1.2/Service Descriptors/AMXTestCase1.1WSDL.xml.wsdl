@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--Created by TIBCO WSDL-->
+<wsdl:definitions xmlns:ns0="http://www.example.org/AMXTestCase1.1WSDL/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tibex="http://www.tibco.com/bs3.2/extensions" xmlns:tns="urn:amx:DevEnvironment/AMXTestCase1.1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="JavaComponent_1.0.0.201109161122_service_AMXService1.1_AMXTestCase11WSDL" targetNamespace="urn:amx:DevEnvironment/AMXTestCase1.1" tibex:src="file:/C:/Users/apatanka/Desktop/AMXTestCasesWSDL/AMXTestCase1.1WSDL.xml">
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.example.org/AMXTestCase1.1WSDL/">
+            <xs:element name="NewOperation">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element form="unqualified" name="in" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="NewOperationResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element form="unqualified" name="out" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="NewOperationRequest">
+        <wsdl:part element="ns0:NewOperation" name="parameters"/>
+    </wsdl:message>
+    <wsdl:message name="NewOperationResponse">
+        <wsdl:part element="ns0:NewOperationResponse" name="parameters"/>
+    </wsdl:message>
+    <wsdl:portType name="AMXTestCase1.1WSDL">
+        <wsdl:operation name="NewOperation">
+            <wsdl:input message="tns:NewOperationRequest"/>
+            <wsdl:output message="tns:NewOperationResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="AMXServiceBinding1.1" type="tns:AMXTestCase1.1WSDL">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="NewOperation">
+            <wsdl:documentation/>
+            <soap:operation soapAction="NewOperation" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="JavaComponent_1.0.0.201109161122_service_AMXService1.1_AMXTestCase11WSDL">
+        <wsdl:port binding="tns:AMXServiceBinding1.1" name="AMXServiceBinding1.1">
+            <soap:address location="http://0.0.0.0:9090/aMXTestCase1.1WSDL/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,22 @@
+######below properties can be changed######
+address=amsb
+city=Palo Alto
+state=CA
+zip=100193
+
+######Do not change properties below #######
+
+declaredfault_name=declaredfault
+undeclaredfault_name=undeclaredfault
+mediationtaskfault_name=mediationtaskfault
+mediationtaskruntimeFault_name=mediationtaskruntimefault
+timeoutFault_name=timeout
+#timeoutMsg=Read Timeout Exception has occured while waiting for response
+#This line is updated to new since AMX330 HF6.
+#Result did not contain string. Looked for 'Read Timeout Exception has occured while waiting for response' in result '<?xml version="1.0" encoding="UTF-8"?>
+#<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"><SOAP-ENV:Body><SOAP-ENV:Fault><faultcode xmlns:fp="http://schemas.xmlsoap.org/soap/envelope/">fp:SERVER</faultcode><faultstring>com.tibco.amf.platform.runtime.extension.exception.TimeoutException: TIBCO-AMX-BT-SOAP-600001: Read Timeout Exception has occurred for SOAP/HTTP Reference Binding: "SOAPReference_Binding1" (Promoted Reference Name: "EchoStringPort21") running on Node "QANode1", while waiting for response. (Specified Destination Endpoint URI: http://batman.na.tibco.com:9105/Server/EchoStringServer, Specified HTTP Client Socket Timeout: 10,000 milliseconds, Timeout occurred at: 22 Oct 2014 18:03:23,363). (Originating Service Details: Promoted Service Name: AddressPort, Binding Name:SOAPService_Binding1, Running on: http://spiderman.na.tibco.com:8877/addressPort/, Application Name: bat61_app, Node Name: QANode1, Environment Name: QAEnvironment_spiderman.na.tibco.com, Operation Invoked: {http://xmlns.example.com/1235597799193/AddressOperationImpl/Server/AddressOperationImpl/Server}AddressOperation, Request Invoked from Host: 10.107.128.136).</faultstring><faultactor>DefaultRole</faultactor><detail>com.tibco.amf.platform.runtime.extension.exception.TimeoutException: TIBCO-AMX-BT-SOAP-600001: Read Timeout Exception has occurred for SOAP/HTTP Reference Binding: "SOAPReference_Binding1" (Promoted Reference Name: "EchoStringPort21") running on Node "QANode1", while waiting for response. (Specified Destination Endpoint URI: http://batman.na.tibco.com:9105/Server/EchoStringServer, Specified HTTP Client Socket Timeout: 10,000 milliseconds, Timeout occurred at: 22 Oct 2014 18:03:23,363).</detail></SOAP-ENV:Fault></SOAP-ENV:Body></SOAP-ENV:Envelope>'
+#Thus change this line to 'Read Timeout Exception has occurred for'
+timeoutMsg=Read Timeout Exception has occured
+bwport61=9105
+port_bat_61=8877
+socketTimeout=10000

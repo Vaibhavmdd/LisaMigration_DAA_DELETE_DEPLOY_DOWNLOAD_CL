@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns="http://tibco.com/matrix/qa/xsd/group"
+	 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	 targetNamespace="http://tibco.com/matrix/qa/xsd/group"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xsd:element name="BookStore">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Title" type="xsd:string"/>
+				<xsd:element name="Author" type="xsd:string"/>
+				<xsd:element name="Date" type="xsd:date"/>
+				<xsd:element name="ISBN" type="xsd:int"/>
+				<xsd:element name="Publisher" type="xsd:string"/>
+			</xsd:sequence>
+			<xsd:attribute name="ServiceProvider" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="BookStoreT">
+		<xsd:sequence>
+			<xsd:element ref="BookStore"/>
+			<xsd:element name="Echo" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="BookStoreFault" type="xsd:string"/>
+</xsd:schema>

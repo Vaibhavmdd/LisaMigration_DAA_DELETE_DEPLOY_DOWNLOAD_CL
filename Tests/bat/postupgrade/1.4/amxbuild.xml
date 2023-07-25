@@ -1,0 +1,40 @@
+<project default="Permissions">
+	<import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml"/>
+	
+	<target name="create.user">
+		<add.user dataFile="${amxConfigFile}" objectSelector="User" />
+	</target>
+	
+	<target name="env.permission">
+		<add.environment.permissions dataFile="${amxConfigFile}" envName="${env.name}"/>
+	</target>
+	
+	<target name="node.permission">
+		<add.node.permissions dataFile="${amxConfigFile}" />
+	</target>
+	
+	<target name="create.node">
+		<create.node dataFile="${amxConfigFile}"/>
+		<install.node dataFile="${amxConfigFile}"/>
+		<start.node dataFile="${amxConfigFile}"/>
+	</target>
+	
+	<target name="host.permission">
+		<add.host.permissions dataFile="${amxConfigFile}" />
+	</target>
+	
+	<target name="create.rt">
+		<create.rt dataFile="${amxConfigFile}" resourceTemplateName="httpConnectorRT" />
+	</target>
+	
+	<target name="create.app.test">
+		<upload.daa dataFile="${amxConfigFile}" objectSelector="DAA[@description = 'App1']"/>
+		<create.app dataFile="${amxConfigFile}" appName="app1.sample"/>
+		<add.app.permissions dataFile="${amxConfigFile}" appName="app1.sample" />
+	</target>
+	
+	<target name="toplevel.permission">
+		<add.ent.permissions dataFile="${amxConfigFile}"/>
+	</target>
+	
+	</project>

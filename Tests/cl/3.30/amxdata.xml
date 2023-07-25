@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+	xmlns:amxdata_jmsssr="http://tibco.com/amxadministrator/command/line/types_jmssr"
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+
+	<Environment 
+		xsi:type="amxdata:Environment" 
+		name="[[admin.env.name]]">
+		<Application xsi:type="amxdata:Application" 
+			name="[[logserviceAppName]]" 
+			contact="TIBCO Software Inc." 
+			description="Log Service">
+			<Property xsi:type="amxdata:Property" 
+				name="[[logservicePropertyName_timeinterval]]" 
+				value="1"/>
+			<Property xsi:type="amxdata:Property" 
+				name="[[logservicePropertyName_largeMessages]]" 
+				value="true"/>					
+		</Application>
+	</Environment>	
+	
+	<Environment 
+		xsi:type="amxdata:Environment" 
+		description="QA Environment" 
+		name="[[env.name]]">	
+		<Node xsi:type="amxdata:Node" name="[[env.node1.name]]" hostName="[[host.name]]">
+		    <ResourceInstance xsi:type="amxdata:ResourceInstance" name="httpConnectorForCL0330" resourceTemplateName="httpConnectorForCL0330"/>
+		</Node>
+				
+		<Application
+			xsi:type="amxdata:Application"
+			name="cl03_30"
+			contact="LeveonZhao">
+		  <Node name="[[env.node1.name]]" environmentName="[[env.name]]"/>                  	    
+			<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="CL-2188"/>
+			<!--Configure Logging-->	
+			<Logger xsi:type="amxdata:Logger" name ="com.tibco.amx" additivity="true">
+				<AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="INFO">
+					<Appender xsi:type="amxdata_reference:LogAppender_reference" name="FileAppender0330"/>
+				</AppenderRef>	
+				<AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="INFO">
+					<Appender xsi:type="amxdata_reference:LogAppender_reference" name="JMSAppender0330"/>
+				</AppenderRef>		
+			</Logger>			
+		</Application>	
+			
+	</Environment>	
+	
+	<ResourceTemplate 
+	  xsi:type="amxdata:HttpConnectorResourceTemplate" 
+	  name="httpConnectorForCL0330" 
+	  host="[[host1]]" 
+	  port="[[servicePort03_30]]" 
+		headerBufferSize="512" 
+		requestBufferSize="512"	
+		responseBufferSize="512" 
+		maxIdleTime="200000" 
+		lowResourceMaxIdleTime="512" 
+		description="This is HttpConnector RT for CL 3.30"/>	
+		
+	<DAA
+		xsi:type="amxdata:DAA"
+		location="SoaProject/Deployment Artifacts/CL-2188.daa"
+	  importResourceTemplates="false">
+	</DAA>
+	
+	<!--Define Log Appender-->
+	<LogAppender
+		xsi:type="amxdata:FileLogAppender"
+		name="FileAppender0330"
+		description="QA File LogAppender0330"
+		filePath="[[tibco.test.case.log.dir]]/App0330.log"
+		maxSize="10240"
+		maxBackupNum="5"/>			
+	
+	<LogAppender
+    xsi:type="amxdata:JmsLogAppender"
+    name="JMSAppender0330"
+    description="QA JMS LogAppender0330"
+    jmsConnectionFactoryName="JmsConnectionFactory0330"
+    jmsConnectionName="JndiConnectionConfig0330"
+    jmsDestination="JmsDestination0330"
+    expireTimeInDB="1"
+		payload = "false"	/>
+      
+  <amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate 
+ 		initialContextFactory="com.tibco.tibjms.naming.TibjmsInitialContextFactory" 
+  	name="JndiConnectionConfig0330" 
+  	xsi:type="amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate" providerUrl="tibjmsnaming://[[emshost]]:[[emsport]]">
+  	<InlineCredentials username="[[emsuser]]" password="[[emspwd]]"/>
+  </amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate>
+    
+  <amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate 
+  	jndiConnectionConfigurationName="JndiConnectionConfig0324" 
+  	jndiName="QueueConnectionFactory" 
+  	name="JmsConnectionFactory0330" 
+  	xsi:type="amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate">
+  	<InlineCredentials username="[[emsuser]]" password="[[emspwd]]"/>
+  </amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate>
+  
+  <amxdata_jmsssr:JNDIDestinationResourceTemplate  
+  	jndiConnectionConfigurationName="JndiConnectionConfig0330" 
+  	jndiName="[[commonlogging.logservice.emsqueue]]" 
+  	name="JmsDestination0330" 
+  	xsi:type="amxdata_jmsssr:JNDIDestinationResourceTemplate"/>
+
+</amxdata_base:Enterprise>

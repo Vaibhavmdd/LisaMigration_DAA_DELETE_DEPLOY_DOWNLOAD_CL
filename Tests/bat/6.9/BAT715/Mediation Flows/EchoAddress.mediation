@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpel:process exitOnStandardFault="yes" name="EchoAddress"
+    suppressJoinFailure="no"
+    targetNamespace="http://com.tibco.amsb/mediation/1284028497984"
+    variableAccessSerializable="no"
+    xmlns:amsb="http://schemas.tibco.com/amsb/3.1.0/mediation"
+    xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+    xmlns:ns="http://tibco.com/qa/wsdl/echoaddress"
+    xmlns:ns0="http:///com.tibco.amsb.core.common.exchange/mediationcontext" xmlns:ns1="http://schemas.tibco.com/amsb/rt/exceptions">
+    <plnk:partnerLinkType
+        name="ns:AddressPort-AddressPortConsumer-partnerLinkType" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+        <plnk:role name="Consumer" portType="ns:AddressPort"/>
+    </plnk:partnerLinkType>
+    <plnk:partnerLinkType
+        name="ns:AddressPort-AddressPortProvider-partnerLinkType" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+        <plnk:role name="Provider" portType="ns:AddressPort"/>
+    </plnk:partnerLinkType>
+    <mediationmodel:MediationService name="EchoAddress"
+        targetNamespace="http://com.tibco.amsb/mediation/1284028497984"
+        xmi:id="_5IsEALv9Ed-Lsf6x1Cczzg" xmi:version="2.0"
+        xmlns:medct="http://xsd.tns.tibco.com/amsb/core/models/componentType"
+        xmlns:mediationmodel="http://xsd.tns.tibco.com/amsb/core/models/mediationmodel"
+        xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <interfaces name="AddressPort" xmi:id="_-4xMQLv9Ed-Lsf6x1Cczzg">
+            <interface xsi:type="medct:Wsdl11Interface">
+                <portType href="platform:/resource/BAT715/Service%20Descriptors/Address.wsdl#//@ePortTypes.0"/>
+            </interface>
+        </interfaces>
+        <operationImplementations operationName="AddressPort^AddressElementOperation">
+            <mediationContextConfig hideStaticSecurityContext="true" hideStaticTransportContext="true"/>
+        </operationImplementations>
+        <operationImplementations operationName="AddressPort^AddressTypeOperation">
+            <mediationContextConfig hideStaticSecurityContext="true" hideStaticTransportContext="true"/>
+        </operationImplementations>
+        <targetEndpoints xmi:id="_-6HQELv9Ed-Lsf6x1Cczzg">
+            <abstractTarget name="AddressPort" xmi:id="_-6HQEbv9Ed-Lsf6x1Cczzg">
+                <interface xsi:type="medct:Wsdl11Interface">
+                    <portType href="platform:/resource/BAT715/Service%20Descriptors/Address.wsdl#//@ePortTypes.0"/>
+                </interface>
+            </abstractTarget>
+            <targetOperationConfig operationName="AddressElementOperation">
+                <contextConfig hideStaticSecurityContext="true" hideStaticTransportContext="true"/>
+            </targetOperationConfig>
+            <targetOperationConfig operationName="AddressTypeOperation">
+                <contextConfig hideStaticSecurityContext="true" hideStaticTransportContext="true"/>
+            </targetOperationConfig>
+        </targetEndpoints>
+    </mediationmodel:MediationService>
+    <bpel:documentation>EchoAddress</bpel:documentation>
+    <bpel:import importType="http://schemas.xmlsoap.org/wsdl/"
+        location="../Service%20Descriptors/Address.wsdl" namespace="http://tibco.com/qa/wsdl/echoaddress"/>
+    <bpel:import importType="http://www.w3.org/2001/XMLSchema"
+        location="../../com.tibco.mediation.it.common/schema/mediationcontext.xsd" namespace="http:///com.tibco.amsb.core.common.exchange/mediationcontext"/>
+    <bpel:import importType="http://www.w3.org/2001/XMLSchema"
+        location="../../com.tibco.mediation.it.common/schema/exceptions.xsd" namespace="http://schemas.tibco.com/amsb/rt/exceptions"/>
+    <bpel:import importType="http://www.w3.org/2001/XMLSchema"
+        location="../../com.tibco.mediation.it.common/schema/ws-bpel_serviceref.xsd" namespace="http://docs.oasis-open.org/wsbpel/2.0/serviceref"/>
+    <bpel:partnerLinks>
+        <bpel:partnerLink myRole="Provider" name="AddressPortProvider" partnerLinkType="ns:AddressPort-AddressPortProvider-partnerLinkType">
+            <bpel:documentation>MyRole</bpel:documentation>
+        </bpel:partnerLink>
+        <bpel:partnerLink name="AddressPortConsumer"
+            partnerLinkType="ns:AddressPort-AddressPortConsumer-partnerLinkType" partnerRole="Consumer">
+            <bpel:documentation>PartnerRole</bpel:documentation>
+        </bpel:partnerLink>
+    </bpel:partnerLinks>
+    <bpel:variables>
+        <bpel:variable messageType="ns:Address_Element_Request" name="Address_Element_RequestVar"/>
+        <bpel:variable messageType="ns:Address_Element_Response" name="Address_Element_ResponseVar"/>
+        <bpel:variable messageType="ns:Address_Type_Request" name="Address_Type_RequestVar"/>
+        <bpel:variable messageType="ns:Address_Type_Response" name="Address_Type_ResponseVar"/>
+    </bpel:variables>
+    <bpel:extensions>
+        <bpel:extension mustUnderstand="no" namespace="http://xsd.tns.tibco.com/amsb/task/transform/models/transformmediationtaskmodel"/>
+    </bpel:extensions>
+    <bpel:pick>
+        <bpel:onMessage operation="AddressElementOperation"
+            partnerLink="AddressPortProvider" portType="ns:AddressPort" variable="Address_Element_RequestVar">
+            <bpel:scope name="AddressElementOperation">
+                <bpel:variables>
+                    <bpel:variable element="ns0:MessageContext" name="MessageContextVar"/>
+                    <bpel:variable element="ns1:MediationFault" name="MediationFaultVar"/>
+                    <bpel:variable element="ns1:MediationRuntimeFault" name="MediationRuntimeFaultVar"/>
+                    <bpel:variable element="ns1:MediationTaskFault" name="MediationTaskFaultVar"/>
+                    <bpel:variable
+                        element="ns1:MediationTaskRuntimeFault" name="MediationTaskRuntimeFaultVar"/>
+                    <bpel:variable element="ns1:UndeclaredFault" name="UndeclaredFaultVar"/>
+                    <bpel:variable element="ns1:DefaultMediationFault" name="DefaultMediationFaultVar"/>
+                    <bpel:variable
+                        messageType="ns:Address_Element_Response" name="Address_Element_ResponseVar"/>
+                </bpel:variables>
+                <bpel:faultHandlers>
+                    <bpel:catch faultName="ns1:MediationTaskFault">
+                        <bpel:flow>
+                            <bpel:links>
+                                <bpel:link name="transform-to-SendFault-MediationTaskFaultReplyWithFault"/>
+                            </bpel:links>
+                            <bpel:assign name="transform" validate="no">
+
+                                <transformmediationtaskmodel:MapperTransformationMediationTask
+                                    description="" name="transform"
+                                    xmi:id="__AEuPLv9Ed-Lsf6x1Cczzg"
+                                    xmi:version="2.0"
+                                    xmlns:transformmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/transform/models/transformmediationtaskmodel" xmlns:xmi="http://www.omg.org/XMI">
+                                    <transform queryLanguage="xslt" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:tns=&quot;http://schemas.tibco.com/amsb/rt/exceptions&quot; xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;MediationFlowProperties&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageContext&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageData&quot;/>&#xa;    &lt;xsl:template name=&quot;MessageData&quot; match=&quot;/&quot;>&#xa;        &lt;tns:UndeclaredFault>&#xa;            &lt;xsl:if test=&quot;$MessageData/tns:MediationTaskFault/message&quot;>&#xa;                &lt;message>&#xa;                    &lt;xsl:value-of select=&quot;$MessageData/tns:MediationTaskFault/message&quot;/>&#xa;                &lt;/message>&#xa;            &lt;/xsl:if>&#xa;        &lt;/tns:UndeclaredFault>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>&#xa;"/>
+                                </transformmediationtaskmodel:MapperTransformationMediationTask>
+                                <bpel:sources>
+                                    <bpel:source linkName="transform-to-SendFault-MediationTaskFaultReplyWithFault"/>
+                                </bpel:sources>
+                                <bpel:copy>
+                                    <bpel:from><![CDATA[bpel:doXslTransform("transform.xsl",$UndeclaredFaultVar,"MessageData",$MediationTaskFaultVar)]]></bpel:from>
+                                    <bpel:to variable="UndeclaredFaultVar"/>
+                                </bpel:copy>
+                            </bpel:assign>
+                            <bpel:reply faultName="ns1:UndeclaredFault"
+                                name="SendFault-MediationTaskFaultReplyWithFault"
+                                operation="AddressElementOperation"
+                                partnerLink="AddressPortProvider"
+                                portType="ns:AddressPort" variable="UndeclaredFaultVar">
+                                <bpel:targets>
+                                    <bpel:target linkName="transform-to-SendFault-MediationTaskFaultReplyWithFault"/>
+                                </bpel:targets>
+                            </bpel:reply>
+                        </bpel:flow>
+                    </bpel:catch>
+                    <bpel:catch faultName="ns1:MediationTaskRuntimeFault">
+                        <bpel:flow>
+                            <bpel:links>
+                                <bpel:link name="transform1-to-SendFault-MediationTaskRuntimeFaultReplyWithFault"/>
+                            </bpel:links>
+                            <bpel:assign name="transform1" validate="no">
+
+                                <transformmediationtaskmodel:MapperTransformationMediationTask
+                                    description="" name="transform1"
+                                    xmi:id="__AEuQ7v9Ed-Lsf6x1Cczzg"
+                                    xmi:version="2.0"
+                                    xmlns:transformmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/transform/models/transformmediationtaskmodel" xmlns:xmi="http://www.omg.org/XMI">
+                                    <transform queryLanguage="xslt" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:tns=&quot;http://schemas.tibco.com/amsb/rt/exceptions&quot; xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;MediationFlowProperties&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageContext&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageData&quot;/>&#xa;    &lt;xsl:template name=&quot;MessageData&quot; match=&quot;/&quot;>&#xa;        &lt;tns:UndeclaredFault>&#xa;            &lt;xsl:if test=&quot;$MessageData/tns:MediationTaskRuntimeFault/message&quot;>&#xa;                &lt;message>&#xa;                    &lt;xsl:value-of select=&quot;$MessageData/tns:MediationTaskRuntimeFault/message&quot;/>&#xa;                &lt;/message>&#xa;            &lt;/xsl:if>&#xa;        &lt;/tns:UndeclaredFault>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>&#xa;"/>
+                                </transformmediationtaskmodel:MapperTransformationMediationTask>
+                                <bpel:sources>
+                                    <bpel:source linkName="transform1-to-SendFault-MediationTaskRuntimeFaultReplyWithFault"/>
+                                </bpel:sources>
+                                <bpel:copy>
+                                    <bpel:from><![CDATA[bpel:doXslTransform("transform1.xsl",$UndeclaredFaultVar,"MessageData",$MediationTaskRuntimeFaultVar)]]></bpel:from>
+                                    <bpel:to variable="UndeclaredFaultVar"/>
+                                </bpel:copy>
+                            </bpel:assign>
+                            <bpel:reply faultName="ns1:UndeclaredFault"
+                                name="SendFault-MediationTaskRuntimeFaultReplyWithFault"
+                                operation="AddressElementOperation"
+                                partnerLink="AddressPortProvider"
+                                portType="ns:AddressPort" variable="UndeclaredFaultVar">
+                                <bpel:targets>
+                                    <bpel:target linkName="transform1-to-SendFault-MediationTaskRuntimeFaultReplyWithFault"/>
+                                </bpel:targets>
+                            </bpel:reply>
+                        </bpel:flow>
+                    </bpel:catch>
+                </bpel:faultHandlers>
+                <bpel:flow>
+                    <bpel:links>
+                        <bpel:link name="AddressPortAddressElementOperation-to-AddressElementOperationReply"/>
+                    </bpel:links>
+                    <bpel:invoke
+                        inputVariable="Address_Element_RequestVar"
+                        name="AddressPortAddressElementOperation"
+                        operation="AddressElementOperation"
+                        outputVariable="Address_Element_ResponseVar"
+                        partnerLink="AddressPortConsumer" portType="ns:AddressPort">
+                        <bpel:sources>
+                            <bpel:source linkName="AddressPortAddressElementOperation-to-AddressElementOperationReply"/>
+                        </bpel:sources>
+                        <bpel:catch faultMessageType="ns:Address_Fault" faultName="ns:Fault">
+                            <bpel:flow>
+                                <bpel:reply faultName="ns:Address_Fault"
+                                    name="SendFault-Address_FaultReplyWithFault"
+                                    operation="AddressElementOperation"
+                                    partnerLink="AddressPortProvider" portType="ns:AddressPort"/>
+                            </bpel:flow>
+                        </bpel:catch>
+                        <bpel:catch faultName="ns1:TimeoutFault">
+                            <bpel:flow>
+                                <bpel:links>
+                                    <bpel:link name="transform-TimeoutFault-AddressPort-AddressElementOperation-to-SendFault-TimeoutFaultReplyWithFault"/>
+                                </bpel:links>
+                                <bpel:assign
+                                    name="transform-TimeoutFault-AddressPort-AddressElementOperation" validate="no">
+
+                                    <transformmediationtaskmodel:MapperTransformationMediationTask
+                                    description=""
+                                    name="transform-TimeoutFault-AddressPort-AddressElementOperation"
+                                    xmi:id="__AEuL7v9Ed-Lsf6x1Cczzg"
+                                    xmi:version="2.0"
+                                    xmlns:transformmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/transform/models/transformmediationtaskmodel" xmlns:xmi="http://www.omg.org/XMI">
+                                    <transform queryLanguage="xslt" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://schemas.tibco.com/amsb/rt/exceptions&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;MediationFlowProperties&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageData&quot;/>&#xa;    &lt;xsl:template name=&quot;MessageData&quot; match=&quot;/&quot;>&#xa;        &lt;tns:UndeclaredFault>&#xa;            &lt;xsl:if test=&quot;$MessageData/tns:TimeoutFault/message&quot;>&#xa;                &lt;message>&#xa;                    &lt;xsl:value-of select=&quot;$MessageData/tns:TimeoutFault/message&quot;/>&#xa;                &lt;/message>&#xa;            &lt;/xsl:if>&#xa;        &lt;/tns:UndeclaredFault>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>&#xa;"/>
+                                    </transformmediationtaskmodel:MapperTransformationMediationTask>
+                                    <bpel:sources>
+                                    <bpel:source linkName="transform-TimeoutFault-AddressPort-AddressElementOperation-to-SendFault-TimeoutFaultReplyWithFault"/>
+                                    </bpel:sources>
+                                </bpel:assign>
+                                <bpel:reply
+                                    faultName="ns1:UndeclaredFault"
+                                    name="SendFault-TimeoutFaultReplyWithFault"
+                                    operation="AddressElementOperation"
+                                    partnerLink="AddressPortProvider"
+                                    portType="ns:AddressPort" variable="UndeclaredFaultVar">
+                                    <bpel:targets>
+                                    <bpel:target linkName="transform-TimeoutFault-AddressPort-AddressElementOperation-to-SendFault-TimeoutFaultReplyWithFault"/>
+                                    </bpel:targets>
+                                </bpel:reply>
+                            </bpel:flow>
+                        </bpel:catch>
+                        <bpel:catch faultName="ns1:UndeclaredFault">
+                            <bpel:flow>
+                                <bpel:reply
+                                    faultName="ns1:UndeclaredFault"
+                                    name="SendFault-UndeclaredFaultReplyWithFault"
+                                    operation="AddressElementOperation"
+                                    partnerLink="AddressPortProvider"
+                                    portType="ns:AddressPort" variable="UndeclaredFaultVar"/>
+                            </bpel:flow>
+                        </bpel:catch>
+                    </bpel:invoke>
+                    <bpel:reply name="AddressElementOperationReply"
+                        operation="AddressElementOperation"
+                        partnerLink="AddressPortProvider"
+                        portType="ns:AddressPort" variable="Address_Element_ResponseVar">
+                        <bpel:targets>
+                            <bpel:target linkName="AddressPortAddressElementOperation-to-AddressElementOperationReply"/>
+                        </bpel:targets>
+                    </bpel:reply>
+                </bpel:flow>
+            </bpel:scope>
+        </bpel:onMessage>
+        <bpel:onMessage operation="AddressTypeOperation"
+            partnerLink="AddressPortProvider" portType="ns:AddressPort" variable="Address_Type_RequestVar">
+            <bpel:scope name="AddressTypeOperation">
+                <bpel:variables>
+                    <bpel:variable element="ns0:MessageContext" name="MessageContextVar"/>
+                    <bpel:variable element="ns1:MediationFault" name="MediationFaultVar"/>
+                    <bpel:variable element="ns1:MediationRuntimeFault" name="MediationRuntimeFaultVar"/>
+                    <bpel:variable element="ns1:MediationTaskFault" name="MediationTaskFaultVar"/>
+                    <bpel:variable
+                        element="ns1:MediationTaskRuntimeFault" name="MediationTaskRuntimeFaultVar"/>
+                    <bpel:variable element="ns1:UndeclaredFault" name="UndeclaredFaultVar"/>
+                    <bpel:variable element="ns1:DefaultMediationFault" name="DefaultMediationFaultVar"/>
+                    <bpel:variable
+                        messageType="ns:Address_Type_Response" name="Address_Type_ResponseVar"/>
+                </bpel:variables>
+                <bpel:faultHandlers>
+                    <bpel:catch faultName="ns1:MediationTaskFault">
+                        <bpel:flow>
+                            <bpel:links>
+                                <bpel:link name="transform(1)-to-SendFault-MediationTaskFaultReplyWithFault"/>
+                            </bpel:links>
+                            <bpel:assign name="transform(1)" validate="no">
+
+                                <transformmediationtaskmodel:MapperTransformationMediationTask
+                                    description="" name="transform"
+                                    xmi:id="__AN4LLv9Ed-Lsf6x1Cczzg"
+                                    xmi:version="2.0"
+                                    xmlns:transformmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/transform/models/transformmediationtaskmodel" xmlns:xmi="http://www.omg.org/XMI">
+                                    <transform queryLanguage="xslt" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:tns=&quot;http://schemas.tibco.com/amsb/rt/exceptions&quot; xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;MediationFlowProperties&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageContext&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageData&quot;/>&#xa;    &lt;xsl:template name=&quot;MessageData&quot; match=&quot;/&quot;>&#xa;        &lt;tns:UndeclaredFault>&#xa;            &lt;xsl:if test=&quot;$MessageData/tns:MediationTaskFault/message&quot;>&#xa;                &lt;message>&#xa;                    &lt;xsl:value-of select=&quot;$MessageData/tns:MediationTaskFault/message&quot;/>&#xa;                &lt;/message>&#xa;            &lt;/xsl:if>&#xa;        &lt;/tns:UndeclaredFault>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>&#xa;"/>
+                                </transformmediationtaskmodel:MapperTransformationMediationTask>
+                                <bpel:sources>
+                                    <bpel:source linkName="transform(1)-to-SendFault-MediationTaskFaultReplyWithFault"/>
+                                </bpel:sources>
+                                <bpel:copy>
+                                    <bpel:from><![CDATA[bpel:doXslTransform("transform.xsl",$UndeclaredFaultVar,"MessageData",$MediationTaskFaultVar)]]></bpel:from>
+                                    <bpel:to variable="UndeclaredFaultVar"/>
+                                </bpel:copy>
+                            </bpel:assign>
+                            <bpel:reply faultName="ns1:UndeclaredFault"
+                                name="SendFault-MediationTaskFaultReplyWithFault"
+                                operation="AddressTypeOperation"
+                                partnerLink="AddressPortProvider"
+                                portType="ns:AddressPort" variable="UndeclaredFaultVar">
+                                <bpel:targets>
+                                    <bpel:target linkName="transform(1)-to-SendFault-MediationTaskFaultReplyWithFault"/>
+                                </bpel:targets>
+                            </bpel:reply>
+                        </bpel:flow>
+                    </bpel:catch>
+                    <bpel:catch faultName="ns1:MediationTaskRuntimeFault">
+                        <bpel:flow>
+                            <bpel:links>
+                                <bpel:link name="transform1(1)-to-SendFault-MediationTaskRuntimeFaultReplyWithFault"/>
+                            </bpel:links>
+                            <bpel:assign name="transform1(1)" validate="no">
+
+                                <transformmediationtaskmodel:MapperTransformationMediationTask
+                                    description="" name="transform1"
+                                    xmi:id="__AN4M7v9Ed-Lsf6x1Cczzg"
+                                    xmi:version="2.0"
+                                    xmlns:transformmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/transform/models/transformmediationtaskmodel" xmlns:xmi="http://www.omg.org/XMI">
+                                    <transform queryLanguage="xslt" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:tns=&quot;http://schemas.tibco.com/amsb/rt/exceptions&quot; xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;MediationFlowProperties&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageContext&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageData&quot;/>&#xa;    &lt;xsl:template name=&quot;MessageData&quot; match=&quot;/&quot;>&#xa;        &lt;tns:UndeclaredFault>&#xa;            &lt;xsl:if test=&quot;$MessageData/tns:MediationTaskRuntimeFault/message&quot;>&#xa;                &lt;message>&#xa;                    &lt;xsl:value-of select=&quot;$MessageData/tns:MediationTaskRuntimeFault/message&quot;/>&#xa;                &lt;/message>&#xa;            &lt;/xsl:if>&#xa;        &lt;/tns:UndeclaredFault>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>&#xa;"/>
+                                </transformmediationtaskmodel:MapperTransformationMediationTask>
+                                <bpel:sources>
+                                    <bpel:source linkName="transform1(1)-to-SendFault-MediationTaskRuntimeFaultReplyWithFault"/>
+                                </bpel:sources>
+                                <bpel:copy>
+                                    <bpel:from><![CDATA[bpel:doXslTransform("transform1.xsl",$UndeclaredFaultVar,"MessageData",$MediationTaskRuntimeFaultVar)]]></bpel:from>
+                                    <bpel:to variable="UndeclaredFaultVar"/>
+                                </bpel:copy>
+                            </bpel:assign>
+                            <bpel:reply faultName="ns1:UndeclaredFault"
+                                name="SendFault-MediationTaskRuntimeFaultReplyWithFault"
+                                operation="AddressTypeOperation"
+                                partnerLink="AddressPortProvider"
+                                portType="ns:AddressPort" variable="UndeclaredFaultVar">
+                                <bpel:targets>
+                                    <bpel:target linkName="transform1(1)-to-SendFault-MediationTaskRuntimeFaultReplyWithFault"/>
+                                </bpel:targets>
+                            </bpel:reply>
+                        </bpel:flow>
+                    </bpel:catch>
+                </bpel:faultHandlers>
+                <bpel:flow>
+                    <bpel:links>
+                        <bpel:link name="AddressPortAddressTypeOperation-to-AddressTypeOperationReply"/>
+                    </bpel:links>
+                    <bpel:invoke inputVariable="Address_Type_RequestVar"
+                        name="AddressPortAddressTypeOperation"
+                        operation="AddressTypeOperation"
+                        outputVariable="Address_Type_ResponseVar"
+                        partnerLink="AddressPortConsumer" portType="ns:AddressPort">
+                        <bpel:sources>
+                            <bpel:source linkName="AddressPortAddressTypeOperation-to-AddressTypeOperationReply"/>
+                        </bpel:sources>
+                        <bpel:catch faultMessageType="ns:Address_Fault" faultName="ns:Fault">
+                            <bpel:flow>
+                                <bpel:reply faultName="ns:Address_Fault"
+                                    name="SendFault-Address_FaultReplyWithFault"
+                                    operation="AddressTypeOperation"
+                                    partnerLink="AddressPortProvider" portType="ns:AddressPort"/>
+                            </bpel:flow>
+                        </bpel:catch>
+                        <bpel:catch faultName="ns1:TimeoutFault">
+                            <bpel:flow>
+                                <bpel:links>
+                                    <bpel:link name="transform-TimeoutFault-AddressPort-AddressTypeOperation-to-SendFault-TimeoutFaultReplyWithFault"/>
+                                </bpel:links>
+                                <bpel:assign
+                                    name="transform-TimeoutFault-AddressPort-AddressTypeOperation" validate="no">
+
+                                    <transformmediationtaskmodel:MapperTransformationMediationTask
+                                    description=""
+                                    name="transform-TimeoutFault-AddressPort-AddressTypeOperation"
+                                    xmi:id="__AN4H7v9Ed-Lsf6x1Cczzg"
+                                    xmi:version="2.0"
+                                    xmlns:transformmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/transform/models/transformmediationtaskmodel" xmlns:xmi="http://www.omg.org/XMI">
+                                    <transform queryLanguage="xslt" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://schemas.tibco.com/amsb/rt/exceptions&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;MediationFlowProperties&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageData&quot;/>&#xa;    &lt;xsl:template name=&quot;MessageData&quot; match=&quot;/&quot;>&#xa;        &lt;tns:UndeclaredFault>&#xa;            &lt;xsl:if test=&quot;$MessageData/tns:TimeoutFault/message&quot;>&#xa;                &lt;message>&#xa;                    &lt;xsl:value-of select=&quot;$MessageData/tns:TimeoutFault/message&quot;/>&#xa;                &lt;/message>&#xa;            &lt;/xsl:if>&#xa;        &lt;/tns:UndeclaredFault>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>&#xa;"/>
+                                    </transformmediationtaskmodel:MapperTransformationMediationTask>
+                                    <bpel:sources>
+                                    <bpel:source linkName="transform-TimeoutFault-AddressPort-AddressTypeOperation-to-SendFault-TimeoutFaultReplyWithFault"/>
+                                    </bpel:sources>
+                                </bpel:assign>
+                                <bpel:reply
+                                    faultName="ns1:UndeclaredFault"
+                                    name="SendFault-TimeoutFaultReplyWithFault"
+                                    operation="AddressTypeOperation"
+                                    partnerLink="AddressPortProvider"
+                                    portType="ns:AddressPort" variable="UndeclaredFaultVar">
+                                    <bpel:targets>
+                                    <bpel:target linkName="transform-TimeoutFault-AddressPort-AddressTypeOperation-to-SendFault-TimeoutFaultReplyWithFault"/>
+                                    </bpel:targets>
+                                </bpel:reply>
+                            </bpel:flow>
+                        </bpel:catch>
+                        <bpel:catch faultName="ns1:UndeclaredFault">
+                            <bpel:flow>
+                                <bpel:reply
+                                    faultName="ns1:UndeclaredFault"
+                                    name="SendFault-UndeclaredFaultReplyWithFault"
+                                    operation="AddressTypeOperation"
+                                    partnerLink="AddressPortProvider"
+                                    portType="ns:AddressPort" variable="UndeclaredFaultVar"/>
+                            </bpel:flow>
+                        </bpel:catch>
+                    </bpel:invoke>
+                    <bpel:reply name="AddressTypeOperationReply"
+                        operation="AddressTypeOperation"
+                        partnerLink="AddressPortProvider"
+                        portType="ns:AddressPort" variable="Address_Type_ResponseVar">
+                        <bpel:targets>
+                            <bpel:target linkName="AddressPortAddressTypeOperation-to-AddressTypeOperationReply"/>
+                        </bpel:targets>
+                    </bpel:reply>
+                </bpel:flow>
+            </bpel:scope>
+        </bpel:onMessage>
+    </bpel:pick>
+</bpel:process>

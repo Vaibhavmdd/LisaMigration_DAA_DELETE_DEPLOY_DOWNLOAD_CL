@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:ns="http://www.tibco.com/xmlns/ae2xsd/2002/05/BAT6.10" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:pd="http://xmlns.tibco.com/bw/process/2003">
+    <pd:name>BAT6.10/TestClient.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startX>112</pd:startX>
+    <pd:startY>83</pd:startY>
+    <pd:returnBindings/>
+    <pd:endName>End</pd:endName>
+    <pd:endX>450</pd:endX>
+    <pd:endY>64</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1298279126979</pd:targetNamespace>
+    <pd:activity name="Invoke an Adapter Request-Response Service">
+        <pd:type>com.tibco.plugin.ae.AERPCRequestReplyActivity</pd:type>
+        <pd:resourceType>ae.aepalette.aeOpClientReqActivity</pd:resourceType>
+        <pd:x>295</pd:x>
+        <pd:y>52</pd:y>
+        <config>
+            <ae.aepalette.sharedProperties.transportChoice>default</ae.aepalette.sharedProperties.transportChoice>
+            <ae.aepalette.sharedProperties.useRequestReply>false</ae.aepalette.sharedProperties.useRequestReply>
+            <ae.aepalette.sharedProperties.adapterService>/BAT6_10.adapter#adapterService.BAT6.10Service</ae.aepalette.sharedProperties.adapterService>
+            <tpPluginEndpointName>BAT6.10ServiceEndPoint</tpPluginEndpointName>
+            <ae.aepalette.sharedProperties.transportType>jmsQueue</ae.aepalette.sharedProperties.transportType>
+            <ae.aepalette.sharedProperties.jmsQueueSessionQueue>BAT6_10_Queue</ae.aepalette.sharedProperties.jmsQueueSessionQueue>
+            <ae.aepalette.sharedProperties.deliveryMode>NONPERSISTENT</ae.aepalette.sharedProperties.deliveryMode>
+            <ae.aepalette.sharedProperties.timeToLive>0</ae.aepalette.sharedProperties.timeToLive>
+            <ae.aepalette.sharedProperties.jmsQueueSessionConnectionFactory>QueueConnectionFactory</ae.aepalette.sharedProperties.jmsQueueSessionConnectionFactory>
+            <ae.aepalette.sharedProperties.jmsSessionUsername>admin</ae.aepalette.sharedProperties.jmsSessionUsername>
+            <ae.aepalette.sharedProperties.jmsSessionProviderURL>%%BAT6_10/jmsProviderUrl%%</ae.aepalette.sharedProperties.jmsSessionProviderURL>
+            <ae.aepalette.aeOpClientReqActivity.ops>GetEmployeeById</ae.aepalette.aeOpClientReqActivity.ops>
+            <ae.aepalette.sharedProperties.autoGenClientID>true</ae.aepalette.sharedProperties.autoGenClientID>
+            <ae.aepalette.sharedProperties.jmsSessionJNDILookups>true</ae.aepalette.sharedProperties.jmsSessionJNDILookups>
+            <ae.aepalette.sharedProperties.outputMeta>
+                <aeMeta>/AESchemas/BAT6.10.aeschema#rpcClass.Operation</aeMeta>
+            </ae.aepalette.sharedProperties.outputMeta>
+        </config>
+        <pd:inputBindings>
+            <aeRequestInputType>
+                <ns:__caret_request_caret_Operation_caret_GetEmployeeById>
+                    <Id>
+                        <xsl:value-of select="12"/>
+                    </Id>
+                </ns:__caret_request_caret_Operation_caret_GetEmployeeById>
+            </aeRequestInputType>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>Invoke an Adapter Request-Response Service</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Invoke an Adapter Request-Response Service</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>

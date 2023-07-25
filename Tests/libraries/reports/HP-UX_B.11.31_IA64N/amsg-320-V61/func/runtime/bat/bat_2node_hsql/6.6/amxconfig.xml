@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+	xmlns:amxdata_jmsssr="http://tibco.com/amxadministrator/command/line/types_jmssr"
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd http://tibco.com/amxadministrator/command/line/types_jmssr ../schemas/jmssr.xsd">
+
+
+<Environment xsi:type="amxdata:Environment" name="QAEnvironment_hpita17" description="Test Environment" contact="TIBCO">
+    
+    <Node xsi:type="amxdata:Node" name="QANode1" hostName="SystemHost_hpita17">
+    
+            <ResourceInstance name="BAT66JndiConnConf" resourceTemplateName="BAT66JndiConnConf" xsi:type="amxdata:ResourceInstance"/>
+            <ResourceInstance name="BAT66JmsConnFactory" resourceTemplateName="BAT66JmsConnFactory" xsi:type="amxdata:ResourceInstance"/>
+            <ResourceInstance name="BAT66JmsConnFactoryConf" resourceTemplateName="BAT66JmsConnFactoryConf" xsi:type="amxdata:ResourceInstance"/>
+            <ResourceInstance name="BAT66JmsDestConf" resourceTemplateName="BAT66JmsDestConf" xsi:type="amxdata:ResourceInstance"/>
+         
+	</Node>
+	
+	<Application 
+		xsi:type="amxdata:Application" 
+		name="bat66_pluginXPF3.apt" 
+		contact="TIBCO Inc." 
+		description="This is the CXF"
+		importResourceTemplates="true">
+		<Node name="QANode2" environmentName="QAEnvironment_hpita17"/>
+		<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="pluginXPF3.apt"/>
+    </Application>	
+
+	<Application 
+		xsi:type="amxdata:Application" 
+		name="bat66_cxftest" 
+		contact="TIBCO Inc." 
+		description="This is the app which uses the cxf"
+		importResourceTemplates="true">
+		<Component xsi:type="amxdata:Component" name="ComponentCxfJms">
+		        <Node name="QANode2" environmentName="QAEnvironment_hpita17"/>				
+        	</Component>
+			     <PromotedService xsi:type="amxdata_base:Service_base" name="ServiceIn">
+				    <Binding xsi:type="amxdata:Binding" name="JMSService_Binding1">
+					    <Node name="QANode1" environmentName="QAEnvironment_hpita17" />				
+				    </Binding>
+			    </PromotedService>		
+		<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="CXFoverPureJMS"/>
+    </Application>
+</Environment>		
+	
+	<DAA 
+		xsi:type="amxdata:DAA" 
+		description="Custome XPath Function" 				
+		location="XPF/pluginXPF3.deploy.soa/Deployment Artifacts/pluginXPF3.apt.daa"
+		importResourceTemplates="false">
+	</DAA>
+	
+	<DAA 
+		xsi:type="amxdata:DAA" 
+		description="daa which uses the CXF" 
+		location="SOA/BATCXF/Deployment Artifacts/batcxfjms.daa"
+		importResourceTemplates="false">
+	</DAA>
+ 
+ <amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate
+		xsi:type="amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate"
+		name="BAT66JndiConnConf"
+		initialContextFactory="com.tibco.tibjms.naming.TibjmsInitialContextFactory"
+		providerUrl="tibjmsnaming://AMX-BACKEND.na.tibco.com:7622"
+		description="JndiConnectionConfiguration">
+		<InlineCredentials
+            username="amxjndipwd"
+            password="amxjndipwd"/>
+		<!--ReferencedCredentials identityJNDIName="JNDIConnectionConfiguration_Identity"/-->
+	</amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate>
+	
+
+  	<amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate
+		xsi:type="amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate"
+		name="BAT66JmsConnFactory"
+		jndiName="QueueConnectionFactory"
+		jndiConnectionConfigurationName="BAT66JndiConnConf"
+		description="JndiConnectionFactory">	
+        <InlineCredentials
+            username="amxemspwd"
+            password="amxemspwd"/>
+		<!--ReferencedCredentials identityJNDIName="JNDIConnectionFactory_Identity"-->
+	</amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate>
+	
+	<amxdata_jmsssr:JNDIConnectionFactoryConfigurationResourceTemplate
+		xsi:type="amxdata_jmsssr:JNDIConnectionFactoryConfigurationResourceTemplate"
+		name="BAT66JmsConnFactoryConf"
+		jndiName="QueueConnectionFactory"
+		jndiConnectionConfigurationName="BAT66JndiConnConf"
+		description="JndiConnectionFactoryConfiguration">	
+        <InlineCredentials
+            username="amxemspwd"
+            password="amxemspwd"/>
+		<!--ReferencedCredentials identityJNDIName="JNDIConnectionFactoryConfiguration_Identity"/-->
+	</amxdata_jmsssr:JNDIConnectionFactoryConfigurationResourceTemplate>
+
+	<amxdata_jmsssr:JNDIDestinationConfigurationResourceTemplate 
+		xsi:type="amxdata_jmsssr:JNDIDestinationConfigurationResourceTemplate" 
+		name="BAT66JmsDestConf" 
+		jndiName="BAT66_Destination" 
+		jndiConnectionConfigurationName="BAT66JndiConnConf"
+		description="JndiDestinationConfiguration"/>	
+	
+</amxdata_base:Enterprise>

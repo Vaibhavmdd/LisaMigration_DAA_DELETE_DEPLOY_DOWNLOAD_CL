@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created by TIBCO WSDL-->
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://xmlns.example.com/JMS_SOAP/InOutCompanyOne/GetZipImpl/CompanyService/InOut__Service/JMS__SOAP/Server" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:jms="http://www.tibco.com/namespaces/ws/2004/soap/binding/JMS" xmlns:jndi="http://www.tibco.com/namespaces/ws/2004/soap/apis/jndi" xmlns:ns0="http://www.tibco.com/schemas/End/WSDL/Schema.xsd" name="Untitled" targetNamespace="http://xmlns.example.com/JMS_SOAP/InOutCompanyOne/GetZipImpl/CompanyService/InOut__Service/JMS__SOAP/Server">
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.tibco.com/schemas/End/WSDL/Schema.xsd" targetNamespace="http://www.tibco.com/schemas/End/WSDL/Schema.xsd" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:element name="City" type="xs:string"/>
+            <xs:element name="Zip" type="xs:int"/>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:service name="CompanyOne">
+        <wsdl:port name="SOAPEventSource" binding="tns:SOAPEventSourceBinding">
+          <!--  <soap:address location=""/>-->
+            <jms:connectionFactory>QueueConnectionFactory</jms:connectionFactory>
+            <jms:targetAddress destination="queue">BAT64_Queue</jms:targetAddress>
+        </wsdl:port>
+    </wsdl:service>
+    <wsdl:portType name="PortTypeOne">
+        <wsdl:operation name="GetZip">
+            <wsdl:input message="tns:InPut"/>
+            <wsdl:output message="tns:OutPut"/>
+            <wsdl:fault name="ZipFault" message="tns:OutPut"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="SOAPEventSourceBinding" type="tns:PortTypeOne">
+        <soap:binding style="document" transport="http://www.tibco.com/namespaces/ws/2004/soap/binding/JMS"/>
+        <jms:binding messageFormat="bytes"/>
+        <wsdl:operation name="GetZip">
+            <soap:operation style="document" soapAction="/CompanyService/InOut_Service/JMS_SOAP/Server/CompanyOne"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="City"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="Zip"/>
+            </wsdl:output>
+            <wsdl:fault name="ZipFault">
+                <soap:fault use="literal" name="ZipFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:message name="InPut">
+        <wsdl:part name="City" element="ns0:City"/>
+    </wsdl:message>
+    <wsdl:message name="OutPut">
+        <wsdl:part name="Zip" element="ns0:Zip"/>
+    </wsdl:message>
+</wsdl:definitions>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Upgrade.choreography Overrides">
+
+    <!-- Each choreography should change the project name above and the two
+         property definitions below. -->
+    <property name="autobuild.workspace.project" value="Upgrade.choreography" />
+    <path id="autobuild.workspace.path.search.features">
+	<!-- ### Removed core.design from the choreo build            ###
+	     ### Developers may need to uncomment this for dev builds ###	
+	    <pathelement path="../../../core/design" />
+	-->
+	    <pathelement path="../model" />
+	    <pathelement path="../design" />
+	    <pathelement path="../runtime" />
+	    <pathelement path="../cheatsheet" />
+	    <pathelement path="../common" />
+    </path>
+
+
+    <property name="autobuild.workspace.extra-feature" value="./extraFeature.xml" />	
+    <path id="autobuild.workspace.path.search.projects" refid="autobuild.workspace.path.search.features" />
+    <!-- a single "other feature" may be defined:
+         property autobuild.workspace.extra-feature -->
+    <!-- for more complex choreographies, see the wiki page -->
+
+    <!-- The repository name is only used to separate release unit configurations,
+         preventing confusion of thirdparty common with neo common, for instance. -->
+    <property name="autobuild.repository" value="amxext" />
+    <property name="autobuild.qualifier.fixed" value="true"/>
+    <!-- these two can be used to automatically initiate a post-build processing
+         step, which will be invoked on successful completion of each release unit build. -->
+    <!-- property name="autobuild.extension.post-ru.script" location="SCRIPT_NAME" /-->
+    <!-- property name="autobuild.extension.post-ru.target" value="TARGET_NAME" /-->
+
+    <!-- these two can be used to automatically initiate a post-build processing
+         step, which will be invoked on successful completion of the entire choreography build. -->
+    <!-- property name="autobuild.extension.choreo.script" location="SCRIPT_NAME" /-->
+    <!-- property name="autobuild.extension.choreo.target" value="TARGET_NAME" /-->
+
+    <updatesites id="autobuild.workspace.update-sites.list">
+         <updatesite url="http://spin.tibco.com/nocirctra/site.xml" />
+     </updatesites>
+
+    <!-- for additional information on properties commonly overridden by project choreographies, see:
+         http://wiki.tibco.com/FrameworksWiki/Componentization/Builder -->
+
+
+</project>

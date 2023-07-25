@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:pfx="http://www.example.org/SoapException1/submitSoapException1Impl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://www.example.org/SoapException1">
+    <wsdl:import namespace="http://www.example.org/SoapException1/submitSoapException1Impl" location="/Client/SoapException1_UnDeclaredFaultDoc_AMX_EP.wsdl"/>
+    <pd:name>Client/Client_unDeclaredFaultDoc.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startX>150</pd:startX>
+    <pd:startY>64</pd:startY>
+    <pd:returnBindings/>
+    <pd:endName>End</pd:endName>
+    <pd:endX>450</pd:endX>
+    <pd:endY>64</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1292359650112</pd:targetNamespace>
+    <pd:activity name="SOAPRequestReply">
+        <pd:type>com.tibco.plugin.soap.SOAPSendReceiveActivity</pd:type>
+        <pd:resourceType>ae.activities.SOAPSendReceiveUI</pd:resourceType>
+        <pd:x>308</pd:x>
+        <pd:y>136</pd:y>
+        <config>
+            <timeout>0</timeout>
+            <service>pfx:SoapException1PT</service>
+            <servicePort>SOAPService_Binding1</servicePort>
+            <operation>submitSoapException1</operation>
+            <soapAction>submitSoapException1</soapAction>
+            <endpointURL>http://localhost:2423/soapException1PT/</endpointURL>
+        </config>
+        <pd:inputBindings>
+            <inputMessage>
+                <ns:SoapException1Request>
+                    <InputString>
+                        <xsl:value-of select="&quot;AMX_unDeclaredFault&quot;"/>
+                    </InputString>
+                    <POJO1>
+                        <faultCode>
+                            <xsl:value-of select="&quot;faultCode1&quot;"/>
+                        </faultCode>
+                        <faultString>
+                            <xsl:value-of select="&quot;faultString1&quot;"/>
+                        </faultString>
+                        <faultNode>
+                            <xsl:value-of select="&quot;faultNode1&quot;"/>
+                        </faultNode>
+                        <faultRoleOrActor>
+                            <xsl:value-of select="&quot;faultRolsOrActor&quot;"/>
+                        </faultRoleOrActor>
+                        <detail>
+                            <xsl:value-of select="&quot;detail1&quot;"/>
+                        </detail>
+                    </POJO1>
+                    <POJO2>
+                        <faultCode>
+                            <xsl:value-of select="&quot;faultCode2&quot;"/>
+                        </faultCode>
+                        <faultString>
+                            <xsl:value-of select="&quot;faultString2&quot;"/>
+                        </faultString>
+                        <faultNode>
+                            <xsl:value-of select="&quot;faultNode2&quot;"/>
+                        </faultNode>
+                        <faultRoleOrActor>
+                            <xsl:value-of select="&quot;faultRoleOrActor2&quot;"/>
+                        </faultRoleOrActor>
+                        <detail>
+                            <xsl:value-of select="&quot;detail2&quot;"/>
+                        </detail>
+                    </POJO2>
+                </ns:SoapException1Request>
+            </inputMessage>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>SOAPRequestReply</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>SOAPRequestReply</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>

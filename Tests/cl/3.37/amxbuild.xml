@@ -1,0 +1,35 @@
+<project default="deploy.app">
+	<import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+	
+        <target name="stopstart.logservice">
+           <stop.app description="stopLog Service Application" dataFile="${amxConfigFile}" objectSelector="Environment[1]/Application"  timeout="${timeout}"/>
+           <start.app description="startLog Service Application"  dataFile="${amxConfigFile}" objectSelector="Environment[1]/Application" timeout="${timeout}"/>    
+        </target>
+        
+        <target name="add_user" description="Create a new user into the realm">
+        <add.user objectSelector="User[@username='clqa']" description="create a new user named with clqa" dataFile="${amxConfigFile}" />
+        </target>
+
+       <target name="del_user" description="Delete the user from realm">
+       <delete.user objectSelector="User[@username='clqa']" description="Delete newly created user named with clqa" dataFile="${amxConfigFile}" />
+       </target> 
+     
+       <target name="add.CreateLoggerAppender.permissions" description="Set createloggerappender Permissions of a user">
+       <add.ent.permissions dataFile="${amxConfigFile}" />
+       </target> 
+       
+        <target name="delete.CreateLoggerAppender.permissions" description="Remove createloggerappender Permissions of a user">
+        <AMXAdminTask
+            remote="true"
+            propsFile="${remotePropsFile}"
+            action="delete"
+            dataFile="${amxConfigFile}"
+            objectSelector="TopLevelPermission/Permissions"
+            overwrite="true"
+            merge="true"
+            createIfNotExists="true"
+            force="true"
+            failOnError="false"/>
+    </target>
+    
+</project>

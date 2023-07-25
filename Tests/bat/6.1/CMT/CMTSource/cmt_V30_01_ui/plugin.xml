@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="CMTV3001UserInterface"
+         name="CMTV3001"
+         point="com.tibco.amsb.core.ui.common.MediationTaskUIExtension">
+      <implementation
+            mediationTaskTypeId="cmt_v30_01_model.CMTV3001MediationTask"
+            class="cmt_v30_01_ui.CMTV3001UIFactory">
+      </implementation>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <propertyTabs
+            contributorId="com.tibco.amsb.core.ui.mediation.editor">
+         <propertyTab
+               label="%generalTab.label"
+               category="mediation"
+               id="cmt_v30_01_ui.generalTab">
+         </propertyTab>
+         <propertyTab
+               label="%outputTab.label"
+               category="mediation"
+               afterTab="cmt_v30_01_ui.generalTab"
+               id="cmt_v30_01_ui.outputTab">
+         </propertyTab>
+      </propertyTabs>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertySections">
+      <propertySections
+            contributorId="com.tibco.amsb.core.ui.mediation.editor">
+         <propertySection
+               name="General"
+               tab="cmt_v30_01_ui.generalTab"
+               class="cmt_v30_01_ui.CMTV3001GeneralPropertySection"
+               id="cmt_v30_01_ui.CMTV3001.generalSection">
+            <input
+                  type="cmt_v30_01_ui.CMTV3001EditPart">
+            </input>
+         </propertySection>
+         <propertySection
+               name="Output"
+               tab="cmt_v30_01_ui.outputTab"
+               class="cmt_v30_01_ui.CMTV3001OutputPropertySection"
+               id="cmt_v30_01_ui.CMTV3001.outputSection">
+            <input
+                  type="cmt_v30_01_ui.CMTV3001EditPart">
+            </input>
+         </propertySection>
+      </propertySections>
+   </extension>
+
+</plugin>

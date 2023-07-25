@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:pfx2="http://xmlns.example.com/InOnlyCompanyTwo" xmlns:pfx3="http://xmlns.example.com/InOnlyCompanyOne" xmlns:pfx="http://xmlns.example.com/CompanyOne" xmlns:ns="http://www.tibco.com/schemas/End/WSDL/Schema.xsd" xmlns:pfx4="http://xmlns.example.com/CompanyTwo" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    <wsdl:import namespace="http://xmlns.example.com/CompanyOne" location="/CompanyService/Abstract_WSDL/Company1.wsdl"/>
+    <pd:name>CompanyService/InOut_Service/JMS_SOAP/Server/CompanyOne.process</pd:name>
+    <pd:startName>SOAPEventSource</pd:startName>
+    <pd:startX>0</pd:startX>
+    <pd:startY>0</pd:startY>
+    <pd:returnBindings/>
+    <pd:starter name="SOAPEventSource">
+        <pd:type>com.tibco.plugin.soap.SOAPEventSource</pd:type>
+        <pd:resourceType>ae.activities.SOAPEventSourceUI</pd:resourceType>
+        <pd:x>81</pd:x>
+        <pd:y>119</pd:y>
+        <config>
+            <service>pfx:PortTypeOne</service>
+            <wsdlNamespaceRoot>http://xmlns.example.com/JMS_SOAP/InOutCompanyOne/GetZipImpl</wsdlNamespaceRoot>
+            <operation>GetZip</operation>
+            <portAddressPrefix/>
+            <operationStyle>document</operationStyle>
+            <soapUse>literal</soapUse>
+            <embedWsdlComponents>true</embedWsdlComponents>
+            <embedSchemaComponents>true</embedSchemaComponents>
+            <soapAction>/CompanyService/InOut_Service/JMS_SOAP/Server/CompanyOne</soapAction>
+            <sharedChannel>/CompanyService/InOut_Service/JMS_SOAP/SharedResources/JMS Connection 1.sharedjmscon</sharedChannel>
+            <sharedChannels>
+                <jmsChannel>
+                    <JMSDestinationType>queue</JMSDestinationType>
+                    <JMSAcknowledgementMode>1</JMSAcknowledgementMode>
+                    <JMSTo>%%BAT64/jmsDestination%%</JMSTo>
+                    <JMSMessageType>Bytes</JMSMessageType>
+                </jmsChannel>
+                <httpChannel>
+                    <useBasicAuthentication>false</useBasicAuthentication>
+                </httpChannel>
+            </sharedChannels>
+            <soapAttachmentStyle>SwA</soapAttachmentStyle>
+            <soapVersion>SOAP 1.1</soapVersion>
+        </config>
+        <pd:inputBindings/>
+    </pd:starter>
+    <pd:endName>End</pd:endName>
+    <pd:endX>527</pd:endX>
+    <pd:endY>102</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1237870243173</pd:targetNamespace>
+    <pd:activity name="SOAPSendDeclaredFault">
+        <pd:type>com.tibco.plugin.soap.SOAPSendFaultActivity</pd:type>
+        <pd:resourceType>ae.activities.SOAPSendFaultUI</pd:resourceType>
+        <pd:x>296</pd:x>
+        <pd:y>37</pd:y>
+        <config>
+            <faultMessage>OutPut</faultMessage>
+            <eventSource>SOAPEventSource</eventSource>
+        </config>
+        <pd:inputBindings>
+            <FaultMessage>
+                <faultcode>
+                    <xsl:value-of select="&quot;CompanyOneFaultCode&quot;"/>
+                </faultcode>
+                <faultstring>
+                    <xsl:value-of select="&quot;CompanyOneFaultString&quot;"/>
+                </faultstring>
+                <faultactor>
+                    <xsl:value-of select="&quot;CompanyOneFaultActor&quot;"/>
+                </faultactor>
+                <detail>
+                    <ns:Zip>
+                        <xsl:value-of select="123"/>
+                    </ns:Zip>
+                </detail>
+            </FaultMessage>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="SOAPSendUnDeclaredFault">
+        <pd:type>com.tibco.plugin.soap.SOAPSendFaultActivity</pd:type>
+        <pd:resourceType>ae.activities.SOAPSendFaultUI</pd:resourceType>
+        <pd:x>298</pd:x>
+        <pd:y>201</pd:y>
+        <config>
+            <faultMessage>&lt;Default&gt;</faultMessage>
+            <eventSource>SOAPEventSource</eventSource>
+        </config>
+        <pd:inputBindings>
+            <defaultFaultElement>
+                <faultcode>
+                    <xsl:value-of select="&quot;CompanyOneUnDeclaredFaultCode&quot;"/>
+                </faultcode>
+                <faultstring>
+                    <xsl:value-of select="&quot;CompanyOneUnDeclaredFaultString&quot;"/>
+                </faultstring>
+                <faultactor>
+                    <xsl:value-of select="&quot;CompanyOneUnDeclaredFaultActor&quot;"/>
+                </faultactor>
+            </defaultFaultElement>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="SOAPSendReply">
+        <pd:type>com.tibco.plugin.soap.SOAPSendReplyActivity</pd:type>
+        <pd:resourceType>ae.activities.SOAPSendReplyUI</pd:resourceType>
+        <pd:x>301</pd:x>
+        <pd:y>110</pd:y>
+        <config>
+            <eventSource>SOAPEventSource</eventSource>
+        </config>
+        <pd:inputBindings>
+            <outputMessage>
+                <ns:Zip>
+                    <xsl:value-of select="string-length($SOAPEventSource/inputMessage/ns:City)"/>
+                </ns:Zip>
+            </outputMessage>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>SOAPEventSource</pd:from>
+        <pd:to>SOAPSendDeclaredFault</pd:to>
+        <pd:xpathDescription>City=BeiJing</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$SOAPEventSource/inputMessage/ns:City='BeiJing'</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>SOAPSendDeclaredFault</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>SOAPEventSource</pd:from>
+        <pd:to>SOAPSendUnDeclaredFault</pd:to>
+        <pd:xpathDescription>City=NanChang</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$SOAPEventSource/inputMessage/ns:City='NanChang'</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>SOAPSendUnDeclaredFault</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>SOAPEventSource</pd:from>
+        <pd:to>SOAPSendReply</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>otherwise</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>SOAPSendReply</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>

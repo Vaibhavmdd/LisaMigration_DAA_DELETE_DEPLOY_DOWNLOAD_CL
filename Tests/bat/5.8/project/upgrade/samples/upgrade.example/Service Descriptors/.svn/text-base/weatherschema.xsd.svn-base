@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--@Overridable true-->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.example.org/weatherschema" targetNamespace="http://www.example.org/weatherschema">
+
+    <element name="WeatherRequest" type="tns:WeatherRequestType"/>
+
+    <complexType name="WeatherRequestType">
+    	<sequence>
+    		<element name="city" type="string"/>
+    		<element name="state" type="string"/>
+    		<element name="zip" type="string"/>
+    	</sequence>
+    </complexType>
+
+    <complexType name="WeatherResponseType">
+    	<sequence>
+    		<element name="high" type="float"/>
+    		<element name="low" type="float"/>
+    		<element name="forecast" type="string"/>
+    	</sequence>
+    </complexType>
+
+    <element name="WeatherResponse" type="tns:WeatherResponseType"/>
+</schema>

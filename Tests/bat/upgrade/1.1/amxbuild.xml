@@ -1,0 +1,17 @@
+<project default="Permissions">
+	<import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml"/>	
+		
+	<target name="deploy.myapp1">
+	
+		<upload.daa dataFile="${amxConfigFile}" />
+		<create.app dataFile="${amxConfigFile}" />
+		<map.component.to.node dataFile="${amxConfigFile}"/>
+		<map.service.binding.to.node dataFile="${amxConfigFile}" />
+		<set.service.binding.property dataFile="${amxConfigFile}" />
+                <set.reference.wiring appName="jms.binding.helloworld.soa" dataFile="${amxConfigFile}" />
+
+		<deploy.app dataFile="${amxConfigFile}"/>
+	</target>
+
+	</project>
+

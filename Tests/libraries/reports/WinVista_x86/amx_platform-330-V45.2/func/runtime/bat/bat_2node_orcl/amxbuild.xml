@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="amx-bootstrap-qa">
+    <import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+	<import file="${TIBCO_HOME}/tools/scripts/install-support-taskdef.xml" />
+	
+	
+    <!--<dirname property="admin.scripts.directory" file="${TIBCO_AMXADMIN_HOME}/scripts"/>-->
+    <property name="admin.home.dir" location="${TIBCO_AMXADMIN_HOME}" />
+	<property name="admin.scripts.directory" location="${admin.home.dir}/scripts" />
+  
+	
+    <import file="${admin.scripts.directory}/basic_cli.xml"/>
+
+    <import file="${admin.scripts.directory}/instance-mgmt.xml"/>
+
+	<target name="deploy-admin-qa" depends="deploy-admin, set-admin-log, secure-host-qa"/>
+    <!--
+	<target name="deploy-admin" depends="create-dir-structure, bootstrap.admin.archive.th, configure.tcs, start.tcs, set-admin-log"/>
+    -->
+	<target name="setup-node" depends="create-node, set-node-log" />
+	
+	<target name="secure-host-qa" if="secureHost">
+		<secure.host dataFile="${envt.data.file}" hostName="${host.name}" remotePropsFile="${instance.properties.file}" />
+	</target>
+	
+	<target name="setupRI"> 
+		<!-- do not setup RI for LogService and PayloadService -->
+		<create.rt dataFile="${envt.data.file}" objectSelector="ResourceTemplate[@name != 'cl_logservice_jdbc' and @name != 'cl_logservice_teneo' and @name != 'TIBCO_ActiveMatrix_LogService_SSLClient_Resource' and @name != 'TIBCO_ActiveMatrix_LogService_Keystore_Resource' and @name != 'cl_logservice_jndiConnectionConfig' and @name != 'cl_logservice_jmsConnectionFactory' and @name != 'cl_logservice_jmsDestination' and @name !='payloadJdbcSharedResource' and @name !='payloadTeneoSharedResource' and @name !='TIBCO_ActiveMatrix_PayloadService_SSLClient_Resource' and @name !='TIBCO_ActiveMatrix_PayloadService_Keystore_Resource' and @name !='cl_payloadservice_jndiConnectionConfig' and @name !='cl_payloadservice_jmsConnectionFactory' and @name !='cl_payloadservice_jmsDestination' and @name !='cl_payloadService_httpClient' and @name!='GovernanceJDBCSharedResource' and @name!='GovernanceHibernateSharedResource' and @name!='GovernanceTeneoSharedResource' and @name!='GovernanceSslClientSharedResourceForEMS' and @name!='GovernanceKeystoreCspSharedResourceForEMS']" remotePropsFile="${instance.properties.file}" />
+		<create.ri dataFile="${envt.data.file}" objectSelector="Environment[2]/Node/ResourceInstance" remotePropsFile="${instance.properties.file}" />
+		<install.ri dataFile="${envt.data.file}" objectSelector="Environment[2]/Node/ResourceInstance" remotePropsFile="${instance.properties.file}" timeout="${riTimeout}" />
+	</target>
+		
+	<target name="instantiate-tpcl-shell" depends="-define-install-support-tasks">
+        <install.support.instantiate.tpcl.shell 
+			installLocation="${TIBCO_HOME}" 
+			componentStoreName="shared" 
+			componentStoreVersion="1.0.0" 
+			machineModelLocation="${TIBCO_HOME}/tools/machinemodel/shared/1.0.0/machine.xmi" 
+			shellName="${db.shell.name}" 
+			shellVersion="${db.shell.version}" 
+			overwrite="true">
+			<sourceJarFolder dir="${db.source.jar.location}" />
+		</install.support.instantiate.tpcl.shell>
+	</target>
+	
+	<target name="set-admin-log">
+		<!-- do not create appender for MCR at this moment -->
+		<create.log.appender dataFile="${envt.data.file}" objectSelector="LogAppender[@name = 'qaFileLogAppender0']" remotePropsFile="${instance.properties.file}" />
+		<set.logger.to.node objectSelector="Environment[1]/Node/Logger[@name != 'com.tibco.amx.governance.logger.LifecycleNotification']" dataFile="${envt.data.file}" remotePropsFile="${instance.properties.file}" />
+		<deploy.action objector="Environment[1]/Node" description="Apply Admin Logger" dataFile="${envt.data.file}" remotePropsFile="${instance.properties.file}" />
+	</target>
+	
+	<target name="set-node-log">
+		<create.log.appender dataFile="${envt.data.file}" objectSelector="LogAppender[starts-with(@name,'qaFileLogAppender') and @name!='qaFileLogAppender0']" remotePropsFile="${instance.properties.file}" />
+		<set.logger.to.node objectSelector="Environment[2]/Node/Logger" dataFile="${envt.data.file}" remotePropsFile="${instance.properties.file}" />
+		<deploy.action objector="Environment[2]/Node" description="Apply Node Logger" dataFile="${envt.data.file}" remotePropsFile="${instance.properties.file}" />
+	</target>
+	
+	<target name="deploy-logservice" if="enableMCR">
+		<echo>------ Deploying Log Service to Administrator ------</echo>
+		<create.rt 
+			dataFile="${envt.data.file}" 
+			objectSelector="ResourceTemplate[@name='cl_logservice_jdbc' or @name='cl_logservice_teneo' or @name='cl_payloadService_httpClient' or @name='TIBCO_ActiveMatrix_LogService_SSLClient_Resource' or @name='TIBCO_ActiveMatrix_LogService_Keystore_Resource'] | JNDIConnectionFactoryResourceTemplate[@name='cl_logservice_jmsConnectionFactory'] | JNDIConnectionConfigurationResourceTemplate[@name='cl_logservice_jndiConnectionConfig'] | JNDIDestinationResourceTemplate[@name='cl_logservice_jmsDestination']" remotePropsFile="${instance.properties.file}" />
+		<create.ri dataFile="${envt.data.file}" objectSelector="Environment[1]/Node/ResourceInstance[@name='cl_logservice_jdbc' or @name='cl_logservice_teneo' or @name='cl_payloadService_httpClient' or @name='TIBCO_ActiveMatrix_LogService_SSLClient_Resource' or @name='TIBCO_ActiveMatrix_LogService_Keystore_Resource' or @name='cl_logservice_jndiConnectionConfig' or @name='cl_logservice_jmsConnectionFactory' or @name='cl_logservice_jmsDestination']" remotePropsFile="${instance.properties.file}" />
+		<install.ri dataFile="${envt.data.file}" objectSelector="Environment[1]/Node/ResourceInstance[@name='cl_logservice_jdbc' or @name='cl_logservice_teneo' or @name='cl_payloadService_httpClient' or @name='TIBCO_ActiveMatrix_LogService_SSLClient_Resource' or @name='TIBCO_ActiveMatrix_LogService_Keystore_Resource' or @name='cl_logservice_jndiConnectionConfig' or @name='cl_logservice_jmsConnectionFactory' or @name='cl_logservice_jmsDestination']" remotePropsFile="${instance.properties.file}" timeout="${deployTimeout}" />
+		<create.app dataFile="${envt.data.file}" objectSelector="Environment[1]/Application[@name='amx.logservice.app']" remotePropsFile="${instance.properties.file}" />
+		<map.app.to.node dataFile="${envt.data.file}" objectSelector="Environment[1]/Application[@name='amx.logservice.app']/Node" remotePropsFile="${instance.properties.file}" />
+		<create.log.appender dataFile="${envt.data.file}" objectSelector="LogAppender[@name='CommonLogging_LogServiceAppender_System'or @name='CommonLogging_HSqlLogServiceAppender_System' or @name='logservice_default_jmsappender']" remotePropsFile="${instance.properties.file}" />
+		<set.app.property dataFile="${envt.data.file}" objectSelector="Environment[1]/Application[@name='amx.logservice.app']/Property" remotePropsFile="${instance.properties.file}" />
+		<set.reference.binding.property dataFile="${envt.data.file}" objectSelector="Environment[1]/Application[@name='amx.logservice.app']/PromotedReference/Binding/Property" failOnError="false" remotePropsFile="${instance.properties.file}" />
+		<deploy.app dataFile="${envt.data.file}" objectSelector="Environment[1]/Application[@name='amx.logservice.app']" remotePropsFile="${instance.properties.file}" force="true" timeout="${deployTimeout}" />
+		<set.logger.to.app dataFile="${envt.data.file}" objectSelector="Environment[1]/Application[@name='amx.logservice.app']/Logger" remotePropsFile="${instance.properties.file}" />
+		<deploy.action dataFile="${envt.data.file}" objector="Environment[1]/Application[@name='amx.logservice.app']" description="Apply Log Service Application Logging Configuration" remotePropsFile="${instance.properties.file}" />
+		
+		<echo>------ Finished Deploying Log Service to Administrator ------</echo>
+		
+	</target>
+	
+	<target name="deploy-payloadservice" if="enableMCR">
+		<echo>------ Deploying Payload Service to Administrator ------</echo>
+		<create.rt 
+			dataFile="${envt.data.file}"
+			objectSelector="ResourceTemplate[@name='payloadJdbcSharedResource' or @name='payloadTeneoSharedResource' or @name='TIBCO_ActiveMatrix_PayloadService_SSLClient_Resource' or @name='TIBCO_ActiveMatrix_PayloadService_Keystore_Resource'] | JNDIConnectionFactoryResourceTemplate[@name='cl_payloadservice_jmsConnectionFactory'] | JNDIConnectionConfigurationResourceTemplate[@name='cl_payloadservice_jndiConnectionConfig'] | JNDIDestinationResourceTemplate[@name='cl_payloadservice_jmsDestination']"
+			remotePropsFile="${instance.properties.file}" />
+		<create.ri dataFile="${envt.data.file}" objectSelector="Environment[1]/Node/ResourceInstance[@name='payloadJdbcSharedResource' or @name='payloadTeneoSharedResource' or @name='TIBCO_ActiveMatrix_PayloadService_SSLClient_Resource' or @name='TIBCO_ActiveMatrix_PayloadService_Keystore_Resource' or @name='cl_payloadservice_jmsConnectionFactory' or @name='cl_payloadservice_jndiConnectionConfig' or @name='cl_payloadservice_jmsDestination' ]" remotePropsFile="${instance.properties.file}" />
+		<install.ri dataFile="${envt.data.file}" objectSelector="Environment[1]/Node/ResourceInstance[@name='payloadJdbcSharedResource' or @name='payloadTeneoSharedResource' or @name='TIBCO_ActiveMatrix_PayloadService_SSLClient_Resource' or @name='TIBCO_ActiveMatrix_PayloadService_Keystore_Resource' or @name='cl_payloadservice_jmsConnectionFactory' or @name='cl_payloadservice_jndiConnectionConfig' or @name='cl_payloadservice_jmsDestination' ]" remotePropsFile="${instance.properties.file}" timeout="${deployTimeout}" />
+		<create.app dataFile="${envt.data.file}" objectSelector="Environment[1]/Application[@name='amx.payloadservice.app']" remotePropsFile="${instance.properties.file}" />
+		<map.app.to.node dataFile="${envt.data.file}" objectSelector="Environment[1]/Application[@name='amx.payloadservice.app']/Node" remotePropsFile="${instance.properties.file}" />
+		<set.app.property dataFile="${envt.data.file}" objectSelector="Environment[1]/Application[@name='amx.payloadservice.app']/Property" remotePropsFile="${instance.properties.file}" />
+		
+		<add.app.svars dataFile="${envt.data.file}" objectSelector="Environment[1]/Application[@name='amx.payloadservice.app']/SVar" remotePropsFile="${instance.properties.file}" />
+		<!--set.app.svars dataFile="${envt.data.file}" objectSelector="Environment[1]/Application[@name='amx.payloadservice.app']/SVar" remotePropsFile="${instance.properties.file}" /-->
+		
+		<deploy.app dataFile="${envt.data.file}" objectSelector="Environment[1]/Application[@name='amx.payloadservice.app']" remotePropsFile="${instance.properties.file}" force="true" timeout="${deployTimeout}" />
+		<echo>------ Finished Deploying Payload Service to Administrator ------</echo>
+	</target>
+	
+	<target name="deploy-mcr" if="enableMCR">
+		<echo>------ Deploying Metrics Collection Service to Administrator ------</echo>
+		<create.rt 
+			dataFile="${envt.data.file}" 
+			objectSelector="ResourceTemplate[@name='GovernanceJDBCSharedResource' or @name='GovernanceHibernateSharedResource' or @name='GovernanceTeneoSharedResource' or @name='GovernanceSslClientSharedResourceForEMS' or @name='GovernanceKeystoreCspSharedResourceForEMS'] | JNDIConnectionConfigurationResourceTemplate[@name='GovernanceJNDIConnectionSharedResource'] | JNDIConnectionFactoryResourceTemplate[@name='GovernanceJMSConnectionFactorySharedResource'] | JNDIDestinationResourceTemplate[@name='GovernanceJmsDestinationSharedResource']" 
+			remotePropsFile="${instance.properties.file}" />
+		<create.ri dataFile="${envt.data.file}" objectSelector="Environment[1]/Node/ResourceInstance[@name='GovernanceJDBCSharedResource' or @name='GovernanceHibernateSharedResource' or @name='GovernanceTeneoSharedResource' or @name='GovernanceSslClientSharedResourceForEMS' or @name='GovernanceKeystoreCspSharedResourceForEMS' or @name='GovernanceJNDIConnectionSharedResource' or @name='GovernanceJMSConnectionFactorySharedResource' or @name='GovernanceJmsDestinationSharedResource']" remotePropsFile="${instance.properties.file}" />
+		<install.ri dataFile="${envt.data.file}" objectSelector="Environment[1]/Node/ResourceInstance[@name='GovernanceJDBCSharedResource' or @name='GovernanceHibernateSharedResource' or @name='GovernanceTeneoSharedResource' or @name='GovernanceSslClientSharedResourceForEMS' or @name='GovernanceKeystoreCspSharedResourceForEMS' or @name='GovernanceJNDIConnectionSharedResource' or @name='GovernanceJMSConnectionFactorySharedResource' or @name='GovernanceJmsDestinationSharedResource']" remotePropsFile="${instance.properties.file}" />
+		<create.log.appender dataFile="${envt.data.file}" objectSelector="LogAppender[@name='amx.serviceprobe.global.log.appender']" remotePropsFile="${instance.properties.file}" />
+		<get src="${adminURL}/govcommon/init" dest="out.txt"/>
+		<delete file="out.txt"/>
+		<get src="${adminURL}/mcr/init" dest="out.txt"/>
+		<delete file="out.txt"/>
+		<create.app dataFile="${envt.data.file}" objectSelector="Environment[1]/Application[@name='amx.governance.mcr.aggregator']" remotePropsFile="${instance.properties.file}" />
+		<map.app.to.node dataFile="${envt.data.file}" objectSelector="Environment[1]/Application[@name='amx.governance.mcr.aggregator']//Node" remotePropsFile="${instance.properties.file}" />
+		<set.logger.to.component objectSelector="Environment[1]/Application[@name='amx.governance.mcr.aggregator']/Component[@name='LifecycleNotificationPublisherComponent']/Logger" dataFile="${envt.data.file}" remotePropsFile="${instance.properties.file}" />
+		<set.logger.to.node objectSelector="Environment[1]/Node/Logger[@name='com.tibco.amx.governance.logger.LifecycleNotification']" dataFile="${envt.data.file}" remotePropsFile="${instance.properties.file}" />
+		<deploy.action objector="Environment[1]/Application[@name='amx.governance.mcr.aggregator']/Component[count(Logger) > 0] | Environment[1]/Node[count(Logger) > 0]" description="Apply MCR Logger" dataFile="${envt.data.file}" remotePropsFile="${instance.properties.file}" />
+		<deploy.app dataFile="${envt.data.file}" objectSelector="Environment[1]/Application[@name='amx.governance.mcr.aggregator']" remotePropsFile="${instance.properties.file}" force="false" timeout="${deployTimeout}" />
+			<echo>------ Finished Deploying Metrics Collection Service to Administrator ------</echo>
+	</target>
+	
+
+    <target name="start-th" >
+
+        <fail unless="tibco.config.mgmt.home" message="Please declare the 'tibco.config.mgmt.home' property"/>
+        <fail unless="tibcohost.properties.file" message="Please declare the 'tibcohost.properties.file' property"/>
+
+        <ant dir="${TIBCO_HOST_HOME}/scripts" antfile="instance-mgmt.xml" target="create-and-start" >
+            <property name="instance.properties.file" value="${tibcohost.properties.file}"/>
+        </ant>
+    </target>
+
+
+    <target name="create-node" >
+		<fail unless="envt.data.file" message="Please declare the 'envt.data.file' property"/>
+		<fail unless="instance.properties.file" message="Please declare the 'instance.properties.file' property"/>
+		<create.environment dataFile="${envt.data.file}" remotePropsFile="${instance.properties.file}" objectSelector="Environment[2]" />
+		<set.environment.messagingbus dataFile="${envt.data.file}" remotePropsFile="${instance.properties.file}" objectSelector="Environment[2]/MessagingBus" />
+		<create.node dataFile="${envt.data.file}" objectSelector="Environment[2]/Node" remotePropsFile="${instance.properties.file}" />
+		<install.node dataFile="${envt.data.file}" objectSelector="Environment[2]/Node" remotePropsFile="${instance.properties.file}" timeout="${startTimeout}" />
+			
+		<if>
+			<available file="${node1.tra}"/>
+			<then>
+				<echo>------ Updating tra file: ${node1.tra} ------</echo>
+				<propertyfile file="${node1.tra}" comment="File modified by Test Automation">
+					<entry key="java.property.amx.messaging.queue.prefix" value="${amx.sv.queuePrefix}"/>
+					<entry key="tibco.env.PATH" value="${tibco_rv_home}/bin${path.separator}${tibco_rv_home}/lib${path.separator}$PATH"/>
+				</propertyfile>
+				<if>
+					<os family="unix" />
+					<then>
+						<propertyfile file="${node1.tra}" comment="File modified by Test Automation">
+							<entry key="tibco.env.LD_LIBRARY_PATH" value="${tibco_rv_home}/lib:${tibco_rv_home}/lib/64:$LD_LIBRARY_PATH"/>
+							<entry key="tibco.env.SHLIB_PATH" value="${tibco_rv_home}/lib:${tibco_rv_home}/lib/64:$SHLIB_PATH"/>
+						</propertyfile>
+					</then>
+				</if>
+			</then>
+		</if>
+		<if>
+			<available file="${node2.tra}"/>
+			<then>
+				<echo>------ Updating tra file: ${node2.tra} ------</echo>
+				<propertyfile file="${node2.tra}" comment="File modified by Test Automation">
+					<entry key="java.property.amx.messaging.queue.prefix" value="${amx.sv.queuePrefix}"/>
+					<entry key="tibco.env.PATH" value="${tibco_rv_home}/bin${path.separator}${tibco_rv_home}/lib${path.separator}$PATH"/>
+				</propertyfile>
+				<if>
+					<os family="unix" />
+					<then>
+						<propertyfile file="${node2.tra}" comment="File modified by Test Automation">
+							<entry key="tibco.env.LD_LIBRARY_PATH" value="${tibco_rv_home}/lib:${tibco_rv_home}/lib/64:$LD_LIBRARY_PATH"/>
+							<entry key="tibco.env.SHLIB_PATH" value="${tibco_rv_home}/lib:${tibco_rv_home}/lib/64:$SHLIB_PATH"/>
+						</propertyfile>
+					</then>
+				</if>
+			</then>
+		</if>
+		
+		<start.node dataFile="${envt.data.file}" objectSelector="Environment[2]/Node" remotePropsFile="${instance.properties.file}" timeout="${startTimeout}" />
+    </target>
+
+
+    <target name="deploy-mediation">
+        <fail unless="envt.data.file" message="Please declare the 'envt.data.file' property"/>
+		<create.app dataFile="${envt.data.file}" objectSelector="Environment[2]/Application[@name='com.tibco.amx.it.mediation.app']" remotePropsFile="${instance.properties.file}" />
+		<map.app.to.node dataFile="${envt.data.file}" objectSelector="Environment[2]/Application[@name='com.tibco.amx.it.mediation.app']/Node" remotePropsFile="${instance.properties.file}" />
+		<deploy.app dataFile="${envt.data.file}" objectSelector="Environment[2]/Application[@name='com.tibco.amx.it.mediation.app']" remotePropsFile="${instance.properties.file}" timeout="${deployTimeout}" />
+    </target>
+
+    <target name="-maybe-create-dev-node" if="create.dev.node" depends="create-node" >
+    </target>
+
+        
+</project>

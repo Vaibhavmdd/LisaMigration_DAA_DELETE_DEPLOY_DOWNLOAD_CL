@@ -1,0 +1,279 @@
+<html> <body><FONT FACE='arial'> <table width='100%' border='2' cellpadding='4' cellspacing='3'><tr bgcolor='yellow'> <th width='10%'>Event</th> <th width='14%'>Short Description</th> <th width='42%'>Long Description</th><th width='21%'>TimeStamp</th><tr bgcolor='lime'><td>EVENT_START</td><td></td><td></td><td>Fri May 31 15:00:07 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>stopTIBCOHost</td><td><pre>Stop TIBCO Host with Mode=abort and Wait=true</pre></td><td>Fri May 31 15:00:11 PDT 2013</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>stopTIBCOHost</td><td><pre>Stop TIBCO Host with Mode=abort and Wait=true</pre></td><td>Fri May 31 15:00:11 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>Z:\tests\amsg\3.0\libraries\amx\bin\../com/tibco/tibcohost/StopTibcoHost.tst</pre></td><td>Fri May 31 15:00:14 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>stopTIBCOHost-log</td><td><pre></pre></td><td>Fri May 31 15:00:14 PDT 2013</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>stopTIBCOHost-log</td><td><pre></pre></td><td>Fri May 31 15:00:14 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>stopTIBCOHost-log</td><td><pre>Stopping TIBCOHost on host pkaur-z600 at C:/tibco/matrix/amx330-V30-db2/data/tibcohost/QA-BAT-Host/host ...</pre></td><td>Fri May 31 15:00:14 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>if (host == null || host.equals(""))
+ throw new Exception("host is empty!");
+
+if (host.equalsIgnoreCase(LISA_HOST) || host.equals("localhost") || host.equals("127.0.0.1"))
+ return "local";
+else
+ return "rmi://" + host + ":" + simulatorPort + "/" + host;</pre></td><td>Fri May 31 15:00:14 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TESTEND</td><td></td><td></td><td>Fri May 31 15:00:01 PDT 2013</td> </tr></table></body></html><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>stopTIBCOHost-getSimulator</td><td><pre>local</pre></td><td>Fri May 31 15:00:19 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>stopTIBCOHost-validateInputVariables</td><td><pre></pre></td><td>Fri May 31 15:00:19 PDT 2013</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>stopTIBCOHost-validateInputVariables</td><td><pre></pre></td><td>Fri May 31 15:00:19 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.io.File;
+
+String errorMsg = "TIBCOHost Stop Error";
+
+String checkInputVariables() {
+	File thFile = null;
+
+    if ((tibcoHostinstance == null) || (tibcoHostinstance.equals(""))) {
+		return errorMsg + ": tibcoHostinstance is required";
+	}
+	if ((host == null) || (host.equals(""))) {
+		return errorMsg + ": host is required";
+	}
+	if ((timeout == null) || (timeout.equals(""))) {
+		return errorMsg + ": timeout is required";
+	}
+
+    thFile = new File(testExec.parseInState(tibcoHostinstance).replace('\\', '/'));
+
+	if (!thFile.exists()) {
+		return errorMsg + ": tibcoHostinstance is not found.";
+	}
+    if (!thFile.canRead()) {
+		return errorMsg + ": tibcoHostinstance cannot be read.";
+	}
+	if (!thFile.isDirectory()) {
+		return errorMsg + "tibcoHostinstance is not a directory.";
+	}
+
+	return "TIBCOHost Start-up Validation Success";
+}
+
+return checkInputVariables();</pre></td><td>Fri May 31 15:00:19 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>stopTIBCOHost-validateInputVariables</td><td><pre>TIBCOHost Stop Error: tibcoHostinstance is not found.</pre></td><td>Fri May 31 15:00:19 PDT 2013</td> </tr><tr bgcolor='#CC9933'><td>EVENT_ASSERT</td><td>stopTIBCOHost-validateInputVariables [Assert215] </td><td><pre>TIBCOHost Stop Error: tibcoHostinstance is not found.</pre></td><td>Fri May 31 15:00:19 PDT 2013</td> </tr><tr bgcolor='#FFA500'><td>EVENT_TRANSFAILED</td><td>stopTIBCOHost</td><td><pre>Sub test case had failure</pre></td><td>Fri May 31 15:00:19 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>wait</td><td><pre></pre></td><td>Fri May 31 15:00:19 PDT 2013</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>wait</td><td><pre></pre></td><td>Fri May 31 15:00:19 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>Z:\tests\amsg\3.0\libraries\common\bin\../com/tibco/lisa/util/Sleep.tst</pre></td><td>Fri May 31 15:00:19 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>wait-Log</td><td><pre></pre></td><td>Fri May 31 15:00:19 PDT 2013</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>wait-Log</td><td><pre></pre></td><td>Fri May 31 15:00:19 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>wait-Log</td><td><pre>Sleeping for 5 on Windows or 5 on Unix ...</pre></td><td>Fri May 31 15:00:19 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>wait-sleep</td><td><pre></pre></td><td>Fri May 31 15:00:19 PDT 2013</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>wait-sleep</td><td><pre></pre></td><td>Fri May 31 15:00:19 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>sleep(secStr) {
+  try {
+    int secInt = Integer.parseInt(secStr);
+    if (secInt &lt; 0) Thread.sleep(0);
+    else Thread.sleep(secInt*1000);
+  }
+  catch(NumberFormatException nfe) {
+    Thread.sleep(0);
+  }
+}
+
+if (System.getProperty("os.name").toLowerCase().indexOf("windows") &gt; -1)
+  sleep("5");
+else
+  sleep("5");</pre></td><td>Fri May 31 15:00:19 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>wait-sleep</td><td><pre>(no response)</pre></td><td>Fri May 31 15:00:24 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deleteTIBCOHostConfigFolder</td><td><pre></pre></td><td>Fri May 31 15:00:24 PDT 2013</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deleteTIBCOHostConfigFolder</td><td><pre></pre></td><td>Fri May 31 15:00:24 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>Z:\tests\amsg\3.0\libraries\common\bin\../com/tibco/lisa/file/DeleteFile.tst</pre></td><td>Fri May 31 15:00:24 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deleteTIBCOHostConfigFolder-Log</td><td><pre></pre></td><td>Fri May 31 15:00:24 PDT 2013</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deleteTIBCOHostConfigFolder-Log</td><td><pre></pre></td><td>Fri May 31 15:00:24 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>deleteTIBCOHostConfigFolder-Log</td><td><pre>Deleting C:/tibco/matrix/amx330-V30-db2/data/tibcohost ...</pre></td><td>Fri May 31 15:00:24 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deleteTIBCOHostConfigFolder-deleteFile</td><td><pre></pre></td><td>Fri May 31 15:00:24 PDT 2013</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deleteTIBCOHostConfigFolder-deleteFile</td><td><pre></pre></td><td>Fri May 31 15:00:24 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.io.File;
+
+// This function delete a file or directory recursively
+deleteFile(String strFile) {
+
+ File f = new File(strFile);
+ String[] strChildren = null;
+ boolean deletionOk = false;
+ 
+ if(!f.exists())
+  return true;
+              
+ if (f.isDirectory()) {
+  // Get children
+  strChildren = f.list();            
+  // Go through each child
+  for (int i = 0; i &lt; strChildren.length; i++) {
+   deletionOk = deleteFile(new File(f, strChildren[i]).getAbsolutePath());
+   if (!deletionOk) {
+    return false;
+   }
+  }
+ }
+ // The directory is now empty so delete it
+ return f.delete();
+}
+
+// Main
+String baseSuccessMsg = "Delete File Success"; // Do not modify. Assertions might exist on this string.
+String baseErrorMsg = "Delete File Error"; // Do not modify. Assertions might exist on this string.
+fileS = testExec.parseInState(file).replace('\\','/');
+try {
+ File fileF = new File(fileS);
+ String file = fileF.getCanonicalPath();
+ if(deleteFile(file))
+  return baseSuccessMsg + ": " + file;
+ else
+  return baseErrorMsg;
+}
+catch(Exception e) {
+ return baseErrorMsg + ": " + e.getMessage();
+}</pre></td><td>Fri May 31 15:00:24 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>deleteTIBCOHostConfigFolder-deleteFile</td><td><pre>Delete File Success: C:\tibco\Matrix\amx330-V30-db2\data\tibcohost</pre></td><td>Fri May 31 15:00:24 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deleteTIBCOAdminConfigFolder</td><td><pre></pre></td><td>Fri May 31 15:00:24 PDT 2013</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deleteTIBCOAdminConfigFolder</td><td><pre></pre></td><td>Fri May 31 15:00:24 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>Z:\tests\amsg\3.0\libraries\common\bin\../com/tibco/lisa/file/DeleteFile.tst</pre></td><td>Fri May 31 15:00:24 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deleteTIBCOAdminConfigFolder-Log</td><td><pre></pre></td><td>Fri May 31 15:00:24 PDT 2013</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deleteTIBCOAdminConfigFolder-Log</td><td><pre></pre></td><td>Fri May 31 15:00:24 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>deleteTIBCOAdminConfigFolder-Log</td><td><pre>Deleting C:/tibco/matrix/amx330-V30-db2/data/admin ...</pre></td><td>Fri May 31 15:00:24 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deleteTIBCOAdminConfigFolder-deleteFile</td><td><pre></pre></td><td>Fri May 31 15:00:24 PDT 2013</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deleteTIBCOAdminConfigFolder-deleteFile</td><td><pre></pre></td><td>Fri May 31 15:00:24 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.io.File;
+
+// This function delete a file or directory recursively
+deleteFile(String strFile) {
+
+ File f = new File(strFile);
+ String[] strChildren = null;
+ boolean deletionOk = false;
+ 
+ if(!f.exists())
+  return true;
+              
+ if (f.isDirectory()) {
+  // Get children
+  strChildren = f.list();            
+  // Go through each child
+  for (int i = 0; i &lt; strChildren.length; i++) {
+   deletionOk = deleteFile(new File(f, strChildren[i]).getAbsolutePath());
+   if (!deletionOk) {
+    return false;
+   }
+  }
+ }
+ // The directory is now empty so delete it
+ return f.delete();
+}
+
+// Main
+String baseSuccessMsg = "Delete File Success"; // Do not modify. Assertions might exist on this string.
+String baseErrorMsg = "Delete File Error"; // Do not modify. Assertions might exist on this string.
+fileS = testExec.parseInState(file).replace('\\','/');
+try {
+ File fileF = new File(fileS);
+ String file = fileF.getCanonicalPath();
+ if(deleteFile(file))
+  return baseSuccessMsg + ": " + file;
+ else
+  return baseErrorMsg;
+}
+catch(Exception e) {
+ return baseErrorMsg + ": " + e.getMessage();
+}</pre></td><td>Fri May 31 15:00:24 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>deleteTIBCOAdminConfigFolder-deleteFile</td><td><pre>Delete File Success: C:\tibco\Matrix\amx330-V30-db2\data\admin</pre></td><td>Fri May 31 15:00:24 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>re-createTIBCOHostConfigFolder</td><td><pre></pre></td><td>Fri May 31 15:00:24 PDT 2013</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>re-createTIBCOHostConfigFolder</td><td><pre></pre></td><td>Fri May 31 15:00:24 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>Z:\tests\amsg\3.0\libraries\common\bin\../com/tibco/lisa/file/CreateDirectory.tst</pre></td><td>Fri May 31 15:00:24 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>re-createTIBCOHostConfigFolder-Log</td><td><pre></pre></td><td>Fri May 31 15:00:24 PDT 2013</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>re-createTIBCOHostConfigFolder-Log</td><td><pre></pre></td><td>Fri May 31 15:00:24 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>re-createTIBCOHostConfigFolder-Log</td><td><pre>Creating directory "C:/tibco/matrix/amx330-V30-db2/data/tibcohost" ...</pre></td><td>Fri May 31 15:00:24 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>re-createTIBCOHostConfigFolder-createDirectory</td><td><pre></pre></td><td>Fri May 31 15:00:24 PDT 2013</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>re-createTIBCOHostConfigFolder-createDirectory</td><td><pre></pre></td><td>Fri May 31 15:00:24 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.io.File;
+
+// This function create a directory
+createDirectory(String strFile) {
+ File f = new File(strFile);
+ 
+ if(f.exists())
+  return true;  
+ else
+  return f.mkdirs();           
+}
+
+// Main
+//String baseSuccessMsg = "Directory Creation Success"; // Do not modify. Test engineers might assert on this string. 
+String baseErrorMsg = "Directory Creation Error"; // Do not modify. Test engineers might assert on this string.
+String dir = testExec.getStateString("directory", "&lt;&lt;null&gt;&gt;").replace('\\', '/');
+dir = testExec.parseInState(dir).replace('\\', '/');
+try {
+ if(createDirectory(dir))
+  return dir;
+ else
+  return baseErrorMsg;
+}
+catch(Exception e) {
+ return baseErrorMsg + ": " + e.getMessage();
+}</pre></td><td>Fri May 31 15:00:24 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>re-createTIBCOHostConfigFolder-createDirectory</td><td><pre>C:/tibco/matrix/amx330-V30-db2/data/tibcohost</pre></td><td>Fri May 31 15:00:25 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>re-createTIBCOAdminConfigFolder</td><td><pre></pre></td><td>Fri May 31 15:00:25 PDT 2013</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>re-createTIBCOAdminConfigFolder</td><td><pre></pre></td><td>Fri May 31 15:00:25 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>Z:\tests\amsg\3.0\libraries\common\bin\../com/tibco/lisa/file/CreateDirectory.tst</pre></td><td>Fri May 31 15:00:25 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>re-createTIBCOAdminConfigFolder-Log</td><td><pre></pre></td><td>Fri May 31 15:00:25 PDT 2013</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>re-createTIBCOAdminConfigFolder-Log</td><td><pre></pre></td><td>Fri May 31 15:00:25 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>re-createTIBCOAdminConfigFolder-Log</td><td><pre>Creating directory "C:/tibco/matrix/amx330-V30-db2/data/admin" ...</pre></td><td>Fri May 31 15:00:25 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>re-createTIBCOAdminConfigFolder-createDirectory</td><td><pre></pre></td><td>Fri May 31 15:00:25 PDT 2013</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>re-createTIBCOAdminConfigFolder-createDirectory</td><td><pre></pre></td><td>Fri May 31 15:00:25 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.io.File;
+
+// This function create a directory
+createDirectory(String strFile) {
+ File f = new File(strFile);
+ 
+ if(f.exists())
+  return true;  
+ else
+  return f.mkdirs();           
+}
+
+// Main
+//String baseSuccessMsg = "Directory Creation Success"; // Do not modify. Test engineers might assert on this string. 
+String baseErrorMsg = "Directory Creation Error"; // Do not modify. Test engineers might assert on this string.
+String dir = testExec.getStateString("directory", "&lt;&lt;null&gt;&gt;").replace('\\', '/');
+dir = testExec.parseInState(dir).replace('\\', '/');
+try {
+ if(createDirectory(dir))
+  return dir;
+ else
+  return baseErrorMsg;
+}
+catch(Exception e) {
+ return baseErrorMsg + ": " + e.getMessage();
+}</pre></td><td>Fri May 31 15:00:25 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>re-createTIBCOAdminConfigFolder-createDirectory</td><td><pre>C:/tibco/matrix/amx330-V30-db2/data/admin</pre></td><td>Fri May 31 15:00:25 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deleteAMXQueues</td><td><pre></pre></td><td>Fri May 31 15:00:25 PDT 2013</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deleteAMXQueues</td><td><pre></pre></td><td>Fri May 31 15:00:25 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>Z:\tests\amsg\3.0\libraries\common\bin\../com/tibco/lisa/ems/DeleteQueues.tst</pre></td><td>Fri May 31 15:00:25 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deleteAMXQueues-getEMSAdminObject</td><td><pre></pre></td><td>Fri May 31 15:00:25 PDT 2013</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deleteAMXQueues-getEMSAdminObject</td><td><pre></pre></td><td>Fri May 31 15:00:25 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>Z:\tests\amsg\3.0\libraries\common\bin\../com/tibco/lisa/ems/GetEMSAdminObject.tst</pre></td><td>Fri May 31 15:00:25 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deleteAMXQueues-getEMSAdminObject-log</td><td><pre></pre></td><td>Fri May 31 15:00:25 PDT 2013</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deleteAMXQueues-getEMSAdminObject-log</td><td><pre></pre></td><td>Fri May 31 15:00:25 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>deleteAMXQueues-getEMSAdminObject-log</td><td><pre>Connecting to EMS Admin with following parameters:
+url: tcp://AMX-BACKEND-4.na.tibco.com:7222
+user: admin
+password: admin
+trustedCertificate: Z:/tests/amsg/3.0/libraries/common/bin/../com/tibco/lisa/ems/server_root.cert.pem</pre></td><td>Fri May 31 15:00:25 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deleteAMXQueues-getEMSAdminObject-validate</td><td><pre></pre></td><td>Fri May 31 15:00:25 PDT 2013</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deleteAMXQueues-getEMSAdminObject-validate</td><td><pre></pre></td><td>Fri May 31 15:00:25 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>String successMsg = "EMS Validation Success"; // Do not modify, assertions on these strings might exist.
+String errorMsg = "EMS Validation Error";
+
+// Check EMS Admin is loadable
+try {
+    Class.forName("com.tibco.tibjms.admin.TibjmsAdmin");
+    return successMsg;
+}
+catch (Exception e) {
+    return errorMsg + ": " + e.getClass().getName() + " " + e.getMessage();
+}</pre></td><td>Fri May 31 15:00:25 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>deleteAMXQueues-getEMSAdminObject-validate</td><td><pre>EMS Validation Success</pre></td><td>Fri May 31 15:00:26 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deleteAMXQueues-getEMSAdminObject-connect</td><td><pre></pre></td><td>Fri May 31 15:00:26 PDT 2013</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deleteAMXQueues-getEMSAdminObject-connect</td><td><pre></pre></td><td>Fri May 31 15:00:26 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>
+import java.util.Hashtable;
+import com.tibco.tibjms.admin.TibjmsAdmin;
+import com.tibco.tibjms.TibjmsSSL;
+
+String errorMsg = "EMS Error"; // Do not modify, assertions on this string might exist.
+
+String url = testExec.parseInState(url);
+String username = testExec.parseInState(username);
+String password = testExec.parseInState(password);
+String trustedCertificate = testExec.parseInState(trustedCertificate).replace("\\","/");
+TibjmsAdmin admin;
+
+try {
+    // initialize SSL environment if needed
+    if (url.startsWith("ssl")) {
+        Hashtable sslEnvironment = new Hashtable();
+        sslEnvironment.put(com.tibco.tibjms.TibjmsSSL.TRUSTED_CERTIFICATES, trustedCertificate);
+        //sslEnvironment.put(com.tibco.tibjms.TibjmsSSL.IDENTITY, "C:/tibcoems610/ems/6.1/samples/certs/client_identity.p12");
+        //sslEnvironment.put(com.tibco.tibjms.TibjmsSSL.PASSWORD, "password");
+        //sslEnvironment.put(com.tibco.tibjms.TibjmsSSL.EXPECTED_HOST_NAME, "sbagi-mbp");
+        sslEnvironment.put(com.tibco.tibjms.TibjmsSSL.ENABLE_VERIFY_HOST_NAME, new Boolean(false));
+        admin = new TibjmsAdmin(url, username, password, sslEnvironment);
+    }
+    else
+        admin = new TibjmsAdmin(url, username, password);
+    return admin;
+}
+catch (Exception e) {
+    return errorMsg + ": " + e.getClass().getName() + " " + e.getMessage();
+}</pre></td><td>Fri May 31 15:00:26 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>deleteAMXQueues-getEMSAdminObject-connect</td><td><pre>com.tibco.tibjms.admin.TibjmsAdmin@cb5d35</pre></td><td>Fri May 31 15:00:31 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deleteAMXQueues-log</td><td><pre></pre></td><td>Fri May 31 15:00:31 PDT 2013</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deleteAMXQueues-log</td><td><pre></pre></td><td>Fri May 31 15:00:31 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>deleteAMXQueues-log</td><td><pre>Deleting Queues "AMX_SV_pkaur-z600.&gt;" ...</pre></td><td>Fri May 31 15:00:31 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deleteAMXQueues-deleteQueues</td><td><pre></pre></td><td>Fri May 31 15:00:31 PDT 2013</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deleteAMXQueues-deleteQueues</td><td><pre></pre></td><td>Fri May 31 15:00:31 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import com.tibco.tibjms.admin.*;
+
+String errorMsg = "EMS Error"; // Do not modify, assertions on this string might exist.
+String successMsg = "EMS Queue deletion success";
+String msg = "";
+String pattern = testExec.parseInState(pattern);
+
+try {
+    EMSAdmin.destroyQueues(pattern);
+    msg = successMsg;
+}
+catch (Exception e) {
+    msg = errorMsg + ": " + e.getClass().getName() + ". " + e.getMessage();
+}
+finally {
+    EMSAdmin.close();
+    return msg;
+}</pre></td><td>Fri May 31 15:00:31 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>deleteAMXQueues-deleteQueues</td><td><pre>EMS Error: com.tibco.tibjms.admin.TibjmsAdminException. No destination matching the given pattern 'AMX_SV_pkaur-z600.&gt;'</pre></td><td>Fri May 31 15:00:34 PDT 2013</td> </tr><tr bgcolor='#CC9933'><td>EVENT_ASSERT</td><td>deleteAMXQueues-deleteQueues [Assert120] </td><td><pre>EMS Error: com.tibco.tibjms.admin.TibjmsAdminException. No destination matching the given pattern 'AMX_SV_pkaur-z600.&gt;'</pre></td><td>Fri May 31 15:00:34 PDT 2013</td> </tr><tr bgcolor='#FFA500'><td>EVENT_TRANSFAILED</td><td>deleteAMXQueues</td><td><pre>Sub test case had failure</pre></td><td>Fri May 31 15:00:34 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>dbSwitch</td><td><pre></pre></td><td>Fri May 31 15:00:34 PDT 2013</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>dbSwitch</td><td><pre></pre></td><td>Fri May 31 15:00:34 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>jdbc:db2://AMX-BACKEND-5.na.tibco.com:446/amxbat</pre></td><td>Fri May 31 15:00:34 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>dbSwitch</td><td><pre>Switching to cleanUpDB2Database after comparison match.</pre></td><td>Fri May 31 15:00:34 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>cleanUpDB2Database</td><td><pre></pre></td><td>Fri May 31 15:00:34 PDT 2013</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>cleanUpDB2Database</td><td><pre></pre></td><td>Fri May 31 15:00:34 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>Z:\tests\amsg\3.0\libraries\common\bin\../com/tibco/lisa/db/CleanUpDB2.tst</pre></td><td>Fri May 31 15:00:34 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>cleanUpDB2Database-log</td><td><pre></pre></td><td>Fri May 31 15:00:34 PDT 2013</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>cleanUpDB2Database-log</td><td><pre></pre></td><td>Fri May 31 15:00:34 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>cleanUpDB2Database-log</td><td><pre>Deleting all tables, views, aliases, triggers, indexes for schema 'LISA_BAT'...
+host: AMX-BACKEND-5.na.tibco.com:446
+user/pwd: db2admin/db2admin
+db: amxbat</pre></td><td>Fri May 31 15:00:34 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>cleanUpDB2Database-validate</td><td><pre></pre></td><td>Fri May 31 15:00:34 PDT 2013</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>cleanUpDB2Database-validate</td><td><pre></pre></td><td>Fri May 31 15:00:34 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import com.ibm.db2.jcc.DB2Driver;
+
+String successMsg = "DB2 Validation Success"; // Do not modify, assertions on these strings might exist.
+String errorMsg = "DB2 Validation Error";
+
+try {
+ Class.forName("com.ibm.db2.jcc.DB2Driver");
+}
+catch (Exception e) {
+ return errorMsg + ": " + e.getClass().getName() + " " + e.getMessage();
+}
+
+if (hostname.equals("") || hostname.equals("&lt;&lt;null&gt;&gt;"))
+ return errorMsg + ": hostname is required.";
+
+if (port.equals("") || port.equals("&lt;&lt;null&gt;&gt;"))
+ return errorMsg + ": port is required.";
+
+if (database.equals("") || database.equals("&lt;&lt;null&gt;&gt;"))
+ return errorMsg + ": database is required.";
+
+if (sysuser.equals("") || sysuser.equals("&lt;&lt;null&gt;&gt;"))
+ return errorMsg + ": system user name is required.";
+
+if (syspassword.equals("") || syspassword.equals("&lt;&lt;null&gt;&gt;"))
+ return errorMsg + ": system user password is required.";
+
+if (schema.equals("") || schema.equals("&lt;&lt;null&gt;&gt;"))
+ return errorMsg + ": schema is required.";
+
+return successMsg;</pre></td><td>Fri May 31 15:00:34 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>cleanUpDB2Database-validate</td><td><pre>DB2 Validation Success</pre></td><td>Fri May 31 15:00:34 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>cleanUpDB2Database-initTableCount</td><td><pre>-1</pre></td><td>Fri May 31 15:00:34 PDT 2013</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>cleanUpDB2Database-initTableCount</td><td><pre>-1</pre></td><td>Fri May 31 15:00:34 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>cleanUpDB2Database-getTables</td><td><pre></pre></td><td>Fri May 31 15:00:34 PDT 2013</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>cleanUpDB2Database-getTables</td><td><pre></pre></td><td>Fri May 31 15:00:34 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>cleanUpDB2Database-getTables</td><td><pre>jdbc:db2://AMX-BACKEND-5.na.tibco.com:446/amxbat</pre></td><td>Fri May 31 15:00:34 PDT 2013</td> </tr><tr bgcolor='#FFA500'><td>EVENT_TRANSFAILED</td><td>cleanUpDB2Database-getTables</td><td><pre>com.ibm.db2.jcc.am.SqlInvalidAuthorizationSpecException: [jcc][t4][2013][11249][4.12.55] Connection authorization failure occurred.  Reason: User ID or Password invalid. ERRORCODE=-4214, SQLSTATE=28000</pre></td><td>Fri May 31 15:00:40 PDT 2013</td> </tr><tr bgcolor='#FFA500'><td>EVENT_TRANSFAILED</td><td>cleanUpDB2Database</td><td><pre>Sub test case had failure</pre></td><td>Fri May 31 15:00:40 PDT 2013</td> </tr><tr bgcolor='red'><td>EVENT_TESTFAILED</td><td></td><td></td><td>Fri May 31 15:00:40 PDT 2013</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TESTEND</td><td></td><td></td><td>Fri May 31 15:00:40 PDT 2013</td> </tr></table></body></html>

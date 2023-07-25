@@ -1,0 +1,22 @@
+import com.tibco.tibrv.Tibrv;
+import java.io.File;
+
+String successMsg = "RV Validation Success"; // Do not modify, assertions on these strings might exist.
+String errorMsg = "RV Validation Error";
+
+// Check TIBCO_RV_HOME exists
+String rv_home = testExec.parseInState(TIBCO_RV_HOME).replace('\\','/');
+File f = new File(rv_home);
+if (!f.exists())
+ return errorMsg + ": TIBCO_RV_HOME folder (" + rv_home + ") does not exist.";
+
+// Check Tibrv is loadable
+try {
+    Class.forName("com.tibco.tibrv.Tibrv");
+    Tibrv.open();
+    Tibrv.close();
+    return successMsg;
+}
+catch (Exception e) {
+    return errorMsg + ": " + e.getClass().getName() + " " + e.getMessage();
+}

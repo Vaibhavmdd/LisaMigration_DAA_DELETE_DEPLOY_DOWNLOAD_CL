@@ -1,0 +1,64 @@
+<?xml version="1.0" ?> 
+<project name="CLI build file for Phonebook sample" basedir="." default="all">
+
+	<property name="topDir" value="C:/phonebook"/>	
+
+	<property name="driverProjectName" value="jv.hsqldb.jv"/>
+	<property name="javaProjectName" value="jv.phonebook.jv"/>
+	<property name="soaProjectName" value="jv.phonebook.soa"/>
+	<property name="featureID" value="jv.hsqldb.jv.feature"/>
+	
+	<property name="importDriverProject" value="${topDir}/${driverProjectName}"/>
+	<property name="importJavaProject" value="${topDir}/${javaProjectName}"/>
+	<property name="importSoaProject" value="${topDir}/${soaProjectName}"/>
+	
+
+	<!-- Main target -->
+	<target name="all" 
+			depends="importProjectsIntoWorkspace, createDriverDAA, createApplicationDAA"/>		
+
+	<!-- Imports the projects into the workspace -->
+	<target name="importProjectsIntoWorkspace">		
+
+		<echo message="Project to import: ${importJavaProject}"></echo>		
+		<sds.importProject projectLoc="${importJavaProject}" />
+
+		<echo message="Project to import: ${importDriverProject}"></echo>		
+		<sds.importProject projectLoc="${importDriverProject}" />
+
+		<echo message="Project to import: ${importSoaProject}"></echo>		
+		<sds.importProject projectLoc="${importSoaProject}" />
+		
+	</target>
+	
+
+	<target name="createDriverDAA">
+		
+		<sds.createDAA
+			projectName="${driverProjectName}" 
+			daaLoc="/${driverProjectName}/feature/hsqldb.daa"
+			overwriteExistingDAA="true">
+			
+			<feature id="${featureID}"/>
+			
+		</sds.createDAA>
+				
+	</target>
+	
+	
+	<target name="createApplicationDAA">
+		
+		<sds.createDAA
+			projectName="${soaProjectName}" 
+			daaLoc="/${soaProjectName}/Deployment Artifacts/${soaProjectName}.daa"
+			includeApplicationReferences="true"
+			overwriteExistingDAA="true">
+
+			<application compositeName="${soaProjectName}"/>
+			<!-- exclude drivers custom feature from this DAA -->
+			<feature id="${featureID}" exclude="true"/>
+			
+		</sds.createDAA>
+				
+	</target>
+</project>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd 
+	http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+		
+	<Environment 
+		xsi:type="amxdata:Environment" 
+		description="QA Environment" 
+		name="[[env.name]]">
+			
+		<Application
+			xsi:type="amxdata:Application"
+			name="BAT_7.2"
+			contact="Anuradha Girigosavi"
+			description="BAT 7.2 SOAP-Mediation-CPP-EJB (In-Out)">
+			<!--Component Mediation-->
+			<Component 
+				xsi:type="amxdata:Component" 
+				name="Mediation1">
+	    		<Node 
+					name="[[env.node2.name]]" 
+					environmentName="[[env.name]]" />		              
+			</Component> 
+			<!--Component Cpp2-->
+			<Component 
+				xsi:type="amxdata:Component" 
+				name="Cpp2">
+	    		<Node 
+					name="[[env.node1.name]]" 
+					environmentName="[[env.name]]" />	
+	    	</Component>
+	    	<SVar 
+				xsi:type="amxdata_base:SubstitutionVariable" 
+				name="cpplib_path" 
+				type="String" 
+				value="[[LISA_TC_PATH]]/BAT811CppProject/Release" 
+				description="app svar"/>
+			<!--Service Binding-->
+			<PromotedService xsi:type="amxdata_base:Service_base" name="AddressRemotePortType">
+	    		<Binding xsi:type="amxdata:Binding" name="SOAPService_Binding">	    		
+	    			<Node name="[[env.node1.name]]" environmentName="[[env.name]]" />
+	    			<Property  xsi:type="amxdata:Property" name="HttpInboundConnectionConfig"  value="httpConnector1"/>
+	    		</Binding>	
+			</PromotedService>
+			<PromotedReference xsi:type="amxdata_base:Reference_base" name="EJB_Ref">
+				<Binding xsi:type="amxdata:Binding" name="EJBReference_Binding1">
+					<Node name="[[env.node1.name]]" environmentName="[[env.name]]" />
+				</Binding>
+			</PromotedReference>
+			
+			<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="BAT811"/>				
+		</Application>	
+		<Application 
+			xsi:type="amxdata:Application" 
+			name="com.tibco.amx.bt.ejb.app"
+            contact="TIBCO Software Inc." 
+			description="TIBCO ActiveMatrix EJB Binding Type">
+		    <Node 
+				name="[[env.node1.name]]"
+	            environmentName="[[env.name]]" />
+			<ApplicationTemplate
+	       		xsi:type="amxdata_reference:ApplicationTemplate_reference" 
+			    name="com.tibco.amx.bt.ejb.application" />         
+		</Application>   
+		<Application 
+			xsi:type="amxdata:Application" 
+			name="com.tibco.amx.it.cpp.app"
+		    contact="TIBCO Software Inc." 
+			description="TIBCO ActiveMatrix CPP Implementation Type">
+			<Node 
+				name="[[env.node1.name]]"
+		        environmentName="[[env.name]]" />
+			<ApplicationTemplate
+				xsi:type="amxdata_reference:ApplicationTemplate_reference" 
+				name="com.tibco.amxext.cpp.application" />         
+		</Application>   
+	</Environment>
+	
+	<!--Get the DAA-->
+	<DAA
+		xsi:type="amxdata:DAA"
+		description="DAA For BAT 7.2"
+		location="BAT811/Deployment Artifacts/BAT811.daa"
+		importResourceTemplates="true">
+	</DAA>
+</amxdata_base:Enterprise>

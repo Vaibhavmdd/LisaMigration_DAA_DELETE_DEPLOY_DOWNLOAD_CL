@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created by TIBCO WSDL-->
+<wsdl:definitions xmlns:tns="http://www.example.org/BAT521WSDL/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:jms="http://www.tibco.com/namespaces/ws/2004/soap/binding/JMS" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:jndi="http://www.tibco.com/namespaces/ws/2004/soap/apis/jndi" name="BAT521WSDL" targetNamespace="http://www.example.org/BAT521WSDL/">
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/BAT521WSDL/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:element name="GreetOperation">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="in" form="unqualified" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GreetOperationResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="out" form="unqualified" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GreetOperation_fault">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="GreetOperation_fault" form="unqualified" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="GreetOperationRequest">
+        <wsdl:part name="inParam" element="tns:GreetOperation"/>
+    </wsdl:message>
+    <wsdl:message name="GreetOperationResponse">
+        <wsdl:part name="outParam" element="tns:GreetOperationResponse"/>
+    </wsdl:message>
+    <wsdl:message name="GreetOperation_faultMsg">
+        <wsdl:part name="faultParam" element="tns:GreetOperation_fault"/>
+    </wsdl:message>
+    <wsdl:portType name="BAT521WSDL">
+        <wsdl:operation name="GreetOperation">
+            <wsdl:input message="tns:GreetOperationRequest"/>
+            <wsdl:output message="tns:GreetOperationResponse"/>
+            <wsdl:fault name="fault" message="tns:GreetOperation_faultMsg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="SOAPService_Binding1" type="tns:BAT521WSDL">
+        <soap:binding style="document" transport="http://www.tibco.com/namespaces/ws/2004/soap/binding/JMS"/>
+        <jms:binding messageFormat="text"/>
+        <wsdl:operation name="GreetOperation">
+            <wsdl:documentation/>
+            <soap:operation style="document" soapAction="GreetOperation"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="inParam"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="outParam"/>
+            </wsdl:output>
+            <wsdl:fault name="fault">
+                <soap:fault use="literal" name="fault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="BAT521WSDL">
+        <wsdl:port name="SOAPService_Binding1" binding="tns:SOAPService_Binding1">
+            <soap:address location=""/>
+            <jndi:context/>
+            <jms:connectionFactory>QueueConnectionFactory</jms:connectionFactory>
+            <!--The element targetAddress value (BAT5212Destination) is the jndi name of the destination. Please replace this with physical destination name at the service consumption point.-->
+            <jms:targetAddress destination="queue">BAT5212Destination</jms:targetAddress>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

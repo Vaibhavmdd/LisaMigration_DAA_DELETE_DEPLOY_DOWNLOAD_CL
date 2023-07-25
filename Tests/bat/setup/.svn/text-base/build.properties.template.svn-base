@@ -1,0 +1,207 @@
+# We only take '/' as path separator
+# The following properties may be modified
+tibco.home={{TIBCO_HOME}}
+tibco.config.mgmt.home={{TIBCO_CONFIG_HOME}}
+amx.version={{amxversion}}
+
+# The following proerties are used for silently provisioning DB drivers
+plugins.home=${tibco.home}/tct/components/shared/1.0.0/plugins
+machine.model.location={{TIBCO_HOME}}/tools/machinemodel/shared/1.0.0/machine.xmi
+source.jar.folders={{db.source.jar.location}}
+shell.name={{db.shell.name}}
+shell.version={{db.shell.version}}
+provide.db2.license.jar=false
+db2.license.jar.path=
+
+
+# Administrator Server Configuration: Details
+admin.enterprise.name={{admin.group.name}}
+admin.instance.name={{admin.instance.name}}
+admin.shared.folder=${tibco.config.mgmt.home}/admin/${admin.enterprise.name}/shared
+
+# Administrator Server Configuration: TIBCO Host Configuration
+admin.tibcohost.registerservice=false
+admin.tibcohost.createshortcut=false
+th.jmx.host={{LISA_HOST}}
+th.jmx.port={{host.jmx.port}}
+admin.tibcohost.systemenvironment={{admin.env.name}}
+admin.tibcohost.systemhost={{host.name}}
+admin.tibcohost.systemnode=SystemNode
+logging.config.properties.file=${tct.templates.dir}/log-config-override.properties
+
+
+# Comment the following line if you don't want to create DevNode, changing it to false doesn't work
+create.dev.node=true
+
+dev.envt.name={{env.name}}
+dev.host.name={{host.name}}
+dev.node.name=DevNode
+dev.node.port=7038
+
+# Administrator Server Configuration: Connection Settings
+serverconnsetting.host=0.0.0.0
+serverconnsetting.port={{port1}}
+serverconnsetting.adminurl={{adminURL}}
+serverconnsetting.managementport=7021
+serverconnsetting.timeout=30
+
+serverconnsetting.usebaseurl=false
+serverconnsetting.baseurl=http://{{LISA_HOST}}:19767
+
+serverconnsetting.enablessl=false
+# Connector Keystore properties
+
+serverconnsetting.keystorelocation=${tibco.home}/administrator/${amx.version}/samples/admin.default.ssl.jceks
+serverconnsetting.keystoretype=jceks
+serverconnsetting.keystorepassword=#!/HPUsQmSFTrrT0jx3pmrh60D68/g6Zjm
+serverconnsetting.keyalias=mykey
+serverconnsetting.keypassword=#!/HPUsQmSFTrrT0jx3pmrh60D68/g6Zjm
+
+# Admin trust store setting for SSL
+serverconnsetting.truststorelocation=${tibco.config.mgmt.home}/admin/${admin.enterprise.name}/samples/adminCliTruststore.jks
+serverconnsetting.truststoretype=jks
+serverconnsetting.truststorepassword=#!feiKaElawZazJ+xNFJeyd/67OD8P6feU
+
+# Admin CLI keystore 
+admin.cli.ssl.keystorelocation=${tibco.config.mgmt.home}/admin/${admin.enterprise.name}/samples/adminCliKeystore.jceks
+admin.cli.ssl.keystorepassword=tctsilent
+admin.cli.ssl.keystoretype=jceks
+admin.cli.ssl.keyalias=AMXAdminCli
+admin.cli.ssl.keypassword=tctsilent
+
+# Administrator Server Configuration: Internal HTTP Settings
+admin.internalhttpconn.host=0.0.0.0
+admin.internalhttpconn.port=19767
+admin.internalhttpconn.headerBufferSize=4096
+admin.internalhttpconn.requestBufferSize=8192
+admin.internalhttpconn.responseBufferSize=24576
+admin.internalhttpconn.maxIdleTime=200000
+admin.internalhttpconn.lowResourceMaxIdleTime=-1
+admin.internalhttpconn.isSecuredWithTCS=false
+
+# Administrator Server Configuration: Notification and Messaging Bus Server
+admin.ems.url=tcp://{{emshost}}:{{emsport}}
+admin.ems.username={{emsuser}}
+admin.ems.password={{emspwd}}
+# If emssecure is not found in config than it is defaulted to false
+admin.ems.enablessl={{emssecure}}   
+admin.ems.keystorepassword=tctsilent
+admin.ems.keystoretype=JKS
+admin.ems.keystorelocation=
+
+# Administrator Server Configuration: Notification and Messaging Bus Server
+admin.factory.enable=false
+admin.factory.name=GenericConnectionFactory
+
+# Administrator Server Configuration: Database Details
+# admin.db.usedefault is 'true' for HSQL and 'false' for Oracle, SQLServer and DB2
+admin.db.usedefault={{admin.db.usedefault}}
+# For hsql the value would be 'jdbc:hsqldb:file:${tibco.config.mgmt.home}/admin/${admin.enterprise.name}/private/${admin.instance.name}/hsqldb/amx'
+admin.db.url={{admin.db.url}}
+# For hsql the value would be 'org.hsqldb.jdbcDriver'
+admin.db.driver={{admin.db.driver}}
+# For hsql the value would be 'org.hibernate.dialect.HSQLDialect'
+admin.db.dialect={{admin.db.dialect}}
+# For hsql the value would be 'sa'
+admin.db.username={{admin.db.username}}
+# For hsql the value would be ''
+admin.db.password={{admin.db.password}}
+admin.db.maxconnections=10
+admin.db.enablessl=false
+admin.db.keystorepassword=#!FtufIACz9MpHTKAtWRZBCQ==
+admin.db.keystoretype=JKS
+admin.db.keystorelocation=
+
+# Administrator Server Configuration: Authentication Realm
+admin.authenticationrealm.type=dbrealm
+admin.authenticationrealm.username=root
+admin.authenticationrealm.password=t
+
+# Administrator Server Configuration: Database Authentication Realm Details
+admin.dbrealm.usedefault=true
+admin.dbrealm.url=${admin.db.url}
+admin.dbrealm.driver=${admin.db.driver}
+admin.dbrealm.dialect=${admin.db.dialect}
+admin.dbrealm.username=${admin.db.username}
+admin.dbrealm.password=${admin.db.password}
+admin.dbrealm.maxconnections=${admin.db.maxconnections}
+admin.dbrealm.enablessl=${admin.db.enablessl}
+admin.dbrealm.keystorepassword=${admin.db.keystorepassword}
+admin.dbrealm.keystoretype=${admin.db.keystoretype}
+admin.dbrealm.keystorelocation=${admin.db.keystorelocation}
+
+# Administrator Server Configuration: Credential Server Details
+admin.cs.host=0.0.0.0
+admin.cs.port=7041
+admin.cs.username=user1
+admin.cs.password=tctsilent
+
+# Administrator Server Configuration: Credential Server Keystore
+admin.cs.keystore.autogenerate=true
+admin.cs.keystore.commonname=${admin.enterprise.name}
+admin.cs.keystorelocation=
+admin.cs.keystoretype=AutoDetect
+admin.cs.keystorepassword=tctsilent
+admin.cs.keyalias=
+admin.cs.keypassword=tctsilent
+
+# Administrator Server Configuration: Monitoring Notification Server
+mcr.ems.usedefault=true
+mcr.ems.url=${admin.ems.url}
+mcr.ems.username=${admin.ems.username}
+mcr.ems.password=${admin.ems.password}
+mcr.ems.enablessl=${admin.ems.enablessl}
+mcr.ems.keystorepassword=${admin.ems.keystorepassword}
+mcr.ems.keystoretype=${admin.ems.keystoretype}
+mcr.ems.keystorelocation=${admin.ems.keystorelocation}
+
+# Administrator Server Configuration: Monitoring Database Configuration
+mcr.db.url=${admin.db.url}
+mcr.db.driver=${admin.db.driver}
+mcr.db.dialect=${admin.db.dialect}
+mcr.db.username=${admin.db.username}
+mcr.db.password=${admin.db.password}
+mcr.db.maxconnections=${admin.db.maxconnections}
+mcr.db.enablessl=${admin.db.enablessl}
+mcr.db.keystorepassword=${admin.db.keystorepassword}
+mcr.db.keystoretype=${admin.db.keystoretype}
+mcr.db.keystorelocation=${admin.db.keystorelocation}
+
+# Administrator Server Configuration: Monitoring General Configuration
+mcr.general.config.extended.monitoring.enabled=false
+
+# Administrator Server Configuration: Log Service Database Configuration
+logging.db.url=${admin.db.url}
+logging.db.driver=${admin.db.driver}
+logging.db.dialect=${admin.db.dialect}
+logging.db.username=${admin.db.username}
+logging.db.password=${admin.db.password}
+logging.db.maxconnections=${admin.db.maxconnections}
+logging.db.enablessl=${admin.db.enablessl}
+logging.db.keystorepassword=${admin.db.keystorepassword}
+logging.db.keystoretype=${admin.db.keystoretype}
+logging.db.keystorelocation=${admin.db.keystorelocation}
+
+# Administrator Server Configuration: Payload Service Database Configuration
+payload.db.url=${admin.db.url}
+payload.db.driver=${admin.db.driver}
+payload.db.dialect=${admin.db.dialect}
+payload.db.username=${admin.db.username}
+payload.db.password=${admin.db.password}
+payload.db.maxconnections=${admin.db.maxconnections}
+payload.db.enablessl=${admin.db.enablessl}
+payload.db.keystorepassword=${admin.db.keystorepassword}
+payload.db.keystoretype=${admin.db.keystoretype}
+payload.db.keystorelocation=${admin.db.keystorelocation}
+
+# Administrator Server Configuration:Provision Drivers
+# It is 'false' for hsql but 'true' for oracle, sqlserver and db2
+provisiondrivers.enable={{provisiondrivers.enable}}
+# If the database is 'oracle' than it is resolve or it is stable for 'hsql', 'sqlserver' and 'db2'
+provisiondrivers.provisionMode={{provisiondrivers.provisionMode}}
+provisiondriver1.id={{db.shell.name}}.feature
+provisiondriver1.version={{db.feature.version}}
+
+# Summary: Products to deploy on the Dev Node
+dev.node.products=amx.bt.adapter.application/3.2.0,amx.bt.ejb.application/3.2.0,{{amsbproductver}},amxext.cpp.application/3.2.0
+admin.tibcohost.nodejvmargs=-Xmx1024m -Xms128m -XX:MaxPermSize=256m -XX:+HeapDumpOnOutOfMemoryError

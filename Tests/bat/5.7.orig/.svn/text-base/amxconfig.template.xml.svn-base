@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+
+	<Environment xsi:type="amxdata:Environment" 
+		name="[[env.name]]" 
+		description="QA Environment" 
+		contact="vsubrama">
+
+		<!--Mapping https_5.7.app-->
+		<Application xsi:type="amxdata:Application" 
+			name="https_5.7.app" 
+			contact="vsubrama" 
+			description="https_5.7 - In-Out - SOAP service, Java1 and Reference">
+				
+				<!--Component Java1 of https_5.7.app mapped to Node2-->
+				<Component xsi:type="amxdata:Component" name="Java1">
+	    			<Node name="[[env.node2.name]]" environmentName="[[env.name]]" />	    	              
+	            </Component> 
+
+				<!--Service of https_5.7.app mapped to Node1-->
+				<PromotedService xsi:type="amxdata_base:Service_base" name="HelloWorld1PT1">
+	    			<Binding xsi:type="amxdata:Binding" name="soap.bindingBinding1">	    		
+	    				<Node name="[[env.node1.name]]" environmentName="[[env.name]]"/> 	    
+						<Property  xsi:type="amxdata:Property" name="HttpInboundConnectionConfig"  value="httpsConnector1"/>		
+	    			</Binding>	
+				</PromotedService>
+				
+				<!--Reference of https_5.7.app mapped to Node1-->
+				<PromotedReference xsi:type="amxdata_base:Reference_base" name="HelloWorld1PT1">
+					<Binding xsi:type="amxdata:Binding" name="soap.bindingBinding1">	    		
+	    				<Node name="[[env.node1.name]]" environmentName="[[env.name]]"/>
+						<Property  xsi:type="amxdata:Property" name="HttpOutboundConnectionConfig"  value="httpsClient1"/>
+	    			</Binding>
+				</PromotedReference>  
+
+				<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference"	name="https_5.7"
+				/>
+        </Application>
+
+    </Environment>
+
+	<!--Get the DAAs-->
+    <DAA xsi:type="amxdata:DAA" 
+		description="https_5.7 - In-Out - SOAP service, Java1, Java2 and Reference" 
+		location="https_5.7/Deployment Artifacts/https_5.7.daa" 
+		importResourceTemplates="false"/>
+
+</amxdata_base:Enterprise>
+
+
+

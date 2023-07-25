@@ -1,0 +1,551 @@
+<html> <body><FONT FACE='arial'> <table width='100%' border='2' cellpadding='4' cellspacing='3'><tr bgcolor='yellow'> <th width='10%'>Event</th> <th width='14%'>Short Description</th> <th width='42%'>Long Description</th><th width='21%'>TimeStamp</th><tr bgcolor='lime'><td>EVENT_START</td><td></td><td></td><td>Mon Sep 03 21:49:58 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deployApp</td><td><pre></pre></td><td>Mon Sep 03 21:49:58 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deployApp</td><td><pre></pre></td><td>Mon Sep 03 21:49:58 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/util/InvokeAnt.tst</pre></td><td>Mon Sep 03 21:49:58 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deployApp-log</td><td><pre></pre></td><td>Mon Sep 03 21:49:58 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deployApp-log</td><td><pre></pre></td><td>Mon Sep 03 21:49:58 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>deployApp-log</td><td><pre>Invoking ant with following variables:
+buildFileName=/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/6.9/amxbuild.xml
+logFileName=/groupfiler/tests/tests/amsg/3.0/reports/linux24gl23_x86/amsg-3.1.5-2012-09-03-01-06-44/func/runtime/bat/bat_2node_hsql/6.9/antDeployApp.log
+propertyFileName=
+propertyList=TIBCO_HOME=/opt/tibco/amx31x,TIBCO_AMXADMIN_HOME=/opt/tibco/amx31x/administrator/3.1,TIBCO_AMX_LIBRARY=/groupfiler/tests/tests/amsg/3.0/libraries/amx,amxConfigFile=/groupfiler/tests/tests/amsg/3.0/reports/linux24gl23_x86/amsg-3.1.5-2012-09-03-01-06-44/func/runtime/bat/bat_2node_hsql/6.9/amxdata.xml,remotePropsFile=/groupfiler/tests/tests/amsg/3.0/reports/linux24gl23_x86/amsg-3.1.5-2012-09-03-01-06-44/func/runtime/bat/bat_2node_hsql/admin.properties,timeout=600
+targetName=deploy.app
+projectBaseDirName=
+antOpts=-Djava.classes.dir=//opt/tibco/amx31x/tibcojre/1.7.0/jre/lib
+additionalAntCmdLineArgs=
+waitforCompletion=true</pre></td><td>Mon Sep 03 21:49:58 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deployApp-verifyAntInClasspath</td><td><pre>This step verifies the input variables for the invokeAnt subprocess.</pre></td><td>Mon Sep 03 21:49:58 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deployApp-verifyAntInClasspath</td><td><pre>This step verifies the input variables for the invokeAnt subprocess.</pre></td><td>Mon Sep 03 21:49:58 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.net.URL;
+import java.lang.ClassLoader;
+import java.net.URLClassLoader;
+/*	
+String verifyAntInClasspath1() {
+		String response = "Fail: ant is not found in classpath.";
+		try {
+			ClassLoader classLoader = ClassLoader.getSystemClassLoader();
+			URL url = classLoader.getResource("org/apache/tools/ant/Project.class"); 
+			if (url == null) {
+				return response+" null url";
+			}			
+		} catch(Exception e) {			  
+				return response+" Exception is: "+e.getMessage();
+		}
+		response ="pass: ant is found in classpath.";
+		return response;
+	}
+
+	
+
+	String verifyAntInClasspath3() {
+		String response = "Fail: ant is not found in classpath.";
+		try {
+			ClassLoader classLoader = com.itko.util.cpdlg.JavaUtils.getClassLoader();
+			URL[] urls = ((URLClassLoader)classLoader).getURLs();
+			
+			for(int i = 0; i &lt; urls.length; i++) {
+				response="\n"+urls[i].getPath();
+			}
+					
+		} catch(Exception e) {			  
+				return response;
+		}
+		// response ="pass: ant is found in classpath.";
+		return response;
+	}
+
+	String verifyAntInClasspath4() {
+		String response = "Fail: ant is not found in classpath.";
+		try {
+			String[] rl = com.itko.util.cpdlg.JavaUtils.getClasspath();
+			for(int i = 0; i &lt; rl.length; i++) {
+				response=response+"\n"+rl[i];
+			}		
+		} catch(Exception e) {			  
+				return response;
+		}
+		// response ="pass: ant is found in classpath.";
+		return response;
+	}
+
+
+	String verifyAntInClasspath2() {
+		String response = "Fail: ant is not found in classpath.";
+		try {
+			ClassLoader classLoader = com.itko.lisa.test.Environment.getClassLoader();
+			URL url = classLoader.getResource("org/apache/tools/ant/Project.class"); 
+			if (url == null) {
+				return response;
+			}			
+		} catch(Exception e) {			  
+				return response+" Exception is: "+e.getMessage();
+		}
+		response ="Pass: ant is found in classpath.";
+		return response;
+	}
+
+	static String verifyAntInClasspath() {
+		String response = "Fail: ant is not found in classpath.";
+		try {
+			com.itko.lisa.test.TestExec.class.forName("org.apache.tools.ant.Project");	
+		}catch(Exception e) {
+			return response+e.getMessage();
+		}
+		response ="pass: ant is found in classpath.";
+		return response;
+	
+	}
+
+*/
+
+	String verifyAntInClasspath() {
+		String response = "Fail: ant is not found in classpath.";
+		try {
+			// com.itko.util.cpdlg.JavaUtils.getClassLoader();
+			ClassLoader classLoader = com.itko.lisa.test.Environment.getClassLoader();
+			URL url = classLoader.getResource("org/apache/tools/ant/Project.class"); 
+			if (url == null) {
+				return response;
+			}			
+		} catch(Exception e) {			  
+				return response;
+		}
+		response ="Pass: ant is found in classpath.";
+		return response;
+	}
+	
+
+return verifyAntInClasspath();</pre></td><td>Mon Sep 03 21:49:58 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>deployApp-verifyAntInClasspath</td><td><pre>Pass: ant is found in classpath.</pre></td><td>Mon Sep 03 21:49:58 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deployApp-verifyAntVersion</td><td><pre>This step verifies the input variables for the invokeAnt subprocess.</pre></td><td>Mon Sep 03 21:49:58 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deployApp-verifyAntVersion</td><td><pre>This step verifies the input variables for the invokeAnt subprocess.</pre></td><td>Mon Sep 03 21:49:58 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
+import java.util.Enumeration;
+import java.util.Properties;
+import java.util.Set;
+
+
+String verifyAnt() {
+		String response = "Fail:";
+		String version = null;
+		try {
+			version = org.apache.tools.ant.Main.getAntVersion();
+			// version = "Apache Ant version 1.7.1 compiled on June 27";
+		}catch(Exception e) {
+			if ( e instanceof ClassNotFoundException) {
+				response = response+" Did not find ant in classpath!";
+				return response;
+			}
+			response = response+" Could not get the version of ant";
+			return response;
+		}
+		
+		String [] versionArray = version.split(" ");
+		if (versionArray.length != 9) {
+			try {
+				Properties props = new Properties();
+				  InputStream in = org.apache.tools.ant.Main.class.getResourceAsStream("/org/apache/tools/ant/version.txt");
+				  props.load(in);
+				  in.close();
+				  version = props.getProperty("VERSION");
+			}catch(Exception e) {
+				response = response+" Could not verify the version of ant. the version returned is: "+version;
+				return response;
+			}			
+			
+		}else {
+			version = versionArray[3];
+		}
+		
+		versionArray = version.split("\\.");
+		if (versionArray.length != 3) {
+			response = response+" Could not verify the version of ant. the version returned is: "+version;
+			// response = response+"\n"+" Expected version format is: x.y.z";
+			return response;
+		}
+		
+		version = versionArray[0]+"."+versionArray[1];
+		
+		if (Double.parseDouble(version) &lt; 1.7) {
+			response = response+"The version of ant should be at least 1.7.x. Current Version is: "+versionArray[0]+"."+versionArray[1];
+			return response;
+		}
+		response = "Pass: ant verified successfully.";
+		return response;
+	}
+
+return verifyAnt();</pre></td><td>Mon Sep 03 21:49:58 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>deployApp-verifyAntVersion</td><td><pre>Pass: ant verified successfully.</pre></td><td>Mon Sep 03 21:49:58 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deployApp-verifyInputVariables</td><td><pre>This step verifies the input variables for the invokeAnt subprocess.</pre></td><td>Mon Sep 03 21:49:58 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deployApp-verifyInputVariables</td><td><pre>This step verifies the input variables for the invokeAnt subprocess.</pre></td><td>Mon Sep 03 21:49:58 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
+import java.util.Enumeration;
+import java.util.Properties;
+import java.util.Set;
+
+String checkInputVariables() {
+		String response = "Fail:";
+		try {
+			if ((buildFileName == null) || (buildFileName.equals("")) ) {
+				throw new Exception("buildFileName cannot be null.");
+			}
+           
+			File buildFile = new File(testExec.parseInState(buildFileName).replace('\\', '/'));
+			if (!buildFile.canRead()) {
+				throw new Exception("Build file not found/cannot read it. "+buildFileName);
+			}
+			if (!buildFile.isFile()) {				
+				throw new Exception("build file is not a normal file. "+buildFileName);
+			}
+						
+			File propertyFile = null;
+			if ((propertyFileName != null) && (!propertyFileName.equals(""))) {
+				propertyFile = new File(testExec.parseInState(propertyFileName).replace('\\', '/'));
+				if (!propertyFile.canRead()) {
+					throw new Exception("Property file not found/cannot read it. "+propertyFileName);
+				}
+				if (!propertyFile.isFile()) {
+					throw new Exception("property file is not a normal file. "+propertyFileName);
+				}
+				
+			}
+
+			File projectBaseDir = null;
+			if ((projectBaseDirName != null) && (!projectBaseDirName.equals(""))) {
+				projectBaseDir = new File(testExec.parseInState(projectBaseDirName).replace('\\', '/'));
+				if((!projectBaseDir.exists()) || (!projectBaseDir.isDirectory())) {
+					throw new Exception("The project base directory is not valid. "+projectBaseDirName);
+				}
+			}
+
+            // Let's also verify if TIBCO_JAVA_HOME exists since we use that to launch Ant
+            File javaHome = new File(testExec.parseInState(TIBCO_JAVA_HOME).replace('\\', '/'));
+            if (!javaHome.exists()) {
+                throw new Exception("Java home directory is not valid: " + TIBCO_JAVA_HOME);
+            }
+
+			response = "Pass: Input variables are valid.";
+
+		}catch(Exception e) {
+			response = "Fail: "+e.getLocalizedMessage();
+		}
+		return response;
+	}
+
+return checkInputVariables();</pre></td><td>Mon Sep 03 21:49:58 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>deployApp-verifyInputVariables</td><td><pre>Pass: Input variables are valid.</pre></td><td>Mon Sep 03 21:49:58 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deployApp-getAntArguments</td><td><pre>This step gets the arguments to be passed to the ant invocation.</pre></td><td>Mon Sep 03 21:49:58 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deployApp-getAntArguments</td><td><pre>This step gets the arguments to be passed to the ant invocation.</pre></td><td>Mon Sep 03 21:49:58 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
+import java.util.Enumeration;
+import java.util.Properties;
+import java.util.Set;
+
+import org.apache.tools.ant.DefaultLogger;
+import org.apache.tools.ant.Project;
+import org.apache.tools.ant.ProjectHelper;
+
+	
+			String getAntArgs() {
+			String response = "";
+			FileInputStream fis = null;
+			try {
+				File propertyFile = null;
+						
+				Properties props = null;
+							
+				if ((propertyFileName != null) && (!propertyFileName.equals(""))) {
+					response = response+" -propertyfile "+propertyFileName.replace("\\","/");
+				}
+				
+				if ((propertyList != null) && (!propertyList.equals(""))) {
+					String [] propArray = propertyList.split(",");
+					for (int i =0; i &lt; propArray.length; i++) {
+						String [] keyPair = propArray[i].split("=");
+						if (keyPair.length == 1) continue;
+							//should we trim empty spaces?
+						response = response+" -D"+(String)keyPair[0]+"="+(String)keyPair[1];
+					}
+				}
+                if ((projectBaseDirName != null) && (!projectBaseDirName.equals(""))) {
+                    response = response+" -D"+"basedir=\""+(String)projectBaseDirName.replace("\\","/") + "\"";
+                }
+                else {
+                    response = response+" -D"+"basedir=\""+(String)LISA_TC_PATH.replace("\\","/") + "\"";
+                }
+	            
+				
+				
+			}catch(Exception e) {
+				response = "Fail: "+e;
+			}finally {
+				try {				
+					if (fis != null) fis.close();				
+				}catch(Exception ioe) {
+					//ignore.
+				}
+			}
+			//System.out.println("response is:"+response);
+			return response;
+		}
+return getAntArgs();</pre></td><td>Mon Sep 03 21:49:58 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>deployApp-getAntArguments</td><td><pre> -DTIBCO_HOME=/opt/tibco/amx31x -DTIBCO_AMXADMIN_HOME=/opt/tibco/amx31x/administrator/3.1 -DTIBCO_AMX_LIBRARY=/groupfiler/tests/tests/amsg/3.0/libraries/amx -DamxConfigFile=/groupfiler/tests/tests/amsg/3.0/reports/linux24gl23_x86/amsg-3.1.5-2012-09-03-01-06-44/func/runtime/bat/bat_2node_hsql/6.9/amxdata.xml -DremotePropsFile=/groupfiler/tests/tests/amsg/3.0/reports/linux24gl23_x86/amsg-3.1.5-2012-09-03-01-06-44/func/runtime/bat/bat_2node_hsql/admin.properties -Dtimeout=600 -Dbasedir="/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/6.9"</pre></td><td>Mon Sep 03 21:49:58 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deployApp-getProjectBaseDir</td><td><pre>This step gets the arguments to be passed to the ant invocation.</pre></td><td>Mon Sep 03 21:49:58 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deployApp-getProjectBaseDir</td><td><pre>This step gets the arguments to be passed to the ant invocation.</pre></td><td>Mon Sep 03 21:49:58 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
+import java.util.Enumeration;
+import java.util.Properties;
+import java.util.Set;
+	
+		String getProjectbaseDir() {
+			String baseDir = "";
+            if ((projectBaseDirName != null) && (!projectBaseDirName.equals(""))) {
+                baseDir=(String)projectBaseDirName;
+            }
+            else {
+                baseDir=(String)LISA_TC_PATH;
+            }
+			//System.out.println("baseDir is:"+baseDir);
+			return baseDir;
+		}
+return getProjectbaseDir();</pre></td><td>Mon Sep 03 21:49:58 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>deployApp-getProjectBaseDir</td><td><pre>/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/6.9</pre></td><td>Mon Sep 03 21:49:58 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deployApp-invokeAntFromCommandLine</td><td><pre></pre></td><td>Mon Sep 03 21:49:58 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deployApp-invokeAntFromCommandLine</td><td><pre></pre></td><td>Mon Sep 03 21:49:58 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/opt/tibco/amx31x/tibcojre/1.7.0/bin/java -Djava.classes.dir=//opt/tibco/amx31x/tibcojre/1.7.0/jre/lib -cp :/groupfiler/tests/tests/amsg/3.0/libraries/common/lib/ant-launcher.jar:/groupfiler/tests/tests/amsg/3.0/libraries/common/lib/ant-trax.jar:/groupfiler/tests/tests/amsg/3.0/libraries/common/lib/ant.jar:/groupfiler/tests/tests/amsg/3.0/libraries/common/lib/ant-contrib.jar:/groupfiler/tests/tests/amsg/3.0/libraries/common/lib/ant-nodeps.jar org.apache.tools.ant.launch.Launcher   -DTIBCO_HOME=/opt/tibco/amx31x -DTIBCO_AMXADMIN_HOME=/opt/tibco/amx31x/administrator/3.1 -DTIBCO_AMX_LIBRARY=/groupfiler/tests/tests/amsg/3.0/libraries/amx -DamxConfigFile=/groupfiler/tests/tests/amsg/3.0/reports/linux24gl23_x86/amsg-3.1.5-2012-09-03-01-06-44/func/runtime/bat/bat_2node_hsql/6.9/amxdata.xml -DremotePropsFile=/groupfiler/tests/tests/amsg/3.0/reports/linux24gl23_x86/amsg-3.1.5-2012-09-03-01-06-44/func/runtime/bat/bat_2node_hsql/admin.properties -Dtimeout=600 -Dbasedir="/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/6.9" -logfile "/groupfiler/tests/tests/amsg/3.0/reports/linux24gl23_x86/amsg-3.1.5-2012-09-03-01-06-44/func/runtime/bat/bat_2node_hsql/6.9/antDeployApp.log" -buildfile "/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/6.9/amxbuild.xml" deploy.app</pre></td><td>Mon Sep 03 21:49:58 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>deployApp-invokeAntFromCommandLine</td><td><pre>Buildfile: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/6.9/amxbuild.xml
+</pre></td><td>Mon Sep 03 21:50:07 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deployApp-checkCondition</td><td><pre></pre></td><td>Mon Sep 03 21:50:07 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deployApp-checkCondition</td><td><pre></pre></td><td>Mon Sep 03 21:50:07 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.io.*;
+
+/* check for waitForCompletion flag and logFile flag
+   return true only when both are true
+   if true is returned then - ant log file is being read and output is
+   sent to the console
+   if false is returned then - test case ends 
+*/
+
+if ( (waitForCompletion) &&
+     ((logFileName != null) && (!logFileName.equals("")) ) )  
+{
+       return "true"; 
+}else {  
+    return ""; 
+}</pre></td><td>Mon Sep 03 21:50:07 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>deployApp-checkCondition</td><td><pre>true</pre></td><td>Mon Sep 03 21:50:07 PDT 2012</td> </tr><tr bgcolor='#CC9933'><td>EVENT_ASSERT</td><td>deployApp-checkCondition [check for waitForCompletion and logFileName flag] </td><td><pre>waitForCompletion is true & logFileName is /groupfiler/tests/tests/amsg/3.0/reports/linux24gl23_x86/amsg-3.1.5-2012-09-03-01-06-44/func/runtime/bat/bat_2node_hsql/6.9/antDeployApp.log</pre></td><td>Mon Sep 03 21:50:07 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deployApp-returnResponse</td><td><pre></pre></td><td>Mon Sep 03 21:50:07 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deployApp-returnResponse</td><td><pre></pre></td><td>Mon Sep 03 21:50:07 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common\com\tibco\lisa\file\ReadFile.tst</pre></td><td>Mon Sep 03 21:50:07 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deployApp-returnResponse-Log</td><td><pre></pre></td><td>Mon Sep 03 21:50:07 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deployApp-returnResponse-Log</td><td><pre></pre></td><td>Mon Sep 03 21:50:07 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>deployApp-returnResponse-Log</td><td><pre>Reading file "/groupfiler/tests/tests/amsg/3.0/reports/linux24gl23_x86/amsg-3.1.5-2012-09-03-01-06-44/func/runtime/bat/bat_2node_hsql/6.9/antDeployApp.log" ...</pre></td><td>Mon Sep 03 21:50:07 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deployApp-returnResponse-readFile</td><td><pre></pre></td><td>Mon Sep 03 21:50:07 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deployApp-returnResponse-readFile</td><td><pre></pre></td><td>Mon Sep 03 21:50:07 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.io.*;
+
+String baseErrorMsg = "File Read Error"; // Do not modify. Test engineers might assert on this string.
+String strFile = testExec.parseInState(file).replace('\\', '/');
+
+File file = new File(strFile);
+if (!file.exists())
+  return baseErrorMsg + ": File '" + file + "' does not exist.";
+if (!file.canRead())
+  return baseErrorMsg + ": Cannot be read file '" + file + "'.";
+if (!file.isFile())
+  return baseErrorMsg + ": '" + file + "' is not a file.";
+
+BufferedReader input=null;
+
+try {
+    if (encoding.equals("")) 
+        input = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+    else 	
+        input = new BufferedReader(new InputStreamReader  
+				  (new FileInputStream(file),encoding));
+
+    //BufferedReader input = new BufferedReader(new FileReader(file));
+    StringBuffer content = new StringBuffer();
+    String line = null;
+    /*
+    * readLine is a bit quirky :
+    * it returns the content of a line MINUS the newline.
+    * it returns null only for the END of the stream.
+    * it returns an empty String if two newlines appear in a row.
+    */
+    while ((line = input.readLine()) != null) {
+        content.append(line);
+        content.append(System.getProperty("line.separator"));
+    }
+    //flush and close both "input" and its underlying FileReader
+    input.close();
+    return content.toString();
+}
+catch(Exception e) {
+    return baseErrorMsg + ": " + e.getMessage();
+}
+</pre></td><td>Mon Sep 03 21:50:07 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>deployApp-returnResponse-readFile</td><td><pre>     [echo] Script base is: "/opt/tibco/amx31x/administrator/3.1/scripts/basic_cli.xml"
+
+deploy.app:
+     [echo] 
+     [echo] 
+     [echo] Upload DAA using:
+     [echo] dataFile: /groupfiler/tests/tests/amsg/3.0/reports/linux24gl23_x86/amsg-3.1.5-2012-09-03-01-06-44/func/runtime/bat/bat_2node_hsql/6.9/amxdata.xml
+     [echo] remotePropsFile: /groupfiler/tests/tests/amsg/3.0/reports/linux24gl23_x86/amsg-3.1.5-2012-09-03-01-06-44/func/runtime/bat/bat_2node_hsql/admin.properties
+     [echo] objectSelector: DAA
+     [echo] action: add
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+[AMXAdminTask]  INFO - Processing 1 objects
+[AMXAdminTask]  INFO - Uploading DAA...
+[AMXAdminTask]  INFO - DAA location: BAT715/Deployment Artifacts/BAT715.daa
+[AMXAdminTask]  WARN - importResourceTemplates option is deprecated
+[AMXAdminTask] ERROR - Please see the cause for more details
+[AMXAdminTask] ERROR - com.tibco.amf.admin.api.core.exception.AdminException
+[AMXAdminTask] summary = Please see the cause for more details
+[AMXAdminTask] 
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.daa.AddAction.uploadDAAByServlet(AddAction.java:239)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.daa.AddAction.invoke(AddAction.java:91)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.Processor.invokeIndividualAction(Processor.java:576)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.Processor.invokeGenericAdd(Processor.java:490)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.Processor.invokeAction(Processor.java:377)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.Processor.processChild(Processor.java:261)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.Processor.process(Processor.java:148)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.Processor.processChildren(Processor.java:40)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.ant.AMXAdminTask.process(AMXAdminTask.java:352)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.ant.AMXAdminTask.execute(AMXAdminTask.java:272)
+[AMXAdminTask] 	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+[AMXAdminTask] 	at sun.reflect.GeneratedMethodAccessor6.invoke(Unknown Source)
+[AMXAdminTask] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[AMXAdminTask] 	at java.lang.reflect.Method.invoke(Method.java:601)
+[AMXAdminTask] 	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+[AMXAdminTask] 	at org.apache.tools.ant.Task.perform(Task.java:348)
+[AMXAdminTask] 	at org.apache.tools.ant.taskdefs.Sequential.execute(Sequential.java:68)
+[AMXAdminTask] 	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+[AMXAdminTask] 	at sun.reflect.GeneratedMethodAccessor6.invoke(Unknown Source)
+[AMXAdminTask] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[AMXAdminTask] 	at java.lang.reflect.Method.invoke(Method.java:601)
+[AMXAdminTask] 	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+[AMXAdminTask] 	at org.apache.tools.ant.Task.perform(Task.java:348)
+[AMXAdminTask] 	at org.apache.tools.ant.taskdefs.MacroInstance.execute(MacroInstance.java:398)
+[AMXAdminTask] 	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+[AMXAdminTask] 	at sun.reflect.GeneratedMethodAccessor6.invoke(Unknown Source)
+[AMXAdminTask] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[AMXAdminTask] 	at java.lang.reflect.Method.invoke(Method.java:601)
+[AMXAdminTask] 	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+[AMXAdminTask] 	at org.apache.tools.ant.Task.perform(Task.java:348)
+[AMXAdminTask] 	at org.apache.tools.ant.Target.execute(Target.java:390)
+[AMXAdminTask] 	at org.apache.tools.ant.Target.performTasks(Target.java:411)
+[AMXAdminTask] 	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+[AMXAdminTask] 	at org.apache.tools.ant.Project.executeTarget(Project.java:1368)
+[AMXAdminTask] 	at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)
+[AMXAdminTask] 	at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+[AMXAdminTask] 	at org.apache.tools.ant.Main.runBuild(Main.java:809)
+[AMXAdminTask] 	at org.apache.tools.ant.Main.startAnt(Main.java:217)
+[AMXAdminTask] 	at org.apache.tools.ant.launch.Launcher.run(Launcher.java:280)
+[AMXAdminTask] 	at org.apache.tools.ant.launch.Launcher.main(Launcher.java:109)
+[AMXAdminTask] Caused by: java.net.ConnectException: Connection refused
+[AMXAdminTask] 	at java.net.PlainSocketImpl.socketConnect(Native Method)
+[AMXAdminTask] 	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+[AMXAdminTask] 	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+[AMXAdminTask] 	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+[AMXAdminTask] 	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:391)
+[AMXAdminTask] 	at java.net.Socket.connect(Socket.java:579)
+[AMXAdminTask] 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[AMXAdminTask] 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+[AMXAdminTask] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[AMXAdminTask] 	at java.lang.reflect.Method.invoke(Method.java:601)
+[AMXAdminTask] 	at org.apache.commons.httpclient.protocol.ReflectionSocketFactory.createSocket(ReflectionSocketFactory.java:140)
+[AMXAdminTask] 	at org.apache.commons.httpclient.protocol.DefaultProtocolSocketFactory.createSocket(DefaultProtocolSocketFactory.java:125)
+[AMXAdminTask] 	at org.apache.commons.httpclient.HttpConnection.open(HttpConnection.java:707)
+[AMXAdminTask] 	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:387)
+[AMXAdminTask] 	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+[AMXAdminTask] 	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+[AMXAdminTask] 	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:323)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.daa.AddAction.uploadDAAByServlet(AddAction.java:225)
+[AMXAdminTask] 	... 39 more
+[AMXAdminTask] 
+[AMXAdminTask] ERROR - Error invoking action add on DAA: Please see the cause for more details
+
+BUILD FAILED
+/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/6.9/amxbuild.xml:5: The following error occurred while executing this line:
+/groupfiler/tests/tests/amsg/3.0/libraries/amx/bin/amx-macrodefs.xml:2661: Failed on error
+
+Total time: 8 seconds
+</pre></td><td>Mon Sep 03 21:50:07 PDT 2012</td> </tr><tr bgcolor='#CC9933'><td>EVENT_ASSERT</td><td>deployApp [Assert145] </td><td><pre>Configuration and Deployment of Application failed
+Result did not contain string. Looked for 'BUILD SUCCESSFUL' in result '     [echo] Script base is: "/opt/tibco/amx31x/administrator/3.1/scripts/basic_cli.xml"
+
+deploy.app:
+     [echo] 
+     [echo] 
+     [echo] Upload DAA using:
+     [echo] dataFile: /groupfiler/tests/tests/amsg/3.0/reports/linux24gl23_x86/amsg-3.1.5-2012-09-03-01-06-44/func/runtime/bat/bat_2node_hsql/6.9/amxdata.xml
+     [echo] remotePropsFile: /groupfiler/tests/tests/amsg/3.0/reports/linux24gl23_x86/amsg-3.1.5-2012-09-03-01-06-44/func/runtime/bat/bat_2node_hsql/admin.properties
+     [echo] objectSelector: DAA
+     [echo] action: add
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+[AMXAdminTask]  INFO - Processing 1 objects
+[AMXAdminTask]  INFO - Uploading DAA...
+[AMXAdminTask]  INFO - DAA location: BAT715/Deployment Artifacts/BAT715.daa
+[AMXAdminTask]  WARN - importResourceTemplates option is deprecated
+[AMXAdminTask] ERROR - Please see the cause for more details
+[AMXAdminTask] ERROR - com.tibco.amf.admin.api.core.exception.AdminException
+[AMXAdminTask] summary = Please see the cause for more details
+[AMXAdminTask] 
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.daa.AddAction.uploadDAAByServlet(AddAction.java:239)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.daa.AddAction.invoke(AddAction.java:91)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.Processor.invokeIndividualAction(Processor.java:576)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.Processor.invokeGenericAdd(Processor.java:490)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.Processor.invokeAction(Processor.java:377)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.Processor.processChild(Processor.java:261)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.Processor.process(Processor.java:148)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.Processor.processChildren(Processor.java:40)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.ant.AMXAdminTask.process(AMXAdminTask.java:352)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.ant.AMXAdminTask.execute(AMXAdminTask.java:272)
+[AMXAdminTask] 	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+[AMXAdminTask] 	at sun.reflect.GeneratedMethodAccessor6.invoke(Unknown Source)
+[AMXAdminTask] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[AMXAdminTask] 	at java.lang.reflect.Method.invoke(Method.java:601)
+[AMXAdminTask] 	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+[AMXAdminTask] 	at org.apache.tools.ant.Task.perform(Task.java:348)
+[AMXAdminTask] 	at org.apache.tools.ant.taskdefs.Sequential.execute(Sequential.java:68)
+[AMXAdminTask] 	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+[AMXAdminTask] 	at sun.reflect.GeneratedMethodAccessor6.invoke(Unknown Source)
+[AMXAdminTask] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[AMXAdminTask] 	at java.lang.reflect.Method.invoke(Method.java:601)
+[AMXAdminTask] 	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+[AMXAdminTask] 	at org.apache.tools.ant.Task.perform(Task.java:348)
+[AMXAdminTask] 	at org.apache.tools.ant.taskdefs.MacroInstance.execute(MacroInstance.java:398)
+[AMXAdminTask] 	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+[AMXAdminTask] 	at sun.reflect.GeneratedMethodAccessor6.invoke(Unknown Source)
+[AMXAdminTask] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[AMXAdminTask] 	at java.lang.reflect.Method.invoke(Method.java:601)
+[AMXAdminTask] 	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+[AMXAdminTask] 	at org.apache.tools.ant.Task.perform(Task.java:348)
+[AMXAdminTask] 	at org.apache.tools.ant.Target.execute(Target.java:390)
+[AMXAdminTask] 	at org.apache.tools.ant.Target.performTasks(Target.java:411)
+[AMXAdminTask] 	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+[AMXAdminTask] 	at org.apache.tools.ant.Project.executeTarget(Project.java:1368)
+[AMXAdminTask] 	at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)
+[AMXAdminTask] 	at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+[AMXAdminTask] 	at org.apache.tools.ant.Main.runBuild(Main.java:809)
+[AMXAdminTask] 	at org.apache.tools.ant.Main.startAnt(Main.java:217)
+[AMXAdminTask] 	at org.apache.tools.ant.launch.Launcher.run(Launcher.java:280)
+[AMXAdminTask] 	at org.apache.tools.ant.launch.Launcher.main(Launcher.java:109)
+[AMXAdminTask] Caused by: java.net.ConnectException: Connection refused
+[AMXAdminTask] 	at java.net.PlainSocketImpl.socketConnect(Native Method)
+[AMXAdminTask] 	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+[AMXAdminTask] 	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+[AMXAdminTask] 	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+[AMXAdminTask] 	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:391)
+[AMXAdminTask] 	at java.net.Socket.connect(Socket.java:579)
+[AMXAdminTask] 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[AMXAdminTask] 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+[AMXAdminTask] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[AMXAdminTask] 	at java.lang.reflect.Method.invoke(Method.java:601)
+[AMXAdminTask] 	at org.apache.commons.httpclient.protocol.ReflectionSocketFactory.createSocket(ReflectionSocketFactory.java:140)
+[AMXAdminTask] 	at org.apache.commons.httpclient.protocol.DefaultProtocolSocketFactory.createSocket(DefaultProtocolSocketFactory.java:125)
+[AMXAdminTask] 	at org.apache.commons.httpclient.HttpConnection.open(HttpConnection.java:707)
+[AMXAdminTask] 	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:387)
+[AMXAdminTask] 	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+[AMXAdminTask] 	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+[AMXAdminTask] 	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:323)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.daa.AddAction.uploadDAAByServlet(AddAction.java:225)
+[AMXAdminTask] 	... 39 more
+[AMXAdminTask] 
+[AMXAdminTask] ERROR - Error invoking action add on DAA: Please see the cause for more details
+
+BUILD FAILED
+/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/6.9/amxbuild.xml:5: The following error occurred while executing this line:
+/groupfiler/tests/tests/amsg/3.0/libraries/amx/bin/amx-macrodefs.xml:2661: Failed on error
+
+Total time: 8 seconds
+'</pre></td><td>Mon Sep 03 21:50:08 PDT 2012</td> </tr><tr bgcolor='red'><td>EVENT_TESTFAILED</td><td></td><td></td><td>Mon Sep 03 21:50:08 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TESTEND</td><td></td><td></td><td>Mon Sep 03 21:50:09 PDT 2012</td> </tr></table></body></html>

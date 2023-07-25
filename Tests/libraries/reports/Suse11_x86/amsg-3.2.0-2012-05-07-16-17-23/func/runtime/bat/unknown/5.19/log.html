@@ -1,0 +1,429 @@
+<html> <body><FONT FACE='arial'> <table width='100%' border='2' cellpadding='4' cellspacing='3'><tr bgcolor='yellow'> <th width='10%'>Event</th> <th width='14%'>Short Description</th> <th width='42%'>Long Description</th><th width='21%'>TimeStamp</th><tr bgcolor='lime'><td>EVENT_START</td><td></td><td></td><td>Tue May 08 13:10:02 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>supportedOrNot</td><td><pre></pre></td><td>Tue May 08 13:10:02 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>supportedOrNot</td><td><pre></pre></td><td>Tue May 08 13:10:02 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/*
+if (os_name.contains("Linux")) { // supported
+ return true;
+}
+
+if (os_name.contains("Windows")) { // supported 
+ return true;
+}
+
+if (os_name.contains("SunOS")) { // supported
+ return true;
+}
+
+if (os_name.contains("HP-UX")) { // not supported
+ return false;
+}
+
+if (os_name.contains("AIX")) { // not supported
+ return false;
+}
+
+if (os_name.contains("Mac")) { // not supported
+ return false;
+}
+
+// by default, just skip that test case
+return false;
+*/
+import java.io.File;
+String ext = "";
+if (os_name.contains("Windows"))
+ ext = ".exe";
+File exe = new File(TIBCO_BS_HOME.replace("\\","/") + "/eclipse/amx_eclipse_ant" + ext);
+if (exe.exists())
+ return true;
+else
+ return false;</pre></td><td>Tue May 08 13:10:02 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>supportedOrNot</td><td><pre>true</pre></td><td>Tue May 08 13:10:03 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createDAA</td><td><pre></pre></td><td>Tue May 08 13:10:03 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createDAA</td><td><pre></pre></td><td>Tue May 08 13:10:03 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/amx/com/tibco/amx/design/InvokeEclipseAnt.tst</pre></td><td>Tue May 08 13:10:03 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createDAA-log</td><td><pre></pre></td><td>Tue May 08 13:10:03 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createDAA-log</td><td><pre></pre></td><td>Tue May 08 13:10:03 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>createDAA-log</td><td><pre>Invoking ant with following variables:
+studioHome=/opt/tibco/amx320/studio/3.6
+buildFile=/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/build.xml
+data=/groupfiler/tests/tests/amsg/3.0/reports/Suse11_x86/amsg-3.2.0-2012-05-07-16-17-23/func/runtime/bat/unknown/5.19/WS1
+propertyFile=
+propertyList=soa.project.loc=/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19,java.project.loc=/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19,projectName=BAT5_19,compositeName=BAT5_19A,newCompositeName=BAT5_19,daaLoc=/BAT5_19/BAT5_19.daa,componentName=Java1,implementationLoc=/com.sample.bat5_19/src/com/sample/bat5_19/Java1.java,sourceProject=BAT5_19,referenceProject=com.sample.bat5_19,featureid=BAT5_19.BAT5_19A.customfeature,RT=HttpClient_SOAPEventSource
+target=
+projectBaseDir=
+</pre></td><td>Tue May 08 13:10:03 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createDAA-verifyInputVariables</td><td><pre>This step verifies the input variables for the invokeAnt subprocess.</pre></td><td>Tue May 08 13:10:03 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createDAA-verifyInputVariables</td><td><pre>This step verifies the input variables for the invokeAnt subprocess.</pre></td><td>Tue May 08 13:10:03 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
+import java.util.Enumeration;
+import java.util.Properties;
+import java.util.Set;
+
+String checkInputVariables() {
+		String errorStr = "Fail: ";
+		try {
+            if ((studioHome == null) || (studioHome.equals("")) ) {
+				throw new Exception("studioHome cannot be null.");
+			}
+           
+			File studioHome2 = new File(testExec.parseInState(studioHome).replace('\\', '/'));
+			if (!studioHome2.exists()) {
+				throw new Exception("Studio home not found: "+studioHome);
+			}
+
+			if ((buildFile == null) || (buildFile.equals("")) ) {
+				throw new Exception("buildFile cannot be null.");
+			}
+           
+			File buildFile2 = new File(testExec.parseInState(buildFile).replace('\\', '/'));
+			if (!buildFile2.canRead()) {
+				throw new Exception("Build file not found/cannot be read: "+buildFile);
+			}
+			if (!buildFile2.isFile()) {				
+				throw new Exception("build file is not a normal file: "+buildFile);
+			}
+			
+            if ((data == null) || (data.equals("")) ) {
+				throw new Exception("data cannot be null.");
+			}
+			
+			File propertyFile2 = null;
+			if ((propertyFile != null) && (!propertyFile.equals(""))) {
+				propertyFile = new File(testExec.parseInState(propertyFile).replace('\\', '/'));
+				if (!propertyFile2.canRead()) {
+					throw new Exception("Property file not found/cannot be read it: "+propertyFile);
+				}
+				if (!propertyFile.isFile()) {
+					throw new Exception("property file is not a normal file: "+propertyFile);
+				}
+				
+			}
+
+			File projectBaseDir2 = null;
+			if ((projectBaseDir != null) && (!projectBaseDir.equals(""))) {
+				projectBaseDir2 = new File(testExec.parseInState(projectBaseDir).replace('\\', '/'));
+				if((!projectBaseDir2.exists()) || (!projectBaseDir2.isDirectory())) {
+					throw new Exception("The project base directory is not valid: "+projectBaseDir);
+				}
+			}
+             
+			response = "Pass: Input variables are valid.";
+
+		}catch(Exception e) {
+			response = errorStr + e.getLocalizedMessage();
+		}
+		return response;
+	}
+
+return checkInputVariables();</pre></td><td>Tue May 08 13:10:03 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>createDAA-verifyInputVariables</td><td><pre>Pass: Input variables are valid.</pre></td><td>Tue May 08 13:10:03 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createDAA-getAntArguments</td><td><pre>This step gets the arguments to be passed to the ant invocation.</pre></td><td>Tue May 08 13:10:03 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createDAA-getAntArguments</td><td><pre>This step gets the arguments to be passed to the ant invocation.</pre></td><td>Tue May 08 13:10:03 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
+import java.util.Enumeration;
+import java.util.Properties;
+import java.util.Set;
+
+//import org.apache.tools.ant.DefaultLogger;
+//import org.apache.tools.ant.Project;
+//import org.apache.tools.ant.ProjectHelper;
+
+	
+			String getAntArgs() {
+			String response = "";
+			FileInputStream fis = null;
+			try {
+				File propertyFile = null;
+						
+				Properties props = null;
+							
+				if ((propertyFile != null) && (!propertyFile.equals(""))) {
+					response = response+" -propertyfile "+propertyFile.replace("\\","/");
+				}
+				
+				if ((propertyList != null) && (!propertyList.equals(""))) {
+					String [] propArray = propertyList.split(",");
+					for (int i =0; i &lt; propArray.length; i++) {
+						String [] keyPair = propArray[i].split("=");
+						if (keyPair.length == 1) continue;
+							//should we trim empty spaces?
+						response = response+" -D"+(String)keyPair[0]+"="+(String)keyPair[1];
+					}
+				}
+                if ((projectBaseDir != null) && (!projectBaseDir.equals(""))) {
+                    response = response+" -D"+"basedir=\""+(String)projectBaseDir.replace("\\","/") + "\"";
+                }
+				
+			}catch(Exception e) {
+				response = "Fail: "+e;
+			}finally {
+				try {				
+					if (fis != null) fis.close();				
+				}catch(Exception ioe) {
+					//ignore.
+				}
+			}
+			//System.out.println("response is:"+response);
+			return response;
+		}
+return getAntArgs();</pre></td><td>Tue May 08 13:10:03 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>createDAA-getAntArguments</td><td><pre> -Dsoa.project.loc=/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19 -Djava.project.loc=/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19 -DprojectName=BAT5_19 -DcompositeName=BAT5_19A -DnewCompositeName=BAT5_19 -DdaaLoc=/BAT5_19/BAT5_19.daa -DcomponentName=Java1 -DimplementationLoc=/com.sample.bat5_19/src/com/sample/bat5_19/Java1.java -DsourceProject=BAT5_19 -DreferenceProject=com.sample.bat5_19 -Dfeatureid=BAT5_19.BAT5_19A.customfeature -DRT=HttpClient_SOAPEventSource</pre></td><td>Tue May 08 13:10:03 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt</td><td><pre></pre></td><td>Tue May 08 13:10:03 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt</td><td><pre></pre></td><td>Tue May 08 13:10:03 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/util/JVMWrapper.tst</pre></td><td>Tue May 08 13:10:03 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt-validate</td><td><pre></pre></td><td>Tue May 08 13:10:03 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt-validate</td><td><pre></pre></td><td>Tue May 08 13:10:03 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>String baseErrorMsg = "Wrapper Validation Error";
+String baseSuccessMsg = "Wrapper Validation Success";
+
+// Check Timeout function
+String checkTimeout(String timeout) {
+ if (timeout.equals("") || timeout.equals("&lt;&lt;null&gt;&gt;"))
+  return baseErrorMsg + ": Timeout is required.";
+ try {
+  int t = Integer.parseInt(timeout);
+  return baseSuccessMsg;
+ }
+ catch (NumberFormatException nfe) {
+  return baseErrorMsg + ": Timeout format Exception: " + nfe.getMessage();
+ }
+}
+
+// Check wrapper exists
+wrapperName = testExec.parseInState(wrapperName).replace('\\','/');
+if (com.itko.util.Utilities.isWindows() && !wrapperName.endsWith(".exe"))
+ wrapperName = wrapperName + ".exe";
+File f = new File(wrapperName);
+if (!f.exists()) 
+ return baseErrorMsg + ": Wrapper (" + wrapperName + ") does not exist.";
+
+// Check working directory exists
+startInDir = testExec.parseInState(startInDir).replace('\\','/');
+f = new File(startInDir);
+if (!f.exists())
+ return baseErrorMsg + ": Start-In directory (" + startInDir + ") does not exist.";
+
+// Check prop file
+propFile = testExec.parseInState(propFile).replace('\\','/');
+
+// all the timeout parameters
+checkTimeout(testExec.parseInState(waitBeforeOnWindows.toString()));
+checkTimeout(testExec.parseInState(waitAfterOnWindows.toString()));
+checkTimeout(testExec.parseInState(waitBeforeOnUnix.toString()));
+checkTimeout(testExec.parseInState(waitAfterOnUnix.toString()));
+
+// Ok
+return baseSuccessMsg;</pre></td><td>Tue May 08 13:10:03 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>createDAA-executeEclipseAnt-validate</td><td><pre>Wrapper Validation Success</pre></td><td>Tue May 08 13:10:03 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt-getPropFile</td><td><pre></pre></td><td>Tue May 08 13:10:03 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt-getPropFile</td><td><pre></pre></td><td>Tue May 08 13:10:03 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>String propFileStr = "";
+if (!propFile.equals("&lt;&lt;null&gt;&gt;")) {
+  if (com.itko.util.Utilities.isWindows()) {
+    // Support for blank space in path on Windows
+    propFileStr = "--propFile \"" + propFile + "\""; // that does not work on Unix (tried on solaris)
+  }
+  else { // Unix. No support for blank space
+    propFileStr = "--propFile " + propFile;
+  }
+}
+return propFileStr.replace('\\','/');</pre></td><td>Tue May 08 13:10:03 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>createDAA-executeEclipseAnt-getPropFile</td><td><pre>--propFile /opt/tibco/amx320/studio/3.6/eclipse/amx_eclipse_ant.tra</pre></td><td>Tue May 08 13:10:03 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt-getCommand</td><td><pre></pre></td><td>Tue May 08 13:10:03 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt-getCommand</td><td><pre></pre></td><td>Tue May 08 13:10:03 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>String commandStr = "";
+if (!command.equals("&lt;&lt;null&gt;&gt;"))
+  commandStr = command;
+
+return commandStr;</pre></td><td>Tue May 08 13:10:03 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>createDAA-executeEclipseAnt-getCommand</td><td><pre></pre></td><td>Tue May 08 13:10:03 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt-getExtraCommand</td><td><pre></pre></td><td>Tue May 08 13:10:03 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt-getExtraCommand</td><td><pre></pre></td><td>Tue May 08 13:10:03 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>String extraCommandStr = "";
+if (!extraCommand.equals("&lt;&lt;null&gt;&gt;"))
+  extraCommandStr = extraCommand;
+
+return extraCommandStr;</pre></td><td>Tue May 08 13:10:03 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>createDAA-executeEclipseAnt-getExtraCommand</td><td><pre> -Dsoa.project.loc=/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19 -Djava.project.loc=/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19 -DprojectName=BAT5_19 -DcompositeName=BAT5_19A -DnewCompositeName=BAT5_19 -DdaaLoc=/BAT5_19/BAT5_19.daa -DcomponentName=Java1 -DimplementationLoc=/com.sample.bat5_19/src/com/sample/bat5_19/Java1.java -DsourceProject=BAT5_19 -DreferenceProject=com.sample.bat5_19 -Dfeatureid=BAT5_19.BAT5_19A.customfeature -DRT=HttpClient_SOAPEventSource -buildfile "/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/build.xml"  -data "/groupfiler/tests/tests/amsg/3.0/reports/Suse11_x86/amsg-3.2.0-2012-05-07-16-17-23/func/runtime/bat/unknown/5.19/WS1"</pre></td><td>Tue May 08 13:10:03 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt-waitBefore</td><td><pre></pre></td><td>Tue May 08 13:10:03 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt-waitBefore</td><td><pre></pre></td><td>Tue May 08 13:10:03 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/util/Sleep.tst</pre></td><td>Tue May 08 13:10:03 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt-waitBefore-Log</td><td><pre></pre></td><td>Tue May 08 13:10:03 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt-waitBefore-Log</td><td><pre></pre></td><td>Tue May 08 13:10:03 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>createDAA-executeEclipseAnt-waitBefore-Log</td><td><pre>Sleeping for 0 on Windows or 0 on Unix ...</pre></td><td>Tue May 08 13:10:03 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt-waitBefore-sleep</td><td><pre></pre></td><td>Tue May 08 13:10:03 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt-waitBefore-sleep</td><td><pre></pre></td><td>Tue May 08 13:10:03 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>sleep(secStr) {
+  try {
+    int secInt = Integer.parseInt(secStr);
+    if (secInt &lt; 0) Thread.sleep(0);
+    else Thread.sleep(secInt*1000);
+  }
+  catch(NumberFormatException nfe) {
+    Thread.sleep(0);
+  }
+}
+
+if (System.getProperty("os.name").toLowerCase().indexOf("windows") &gt; -1)
+  sleep("0");
+else
+  sleep("0");</pre></td><td>Tue May 08 13:10:03 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>createDAA-executeEclipseAnt-waitBefore-sleep</td><td><pre>(no response)</pre></td><td>Tue May 08 13:10:03 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt-Log</td><td><pre></pre></td><td>Tue May 08 13:10:04 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt-Log</td><td><pre></pre></td><td>Tue May 08 13:10:04 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>createDAA-executeEclipseAnt-Log</td><td><pre>Executing "/opt/tibco/amx320/studio/3.6/eclipse/amx_eclipse_ant  --propFile /opt/tibco/amx320/studio/3.6/eclipse/amx_eclipse_ant.tra  -Dsoa.project.loc=/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19 -Djava.project.loc=/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19 -DprojectName=BAT5_19 -DcompositeName=BAT5_19A -DnewCompositeName=BAT5_19 -DdaaLoc=/BAT5_19/BAT5_19.daa -DcomponentName=Java1 -DimplementationLoc=/com.sample.bat5_19/src/com/sample/bat5_19/Java1.java -DsourceProject=BAT5_19 -DreferenceProject=com.sample.bat5_19 -Dfeatureid=BAT5_19.BAT5_19A.customfeature -DRT=HttpClient_SOAPEventSource -buildfile "/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/build.xml"  -data "/groupfiler/tests/tests/amsg/3.0/reports/Suse11_x86/amsg-3.2.0-2012-05-07-16-17-23/func/runtime/bat/unknown/5.19/WS1""...</pre></td><td>Tue May 08 13:10:04 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt-getWaitAfterProperty</td><td><pre></pre></td><td>Tue May 08 13:10:04 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt-getWaitAfterProperty</td><td><pre></pre></td><td>Tue May 08 13:10:04 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>if (com.itko.util.Utilities.isWindows())
+  return waitAfterOnWindows;
+else
+  return waitAfterOnUnix;</pre></td><td>Tue May 08 13:10:04 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>createDAA-executeEclipseAnt-getWaitAfterProperty</td><td><pre>1800</pre></td><td>Tue May 08 13:10:04 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt-escape command line params</td><td><pre></pre></td><td>Tue May 08 13:10:04 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt-escape command line params</td><td><pre></pre></td><td>Tue May 08 13:10:04 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>commandProp = commandProp.replaceAll("\\\\", "\\\\\\\\");
+propFileProp = propFileProp.replaceAll("\\\\", "\\\\\\\\");
+extraCommandProp = extraCommandProp.replaceAll("\\\\", "\\\\\\\\");</pre></td><td>Tue May 08 13:10:04 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>createDAA-executeEclipseAnt-escape command line params</td><td><pre> -Dsoa.project.loc=/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19 -Djava.project.loc=/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19 -DprojectName=BAT5_19 -DcompositeName=BAT5_19A -DnewCompositeName=BAT5_19 -DdaaLoc=/BAT5_19/BAT5_19.daa -DcomponentName=Java1 -DimplementationLoc=/com.sample.bat5_19/src/com/sample/bat5_19/Java1.java -DsourceProject=BAT5_19 -DreferenceProject=com.sample.bat5_19 -Dfeatureid=BAT5_19.BAT5_19A.customfeature -DRT=HttpClient_SOAPEventSource -buildfile "/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/build.xml"  -data "/groupfiler/tests/tests/amsg/3.0/reports/Suse11_x86/amsg-3.2.0-2012-05-07-16-17-23/func/runtime/bat/unknown/5.19/WS1"</pre></td><td>Tue May 08 13:10:04 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt-callWrapper</td><td><pre></pre></td><td>Tue May 08 13:10:04 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createDAA-executeEclipseAnt-callWrapper</td><td><pre></pre></td><td>Tue May 08 13:10:04 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/opt/tibco/amx320/studio/3.6/eclipse/amx_eclipse_ant  --propFile /opt/tibco/amx320/studio/3.6/eclipse/amx_eclipse_ant.tra  -Dsoa.project.loc=/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/BAT5_19 -Djava.project.loc=/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/com.sample.bat5_19 -DprojectName=BAT5_19 -DcompositeName=BAT5_19A -DnewCompositeName=BAT5_19 -DdaaLoc=/BAT5_19/BAT5_19.daa -DcomponentName=Java1 -DimplementationLoc=/com.sample.bat5_19/src/com/sample/bat5_19/Java1.java -DsourceProject=BAT5_19 -DreferenceProject=com.sample.bat5_19 -Dfeatureid=BAT5_19.BAT5_19A.customfeature -DRT=HttpClient_SOAPEventSource -buildfile "/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/build.xml"  -data "/groupfiler/tests/tests/amsg/3.0/reports/Suse11_x86/amsg-3.2.0-2012-05-07-16-17-23/func/runtime/bat/unknown/5.19/WS1"</pre></td><td>Tue May 08 13:10:04 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>createDAA-executeEclipseAnt-callWrapper</td><td><pre>Buildfile: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/build.xml
+
+importProjects:
+[sds.importProject] 
+[sds.importProject] Importing Project 'BAT5_19' Opening 'BAT5_19'.
+[sds.importProject] Importing Project 'BAT5_19' Refreshing '/BAT5_19'.
+[sds.importProject] Importing Project 'BAT5_19' 
+[sds.importProject] Importing Project 'BAT5_19' 
+[sds.importProject] Importing Project 'BAT5_19' Refreshing '/BAT5_19'.
+[sds.importProject] Importing Project 'BAT5_19' 
+[sds.importProject] Importing Project 'BAT5_19' 
+[sds.importProject] Importing Project 'BAT5_19' Building imported projects...
+[sds.importProject] 
+[sds.importProject] Importing Project 'com.sample.bat5_19' Opening 'com.sample.bat5_19'.
+[sds.importProject] Importing Project 'com.sample.bat5_19' Refreshing '/com.sample.bat5_19'.
+[sds.importProject] Importing Project 'com.sample.bat5_19' 
+[sds.importProject] Importing Project 'com.sample.bat5_19' 
+[sds.importProject] Importing Project 'com.sample.bat5_19' Refreshing '/com.sample.bat5_19'.
+[sds.importProject] Importing Project 'com.sample.bat5_19' 
+[sds.importProject] Importing Project 'com.sample.bat5_19' 
+[sds.importProject] Importing Project 'com.sample.bat5_19' Building imported projects...
+
+createComposite:
+     [echo] Create composite
+[sds.createComposite] 
+
+createComponent:
+     [echo] Create Component
+[sds.createComponent] Creating new component Java1
+[sds.createComponent] Configuring custom feature Updating the custom feature
+[sds.createComponent] Configuring custom feature 
+[sds.createComponent] 
+[sds.createComponent] 
+[sds.createComponent] 
+
+promoteService:
+     [echo] Promote service
+[sds.promoteAll] Promoting...
+[sds.promoteAll] Loading Composite...
+[sds.promoteAll] Promoting All Services, References & Properties...
+[sds.promoteAll] Saving file...
+
+createDAA:
+     [echo] Create DAA
+An error has occurred. See the log file
+/groupfiler/tests/tests/amsg/3.0/reports/Suse11_x86/amsg-3.2.0-2012-05-07-16-17-23/func/runtime/bat/unknown/5.19/WS1/.metadata/.log.
+
+BUILD FAILED
+/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/build.xml:42: The custom feature referenced from component 'Java1' has errors.
+	at com.tibco.amf.tools.packager.ant.task.SDSMakeDAATask.execute(SDSMakeDAATask.java:311)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+	at org.apache.tools.ant.TaskAdapter.execute(TaskAdapter.java:154)
+	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+	at org.apache.tools.ant.Task.perform(Task.java:348)
+	at org.apache.tools.ant.Target.execute(Target.java:390)
+	at org.apache.tools.ant.Target.performTasks(Target.java:411)
+	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+	at org.apache.tools.ant.Project.executeTarget(Project.java:1368)
+	at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)
+	at org.eclipse.ant.internal.core.ant.EclipseDefaultExecutor.executeTargets(EclipseDefaultExecutor.java:32)
+	at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:665)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:537)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:513)
+	at org.eclipse.ant.core.AntRunner.start(AntRunner.java:600)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:344)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:622)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:577)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1410)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1386)
+
+Total time: 2 minutes 22 seconds
+</pre></td><td>Tue May 08 13:12:58 PDT 2012</td> </tr><tr bgcolor='#CC9933'><td>EVENT_ASSERT</td><td>createDAA [Assert142] </td><td><pre>Assert [Assert142] fired false of type Result as String Contains Given String
+Result did not contain string. Looked for 'BUILD SUCCESSFUL' in result 'Buildfile: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/build.xml
+
+importProjects:
+[sds.importProject] 
+[sds.importProject] Importing Project 'BAT5_19' Opening 'BAT5_19'.
+[sds.importProject] Importing Project 'BAT5_19' Refreshing '/BAT5_19'.
+[sds.importProject] Importing Project 'BAT5_19' 
+[sds.importProject] Importing Project 'BAT5_19' 
+[sds.importProject] Importing Project 'BAT5_19' Refreshing '/BAT5_19'.
+[sds.importProject] Importing Project 'BAT5_19' 
+[sds.importProject] Importing Project 'BAT5_19' 
+[sds.importProject] Importing Project 'BAT5_19' Building imported projects...
+[sds.importProject] 
+[sds.importProject] Importing Project 'com.sample.bat5_19' Opening 'com.sample.bat5_19'.
+[sds.importProject] Importing Project 'com.sample.bat5_19' Refreshing '/com.sample.bat5_19'.
+[sds.importProject] Importing Project 'com.sample.bat5_19' 
+[sds.importProject] Importing Project 'com.sample.bat5_19' 
+[sds.importProject] Importing Project 'com.sample.bat5_19' Refreshing '/com.sample.bat5_19'.
+[sds.importProject] Importing Project 'com.sample.bat5_19' 
+[sds.importProject] Importing Project 'com.sample.bat5_19' 
+[sds.importProject] Importing Project 'com.sample.bat5_19' Building imported projects...
+
+createComposite:
+     [echo] Create composite
+[sds.createComposite] 
+
+createComponent:
+     [echo] Create Component
+[sds.createComponent] Creating new component Java1
+[sds.createComponent] Configuring custom feature Updating the custom feature
+[sds.createComponent] Configuring custom feature 
+[sds.createComponent] 
+[sds.createComponent] 
+[sds.createComponent] 
+
+promoteService:
+     [echo] Promote service
+[sds.promoteAll] Promoting...
+[sds.promoteAll] Loading Composite...
+[sds.promoteAll] Promoting All Services, References & Properties...
+[sds.promoteAll] Saving file...
+
+createDAA:
+     [echo] Create DAA
+An error has occurred. See the log file
+/groupfiler/tests/tests/amsg/3.0/reports/Suse11_x86/amsg-3.2.0-2012-05-07-16-17-23/func/runtime/bat/unknown/5.19/WS1/.metadata/.log.
+
+BUILD FAILED
+/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.19/build.xml:42: The custom feature referenced from component 'Java1' has errors.
+	at com.tibco.amf.tools.packager.ant.task.SDSMakeDAATask.execute(SDSMakeDAATask.java:311)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+	at org.apache.tools.ant.TaskAdapter.execute(TaskAdapter.java:154)
+	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+	at org.apache.tools.ant.Task.perform(Task.java:348)
+	at org.apache.tools.ant.Target.execute(Target.java:390)
+	at org.apache.tools.ant.Target.performTasks(Target.java:411)
+	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+	at org.apache.tools.ant.Project.executeTarget(Project.java:1368)
+	at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)
+	at org.eclipse.ant.internal.core.ant.EclipseDefaultExecutor.executeTargets(EclipseDefaultExecutor.java:32)
+	at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:665)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:537)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:513)
+	at org.eclipse.ant.core.AntRunner.start(AntRunner.java:600)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:344)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:622)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:577)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1410)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1386)
+
+Total time: 2 minutes 22 seconds
+'</pre></td><td>Tue May 08 13:12:58 PDT 2012</td> </tr><tr bgcolor='red'><td>EVENT_TESTFAILED</td><td></td><td></td><td>Tue May 08 13:12:58 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TESTEND</td><td></td><td></td><td>Tue May 08 13:12:59 PDT 2012</td> </tr></table></body></html>

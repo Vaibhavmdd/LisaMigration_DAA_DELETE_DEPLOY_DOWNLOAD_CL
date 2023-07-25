@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<amxdata_base:Enterprise xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types" xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base" xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference" xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types platform:/plugin/com.tibco.amf.tools.admincligen/model/cli_data.ecore#//types http://tibco.com/amxadministrator/command/line/types_base platform:/plugin/com.tibco.amf.tools.admincligen/model/cli_data.ecore http://tibco.com/amxadministrator/command/line/types_reference platform:/plugin/com.tibco.amf.tools.admincligen/model/cli_data.ecore#//types/types_reference">
+  
+  <Environment xsi:type="amxdata:Environment" name="QAEnvironment_jpandya-dt" description="Test Environment" contact="TIBCO">
+      <Application xsi:type="amxdata:Application" name="AMRP-3900-Import" contact="jpandya">
+      <Component xsi:type="amxdata_base:Component_base" name="Java1">
+        <Node xsi:type="amxdata_reference:Node_reference" name="QANode2" environmentName="QAEnvironment_jpandya-dt"/>
+      </Component>
+      <PromotedService xsi:type="amxdata_base:Service_base" name="PortType">
+        <Binding xsi:type="amxdata_base:Binding_base" name="SOAPService_Binding1">
+          <Node xsi:type="amxdata_reference:Node_reference" name="QANode1" environmentName="QAEnvironment_jpandya-dt"/>
+		  <Property  xsi:type="amxdata:Property" name="HttpInboundConnectionConfig"  value="http_1"/>
+        </Binding>
+      </PromotedService>
+      <ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="AMRP-3900-Import" version="1.0.0.201203052304"/>
+    </Application>
+  </Environment>
+  <DAA xsi:type="amxdata:DAA" location="./AMRP-3900-Import/Deployment Artifacts/AMRP-3900-Import.daa">
+    <importFeatureIdentifier>AMRP-3900-Import.AMRP-3900-Import.customfeature.id:1.0.0.201203052304</importFeatureIdentifier>
+  </DAA>
+  <Feature xsi:type="amxdata_base:FeatureID" componentID="AMRP-3900-Import.AMRP-3900-Import.customfeature.id" version="1.0.0.201203052304"/>
+</amxdata_base:Enterprise>

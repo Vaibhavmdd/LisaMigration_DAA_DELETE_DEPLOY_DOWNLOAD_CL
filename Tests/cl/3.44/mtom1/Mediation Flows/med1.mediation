@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpel:process exitOnStandardFault="yes" name="med1"
+    suppressJoinFailure="no"
+    targetNamespace="http://com.tibco.amsb/mediation/1383014495640"
+    variableAccessSerializable="no"
+    xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+    xmlns:jdbc="http://xsd.tns.tibco.com/amf/models/sharedresource/jdbc"
+    xmlns:medit="http://schemas.tibco.com/mediationIT/3.4.0/mediation"
+    xmlns:ns="http://service.server.mtom.cxf/"
+    xmlns:ns0="http:///com.tibco.amsb.core.common.exchange/mediationcontext"
+    xmlns:ns1="http://schemas.tibco.com/amsb/rt/exceptions" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <plnk:partnerLinkType
+        name="ns:DownloadFile-DownloadFileConsumer-partnerLinkType" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+        <plnk:role name="Consumer" portType="ns:DownloadFile"/>
+    </plnk:partnerLinkType>
+    <plnk:partnerLinkType
+        name="ns:DownloadFile-DownloadFileProvider-partnerLinkType" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+        <plnk:role name="Provider" portType="ns:DownloadFile"/>
+    </plnk:partnerLinkType>
+    <mediationmodel:MediationService name="med1"
+        targetNamespace="http://com.tibco.amsb/mediation/1383014495640"
+        version="3.4.0" xmi:id="_oNLBgEBDEeOYnvDynTyS7g"
+        xmi:version="2.0"
+        xmlns:medct="http://xsd.tns.tibco.com/amsb/core/models/componentType"
+        xmlns:mediationmodel="http://xsd.tns.tibco.com/amsb/core/models/mediationmodel"
+        xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <interfaces name="DownloadFile" xmi:id="_9X9Y4EByEeOv3YgAZrrk8A">
+            <interface xsi:type="medct:Wsdl11Interface">
+                <portType href="platform:/resource/mtom1/Service%20Descriptors/Sample.wsdl#//@ePortTypes.0"/>
+            </interface>
+        </interfaces>
+        <operationImplementations operationName="DownloadFile^getFile">
+            <mediationContextConfig hideStaticSecurityContext="true" hideStaticTransportContext="true"/>
+        </operationImplementations>
+        <targetEndpoints xmi:id="_9Yj10EByEeOv3YgAZrrk8A">
+            <abstractTarget name="DownloadFile" xmi:id="_9Yj10UByEeOv3YgAZrrk8A">
+                <interface xsi:type="medct:Wsdl11Interface">
+                    <portType href="platform:/resource/mtom1/Service%20Descriptors/Sample.wsdl#//@ePortTypes.0"/>
+                </interface>
+            </abstractTarget>
+            <targetOperationConfig operationName="getFile">
+                <contextConfig hideStaticSecurityContext="true" hideStaticTransportContext="true"/>
+            </targetOperationConfig>
+        </targetEndpoints>
+    </mediationmodel:MediationService>
+    <bpel:documentation>med1</bpel:documentation>
+    <bpel:import importType="http://schemas.xmlsoap.org/wsdl/"
+        location="../Service%20Descriptors/Sample.wsdl" namespace="http://service.server.mtom.cxf/"/>
+    <bpel:import importType="http://www.w3.org/2001/XMLSchema"
+        location="../../com.tibco.mediation.it.common/schema/mediationcontext.xsd" namespace="http:///com.tibco.amsb.core.common.exchange/mediationcontext"/>
+    <bpel:import importType="http://www.w3.org/2001/XMLSchema"
+        location="../../com.tibco.mediation.it.common/schema/exceptions.xsd" namespace="http://schemas.tibco.com/amsb/rt/exceptions"/>
+    <bpel:import importType="http://www.w3.org/2001/XMLSchema"
+        location="../../com.tibco.mediation.it.common/schema/ws-bpel_serviceref.xsd" namespace="http://docs.oasis-open.org/wsbpel/2.0/serviceref"/>
+    <bpel:partnerLinks>
+        <bpel:partnerLink myRole="Provider" name="DownloadFileProvider" partnerLinkType="ns:DownloadFile-DownloadFileProvider-partnerLinkType">
+            <bpel:documentation>MyRole</bpel:documentation>
+        </bpel:partnerLink>
+        <bpel:partnerLink name="DownloadFileConsumer"
+            partnerLinkType="ns:DownloadFile-DownloadFileConsumer-partnerLinkType" partnerRole="Consumer">
+            <bpel:documentation>PartnerRole</bpel:documentation>
+        </bpel:partnerLink>
+    </bpel:partnerLinks>
+    <bpel:variables>
+        <bpel:variable name="VALIDATE_MESSAGE_DATA" type="xsd:boolean">
+            <medct:Property name="VALIDATE_MESSAGE_DATA" simpleValue=""
+                type="boolean" xmi:id="_oNLBrEBDEeOYnvDynTyS7g"
+                xmi:version="2.0"
+                xmlns:medct="http://xsd.tns.tibco.com/amsb/core/models/componentType" xmlns:xmi="http://www.omg.org/XMI"/>
+            <bpel:from/>
+        </bpel:variable>
+        <bpel:variable messageType="ns:getFile" name="getFileVar"/>
+        <bpel:variable messageType="ns:getFileResponse" name="getFileResponseVar"/>
+    </bpel:variables>
+    <bpel:extensions>
+        <bpel:extension mustUnderstand="no" namespace="http://xsd.tns.tibco.com/amsb/task/transform/models/transformmediationtaskmodel"/>
+    </bpel:extensions>
+    <bpel:pick>
+        <bpel:onMessage operation="getFile"
+            partnerLink="DownloadFileProvider"
+            portType="ns:DownloadFile" variable="getFileVar">
+            <bpel:scope name="getFile">
+                <bpel:variables>
+                    <bpel:variable element="ns0:MessageContext" name="MessageContextVar"/>
+                    <bpel:variable element="ns1:MediationFault" name="MediationFaultVar"/>
+                    <bpel:variable element="ns1:MediationRuntimeFault" name="MediationRuntimeFaultVar"/>
+                    <bpel:variable element="ns1:MediationTaskFault" name="MediationTaskFaultVar"/>
+                    <bpel:variable
+                        element="ns1:MediationTaskRuntimeFault" name="MediationTaskRuntimeFaultVar"/>
+                    <bpel:variable element="ns1:UndeclaredFault" name="UndeclaredFaultVar"/>
+                    <bpel:variable element="ns1:DefaultMediationFault" name="DefaultMediationFaultVar"/>
+                    <bpel:variable messageType="ns:getFileResponse" name="getFileResponseVar"/>
+                </bpel:variables>
+                <bpel:faultHandlers>
+                    <bpel:catch faultName="ns1:MediationTaskFault">
+                        <bpel:flow>
+                            <bpel:links>
+                                <bpel:link name="transform-to-SendFault-MediationTaskFaultReplyWithFault"/>
+                            </bpel:links>
+                            <bpel:assign name="transform" validate="no">
+
+                                <transformmediationtaskmodel:MapperTransformationMediationTask
+                                    description="" name="transform"
+                                    xmi:id="_9ZJrzEByEeOv3YgAZrrk8A"
+                                    xmi:version="2.0"
+                                    xmlns:transformmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/transform/models/transformmediationtaskmodel" xmlns:xmi="http://www.omg.org/XMI">
+                                    <transform queryLanguage="xslt" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:tns=&quot;http://schemas.tibco.com/amsb/rt/exceptions&quot; xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;MediationFlowProperties&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageContext&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageData&quot;/>&#xa;    &lt;xsl:template name=&quot;MessageData&quot; match=&quot;/&quot;>&#xa;        &lt;tns:UndeclaredFault>&#xa;            &lt;xsl:if test=&quot;$MessageData/tns:MediationTaskFault/message&quot;>&#xa;                &lt;message>&#xa;                    &lt;xsl:value-of select=&quot;$MessageData/tns:MediationTaskFault/message&quot;/>&#xa;                &lt;/message>&#xa;            &lt;/xsl:if>&#xa;        &lt;/tns:UndeclaredFault>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>&#xa;"/>
+                                </transformmediationtaskmodel:MapperTransformationMediationTask>
+                                <bpel:sources>
+                                    <bpel:source linkName="transform-to-SendFault-MediationTaskFaultReplyWithFault"/>
+                                </bpel:sources>
+                                <bpel:copy>
+                                    <bpel:from><![CDATA[bpel:doXslTransform("transform.xsl",$UndeclaredFaultVar,"MessageData",$MediationTaskFaultVar)]]></bpel:from>
+                                    <bpel:to variable="UndeclaredFaultVar"/>
+                                </bpel:copy>
+                            </bpel:assign>
+                            <bpel:reply faultName="ns1:UndeclaredFault"
+                                name="SendFault-MediationTaskFaultReplyWithFault"
+                                operation="getFile"
+                                partnerLink="DownloadFileProvider"
+                                portType="ns:DownloadFile" variable="UndeclaredFaultVar">
+                                <bpel:targets>
+                                    <bpel:target linkName="transform-to-SendFault-MediationTaskFaultReplyWithFault"/>
+                                </bpel:targets>
+                            </bpel:reply>
+                        </bpel:flow>
+                    </bpel:catch>
+                    <bpel:catch faultName="ns1:MediationTaskRuntimeFault">
+                        <bpel:flow>
+                            <bpel:links>
+                                <bpel:link name="transform1-to-SendFault-MediationTaskRuntimeFaultReplyWithFault"/>
+                            </bpel:links>
+                            <bpel:assign name="transform1" validate="no">
+
+                                <transformmediationtaskmodel:MapperTransformationMediationTask
+                                    description="" name="transform1"
+                                    xmi:id="_9ZJr00ByEeOv3YgAZrrk8A"
+                                    xmi:version="2.0"
+                                    xmlns:transformmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/transform/models/transformmediationtaskmodel" xmlns:xmi="http://www.omg.org/XMI">
+                                    <transform queryLanguage="xslt" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:tns=&quot;http://schemas.tibco.com/amsb/rt/exceptions&quot; xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;MediationFlowProperties&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageContext&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageData&quot;/>&#xa;    &lt;xsl:template name=&quot;MessageData&quot; match=&quot;/&quot;>&#xa;        &lt;tns:UndeclaredFault>&#xa;            &lt;xsl:if test=&quot;$MessageData/tns:MediationTaskRuntimeFault/message&quot;>&#xa;                &lt;message>&#xa;                    &lt;xsl:value-of select=&quot;$MessageData/tns:MediationTaskRuntimeFault/message&quot;/>&#xa;                &lt;/message>&#xa;            &lt;/xsl:if>&#xa;        &lt;/tns:UndeclaredFault>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>&#xa;"/>
+                                </transformmediationtaskmodel:MapperTransformationMediationTask>
+                                <bpel:sources>
+                                    <bpel:source linkName="transform1-to-SendFault-MediationTaskRuntimeFaultReplyWithFault"/>
+                                </bpel:sources>
+                                <bpel:copy>
+                                    <bpel:from><![CDATA[bpel:doXslTransform("transform1.xsl",$UndeclaredFaultVar,"MessageData",$MediationTaskRuntimeFaultVar)]]></bpel:from>
+                                    <bpel:to variable="UndeclaredFaultVar"/>
+                                </bpel:copy>
+                            </bpel:assign>
+                            <bpel:reply faultName="ns1:UndeclaredFault"
+                                name="SendFault-MediationTaskRuntimeFaultReplyWithFault"
+                                operation="getFile"
+                                partnerLink="DownloadFileProvider"
+                                portType="ns:DownloadFile" variable="UndeclaredFaultVar">
+                                <bpel:targets>
+                                    <bpel:target linkName="transform1-to-SendFault-MediationTaskRuntimeFaultReplyWithFault"/>
+                                </bpel:targets>
+                            </bpel:reply>
+                        </bpel:flow>
+                    </bpel:catch>
+                </bpel:faultHandlers>
+                <bpel:flow>
+                    <bpel:links>
+                        <bpel:link name="DownloadFilegetFile-to-getFileReply"/>
+                    </bpel:links>
+                    <bpel:invoke inputVariable="getFileVar"
+                        name="DownloadFilegetFile" operation="getFile"
+                        outputVariable="getFileResponseVar"
+                        partnerLink="DownloadFileConsumer" portType="ns:DownloadFile">
+                        <bpel:sources>
+                            <bpel:source linkName="DownloadFilegetFile-to-getFileReply"/>
+                        </bpel:sources>
+                        <bpel:catch faultMessageType="ns:getFileFault" faultName="ns:fault1">
+                            <bpel:flow>
+                                <bpel:reply faultName="ns:getFileFault"
+                                    name="SendFault-getFileFaultReplyWithFault"
+                                    operation="getFile"
+                                    partnerLink="DownloadFileProvider" portType="ns:DownloadFile"/>
+                            </bpel:flow>
+                        </bpel:catch>
+                        <bpel:catch faultName="ns1:TimeoutFault">
+                            <bpel:flow>
+                                <bpel:links>
+                                    <bpel:link name="transform-TimeoutFault-DownloadFile-getFile-to-SendFault-TimeoutFaultReplyWithFault"/>
+                                </bpel:links>
+                                <bpel:assign
+                                    name="transform-TimeoutFault-DownloadFile-getFile" validate="no">
+
+                                    <transformmediationtaskmodel:MapperTransformationMediationTask
+                                    description=""
+                                    name="transform-TimeoutFault-DownloadFile-getFile"
+                                    xmi:id="_9ZJrv0ByEeOv3YgAZrrk8A"
+                                    xmi:version="2.0"
+                                    xmlns:transformmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/transform/models/transformmediationtaskmodel" xmlns:xmi="http://www.omg.org/XMI">
+                                    <transform queryLanguage="xslt" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://schemas.tibco.com/amsb/rt/exceptions&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;MediationFlowProperties&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageData&quot;/>&#xa;    &lt;xsl:template name=&quot;MessageData&quot; match=&quot;/&quot;>&#xa;        &lt;tns:UndeclaredFault>&#xa;            &lt;xsl:if test=&quot;$MessageData/tns:TimeoutFault/message&quot;>&#xa;                &lt;message>&#xa;                    &lt;xsl:value-of select=&quot;$MessageData/tns:TimeoutFault/message&quot;/>&#xa;                &lt;/message>&#xa;            &lt;/xsl:if>&#xa;        &lt;/tns:UndeclaredFault>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>&#xa;"/>
+                                    </transformmediationtaskmodel:MapperTransformationMediationTask>
+                                    <bpel:sources>
+                                    <bpel:source linkName="transform-TimeoutFault-DownloadFile-getFile-to-SendFault-TimeoutFaultReplyWithFault"/>
+                                    </bpel:sources>
+                                </bpel:assign>
+                                <bpel:reply
+                                    faultName="ns1:UndeclaredFault"
+                                    name="SendFault-TimeoutFaultReplyWithFault"
+                                    operation="getFile"
+                                    partnerLink="DownloadFileProvider"
+                                    portType="ns:DownloadFile" variable="UndeclaredFaultVar">
+                                    <bpel:targets>
+                                    <bpel:target linkName="transform-TimeoutFault-DownloadFile-getFile-to-SendFault-TimeoutFaultReplyWithFault"/>
+                                    </bpel:targets>
+                                </bpel:reply>
+                            </bpel:flow>
+                        </bpel:catch>
+                        <bpel:catch faultName="ns1:UndeclaredFault">
+                            <bpel:flow>
+                                <bpel:reply
+                                    faultName="ns1:UndeclaredFault"
+                                    name="SendFault-UndeclaredFaultReplyWithFault"
+                                    operation="getFile"
+                                    partnerLink="DownloadFileProvider"
+                                    portType="ns:DownloadFile" variable="UndeclaredFaultVar"/>
+                            </bpel:flow>
+                        </bpel:catch>
+                    </bpel:invoke>
+                    <bpel:reply name="getFileReply" operation="getFile"
+                        partnerLink="DownloadFileProvider"
+                        portType="ns:DownloadFile" variable="getFileResponseVar">
+                        <bpel:targets>
+                            <bpel:target linkName="DownloadFilegetFile-to-getFileReply"/>
+                        </bpel:targets>
+                    </bpel:reply>
+                </bpel:flow>
+            </bpel:scope>
+        </bpel:onMessage>
+    </bpel:pick>
+</bpel:process>

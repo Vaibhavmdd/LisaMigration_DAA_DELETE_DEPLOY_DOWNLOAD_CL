@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<amxdata_base:Enterprise xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types" xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base" xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference" xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types platform:/plugin/com.tibco.amf.tools.admincligen/model/cli_data.ecore#//types http://tibco.com/amxadministrator/command/line/types_base platform:/plugin/com.tibco.amf.tools.admincligen/model/cli_data.ecore http://tibco.com/amxadministrator/command/line/types_reference platform:/plugin/com.tibco.amf.tools.admincligen/model/cli_data.ecore#//types/types_reference">
+  <Environment xsi:type="amxdata:Environment" name="DevEnvironment">
+    <Node xsi:type="amxdata:Node" name="hjhsfsfs">
+      <ResourceInstance xsi:type="amxdata:ResourceInstance" name="HttpClient_soap.provider.Binding1" resourceTemplateName="HttpClient_soap.provider.Binding1"/>
+      <ResourceInstance xsi:type="amxdata:ResourceInstance" name="HttpClient_soap.provider.Binding1" resourceTemplateName="HttpClient_soap.provider.Binding1"/>
+      <ResourceInstance xsi:type="amxdata:ResourceInstance" name="httpConnector" resourceTemplateName="httpConnector"/>
+    </Node>
+    <Application xsi:type="amxdata:Application" name="DeclaredFault_Consumer" importResourceTemplates="true">
+      <Component xsi:type="amxdata_base:Component_base" name="Java3">
+        <Node xsi:type="amxdata_reference:Node_reference" name="hjhsfsfs" environmentName="DevEnvironment"/>
+      </Component>
+      <Component xsi:type="amxdata_base:Component_base" name="Java1">
+        <Node xsi:type="amxdata_reference:Node_reference" name="hjhsfsfs" environmentName="DevEnvironment"/>
+      </Component>
+      <PromotedService xsi:type="amxdata_base:Service_base" name="BookServiceConsumer">
+        <Binding xsi:type="amxdata_base:Binding_base" name="SOAPService_Binding1">
+          <Node xsi:type="amxdata_reference:Node_reference" name="hjhsfsfs" environmentName="DevEnvironment"/>
+          <Property xsi:type="amxdata:Property" name="HttpInboundConnectionConfig" value="httpConnector"/>
+        </Binding>
+      </PromotedService>
+      <PromotedReference xsi:type="amxdata_base:Reference_base" name="BookPortType1">
+        <Binding xsi:type="amxdata_base:Binding_base" name="SOAPReference_Binding1">
+          <Node xsi:type="amxdata_reference:Node_reference" name="hjhsfsfs" environmentName="DevEnvironment"/>
+          <Property xsi:type="amxdata:Property" name="HttpOutboundConnectionConfig" value="HttpClient_soap.provider.Binding1"/>
+        </Binding>
+      </PromotedReference>
+      <PromotedReference xsi:type="amxdata_base:Reference_base" name="BW_BookService">
+        <Binding xsi:type="amxdata_base:Binding_base" name="SOAPReference_Binding1">
+          <Node xsi:type="amxdata_reference:Node_reference" name="hjhsfsfs" environmentName="DevEnvironment"/>
+          <Property xsi:type="amxdata:Property" name="HttpOutboundConnectionConfig" value="HttpClient_soap.provider.Binding1"/>
+        </Binding>
+      </PromotedReference>
+      <ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="DeclaredFault_Consumer" version="1.0.0.v2012-08-29-1432"/>
+      <ImportResourceTemplateName>HttpClient_soap.provider.Binding1</ImportResourceTemplateName>
+    </Application>
+  </Environment>
+  <ResourceTemplate xsi:type="amxdata:HttpConnectorResourceTemplate" name="httpConnector" headerBufferSize="4096" host="0.0.0.0" port="9090" requestBufferSize="8192"/>
+  <DAA xsi:type="amxdata:DAA" location="C:\Users\pkaur\workspace-prac\DeclaredFault\Deployment Artifacts\DeclaredFault_Consumer.daa">
+    <importFeatureIdentifier>DeclaredFault.customfeature.id:1.0.0.v2012-08-29-1432</importFeatureIdentifier>
+  </DAA>
+  <Feature xsi:type="amxdata_base:FeatureID" componentID="DeclaredFault.customfeature.id" version="1.0.0.v2012-08-29-1432"/>
+  <AppTemplate xsi:type="amxdata_base:AppTemplateID" name="DeclaredFault_Consumer" version="1.0.0"/>
+</amxdata_base:Enterprise>

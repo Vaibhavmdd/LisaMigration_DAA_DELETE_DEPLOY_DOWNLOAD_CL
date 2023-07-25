@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://com.tibco.amx.it.mediation.sample/Employee"
+	xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:ns0="http://com.tibco.amx.it.mediation.sample/EmployeeName"
+	xmlns:ns1="http://com.tibco.amx.it.mediation.sample/EmployeeDetails"
+	attributeFormDefault="unqualified"
+	elementFormDefault="qualified">
+
+    <import namespace="http://com.tibco.amx.it.mediation.sample/EmployeeName" schemaLocation="EmployeeName.xsd"/>
+    <import namespace="http://com.tibco.amx.it.mediation.sample/EmployeeDetails" schemaLocation="EmployeeDetails.xsd"/>
+
+    <element name="Employee">
+    	<complexType>
+    		<sequence>
+    		    <element name="Name" type="ns0:EmployeeName"></element>
+    		    <element name="Details" type="ns1:EmployeeDetails"></element>
+    		</sequence>
+    	</complexType>
+    </element>
+</schema>

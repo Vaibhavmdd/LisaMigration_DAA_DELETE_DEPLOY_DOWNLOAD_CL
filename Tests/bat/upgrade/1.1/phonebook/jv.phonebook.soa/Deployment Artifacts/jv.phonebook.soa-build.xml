@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="SDSCLI"
+    basedir="." default="all">
+  <!--
+    Import all of the projects, create a DAA and generate simple admin cli scripts
+    for deployment
+  -->
+  <property file="mytest.properties"/>
+  <property name="deployNode" value="DevNode"/>
+  <property name="deployEnvironment" value="DevEnvironment"/>
+  <target name="all" depends="importProjects, createDAA, generateDeployScripts"> </target>
+  <target name="importProjects">
+    <sds.importProject projectLoc="${abs_path_to_project_jv.phonebook.jv}"/>
+    <sds.importProject projectLoc="${abs_path_to_project_jv.phonebook.soa}"/>
+  </target>
+  <target name="createDAA">
+    <echo message="Create DAA"/>
+    <sds.createDAA daaLoc="/jv.phonebook.soa/Deployment Artifacts/jv.phonebook.soa.daa"
+        overwriteExistingDAA="true">
+      <application compositeName="jv.phonebook.soa" projectName="jv.phonebook.soa">
+        <resourcetemplate name="hsqldb"/>
+      </application>
+      <feature id="jv.phonebook.soa.customfeature.id"/>
+    </sds.createDAA>
+  </target>
+  <target name="generateDeployScripts">
+    <sds.generateDeploymentScript daaloc="/jv.phonebook.soa/Deployment Artifacts/jv.phonebook.soa.daa">
+      <appconfig appname="jv.phonebook.soa" singlenodename="${deployNode}" environmentname="${deployEnvironment}"/>
+    </sds.generateDeploymentScript>
+  </target>
+</project>

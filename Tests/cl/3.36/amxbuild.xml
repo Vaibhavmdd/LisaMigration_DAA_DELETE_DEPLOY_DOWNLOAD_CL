@@ -1,0 +1,45 @@
+<project default="deploy.app">
+  <import file="${TIBCO_AMXADMIN_HOME}/bin/taskdef.xml" />
+	<import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+
+	<target name="deploy.app">
+	  <setup.ri dataFile="${amxConfigFile}" /> 
+		<upload.daa dataFile="${amxConfigFile}" />
+		<create.app dataFile="${amxConfigFile}" />
+		<map.component.to.node dataFile="${amxConfigFile}" />
+		<map.service.binding.to.node dataFile="${amxConfigFile}" />
+		<deploy.app dataFile="${amxConfigFile}" timeout="${timeout}" />	
+	</target>
+	
+	<target name="undeploy.app">
+		<undeploy.app dataFile="${amxConfigFile}" timeout="${timeout}" />
+		<delete.app dataFile="${amxConfigFile}" />
+		<uninstall.ri dataFile="${amxConfigFile}" />
+		<delete.ri dataFile="${amxConfigFile}" />
+		<delete.rt dataFile="${amxConfigFile}" />
+		<delete.log.appender objectSelector="LogAppender[@name='qaFileLogAppender36']" dataFile="${amxConfigFile}" />
+		<delete.log.appender objectSelector="LogAppender[@name='qaFileLogAppender36_2']" dataFile="${amxConfigFile}" />
+	</target>
+	
+	<target name="conf.logging">
+		<create.log.appender dataFile="${amxConfigFile}" />
+		<set.logger.to.app dataFile="${amxConfigFile}" />
+		<deploy.action objector="Environment/Application" description="Apply Application Logger" dataFile="${amxConfigFile}" />
+	</target>
+	
+	<target name="addappendertoLogger">
+        <AMXAdminTask
+            remote="true"
+            propsFile="C:\Lisa1072\Projects\AMX\Tests\cl\remote_props.properties"
+            action="add"
+            dataFile="${amxConfigFile}"
+            objectSelector="Environment//Application[@name='cl3_36']/Logger[@name='com.tibco']"
+            overwrite="true"
+            merge="true"
+            createIfNotExists="true"
+            force="true"
+            failOnError="false"/>
+    </target>
+	
+
+</project>

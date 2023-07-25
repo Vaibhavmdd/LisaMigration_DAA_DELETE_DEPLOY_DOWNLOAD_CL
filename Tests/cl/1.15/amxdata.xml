@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise 
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+	xmlns:amxdata_binding="http://tibco.com/amxadministrator/command/line/types_binding"
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd http://tibco.com/amxadministrator/command/line/types_binding ../schemas/bindingdata.xsd">
+
+	
+	
+	<Environment xsi:type="amxdata:Environment" 
+		name="[[env.name]]" 
+		description="Automation environment" 
+		contact="TIBCO">
+		
+		<Node xsi:type="amxdata:Node" 
+			description="QA Node 1" 
+			contact="TIBCO QA" 
+			hostName="[[host.name]]" 
+			name="[[env.node1.name]]"
+			portNumber="5006"
+			enableDebug="true"
+            debugPortNumber="1112">
+			
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="defaultConnector1" resourceTemplateName="defaultConnector1" />
+			<SVar xsi:type="amxdata_base:SubstitutionVariable" name="FilePath" type="String" value="[[tibco.test.case.log.dir]]" description="CBE File Appender File Path svar" />
+			<SVar xsi:type="amxdata_base:SubstitutionVariable" name="MaxFileSize" type="Integer" value="5" description="CBE File Appender Max File Size(MB) svar" />
+			<SVar xsi:type="amxdata_base:SubstitutionVariable" name="MaxBackupIndex" type="Integer" value="3" description="CBE File Appender Max Backup Index svar" />
+			<Logger xsi:type="amxdata:Logger" name ="root" additivity="false">
+          <AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="TRACE">
+			        <Appender xsi:type="amxdata_reference:LogAppender_reference" name="qaCBEFileLogAppender33"/>
+			    </AppenderRef>
+			</Logger>
+			
+		</Node>
+	
+		<!--Mapping properties.app-->			
+		<Application xsi:type="amxdata:Application" 
+			name="properties1.app"
+			contact="TIBCO" 
+			description="App for svar testing.">
+			
+			<Node name="[[env.node1.name]]" environmentName="[[env.name]]" />	
+			<SVar xsi:type="amxdata_base:SubstitutionVariable" name="FilePathApp" type="String" value="[[tibco.test.case.log.dir]]" description="Clear Text File Appender File Path svar" />
+			<SVar xsi:type="amxdata_base:SubstitutionVariable" name="MaxFileSizeApp" type="Integer" value="2" description="Clear Text File Appender Max File Size(MB) svar" />
+			<SVar xsi:type="amxdata_base:SubstitutionVariable" name="MaxBackupIndexApp" type="Integer" value="2" description="Clear Text File Appender Max Backup Index svar" />
+			
+			<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="properties1" />
+			
+			<Logger xsi:type="amxdata:Logger" name ="com.tibco" additivity="false">
+		  		<AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="TRACE">
+							<Appender xsi:type="amxdata_reference:LogAppender_reference" name="qaClearTextFileLogAppender33"/>
+					</AppenderRef>
+	    </Logger>	
+		</Application>
+
+	</Environment>
+	
+	
+    <!--Resource Templates-->
+	<ResourceTemplate xsi:type="amxdata:HttpConnectorResourceTemplate"
+		name="defaultConnector1" host="0.0.0.0" port="22014" headerBufferSize="4096"
+		requestBufferSize="8192" responseBufferSize="24576" maxIdleTime="200000"
+		lowResourceMaxIdleTime="-1" description="This is HttpConnector RT" />
+		
+	<DAA xsi:type="amxdata:DAA" description="AMX Platform DAA"
+		location="properties1.daa" importResourceTemplates="false">
+	</DAA>
+	
+	<!--Define Log Appender-->
+	<LogAppender
+		xsi:type="amxdata:FileLogAppender"
+		name="qaCBEFileLogAppender33"
+		type="cbe"
+		description="QA CBE File LogAppender"
+		filePath="%%FilePath%%/CBEFile.log"
+		maxSize="%%MaxFileSize%%"
+		maxBackupNum="%%MaxBackupIndex%%"/>	
+		
+	<LogAppender
+		xsi:type="amxdata:FileLogAppender"
+		name="qaClearTextFileLogAppender33"
+	  description="QA Clear Text File LogAppender"
+		filePath="%%FilePathApp%%/ClearTextFile.log"
+		maxSize="%%MaxFileSizeApp%%"
+		maxBackupNum="%%MaxBackupIndexApp%%"/>
+
+</amxdata_base:Enterprise>

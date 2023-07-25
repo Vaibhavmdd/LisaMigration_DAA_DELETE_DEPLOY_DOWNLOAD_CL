@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created by TIBCO WSDL-->
+<wsdl:definitions xmlns:ns0="http://tibco.com/matrix/qa/xsd/echostring" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://tibco.com/matrix/qa/wsdl/echostring/OperationImpl/OperationImpl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="Untitled" targetNamespace="http://tibco.com/matrix/qa/wsdl/echostring/OperationImpl/OperationImpl">
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://tibco.com/matrix/qa/xsd/echostring">
+            <xs:element name="FaultString" type="xs:string"/>
+            <xs:element name="InString" type="xs:string"/>
+            <xs:element name="OutString" type="xs:string"/>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:service name="EchoStringServer">
+        <wsdl:port binding="tns:SOAPEventSourceBinding" name="SOAPEventSource">
+            <soap:address location="http://localhost:9015/server/EchoStringServer"/>
+        </wsdl:port>
+    </wsdl:service>
+    <wsdl:portType name="EchoStringPort">
+        <wsdl:operation name="Operation">
+            <wsdl:input message="tns:InMessage"/>
+            <wsdl:output message="tns:OutMessage"/>
+            <wsdl:fault message="tns:FaultMessage" name="fault1"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="SOAPEventSourceBinding" type="tns:EchoStringPort">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="Operation">
+            <soap:operation soapAction="/server/EchoStringServer" style="document"/>
+            <wsdl:input>
+                <soap:body parts="InPart" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="OutPart" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="fault1">
+                <soap:fault name="fault1" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:message name="InMessage">
+        <wsdl:part element="ns0:InString" name="InPart"/>
+    </wsdl:message>
+    <wsdl:message name="OutMessage">
+        <wsdl:part element="ns0:OutString" name="OutPart"/>
+    </wsdl:message>
+    <wsdl:message name="FaultMessage">
+        <wsdl:part element="ns0:FaultString" name="part1"/>
+    </wsdl:message>
+</wsdl:definitions>

@@ -1,0 +1,91 @@
+     [echo] Script base is: "/opt/tibco/amx31x/administrator/3.1/scripts/basic_cli.xml"
+
+deploy.app:
+     [echo] 
+     [echo] 
+     [echo] Upload DAA using:
+     [echo] dataFile: /groupfiler/tests/tests/amsg/3.0/reports/linux24gl23_x86/amsg-3.1.5-2012-09-03-01-06-44/func/runtime/bat/bat_2node_hsql/6.9/amxdata.xml
+     [echo] remotePropsFile: /groupfiler/tests/tests/amsg/3.0/reports/linux24gl23_x86/amsg-3.1.5-2012-09-03-01-06-44/func/runtime/bat/bat_2node_hsql/admin.properties
+     [echo] objectSelector: DAA
+     [echo] action: add
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+[AMXAdminTask]  INFO - Processing 1 objects
+[AMXAdminTask]  INFO - Uploading DAA...
+[AMXAdminTask]  INFO - DAA location: BAT715/Deployment Artifacts/BAT715.daa
+[AMXAdminTask]  WARN - importResourceTemplates option is deprecated
+[AMXAdminTask] ERROR - Please see the cause for more details
+[AMXAdminTask] ERROR - com.tibco.amf.admin.api.core.exception.AdminException
+[AMXAdminTask] summary = Please see the cause for more details
+[AMXAdminTask] 
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.daa.AddAction.uploadDAAByServlet(AddAction.java:239)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.daa.AddAction.invoke(AddAction.java:91)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.Processor.invokeIndividualAction(Processor.java:576)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.Processor.invokeGenericAdd(Processor.java:490)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.Processor.invokeAction(Processor.java:377)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.Processor.processChild(Processor.java:261)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.Processor.process(Processor.java:148)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.Processor.processChildren(Processor.java:40)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.ant.AMXAdminTask.process(AMXAdminTask.java:352)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.ant.AMXAdminTask.execute(AMXAdminTask.java:272)
+[AMXAdminTask] 	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+[AMXAdminTask] 	at sun.reflect.GeneratedMethodAccessor6.invoke(Unknown Source)
+[AMXAdminTask] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[AMXAdminTask] 	at java.lang.reflect.Method.invoke(Method.java:601)
+[AMXAdminTask] 	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+[AMXAdminTask] 	at org.apache.tools.ant.Task.perform(Task.java:348)
+[AMXAdminTask] 	at org.apache.tools.ant.taskdefs.Sequential.execute(Sequential.java:68)
+[AMXAdminTask] 	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+[AMXAdminTask] 	at sun.reflect.GeneratedMethodAccessor6.invoke(Unknown Source)
+[AMXAdminTask] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[AMXAdminTask] 	at java.lang.reflect.Method.invoke(Method.java:601)
+[AMXAdminTask] 	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+[AMXAdminTask] 	at org.apache.tools.ant.Task.perform(Task.java:348)
+[AMXAdminTask] 	at org.apache.tools.ant.taskdefs.MacroInstance.execute(MacroInstance.java:398)
+[AMXAdminTask] 	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+[AMXAdminTask] 	at sun.reflect.GeneratedMethodAccessor6.invoke(Unknown Source)
+[AMXAdminTask] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[AMXAdminTask] 	at java.lang.reflect.Method.invoke(Method.java:601)
+[AMXAdminTask] 	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+[AMXAdminTask] 	at org.apache.tools.ant.Task.perform(Task.java:348)
+[AMXAdminTask] 	at org.apache.tools.ant.Target.execute(Target.java:390)
+[AMXAdminTask] 	at org.apache.tools.ant.Target.performTasks(Target.java:411)
+[AMXAdminTask] 	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+[AMXAdminTask] 	at org.apache.tools.ant.Project.executeTarget(Project.java:1368)
+[AMXAdminTask] 	at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)
+[AMXAdminTask] 	at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+[AMXAdminTask] 	at org.apache.tools.ant.Main.runBuild(Main.java:809)
+[AMXAdminTask] 	at org.apache.tools.ant.Main.startAnt(Main.java:217)
+[AMXAdminTask] 	at org.apache.tools.ant.launch.Launcher.run(Launcher.java:280)
+[AMXAdminTask] 	at org.apache.tools.ant.launch.Launcher.main(Launcher.java:109)
+[AMXAdminTask] Caused by: java.net.ConnectException: Connection refused
+[AMXAdminTask] 	at java.net.PlainSocketImpl.socketConnect(Native Method)
+[AMXAdminTask] 	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+[AMXAdminTask] 	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+[AMXAdminTask] 	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+[AMXAdminTask] 	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:391)
+[AMXAdminTask] 	at java.net.Socket.connect(Socket.java:579)
+[AMXAdminTask] 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[AMXAdminTask] 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+[AMXAdminTask] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[AMXAdminTask] 	at java.lang.reflect.Method.invoke(Method.java:601)
+[AMXAdminTask] 	at org.apache.commons.httpclient.protocol.ReflectionSocketFactory.createSocket(ReflectionSocketFactory.java:140)
+[AMXAdminTask] 	at org.apache.commons.httpclient.protocol.DefaultProtocolSocketFactory.createSocket(DefaultProtocolSocketFactory.java:125)
+[AMXAdminTask] 	at org.apache.commons.httpclient.HttpConnection.open(HttpConnection.java:707)
+[AMXAdminTask] 	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:387)
+[AMXAdminTask] 	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+[AMXAdminTask] 	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+[AMXAdminTask] 	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:323)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.daa.AddAction.uploadDAAByServlet(AddAction.java:225)
+[AMXAdminTask] 	... 39 more
+[AMXAdminTask] 
+[AMXAdminTask] ERROR - Error invoking action add on DAA: Please see the cause for more details
+
+BUILD FAILED
+/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/6.9/amxbuild.xml:5: The following error occurred while executing this line:
+/groupfiler/tests/tests/amsg/3.0/libraries/amx/bin/amx-macrodefs.xml:2661: Failed on error
+
+Total time: 8 seconds

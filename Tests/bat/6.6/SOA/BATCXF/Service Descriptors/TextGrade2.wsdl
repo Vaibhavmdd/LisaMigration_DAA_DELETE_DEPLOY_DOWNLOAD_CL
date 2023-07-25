@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://www.tibco.com/schemas/Class/Schema.xsd" xmlns:tns="http://xmlns.example.com/1212375771717" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xmlns.example.com/1212375771717">
+    <import namespace="http://www.tibco.com/schemas/Class/Schema.xsd" location="Class.xsd"/>
+    <message name="Input">
+        <part name="part1" element="ns:StudentNumber"/>
+    </message>
+    <message name="Output">
+        <part name="part1" element="ns:ClassRoom"/>
+    </message>
+    <portType name="TextGrade2PortType">
+        <operation name="GetClassRoom">
+            <input message="tns:Input"/>
+            <output message="tns:Output"/>
+        </operation>
+    </portType>
+</definitions>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+		
+	<Environment 
+		xsi:type="amxdata:Environment" 
+		description="QA Environment" 
+		name="QAEnvironment_na2devasgora03">
+		<Node xsi:type="amxdata:Node" name="QANode1" hostName="SystemHost_na2devasgora03">
+		    <ResourceInstance xsi:type="amxdata:ResourceInstance" name="httpConnectorCL3_36" resourceTemplateName="httpConnectorCL3_36"/>
+		</Node>
+		<Application
+			xsi:type="amxdata:Application"
+			name="cl3_36"
+			contact="Leveon Zhao"
+			description="SOAP-JavaQA(In-Out) with Common Logging">
+	
+			<Component xsi:type="amxdata:Component" name="Java3QA">
+	    		<Node name="QANode1" environmentName="QAEnvironment_na2devasgora03" />				  
+	    	        </Component>
+			<!--Service Binding-->
+			<PromotedService xsi:type="amxdata_base:Service_base" name="ServiceQA">
+	    		<Binding xsi:type="amxdata:Binding" name="SOAPService_BindingQA">	    		
+	    			<Node name="QANode1" environmentName="QAEnvironment_na2devasgora03" />		    		
+	    		</Binding>	
+			</PromotedService>
+			<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="helloworld3_36"/>	
+			<!--Configure Logging-->
+			<Logger xsi:type="amxdata:Logger" name ="com.tibco" additivity="false">
+				<AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="DEBUG">
+					<Appender xsi:type="amxdata_reference:LogAppender_reference" name="qaFileLogAppender36"/>
+				</AppenderRef>
+			</Logger>		
+		</Application>		
+	</Environment>
+	
+	<ResourceTemplate xsi:type="amxdata:HttpConnectorResourceTemplate" name="httpConnectorCL3_36" host="na2devasgora03" port="22062" headerBufferSize="512" requestBufferSize="512"	responseBufferSize="512" maxIdleTime="200000" lowResourceMaxIdleTime="512" description="This is HttpConnector RT"/>
+	
+	<!--Get the DAA-->
+	<DAA
+		xsi:type="amxdata:DAA"
+		description="DAA For CL3.36"
+		location="C:/Lisa1072/Projects/AMX/Tests/cl/3.36/helloworld/Deployment Artifacts/helloworld3_36.daa"
+		importResourceTemplates="true">
+	</DAA>
+	
+	<!--Define Log Appender-->     
+		<LogAppender
+		xsi:type="amxdata:FileLogAppender"
+		name="qaFileLogAppender36"
+		description="QA File LogAppender"
+		filePath="C:\Lisa1072\reports\CL3_36_Text.log"
+		maxSize="10240"
+		maxBackupNum="5"/>
+		
+	 
+</amxdata_base:Enterprise>

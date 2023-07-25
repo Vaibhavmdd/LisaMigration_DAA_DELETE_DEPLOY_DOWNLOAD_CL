@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+		
+	<Environment 
+		xsi:type="amxdata:Environment" 
+		description="System Host" 
+		name="SystemHost_na2devasgora03">
+	</Environment>
+		
+	<Host
+		xsi:type="amxdata:Host"
+		name="SystemHost"
+		description="QA"
+		hostType="JBoss"
+		username="root"
+		password="t"
+		managementUrl="service:jmx:rmi://127.0.0.1/jndi/rmi://127.0.0.1:1090/jmxconnector">
+       <Logger xsi:type="amxdata:Logger" name ="root" additivity="false">
+				    <AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="INFO">
+					  <Appender xsi:type="amxdata_reference:LogAppender_reference" name="qaFileLogAppender2_15"/>
+				    </AppenderRef>
+		   </Logger>
+	</Host>
+	
+	<!--Define Log Appender-->     
+		<LogAppender
+		xsi:type="amxdata:FileLogAppender"
+		name="qaFileLogAppender2_15"
+	  description="QA File LogAppender"
+		filePath="C:/Lisa1072/reports/CL2_15_Text.log"
+		maxSize="10240"
+		maxBackupNum="5"/>
+		 
+</amxdata_base:Enterprise>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:compositenotation="http://www.tibco.com/models/compositenotation" xmlns:java="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/java" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.1/notation" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmlns:soapbt="http://xsd.tns.tibco.com/amf/models/sca/binding/soap" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmi:id="_sBqbUcRsEd-BlOF2Kok45g" targetNamespace="http://www.example.com/JmsAppenderForPayload" name="JmsAppenderForPayload" compositeext:version="1.0.0.qualifier" compositeext:formatVersion="2">
+  <sca:service xmi:id="_sDxUJcRsEd-BlOF2Kok45g" name="asyncAppender" promote="PayloadJMSAppender/AsyncAppender">
+    <sca:interface.wsdl xmi:id="_sDxUJsRsEd-BlOF2Kok45g" interface="http://www.example.org/asyncAppender/#wsdl.interface(asyncAppender)" scaext:wsdlLocation="../Service%20Descriptors/AsyncAppener.wsdl"/>
+    <sca:binding.sca xmi:id="_sDxUJ8RsEd-BlOF2Kok45g" name="Virtualization"/>
+    <soapbt:binding.soap.service xmi:id="_sDxUKcRsEd-BlOF2Kok45g" name="Binding00" transportBindingType="HTTP" attachmentStyle="DOCUMENT" portType="../Service%20Descriptors/AsyncAppener.wsdl#//@ePortTypes.0">
+      <operationConfiguration xmi:id="_sFM3gcRsEd-BlOF2Kok45g" operation="../Service%20Descriptors/AsyncAppener.wsdl#//@ePortTypes.0/@eOperations.0" action="testAsyncAppender">
+        <messageConfiguration xmi:id="_sFM3gsRsEd-BlOF2Kok45g" message="../Service%20Descriptors/AsyncAppener.wsdl#//@eMessages.0">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_sFM3g8RsEd-BlOF2Kok45g" messagePart="../Service%20Descriptors/AsyncAppener.wsdl#//@eMessages.0/@eParts.0"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_sFM3hMRsEd-BlOF2Kok45g" message="../Service%20Descriptors/AsyncAppener.wsdl#//@eMessages.1" messageDirection="OUTPUT">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_sFM3hcRsEd-BlOF2Kok45g" messagePart="../Service%20Descriptors/AsyncAppener.wsdl#//@eMessages.1/@eParts.0"/>
+        </messageConfiguration>
+        <bindingType xmi:id="_sFM3hsRsEd-BlOF2Kok45g"/>
+      </operationConfiguration>
+      <inboundConfiguration xsi:type="soapbt:HttpTransportConfiguration" xmi:id="_sFfLYMRsEd-BlOF2Kok45g" endpointURI="/asyncAppender/"/>
+      <defaultBindingType xmi:id="_sFM3gMRsEd-BlOF2Kok45g"/>
+    </soapbt:binding.soap.service>
+    <scact:bindingAdjunct xmi:id="_sDxUKMRsEd-BlOF2Kok45g" bindingName="Virtualization"/>
+    <scact:bindingAdjunct xmi:id="_sFfLYcRsEd-BlOF2Kok45g" bindingName="Binding00">
+      <sca:property xmi:id="_sFfLYsRsEd-BlOF2Kok45g" mustSupply="true" name="HttpInboundConnectionConfig" type="xsd:string" scaext:simpleValue="httpConnector"/>
+    </scact:bindingAdjunct>
+  </sca:service>
+  <sca:component xmi:id="_sDxUIMRsEd-BlOF2Kok45g" name="PayloadJMSAppender" compositeext:version="1.0.0.qualifier">
+    <sca:implementation.java xmi:id="_sDxUIcRsEd-BlOF2Kok45g" class="com.sample.jmsappenderforpayload.PayloadJMSAppender">
+      <scaext:packageVersionRange xmi:id="_sDxUIsRsEd-BlOF2Kok45g" lower="1.0.0" upper="2.0.0"/>
+      <java:featureDependency xmi:id="_1fdLcMRsEd-BlOF2Kok45g" name="JmsAppenderForPayload.JmsAppenderForPayload.customfeature.id">
+        <range xmi:id="_1fdLccRsEd-BlOF2Kok45g" lower="1.0.0" upper="2.0.0"/>
+      </java:featureDependency>
+    </sca:implementation.java>
+    <sca:service xmi:id="_sDxUI8RsEd-BlOF2Kok45g" name="AsyncAppender">
+      <sca:interface.wsdl xmi:id="_2QWc4MRsEd-BlOF2Kok45g" interface="http://www.example.org/asyncAppender/#wsdl.interface(asyncAppender)" scaext:wsdlLocation="../Service%20Descriptors/AsyncAppener.wsdl"/>
+    </sca:service>
+  </sca:component>
+  <notation:diagram xsi:type="notation:Diagram" xmi:id="_sDrNgMRsEd-BlOF2Kok45g" type="Composite" element="#/" name="SCA Composite" measurementUnit="Pixel">
+    <children xmi:id="_xL2ZgMRyEd-fmMVgPTGMcA" type="2001" element="#_sBqbUcRsEd-BlOF2Kok45g">
+      <children xmi:id="_xL_jcMRyEd-fmMVgPTGMcA" type="5004"/>
+      <children xmi:id="_xMItYMRyEd-fmMVgPTGMcA" type="7001">
+        <styles xsi:type="notation:SortingStyle" xmi:id="_xMItYcRyEd-fmMVgPTGMcA"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_xMItYsRyEd-fmMVgPTGMcA"/>
+      </children>
+      <children xmi:id="_xMR3UMRyEd-fmMVgPTGMcA" type="7002">
+        <styles xsi:type="notation:SortingStyle" xmi:id="_xMR3UcRyEd-fmMVgPTGMcA"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_xMR3UsRyEd-fmMVgPTGMcA"/>
+      </children>
+      <children xmi:id="_xMR3U8RyEd-fmMVgPTGMcA" type="7003">
+        <children xmi:id="_xSJ10MRyEd-fmMVgPTGMcA" type="3003" element="#_sDxUIMRsEd-BlOF2Kok45g">
+          <children xmi:id="_xSJ11sRyEd-fmMVgPTGMcA" type="5001"/>
+          <children xmi:id="_xSS_wMRyEd-fmMVgPTGMcA" type="7004">
+            <styles xsi:type="notation:SortingStyle" xmi:id="_xSS_wcRyEd-fmMVgPTGMcA"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_xSS_wsRyEd-fmMVgPTGMcA"/>
+          </children>
+          <children xmi:id="_xSS_w8RyEd-fmMVgPTGMcA" type="7005">
+            <styles xsi:type="notation:SortingStyle" xmi:id="_xSS_xMRyEd-fmMVgPTGMcA"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_xSS_xcRyEd-fmMVgPTGMcA"/>
+          </children>
+          <children xmi:id="_xSS_xsRyEd-fmMVgPTGMcA" type="7006">
+            <children xmi:id="_xScJsMRyEd-fmMVgPTGMcA" visible="false" type="7600">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_xScJscRyEd-fmMVgPTGMcA" fontHeight="10"/>
+              <element xsi:nil="true"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_xScJssRyEd-fmMVgPTGMcA"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_xSS_x8RyEd-fmMVgPTGMcA"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_xSS_yMRyEd-fmMVgPTGMcA"/>
+            <styles xsi:type="compositenotation:CollapseStyle" xmi:id="_xSS_ycRyEd-fmMVgPTGMcA"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_xSJ10cRyEd-fmMVgPTGMcA" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_xSJ10sRyEd-fmMVgPTGMcA" gradStartColor="16642791" gradEndColor="14072216"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_xSJ108RyEd-fmMVgPTGMcA"/>
+          <styles xsi:type="compositenotation:CustomComponentIconStyle" xmi:id="_xSJ11MRyEd-fmMVgPTGMcA"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_xSJ11cRyEd-fmMVgPTGMcA" x="88" y="99"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_xMR3VMRyEd-fmMVgPTGMcA"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_xMR3VcRyEd-fmMVgPTGMcA"/>
+      </children>
+      <children xmi:id="_xMR3VsRyEd-fmMVgPTGMcA" type="7007">
+        <children xmi:id="_xMR3WcRyEd-fmMVgPTGMcA" visible="false" type="7600">
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_xMR3WsRyEd-fmMVgPTGMcA" fontHeight="10"/>
+          <element xsi:nil="true"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_xMR3W8RyEd-fmMVgPTGMcA"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_xMR3V8RyEd-fmMVgPTGMcA"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_xMR3WMRyEd-fmMVgPTGMcA"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" xmi:id="_xL2ZgcRyEd-fmMVgPTGMcA" fontHeight="10"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_xL2ZgsRyEd-fmMVgPTGMcA" x="10" y="10" width="0" height="0"/>
+    </children>
+    <styles xsi:type="notation:DiagramStyle" xmi:id="_sDrNgcRsEd-BlOF2Kok45g"/>
+    <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_sDrNgsRsEd-BlOF2Kok45g"/>
+    <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_sDrNg8RsEd-BlOF2Kok45g"/>
+  </notation:diagram>
+</sca:composite>

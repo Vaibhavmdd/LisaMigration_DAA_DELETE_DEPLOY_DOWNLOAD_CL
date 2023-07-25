@@ -1,0 +1,22 @@
+<project default="test">
+  <import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+
+	<target name="deploy.app" >
+		<setup.ri dataFile="${amxConfigFile}" timeout="${deployTimeout}" />	
+		<upload.daa dataFile="${amxConfigFile}" />
+		<create.app dataFile="${amxConfigFile}" />
+		<map.app.to.node dataFile="${amxConfigFile}" />
+		<deploy.app dataFile="${amxConfigFile}" appName="bat65_c2" timeout="${deployTimeout}" />
+		<deploy.app dataFile="${amxConfigFile}" appName="bat65_c1" timeout="${deployTimeout}" />
+	</target>
+
+	
+	<target name="undeploy.app">	
+		<undeploy.app dataFile="${amxConfigFile}" appName="bat65_c1" timeout="${deployTimeout}" />
+		<undeploy.app dataFile="${amxConfigFile}" appName="bat65_c2" timeout="${deployTimeout}" />	
+		<delete.app dataFile="${amxConfigFile}" />			
+		<!-- unstall the httpConnect rt, it, JDBC rt, ri -->
+		<cleanup.ri dataFile="${amxConfigFile}" />
+	</target>
+
+</project>

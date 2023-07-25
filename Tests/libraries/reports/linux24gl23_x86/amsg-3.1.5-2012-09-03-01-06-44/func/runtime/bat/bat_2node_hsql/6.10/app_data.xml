@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<amxdata_base:Enterprise 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types" 
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base" 
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference" 
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types platform:/plugin/com.tibco.amf.tools.admincligen/model/cli_data.ecore#//types http://tibco.com/amxadministrator/command/line/types_base platform:/plugin/com.tibco.amf.tools.admincligen/model/cli_data.ecore http://tibco.com/amxadministrator/command/line/types_reference platform:/plugin/com.tibco.amf.tools.admincligen/model/cli_data.ecore#//types/types_reference">
+	
+	<SVar xsi:type="amxdata_base:SubstitutionVariable" name="JmsProviderUrl" type="String" value="tibjmsnaming://AMX-BACKEND.na.tibco.com:7622" description="BAT 6.10: JMS Connection for JMS Transport"/>
+	
+	<Environment 
+		xsi:type="amxdata:Environment" 
+		name="QAEnvironment_amxrel2qa1.na.tibco.com">
+		<Node xsi:type="amxdata:Node" 
+			name="QANode1" 
+			hostName="SystemHost_amxrel2qa1.na.tibco.com" 
+			description="QA Node" 
+			contact="TIBCO" >
+		    <ResourceInstance xsi:type="amxdata:ResourceInstance" 
+				name="httpConnector_6_10" 
+				resourceTemplateName="httpConnector_6_10"/>
+		    <ResourceInstance xsi:type="amxdata:ResourceInstance"
+				name="bat6_10_queue_connection_JNDI"
+				resourceTemplateName="bat6_10_queue_connection_JNDI" />			
+			<ResourceInstance xsi:type="amxdata:ResourceInstance"
+				name="bat6_10_queue_connection"
+				resourceTemplateName="bat6_10_queue_connection" />	
+		</Node>
+		<Application
+			xsi:type="amxdata:Application"
+			name="com.tibco.amx.bt.adapter.app"
+			contact="TIBCO Software"
+			description="Adapter Binding Type">
+			<Node 
+				name="QANode1" 
+				environmentName="QAEnvironment_amxrel2qa1.na.tibco.com"/>
+			<Node 
+				name="QANode2" 
+				environmentName="QAEnvironment_amxrel2qa1.na.tibco.com"/>
+			<ApplicationTemplate 
+				xsi:type="amxdata_reference:ApplicationTemplate_reference" 
+				name="com.tibco.amx.bt.adapter.application"/>
+		</Application> 
+		<Application 
+			xsi:type="amxdata:Application" 
+			name="BAT6_10" 
+			importResourceTemplates="true">
+			<Component xsi:type="amxdata_base:Component_base" 
+				name="AE2SOAP">
+				<Node xsi:type="amxdata_reference:Node_reference" 
+					name="QANode2" 
+					environmentName="QAEnvironment_amxrel2qa1.na.tibco.com"/>
+			</Component>
+			<PromotedService xsi:type="amxdata_base:Service_base" 
+				name="SOAPService">
+				<Binding xsi:type="amxdata_base:Binding_base" 
+					name="Binding_HTTP1">
+					<Node xsi:type="amxdata_reference:Node_reference" 
+						name="QANode1" 
+						environmentName="QAEnvironment_amxrel2qa1.na.tibco.com"/>
+				</Binding>
+			</PromotedService>
+			<PromotedReference xsi:type="amxdata_base:Reference_base" 
+				name="AEReference">
+				<Binding xsi:type="amxdata_base:Binding_base" 
+					name="Binding_AE1">
+					<Node xsi:type="amxdata_reference:Node_reference" 
+						name="QANode1" 
+						environmentName="QAEnvironment_amxrel2qa1.na.tibco.com"/>
+					<Property  
+						xsi:type="amxdata:Property" 
+						name="rpcTimeout"  
+						value="10000"/>
+				</Binding>
+			</PromotedReference>
+			<ApplicationTemplate 
+				xsi:type="amxdata_reference:ApplicationTemplate_reference" 
+				name="BAT6_10"/>
+			<!--
+			<ImportResourceTemplateName>bat6_10_queue_connection</ImportResourceTemplateName>
+			<ImportResourceTemplateName>bat6_10_queue_connection_JNDI</ImportResourceTemplateName>
+			-->
+		</Application>
+	</Environment>
+	<ResourceTemplate 
+		xsi:type="amxdata:HttpConnectorResourceTemplate" 
+		name="httpConnector_6_10" 
+		host="amxrel2qa1.na.tibco.com" 
+		port="5015" 
+		headerBufferSize="512" 
+		requestBufferSize="512"	
+		responseBufferSize="512" 
+		maxIdleTime="200000" 
+		lowResourceMaxIdleTime="512" 
+		description="HttpConnector for BAT 6.10"/>
+	<DAA 
+		xsi:type="amxdata:DAA" 
+		location="SOA6.10/Deployment Artifacts/BAT6_10.daa"/>
+</amxdata_base:Enterprise>

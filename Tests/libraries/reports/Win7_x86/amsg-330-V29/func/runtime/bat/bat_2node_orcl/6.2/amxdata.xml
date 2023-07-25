@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+		
+	<Environment 
+		xsi:type="amxdata:Environment" 
+		description="QA Environment" 
+		name="QAEnvironment_jpandya-z400">
+		<Node 
+			xsi:type="amxdata:Node" 
+			description="QA Node 1" 
+			contact="TIBCO QA" 
+			hostName="SystemHost_jpandya-z400" 
+			name="QANode1">
+			<Logger xsi:type="amxdata:Logger" name ="com.tibco.amx.it.mediation" additivity="true">
+				<AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="DEBUG">
+					<Appender xsi:type="amxdata_reference:LogAppender_reference" name="qaFileLogAppenderBAT62"/>
+				</AppenderRef>
+			</Logger>
+		</Node>	
+	 	<Application
+			xsi:type="amxdata:Application"
+			name="bat62"
+			contact="Gavin Chen"
+			description="BAT 6.2 SOAP Mediation Spring with Reliable Message">
+			<Component xsi:type="amxdata:Component" name="MediationComp">
+	    		<Node name="QANode1" environmentName="QAEnvironment_jpandya-z400" />		    	              
+			</Component> 
+			<Component xsi:type="amxdata:Component" name="SpringComp">
+	    		<Node name="QANode2" environmentName="QAEnvironment_jpandya-z400" />		
+	    	</Component>
+			<PromotedService xsi:type="amxdata_base:Service_base" name="CompanyService">
+	    		<Binding xsi:type="amxdata:Binding" name="SOAPServiceBinding">	    		
+	    			<Node name="QANode1" environmentName="QAEnvironment_jpandya-z400" />	 	    		
+	    		</Binding>	
+			</PromotedService>
+			<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="BAT62"/>
+			
+			<Logger xsi:type="amxdata:Logger" name ="com.tibco" additivity="false">
+				<AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="DEBUG">
+					<Appender xsi:type="amxdata_reference:LogAppender_reference" name="qaFileLogAppenderBAT62"/>
+				</AppenderRef>
+			</Logger>
+		</Application>	
+	</Environment>
+	<!--Get the DAA-->
+	<DAA
+		xsi:type="amxdata:DAA"
+		description="DAA For BAT 6.2"
+		location="BAT62/Deployment Artifacts/BAT62.daa"
+		importResourceTemplates="true">
+	</DAA>
+	
+	<LogAppender
+		xsi:type="amxdata:FileLogAppender"
+		name="qaFileLogAppenderBAT62"
+		description="QA File LogAppender for BAT 62"
+		filePath="Z:/tests/amsg/3.0/reports/Win7_x86/amsg-330-V29/func/runtime/bat/bat_2node_orcl/6.2/BAT62.log"
+		maxSize="10240"
+		maxBackupNum="5"/>
+
+</amxdata_base:Enterprise>

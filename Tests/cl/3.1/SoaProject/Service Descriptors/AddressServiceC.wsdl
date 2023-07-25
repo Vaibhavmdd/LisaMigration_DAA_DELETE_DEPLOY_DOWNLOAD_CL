@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created by TIBCO WSDL-->
+<wsdl:definitions xmlns:tns="http://com.web.service/soap/http/amxservice/addressservice" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns0="http://tibco.com/matrix/qa/xsd/address" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="AddressPort" targetNamespace="http://com.web.service/soap/http/amxservice/addressservice">
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://tibco.com/matrix/qa/xsd/address" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:simpleType name="Address">
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="1"/>
+                    <xs:maxLength value="500"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:element name="addressInfo">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="City" type="xs:string"/>
+                        <xs:element name="State" type="xs:string"/>
+                        <xs:element name="Zip" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="GetAddress">
+        <wsdl:part name="request" element="ns0:addressInfo"/>
+    </wsdl:message>
+    <wsdl:message name="ReturnAddress">
+        <wsdl:part name="response" type="ns0:Address"/>
+    </wsdl:message>
+    <wsdl:portType name="AddressPort">
+        <wsdl:operation name="GetAddress">
+            <wsdl:input message="tns:GetAddress"/>
+            <wsdl:output message="tns:ReturnAddress"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="SOAPService_Binding" type="tns:AddressPort">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="GetAddress">
+            <wsdl:documentation/>
+            <soap:operation style="document" soapAction="GetAddress"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="request"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="response"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="AddressPort">
+        <wsdl:port name="SOAPService_Binding" binding="tns:SOAPService_Binding">
+            <soap:address location="http://localhost:30301/addressPort/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

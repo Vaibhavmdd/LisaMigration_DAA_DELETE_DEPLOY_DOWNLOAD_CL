@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+		
+	<Environment 
+		xsi:type="amxdata:Environment" 
+		description="QA Environment" 
+		name="[[env.name]]">
+			
+		<Application
+			xsi:type="amxdata:Application"
+			name="bat53"
+			contact="Leveon Zhao"
+			description="BAT 5.3 SOAP-JavaSpring (In-Only) with Common Logging">
+			<!--Component Java1-->
+			<Component xsi:type="amxdata:Component" name="Java1">
+	    		<Node name="[[env.node1.name]]" environmentName="[[env.name]]" />	
+				<!--Configure Logging-->
+				<Logger xsi:type="amxdata:Logger" name ="com.tibco" additivity="false">
+					<AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="DEBUG">
+						<Appender xsi:type="amxdata_reference:LogAppender_reference" name="qaFileLogAppender3"/>
+					</AppenderRef>
+				</Logger>	              
+			</Component> 
+			<!--Component Spring2-->
+			<Component xsi:type="amxdata:Component" name="Spring2">
+	    		<Node name="[[env.node2.name]]" environmentName="[[env.name]]" />				  
+	    	</Component>
+			<!--Service Binding-->
+			<PromotedService xsi:type="amxdata_base:Service_base" name="helloworldService">
+	    		<Binding xsi:type="amxdata:Binding" name="SOAPServiceBinding">	    		
+	    			<Node name="[[env.node1.name]]" environmentName="[[env.name]]" />		    		
+	    		</Binding>	
+			</PromotedService>
+			<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="BAT53"/>	
+			<!--Configure Logging-->
+			<Logger xsi:type="amxdata:Logger" name ="com.tibco" additivity="false">
+				<AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="DEBUG">
+					<Appender xsi:type="amxdata_reference:LogAppender_reference" name="qaFileLogAppender4"/>
+				</AppenderRef>
+			</Logger>		
+		</Application>		
+	</Environment>
+	
+	<!--Get the DAA-->
+	<DAA
+		xsi:type="amxdata:DAA"
+		description="DAA For BAT 5.3"
+		location="[[projectloc]]BAT53/Deployment Artifacts/BAT53.daa"
+		importResourceTemplates="true">
+	</DAA>
+	
+	<!--Define Log Appender-->     
+	<LogAppender
+		xsi:type="amxdata:FileLogAppender"
+		name="qaFileLogAppender3"
+		description="QA File LogAppender3"
+		filePath="[[tibco.test.case.log.dir]]/BAT53_Java.log"
+		maxSize="10240"
+		maxBackupNum="5"/>
+		
+	<LogAppender
+		xsi:type="amxdata:FileLogAppender"
+		name="qaFileLogAppender4"
+		description="QA File LogAppender4"
+		filePath="[[tibco.test.case.log.dir]]/BAT53_Application.log"
+		maxSize="10240"
+		maxBackupNum="5"/>
+
+</amxdata_base:Enterprise>

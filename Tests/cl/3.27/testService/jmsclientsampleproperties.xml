@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<SamplePorperties>
+  <JMSClientConfiguration>
+    <ConnectionFactoryJNDIName>GenericConnectionFactory</ConnectionFactoryJNDIName>
+    <ContextFactoryName>com.tibco.tibjms.naming.TibjmsInitialContextFactory</ContextFactoryName>
+    <UserName>admin</UserName>
+    <Password></Password>
+    <MessageQueueName>cl_logservice_queue</MessageQueueName>
+    <PayloadQueueName>cl_payload_queue</PayloadQueueName>
+    <ServerURL>tibjmsnaming://localhost:7222</ServerURL>
+  </JMSClientConfiguration>
+  <MessageProducerConfiguration>
+  <!-- total message=MessageNumber*Times -->
+    <MessageLength>1</MessageLength><!-- LogserviceSize bytes -->
+    <MessageNumber>110000</MessageNumber><!-- LogserviceNumber -->
+    <HasPayload>false</HasPayload><!-- true of false -->
+    <SecondControl>false</SecondControl><!-- true or false,whether to control average speed of seeding message -->
+    <MessNumOneSecond>10</MessNumOneSecond><!-- how many message in one second,seems max can't exceed 1250/s ,size 1 byte-->
+    <PayloadSize>1024</PayloadSize><!-- bytes -->
+    <PayloadNumber>1</PayloadNumber><!--one message with how many payload-->
+    <Times>1</Times><!-- no  -->
+  </MessageProducerConfiguration>  
+</SamplePorperties>

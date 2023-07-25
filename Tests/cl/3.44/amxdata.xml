@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+	xmlns:amxdata_jmssr="http://tibco.com/amxadministrator/command/line/types_jmssr"
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd http://tibco.com/amxadministrator/command/line/types_jmssr ../schemas/jmssr.xsd">
+
+	<Environment 
+		xsi:type="amxdata:Environment" 
+		description="QA Environment" 
+		name="[[env.name]]"> 
+		<Node xsi:type="amxdata:Node" name="[[env.node1.name]]" hostName="[[host.name]]">
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="MTOM_32_1_11_Consumer_httpConnector" resourceTemplateName="MTOM_32_1_11_Consumer_httpConnector"/>
+		    <ResourceInstance xsi:type="amxdata:ResourceInstance" name="MTOM_32_1_11_HTTPClient" resourceTemplateName="MTOM_32_1_11_HTTPClient"/>
+			
+		    
+		 <Logger xsi:type="amxdata:Logger" name ="com.tibco.amx.messageflow" additivity="true">
+				<AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="DEBUG">
+					<Appender xsi:type="amxdata_reference:LogAppender_reference" name="qaJMSLogAppender2702"/>
+				</AppenderRef>
+		</Logger>
+				
+		</Node>
+		<Node xsi:type="amxdata:Node" name="[[env.node2.name]]" hostName="[[host.name]]">
+		    <ResourceInstance xsi:type="amxdata:ResourceInstance" name="MTOM_32_1_11_Provider_httpConnector" resourceTemplateName="MTOM_32_1_11_Provider_httpConnector"/>
+		</Node>
+		
+		
+		<Application
+			xsi:type="amxdata:Application"
+			name="CL-2702"
+			contact="Duke Dai"
+			description="MTOM">
+     
+          <Component xsi:type="amxdata:Component" name="Component1">
+		      <Node name="[[env.node1.name]]" environmentName="[[env.name]]"/>				
+          </Component> 
+      
+          <Component xsi:type="amxdata:Component" name="Component2">
+		      <Node name="[[env.node1.name]]" environmentName="[[env.name]]"/>				
+          </Component>
+      
+          <PromotedService xsi:type="amxdata_base:Service_base" name="DownloadFile">
+				<Binding xsi:type="amxdata:Binding" name="SOAPService_Binding1">
+					<Node name="[[env.node1.name]]" environmentName="[[env.name]]" />				
+				</Binding>
+		  </PromotedService>	    
+			
+		  <PromotedService xsi:type="amxdata_base:Service_base" name="DownloadFile1">
+				<Binding xsi:type="amxdata:Binding" name="SOAPService_Binding1">
+					<Node name="[[env.node2.name]]" environmentName="[[env.name]]" />				
+				</Binding>
+		  </PromotedService>	 
+			
+		  <PromotedReference xsi:type="amxdata_base:Reference_base" name="DownloadFile1">
+				<Binding xsi:type="amxdata:Binding" name="SOAPReference_Binding1">
+                     <Node name="[[env.node1.name]]" environmentName="[[env.name]]" />                
+				</Binding>
+		  </PromotedReference>
+      
+           <ResourceTemplate xsi:type="amxdata:HttpConnectorResourceTemplate"
+		            name="MTOM_32_1_11_Consumer_httpConnector" 
+		            host="[[host1]]"
+		            port="[[clientPort]]"
+		            headerBufferSize="4096"
+		            requestBufferSize="8192"
+		            responseBufferSize="24576"
+		            maxIdleTime="200000" 
+	            	lowResourceMaxIdleTime="-1"
+		            description="This is Http Connector Resource Template"/>
+	       <ResourceTemplate xsi:type="amxdata:HttpConnectorResourceTemplate"
+	            	name="MTOM_32_1_11_Provider_httpConnector" 
+	            	host="[[host1]]"
+		            port="[[serverPort]]"
+		            headerBufferSize="4096"
+		            requestBufferSize="8192"
+		            responseBufferSize="24576"
+		            maxIdleTime="200000" 
+		            lowResourceMaxIdleTime="-1"
+		            description="This is Http Connector Resource Template"/>
+	       <ResourceTemplate xsi:type="amxdata:HttpClientResourceTemplate"
+		            name="MTOM_32_1_11_HTTPClient" 
+		            isAcceptRedirect="true"
+		            connectionTimeout="8888"
+		            host="[[host1]]"
+		            port="[[serverPort]]" 
+		            description="This is Http Client Resource Template"/>		    
+			<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="MTOM_32_1_11"/>
+			
+		</Application>		
+	</Environment>	 
+	
+	
+	
+	<DAA
+		xsi:type="amxdata:DAA"
+		description="DAA For mtom"
+		location="mtom1/Deployment Artifacts/MTOM_32_1_11.daa"
+	  importResourceTemplates="false">
+	</DAA>
+	
+	<LogAppender 
+  	xsi:type="amxdata:JmsLogAppender"
+  	name="qaJMSLogAppender2702"
+  	description="QA JMS LogAppender344"  
+  	jmsConnectionName="qaJMSLogAppender344_jndiConnectionConfig" 
+  	jmsConnectionFactoryName="qaJMSLogAppender344_jmsConnectionFactory" 
+  	jmsDestination="qaJMSLogAppender344_jmsDestination"/>
+		
+		
+	<amxdata_jmssr:JNDIConnectionConfigurationResourceTemplate 
+		xsi:type="amxdata_jmssr:JNDIConnectionConfigurationResourceTemplate" 
+		name="qaJMSLogAppender344_jndiConnectionConfig" 
+		initialContextFactory="com.tibco.tibjms.naming.TibjmsInitialContextFactory" 
+		description="JndiConnectionConfiguration" 
+		providerUrl="tcp://[[emshost]]:[[emsport]]">
+		<InlineCredentials 
+			username="[[emsuser]]" 
+			password="[[emspwd]]"/>
+	</amxdata_jmssr:JNDIConnectionConfigurationResourceTemplate>
+	<amxdata_jmssr:JNDIConnectionFactoryResourceTemplate 
+		xsi:type="amxdata_jmssr:JNDIConnectionFactoryResourceTemplate" 
+		name="qaJMSLogAppender344_jmsConnectionFactory" 
+		jndiName="[[jndiconnectionfactory]]" 
+		jndiConnectionConfigurationName="qaJMSLogAppender344_jndiConnectionConfig" 
+		description="JndiConnectionFactory"/>
+	<amxdata_jmssr:JNDIDestinationResourceTemplate 
+		xsi:type="amxdata_jmssr:JNDIDestinationResourceTemplate" 
+		name="qaJMSLogAppender344_jmsDestination" 
+		jndiName="[[commonlogging.logservice.emsqueue]]" 
+		jndiConnectionConfigurationName="qaJMSLogAppender344_jndiConnectionConfig" 
+		description="JndiDestination"/>
+	
+</amxdata_base:Enterprise>

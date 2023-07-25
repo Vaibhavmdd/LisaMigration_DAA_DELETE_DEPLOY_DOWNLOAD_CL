@@ -1,0 +1,16 @@
+<project default="deploy.app">
+	<import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+	
+	<target name="CreateAppender">
+         <create.log.appender dataFile="${amxConfigFile}" />
+	</target>
+	
+	 <target name="deploy.logging">
+        <set.logger.to.node objectSelector="Environment/Node/Logger[@name = 'com.tibco'] " dataFile="${amxConfigFile}"  />
+		<deploy.action objector="Environment/Node" description="Apply Node Logger" dataFile="${amxConfigFile}" />
+	</target>
+	
+
+	
+	
+</project>

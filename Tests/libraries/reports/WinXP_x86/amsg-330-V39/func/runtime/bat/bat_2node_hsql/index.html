@@ -1,0 +1,138 @@
+<hr><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>TIBCO Product Engineering Test Report</title>
+</head>
+<body>
+<center>
+<h1>
+<font color="0000ff">TIBCO ActiveMatrix Service Grid</font>
+</h1>
+<h1>
+<font color="0000ff">Automation Tests Report</font>
+</h1>
+<table cellspacing="1" cellpadding="5" border="1">
+<tr>
+<th>Report Time</th><th>Product Version</th><th>Platform</th><th>Test Machine</th><th>User Name</th>
+</tr>
+<tr>
+<td>2013/08/08 Thu 14:24:31</td><td>Version 3.3.0 build V39</td><td>WinXP_x86</td><td><a target="_blank" href="http://qa.na.tibco.com/php/tsi_tests_host.php?oracle_sid=bwqadb&amp;hostname=hparmar-t410">hparmar-t410</a></td><td>superuser</td>
+</tr>
+</table>
+</center>
+<hr>
+<h2>
+<font color="0000ff">Test Set Summary</font>
+</h2>
+<table cellspacing="1" cellpadding="5" border="1">
+<tr>
+<th>Test Set Name</th><th>PASSED</th><th>FAILED</th><th>ERROR</th><th>TOTAL</th><th>Product Quality</th>
+</tr>
+<tr>
+<td>bat_2node_hsql</td><td align="right">3</td><td align="right">2</td><td align="right">0</td><td align="right">5</td><td><applet height="68" width="250" code="barchart.class"><param value="3" name="columns"><param value="horizontal" name="orientation"><param value="2" name="scale"><param value="%" name="unit_string"><param value="60" name="c1"><param value="green" name="c1_color"><param value="solid" name="c1_style"><param value="40" name="c2"><param value="red" name="c2_color"><param value="solid" name="c2_style"><param value="0" name="c3"><param value="gray" name="c3_color"><param value="solid" name="c3_style"></applet></td>
+</tr>
+</table>
+<hr>
+<h3>
+<a name="#testSet-bat_2node_hsql"></a><font color="0000ff">bat_2node_hsql Detailed Test Case Report</font>
+</h3>
+<table cellspacing="1" cellpadding="5" border="1">
+<tr>
+<th>Case ID</th><th>Description</th><th>Test Result</th><th>Diagnostic Files</th><th>Test Directories</th>
+</tr>
+<tr>
+<td><a name="#bat_2node_hsql-setup"><font color="black">setup</font></a></td><td><font color="black">
+<pre>Create TPShell and Provision DB driver if Oracle/SQLServer/DB2
+Bootstrap TIBCOHost 
+Bootstrap Admin SystemNode
+Setup Nodes (osgi console port 1129 and 1139)
+Set Node Loggers
+Install Resources Instances
+Deploy Dashboard
+Deploy MCR (optional) 
+Deploy Log Service (optional)
+Deploy Payload Service (optional)
+Deploy Mediation</pre>
+</font></td><td><font color="black">PASSED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/runtime/bat/setup">Source</a>&nbsp;
+				<a href="setup">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#bat_2node_hsql-5.6"><font color="red">5.6</font></a></td><td><font color="red">
+<pre>SOAP over JMS with Nested composite.
+Pass properties through nested composites.
+JMS RT with inline credentials imported from design-time.
+
+Scenario: SOAP(JMS) &lt;-&gt; Composite1 &lt;-&gt; Composite2 &lt;-&gt; SOAP(JMS) | SOAP(JMS) &lt;-&gt; Java
+          Nested Composite: SOAP &lt;-&gt; Java
+MEP: In-Out</pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/runtime/bat/5.6">Source</a>&nbsp;
+				<a href="5.6">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#bat_2node_hsql-5.8"><font color="black">5.8</font></a></td><td><font color="black">
+<pre>Description : Test Prepare-to-Undeploy intent.
+              Node-level Substitution Variables are used for http Connector and Node name.
+              
+Scenario: Composite: SOAP BT(HTTP) &lt;-&gt; Mock
+
+MEP: In-Out</pre>
+</font></td><td><font color="black">PASSED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/runtime/bat/5.8">Source</a>&nbsp;
+				<a href="5.8">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#bat_2node_hsql-5.21"><font color="red">5.21</font></a></td><td><font color="red">
+<pre>SOAPException with SOAP/JMS
+Comp1:SOAP(JMS)&lt;-&gt;JAVA1&lt;-&gt;JAVA2&lt;-&gt;SOAP(JMS)
+Comp2:SOAP(JMS)&lt;-&gt;JAVA3
+
+1. Java3 throws undeclared. 
+Caught by Java2 that throws a SOAPException with custom faultcode/faultrole
+Caught by Java1 that throws SOAPException with new faultcode/faultrole
+2. Same but use SOAPException constructor to have faultcode as string
+3. Java3 throws declared with null details
+Java2 receives it as SOAPException
+Caught by Java1 that throws the same
+4. Java1 throws SOAPException</pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/runtime/bat/5.21">Source</a>&nbsp;
+				<a href="5.21">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#bat_2node_hsql-6.4"><font color="black">6.4</font></a></td><td><font color="black">
+<pre>Mediation with SCA wire.
+Exercise GenerateReply Task in Mediation.
+JMS RT with inline credentials are created (not imported) and deleted in CLI with no namespace declaration.
+Clean up everything at the end.
+
+C1 on Node1 : SOAP BT (HTTP) &lt;-&gt; Mediation &lt;-&gt; SCA
+C2 on Node2 : SCA &lt;-&gt; Mediation (with GenerateReplyTask)
+C3 on Node1 : SCA &lt;-&gt; Mediation &lt;-&gt; SOAP BT (JMS) &lt;-&gt; BW
+   
+C1 &lt;-&gt; C2
+   &lt;-&gt; C3</pre>
+</font></td><td><font color="black">PASSED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/runtime/bat/6.4">Source</a>&nbsp;
+				<a href="6.4">Log</a>&nbsp;
+			</td>
+</tr>
+</table>
+<hr>
+<center>
+<h2>
+<font color="0000ff">End of Test Set Detailed Report</font>
+</h2>
+</center>
+</body>
+</html>

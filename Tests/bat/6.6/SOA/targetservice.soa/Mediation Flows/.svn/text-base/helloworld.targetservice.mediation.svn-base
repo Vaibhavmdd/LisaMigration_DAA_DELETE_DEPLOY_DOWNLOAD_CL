@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpel:process exitOnStandardFault="yes" name="helloworld.targetservice"
+    suppressJoinFailure="no"
+    targetNamespace="http://com.tibco.amsb/mediation/1273528645415"
+    variableAccessSerializable="no"
+    xmlns:amsb="http://schemas.tibco.com/amsb/3.1.0/mediation"
+    xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+    xmlns:ns="http://com.tibco.amx.it.mediation.sample/HelloWorld/definitions"
+    xmlns:ns0="http:///com.tibco.amsb.core.common.exchange/mediationcontext"
+    xmlns:ns1="http://schemas.tibco.com/amsb/rt/exceptions"
+    xmlns:ns2="http://com.tibco.amx.it.mediation.sample/HelloWorld/schemas"
+    xmlns:ns3="http://xsd.tns.tibco.com/amsb/task/parsexml/xsd/parsexml"
+    xmlns:ns4="http://com.tibco.amx.it.mediation.sample/Employee"
+    xmlns:ns5="http://xsd.tns.tibco.com/amsb/task/validatexml/xsd/validatexml" xmlns:ns6="http://xsd.tns.tibco.com/amsb/task/renderxml/xsd/renderxml">
+    <plnk:partnerLinkType
+        name="ns:HelloWorld-HelloWorldProvider-partnerLinkType" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+        <plnk:role name="Provider" portType="ns:HelloWorld"/>
+    </plnk:partnerLinkType>
+    <mediationmodel:MediationService name="helloworld.targetservice"
+        targetNamespace="http://com.tibco.amsb/mediation/1273528645415"
+        xmi:id="_BLejcFx_Ed-w_d7rnSa9lQ" xmi:version="2.0"
+        xmlns:medct="http://xsd.tns.tibco.com/amsb/core/models/componentType"
+        xmlns:mediationmodel="http://xsd.tns.tibco.com/amsb/core/models/mediationmodel"
+        xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions"
+        xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <interfaces name="HelloWorld" xmi:id="_JH_uFFx_Ed-w_d7rnSa9lQ">
+            <interface xsi:type="medct:Wsdl11Interface">
+                <portType href="platform:/resource/targetservice.soa/Service%20Descriptors/HelloWorld.wsdl#//@ePortTypes.0"/>
+                <contextParameters
+                    name="requestToTargetServiceParameter1"
+                    type="string" xsi:type="scaext:BasicContextParameter"/>
+            </interface>
+        </interfaces>
+        <operationImplementations operationName="HelloWorld^sayHello" useExchangeVariables="true">
+            <mediationContextConfig hideStaticSecurityContext="true" hideStaticTransportContext="true"/>
+        </operationImplementations>
+    </mediationmodel:MediationService>
+    <bpel:documentation>helloworld.targetservice</bpel:documentation>
+    <bpel:import importType="http://schemas.xmlsoap.org/wsdl/"
+        location="../Service%20Descriptors/HelloWorld.wsdl" namespace="http://com.tibco.amx.it.mediation.sample/HelloWorld/definitions"/>
+    <bpel:import importType="http://www.w3.org/2001/XMLSchema"
+        location="../../com.tibco.mediation.it.common/schema/mediationcontext.xsd" namespace="http:///com.tibco.amsb.core.common.exchange/mediationcontext"/>
+    <bpel:import importType="http://www.w3.org/2001/XMLSchema"
+        location="../../com.tibco.mediation.it.common/schema/exceptions.xsd" namespace="http://schemas.tibco.com/amsb/rt/exceptions"/>
+    <bpel:import importType="http://www.w3.org/2001/XMLSchema"
+        location="../../com.tibco.mediation.it.common/schema/ws-bpel_serviceref.xsd" namespace="http://docs.oasis-open.org/wsbpel/2.0/serviceref"/>
+    <bpel:import importType="http://www.w3.org/2001/XMLSchema"
+        location="../Service%20Descriptors/HelloWorld.xsd" namespace="http://com.tibco.amx.it.mediation.sample/HelloWorld/schemas"/>
+    <bpel:import importType="http://www.w3.org/2001/XMLSchema"
+        location="*.xsd" namespace="http://xsd.tns.tibco.com/amsb/task/parsexml/xsd/parsexml"/>
+    <bpel:import importType="http://www.w3.org/2001/XMLSchema"
+        location="/resource/mediation.helloworld.xmlparserender.soa/Service%20Descriptors/HelloWorld_XmlPayload/Employee.xsd" namespace="http://com.tibco.amx.it.mediation.sample/Employee"/>
+    <bpel:import importType="http://www.w3.org/2001/XMLSchema"
+        location="*.xsd" namespace="http://xsd.tns.tibco.com/amsb/task/validatexml/xsd/validatexml"/>
+    <bpel:import importType="http://www.w3.org/2001/XMLSchema"
+        location="*.xsd" namespace="http://xsd.tns.tibco.com/amsb/task/renderxml/xsd/renderxml"/>
+    <bpel:import importType="http://www.w3.org/2001/XMLSchema"
+        location="../../*.xsd" namespace="http://xsd.tns.tibco.com/amsb/task/renderxml/xsd/renderxml"/>
+    <bpel:partnerLinks>
+        <bpel:partnerLink myRole="Provider" name="HelloWorldProvider" partnerLinkType="ns:HelloWorld-HelloWorldProvider-partnerLinkType">
+            <bpel:documentation>MyRole</bpel:documentation>
+        </bpel:partnerLink>
+    </bpel:partnerLinks>
+    <bpel:variables>
+        <bpel:variable messageType="ns:sayHelloRequest" name="sayHelloRequestVar"/>
+    </bpel:variables>
+    <bpel:extensions>
+        <bpel:extension mustUnderstand="no" namespace="http://xsd.tns.tibco.com/amsb/task/log/models/logmediationtaskmodel"/>
+        <bpel:extension mustUnderstand="no" namespace="http://xsd.tns.tibco.com/amsb/task/transform/models/transformmediationtaskmodel"/>
+        <bpel:extension mustUnderstand="no" namespace="http://xsd.tns.tibco.com/amsb/core/models/mediationmodel"/>
+        <bpel:extension mustUnderstand="no" namespace="http://xsd.tns.tibco.com/amsb/task/parsexml/models/parsexmlmediationtaskmodel"/>
+        <bpel:extension mustUnderstand="no" namespace="http://xsd.tns.tibco.com/amsb/task/validatexml/models/validatexmlmediationtaskmodel"/>
+        <bpel:extension mustUnderstand="no" namespace="http://xsd.tns.tibco.com/amsb/task/renderxml/models/renderxmlmediationtaskmodel"/>
+    </bpel:extensions>
+    <bpel:pick>
+        <bpel:onMessage operation="sayHello"
+            partnerLink="HelloWorldProvider" portType="ns:HelloWorld" variable="sayHelloRequestVar">
+            <bpel:scope name="sayHello">
+                <bpel:variables>
+                    <bpel:variable element="ns0:MessageContext" name="MessageContextVar"/>
+                    <bpel:variable element="ns1:MediationFault" name="MediationFaultVar"/>
+                    <bpel:variable element="ns1:MediationRuntimeFault" name="MediationRuntimeFaultVar"/>
+                    <bpel:variable element="ns1:MediationTaskFault" name="MediationTaskFaultVar"/>
+                    <bpel:variable
+                        element="ns1:MediationTaskRuntimeFault" name="MediationTaskRuntimeFaultVar"/>
+                    <bpel:variable element="ns1:UndeclaredFault" name="UndeclaredFaultVar"/>
+                    <bpel:variable element="ns1:DefaultMediationFault" name="DefaultMediationFaultVar"/>
+                    <bpel:variable element="ns2:Name" name="MediationExchangeVariable">
+                        <mediationmodel:Variable
+                            name="MediationExchangeVariable"
+                            xmi:id="_N3FH8bB0Ed-ps9H2sZvZGA"
+                            xmi:version="2.0"
+                            xmlns:mediationmodel="http://xsd.tns.tibco.com/amsb/core/models/mediationmodel" xmlns:xmi="http://www.omg.org/XMI">
+                            <elementDeclaration href="platform:/resource/targetservice.soa/Service%20Descriptors/HelloWorld.xsd#//Name;XSDElementDeclaration=1"/>
+                        </mediationmodel:Variable>
+                        <bpel:documentation>ExchangeVariable</bpel:documentation>
+                    </bpel:variable>
+                    <bpel:variable element="ns3:ParseXmlStringInput" name="parse2Input"/>
+                    <bpel:variable element="ns4:Employee" name="parse2"/>
+                    <bpel:variable element="ns5:ValidateXmlStringInput" name="validateInput"/>
+                    <bpel:variable element="ns4:Employee" name="render2Input"/>
+                    <bpel:variable element="ns6:RenderXmlStringOutput" name="render2"/>
+                </bpel:variables>
+                <bpel:faultHandlers>
+                    <bpel:catch faultName="ns1:MediationTaskFault">
+                        <bpel:flow>
+                            <bpel:links>
+                                <bpel:link name="parse2-to-validate"/>
+                                <bpel:link name="validate-to-render2"/>
+                                <bpel:link name="render2-to-transform1"/>
+                                <bpel:link name="transform1-to-SendFault-MediationTaskFaultReplyWithFault"/>
+                            </bpel:links>
+                            <bpel:sequence name="parse2">
+                                <bpel:sources>
+                                    <bpel:source linkName="parse2-to-validate"/>
+                                </bpel:sources>
+                                <bpel:assign validate="no"/>
+                                <bpel:extensionActivity>
+
+                                    <tibco-bpel-parsexml:tibcoParseXMLExtensionActivity xmlns:tibco-bpel-parsexml="http://xsd.tns.tibco.com/bpel/extension/activity/parsexml/models/parsexmltaskmodel">
+
+                                    <parsexmlmediationtaskmodel:ParseXmlMediationTask
+                                    contributeData="true"
+                                    description="" name="parse2"
+                                    taskId="1284788815076"
+                                    xmi:id="_JN0sQMLoEd-Rx7DrdcQJAw"
+                                    xmi:version="2.0"
+                                    xmlns:parsexmlmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/parsexml/models/parsexmlmediationtaskmodel" xmlns:xmi="http://www.omg.org/XMI">
+                                    <inputDataBinding
+                                    queryLanguage="xslt" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:ns=&quot;http://com.tibco.amx.it.mediation.sample/HelloWorld/schemas&quot; xmlns:tns=&quot;http://xsd.tns.tibco.com/amsb/task/parsexml/xsd/parsexml&quot; xmlns:tns1=&quot;http://schemas.tibco.com/amsb/rt/exceptions&quot; xmlns:CXFP5=&quot;CXFNS5&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;MediationFlowProperties&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageData&quot;/>&#xa;    &lt;xsl:param name=&quot;MediationExchangeVariable&quot;/>&#xa;    &lt;xsl:template name=&quot;Task Input&quot; match=&quot;/&quot;>&#xa;        &lt;tns:ParseXmlStringInput>&#xa;            &lt;tns:xmlString>&#xa;                &lt;xsl:value-of select=&quot;substring-before(CXFP5:func5AllRequiredParam(xsd:string($MessageData/tns1:MediationTaskFault/message), CXFP5:func5Int(xsd:int(3)), CXFP5:func5Long(xsd:long(4)), CXFP5:func5Short(xsd:short(5)), CXFP5:func5Float(6),CXFP5:func5Double(100), CXFP5:func5Boolean(xsd:boolean(1))), &amp;quot;133.5&amp;quot;)&quot;/>&#xa;            &lt;/tns:xmlString>&#xa;        &lt;/tns:ParseXmlStringInput>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>"/>
+                                    <outputElement href="platform:/resource/mediation.helloworld.xmlparserender.soa/Service%20Descriptors/HelloWorld_XmlPayload/Employee.xsd#//Employee;XSDElementDeclaration"/>
+                                    </parsexmlmediationtaskmodel:ParseXmlMediationTask>
+                                    </tibco-bpel-parsexml:tibcoParseXMLExtensionActivity>
+                                </bpel:extensionActivity>
+                            </bpel:sequence>
+                            <bpel:sequence name="validate">
+                                <bpel:targets>
+                                    <bpel:target linkName="parse2-to-validate"/>
+                                </bpel:targets>
+                                <bpel:sources>
+                                    <bpel:source linkName="validate-to-render2"/>
+                                </bpel:sources>
+                                <bpel:assign
+                                    name="pre_validate_xml_assign" validate="no">
+                                    <bpel:copy>
+                                    <bpel:from><![CDATA[bpel:doXslTransform("validate.xsl",$validateInput,"MessageData",$MediationTaskFaultVar)]]></bpel:from>
+                                    <bpel:to variable="validateInput"/>
+                                    </bpel:copy>
+                                    <bpel:copy>
+                                    <bpel:from variable="validateInput">
+                                    <bpel:query><![CDATA[/xmlString]]></bpel:query>
+                                    </bpel:from>
+                                    <bpel:to variable="parse2"/>
+                                    </bpel:copy>
+                                </bpel:assign>
+                                <bpel:scope name="validate">
+                                    <bpel:faultHandlers>
+                                    <bpel:catch faultName="bpel:invalidVariables">
+                                    <bpel:throw faultName="ns1:MediationTaskFault"/>
+                                    </bpel:catch>
+                                    </bpel:faultHandlers>
+                                    <bpel:sequence>
+                                    <bpel:validate name="validate" variables="parse2">
+
+                                    <validatexmlmediationtaskmodel:ValidateXmlMediationTask
+                                    description=""
+                                    dynamicSchemaFolder=""
+                                    input="text"
+                                    name="validate"
+                                    schemaReferenceType="static"
+                                    taskId="1284789385154"
+                                    throwFault="true"
+                                    xmi:id="_eKNKIMLpEd-Rx7DrdcQJAw"
+                                    xmi:version="2.0"
+                                    xmlns:validatexmlmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/validatexml/models/validatexmlmediationtaskmodel" xmlns:xmi="http://www.omg.org/XMI">
+                                    <inputDataBinding
+                                    queryLanguage="xslt" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://schemas.tibco.com/amsb/rt/exceptions&quot; xmlns:tns1=&quot;http://xsd.tns.tibco.com/amsb/task/validatexml/xsd/validatexml&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;MediationFlowProperties&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageData&quot;/>&#xa;    &lt;xsl:param name=&quot;MediationExchangeVariable&quot;/>&#xa;    &lt;xsl:param name=&quot;parse&quot;/>&#xa;    &lt;xsl:template name=&quot;Task Input&quot; match=&quot;/&quot;>&#xa;        &lt;tns1:ValidateXmlStringInput>&#xa;            &lt;tns1:xmlString>&#xa;                &lt;xsl:value-of select=&quot;$MessageData/tns:MediationTaskFault/message&quot;/>&#xa;            &lt;/tns1:xmlString>&#xa;        &lt;/tns1:ValidateXmlStringInput>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>"/>
+                                    <outputElement href="platform:/resource/mediation.helloworld.xmlparserender.soa/Service%20Descriptors/HelloWorld_XmlPayload/Employee.xsd#//Employee;XSDElementDeclaration"/>
+                                    </validatexmlmediationtaskmodel:ValidateXmlMediationTask>
+                                    </bpel:validate>
+                                    </bpel:sequence>
+                                </bpel:scope>
+                            </bpel:sequence>
+                            <bpel:sequence name="render2">
+                                <bpel:targets>
+                                    <bpel:target linkName="validate-to-render2"/>
+                                </bpel:targets>
+                                <bpel:sources>
+                                    <bpel:source linkName="render2-to-transform1"/>
+                                </bpel:sources>
+                                <bpel:assign validate="no">
+                                    <bpel:copy>
+                                    <bpel:from><![CDATA[bpel:doXslTransform("render2.xsl",$render2Input,"parse2",$parse2)]]></bpel:from>
+                                    <bpel:to variable="render2Input"/>
+                                    </bpel:copy>
+                                </bpel:assign>
+                                <bpel:extensionActivity>
+
+                                    <tibco-bpel-renderxml:tibcoRenderXMLExtensionActivity xmlns:tibco-bpel-renderxml="http://xsd.tns.tibco.com/bpel/extension/activity/renderxml/models/renderxmltaskmodel">
+
+                                    <renderxmlmediationtaskmodel:RenderXmlMediationTask
+                                    contributeData="true"
+                                    description="" encoding=""
+                                    name="render2"
+                                    taskId="1284790080795"
+                                    xmi:id="_F0gfsMLrEd-Rx7DrdcQJAw"
+                                    xmi:version="2.0"
+                                    xmlns:renderxmlmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/renderxml/models/renderxmlmediationtaskmodel" xmlns:xmi="http://www.omg.org/XMI">
+                                    <inputDataBinding
+                                    queryLanguage="xslt" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:ns=&quot;http://com.tibco.amx.it.mediation.sample/Employee&quot; xmlns:ns1=&quot;http://com.tibco.amx.it.mediation.sample/EmployeeName&quot; xmlns:tns=&quot;http://com.tibco.amx.it.mediation.sample/EmployeeDetails&quot; xmlns:CXFP5=&quot;CXFNS5&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;MediationFlowProperties&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageData&quot;/>&#xa;    &lt;xsl:param name=&quot;MediationExchangeVariable&quot;/>&#xa;    &lt;xsl:param name=&quot;parse2&quot;/>&#xa;    &lt;xsl:template name=&quot;Task Input&quot; match=&quot;/&quot;>&#xa;        &lt;ns:Employee>&#xa;            &lt;ns:Name>&#xa;                &lt;ns1:FirstName>&#xa;                    &lt;xsl:value-of select=&quot;CXFP5:func5AllRequiredParam(xsd:string($parse2/ns:Employee/ns:Name/ns1:FirstName), CXFP5:func5Int(xsd:int(5)), CXFP5:func5Long(xsd:long(6)), CXFP5:func5Short(xsd:short(7)), CXFP5:func5Float(8),CXFP5:func5Double(300), CXFP5:func5Boolean(xsd:boolean(1)))&quot;/>&#xa;                &lt;/ns1:FirstName>&#xa;                &lt;ns1:MiddleName>&#xa;                    &lt;xsl:value-of select=&quot;$parse2/ns:Employee/ns:Name/ns1:MiddleName&quot;/>&#xa;                &lt;/ns1:MiddleName>&#xa;                &lt;ns1:LastName>&#xa;                    &lt;xsl:value-of select=&quot;$parse2/ns:Employee/ns:Name/ns1:LastName&quot;/>&#xa;                &lt;/ns1:LastName>&#xa;            &lt;/ns:Name>&#xa;            &lt;ns:Details>&#xa;                &lt;tns:EmployeeId>&#xa;                    &lt;xsl:value-of select=&quot;$parse2/ns:Employee/ns:Details/tns:EmployeeId&quot;/>&#xa;                &lt;/tns:EmployeeId>&#xa;                &lt;tns:Department>&#xa;                    &lt;xsl:value-of select=&quot;$parse2/ns:Employee/ns:Details/tns:Department&quot;/>&#xa;                &lt;/tns:Department>&#xa;                &lt;tns:Location>&#xa;                    &lt;xsl:value-of select=&quot;$parse2/ns:Employee/ns:Details/tns:Location&quot;/>&#xa;                &lt;/tns:Location>&#xa;                &lt;tns:Phone>&#xa;                    &lt;xsl:value-of select=&quot;$parse2/ns:Employee/ns:Details/tns:Phone&quot;/>&#xa;                &lt;/tns:Phone>&#xa;                &lt;tns:Mobile>&#xa;                    &lt;xsl:value-of select=&quot;$parse2/ns:Employee/ns:Details/tns:Mobile&quot;/>&#xa;                &lt;/tns:Mobile>&#xa;                &lt;tns:Email>&#xa;                    &lt;xsl:value-of select=&quot;$parse2/ns:Employee/ns:Details/tns:Email&quot;/>&#xa;                &lt;/tns:Email>&#xa;                &lt;tns:Room>&#xa;                    &lt;xsl:value-of select=&quot;$parse2/ns:Employee/ns:Details/tns:Room&quot;/>&#xa;                &lt;/tns:Room>&#xa;            &lt;/ns:Details>&#xa;        &lt;/ns:Employee>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>"/>
+                                    <inputElement href="platform:/resource/mediation.helloworld.xmlparserender.soa/Service%20Descriptors/HelloWorld_XmlPayload/Employee.xsd#//Employee;XSDElementDeclaration"/>
+                                    </renderxmlmediationtaskmodel:RenderXmlMediationTask>
+                                    </tibco-bpel-renderxml:tibcoRenderXMLExtensionActivity>
+                                </bpel:extensionActivity>
+                            </bpel:sequence>
+                            <bpel:assign name="transform1" validate="no">
+
+                                <transformmediationtaskmodel:MapperTransformationMediationTask
+                                    description="" name="transform1"
+                                    xmi:id="_87g_NMK9Ed-pyPVWWZuN1g"
+                                    xmi:version="2.0"
+                                    xmlns:transformmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/transform/models/transformmediationtaskmodel" xmlns:xmi="http://www.omg.org/XMI">
+                                    <transform queryLanguage="xslt" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:tns=&quot;http://schemas.tibco.com/amsb/rt/exceptions&quot; xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:ns=&quot;http://com.tibco.amx.it.mediation.sample/HelloWorld/schemas&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:tns1=&quot;http://xsd.tns.tibco.com/amsb/task/renderxml/xsd/renderxml&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;MediationFlowProperties&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageData&quot;/>&#xa;    &lt;xsl:param name=&quot;MediationExchangeVariable&quot;/>&#xa;    &lt;xsl:param name=&quot;parse2&quot;/>&#xa;    &lt;xsl:param name=&quot;render2&quot;/>&#xa;    &lt;xsl:template name=&quot;MessageData&quot; match=&quot;/&quot;>&#xa;        &lt;tns:UndeclaredFault>&#xa;            &lt;message>&#xa;                &lt;xsl:value-of select=&quot;concat (&amp;quot;==} This is the render2 RenderXmlStringOutput xmlString in the targetservice Fault Path: &amp;quot;, xsd:string($render2/tns1:RenderXmlStringOutput/tns1:xmlString), &amp;quot; {==&amp;quot;)&quot;/>&#xa;            &lt;/message>&#xa;        &lt;/tns:UndeclaredFault>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>"/>
+                                </transformmediationtaskmodel:MapperTransformationMediationTask>
+                                <bpel:targets>
+                                    <bpel:target linkName="render2-to-transform1"/>
+                                </bpel:targets>
+                                <bpel:sources>
+                                    <bpel:source linkName="transform1-to-SendFault-MediationTaskFaultReplyWithFault"/>
+                                </bpel:sources>
+                            </bpel:assign>
+                            <bpel:reply faultName="ns1:UndeclaredFault"
+                                name="SendFault-MediationTaskFaultReplyWithFault"
+                                operation="sayHello"
+                                partnerLink="HelloWorldProvider"
+                                portType="ns:HelloWorld" variable="UndeclaredFaultVar">
+                                <bpel:targets>
+                                    <bpel:target linkName="transform1-to-SendFault-MediationTaskFaultReplyWithFault"/>
+                                </bpel:targets>
+                            </bpel:reply>
+                        </bpel:flow>
+                    </bpel:catch>
+                    <bpel:catch faultName="ns1:MediationTaskRuntimeFault">
+                        <bpel:flow>
+                            <bpel:links>
+                                <bpel:link name="transform4-to-SendFault-MediationTaskRuntimeFaultReplyWithFault"/>
+                            </bpel:links>
+                            <bpel:assign name="transform4" validate="no">
+
+                                <transformmediationtaskmodel:MapperTransformationMediationTask
+                                    description="" name="transform4"
+                                    xmi:id="_87g_O8K9Ed-pyPVWWZuN1g"
+                                    xmi:version="2.0"
+                                    xmlns:transformmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/transform/models/transformmediationtaskmodel" xmlns:xmi="http://www.omg.org/XMI">
+                                    <transform queryLanguage="xslt" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:tns=&quot;http://schemas.tibco.com/amsb/rt/exceptions&quot; xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:CXFP5=&quot;CXFNS5&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:ns=&quot;http://com.tibco.amx.it.mediation.sample/HelloWorld/schemas&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;MediationFlowProperties&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageData&quot;/>&#xa;    &lt;xsl:param name=&quot;MediationExchangeVariable&quot;/>&#xa;    &lt;xsl:template name=&quot;MessageData&quot; match=&quot;/&quot;>&#xa;        &lt;tns:UndeclaredFault>&#xa;            &lt;message>&#xa;                &lt;xsl:value-of select=&quot;concat(&amp;quot;** MediationTaskRuntimeFault Transform Task, message: &amp;quot;, xsd:string($MessageData/tns:MediationTaskRuntimeFault/message),   &amp;quot; MediationExchangeVariable/FirstName: &amp;quot;, xsd:string($MediationExchangeVariable/ns:Name/ns:FirstName), &amp;quot; MediationExchangeVariable/MiddleInitial: &amp;quot;, xsd:string($MediationExchangeVariable/ns:Name/ns:MiddleInitial), &amp;quot;MediationExchangeVariable/LastName: &amp;quot;, xsd:string($MediationExchangeVariable/ns:Name/ns:LastName) )&quot;/>&#xa;            &lt;/message>&#xa;        &lt;/tns:UndeclaredFault>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>"/>
+                                </transformmediationtaskmodel:MapperTransformationMediationTask>
+                                <bpel:sources>
+                                    <bpel:source linkName="transform4-to-SendFault-MediationTaskRuntimeFaultReplyWithFault"/>
+                                </bpel:sources>
+                                <bpel:copy>
+                                    <bpel:from><![CDATA[bpel:doXslTransform("transform4.xsl",$UndeclaredFaultVar,"MessageData",$MediationTaskRuntimeFaultVar)]]></bpel:from>
+                                    <bpel:to variable="UndeclaredFaultVar"/>
+                                </bpel:copy>
+                            </bpel:assign>
+                            <bpel:reply faultName="ns1:UndeclaredFault"
+                                name="SendFault-MediationTaskRuntimeFaultReplyWithFault"
+                                operation="sayHello"
+                                partnerLink="HelloWorldProvider"
+                                portType="ns:HelloWorld" variable="UndeclaredFaultVar">
+                                <bpel:targets>
+                                    <bpel:target linkName="transform4-to-SendFault-MediationTaskRuntimeFaultReplyWithFault"/>
+                                </bpel:targets>
+                            </bpel:reply>
+                        </bpel:flow>
+                    </bpel:catch>
+                </bpel:faultHandlers>
+                <bpel:flow>
+                    <bpel:links>
+                        <bpel:link name="logMessageContextFromInputPath-to-transform"/>
+                        <bpel:link name="transform-to-throw"/>
+                    </bpel:links>
+                    <bpel:extensionActivity>
+                        <tibco-bpel-log:tibcoLogExtensionActivity
+                            name="logMessageContextFromInputPath" xmlns:tibco-bpel-log="http://xsd.tns.tibco.com/bpel/extension/activity/log/models/logtaskmodel">
+                            <bpel:sources>
+                                <bpel:source linkName="logMessageContextFromInputPath-to-transform"/>
+                            </bpel:sources>
+                            <logmediationtaskmodel:LogMediationTask
+                                description=""
+                                name="logMessageContextFromInputPath"
+                                taskId="1273985814480"
+                                xmi:id="_cutqgGCnEd-hbYUV_cY8Zw"
+                                xmi:version="2.0"
+                                xmlns:logmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/log/models/logmediationtaskmodel"
+                                xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                <logConfiguration xsi:type="logmediationtaskmodel:ListLogConfigurationType">
+                                    <items queryLanguage="xpath" value="child::root"/>
+                                </logConfiguration>
+                            </logmediationtaskmodel:LogMediationTask>
+                        </tibco-bpel-log:tibcoLogExtensionActivity>
+                    </bpel:extensionActivity>
+                    <bpel:assign name="transform" validate="no">
+
+                        <transformmediationtaskmodel:MapperTransformationMediationTask
+                            description="" name="transform"
+                            taskId="1281136906018"
+                            xmi:id="_YWxgIKGxEd-dqfKKhuLRZQ"
+                            xmi:version="2.0"
+                            xmlns:transformmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/transform/models/transformmediationtaskmodel" xmlns:xmi="http://www.omg.org/XMI">
+                            <transform queryLanguage="xslt" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:ns=&quot;http://com.tibco.amx.it.mediation.sample/HelloWorld/schemas&quot; xmlns:ns1=&quot;http://com.tibco.amx.it.mediation.sample/HelloWorld/definitions&quot; xmlns:tns=&quot;http://schemas.tibco.com/amsb/rt/exceptions&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:p3=&quot;ns3&quot; xmlns:CXFP5=&quot;CXFNS5&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;MediationFlowProperties&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageContext&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageData&quot;/>&#xa;    &lt;xsl:template name=&quot;MessageData&quot; match=&quot;/&quot;>&#xa;        &lt;tns:MediationTaskFault>&#xa;            &lt;xsl:if test=&quot;$MessageData/ns1:sayHelloRequest/ns1:name/ns:Name/ns:MiddleInitial&quot;>&#xa;                &lt;message>&#xa;                    &lt;xsl:value-of select=&quot;$MessageData/ns1:sayHelloRequest/ns1:name/ns:Name/ns:MiddleInitial&quot;/>&#xa;                &lt;/message>&#xa;            &lt;/xsl:if>&#xa;        &lt;/tns:MediationTaskFault>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>"/>
+                        </transformmediationtaskmodel:MapperTransformationMediationTask>
+                        <bpel:targets>
+                            <bpel:target linkName="logMessageContextFromInputPath-to-transform"/>
+                        </bpel:targets>
+                        <bpel:sources>
+                            <bpel:source linkName="transform-to-throw"/>
+                        </bpel:sources>
+                        <bpel:copy>
+                            <bpel:from><![CDATA[bpel:doXslTransform("transform.xsl",$MediationTaskFaultVar,"MessageData",$sayHelloRequestVar)]]></bpel:from>
+                            <bpel:to variable="MediationTaskFaultVar"/>
+                        </bpel:copy>
+                    </bpel:assign>
+                    <bpel:throw faultName="ns1:MediationTaskFault"
+                        faultVariable="MediationTaskFaultVar" name="throw">
+                        <mediationmodel:ThrowFault description=""
+                            name="throw"
+                            xmi:id="_87XOMMK9Ed-pyPVWWZuN1g"
+                            xmi:version="2.0"
+                            xmlns:exceptions="http://schemas.tibco.com/amsb/rt/exceptions"
+                            xmlns:mediationmodel="http://xsd.tns.tibco.com/amsb/core/models/mediationmodel" xmlns:xmi="http://www.omg.org/XMI">
+                            <faultType faultTypeName="exceptions:MediationTaskFault"/>
+                        </mediationmodel:ThrowFault>
+                        <bpel:documentation/>
+                        <bpel:targets>
+                            <bpel:target linkName="transform-to-throw"/>
+                        </bpel:targets>
+                    </bpel:throw>
+                </bpel:flow>
+            </bpel:scope>
+        </bpel:onMessage>
+    </bpel:pick>
+</bpel:process>

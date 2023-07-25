@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+
+	<Environment 
+		xsi:type="amxdata:Environment" 
+	    name="[[env.name]]" 
+	    description="integration environment" 
+	    contact="TIBCO">
+		<Node xsi:type="amxdata:Node" name="Node8_2" hostName="Host8_2" description="My Node8_2" contact="TIBCO" >
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="[[ACName]]" resourceTemplateName="[[ACName]]"/>
+		</Node>
+		<Node xsi:type="amxdata:Node" name="Node8_2" hostName="Host8_2" description="My Node8_2" contact="TIBCO" >
+			
+		</Node>
+		<Application
+			xsi:type="amxdata:Application"
+			name="[[appName]]"
+			contact="TIBCO Software Inc."
+			description="Multiple Principles testing">
+			<Node name="Node8_2" environmentName="[[env.name]]" />	
+			<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="BAT82"/>
+		</Application>			
+	</Environment>
+
+	<ResourceTemplate xsi:type="amxdata:HttpConnectorResourceTemplate" name="[[ACName]]" host="0.0.0.0" port="[[httpPort]]" headerBufferSize="512" requestBufferSize="512" responseBufferSize="512" maxIdleTime="200000" lowResourceMaxIdleTime="512" description="This is HttpConnector RT for BAT82 test case"/>
+	
+	<DAA
+		xsi:type="amxdata:DAA"
+		description="BAT 8_2 Test"
+		location="SOA/BAT82/Deployment Artifacts/BAT82.daa"
+	    importResourceTemplates="false">
+	</DAA>
+</amxdata_base:Enterprise>

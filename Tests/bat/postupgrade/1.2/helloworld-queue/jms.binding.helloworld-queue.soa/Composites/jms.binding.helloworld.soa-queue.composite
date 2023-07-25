@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:compositenotation="http://www.tibco.com/models/compositenotation" xmlns:jms="http://xsd.tns.tibco.com/amf/models/sharedresource/jms" xmlns:jms.binding.helloworld.soa="http://www.example.com/jms.binding.helloworld.soa" xmlns:jmsbt="http://xsd.tns.tibco.com/amf/models/sca/bindingtype/jms" xmlns:jmspolicy="http://xsd.tns.tibco.com/amf/models/sca/bindingtype/jms/jmspolicy" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmlns:template_2010="http://xsd.tns.tibco.com/governance/rule/template/2010" xmi:id="_4iLeccslEeGPI6Gwgn0-NQ" targetNamespace="http://www.example.com/jms.binding.helloworld.soa" name="jms.binding.helloworld.soa" compositeext:version="1.0.0.qualifier" compositeext:formatVersion="2">
+  <sca:service xmi:id="_gHfi4NCkEeGqPNma2ButMw" name="HelloWorldService" promote="HelloWorldComponent/HelloWorld">
+    <sca:interface.wsdl xmi:id="_gHfi4dCkEeGqPNma2ButMw" interface="http://com.tibco.amx.bt.jms.sample/HelloWorld/definitions#wsdl.interface(HelloWorld)" scaext:wsdlLocation="../Service%20Descriptors/HelloWorld.wsdl"/>
+    <jmsbt:binding.jms.service xmi:id="_SQE_wNCnEeGqPNma2ButMw" name="JMSService_Binding1" version="3.2.0" interfaceName="{http://com.tibco.amx.bt.jms.sample/HelloWorld/definitions}HelloWorld" faultProperty="faultName" wsdlLocation="../Service%20Descriptors/HelloWorld.wsdl" operationSelectionNotSetAction="discardMessage">
+      <targetDestination xmi:id="_SQE_wdCnEeGqPNma2ButMw" destinationName=""/>
+      <responseDestination xmi:id="_SQE_wtCnEeGqPNma2ButMw" destinationType="inherited"/>
+      <defaultInboundConfiguration xmi:id="_SQE_w9CnEeGqPNma2ButMw"/>
+      <defaultOutboundConfiguration xmi:id="_SQE_xNCnEeGqPNma2ButMw" deliveryMode="nonPersistent"/>
+      <defaultFaultConfiguration xmi:id="_SQE_xdCnEeGqPNma2ButMw" deliveryMode="inherited" priority="inherited" timeToLive="-1" messageType="inherited"/>
+      <defaultMessageConfiguration xmi:id="_SQE_xtCnEeGqPNma2ButMw"/>
+      <operationConfigurations xmi:id="_X8nr0NCnEeGqPNma2ButMw" operationName="sayHello" timeout="-1">
+        <messageConfigurations xsi:type="jmsbt:JMSInputMessageConfiguration" xmi:id="_X8nr0dCnEeGqPNma2ButMw" messageName="{http://com.tibco.amx.bt.jms.sample/HelloWorld/definitions}sayHelloRequest" messageType="inherited" durableSubscription="inherited"/>
+        <messageConfigurations xsi:type="jmsbt:JMSOutputMessageConfiguration" xmi:id="_X8nr0tCnEeGqPNma2ButMw" messageName="{http://com.tibco.amx.bt.jms.sample/HelloWorld/definitions}sayHelloResponse" messageDirection="OUTPUT" messageType="inherited" deliveryMode="inherited" priority="inherited" timeToLive="-1"/>
+        <messageConfigurations xsi:type="jmsbt:JMSFaultMessageConfiguration" xmi:id="_X8nr09CnEeGqPNma2ButMw" messageName="{http://com.tibco.amx.bt.jms.sample/HelloWorld/definitions}sayHelloNoSuchNameFault" messageDirection="FAULT" name="no_such_name_fault" deliveryMode="nonPersistent"/>
+        <messageConfigurations xsi:type="jmsbt:JMSFaultMessageConfiguration" xmi:id="_X8nr1NCnEeGqPNma2ButMw" messageName="{http://com.tibco.amx.bt.jms.sample/HelloWorld/definitions}sayHelloNoGreetingFoundFault" messageDirection="FAULT" name="no_greeting_found_fault" deliveryMode="nonPersistent"/>
+        <messageConfigurations xsi:type="jmsbt:JMSFaultMessageConfiguration" xmi:id="_X8nr1dCnEeGqPNma2ButMw" messageName="{http://com.tibco.amx.bt.jms.sample/HelloWorld/definitions}sayHelloTimeoutFault" messageDirection="FAULT" name="timeout_fault" deliveryMode="nonPersistent"/>
+      </operationConfigurations>
+    </jmsbt:binding.jms.service>
+    <scact:bindingAdjunct xmi:id="_SQFm0NCnEeGqPNma2ButMw" bindingName="JMSService_Binding1">
+      <sca:property xmi:id="_SSwgUNCnEeGqPNma2ButMw" mustSupply="true" name="RequestConnectionFactory" type="jms:JMSConnectionFactory" scaext:simpleValue="HelloWorld_ConnFactory"/>
+      <sca:property xmi:id="_Wv1IkNCnEeGqPNma2ButMw" mustSupply="false" name="ReplyDestination" type="jms:JMSDestination" scaext:simpleValue="HelloWorld_ServiceReplyDestination"/>
+      <sca:property xmi:id="_cl9NoN99EeGE1vlgsp7PWg" mustSupply="true" name="RequestDestination" type="jms:JMSDestination" scaext:simpleValue="HelloWorld_ServiceRequestDestination"/>
+    </scact:bindingAdjunct>
+  </sca:service>
+  <sca:reference xmi:id="_gbkVcNCkEeGqPNma2ButMw" multiplicity="0..1" name="HelloWorldReference" wiredByImpl="false" promote="HelloWorldComponent/HelloWorldReferenceComponent">
+    <sca:interface.wsdl xmi:id="_gbkVcdCkEeGqPNma2ButMw" interface="http://com.tibco.amx.bt.jms.sample/HelloWorld/definitions#wsdl.interface(HelloWorld)" scaext:wsdlLocation="../Service%20Descriptors/HelloWorld.wsdl"/>
+    <jmsbt:binding.jms.reference xmi:id="_aFUdsNCnEeGqPNma2ButMw" name="JMSReference_Binding1" version="3.2.0" description="" interfaceName="{http://com.tibco.amx.bt.jms.sample/HelloWorld/definitions}HelloWorld" faultProperty="faultName" wsdlLocation="../Service%20Descriptors/HelloWorld.wsdl">
+      <targetDestination xmi:id="_aFUdsdCnEeGqPNma2ButMw" destinationType="Queue" destinationName="queue.reference.request.helloworld"/>
+      <responseDestination xmi:id="_aFUdstCnEeGqPNma2ButMw" destinationType="inherited" destinationName=""/>
+      <defaultInboundConfiguration xmi:id="_aFUds9CnEeGqPNma2ButMw"/>
+      <defaultOutboundConfiguration xmi:id="_aFUdtNCnEeGqPNma2ButMw" deliveryMode="nonPersistent"/>
+      <defaultFaultConfiguration xmi:id="_aFUdtdCnEeGqPNma2ButMw" deliveryMode="inherited" priority="inherited" timeToLive="-1" messageType="inherited"/>
+      <defaultMessageConfiguration xmi:id="_aFUdttCnEeGqPNma2ButMw"/>
+      <operationConfigurations xmi:id="_aFVEwNCnEeGqPNma2ButMw" operationName="sayHello" timeout="-1">
+        <messageConfigurations xsi:type="jmsbt:JMSOutputMessageConfiguration" xmi:id="_aFVEwdCnEeGqPNma2ButMw" messageName="{http://com.tibco.amx.bt.jms.sample/HelloWorld/definitions}sayHelloRequest" messageDirection="OUTPUT" messageType="inherited" deliveryMode="inherited" priority="inherited" timeToLive="-1"/>
+        <messageConfigurations xsi:type="jmsbt:JMSInputMessageConfiguration" xmi:id="_aFVEwtCnEeGqPNma2ButMw" messageName="{http://com.tibco.amx.bt.jms.sample/HelloWorld/definitions}sayHelloResponse" messageType="inherited"/>
+        <messageConfigurations xsi:type="jmsbt:JMSFaultMessageConfiguration" xmi:id="_aFVEw9CnEeGqPNma2ButMw" messageName="{http://com.tibco.amx.bt.jms.sample/HelloWorld/definitions}sayHelloNoSuchNameFault" messageDirection="FAULT" messageType="inherited" name="no_such_name_fault" deliveryMode="inherited" priority="inherited" timeToLive="-1"/>
+        <messageConfigurations xsi:type="jmsbt:JMSFaultMessageConfiguration" xmi:id="_aFVExNCnEeGqPNma2ButMw" messageName="{http://com.tibco.amx.bt.jms.sample/HelloWorld/definitions}sayHelloNoGreetingFoundFault" messageDirection="FAULT" messageType="inherited" name="no_greeting_found_fault" deliveryMode="inherited" priority="inherited" timeToLive="-1"/>
+        <messageConfigurations xsi:type="jmsbt:JMSFaultMessageConfiguration" xmi:id="_aFVExdCnEeGqPNma2ButMw" messageName="{http://com.tibco.amx.bt.jms.sample/HelloWorld/definitions}sayHelloTimeoutFault" messageDirection="FAULT" messageType="inherited" name="timeout_fault" deliveryMode="inherited" priority="inherited" timeToLive="-1"/>
+      </operationConfigurations>
+    </jmsbt:binding.jms.reference>
+    <scact:bindingAdjunct xmi:id="_aFVExtCnEeGqPNma2ButMw" bindingName="JMSReference_Binding1">
+      <sca:property xmi:id="_aHBt4NCnEeGqPNma2ButMw" mustSupply="true" name="RequestConnectionFactory" type="jms:JMSConnectionFactory" scaext:simpleValue="HelloWorld_ConnFactory"/>
+    </scact:bindingAdjunct>
+  </sca:reference>
+  <sca:component xmi:id="_Y8OPANCkEeGqPNma2ButMw" name="HelloWorldComponent" compositeext:version="1.0.0.qualifier">
+    <sca:implementation.java xmi:id="_bVZs4NCkEeGqPNma2ButMw" class="com.sample.jms.binding.queue.helloworld.HelloWorldImpl"/>
+    <sca:service xmi:id="_cFhiQNCkEeGqPNma2ButMw" name="HelloWorld">
+      <sca:interface.wsdl xmi:id="_cFiJUNCkEeGqPNma2ButMw" interface="http://com.tibco.amx.bt.jms.sample/HelloWorld/definitions#wsdl.interface(HelloWorld)" scaext:wsdlLocation="../Service%20Descriptors/HelloWorld.wsdl"/>
+    </sca:service>
+    <sca:reference xmi:id="_ccLHsNCkEeGqPNma2ButMw" name="HelloWorldReferenceComponent">
+      <sca:interface.wsdl xmi:id="_ccLuwNCkEeGqPNma2ButMw" interface="http://com.tibco.amx.bt.jms.sample/HelloWorld/definitions#wsdl.interface(HelloWorld)" scaext:wsdlLocation="../Service%20Descriptors/HelloWorld.wsdl"/>
+    </sca:reference>
+  </sca:component>
+  <notation:diagram xsi:type="notation:Diagram" xmi:id="_4iPv4MslEeGPI6Gwgn0-NQ" type="Composite" element="#/" name="SCA Composite" measurementUnit="Pixel">
+    <children xmi:id="_touvwNCjEeGqPNma2ButMw" type="2001" element="#_4iLeccslEeGPI6Gwgn0-NQ">
+      <children xmi:id="_toxMANCjEeGqPNma2ButMw" type="5004"/>
+      <children xmi:id="_toyaINCjEeGqPNma2ButMw" type="7001">
+        <children xmi:id="_gHkbYNCkEeGqPNma2ButMw" type="3001" element="#_gHfi4NCkEeGqPNma2ButMw">
+          <children xmi:id="_gHlCcNCkEeGqPNma2ButMw" type="5002"/>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_gHkbYdCkEeGqPNma2ButMw" fontName="Ubuntu" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_gHkbYtCkEeGqPNma2ButMw" gradStartColor="14150097" gradEndColor="7844710"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_gHkbY9CkEeGqPNma2ButMw"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_gHkbZNCkEeGqPNma2ButMw"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_toyaIdCjEeGqPNma2ButMw"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_toyaItCjEeGqPNma2ButMw"/>
+      </children>
+      <children xmi:id="_tozBMNCjEeGqPNma2ButMw" type="7002">
+        <children xmi:id="_gbmxsNCkEeGqPNma2ButMw" type="3002" element="#_gbkVcNCkEeGqPNma2ButMw">
+          <children xmi:id="_gbnYwNCkEeGqPNma2ButMw" type="5003"/>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_gbmxsdCkEeGqPNma2ButMw" fontName="Ubuntu" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_gbmxstCkEeGqPNma2ButMw" gradStartColor="15457762" gradEndColor="11302063"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_gbmxs9CkEeGqPNma2ButMw"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_gbmxtNCkEeGqPNma2ButMw"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_tozBMdCjEeGqPNma2ButMw"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_tozBMtCjEeGqPNma2ButMw"/>
+      </children>
+      <children xmi:id="_tozoQNCjEeGqPNma2ButMw" type="7003">
+        <children xmi:id="_Y8qT4NCkEeGqPNma2ButMw" type="3003" element="#_Y8OPANCkEeGqPNma2ButMw">
+          <children xmi:id="_Y8riANCkEeGqPNma2ButMw" type="5001"/>
+          <children xmi:id="_Y8sJENCkEeGqPNma2ButMw" type="7004">
+            <children xmi:id="_cGJ0YNCkEeGqPNma2ButMw" type="3004" element="#_cFhiQNCkEeGqPNma2ButMw">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_cGKbcNCkEeGqPNma2ButMw" fontName="Ubuntu" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_cGKbcdCkEeGqPNma2ButMw"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_Y8sJEdCkEeGqPNma2ButMw"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_Y8sJEtCkEeGqPNma2ButMw"/>
+          </children>
+          <children xmi:id="_Y8swINCkEeGqPNma2ButMw" type="7005">
+            <children xmi:id="_cdJ_INCkEeGqPNma2ButMw" type="3005" element="#_ccLHsNCkEeGqPNma2ButMw">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_cdJ_IdCkEeGqPNma2ButMw" fontName="Ubuntu" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_cdJ_ItCkEeGqPNma2ButMw"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_Y8swIdCkEeGqPNma2ButMw"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_Y8swItCkEeGqPNma2ButMw"/>
+          </children>
+          <children xmi:id="_Y8tXMNCkEeGqPNma2ButMw" type="7006">
+            <children xmi:id="_Y8tXNNCkEeGqPNma2ButMw" visible="false" type="7600">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_Y8tXNdCkEeGqPNma2ButMw" fontName="Ubuntu" fontHeight="10"/>
+              <element xsi:nil="true"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_Y8tXNtCkEeGqPNma2ButMw"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_Y8tXMdCkEeGqPNma2ButMw"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_Y8tXMtCkEeGqPNma2ButMw"/>
+            <styles xsi:type="compositenotation:CollapseStyle" xmi:id="_Y8tXM9CkEeGqPNma2ButMw"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_Y8qT4dCkEeGqPNma2ButMw" fontName="Ubuntu" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_Y8qT4tCkEeGqPNma2ButMw" gradStartColor="16642791" gradEndColor="14072216"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_Y8qT49CkEeGqPNma2ButMw"/>
+          <styles xsi:type="compositenotation:CustomComponentIconStyle" xmi:id="_Y8qT5NCkEeGqPNma2ButMw"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_Y8qT5dCkEeGqPNma2ButMw" x="270" y="119"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_tozoQdCjEeGqPNma2ButMw"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_tozoQtCjEeGqPNma2ButMw"/>
+      </children>
+      <children xmi:id="_to0PUNCjEeGqPNma2ButMw" type="7007">
+        <children xmi:id="_to0PU9CjEeGqPNma2ButMw" visible="false" type="7600">
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_to0PVNCjEeGqPNma2ButMw" fontName="Ubuntu" fontHeight="10"/>
+          <element xsi:nil="true"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_to0PVdCjEeGqPNma2ButMw"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_to0PUdCjEeGqPNma2ButMw"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_to0PUtCjEeGqPNma2ButMw"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" xmi:id="_touvwdCjEeGqPNma2ButMw" fontName="Ubuntu" fontHeight="10"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_touvwtCjEeGqPNma2ButMw" x="10" y="10" width="836" height="350"/>
+    </children>
+    <styles xsi:type="notation:DiagramStyle" xmi:id="_4iPv4cslEeGPI6Gwgn0-NQ"/>
+    <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_4iPv4sslEeGPI6Gwgn0-NQ"/>
+    <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_4iPv48slEeGPI6Gwgn0-NQ"/>
+    <edges xmi:id="_gHzE4NCkEeGqPNma2ButMw" type="4002" source="#_gHkbYNCkEeGqPNma2ButMw" target="#_cGJ0YNCkEeGqPNma2ButMw">
+      <styles xsi:type="notation:ConnectorStyle" xmi:id="_gHzE4dCkEeGqPNma2ButMw" routing="Rectilinear"/>
+      <styles xsi:type="notation:FontStyle" xmi:id="_gHzE4tCkEeGqPNma2ButMw" fontName="Ubuntu" fontHeight="10"/>
+      <element xsi:nil="true"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_gHzE49CkEeGqPNma2ButMw" points="[-3, 30, -368, -152]$[359, 185, -6, 3]"/>
+    </edges>
+    <edges xmi:id="_gbutgNCkEeGqPNma2ButMw" type="4003" source="#_gbmxsNCkEeGqPNma2ButMw" target="#_cdJ_INCkEeGqPNma2ButMw">
+      <styles xsi:type="notation:ConnectorStyle" xmi:id="_gbutgdCkEeGqPNma2ButMw" routing="Rectilinear"/>
+      <styles xsi:type="notation:FontStyle" xmi:id="_gbutgtCkEeGqPNma2ButMw" fontName="Ubuntu" fontHeight="10"/>
+      <element xsi:nil="true"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_gbutg9CkEeGqPNma2ButMw" points="[17, 35, -524, -147]$[553, 185, 12, 3]"/>
+    </edges>
+  </notation:diagram>
+</sca:composite>

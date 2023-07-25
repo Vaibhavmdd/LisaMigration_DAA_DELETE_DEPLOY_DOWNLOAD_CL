@@ -1,0 +1,403 @@
+<?xml version="1.0" ?>
+
+
+<!-- Test Case created by LISA Test Editor -->
+<!-- On: Fri Apr 06 14:08:31 PDT 2012 -->
+
+
+<TestCase name="5.11_Invoke" version="2">
+<id>ab353239</id>
+<Documentation>Scenario: WebApp - Java with Hibernate Shared Resource&#13;&#10;Import the RTs from DAA&#13;&#10;Overwrite RTs by merging with previously imported RTs&#13;&#10;MEP: In-Out</Documentation>
+<sig>ZWQ9MiZ0Y3Y9MiZsaXNhdj00LjYuNyAoNC42LjcuMTYpJm5vZGVzPTExMzY0MDMwOTk=</sig>
+<rootNode>sqlDeleteRows</rootNode>
+<subprocess>false</subprocess>
+
+<initState>
+</initState>
+
+<resultState>
+    <Parameter>
+    <key>lisa.end.rsp</key>
+    <value>Set in Step end</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.end.rsp.time</key>
+    <value>Set in Step end</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.fail.rsp</key>
+    <value>Set in Step fail</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.fail.rsp.time</key>
+    <value>Set in Step fail</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.invokeWebappAndaddRow.rsp</key>
+    <value>Set in Step invokeWebappAndaddRow</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.invokeWebappAndaddRow.rsp.time</key>
+    <value>Set in Step invokeWebappAndaddRow</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.undeployApp.rsp.time</key>
+    <value>Set in Step undeployApp</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.sqlDeleteRows.rsp</key>
+    <value>Set in Step sqlDeleteRows</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.sqlDeleteRows.rsp.time</key>
+    <value>Set in Step sqlDeleteRows</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.sqlQueryDB.rsp</key>
+    <value>Set in Step sqlQueryDB</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.sqlQueryDB.rsp.time</key>
+    <value>Set in Step sqlQueryDB</value>
+    </Parameter>
+    <Parameter>
+    <key>dbpwd</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>dbuser</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.undeployApp.rsp</key>
+    <value>Set in Step undeployApp</value>
+    </Parameter>
+</resultState>
+
+      <Companion type="com.itko.lisa.test.PropReaderCompanion" >
+<type>Name-Value-Pairs</type>
+<file>{{LISA_TC_PATH}}/data{{g11n}}.txt</file>
+      </Companion>
+
+      <Companion type="com.itko.lisa.test.PropReaderCompanion" >
+<type>Name-Value-Pairs</type>
+<file>{{LISA_TC_PATH}}/config.txt</file>
+      </Companion>
+
+      <Companion type="com.tibco.lisa.amx.AmxCompanion" >
+    <datafile>{{LISA_TC_PATH}}/amxdata.xml</datafile>
+    <clidatafileppty>tibco.amx.datafile.tc</clidatafileppty>
+    <buildfile>{{LISA_TC_PATH}}/amxbuild.xml</buildfile>
+    <clibuildfileppty>tibco.amx.buildfile.tc</clibuildfileppty>
+      </Companion>
+
+      <Companion type="com.itko.lisa.test.ClassLoaderSandbox" >
+<dir>{{LISA_TC_PATH}}/hsqldb.jar</dir>
+<hot>false</hot>
+      </Companion>
+
+<Configurations>
+<Configuration>
+<name>runtime</name>
+<external>true</external>
+<doc>{{LISA_TC_PATH}}/../2node_hsql{{g11n}}.config</doc>
+</Configuration>
+<Configuration>
+<name>silver</name>
+<external>true</external>
+<doc>{{LISA_TC_PATH}}/../silver/1machine_2node.config</doc>
+</Configuration>
+</Configurations>
+    <Node name="sqlDeleteRows" log=""
+          type="com.itko.lisa.jdbc.JDBCNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="invokeWebappAndaddRow" > 
+
+<graphx>130</graphx>
+<graphy>130</graphy>
+<driver>{{dbDriver}}</driver>
+<dataSourceConnect>false</dataSourceConnect>
+<jndiFactory></jndiFactory>
+<jndiServerURL></jndiServerURL>
+<jndiDataSourceName></jndiDataSourceName>
+<connect>{{dbUrl}}</connect>
+<user>{{dbUser}}</user>
+<password>{{dbPwd}}</password>
+<onSQLError>fail</onSQLError>
+<resultSet>false</resultSet>
+<maxRows>10</maxRows>
+<keepOpen>true</keepOpen>
+<sql>{{sqlDeleteRows}}</sql>
+    </Node>
+
+
+    <Node name="invokeWebappAndaddRow" log=""
+          type="com.itko.lisa.test.URLTrans" 
+          version="2" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="sqlQueryDB" > 
+
+<graphx>10</graphx>
+<graphy>10</graphy>
+<url>
+<proto>http</proto>
+<host>{{host1}}</host>
+<port>{{port3}}</port>
+<path>/Webapp1/Webapp1</path>
+<query>city={{city}}&amp;state={{state}}&amp;zip={{zip}}&amp;forecast={{forecast}}&amp;high={{high}}&amp;low={{low}}</query>
+</url>
+<images>false</images>
+
+      <!-- Result Elements -->
+<CheckResult assertTrue="false" name="Check for &apos;{{resp}}&apos;" type="com.itko.lisa.test.CheckResultContains">
+<log>Result did not contain {{resp}}</log>
+<then>fail</then>
+<valueToAssertKey></valueToAssertKey>
+        <param>{{resp}}</param>
+</CheckResult>
+
+    </Node>
+
+
+    <Node name="sqlQueryDB" log=""
+          type="com.itko.lisa.jdbc.JDBCNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="undeployApp" > 
+
+<graphx>130</graphx>
+<graphy>130</graphy>
+<driver>{{dbDriver}}</driver>
+<dataSourceConnect>false</dataSourceConnect>
+<jndiFactory></jndiFactory>
+<jndiServerURL></jndiServerURL>
+<jndiDataSourceName></jndiDataSourceName>
+<connect>{{dbUrl}}</connect>
+<user>{{dbUser}}</user>
+<password>{{dbUser}}</password>
+<onSQLError>fail</onSQLError>
+<resultSet>true</resultSet>
+<maxRows>10</maxRows>
+<keepOpen>true</keepOpen>
+<sql>{{sqlQueryDB}}</sql>
+
+      <!-- Result Elements -->
+<CheckResult assertTrue="false" name="Check for &apos;{{zip}}&apos;" type="com.itko.lisa.resultset.AssertResultSetValue">
+<log>Did not find {{zip}} in result set</log>
+<then>fail</then>
+<valueToAssertKey></valueToAssertKey>
+        <column>4</column>
+        <regEx>{{zip}}</regEx>
+</CheckResult>
+
+    </Node>
+
+
+    <Node name="undeployApp" log="Undeployment deletes the WEATHERREPORT table"
+          type="com.itko.lisa.utils.ExecSubProcessNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="Re-Deploy" > 
+
+<graphx>3328</graphx>
+<graphy>419</graphy>
+<Subprocess>{{TIBCO_COMMON_LIBRARY}}/com/tibco/lisa/util/InvokeAnt.tst</Subprocess>
+<getEvents>0</getEvents>
+<sendConfig>true</sendConfig>
+<fullyParseProps>true</fullyParseProps>
+<sendCommonState>false</sendCommonState>
+<getCommonState>false</getCommonState>
+<onFail>fail</onFail>
+<Parameters>
+    <Parameter>
+    <key>projectBaseDirName</key>
+    <value></value>
+    <name>Absolute path of the project base Directory. Optional.</name>
+    </Parameter>
+    <Parameter>
+    <key>buildFileName</key>
+    <value>{{tibco.amx.buildfile.tc}}</value>
+    <name>Absolute path of the Ant build file. Required.</name>
+    </Parameter>
+    <Parameter>
+    <key>logFileName</key>
+    <value>{{tibco.test.case.log.dir}}/ant_undeploy.log</value>
+    <name>Absolute path to the Ant log file. Optional.</name>
+    </Parameter>
+    <Parameter>
+    <key>targetName</key>
+    <value>undeploy.app</value>
+    <name>Name of the build target to be invoked. Optional.</name>
+    </Parameter>
+    <Parameter>
+    <key>propertyFileName</key>
+    <value></value>
+    <name>Absolute path of the file which contains the property name/value pairs. Optional</name>
+    </Parameter>
+    <Parameter>
+    <key>propertyList</key>
+    <value>deployTimeout=600,TIBCO_HOME={{TIBCO_HOME}},TIBCO_AMXADMIN_HOME={{TIBCO_AMXADMIN_HOME}},TIBCO_AMX_LIBRARY={{TIBCO_AMX_LIBRARY}},amxConfigFile={{tibco.amx.datafile.tc}},remotePropsFile={{tibco.test.suite.config.path}}</value>
+    <name>Name value pairs seperated by comma. ex: name1=value1,name2=value2,.. etc. This can be used in addition to passing property file. Optional</name>
+    </Parameter>
+    <Parameter>
+    <key>antOpts</key>
+    <value>-Djava.classes.dir=/{{TIBCO_JAVA_HOME}}/jre/lib</value>
+    <name>ANT_OPTS environment variable. Optional. Ex: -Xms128m -Xmx512m -XX:PermSize=256m</name>
+    </Parameter>
+    <Parameter>
+    <key>additionalAntCmdLineArgs</key>
+    <value></value>
+    <name>Additional ant commandline options. Optional. See ant --help for these options.</name>
+    </Parameter>
+    <Parameter>
+    <key>additionalClasspath</key>
+    <value></value>
+    <name>Additional classpath to add to Ant. Optional.</name>
+    </Parameter>
+    <Parameter>
+    <key>waitForCompletion</key>
+    <value>true</value>
+    </Parameter>
+    <Parameter>
+    <key>timeout</key>
+    <value>600</value>
+    <name>Timeout in seconds for ant command. Required only if waitForCompletion is true</name>
+    </Parameter>
+</Parameters>
+<SaveProps>
+</SaveProps>
+
+      <!-- Result Elements -->
+<CheckResult assertTrue="false" name="Assert145" type="com.itko.lisa.test.CheckResultContains">
+<log>Assert [Assert145] fired false of type Result as String Contains Given String</log>
+<then>fail</then>
+<valueToAssertKey></valueToAssertKey>
+        <param>BUILD SUCCESSFUL</param>
+</CheckResult>
+
+    </Node>
+
+
+    <Node name="Re-Deploy" log="Deployment creates the WEATHERREPORT table with two rows"
+          type="com.itko.lisa.utils.ExecSubProcessNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="end" > 
+
+<graphx>1885</graphx>
+<graphy>4145</graphy>
+<Subprocess>{{TIBCO_COMMON_LIBRARY}}/com/tibco/lisa/util/InvokeAnt.tst</Subprocess>
+<getEvents>0</getEvents>
+<sendConfig>true</sendConfig>
+<fullyParseProps>true</fullyParseProps>
+<sendCommonState>false</sendCommonState>
+<getCommonState>false</getCommonState>
+<onFail>fail</onFail>
+<Parameters>
+    <Parameter>
+    <key>projectBaseDirName</key>
+    <value></value>
+    <name>Absolute path of the project base Directory. Optional.</name>
+    </Parameter>
+    <Parameter>
+    <key>buildFileName</key>
+    <value>{{tibco.amx.buildfile.tc}}</value>
+    <name>Absolute path of the Ant build file. Required.</name>
+    </Parameter>
+    <Parameter>
+    <key>logFileName</key>
+    <value>{{tibco.test.case.log.dir}}/ant_deploy.log</value>
+    <name>Absolute path to the Ant log file. Optional.</name>
+    </Parameter>
+    <Parameter>
+    <key>targetName</key>
+    <value>setup.app</value>
+    <name>Name of the build target to be invoked. Optional.</name>
+    </Parameter>
+    <Parameter>
+    <key>propertyFileName</key>
+    <value></value>
+    <name>Absolute path of the file which contains the property name/value pairs. Optional</name>
+    </Parameter>
+    <Parameter>
+    <key>propertyList</key>
+    <value>deployTimeout=600,TIBCO_HOME={{TIBCO_HOME}},TIBCO_AMXADMIN_HOME={{TIBCO_AMXADMIN_HOME}},TIBCO_AMX_LIBRARY={{TIBCO_AMX_LIBRARY}},amxConfigFile={{tibco.amx.datafile.tc}},remotePropsFile={{tibco.test.suite.config.path}}</value>
+    <name>Name value pairs seperated by comma. ex: name1=value1,name2=value2,.. etc. This can be used in addition to passing property file. Optional</name>
+    </Parameter>
+    <Parameter>
+    <key>antOpts</key>
+    <value>-Djava.classes.dir=/{{TIBCO_JAVA_HOME}}/jre/lib</value>
+    <name>ANT_OPTS environment variable. Optional. Ex: -Xms128m -Xmx512m -XX:PermSize=256m</name>
+    </Parameter>
+    <Parameter>
+    <key>additionalAntCmdLineArgs</key>
+    <value></value>
+    <name>Additional ant commandline options. Optional. See ant --help for these options.</name>
+    </Parameter>
+    <Parameter>
+    <key>additionalClasspath</key>
+    <value></value>
+    <name>Additional classpath to add to Ant. Optional.</name>
+    </Parameter>
+    <Parameter>
+    <key>waitForCompletion</key>
+    <value>true</value>
+    </Parameter>
+    <Parameter>
+    <key>timeout</key>
+    <value>600</value>
+    <name>Timeout in seconds for ant command. Required only if waitForCompletion is true</name>
+    </Parameter>
+</Parameters>
+<SaveProps>
+</SaveProps>
+
+      <!-- Result Elements -->
+<CheckResult assertTrue="false" name="Assert145" type="com.itko.lisa.test.CheckResultContains">
+<log>Configuration and Deployment of Application on host finished.....</log>
+<then>fail</then>
+<valueToAssertKey></valueToAssertKey>
+        <param>BUILD SUCCESSFUL</param>
+</CheckResult>
+
+    </Node>
+
+
+    <Node name="fail" log=""
+          type="com.itko.lisa.test.Abend" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="true" 
+          next="unknown" > 
+
+<graphx>250</graphx>
+<graphy>250</graphy>
+    </Node>
+
+
+    <Node name="end" log=""
+          type="com.itko.lisa.test.NormalEnd" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="true" 
+          next="fail" > 
+
+<graphx>370</graphx>
+<graphy>370</graphy>
+    </Node>
+
+
+</TestCase>

@@ -1,0 +1,69 @@
+<project name="qin_build" default="setNotifyConfig">
+<import file="${TIBCO_AMXADMIN_HOME}/bin/taskdef.xml" />
+	<import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+	
+    <!-- In order to check ${ant.project.invoked-targets} we need ANT 1.8 so make sure user uses ANT 1.8 -->
+	<fail message="Ant 1.8+ required">
+	     <condition>
+			 <not><antversion atleast="1.8" /></not>
+		 </condition>
+	</fail>
+
+    <!-- This property lets you safely define all paths relative to the absolute location
+         of this Ant file. -->
+		 
+    <!-- Predefine ${dataFile} to apply the targets in this script with different parameters. -->
+    <property name="dataFile" value="${amxConfigFile}"/>
+    
+    
+    <target name="force" depends="-test.targets.order">
+		<property name="forceOnFaultHosts" value="true" />
+	</target>
+	<target name="verfiyHostsEligibility" depends="-test.targets.order">
+		<property name="verfiyAllHostsEligibility" value="true" />
+	</target>
+
+	<target name="setNotifyConfig" depends="-test.targets.order">
+		<AMXAdminTask
+			remote="true"
+			propsFile="${remotePropsFile}"
+			action="editStatusTransport"
+			dataFile="${dataFile}"
+			objectSelector="AdminConfiguration/StatusTransportDetails"
+			overwrite="true"
+			merge="true"
+			createIfNotExists="true"
+			force="false"
+			failOnError="true"
+			
+			/>
+			<!--options="hosts={SystemHost};com.tibco.amx.notification.update.disable.individual.host"-->
+	</target>
+
+
+	<property name="failuremessage" value="Error: Target 'setNotifyConfig' needs to be last target" />
+
+	<target name="-test.targets.order" unless="hastargetsInOrder">
+		<echo>Invoked targets: ${ant.project.invoked-targets}</echo>
+
+
+		<condition property="hastargetsInOrder">
+
+			<or>
+				<!-- This or condition makes sure main target is always the last one 
+					in invoked targets else throw Error -->
+				<matches pattern=",setNotifyConfig]" string="${ant.project.invoked-targets}]" />
+				<equals arg1="${ant.project.invoked-targets}" arg2="setNotifyConfig" />
+			</or>
+
+		</condition>
+		<fail
+			message="${failuremessage}${line.separator}          The list of specified targets must end with a Main target (setNotifyConfig) when invoking the Ant script [specified targets: ${ant.project.invoked-targets}]"
+			unless="hastargetsInOrder" />
+
+
+		<!-- Move on if no failture -->
+		<echo
+			message="Specified Ant targets are in order hence proceeding with Notification Transport Update." />
+	</target>
+</project>

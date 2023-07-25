@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<amxdata_base:Enterprise
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+	xmlns:amxdata_binding="http://tibco.com/amxadministrator/command/line/types_binding"
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base 
+	http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd 
+	http://tibco.com/amxadministrator/command/line/types 
+	http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+
+	<Environment 
+		xsi:type="amxdata:Environment" 
+		name="QAEnvironment_pkaur-z600"
+		description="QA environment" 
+		contact="TIBCO QA">
+		<Application 
+			xsi:type="amxdata:Application" 
+			name="AMX30.BAT.CASE55.TARGET.SVC"
+			importBindings="false" 
+			createServiceVirtualizationBinding="false"
+			contact="TIBCO QA" 
+			description="">
+			<Node 
+				name="QANode2" 
+				environmentName="QAEnvironment_pkaur-z600" />
+			<PromotedService 
+				xsi:type="amxdata_base:Service_base" 
+				name="echoTargetService">
+				<Binding 
+					xsi:type="amxdata:ServiceVirtualizationBinding" 
+					name="Virtualization" />
+			</PromotedService>
+			<ApplicationTemplate
+				xsi:type="amxdata_reference:ApplicationTemplate_reference" 
+				name="amx30.bat.55.sj.soa" />
+		</Application>
+		<Application 
+			xsi:type="amxdata:Application" 
+			name="AMX30.BAT.CASE55.SOAP-SPRING-SCA"
+			importBindings="true"
+			contact="TIBCO QA"
+			description="">	
+			<Node 
+				name="QANode1" 
+				environmentName="QAEnvironment_pkaur-z600" />
+			<!--				
+			<PromotedService 
+				xsi:type="amxdata_base:Service_base"
+				name="echoService">
+				<Binding 
+					xsi:type="amxdata:Binding" 
+					name="SOAPService_Binding1">
+				    <Property 
+						xsi:type="amxdata:Property" 
+						name="HttpInboundConnectionConfig"
+						value="httpConnector1" />
+				</Binding>
+			</PromotedService>
+			
+			<PromotedService 
+				xsi:type="amxdata_base:Service_base" 
+				name="echoService">
+				<Binding 
+					xsi:type="amxdata_binding:SoapServiceBinding"
+					name="SOAPService_Binding1" 
+					description=""
+					style="RPC"
+					encoding="LITERAL">
+					<Property  
+						xsi:type="amxdata:Property" 
+						name="HttpInboundConnectionConfig"  
+						value="httpConnector1"/>
+					<HttpTransportDetails 
+						xsi:type="amxdata_binding:HttpTransportDetails" 
+						endpointURI="/echoStringRLE/"
+						httpInboundConnectionJNDIName="httpConnector1"/>
+					<OperationConfiguration xsi:type="amxdata_binding:OperationConfiguration" name="echo" >
+						<MessageConfiguration xsi:type="amxdata_binding:MessageConfiguration" direction="INPUT">
+							<PartConfiguration xsi:type="amxdata_binding:PartConfiguration" name="echoRequest" type="Body"/>
+						</MessageConfiguration>
+						<MessageConfiguration xsi:type="amxdata_binding:MessageConfiguration" direction="OUTPUT">
+							<PartConfiguration xsi:type="amxdata_binding:PartConfiguration" name="echoResponse" type="Body"/>
+						</MessageConfiguration>
+					</OperationConfiguration>	
+				</Binding>	
+			</PromotedService>
+			-->
+			<PromotedReference 
+				xsi:type="amxdata_base:Reference_base"
+				name="echoReference">
+				
+				<Binding 
+					xsi:type="amxdata:ServiceVirtualizationBinding"	
+					name="virtualization.reference.binding">
+				</Binding>
+								
+				<Wire 
+					xsi:type="amxdata:Wire">
+					<ServiceBinding 
+						xsi:type="amxdata_reference:Binding_reference"
+						bindingName="Virtualization" 
+						serviceName="echoTargetService"
+						ownerName="AMX30.BAT.CASE55.TARGET.SVC" 
+						ownerType="Application">
+					</ServiceBinding>
+				</Wire>
+			</PromotedReference>
+			<ApplicationTemplate
+				xsi:type="amxdata_reference:ApplicationTemplate_reference" 
+				name="amx30.bat.55.ssprings.soa" />
+		</Application>
+	</Environment>
+
+	<DAA 
+		xsi:type="amxdata:DAA" 
+		description=""
+		location="amx30.bat.55.sj.soa/Deployment Artifacts/amx30.bat.55.sj.soa.daa">
+	</DAA>
+
+	<DAA 
+		xsi:type="amxdata:DAA" 
+		description=""
+		location="amx30.bat.55.ssprings.soa/Deployment Artifacts/amx30.bat.55.ssprings.soa.daa" >
+	</DAA>
+
+</amxdata_base:Enterprise>
+

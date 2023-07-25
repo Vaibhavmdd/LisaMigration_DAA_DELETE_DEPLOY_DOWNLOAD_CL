@@ -1,0 +1,190 @@
+08 Oct 2018 15:18:41,177 ERROR (Processor.java:355)     - java.lang.reflect.UndeclaredThrowableException: java.lang.reflect.UndeclaredThrowableException
+at com.sun.proxy.$Proxy1.getEnvByName(Unknown Source)
+at com.tibco.amf.admin.cmdline.env.EnvProcessor.getIdentifier(EnvProcessor.java:19)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+ ....
+Caused by: org.apache.axis2.AxisFault: Connection refused
+at org.apache.axis2.AxisFault.makeFault(AxisFault.java:430)
+at org.apache.axis2.transport.http.HTTPSender.sendViaPost(HTTPSender.java:193)
+at org.apache.axis2.transport.http.HTTPSender.send(HTTPSender.java:75)
+at org.apache.axis2.transport.http.CommonsHTTPTransportSender.writeMessageWithCommons(CommonsHTTPTransportSender.java:371)
+ ....
+Caused by: java.net.ConnectException: Connection refused
+at java.net.PlainSocketImpl.socketConnect(Native Method)
+at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:345)
+at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+ ....
+
+08 Oct 2018 15:18:41,183 ERROR (LoggingUtil.java:26)     - 10/8/18 3:18 PM - Error getting identifier for add
+08 Oct 2018 17:46:50,926 INFO  (AMXAdminTask.java:330)     - Connecting to AMX Admin server at 'http://localhost:8120' as user 'root'.
+08 Oct 2018 17:46:52,696 INFO  (AMXAdminTask.java:289)     - Processing 1 objects
+08 Oct 2018 17:46:54,601 INFO  (AddAction.java:31)     - Adding application...
+08 Oct 2018 17:46:54,939 INFO  (LoggingUtil.java:119)     - Successfully added Application 'com.tibco.amx.bt.adapter.app': Successfully created application 'com.tibco.amx.bt.adapter.app' from Application Template 'com.tibco.amx.bt.adapter.application' (version: 3.2.0.000)
+08 Oct 2018 17:46:54,941 INFO  (LoggingUtil.java:182)     - 10/8/18 5:46 PM - 	  detail = TIBCO-AMX-ADMIN-012406: Component 'binding.adapter' (version: 1.1.0) added.
+
+08 Oct 2018 17:46:54,947 INFO  (Processor.java:675)     - Action finished at 10/8/18 5:46 PM in 0.341 seconds
+08 Oct 2018 17:46:54,969 INFO  (AMXAdminTask.java:289)     - Processing 1 objects
+08 Oct 2018 17:46:55,252 INFO  (SetApplicationToNodesAction.java:21)     - Mapping application to nodes...  
+08 Oct 2018 17:46:56,257 INFO  (SetApplicationToNodesAction.java:31)     - Successfully mapped application 'com.tibco.amx.bt.adapter.app' to node 'QANode1'
+08 Oct 2018 17:46:56,259 INFO  (Processor.java:751)     - Action finished at 10/8/18 5:46 PM in 1.007 seconds
+08 Oct 2018 17:46:56,280 INFO  (AMXAdminTask.java:289)     - Processing 1 objects
+08 Oct 2018 17:46:56,441 INFO  (AddApplicationToNodesAction.java:22)     - Mapping application to nodes...  
+08 Oct 2018 17:46:57,404 INFO  (AddApplicationToNodesAction.java:41)     - Successfully mapped application 'com.tibco.amx.bt.adapter.app' to node 'QANode2'
+08 Oct 2018 17:46:57,405 INFO  (Processor.java:751)     - Action finished at 10/8/18 5:46 PM in 0.964 seconds
+08 Oct 2018 17:46:57,425 INFO  (AMXAdminTask.java:289)     - Processing 1 objects
+08 Oct 2018 17:46:57,442 INFO  (DeployAction.java:38)     - Deploying application...
+08 Oct 2018 17:47:00,525 INFO  (LoggingUtil.java:119)     - Deploying Application 'com.tibco.amx.bt.adapter.app' in background : TIBCO-AMX-ADMIN-012015: Deployment succeeded for application 'com.tibco.amx.bt.adapter.app' at 10/8/18 5:47 PM on node(s): 'QANode1, QANode2'.
+08 Oct 2018 17:47:00,526 INFO  (LoggingUtil.java:182)     - 10/8/18 5:47 PM - 	  detail = TIBCO-AMX-ADMIN-012146: Feature 'com.tibco.amx.bt.adapter.runtime.product.feature.3.2.0.000' was auto-enabled in node 'QANode2'
+
+08 Oct 2018 17:47:00,527 INFO  (LoggingUtil.java:182)     - 10/8/18 5:47 PM - 	  detail = TIBCO-AMX-ADMIN-012146: Feature 'com.tibco.amx.bt.adapter.runtime.product.feature.3.2.0.000' was auto-enabled in node 'QANode1'
+
+08 Oct 2018 17:47:00,528 INFO  (Processor.java:696)     - Action finished in Admin at 10/8/18 5:47 PM in 3.086 seconds. Waiting for runtime tasks to be finished.
+08 Oct 2018 17:47:01,896 INFO  (AsyncActionExecutor.java:117)     - .
+08 Oct 2018 17:47:05,230 INFO  (UserTaskProgressIndicator.java:58)     - Application Deploy with Start finished successfully
+08 Oct 2018 17:47:05,233 INFO  (Processor.java:743)     - Action finished at 10/8/18 5:47 PM in 7.79 seconds
+08 Oct 2018 17:47:08,908 INFO  (AMXAdminTask.java:330)     - Connecting to AMX Admin server at 'http://localhost:8120' as user 'root'.
+08 Oct 2018 17:47:09,803 INFO  (AMXAdminTask.java:289)     - Processing 1 objects
+08 Oct 2018 17:47:10,624 INFO  (AddAction.java:54)     - Uploading DAA...
+08 Oct 2018 17:47:10,631 INFO  (AddAction.java:56)     - DAA location: ./SOA/GAC_RPCC_RPC_RV/Deployment Artifacts/GAC_RPCC_RPC_RV.daa
+08 Oct 2018 17:47:11,433 INFO  (AddAction.java:142)     - Successfully added Application Template 'GAC_RPCC_RPC_RV' (version: '1.0.0.201010121623') to the Administrator Staging Area
+08 Oct 2018 17:47:11,440 INFO  (Processor.java:675)     - Action finished at 10/8/18 5:47 PM in 0.812 seconds
+08 Oct 2018 17:47:12,417 INFO  (AMXAdminTask.java:289)     - Processing 1 objects
+08 Oct 2018 17:47:12,819 INFO  (AddAction.java:31)     - Adding application...
+08 Oct 2018 17:47:13,348 INFO  (LoggingUtil.java:119)     - Successfully added Application 'bat67': Successfully created application 'bat67' from Application Template 'GAC_RPCC_RPC_RV' (version: 1.0.0.201010121623)
+08 Oct 2018 17:47:13,350 INFO  (LoggingUtil.java:182)     - 10/8/18 5:47 PM - 	  detail = TIBCO-AMX-ADMIN-012406: Component 'Component1' (version: 1.0.0.201010121623) added.
+
+08 Oct 2018 17:47:13,351 INFO  (LoggingUtil.java:182)     - 10/8/18 5:47 PM - 	  detail = TIBCO-AMX-ADMIN-012419: Application Reference 'GetSalesOrderById1' added.
+
+08 Oct 2018 17:47:13,352 INFO  (LoggingUtil.java:182)     - 10/8/18 5:47 PM - 	  detail = TIBCO-AMX-ADMIN-012426: Application Service 'QueryExternalCustomer' added.
+
+08 Oct 2018 17:47:13,353 INFO  (LoggingUtil.java:182)     - 10/8/18 5:47 PM - 	  detail = TIBCO-AMX-ADMIN-012440: Substitution variable 'RvaHost' added.
+
+08 Oct 2018 17:47:13,354 INFO  (LoggingUtil.java:182)     - 10/8/18 5:47 PM - 	  detail = TIBCO-AMX-ADMIN-012440: Substitution variable 'TIBHawkNetwork' added.
+
+08 Oct 2018 17:47:13,355 INFO  (LoggingUtil.java:182)     - 10/8/18 5:47 PM - 	  detail = TIBCO-AMX-ADMIN-012440: Substitution variable 'RvService' added.
+
+08 Oct 2018 17:47:13,356 INFO  (LoggingUtil.java:182)     - 10/8/18 5:47 PM - 	  detail = TIBCO-AMX-ADMIN-012440: Substitution variable 'TIBHawkDaemon' added.
+
+08 Oct 2018 17:47:13,356 INFO  (LoggingUtil.java:182)     - 10/8/18 5:47 PM - 	  detail = TIBCO-AMX-ADMIN-012440: Substitution variable 'DirLedger' added.
+
+08 Oct 2018 17:47:13,357 INFO  (LoggingUtil.java:182)     - 10/8/18 5:47 PM - 	  detail = TIBCO-AMX-ADMIN-012440: Substitution variable 'Domain' added.
+
+08 Oct 2018 17:47:13,359 INFO  (LoggingUtil.java:182)     - 10/8/18 5:47 PM - 	  detail = TIBCO-AMX-ADMIN-012440: Substitution variable 'TIBHawkService' added.
+
+08 Oct 2018 17:47:13,360 INFO  (LoggingUtil.java:182)     - 10/8/18 5:47 PM - 	  detail = TIBCO-AMX-ADMIN-012440: Substitution variable 'RvService' added.
+
+08 Oct 2018 17:47:13,360 INFO  (LoggingUtil.java:182)     - 10/8/18 5:47 PM - 	  detail = TIBCO-AMX-ADMIN-012440: Substitution variable 'TIBHawkNetwork' added.
+
+08 Oct 2018 17:47:13,361 INFO  (LoggingUtil.java:182)     - 10/8/18 5:47 PM - 	  detail = TIBCO-AMX-ADMIN-012440: Substitution variable 'TIBHawkService' added.
+
+08 Oct 2018 17:47:13,362 INFO  (LoggingUtil.java:182)     - 10/8/18 5:47 PM - 	  detail = TIBCO-AMX-ADMIN-012440: Substitution variable 'RemoteRvDaemon' added.
+
+08 Oct 2018 17:47:13,363 INFO  (LoggingUtil.java:182)     - 10/8/18 5:47 PM - 	  detail = TIBCO-AMX-ADMIN-012440: Substitution variable 'RvaPort' added.
+
+08 Oct 2018 17:47:13,364 INFO  (LoggingUtil.java:182)     - 10/8/18 5:47 PM - 	  detail = TIBCO-AMX-ADMIN-012440: Substitution variable 'RvNetwork' added.
+
+08 Oct 2018 17:47:13,365 INFO  (LoggingUtil.java:182)     - 10/8/18 5:47 PM - 	  detail = TIBCO-AMX-ADMIN-012440: Substitution variable 'RvDaemon' added.
+
+08 Oct 2018 17:47:13,366 INFO  (LoggingUtil.java:182)     - 10/8/18 5:47 PM - 	  detail = TIBCO-AMX-ADMIN-012440: Substitution variable 'Domain' added.
+
+08 Oct 2018 17:47:13,366 INFO  (LoggingUtil.java:182)     - 10/8/18 5:47 PM - 	  detail = TIBCO-AMX-ADMIN-012440: Substitution variable 'DirLedger' added.
+
+08 Oct 2018 17:47:13,367 INFO  (LoggingUtil.java:182)     - 10/8/18 5:47 PM - 	  detail = TIBCO-AMX-ADMIN-012440: Substitution variable 'Deployment' added.
+
+08 Oct 2018 17:47:13,368 INFO  (LoggingUtil.java:182)     - 10/8/18 5:47 PM - 	  detail = TIBCO-AMX-ADMIN-012440: Substitution variable 'RemoteRvDaemon' added.
+
+08 Oct 2018 17:47:13,369 INFO  (LoggingUtil.java:182)     - 10/8/18 5:47 PM - 	  detail = TIBCO-AMX-ADMIN-012440: Substitution variable 'DirTrace' added.
+
+08 Oct 2018 17:47:13,369 INFO  (LoggingUtil.java:182)     - 10/8/18 5:47 PM - 	  detail = TIBCO-AMX-ADMIN-012440: Substitution variable 'Deployment' added.
+
+08 Oct 2018 17:47:13,370 INFO  (LoggingUtil.java:182)     - 10/8/18 5:47 PM - 	  detail = TIBCO-AMX-ADMIN-012440: Substitution variable 'HawkEnabled' added.
+
+08 Oct 2018 17:47:13,371 INFO  (LoggingUtil.java:182)     - 10/8/18 5:47 PM - 	  detail = TIBCO-AMX-ADMIN-012440: Substitution variable 'RvDaemon' added.
+
+08 Oct 2018 17:47:13,372 INFO  (LoggingUtil.java:182)     - 10/8/18 5:47 PM - 	  detail = TIBCO-AMX-ADMIN-012440: Substitution variable 'RvNetwork' added.
+
+08 Oct 2018 17:47:13,373 INFO  (LoggingUtil.java:182)     - 10/8/18 5:47 PM - 	  detail = TIBCO-AMX-ADMIN-012440: Substitution variable 'JmsProviderUrl' added.
+
+08 Oct 2018 17:47:13,374 INFO  (LoggingUtil.java:182)     - 10/8/18 5:47 PM - 	  detail = TIBCO-AMX-ADMIN-012440: Substitution variable 'TIBHawkDaemon' added.
+
+08 Oct 2018 17:47:13,374 INFO  (LoggingUtil.java:182)     - 10/8/18 5:47 PM - 	  detail = TIBCO-AMX-ADMIN-012440: Substitution variable 'DirTrace' added.
+
+08 Oct 2018 17:47:13,375 INFO  (LoggingUtil.java:182)     - 10/8/18 5:47 PM - 	  detail = TIBCO-AMX-ADMIN-012440: Substitution variable 'JmsSslProviderUrl' added.
+
+08 Oct 2018 17:47:13,376 INFO  (LoggingUtil.java:182)     - 10/8/18 5:47 PM - 	  detail = TIBCO-AMX-ADMIN-012440: Substitution variable 'RvaPort' added.
+
+08 Oct 2018 17:47:13,376 INFO  (LoggingUtil.java:182)     - 10/8/18 5:47 PM - 	  detail = TIBCO-AMX-ADMIN-012440: Substitution variable 'JmsProviderUrl' added.
+
+08 Oct 2018 17:47:13,377 INFO  (LoggingUtil.java:182)     - 10/8/18 5:47 PM - 	  detail = TIBCO-AMX-ADMIN-012440: Substitution variable 'JmsSslProviderUrl' added.
+
+08 Oct 2018 17:47:13,378 INFO  (LoggingUtil.java:182)     - 10/8/18 5:47 PM - 	  detail = TIBCO-AMX-ADMIN-012440: Substitution variable 'HawkEnabled' added.
+
+08 Oct 2018 17:47:13,379 INFO  (LoggingUtil.java:182)     - 10/8/18 5:47 PM - 	  detail = TIBCO-AMX-ADMIN-012440: Substitution variable 'RvaHost' added.
+
+08 Oct 2018 17:47:13,380 INFO  (Processor.java:675)     - Action finished at 10/8/18 5:47 PM in 0.56 seconds
+08 Oct 2018 17:47:13,409 INFO  (AMXAdminTask.java:289)     - Processing 1 objects
+08 Oct 2018 17:47:13,814 INFO  (AddComponentToNodesAction.java:37)     - Adding component to nodes...
+08 Oct 2018 17:47:14,881 INFO  (AddComponentToNodesAction.java:53)     - Successfully added component 'Component1' to node 'QANode2'
+08 Oct 2018 17:47:14,882 INFO  (Processor.java:751)     - Action finished at 10/8/18 5:47 PM in 1.068 seconds
+08 Oct 2018 17:47:14,906 INFO  (AMXAdminTask.java:289)     - Processing 1 objects
+08 Oct 2018 17:47:15,253 INFO  (AddBindingToNodesAction.java:37)     - Adding binding to nodes...
+08 Oct 2018 17:47:16,262 INFO  (AddBindingToNodesAction.java:53)     - Successfully added binding 'ADAPTERService_Binding1' to node 'QANode1'
+08 Oct 2018 17:47:16,263 INFO  (Processor.java:751)     - Action finished at 10/8/18 5:47 PM in 1.01 seconds
+08 Oct 2018 17:47:16,281 INFO  (AMXAdminTask.java:289)     - Processing 1 objects
+08 Oct 2018 17:47:16,563 INFO  (AddBindingToNodesAction.java:37)     - Adding binding to nodes...
+08 Oct 2018 17:47:17,463 INFO  (AddBindingToNodesAction.java:53)     - Successfully added binding 'ADAPTERReference_Binding1' to node 'QANode1'
+08 Oct 2018 17:47:17,464 INFO  (Processor.java:751)     - Action finished at 10/8/18 5:47 PM in 0.901 seconds
+08 Oct 2018 17:47:17,477 INFO  (AMXAdminTask.java:289)     - Processing 1 objects
+08 Oct 2018 17:47:17,599 INFO  (EditAction.java:27)     - Editing properties..
+08 Oct 2018 17:47:17,722 INFO  (LoggingUtil.java:119)     - Successfully edited property 'rvDaemon' : Successfully updated property 'rvDaemon' to 'tcp:batman.na.tibco.com:7500'
+08 Oct 2018 17:47:17,723 INFO  (Processor.java:751)     - Action finished at 10/8/18 5:47 PM in 0.124 seconds
+08 Oct 2018 17:47:17,741 INFO  (AMXAdminTask.java:289)     - Processing 1 objects
+08 Oct 2018 17:47:17,754 INFO  (DeployAction.java:38)     - Deploying application...
+08 Oct 2018 17:47:20,913 INFO  (LoggingUtil.java:119)     - Deploying Application 'bat67' in background : TIBCO-AMX-ADMIN-012015: Deployment succeeded for application 'bat67' at 10/8/18 5:47 PM on node(s): 'QANode2, QANode1'.
+08 Oct 2018 17:47:20,914 INFO  (Processor.java:696)     - Action finished in Admin at 10/8/18 5:47 PM in 3.16 seconds. Waiting for runtime tasks to be finished.
+08 Oct 2018 17:47:22,323 INFO  (AsyncActionExecutor.java:117)     - .
+08 Oct 2018 17:47:26,793 INFO  (AsyncActionExecutor.java:117)     - .
+08 Oct 2018 17:47:28,999 INFO  (UserTaskProgressIndicator.java:58)     - Application Deploy with Start finished successfully
+08 Oct 2018 17:47:29,000 INFO  (Processor.java:743)     - Action finished at 10/8/18 5:47 PM in 11.246 seconds
+08 Oct 2018 17:47:35,430 INFO  (AMXAdminTask.java:330)     - Connecting to AMX Admin server at 'http://localhost:8120' as user 'root'.
+08 Oct 2018 17:47:36,302 INFO  (AMXAdminTask.java:289)     - Processing 1 objects
+08 Oct 2018 17:47:37,059 INFO  (AddAction.java:54)     - Uploading DAA...
+08 Oct 2018 17:47:37,065 INFO  (AddAction.java:56)     - DAA location: ./SOA/GAC_RPCC_RPC_RV/Deployment Artifacts/GAC_RPCC_RPC_RV.daa
+08 Oct 2018 17:47:37,804 WARN  (AddAction.java:151)     - Application Template 'GAC_RPCC_RPC_RV' (version: '1.0.0.201010121623') was ignored and not added to the Administrator Staging Area, because it already exists.
+08 Oct 2018 17:47:37,810 INFO  (Processor.java:675)     - Action finished at 10/8/18 5:47 PM in 0.749 seconds
+08 Oct 2018 17:47:38,827 INFO  (AMXAdminTask.java:289)     - Processing 1 objects
+08 Oct 2018 17:47:39,242 INFO  (Processor.java:457)     - Application bat67 exists on QAEnvironment_spiderman.na.tibco.com, overwriting by merging with existing Application
+08 Oct 2018 17:47:39,243 INFO  (EditAction.java:23)     - Editing Application...
+08 Oct 2018 17:47:39,827 INFO  (EditAction.java:62)     - Successfully edited Application 'bat67'
+08 Oct 2018 17:47:39,828 INFO  (Processor.java:675)     - Action finished at 10/8/18 5:47 PM in 0.585 seconds
+08 Oct 2018 17:47:39,861 INFO  (AMXAdminTask.java:289)     - Processing 1 objects
+08 Oct 2018 17:47:40,259 INFO  (AddComponentToNodesAction.java:37)     - Adding component to nodes...
+08 Oct 2018 17:47:40,379 INFO  (AddComponentToNodesAction.java:53)     - Successfully added component 'Component1' to node 'QANode2'
+08 Oct 2018 17:47:40,381 INFO  (Processor.java:751)     - Action finished at 10/8/18 5:47 PM in 0.121 seconds
+08 Oct 2018 17:47:40,401 INFO  (AMXAdminTask.java:289)     - Processing 1 objects
+08 Oct 2018 17:47:40,728 INFO  (AddBindingToNodesAction.java:37)     - Adding binding to nodes...
+08 Oct 2018 17:47:40,878 INFO  (AddBindingToNodesAction.java:53)     - Successfully added binding 'ADAPTERService_Binding1' to node 'QANode1'
+08 Oct 2018 17:47:40,879 INFO  (Processor.java:751)     - Action finished at 10/8/18 5:47 PM in 0.15 seconds
+08 Oct 2018 17:47:40,897 INFO  (AMXAdminTask.java:289)     - Processing 1 objects
+08 Oct 2018 17:47:41,187 INFO  (AddBindingToNodesAction.java:37)     - Adding binding to nodes...
+08 Oct 2018 17:47:41,334 INFO  (AddBindingToNodesAction.java:53)     - Successfully added binding 'ADAPTERReference_Binding1' to node 'QANode1'
+08 Oct 2018 17:47:41,336 INFO  (Processor.java:751)     - Action finished at 10/8/18 5:47 PM in 0.148 seconds
+08 Oct 2018 17:47:41,349 INFO  (AMXAdminTask.java:289)     - Processing 1 objects
+08 Oct 2018 17:47:41,500 INFO  (EditAction.java:27)     - Editing properties..
+08 Oct 2018 17:47:41,611 INFO  (Processor.java:751)     - Action finished at 10/8/18 5:47 PM in 0.111 seconds
+08 Oct 2018 17:47:41,629 INFO  (AMXAdminTask.java:289)     - Processing 1 objects
+08 Oct 2018 17:47:41,641 INFO  (DeployAction.java:38)     - Deploying application...
+08 Oct 2018 17:47:42,897 INFO  (LoggingUtil.java:119)     - Deploying Application 'bat67' in background : TIBCO-AMX-ADMIN-012015: Deployment succeeded for application 'bat67' at 10/8/18 5:47 PM on node(s): 'QANode2, QANode1'.
+08 Oct 2018 17:47:42,898 INFO  (LoggingUtil.java:182)     - 10/8/18 5:47 PM - 	  detail = TIBCO-AMX-ADMIN-012017: No changes were made to node 'QANode2' for application 'bat67'.
+
+08 Oct 2018 17:47:42,899 INFO  (LoggingUtil.java:182)     - 10/8/18 5:47 PM - 	  detail = TIBCO-AMX-ADMIN-012017: No changes were made to node 'QANode2' for application 'bat67'.
+
+08 Oct 2018 17:47:42,900 INFO  (LoggingUtil.java:182)     - 10/8/18 5:47 PM - 	  detail = TIBCO-AMX-ADMIN-012017: No changes were made to node 'QANode1' for application 'bat67'.
+
+08 Oct 2018 17:47:42,901 INFO  (LoggingUtil.java:182)     - 10/8/18 5:47 PM - 	  detail = TIBCO-AMX-ADMIN-012017: No changes were made to node 'QANode1' for application 'bat67'.
+
+08 Oct 2018 17:47:42,902 INFO  (Processor.java:696)     - Action finished in Admin at 10/8/18 5:47 PM in 1.26 seconds. Waiting for runtime tasks to be finished.
+08 Oct 2018 17:47:43,053 INFO  (UserTaskProgressIndicator.java:58)     - Application Deploy with Start finished successfully
+08 Oct 2018 17:47:43,055 INFO  (Processor.java:743)     - Action finished at 10/8/18 5:47 PM in 1.414 seconds

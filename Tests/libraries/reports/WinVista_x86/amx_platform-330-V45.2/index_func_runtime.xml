@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report>
+    <ReportTime>2014/03/31 Mon 14:35:10</ReportTime>
+    <ReportTitle>Automation Tests Report</ReportTitle>
+    <ProductName>TIBCO ActiveMatrix Platform</ProductName>
+    <ProductVersion>Version 3.3.0 build V45.2</ProductVersion>
+    <Platform>WinVista_x86</Platform>
+    <HostName>KPHAPUNK-Z820</HostName>
+    <UserName>superuser</UserName>
+    <TestRun>
+        <StartTime>2014/03/31-14:35:10</StartTime>
+        <TestSetTotal>1</TestSetTotal>
+        <TestCaseTotal>14</TestCaseTotal>
+        <TestCasePassedTotal>0</TestCasePassedTotal>
+        <TestCaseFailedTotal>14</TestCaseFailedTotal>
+        <TestCaseErrorTotal>0</TestCaseErrorTotal>
+        <TestSet>
+            <StartTime>2014/03/31-14:35:10</StartTime>
+            <TestCaseTotal>14</TestCaseTotal>
+            <TestCasePassedTotal>0</TestCasePassedTotal>
+            <TestCaseFailedTotal>14</TestCaseFailedTotal>
+            <TestCaseErrorTotal>0</TestCaseErrorTotal>
+            <Name>bat_2node_orcl</Name>
+            <RelativeLogDir>func/runtime/bat/bat_2node_orcl</RelativeLogDir>
+            <RunStatus>Y</RunStatus>
+            <TestCase>
+                <StartTime>2014/03/31-14:35:10</StartTime>
+                <EndTime>2014/03/31-14:35:18</EndTime>
+                <ID>tctSilentSetup</ID>
+                <Sequence>1</Sequence>
+                <Description>
+                    <DescriptionPiece>
+                        <NonDefect>Create TPShell and Provision DB driver if Oracle/SQLServer/DB2
+Bootstrap TIBCOHost 
+Bootstrap Admin SystemNode
+Setup Nodes (osgi console port 1129 and 1139)
+Set Node Loggers
+Install Resources Instances
+Deploy Dashboard
+Deploy MCR (optional) 
+Deploy Log Service (optional)
+Deploy Payload Service (optional)
+Deploy Mediation</NonDefect>
+                    </DescriptionPiece>
+                </Description>
+                <Result>FAILED</Result>
+                <SourceDirectory>../../../../../../../tests/func/runtime/bat/setup</SourceDirectory>
+                <ReportDirectory>tctSilentSetup</ReportDirectory>
+            </TestCase>
+            <TestCase>
+                <StartTime>2014/03/31-14:35:20</StartTime>
+                <EndTime>2014/03/31-14:35:21</EndTime>
+                <ID>5.1</ID>
+                <Sequence>1</Sequence>
+                <Description>
+                    <DescriptionPiece>
+                        <NonDefect>Description : Test Declared / Undeclared fault with AMX and BW Provider
+Scenario: 	Composite 1: 
+			SOAP BT(HTTP) &lt;-&gt; JAVA &lt;-&gt; JAVA &lt;-&gt; SOAP BT(HTTP) (Configured for AMX Provider)
+									   SOAP BT(HTTP) (Configured for BW Provider)
+			Composite 2:	
+			SOAP BT(HTTP) &lt;-&gt; JAVA
+
+MEP: In-Out 
+SOAP Version: 1.1 
+SOAP Style/Encoding: Document/Literal 
+</NonDefect>
+                    </DescriptionPiece>
+                </Description>
+                <Result>FAILED</Result>
+                <SourceDirectory>../../../../../../../tests/func/runtime/bat/5.1</SourceDirectory>
+                <ReportDirectory>5.1</ReportDirectory>
+            </TestCase>
+            <TestCase>
+                <StartTime>2014/03/31-14:35:23</StartTime>
+                <EndTime>2014/03/31-14:35:25</EndTime>
+                <ID>5.2</ID>
+                <Sequence>1</Sequence>
+                <Description>
+                    <DescriptionPiece>
+                        <NonDefect>JMS BT Service and Reference.
+JMS RT (not imported from design-time) with inline credentials.
+
+Composite1: 
+JMS BT (Topic - Serv1) &lt;-&gt; SPRING &lt;-&gt; JMS BT (Queue - Ref1)
+                       &lt;-&gt; JMS BT (Queue - Ref1)
+Composite2:
+JMS BT (Queue - Serv2) &lt;-&gt; JAVA
+                                     
+JMS Service1 and JMS Ref1 bindings are created in Admin through CLI.
+JMS Service2 and Ref2 are created at design-time.
+
+Project1 is configured for BW Provider for following cases:
+       </NonDefect>
+                    </DescriptionPiece>
+                </Description>
+                <Result>FAILED</Result>
+                <SourceDirectory>../../../../../../../tests/func/runtime/bat/5.2</SourceDirectory>
+                <ReportDirectory>5.2</ReportDirectory>
+            </TestCase>
+            <TestCase>
+                <StartTime>2014/03/31-14:35:26</StartTime>
+                <EndTime>2014/03/31-14:35:27</EndTime>
+                <ID>5.3</ID>
+                <Sequence>1</Sequence>
+                <Description>
+                    <DescriptionPiece>
+                        <NonDefect>Description :   Test File-based Logging.
+                Create 3 loggers: logger1 for Nodes (done in setup), logger2 for Java Component, logger3 for Application
+Scenario:       SOAP BT(HTTP) -&gt; Java -&gt; Spring
+
+MEP: In-Only 
+SOAP Version: 1.1 
+SOAP Style/Encoding: Document/Literal</NonDefect>
+                    </DescriptionPiece>
+                </Description>
+                <Result>FAILED</Result>
+                <SourceDirectory>../../../../../../../tests/func/runtime/bat/5.3</SourceDirectory>
+                <ReportDirectory>5.3</ReportDirectory>
+            </TestCase>
+            <TestCase>
+                <StartTime>2014/03/31-14:35:28</StartTime>
+                <EndTime>2014/03/31-14:35:28</EndTime>
+                <ID>5.4</ID>
+                <Sequence>1</Sequence>
+                <Description>
+                    <DescriptionPiece>
+                        <NonDefect>Description : Test WS Addressing (Anonymous &amp; Non Anonymous) with Declared and Undeclared fault
+Scenario: 	Composite 1: 
+			SOAP BT(HTTP) (Anonymous ws addressing) &lt;-&gt; JAVA &lt;-&gt; SOAP BT(HTTP) (Non Anonymous ws addressing) 
+			Composite 2:	
+			SOAP BT(HTTP) (Non Anonymous ws addressing) &lt;-&gt; JAVA 
+MEP: In-Out 
+SOAP Version: 1.1 
+SOAP Style/Encoding: RPC/Literal</NonDefect>
+                    </DescriptionPiece>
+                </Description>
+                <Result>FAILED</Result>
+                <SourceDirectory>../../../../../../../tests/func/runtime/bat/5.4</SourceDirectory>
+                <ReportDirectory>5.4</ReportDirectory>
+            </TestCase>
+            <TestCase>
+                <StartTime>2014/03/31-14:35:29</StartTime>
+                <EndTime>2014/03/31-14:35:30</EndTime>
+                <ID>5.5</ID>
+                <Sequence>1</Sequence>
+                <Description>
+                    <DescriptionPiece>
+                        <NonDefect>SCA Wire
+Service Virtualization is created in CLI (does not exist at design-time)
+Reference Virtualization is wired in CLI
+Deploy App and invoke
+Restart App and invoke
+Redeploy App and invoke
+
+Scenario: SOAP BT (HTTP) &lt;-&gt; Spring &lt;-&gt; SCA | SCA &lt;-&gt; Java
+MEP: In-Out
+RPC/Literal</NonDefect>
+                    </DescriptionPiece>
+                </Description>
+                <Result>FAILED</Result>
+                <SourceDirectory>../../../../../../../tests/func/runtime/bat/5.5</SourceDirectory>
+                <ReportDirectory>5.5</ReportDirectory>
+            </TestCase>
+            <TestCase>
+                <StartTime>2014/03/31-14:35:31</StartTime>
+                <EndTime>2014/03/31-14:35:32</EndTime>
+                <ID>5.6</ID>
+                <Sequence>1</Sequence>
+                <Description>
+                    <DescriptionPiece>
+                        <NonDefect>SOAP over JMS with Nested composite.
+Pass properties through nested composites.
+JMS RT with inline credentials imported from design-time.
+
+Scenario: SOAP(JMS) &lt;-&gt; Composite1 &lt;-&gt; Composite2 &lt;-&gt; SOAP(JMS) | SOAP(JMS) &lt;-&gt; Java
+          Nested Composite: SOAP &lt;-&gt; Java
+MEP: In-Out</NonDefect>
+                    </DescriptionPiece>
+                </Description>
+                <Result>FAILED</Result>
+                <SourceDirectory>../../../../../../../tests/func/runtime/bat/5.6</SourceDirectory>
+                <ReportDirectory>5.6</ReportDirectory>
+            </TestCase>
+            <TestCase>
+                <StartTime>2014/03/31-14:35:34</StartTime>
+                <EndTime>2014/03/31-14:35:34</EndTime>
+                <ID>5.7</ID>
+                <Sequence>1</Sequence>
+                <Description>
+                    <DescriptionPiece>
+                        <NonDefect>Description: Test SOAP over HTTPS
+Scenario: SOAP BT(HTTPS without MutualAuthentication) &lt;-&gt; JAVA &lt;-&gt; SOAP BT(HTTPS with MutualAuthentication) 
+
+MEP: In-Out 
+SOAP Version: 1.1 
+SOAP Style/Encoding: Doc/Literal/Type - RPC/Literal/Type 
+</NonDefect>
+                    </DescriptionPiece>
+                </Description>
+                <Result>FAILED</Result>
+                <SourceDirectory>../../../../../../../tests/func/runtime/bat/5.7</SourceDirectory>
+                <ReportDirectory>5.7</ReportDirectory>
+            </TestCase>
+            <TestCase>
+                <StartTime>2014/03/31-14:35:36</StartTime>
+                <EndTime>2014/03/31-14:35:36</EndTime>
+                <ID>5.8</ID>
+                <Sequence>1</Sequence>
+                <Description>
+                    <DescriptionPiece>
+                        <NonDefect>Description : Test Prepare-to-Undeploy intent.
+              Node-level Substitution Variables are used for http Connector and Node name.
+              
+Scenario: Composite: SOAP BT(HTTP) &lt;-&gt; Mock
+
+MEP: In-Out</NonDefect>
+                    </DescriptionPiece>
+                </Description>
+                <Result>FAILED</Result>
+                <SourceDirectory>../../../../../../../tests/func/runtime/bat/5.8</SourceDirectory>
+                <ReportDirectory>5.8</ReportDirectory>
+            </TestCase>
+            <TestCase>
+                <StartTime>2014/03/31-14:35:37</StartTime>
+                <EndTime>2014/03/31-14:35:37</EndTime>
+                <ID>5.9</ID>
+                <Sequence>1</Sequence>
+                <Description>
+                    <DescriptionPiece>
+                        <NonDefect>Graceful Start intent.
+Use Node Svars, Binding properties, Reference wiring.
+
+Scenario: 
+App1: SOAP BT(HTTP) &lt;-&gt; Java &lt;-&gt; Java &lt;-&gt; SCA (wired to App2)
+App2: SCA &lt;-&gt; Java
+
+Starting App1 also starts App2.
+Stopping App2 also stops App1.
+Clean up Apps at the end.</NonDefect>
+                    </DescriptionPiece>
+                </Description>
+                <Result>FAILED</Result>
+                <SourceDirectory>../../../../../../../tests/func/runtime/bat/5.9</SourceDirectory>
+                <ReportDirectory>5.9</ReportDirectory>
+            </TestCase>
+            <TestCase>
+                <StartTime>2014/03/31-14:35:38</StartTime>
+                <EndTime>2014/03/31-14:35:39</EndTime>
+                <ID>5.10</ID>
+                <Sequence>1</Sequence>
+                <Description>
+                    <DescriptionPiece>
+                        <NonDefect>Description : Test Resources Templates in Java component: JMS, Teneo (-&gt; Hibernate -&gt; JDBC).
+              Import RT from DAA is false. All RT are create and installed via CLI.
+              
+Scenario: Composite: 
+            SOAP BT(HTTP) &lt;-&gt; Java1(Teneo RT) &lt;-&gt; Java2(JMS RT)
+            
+
+MEP: In-Out
+
+JMS RT with inline credential
+JDBC RT with keystore credential
+
+</NonDefect>
+                    </DescriptionPiece>
+                </Description>
+                <Result>FAILED</Result>
+                <SourceDirectory>../../../../../../../tests/func/runtime/bat/5.10</SourceDirectory>
+                <ReportDirectory>5.10</ReportDirectory>
+            </TestCase>
+            <TestCase>
+                <StartTime>2014/03/31-14:35:40</StartTime>
+                <EndTime>2014/03/31-14:35:41</EndTime>
+                <ID>5.11</ID>
+                <Sequence>1</Sequence>
+                <Description>
+                    <DescriptionPiece>
+                        <NonDefect>Scenario: WebApp - Java with Hibernate Shared Resource
+Import the RTs from DAA
+Overwrite RTs by merging with previously imported RTs
+MEP: In-Out</NonDefect>
+                    </DescriptionPiece>
+                </Description>
+                <Result>FAILED</Result>
+                <SourceDirectory>../../../../../../../tests/func/runtime/bat/5.11</SourceDirectory>
+                <ReportDirectory>5.11</ReportDirectory>
+            </TestCase>
+            <TestCase>
+                <StartTime>2014/03/31-14:35:43</StartTime>
+                <EndTime>2014/03/31-14:35:43</EndTime>
+                <ID>5.12</ID>
+                <Sequence>1</Sequence>
+                <Description>
+                    <DescriptionPiece>
+                        <NonDefect>Global Transaction with Oracle 11g.
+Provision and remove Oracle JDBC feature.
+Use App SVars.
+Stop/Start App
+
+Scenario: SOAP(HTTP) &lt;-&gt; Java &lt;-&gt; Java 
+
+MEP: In-Out 
+SOAP Version: 1.1 
+SOAP Style/Encoding: Doc/Literal/Type
+</NonDefect>
+                    </DescriptionPiece>
+                </Description>
+                <Result>FAILED</Result>
+                <SourceDirectory>../../../../../../../tests/func/runtime/bat/5.12</SourceDirectory>
+                <ReportDirectory>5.12</ReportDirectory>
+            </TestCase>
+            <TestCase>
+                <StartTime>2014/03/31-14:35:45</StartTime>
+                <EndTime>2014/03/31-14:35:45</EndTime>
+                <ID>5.13</ID>
+                <Sequence>1</Sequence>
+                <Description>
+                    <DescriptionPiece>
+                        <NonDefect>One way Transaction intent with Oracle 11g.
+Provision and remove Oracle JDBC feature.
+Validate database rollback and message redelivery both for 
+Java and Spring components
+
+Scenario: SOAP(HTTP) &lt;-&gt; Java &lt;-&gt; Spring &lt;-&gt; Java 
+
+MEP: In-Only 
+SOAP Version: 1.1 
+SOAP Style/Encoding: Doc/Literal/Type
+</NonDefect>
+                    </DescriptionPiece>
+                </Description>
+                <Result>FAILED</Result>
+                <SourceDirectory>../../../../../../../tests/func/runtime/bat/5.13</SourceDirectory>
+                <ReportDirectory>5.13</ReportDirectory>
+            </TestCase>
+        </TestSet>
+    </TestRun>
+</Report>

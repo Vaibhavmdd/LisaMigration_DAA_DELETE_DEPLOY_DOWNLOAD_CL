@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+
+	<Environment xsi:type="amxdata:Environment" 
+		name="QAEnvironment_jpandya-dt" 
+		description="QA Environment" 
+		contact="TIBCO">
+		
+		<Node xsi:type="amxdata:Node" name="QANode1" >
+  			
+		</Node>
+		
+		<Node xsi:type="amxdata:Node" name="QANode2" >
+  			
+		</Node>
+		
+		<Application xsi:type="amxdata:Application" name="14.4.app" contact="TIBCO" description="One Way transaction">
+		
+			<!--Component mapped to Node2-->
+			<Component xsi:type="amxdata:Component" name="Java1">
+				<Node name="QANode2" environmentName="QAEnvironment_jpandya-dt" />	    	              
+			</Component> 
+
+			<!--Service mapped to Node1-->
+			<PromotedService xsi:type="amxdata_base:Service_base" name="HelloPT">
+				<Binding xsi:type="amxdata:Binding" name="SOAPService_Binding1">	    		
+					<Node name="QANode1" environmentName="QAEnvironment_jpandya-dt"/> 	    
+					<Property  xsi:type="amxdata:Property" name="HttpInboundConnectionConfig"  value="http_1"/>		
+				</Binding>	
+			</PromotedService>				            
+			
+			<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="OneWaytrans_NodeStop" />
+        
+        </Application>
+
+    </Environment>
+	
+	<!--Get the DAAs-->
+    
+	<DAA 
+	xsi:type="amxdata:DAA" 
+	description="DAA for global txn testing" 
+	location="OneWaytrans_NodeStop/Deployment Artifacts/OneWaytrans_NodeStop.daa" 
+	importResourceTemplates="false"/>
+	
+	<!--Feature xsi:type="amxdata_base:FeatureID" componentID="OneWaytrans.customfeature.id" version="1.0.0.201008311222"/>
+    <AppTemplate xsi:type="amxdata_base:AppTemplateID" name="OneWaytrans" version="1.0.0.201008311222" /--> 
+	  
+</amxdata_base:Enterprise>
+
+
+

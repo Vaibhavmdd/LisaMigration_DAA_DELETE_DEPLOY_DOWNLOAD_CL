@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema  targetNamespace="http://com.tibco.amx.it.mediation.sample/EmployeeGreeting"
+	 xmlns="http://www.w3.org/2001/XMLSchema"
+	 xmlns:ns0="http://com.tibco.amx.it.mediation.sample/EmployeeName"
+	 attributeFormDefault="unqualified"
+	 elementFormDefault="qualified">
+
+    <import namespace="http://com.tibco.amx.it.mediation.sample/EmployeeName" schemaLocation="EmployeeName.xsd"/>
+
+    <element name="EmployeeGreeting">
+    	<complexType>
+    		<sequence>
+    		    <element name="EmployeeId" type="int"></element>
+		    	<element name="Name" type="ns0:EmployeeName"></element>
+    		    <element name="Message" type="string" maxOccurs="1" minOccurs="0"></element>
+    		</sequence>
+    	</complexType>
+    </element>
+</schema>

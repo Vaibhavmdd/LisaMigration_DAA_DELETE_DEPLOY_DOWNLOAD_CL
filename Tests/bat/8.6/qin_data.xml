@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<amxdata_base:Enterprise
+	xmlns:amxdata_bootstrap="http://tibco.com/amf/hpa/core/admin/bootstrap/types"
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+        xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://tibco.com/amf/hpa/core/admin/bootstrap/types ../schemas/amxdata_bootstrap.xsd http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+
+	<AdminConfiguration	xsi:type="amxdata_bootstrap:AdminConfiguration" name="amxadmin"
+		initialSuperuser="root" initialSuperuserPassword="t">
+
+		<!--  
+		<StatusTransportDetails recoveryTimerTimeout="3000"
+			recoveryAttemptDelay="2000" groupName="${admin.enterprise.name}" userName="admin"
+			password="" serverURL="ssl://emshost:7243" enableSSL="true">
+			<SSLClientResourceTemplateName>QinSslClient1RT</SSLClientResourceTemplateName>
+		</StatusTransportDetails>
+		-->
+		<StatusTransportDetails groupName="[[admin.group.name]]"
+			userName="admin" password="" serverURL="tcp://[[emshost]]:[[emsport]]"
+			recoveryTimerTimeout="1600" recoveryAttemptDelay="600" enableSSL="false" hostNameToVerify=""/>
+
+	</AdminConfiguration>
+	
+	<!--
+	<ResourceTemplate xsi:type="amxdata:KeystoreCspResourceTemplate"
+		name="QinKeystoreCsp1RT" description="This is trust store with EMS Server certificate chain."
+		keyStoreLocation="/tmp/qinssltruststore.jks"
+		keyStorePassword="password" keyStoreType="JKS"
+		keyStoreRefreshInterval="6000" 
+		internal="true"
+		/>
+	<ResourceTemplate xsi:type="amxdata:SslClientResourceTemplate"
+		name="QinSslClient1RT" description="This is SSL client RT used by QIN EMS client to connect to ems server with SSL.">
+		<GeneralConfiguration xsi:type="amxdata:SslClientResourceTemplate_General"
+			trustStoreServiceProvider="QinKeystoreCsp1RT" enableAccessToTrustStore="true">
+		</GeneralConfiguration>
+	</ResourceTemplate>
+	-->
+</amxdata_base:Enterprise>

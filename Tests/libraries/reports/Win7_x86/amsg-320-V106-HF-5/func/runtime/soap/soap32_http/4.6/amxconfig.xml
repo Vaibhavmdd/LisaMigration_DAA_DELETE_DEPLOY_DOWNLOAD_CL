@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types" xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base" xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+
+    <Environment xsi:type="amxdata:Environment" name="QAEnvironment_jpandya-dt" description="QA BAT Environment" contact="TIBCO">
+        	
+		<Application xsi:type="amxdata:Application" name="4.6_Context_Reference" contact="TIBCO Inc." description="Context At Reference side">
+			<Component xsi:type="amxdata:Component" name="Java1">
+		        	<Node name="QANode2" environmentName="QAEnvironment_jpandya-dt"/>
+	        </Component>
+			<Component xsi:type="amxdata:Component" name="Component1">
+		        	<Node name="QANode2" environmentName="QAEnvironment_jpandya-dt"/>
+	        </Component>
+	        <PromotedService xsi:type="amxdata_base:Service_base" name="HelloPT">
+				<Binding xsi:type="amxdata:Binding" name="SOAPService_Binding1">
+                        <Node name="QANode1" environmentName="QAEnvironment_jpandya-dt" />                
+						<Property  xsi:type="amxdata:Property" name="HttpInboundConnectionConfig"  value="http_1"/>
+				</Binding>
+			</PromotedService>
+			<PromotedService xsi:type="amxdata_base:Service_base" name="HelloPT1">
+				<Binding xsi:type="amxdata:Binding" name="SOAPService_Binding1">
+                        <Node name="QANode1" environmentName="QAEnvironment_jpandya-dt" />                
+						<Property  xsi:type="amxdata:Property" name="HttpInboundConnectionConfig"  value="http_2"/>
+				</Binding>
+			</PromotedService>
+			<PromotedReference xsi:type="amxdata_base:Reference_base" name="HelloPT1">
+				<Binding xsi:type="amxdata:Binding" name="SOAPReference_Binding1">
+                        <Node name="QANode1" environmentName="QAEnvironment_jpandya-dt" />                
+						<Property  xsi:type="amxdata:Property" name="HttpOutboundConnectionConfig"  value="http_client_1"/>						
+				</Binding>
+			</PromotedReference>
+            
+            <ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="Context_Reference"/>
+        </Application>
+    </Environment>
+
+	
+	<DAA xsi:type="amxdata:DAA" description="Context At Reference" location="./Context_Reference/Deployment Artifacts/Context_Reference.daa" importResourceTemplates="false"/>
+		
+	
+</amxdata_base:Enterprise>

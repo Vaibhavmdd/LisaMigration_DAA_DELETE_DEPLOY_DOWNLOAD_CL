@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+	<!--
+	 "assignToEnvs" could be "ALL" or "NONE", the default value is "ALL" it is not specified. If there are environments associated with the Host, then it will be ignored.  
+	 If no environment are associated with the host then it takes effect.
+	-->
+	
+	<Environment xsi:type="amxdata:Environment" 
+		       name="[[env.name]]" 
+		       description="This is a QA environment" 
+	       contact="TIBCO">	
+	<Node xsi:type="amxdata:Node"
+		name="Node8_5" 
+		hostName="Host8_5" 
+		description="This is Node8_5"
+		contact="Anuradha"
+		enableDebug="true"
+		portNumber="16811"
+		debugPortNumber="16822"
+		startupMode="Automatic">
+				
+	</Node>	
+	<Host name="Host8_5" />
+	
+	</Environment>
+	
+	
+		<Host
+		xsi:type="amxdata:Host"
+		name="Host8_5"
+		description="This is Host8_5"
+		hostType="TibcoHost"
+		username="root"
+		password="t"
+		contact="Anuradha"
+		sourceHost="[[host.name]]"
+		managementUrl="service:jmx:jmxmp://[[LISA_HOST]]:7020" assignToEnvs="ALL">
+								
+	</Host>	
+		
+	
+	
+
+	 <!-- If you are not updating machine name, port or SSL configuration, please use option "skipDefaultKeystores"
+	 to skip default keystores re-installation on all runtime nodes. -->
+    <ResourceTemplate
+        xsi:type="amxdata:HttpConnectorResourceTemplate"
+        name="TIBCO ActiveMatrix Internal HTTP Connector Resource"
+        host="0.0.0.0"
+        port="19769"  
+        acceptQueueSize="3"       
+        description="This is Internal HttpConnector RT">     
+    </ResourceTemplate>
+ 
+	
+	
+</amxdata_base:Enterprise>
+
+

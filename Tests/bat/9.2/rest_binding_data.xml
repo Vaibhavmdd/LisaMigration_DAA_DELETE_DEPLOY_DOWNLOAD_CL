@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<amxdata_base:Enterprise xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types" 
+	xmlns:amxdata_binding="http://tibco.com/amxadministrator/command/line/types_binding" 
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base" 
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd http://tibco.com/amxadministrator/command/line/types_binding ../schemas/restbindingdata.xsd">
+	
+	<Environment xsi:type="amxdata:Environment" name="[[env.name]]" description="QA LISA environment">        
+		<Application xsi:type="amxdata:Application" name="BAT92" importBindings="true">						
+			 <PromotedService xsi:type="amxdata_base:Service_base" name="GreetWsdl_RJR">
+				<Binding xsi:type="amxdata_binding:RestServiceBinding" name="RESTServiceBinding_BAT92" contextRoot="/GreetWsdlConsumer_1_1">
+					<HttpTransportDetails xsi:type="amxdata_binding:HttpTransportDetailsForRestService" httpInboundConnectionJNDIName="httpConnector3BAT92"/>
+					<OperationConfiguration xsi:type="amxdata_binding:RestOperationConfiguration" name="GreetPOST" path="/GreetPOST/{POST_PP_STRING}/{POST_PP_BOOLEAN}/{POST_PP_BYTE}/{POST_PP_SHORT}/{POST_PP_INTEGER}/{POST_PP_LONG}/{POST_PP_FLOAT}/{POST_PP_DOUBLE}" httpMethod="POST" mediaType="STANDARD_JSON"/>
+					<OperationConfiguration xsi:type="amxdata_binding:RestOperationConfiguration" name="GreetGET" path="/GreetGET/{GET_PP_STRING}/{GET_PP_BOOLEAN}/{GET_PP_BYTE}/{GET_PP_SHORT}/{GET_PP_INTEGER}/{GET_PP_LONG}/{GET_PP_FLOAT}/{GET_PP_DOUBLE}" httpMethod="GET"  mediaType="STANDARD_JSON"/>
+					<OperationConfiguration xsi:type="amxdata_binding:RestOperationConfiguration" name="GreetPUT" path="/GreetPUT/{PUT_PP_STRING}/{PUT_PP_BOOLEAN}/{PUT_PP_BYTE}/{PUT_PP_SHORT}/{PUT_PP_INTEGER}/{PUT_PP_LONG}/{PUT_PP_FLOAT}/{PUT_PP_DOUBLE}" httpMethod="PUT" mediaType="STANDARD_JSON"/>
+					<OperationConfiguration xsi:type="amxdata_binding:RestOperationConfiguration" name="GreetDELETE" path="/GreetDELETE/{DELETE_PP_STRING}/{DELETE_PP_BOOLEAN}/{DELETE_PP_BYTE}/{DELETE_PP_SHORT}/{DELETE_PP_INTEGER}/{DELETE_PP_LONG}/{DELETE_PP_FLOAT}/{DELETE_PP_DOUBLE}" httpMethod="DELETE" mediaType="STANDARD_JSON"/>
+				</Binding>		
+			</PromotedService>
+        </Application>
+    </Environment>
+	
+</amxdata_base:Enterprise>

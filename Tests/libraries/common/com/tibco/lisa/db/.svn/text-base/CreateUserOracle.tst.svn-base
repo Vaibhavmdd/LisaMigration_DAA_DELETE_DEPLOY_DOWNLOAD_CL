@@ -1,0 +1,422 @@
+<?xml version="1.0" ?>
+
+
+<!-- Test Case created by LISA Test Editor -->
+<!-- On: Fri Feb 18 14:33:23 PST 2011 -->
+
+
+<TestCase name="CreateUserOracle" version="2">
+<id>8b395b99</id>
+<Documentation>Create given user in Oracle DB.</Documentation>
+<sig>ZWQ9MiZ0Y3Y9MiZsaXNhdj00LjYuNyAoNC42LjcuMTYpJm5vZGVzPTE4NTQ3MDE3NTI=</sig>
+<rootNode>log</rootNode>
+<subprocess>true</subprocess>
+
+<initState>
+    <Parameter>
+    <key>hostname</key>
+    <value></value>
+    <name>Hostname</name>
+    </Parameter>
+    <Parameter>
+    <key>port</key>
+    <value></value>
+    <name>Port</name>
+    </Parameter>
+    <Parameter>
+    <key>sid</key>
+    <value></value>
+    <name>Oracle sid</name>
+    </Parameter>
+    <Parameter>
+    <key>adminusername</key>
+    <value></value>
+    <name>Oracle admin user</name>
+    </Parameter>
+    <Parameter>
+    <key>adminpassword</key>
+    <value></value>
+    <name>Oracle admin password</name>
+    </Parameter>
+    <Parameter>
+    <key>username</key>
+    <value></value>
+    <name>Oracle user that is created</name>
+    </Parameter>
+    <Parameter>
+    <key>password</key>
+    <value></value>
+    <name>password for the user that is created</name>
+    </Parameter>
+</initState>
+
+<resultState>
+    <Parameter>
+    <key>lisa.fail.rsp</key>
+    <value>Set in Step fail</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.fail.rsp.time</key>
+    <value>Set in Step fail</value>
+    </Parameter>
+    <Parameter>
+    <key>test</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.createUser.rsp.time</key>
+    <value>Set in Step createUser</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.grantUserPermission.rsp.time</key>
+    <value>Set in Step grantUserPermission</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.validate.rsp</key>
+    <value>Set in Step validate</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.validate.rsp.time</key>
+    <value>Set in Step validate</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.validateUser.rsp</key>
+    <value>Set in Step validateUser</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.validateUser.rsp.time</key>
+    <value>Set in Step validateUser</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.log.rsp</key>
+    <value>Set in Step log</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.log.rsp.time</key>
+    <value>Set in Step log</value>
+    </Parameter>
+    <Parameter>
+    <key>username2</key>
+    <value>Set in Step validateUser</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.returnCreateUserSQLError.rsp.time</key>
+    <value>Set in Step returnCreateUserSQLError</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.returnGrantPermSQLError.rsp.time</key>
+    <value>Set in Step returnGrantPermSQLError</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.validatePassword.rsp</key>
+    <value>Set in Step validatePassword</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.validatePassword.rsp.time</key>
+    <value>Set in Step validatePassword</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.createUser.rsp</key>
+    <value>Set in Step createUser</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.returnCreateUserSQLError.rsp</key>
+    <value>Set in Step returnCreateUserSQLError</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.grantUserPermission.rsp</key>
+    <value>Set in Step grantUserPermission</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.returnGrantPermSQLError.rsp</key>
+    <value>Set in Step returnGrantPermSQLError</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.end.rsp</key>
+    <value>Set in Step end</value>
+    </Parameter>
+    <Parameter>
+    <key>password2</key>
+    <value>Set in Step validatePassword</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.returnSuccessString.rsp</key>
+    <value>Set in Step returnSuccessString</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.returnSuccessString.rsp.time</key>
+    <value>Set in Step returnSuccessString</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.end.rsp.time</key>
+    <value>Set in Step end</value>
+    </Parameter>
+</resultState>
+
+      <Companion type="com.itko.lisa.test.ClassLoaderSandbox" >
+<dir>%TIBCO_COMMON_LIBRARY%\lib\ojdbc6.jar</dir>
+<hot>true</hot>
+      </Companion>
+
+<Configurations>
+<Configuration>
+<name>default</name>
+<external>false</external>
+<props>
+    <Parameter>
+    <key>test</key>
+    <value>2</value>
+    <name>Name</name>
+    </Parameter>
+</props>
+</Configuration>
+</Configurations>
+    <Node name="log" log=""
+          type="com.itko.lisa.test.TestNodeLogger" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="validate" > 
+
+<graphx>125</graphx>
+<graphy>551</graphy>
+<Documentation></Documentation>
+<remoteServer>local</remoteServer>
+      <log>Creating user &apos;{{username}}&apos;...</log>
+    </Node>
+
+
+    <Node name="validate" log=""
+          type="com.itko.lisa.test.ScriptNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="validateUser" > 
+
+<graphx>14</graphx>
+<graphy>399</graphy>
+<Documentation></Documentation>
+<remoteServer>local</remoteServer>
+<onerror>fail</onerror>
+<script>import oracle.jdbc.driver.OracleDriver;&#13;&#10;&#13;&#10;String successMsg = &quot;Oracle Validation Success&quot;; // Do not modify, assertions on these strings might exist.&#13;&#10;String errorMsg = &quot;Oracle Validation Error&quot;;&#13;&#10;&#13;&#10;try {&#13;&#10; Class.forName(&quot;oracle.jdbc.driver.OracleDriver&quot;);&#13;&#10;}&#13;&#10;catch (Exception e) {&#13;&#10; return errorMsg + &quot;: &quot; + e.getClass().getName() + &quot; &quot; + e.getMessage();&#13;&#10;}&#13;&#10;&#13;&#10;if (hostname.equals(&quot;&quot;) || hostname.equals(&quot;&lt;&lt;null&gt;&gt;&quot;))&#13;&#10; return errorMsg + &quot;: hostname is required.&quot;;&#13;&#10;&#13;&#10;if (port.equals(&quot;&quot;) || port.equals(&quot;&lt;&lt;null&gt;&gt;&quot;))&#13;&#10; return errorMsg + &quot;: port is required.&quot;;&#13;&#10;&#13;&#10;if (sid.equals(&quot;&quot;) || sid.equals(&quot;&lt;&lt;null&gt;&gt;&quot;))&#13;&#10; return errorMsg + &quot;: sid is required.&quot;;&#13;&#10;&#13;&#10;if (adminusername.equals(&quot;&quot;) || adminusername.equals(&quot;&lt;&lt;null&gt;&gt;&quot;))&#13;&#10; return errorMsg + &quot;: adminusername is required.&quot;;&#13;&#10;&#13;&#10;if (adminpassword.equals(&quot;&quot;) || adminpassword.equals(&quot;&lt;&lt;null&gt;&gt;&quot;))&#13;&#10; return errorMsg + &quot;: adminpassword is required.&quot;;&#13;&#10;&#13;&#10;if (username.equals(&quot;&quot;) || username.equals(&quot;&lt;&lt;null&gt;&gt;&quot;))&#13;&#10; return errorMsg + &quot;: username is required.&quot;;&#13;&#10;&#13;&#10;if (password.equals(&quot;&quot;) || password.equals(&quot;&lt;&lt;null&gt;&gt;&quot;))&#13;&#10; return errorMsg + &quot;: password is required.&quot;;&#13;&#10;&#13;&#10;return successMsg;</script>
+
+      <!-- Result Elements -->
+<CheckResult assertTrue="true" name="Any Exception Then Fail" type="com.itko.lisa.dynexec.CheckInvocationEx">
+<log>Oracle validation has thrown uncaught Exception</log>
+<then>fail</then>
+<valueToAssertKey></valueToAssertKey>
+        <param>.*</param>
+</CheckResult>
+
+<CheckResult assertTrue="true" name="Oracle Validation Error Then Fail" type="com.itko.lisa.test.CheckResultContains">
+<log>{{lisa.validate.rsp}}</log>
+<then>fail</then>
+<valueToAssertKey></valueToAssertKey>
+        <param>Oracle Validation Error</param>
+</CheckResult>
+
+    </Node>
+
+
+    <Node name="validateUser" log=""
+          type="com.itko.lisa.test.ScriptNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="validatePassword" > 
+
+<graphx>-1</graphx>
+<graphy>-1</graphy>
+<Documentation></Documentation>
+<remoteServer>local</remoteServer>
+<onerror>fail</onerror>
+<script>// Oracle does no like username/pwd that contains &quot;.&quot;, &quot;-&quot;&#13;&#10;/*&#13;&#10;if (testExec.parseInState(username).contains(&quot;.&quot;))&#13;&#10; return &quot;\&quot;&quot; + testExec.parseInState(username) + &quot;\&quot;&quot;;&#13;&#10;else if (testExec.parseInState(username).contains(&quot;-&quot;))&#13;&#10; return &quot;\&quot;&quot; + testExec.parseInState(username) + &quot;\&quot;&quot;;&#13;&#10; return testExec.parseInState(username);&#13;&#10;*/&#13;&#10;import org.apache.commons.lang.StringEscapeUtils;&#13;&#10;return StringEscapeUtils.unescapeHtml(testExec.parseInState(username)); </script>
+
+      <!-- Filters -->
+      <Filter type="com.itko.lisa.test.FilterSaveResponse">
+        <valueToFilterKey>lisa.validateUser.rsp</valueToFilterKey>
+      <prop>username2</prop>
+      </Filter>
+
+
+      <!-- Result Elements -->
+<CheckResult assertTrue="true" name="Any Exception Then Fail" type="com.itko.lisa.dynexec.CheckInvocationEx">
+<log>Assert [Any Exception Then Fail] fired true of type Assert on Invocation Exception</log>
+<then>fail</then>
+<valueToAssertKey></valueToAssertKey>
+        <param>.*</param>
+</CheckResult>
+
+    </Node>
+
+
+    <Node name="validatePassword" log=""
+          type="com.itko.lisa.test.ScriptNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="createUser" > 
+
+<graphx>-1</graphx>
+<graphy>-1</graphy>
+<Documentation></Documentation>
+<remoteServer>local</remoteServer>
+<onerror>fail</onerror>
+<script>// Oracle does no like username/pwd that contains &quot;.&quot;, &quot;-&quot;&#13;&#10;/*&#13;&#10;if (testExec.parseInState(password).contains(&quot;.&quot;))&#13;&#10; return &quot;\&quot;&quot; + testExec.parseInState(password) + &quot;\&quot;&quot;;&#13;&#10;else if (testExec.parseInState(password).contains(&quot;-&quot;))&#13;&#10; return &quot;\&quot;&quot; + testExec.parseInState(password) + &quot;\&quot;&quot;;&#13;&#10; return testExec.parseInState(password);&#13;&#10;*/&#13;&#10;import org.apache.commons.lang.StringEscapeUtils;&#13;&#10;return StringEscapeUtils.unescapeHtml(testExec.parseInState(password)); </script>
+
+      <!-- Filters -->
+      <Filter type="com.itko.lisa.test.FilterSaveResponse">
+        <valueToFilterKey>lisa.validatePassword.rsp</valueToFilterKey>
+      <prop>password2</prop>
+      </Filter>
+
+
+      <!-- Result Elements -->
+<CheckResult assertTrue="true" name="Any Exception Then Fail" type="com.itko.lisa.dynexec.CheckInvocationEx">
+<log>Assert [Any Exception Then Fail] fired true of type Assert on Invocation Exception</log>
+<then>fail</then>
+<valueToAssertKey></valueToAssertKey>
+        <param>.*</param>
+</CheckResult>
+
+    </Node>
+
+
+    <Node name="createUser" log=""
+          type="com.itko.lisa.jdbc.JDBCNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="grantUserPermission" > 
+
+<graphx>10</graphx>
+<graphy>10</graphy>
+<Documentation>Create user {{username}}</Documentation>
+<remoteServer>local</remoteServer>
+<driver>oracle.jdbc.driver.OracleDriver</driver>
+<dataSourceConnect>false</dataSourceConnect>
+<jndiFactory></jndiFactory>
+<jndiServerURL></jndiServerURL>
+<jndiDataSourceName></jndiDataSourceName>
+<connect>jdbc:oracle:thin:@{{hostname}}:{{port}}:{{sid}}</connect>
+<user>{{adminusername}}</user>
+<password>{{adminpassword}}</password>
+<onSQLError>returnCreateUserSQLError</onSQLError>
+<resultSet>false</resultSet>
+<maxRows>-1</maxRows>
+<keepOpen>true</keepOpen>
+<sql>CREATE USER {{username2}} IDENTIFIED BY {{password2}} DEFAULT TABLESPACE USERS TEMPORARY TABLESPACE TEMP</sql>
+    </Node>
+
+
+    <Node name="grantUserPermission" log=""
+          type="com.itko.lisa.jdbc.JDBCNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="returnSuccessString" > 
+
+<graphx>-1</graphx>
+<graphy>-1</graphy>
+<Documentation>Grant permissions for user {{username}}</Documentation>
+<remoteServer>local</remoteServer>
+<driver>oracle.jdbc.driver.OracleDriver</driver>
+<dataSourceConnect>false</dataSourceConnect>
+<jndiFactory></jndiFactory>
+<jndiServerURL></jndiServerURL>
+<jndiDataSourceName></jndiDataSourceName>
+<connect>jdbc:oracle:thin:@{{hostname}}:{{port}}:{{sid}}</connect>
+<user>{{adminusername}}</user>
+<password>{{adminpassword}}</password>
+<onSQLError>returnGrantPermSQLError</onSQLError>
+<resultSet>false</resultSet>
+<maxRows>-1</maxRows>
+<keepOpen>true</keepOpen>
+<sql>GRANT CONNECT, RESOURCE TO {{username2}}</sql>
+    </Node>
+
+
+    <Node name="returnSuccessString" log=""
+          type="com.itko.lisa.test.ScriptNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="end" > 
+
+<graphx>595</graphx>
+<graphy>399</graphy>
+<Documentation></Documentation>
+<remoteServer>local</remoteServer>
+<onerror>fail</onerror>
+<script>return &quot;Oracle user &quot; + (username2) + &quot; created successfully&quot;;</script>
+    </Node>
+
+
+    <Node name="returnCreateUserSQLError" log=""
+          type="com.itko.lisa.test.ScriptNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="fail" > 
+
+<graphx>595</graphx>
+<graphy>399</graphy>
+<Documentation></Documentation>
+<remoteServer>local</remoteServer>
+<onerror>fail</onerror>
+<script>return &quot;Oracle user creation failed&quot;;</script>
+    </Node>
+
+
+    <Node name="returnGrantPermSQLError" log=""
+          type="com.itko.lisa.test.ScriptNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="fail" > 
+
+<graphx>595</graphx>
+<graphy>399</graphy>
+<Documentation></Documentation>
+<remoteServer>local</remoteServer>
+<onerror>fail</onerror>
+<script>return &quot;Oracle user grant failed&quot;;</script>
+    </Node>
+
+
+    <Node name="fail" log=""
+          type="com.itko.lisa.test.Abend" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="true" 
+          next="unknown" > 
+
+<graphx>305</graphx>
+<graphy>610</graphy>
+    </Node>
+
+
+    <Node name="end" log=""
+          type="com.itko.lisa.test.NormalEnd" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="true" 
+          next="fail" > 
+
+<graphx>484</graphx>
+<graphy>551</graphy>
+    </Node>
+
+
+</TestCase>

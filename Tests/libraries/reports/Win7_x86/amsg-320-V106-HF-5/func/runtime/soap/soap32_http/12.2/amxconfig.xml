@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types" xmlns:amxdata_binding="http://tibco.com/amxadministrator/command/line/types_binding" xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base" xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd http://tibco.com/amxadministrator/command/line/types_binding ../schemas/bindingdata.xsd" >
+
+<Environment xsi:type="amxdata:Environment" name="QAEnvironment_jpandya-dt">
+    <Application xsi:type="amxdata:Application" name="Dynamic-EPR-Consumer" importResourceTemplates="true">
+      <Component xsi:type="amxdata_base:Component_base" name="Java1">
+        <Node xsi:type="amxdata_reference:Node_reference" name="QANode2" environmentName="QAEnvironment_jpandya-dt"/>
+      </Component>
+      <PromotedService xsi:type="amxdata_base:Service_base" name="EmployeeVacation">
+        <Binding xsi:type="amxdata_base:Binding_base" name="SOAPService_Binding1">
+          <Node xsi:type="amxdata_reference:Node_reference" name="QANode1" environmentName="QAEnvironment_jpandya-dt"/>
+          <Property  xsi:type="amxdata:Property" name="HttpInboundConnectionConfig"  value="http_1"/>
+        </Binding>
+      </PromotedService>
+      <PromotedReference xsi:type="amxdata_base:Reference_base" name="WeatherReportPT1">
+        <Binding xsi:type="amxdata_base:Binding_base" name="SOAPReference_Binding1">
+          <Node xsi:type="amxdata_reference:Node_reference" name="QANode1" environmentName="QAEnvironment_jpandya-dt"/>
+		  <Property  xsi:type="amxdata:Property" name="HttpOutboundConnectionConfig"  value="http_client_1"/>
+        </Binding>
+      </PromotedReference>
+      <ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="Dynamic-EPR-HTTP" />
+    </Application>
+	
+	<Application xsi:type="amxdata:Application" name="Dynamic-EPR-Provider">
+		<Component xsi:type="amxdata_base:Component_base" name="Java1">
+			<Node xsi:type="amxdata_reference:Node_reference" name="QANode2" environmentName="QAEnvironment_jpandya-dt"/>
+		</Component>
+		<PromotedService xsi:type="amxdata_base:Service_base" name="WeatherReportPT">
+			<Binding xsi:type="amxdata_base:Binding_base" name="SOAPService_Binding1">
+				<Node xsi:type="amxdata_reference:Node_reference" name="QANode1" environmentName="QAEnvironment_jpandya-dt"/>
+				<Property  xsi:type="amxdata:Property" name="HttpInboundConnectionConfig"  value="http_3"/>
+			</Binding>
+		</PromotedService>
+		<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="Dynamic-EPR-Provider" />
+	</Application>
+	
+  </Environment>
+  
+  <DAA xsi:type="amxdata:DAA" location="./Dynamic-EPR-HTTP/Deployment Artifacts/Dynamic-EPR-HTTP.daa" importResourceTemplates="false">
+    <!--importFeatureIdentifier>Dynamic-EPR-HTTP.Dynamic-EPR-HTTP.customfeature.id:1.0.0.v2011-08-09-1022</importFeatureIdentifier-->
+  </DAA>
+  
+  <DAA xsi:type="amxdata:DAA" location="./Dynamic-EPR-HTTP/Deployment Artifacts/Dynamic-EPR-Provider.daa" importResourceTemplates="false">
+    <!--importFeatureIdentifier>Dynamic-EPR-HTTP.Dynamic-EPR-Provider.customfeature.id:1.0.0.v2011-08-09-1048</importFeatureIdentifier-->
+  </DAA>
+  
+</amxdata_base:Enterprise>

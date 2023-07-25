@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.example.org/bat.case5.9/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="bat.case5.9" targetNamespace="http://www.example.org/bat.case5.9/">
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://www.example.org/bat.case5.9/">
+			<xsd:element name="EchoElements">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="in" type="xsd:string"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="EchoElementsResponse" type="tns:EchoElements">
+
+			</xsd:element>
+
+			<xsd:complexType name="EchoElements">
+				<xsd:sequence>
+					<xsd:element maxOccurs="unbounded" minOccurs="0" name="AnElement">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="name" type="xsd:string">
+								</xsd:element>
+								<xsd:element name="value" type="xsd:string">
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+
+				</xsd:sequence>
+			</xsd:complexType>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="EchoElementsRequest">
+		<wsdl:part element="tns:EchoElements" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="EchoElementsResponse">
+		<wsdl:part element="tns:EchoElementsResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:portType name="bat.case5.9">
+		<wsdl:operation name="EchoElements">
+			<wsdl:input message="tns:EchoElementsRequest"/>
+			<wsdl:output message="tns:EchoElementsResponse"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="bat.case5.9SOAP" type="tns:bat.case5.9">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="EchoElements">
+			<soap:operation soapAction="http://www.example.org/bat.case5.9/EchoElements"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="bat.case5.9">
+		<wsdl:port binding="tns:bat.case5.9SOAP" name="bat.case5.9SOAP">
+			<soap:address location="http://www.example.org/bat.case5.9/"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

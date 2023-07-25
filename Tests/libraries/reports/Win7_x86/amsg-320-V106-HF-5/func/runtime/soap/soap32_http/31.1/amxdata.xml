@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise 
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types" 
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base" 
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference" 
+	xmlns:amxdata_jmsssr="http://tibco.com/amxadministrator/command/line/types_jmssr" 
+	xmlns:amxdata_jmssr_base="http://tibco.com/amxadministrator/command/line/types_jmssr_base"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd
+	http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd 
+	http://tibco.com/amxadministrator/command/line/types_reference ../schemas/amxdata_reference.xsd 
+	http://tibco.com/amxadministrator/command/line/types_jmssr ../schemas/jmssr.xsd 
+	http://tibco.com/amxadministrator/command/line/types_jmssr_base ../schemas/jmssr_base.xsd">
+
+    <Environment xsi:type="amxdata:Environment" 
+		name="QAEnvironment_jpandya-dt" 
+		description="test environment" 
+		contact="TIBCO">
+		
+		<Node xsi:type="amxdata:Node"
+			name="QANode1">						
+
+		<ResourceInstance xsi:type="amxdata:ResourceInstance" name="JmsConFactConf" resourceTemplateName="JmsConFactConf"/>
+		<ResourceInstance xsi:type="amxdata:ResourceInstance" name="JmsDestConf" resourceTemplateName="JmsDestConf"/>
+        <ResourceInstance xsi:type="amxdata:ResourceInstance" name="JmsConFact" resourceTemplateName="JmsConFact"/>	
+		<ResourceInstance xsi:type="amxdata:ResourceInstance" name="JmsJNDI" resourceTemplateName="JmsJNDI"/>		
+		</Node>
+		
+		<Application xsi:type="amxdata:Application" name="31.1 - Multiple Bindings" >
+		  <Component xsi:type="amxdata_base:Component_base" name="Mediation1">
+			<Node xsi:type="amxdata_reference:Node_reference" name="QANode2" environmentName="QAEnvironment_jpandya-dt"/>
+		  </Component>
+		  <PromotedService xsi:type="amxdata_base:Service_base" name="HelloWorldPT">
+			<Binding xsi:type="amxdata_base:Binding_base" name="SOAPService_Http">
+			  <Node xsi:type="amxdata_reference:Node_reference" name="QANode1" environmentName="QAEnvironment_jpandya-dt"/>
+			  <Property  xsi:type="amxdata:Property" name="HttpInboundConnectionConfig"  value="http_1"/>
+			</Binding>
+			<Binding xsi:type="amxdata_base:Binding_base" name="SOAPService_Binding1">
+			  <Node xsi:type="amxdata_reference:Node_reference" name="QANode1" environmentName="QAEnvironment_jpandya-dt"/>
+			</Binding>
+		  </PromotedService>
+		<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="SOA"/>
+	</Application>
+    
+	</Environment>
+	
+	<DAA 	xsi:type="amxdata:DAA" 
+			location="./SOAProject/SOA/Deployment Artifacts/SOA.daa"
+			importResourceTemplates="false"/>
+	
+	<amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate
+		xsi:type="amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate"
+		name="JmsJNDI"
+		initialContextFactory="com.tibco.tibjms.naming.TibjmsInitialContextFactory"
+		providerUrl="tibjmsnaming://AMX-BACKEND.na.tibco.com:7622"
+		description="JndiConnectionConfiguration">
+		<InlineCredentials 
+			username="amxjndipwd" 
+			password="amxjndipwd"/>
+	</amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate>
+
+	<amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate
+		xsi:type="amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate"
+		name="JmsConFact"
+		jndiName="QueueConnectionFactory"
+		jndiConnectionConfigurationName="JmsJNDI"
+		description="Outbound JMS Connection Factory">
+		<InlineCredentials 
+			username="amxemspwd"
+			password="amxemspwd"/>
+	</amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate>
+
+	<amxdata_jmsssr:JNDIConnectionFactoryConfigurationResourceTemplate
+		xsi:type="amxdata_jmsssr:JNDIConnectionFactoryConfigurationResourceTemplate"
+		name="JmsConFactConf"
+		jndiName="QueueConnectionFactory"
+		jndiConnectionConfigurationName="JmsJNDI"
+		description="Inbound JMS Connection Factory Configuration">
+		<InlineCredentials 
+			username="amxemspwd"
+			password="amxemspwd"/>
+	</amxdata_jmsssr:JNDIConnectionFactoryConfigurationResourceTemplate>
+
+	<amxdata_jmsssr:JNDIDestinationConfigurationResourceTemplate 
+		xsi:type="amxdata_jmsssr:JNDIDestinationConfigurationResourceTemplate" 
+		name="JmsDestConf" 
+		jndiName="SOAPDestQueue" 
+		jndiConnectionConfigurationName="JmsJNDI"
+		description="JMS Destination Configuration"/>
+</amxdata_base:Enterprise>

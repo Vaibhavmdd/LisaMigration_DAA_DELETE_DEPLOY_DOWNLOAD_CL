@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:sca="http://www.springframework.org/schema/sca" xmlns:tibco="http://xsd.tns.tibco.com/2008/amf/extension/spring"
+	xsi:schemaLocation="http://xsd.tns.tibco.com/2008/amf/extension/spring http://xsd.tns.tibco.com/schema/sca/tibco-ext-spring-sca.xsd http://www.springframework.org/schema/sca http://www.osoa.org/xmlns/sca/1.0/spring-sca.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="EchoStringRLEBean" class="org.example.www.echoStringRLE.echoStringRLEImpl"
+		destroy-method="destroy" init-method="init">
+		<property name="echoReference" ref="echoReference" />
+	</bean>
+	<sca:service name="EchoStringRLE" target="EchoStringRLEBean"
+		type="org.example.echostringrle.EchoStringRLE" />
+	<tibco:service-metadata name="EchoStringRLE"
+		wsdl-location="/amx30.bat.55.ssprings.soa/Service Descriptors/echoStringRLE.wsdl"
+		wsdl-interface="http://www.example.org/echoStringRLE/#echoStringRLE" />
+	<sca:reference name="echoReference"
+		type="org.example.echostringrle.EchoStringRLE" />
+	<tibco:reference-metadata name="echoReference"
+		target="EchoStringRLEBean"
+		wsdl-location="/amx30.bat.55.ssprings.soa/Service Descriptors/echoStringRLE.wsdl"
+		wsdl-interface="http://www.example.org/echoStringRLE/#echoStringRLE" />
+</beans>

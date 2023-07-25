@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise 
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types" 
+	xmlns:amxdata_binding="http://tibco.com/amxadministrator/command/line/types_binding" 
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base" 
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd http://tibco.com/amxadministrator/command/line/types_binding ../schemas/bindingdata.xsd" >
+
+<Environment 
+	xsi:type="amxdata:Environment" 
+	name="QAEnvironment_na2devasgora03" 
+	description="QA BAT Environment" 
+	contact="TIBCO">
+    
+	<Application 
+		xsi:type="amxdata:Application" 
+		name="AMXTestCase1.2" 
+		contact="TIBCO Inc." 
+		description="Declared Fault - SOAP -> JAVA -> SOAP">
+		<Component 
+			xsi:type="amxdata:Component" 
+			name="JavaComponent1">
+		    <Node 
+				name="QANode2" 
+				environmentName="QAEnvironment_na2devasgora03"/>
+		</Component>
+			<PromotedService 
+			xsi:type="amxdata_base:Service_base" 
+			name="AMXTestCaseService1.2">
+<PromotedReference 
+			xsi:type="amxdata_base:Reference_base" 
+			name="AMXTestCase1.2"/>
+
+			<Binding 
+				xsi:type="amxdata:Binding" 
+				name="AMXServiceBinding1.2" >
+                <Node 
+					name="QANode1" 
+					environmentName="QAEnvironment_na2devasgora03" />
+<Property  
+					xsi:type="amxdata:Property" 
+					name="HttpInboundConnectionConfig"  
+					value="httpConnector2"/>	
+									
+			</Binding>
+		</PromotedService>
+<ApplicationTemplate 
+				xsi:type="amxdata_reference:ApplicationTemplate_reference" 
+				name="AMXTestCase1.1"/>
+    </Application>
+
+
+		           </Environment>
+
+	<DAA 
+		xsi:type="amxdata:DAA" 
+		description="SOAP - JAVA - Addressing Enabled" 
+		location="C:/Lisa1072/Projects/AMX/Tests/deployments/1.2/AMXTestCase1.2/Deployment Artifacts/AMXTestCase1.2.daa"/> 
+	</amxdata_base:Enterprise>

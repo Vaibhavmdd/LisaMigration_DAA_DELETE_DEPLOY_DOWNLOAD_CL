@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+
+	
+
+	<Environment 
+		xsi:type="amxdata:Environment" 
+	    name="[[env.name]]" 
+	    description="integration environment" 
+	    contact="TIBCO">
+		<Node xsi:type="amxdata:Node" name="[[env.node1.name]]" hostName="[[host.name]]" description="My first node" contact="TIBCO" >
+		   
+		    
+		   
+		  
+		    <Logger xsi:type="amxdata:Logger" name ="root" additivity="false">
+		       <AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="INFO">
+					    <Appender xsi:type="amxdata_reference:LogAppender_reference" name="qaFileLogAppenderAppUpgrade"/>
+				   </AppenderRef>		
+				</Logger>	
+		</Node>
+		
+
+		
+		<Application
+			xsi:type="amxdata:Application"
+			name="appUpgrade694"
+			contact="TIBCO Software Inc."
+			description="nested composite">
+			
+			<Node name="[[env.node1.name]]" environmentName="[[env.name]]"/>			
+			
+		<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="SampleTest" version="1.0.0.201110281431"/>
+		</Application>		
+	</Environment>
+	 
+
+
+	<DAA
+		xsi:type="amxdata:DAA"
+		description="DAA CMT Test"
+		location="SOA/V1/EmbeddedComposites/Deployment Artifacts/SampleTest.daa"
+	    importResourceTemplates="true">
+	</DAA>
+	
+  <LogAppender
+		xsi:type="amxdata:FileLogAppender"
+		name="qaFileLogAppenderAppUpgrade"
+		description="QA File LogAppender"
+		filePath="[[logappender.file.location]]/694.log"
+		maxSize="10240"
+		maxBackupNum="5"/>
+		
+	
+
+</amxdata_base:Enterprise>

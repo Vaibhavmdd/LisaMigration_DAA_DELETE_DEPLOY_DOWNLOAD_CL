@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created by TIBCO WSDL-->
+<wsdl:definitions xmlns:tns="http://www.example.org/echoStringDF/_gen" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns0="http://www.example.org/echoStringDF/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="echoStringDF" targetNamespace="http://www.example.org/echoStringDF/_gen">
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/echoStringDF/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:element name="echo">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="in" form="unqualified" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="echoResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="out" form="unqualified" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="echo_fault">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="echo_fault" form="unqualified" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="echoRequest">
+        <wsdl:part name="parameters" element="ns0:echo"/>
+    </wsdl:message>
+    <wsdl:message name="echoResponse">
+        <wsdl:part name="parameters" element="ns0:echoResponse"/>
+    </wsdl:message>
+    <wsdl:message name="echo_faultMsg">
+        <wsdl:part name="parameters" element="ns0:echo_fault"/>
+    </wsdl:message>
+    <wsdl:portType name="echoStringDF">
+        <wsdl:operation name="echo">
+            <wsdl:input message="tns:echoRequest"/>
+            <wsdl:output message="tns:echoResponse"/>
+            <wsdl:fault name="fault" message="tns:echo_faultMsg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="SOAPService_Binding1" type="tns:echoStringDF">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="echo">
+            <wsdl:documentation/>
+            <soap:operation style="document" soapAction="echo"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="parameters"/>
+            </wsdl:output>
+            <wsdl:fault name="fault">
+                <soap:fault use="literal" name="fault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="echoStringDF">
+        <wsdl:port name="SOAPService_Binding1" binding="tns:SOAPService_Binding1">
+            <soap:address location="http://localhost:6765/echoStringDF/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

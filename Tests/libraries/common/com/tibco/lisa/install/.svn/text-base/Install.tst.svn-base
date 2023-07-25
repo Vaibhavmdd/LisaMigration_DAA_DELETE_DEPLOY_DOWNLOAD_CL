@@ -1,0 +1,512 @@
+<?xml version="1.0" ?>
+
+
+<!-- Test Case created by LISA Test Editor -->
+<!-- On: Wed Feb 29 14:50:13 PST 2012 -->
+
+
+<TestCase name="Install" version="2">
+<id>55627170</id>
+<Documentation>Runs TIBCO Universal Installer in silent mode to install TIBCO products.&#13;&#10;If the product is already installed in the same TIBCO_HOME this sub-process does not uninstall&#13;&#10;but re-install on top of the existing one.</Documentation>
+<sig>ZWQ9MiZ0Y3Y9MiZsaXNhdj00LjYuNyAoNC42LjcuMTYpJm5vZGVzPTE2NTIzNTQ3NjM=</sig>
+<rootNode>log</rootNode>
+<subprocess>true</subprocess>
+
+<initState>
+    <Parameter>
+    <key>installerHome</key>
+    <value></value>
+    <name>Absolute path to the TIBCO Universal Installer along with the assemblies</name>
+    </Parameter>
+    <Parameter>
+    <key>acceptLicense</key>
+    <value>true</value>
+    <name>License agreement</name>
+    </Parameter>
+    <Parameter>
+    <key>silentFile</key>
+    <value></value>
+    <name>Optional. Silent file.</name>
+    </Parameter>
+    <Parameter>
+    <key>logFile</key>
+    <value></value>
+    <name>Optional. Installation log file.</name>
+    </Parameter>
+    <Parameter>
+    <key>tempDir</key>
+    <value></value>
+    <name>Temporary directory to extract data</name>
+    </Parameter>
+    <Parameter>
+    <key>javaHome</key>
+    <value></value>
+    <name>Override all of the searching and extracting of the JVM</name>
+    </Parameter>
+    <Parameter>
+    <key>timeout</key>
+    <value>600</value>
+    <name>Number of seconds to allow for installation completion</name>
+    </Parameter>
+    <Parameter>
+    <key>installerBinaryPath</key>
+    <value></value>
+    <name>Universal Installer Binary for HF installations - Optional</name>
+    </Parameter>
+</initState>
+
+<resultState>
+    <Parameter>
+    <key>lisa.fail.rsp</key>
+    <value>Set in Step fail</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.fail.rsp.time</key>
+    <value>Set in Step fail</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.runInstaller.rsp</key>
+    <value>Set in Step runInstaller</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.runInstaller.rsp.time</key>
+    <value>Set in Step runInstaller</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.validateInstallationInputs.rsp</key>
+    <value>Set in Step validateInstallationInputs</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.validateInstallationInputs.rsp.time</key>
+    <value>Set in Step validateInstallationInputs</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.log.rsp</key>
+    <value>Set in Step log</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.log.rsp.time</key>
+    <value>Set in Step log</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.logInstallInfo.rsp</key>
+    <value>Set in Step logInstallInfo</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.logInstallInfo.rsp.time</key>
+    <value>Set in Step logInstallInfo</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.logProductName.rsp</key>
+    <value>Set in Step logProductName</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.logProductName.rsp.time</key>
+    <value>Set in Step logProductName</value>
+    </Parameter>
+    <Parameter>
+    <key>workingDir</key>
+    <value>Set in Step folderNameForInstallerExtraction</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.logCompletion.rsp</key>
+    <value>Set in Step logCompletion</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.logCompletion.rsp.time</key>
+    <value>Set in Step logCompletion</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.command.exit.code</key>
+    <value>Set in Step runInstaller</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.command.pid_handle</key>
+    <value>Set in Step runInstaller</value>
+    </Parameter>
+    <Parameter>
+    <key>installSilentfile</key>
+    <value>Set in Step switchForSilentFile</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.checkIfUnix.rsp</key>
+    <value>Set in Step checkIfUnix</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.checkIfUnix.rsp.time</key>
+    <value>Set in Step checkIfUnix</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.chmodOnUnix.rsp</key>
+    <value>Set in Step chmodOnUnix</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.chmodOnUnix.rsp.time</key>
+    <value>Set in Step chmodOnUnix</value>
+    </Parameter>
+    <Parameter>
+    <key>valueData</key>
+    <value>Set in Step log</value>
+    </Parameter>
+    <Parameter>
+    <key>ValuesToReplace_RowNum</key>
+    <value>Set in Step log</value>
+    </Parameter>
+    <Parameter>
+    <key>xpathData</key>
+    <value>Set in Step log</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.logTimeout.rsp</key>
+    <value>Set in Step logTimeout</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.logTimeout.rsp.time</key>
+    <value>Set in Step logTimeout</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.end.rsp</key>
+    <value>Set in Step end</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.end.rsp.time</key>
+    <value>Set in Step end</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.copyUniversalInstallerForHFs.rsp</key>
+    <value>Set in Step copyUniversalInstallerForHFs</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.copyUniversalInstallerForHFs.rsp.time</key>
+    <value>Set in Step copyUniversalInstallerForHFs</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.determineInstallerFileName.rsp</key>
+    <value>Set in Step determineInstallerFileName</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.determineInstallerFileName.rsp.time</key>
+    <value>Set in Step determineInstallerFileName</value>
+    </Parameter>
+    <Parameter>
+    <key>installerExe</key>
+    <value>Set in Step determineInstallerFileName</value>
+    </Parameter>
+</resultState>
+
+<Configurations>
+<Configuration>
+<name>default</name>
+<external>false</external>
+<props>
+</props>
+</Configuration>
+</Configurations>
+    <Node name="log" log=""
+          type="com.itko.lisa.test.TestNodeLogger" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="validateInstallationInputs" > 
+
+<graphx>10</graphx>
+<graphy>10</graphy>
+      <log>Installing from {{installerHome}} ...</log>
+
+      <!-- Data Sets -->
+<readrec>ValuesToReplace</readrec>
+    </Node>
+
+
+    <Node name="validateInstallationInputs" log="Validating inputs for the installation process..."
+          type="com.itko.lisa.test.ScriptNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="copyUniversalInstallerForHFs" > 
+
+<graphx>10</graphx>
+<graphy>10</graphy>
+<onerror>fail</onerror>
+<script>String baseErrorMsg = &quot;Installation inputs validation error&quot;;&#13;&#10;String baseSuccessMsg = &quot;Installation inputs verified&quot;;&#13;&#10;&#13;&#10;if (!acceptLicense) {&#13;&#10;  return baseErrorMsg + &quot;: You need to accept license agreement to proceed with installation.&quot;;&#13;&#10;}&#13;&#10;&#13;&#10;//Verify that installer folder exists&#13;&#10;String installHome = testExec.parseInState(installerHome).replace(&apos;\\&apos;,&apos;/&apos;);&#13;&#10;f = new File(installHome);&#13;&#10;if (!f.exists())&#13;&#10;{&#13;&#10;return baseErrorMsg + &quot;: Installer Home (&quot; + installHome + &quot;) does not exist.&quot;;&#13;&#10;}&#13;&#10;&#13;&#10;if (!f.isDirectory())&#13;&#10;{&#13;&#10; return baseErrorMsg + &quot;: Installer Home (&quot; + installHome + &quot;) must be a directory.&quot;;&#13;&#10;}&#13;&#10;&#13;&#10;// validate binaryPath if supplied&#13;&#10;if ((installerBinaryPath != null) &amp;&amp; (!installerBinaryPath.equals(&quot;&quot;))) {&#13;&#10;&#13;&#10;    File installerFile = null;&#13;&#10;    installerFile = new File(testExec.parseInState(installerBinaryPath).replace(&apos;\\&apos;, &apos;/&apos;));&#13;&#10;    &#13;&#10;    if (!installerFile.canRead()) {&#13;&#10;        return baseErrorMsg + &quot;: Installer executable file (&quot; + installerBinaryPath + &quot;) not found/cannot be read.&quot;;&#13;&#10;    }&#13;&#10;&#13;&#10;    if (!installerFile.isFile()) {&#13;&#10;        return baseErrorMsg + &quot;: Installer executable file (&quot; + installerBinaryPath + &quot;) is not a normal file.&quot;;&#13;&#10;    }&#13;&#10;}&#13;&#10;&#13;&#10;return baseSuccessMsg;&#13;&#10;</script>
+
+      <!-- Result Elements -->
+<CheckResult assertTrue="true" name="Any Exception Then Fail" type="com.itko.lisa.dynexec.CheckInvocationEx">
+<log>Assert [Any Exception Then Fail] fired true of type Assert on Invocation Exception</log>
+<then>fail</then>
+<valueToAssertKey></valueToAssertKey>
+        <param>.*</param>
+</CheckResult>
+
+<CheckResult assertTrue="true" name="Assert87" type="com.itko.lisa.test.CheckResultContains">
+<log>{{LASTRESPONSE}}</log>
+<then>fail</then>
+<valueToAssertKey></valueToAssertKey>
+        <param>Installation inputs validation error</param>
+</CheckResult>
+
+    </Node>
+
+
+    <Node name="copyUniversalInstallerForHFs" log="This step copies the universal installer...Ignore failure of this step if user is installing non-HF version..."
+          type="com.itko.lisa.utils.ExecSubProcessNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="determineInstallerFileName" > 
+
+<graphx>-1</graphx>
+<graphy>-1</graphy>
+<Documentation></Documentation>
+<remoteServer>local</remoteServer>
+<Subprocess>{{TIBCO_COMMON_LIBRARY}}/com/tibco/lisa/file/CopyFile.tst</Subprocess>
+<getEvents>0</getEvents>
+<sendConfig>true</sendConfig>
+<fullyParseProps>true</fullyParseProps>
+<sendCommonState>false</sendCommonState>
+<getCommonState>false</getCommonState>
+<onFail>determineInstallerFileName</onFail>
+<Parameters>
+    <Parameter>
+    <key>fileIn</key>
+    <value>{{installerBinaryPath}}</value>
+    <name>Source file</name>
+    </Parameter>
+    <Parameter>
+    <key>fileOut</key>
+    <value>{{installerHome}}</value>
+    <name>Destination file or directory</name>
+    </Parameter>
+    <Parameter>
+    <key>createDirectory</key>
+    <value>true</value>
+    <name>If true, create the necessary directories to copy the destination file</name>
+    </Parameter>
+</Parameters>
+<SaveProps>
+</SaveProps>
+    </Node>
+
+
+    <Node name="determineInstallerFileName" log="Determining name of the installer executable..."
+          type="com.itko.lisa.test.ScriptNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="logInstallInfo" > 
+
+<graphx>130</graphx>
+<graphy>130</graphy>
+<onerror>fail</onerror>
+<script>import java.io.File;&#13;&#10;&#13;&#10;String baseErrorMessage=&quot;Error finding the installer executable: &quot;; // Do not modify. Assertion on this string exists.&#13;&#10;&#13;&#10;//We are only searching the current folder. No subfolder searches are performed&#13;&#10;//There is NO match performed to check if for ex.: if the host OS is Windows and an .exe is present.&#13;&#10;//A blind match is done for .exe or .bin. On the first match, the file name is returned.&#13;&#10;&#13;&#10;//Get the list of files in the directory&#13;&#10;File f = new File(testExec.parseInState(installerHome).replace(&apos;\\&apos;,&apos;/&apos;));&#13;&#10;String[] listOfFiles = f.list();&#13;&#10;&#9;&#9;&#13;&#10;//Run over the list of files in the directory&#13;&#10;for (String installerFileName : listOfFiles) {&#13;&#10;&#9;//Match 64-bit install .exe or .bin first&#13;&#10;&#9;if (installerFileName.endsWith(&quot;64.exe&quot;) || installerFileName.endsWith(&quot;64.bin&quot;)) {&#13;&#10;&#9;    if (installerFileName.endsWith(&quot;64.exe&quot;)) {&#13;&#10;            return installerFileName;&#13;&#10;        } &#13;&#10;        else {&#13;&#10;            //If a match is found, return the file name&#13;&#10;            return testExec.parseInState(installerHome).replace(&apos;\\&apos;,&apos;/&apos;) +&#13;&#10;&#9;&#9;&#9;&quot;/&quot; + installerFileName;&#13;&#10;        }&#13;&#10;&#9;}&#13;&#10;    // Then match 32-bit install .exe or .bin&#13;&#10;    else if (installerFileName.endsWith(&quot;.exe&quot;) || installerFileName.endsWith(&quot;.bin&quot;)) {&#13;&#10;        if (installerFileName.endsWith(&quot;.exe&quot;)) {&#13;&#10;            return installerFileName;&#13;&#10;        } &#13;&#10;        else {&#13;&#10;            //If a match is found, return the file name&#13;&#10;            return testExec.parseInState(installerHome).replace(&apos;\\&apos;,&apos;/&apos;) +&#13;&#10;&#9;&#9;&#9;&quot;/&quot; + installerFileName;&#13;&#10;        }&#13;&#10;    }&#13;&#10;}&#13;&#10;&#9;&#13;&#10;//No match is found&#13;&#10;baseErrorMessage+=&quot;No Installer executable found&quot;;&#13;&#10;return baseErrorMessage;</script>
+
+      <!-- Filters -->
+      <Filter type="com.itko.lisa.test.FilterSaveResponse">
+        <valueToFilterKey>lisa.determineInstallerFileName.rsp</valueToFilterKey>
+      <prop>installerExe</prop>
+      </Filter>
+
+
+      <!-- Result Elements -->
+<CheckResult assertTrue="true" name="Any Exception Then Fail" type="com.itko.lisa.dynexec.CheckInvocationEx">
+<log>Assert [Any Exception Then Fail] fired true of type Assert on Invocation Exception</log>
+<then>fail</then>
+<valueToAssertKey></valueToAssertKey>
+        <param>.*</param>
+</CheckResult>
+
+<CheckResult assertTrue="true" name="Determining the installable file" type="com.itko.lisa.test.CheckResultContains">
+<log>Installable was not found: {{LASTRESPONSE}}</log>
+<then>fail</then>
+<valueToAssertKey></valueToAssertKey>
+        <param>Error finding the installer executable:</param>
+</CheckResult>
+
+    </Node>
+
+
+    <Node name="logInstallInfo" log=""
+          type="com.itko.lisa.test.TestNodeLogger" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="checkIfUnix" > 
+
+<graphx>130</graphx>
+<graphy>130</graphy>
+      <log>Installing:&#13;&#10;{{installerExe}} {{=(tempDir.equals(&quot;&quot;))?&quot;&quot;:&quot;-is:tempdir &quot; + tempDir.replace(&quot;\\&quot;,&quot;/&quot;)}} {{=(javaHome.equals(&quot;&quot;))?&quot;&quot;:&quot;-is:javahome &quot; + javaHome.replace(&quot;\\&quot;,&quot;/&quot;)}} -silent {{=(!silentFile.equals(&quot;&quot;) &amp;&amp; !silentFile.equals(&quot;&lt;&lt;null&gt;&gt;&quot;))?&quot;-V responseFile=\&quot;&quot;+silentFile+&quot;\&quot;&quot;:&quot;&quot;}} {{=(!logFile.equals(&quot;&quot;) &amp;&amp; !logFile.equals(&quot;&lt;&lt;null&gt;&gt;&quot;))?&quot;-V logFile=\&quot;&quot;+logFile+&quot;\&quot;&quot;:&quot;&quot;}}&#13;&#10;</log>
+    </Node>
+
+
+    <Node name="checkIfUnix" log=""
+          type="com.itko.lisa.test.ScriptNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="chmodOnUnix" > 
+
+<graphx>130</graphx>
+<graphy>130</graphy>
+<onerror>fail</onerror>
+<script>if (com.itko.util.Utilities.isWindows())&#13;&#10; return &quot;windows&quot;;&#13;&#10;else&#13;&#10; return &quot;unix&quot;;&#13;&#10;</script>
+
+      <!-- Result Elements -->
+<CheckResult assertTrue="true" name="Any Exception Then Fail" type="com.itko.lisa.dynexec.CheckInvocationEx">
+<log>Assert [Any Exception Then Fail] fired true of type Assert on Invocation Exception</log>
+<then>fail</then>
+<valueToAssertKey></valueToAssertKey>
+        <param>.*</param>
+</CheckResult>
+
+<CheckResult assertTrue="true" name="Assert113" type="com.itko.lisa.test.CheckResultContains">
+<log>Assert [Assert113] fired true of type Result as String Contains Given String</log>
+<then>runInstaller</then>
+<valueToAssertKey></valueToAssertKey>
+        <param>windows</param>
+</CheckResult>
+
+    </Node>
+
+
+    <Node name="chmodOnUnix" log=""
+          type="com.itko.lisa.utils.CommandLineExecNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="runInstaller" > 
+
+<graphx>250</graphx>
+<graphy>250</graphy>
+<cmd>/bin/chmod u+x {{installerExe}}</cmd>
+<basedir>{{installerHome}}</basedir>
+<toNode>fail</toNode>
+<exceptionNode>fail</exceptionNode>
+<timeOut>300</timeOut>
+<killAtEnd>false</killAtEnd>
+<wait>true</wait>
+<addToEnv>false</addToEnv>
+<spawn>false</spawn>
+<execShell>false</execShell>
+<env>
+</env>
+<exitCodes>
+</exitCodes>
+    </Node>
+
+
+    <Node name="runInstaller" log="Running the installer..."
+          type="com.itko.lisa.utils.CommandLineExecNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="logCompletion" > 
+
+<graphx>10</graphx>
+<graphy>10</graphy>
+<cmd>{{installerExe}} {{=(tempDir.equals(&quot;&quot;))?&quot;&quot;:&quot;-is:tempdir &quot; + tempDir.replace(&quot;\\&quot;,&quot;/&quot;)}} {{=(javaHome.equals(&quot;&quot;))?&quot;&quot;:&quot;-is:javahome &quot; + javaHome.replace(&quot;\\&quot;,&quot;/&quot;)}} -silent {{=(!silentFile.equals(&quot;&quot;) &amp;&amp; !silentFile.equals(&quot;&lt;&lt;null&gt;&gt;&quot;))?&quot;-V responseFile=\&quot;&quot;+silentFile+&quot;\&quot;&quot;:&quot;&quot;}} {{=(!logFile.equals(&quot;&quot;) &amp;&amp; !logFile.equals(&quot;&lt;&lt;null&gt;&gt;&quot;))?&quot;-V logFile=\&quot;&quot;+logFile+&quot;\&quot;&quot;:&quot;&quot;}}</cmd>
+<basedir>{{installerHome}}</basedir>
+<toNode>logTimeout</toNode>
+<exceptionNode>fail</exceptionNode>
+<timeOut>{{timeout}}</timeOut>
+<killAtEnd>false</killAtEnd>
+<wait>true</wait>
+<addToEnv>false</addToEnv>
+<spawn>false</spawn>
+<execShell>true</execShell>
+<env>
+</env>
+<exitCodes>
+</exitCodes>
+    </Node>
+
+
+    <Node name="logCompletion" log=""
+          type="com.itko.lisa.test.TestNodeLogger" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="end" > 
+
+<graphx>130</graphx>
+<graphy>130</graphy>
+      <log>Installation completed.&#13;&#10;Exit code: {{lisa.command.exit.code}}&#13;&#10;</log>
+    </Node>
+
+
+    <Node name="logTimeout" log=""
+          type="com.itko.lisa.test.TestNodeLogger" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="fail" > 
+
+<graphx>130</graphx>
+<graphy>130</graphy>
+      <log>Installation did not complete within {{timeout}} seconds.&#13;&#10;Exit code: {{lisa.command.exit.code}}&#13;&#10;</log>
+    </Node>
+
+
+    <Node name="fail" log=""
+          type="com.itko.lisa.test.Abend" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="true" 
+          next="unknown" > 
+
+<graphx>130</graphx>
+<graphy>130</graphy>
+    </Node>
+
+
+    <Node name="end" log="Installation complete."
+          type="com.itko.lisa.test.NormalEnd" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="true" 
+          next="fail" > 
+
+<graphx>250</graphx>
+<graphy>250</graphy>
+    </Node>
+
+
+    <DataSet type="com.itko.lisa.test.DataSheet" name="ValuesToReplace" atend="logInstallInfo" local="false" >
+<sample>rO0ABXNyABFqYXZhLnV0aWwuSGFzaE1hcAUH2sHDFmDRAwACRgAKbG9hZEZhY3RvckkACXRocmVz
+aG9sZHhwP0AAAAAAAAx3CAAAABAAAAADdAAJdmFsdWVEYXRhdAATe3tlbnZpcm9ubWVudERlc2N9
+fXQAFlZhbHVlc1RvUmVwbGFjZV9Sb3dOdW10AAExdAAJeHBhdGhEYXRhdAApL3Byb3BlcnRpZXMv
+ZW50cnlbQGtleT0iZW52aXJvbm1lbnREZXNjIl14</sample>
+<table>
+<col>xpathData</col>
+<col>valueData</col>
+<tr>
+<td>/properties/entry[@key=&quot;environmentDesc&quot;]</td>
+<td>{{environmentDesc}}</td>
+</tr>
+<tr>
+<td>/properties/entry[@key=&quot;environmentName&quot;]</td>
+<td>{{environmentName}}</td>
+</tr>
+<tr>
+<td>/properties/entry[@key=&quot;installationRoot&quot;]</td>
+<td>{{tibcoHome}}</td>
+</tr>
+<tr>
+<td>/properties/entry[@key=&quot;createNewEnvironment&quot;]</td>
+<td>{{createNewEnvironment}}</td>
+</tr>
+</table>
+    </DataSet>
+
+</TestCase>

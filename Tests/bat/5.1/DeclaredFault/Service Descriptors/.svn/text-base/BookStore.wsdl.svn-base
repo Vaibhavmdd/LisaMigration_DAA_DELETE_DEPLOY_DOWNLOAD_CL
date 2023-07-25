@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:ns="http://tibco.com/matrix/qa/xsd/group" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://tibco.com/matrix/qa/wsdl/group" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://tibco.com/matrix/qa/wsdl/group">
+    <import location="BookStore.xsd" namespace="http://tibco.com/matrix/qa/xsd/group"/>
+    <message name="GetBooksOutput">
+        <part name="OutPart" type="ns:BookStoreT"/>
+    </message>
+    <message name="GetBooksInput">
+        <part name="InPart" type="ns:BookStoreT"/>
+    </message>
+    <message name="GetBooksFault">
+		<part name="fault" element="ns:BookStoreFault" />
+	</message>
+    <portType name="BookPortType">
+        <operation name="GetBooksOperation">
+            <input message="tns:GetBooksInput" name="In"/>
+            <output message="tns:GetBooksOutput" name="Out"/>
+            <fault message="tns:GetBooksFault" name="fault"/>
+        </operation>
+    </portType>
+</definitions>

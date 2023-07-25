@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created by TIBCO WSDL-->
+<wsdl:definitions xmlns:ns0="http://tibco.com/matrix/qa/xsd/address" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://tibco.com/matrix/qa/wsdl/address" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="Untitled" targetNamespace="http://tibco.com/matrix/qa/wsdl/address">
+    <wsdl:types>
+        <xs:schema xmlns="http://tibco.com/matrix/qa/xsd/address" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://tibco.com/matrix/qa/xsd/address">
+            <xs:complexType name="Address_Type">
+                <xs:sequence>
+                    <xs:element ref="ns0:Name"/>
+                    <xs:element ref="ns0:Address"/>
+                    <xs:element ref="ns0:City"/>
+                    <xs:element ref="ns0:State"/>
+                    <xs:element ref="ns0:Zip"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="Address" type="xs:string"/>
+            <xs:element name="Address_Element">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element ref="ns0:Name"/>
+                        <xs:element ref="ns0:Address"/>
+                        <xs:element ref="ns0:City"/>
+                        <xs:element ref="ns0:State"/>
+                        <xs:element ref="ns0:Zip"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="City" type="xs:string"/>
+            <xs:element name="Name" type="xs:string"/>
+            <xs:element name="State" type="xs:string"/>
+            <xs:element name="Zip" type="xs:int"/>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:portType name="AddressPort">
+        <wsdl:operation name="AddressOperation">
+            <wsdl:input message="tns:Address_Request"/>
+            <wsdl:output message="tns:Address_Response"/>
+            <wsdl:fault message="tns:Address_Fault" name="Fault"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:message name="Address_Request">
+        <wsdl:part element="ns0:Address_Element" name="InPart"/>
+    </wsdl:message>
+    <wsdl:message name="Address_Response">
+        <wsdl:part element="ns0:Address_Element" name="OutPart"/>
+    </wsdl:message>
+    <wsdl:message name="Address_Fault">
+        <wsdl:part element="ns0:Address_Element" name="FaultPart"/>
+    </wsdl:message>
+</wsdl:definitions>

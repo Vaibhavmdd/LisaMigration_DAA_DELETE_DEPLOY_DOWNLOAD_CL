@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<SamplePorperties>
+  <JMSClientConfiguration>
+    <ConnectionFactoryJNDIName>GenericConnectionFactory</ConnectionFactoryJNDIName>
+    <ContextFactoryName>com.tibco.tibjms.naming.TibjmsInitialContextFactory</ContextFactoryName>
+    <UserName>admin</UserName>
+    <Password></Password>
+    <MessageQueueName>cl_logservice_queue</MessageQueueName>
+    <PayloadQueueName>cl_payload_queue</PayloadQueueName>
+    <ServerURL>tibjmsnaming://localhost:7222</ServerURL>
+  </JMSClientConfiguration>
+  <MessageProducerConfiguration>
+    <MessageModel></MessageModel><!--MessageModel null use default,policy use LoggingPolicyModel,bw use BWEngineEventFormat -->
+    <!-- default EngineEventFormat, support LoggingPolicyModel,BWEngineEventFormat-->
+    <SendThreadNumber>1</SendThreadNumber><!-- use  multithread,input the thread number-->
+    <MessageLength>2</MessageLength><!-- Message bytes -->
+    <MessageNumber>110000</MessageNumber><!-- Message Number -->
+    <MessageFormat>qa</MessageFormat><!-- the message you want to send,if input this,will loop this for the MessageLength -->
+    <!-- if MessageLength is 100 and you input abcde,and will loop abcde for 20 times -->
+    <HasPayload>false</HasPayload><!-- true of false -->
+    <SecondControl>false</SecondControl><!-- true or false,whether to control average speed of seeding message -->
+    <MessNumOneSecond>100</MessNumOneSecond><!-- how many message in one second,seems max can't exceed 1250/s ,size 1 byte-->
+    <PayloadSize>1024</PayloadSize><!-- bytes -->
+    <PayloadNumber>1</PayloadNumber><!--one message with how many payload-->
+    <Times>1</Times><!-- no actual usage  default 1,if changed total message=MessageNumber*Times-->
+  </MessageProducerConfiguration>  
+</SamplePorperties>

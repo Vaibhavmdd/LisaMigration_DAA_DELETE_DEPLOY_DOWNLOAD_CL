@@ -1,0 +1,18 @@
+<project default="upload.daa">
+	<import file="C:/Program Files/tibco/amx-3/administrator/3.0/bin/taskdef.xml"/>
+	
+	<target name="upload.daa">
+		<AMXAdminTask
+			action="add"
+			objectSelector="DAA"
+			remote="true"
+			propsFile="C:/amx-3/tibco/cfgmgmt/admin/amxadmin/samples/remote_props.properties"
+			dataFile="hsqldb_data.xml"
+			overwrite="true"
+			merge="true"
+			createIfNotExists="true"
+			force="true"
+			failOnError="true"/>		
+	</target>
+
+</project>

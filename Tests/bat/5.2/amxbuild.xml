@@ -1,0 +1,46 @@
+<project default="deploy.app">
+	<import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+
+	<target name="deploy.app">
+		<create.rt dataFile="${amxConfigFile}" objectSelector="declare namespace amxdata_jmsssr='http://tibco.com/amxadministrator/command/line/types_jmssr'; amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate | amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate | amxdata_jmsssr:JNDIDestinationResourceTemplate | amxdata_jmsssr:JNDIConnectionFactoryConfigurationResourceTemplate | amxdata_jmsssr:JNDIDestinationConfigurationResourceTemplate"/>
+		<create.ri dataFile="${amxConfigFile}" />
+		<install.ri dataFile="${amxConfigFile}" />
+		<upload.daa dataFile="${amxConfigFile}" />
+		<create.app dataFile="${amxConfigFile}" />
+		<create.service.binding dataFile="${amxConfigFile}" />
+		<create.reference.binding dataFile="${amxConfigFile}" />
+		<!--
+		<update.service.binding dataFile="${amxConfigFile}" />
+		<update.reference.binding dataFile="${amxConfigFile}" />
+		-->
+		<map.component.to.node dataFile="${amxConfigFile}" />
+		<map.service.binding.to.node dataFile="${amxConfigFile}" />
+		<map.reference.binding.to.node dataFile="${amxConfigFile}" />
+		<deploy.app dataFile="${amxConfigFile}" timeout="${deployTimeout}" />
+	</target>
+
+	<target name="undeploy.app">
+		<undeploy.app dataFile="${amxConfigFile}" timeout="${deployTimeout}" />
+	</target>
+	
+	<target name="ImportAndRegenerateDAA">
+		<echo message="Importing Projects"></echo>
+		<sds.importProject projectLoc="${soa.project.loc}" overwrite="true" />		
+		<sds.importProject projectLoc="${java.project.loc}" overwrite="true"/>
+		<sds.importProject projectLoc="${soa.jmsproject.loc}" overwrite="true" />		
+		<sds.importProject projectLoc="${java.jmsproject.loc}" overwrite="true"/>
+		<echo message="Create DAA"></echo>
+		<sds.createDAA projectname="${projectName1}"	daaloc="Deployment Artifacts/${daa1}" overwriteexistingdaa="true">
+			<application compositename="${compositeName1}" projectname="${projectName1}">  
+			</application>			
+			<feature id="${featureid1}" />				
+		</sds.createDAA>	
+		<sds.createDAA projectname="${projectName2}"	daaloc="Deployment Artifacts/${daa2}" overwriteexistingdaa="true">
+			<application compositename="${compositeName2}" projectname="${projectName2}">  
+			</application>			
+			<feature id="${featureid2}" />				
+		</sds.createDAA>
+	</target>
+
+</project>
+

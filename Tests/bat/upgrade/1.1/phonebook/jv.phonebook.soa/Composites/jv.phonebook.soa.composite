@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:compositenotation="http://www.tibco.com/models/compositenotation" xmlns:java="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/java" xmlns:jdbc="http://xsd.tns.tibco.com/amf/models/sharedresource/jdbc" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmlns:soapbt="http://xsd.tns.tibco.com/amf/models/sca/binding/soap" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmi:id="_npymYXhiEeG7iZp7pkk6Rg" targetNamespace="http://www.example.com/jv.phonebook.soa" name="jv.phonebook.soa" compositeext:version="1.0.0.qualifier" compositeext:formatVersion="2">
+  <sca:service xmi:id="_np1CoHhiEeG7iZp7pkk6Rg" name="PhonebookPT" promote="JavaPhonebookComponent/PhonebookPT">
+    <sca:interface.wsdl xmi:id="_np1CoXhiEeG7iZp7pkk6Rg" interface="http://ns.tibco.com/Phonebook/#wsdl.interface(PhonebookPT)" scaext:wsdlLocation="../Service%20Descriptors/Phonebook.wsdl"/>
+    <sca:binding.sca xmi:id="_np1ConhiEeG7iZp7pkk6Rg" name="Virtualization"/>
+    <soapbt:binding.soap.service xmi:id="_np1CpHhiEeG7iZp7pkk6Rg" name="PhonebookSOAP" transportBindingType="HTTP" attachmentStyle="DOCUMENT" portType="../Service%20Descriptors/Phonebook.wsdl#//@ePortTypes.0" targetNamespace="http://ns.tibco.com/Phonebook/PhonebookPT">
+      <operationConfiguration xmi:id="_nwVTQHhiEeG7iZp7pkk6Rg" operation="../Service%20Descriptors/Phonebook.wsdl#//@ePortTypes.0/@eOperations.0" action="AddPhone" actionNeeded="true">
+        <messageConfiguration xmi:id="_nwVTQXhiEeG7iZp7pkk6Rg" message="../Service%20Descriptors/Phonebook.wsdl#//@eMessages.0">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_nwVTQnhiEeG7iZp7pkk6Rg" messagePart="../Service%20Descriptors/Phonebook.wsdl#//@eMessages.0/@eParts.0"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_nwVTQ3hiEeG7iZp7pkk6Rg" message="../Service%20Descriptors/Phonebook.wsdl#//@eMessages.1" messageDirection="OUTPUT">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_nwVTRHhiEeG7iZp7pkk6Rg" messagePart="../Service%20Descriptors/Phonebook.wsdl#//@eMessages.1/@eParts.0"/>
+        </messageConfiguration>
+        <bindingType xmi:id="_nwVTRXhiEeG7iZp7pkk6Rg"/>
+      </operationConfiguration>
+      <operationConfiguration xmi:id="_nwVTRnhiEeG7iZp7pkk6Rg" operation="../Service%20Descriptors/Phonebook.wsdl#//@ePortTypes.0/@eOperations.1" action="GetPhone" actionNeeded="true">
+        <messageConfiguration xmi:id="_nwVTR3hiEeG7iZp7pkk6Rg" message="../Service%20Descriptors/Phonebook.wsdl#//@eMessages.2">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_nwVTSHhiEeG7iZp7pkk6Rg" messagePart="../Service%20Descriptors/Phonebook.wsdl#//@eMessages.2/@eParts.0"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_nwVTSXhiEeG7iZp7pkk6Rg" message="../Service%20Descriptors/Phonebook.wsdl#//@eMessages.3" messageDirection="OUTPUT">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_nwVTSnhiEeG7iZp7pkk6Rg" messagePart="../Service%20Descriptors/Phonebook.wsdl#//@eMessages.3/@eParts.0"/>
+        </messageConfiguration>
+        <bindingType xmi:id="_nwVTS3hiEeG7iZp7pkk6Rg"/>
+      </operationConfiguration>
+      <inboundConfiguration xsi:type="soapbt:HttpTransportConfiguration" xmi:id="_nwV6UHhiEeG7iZp7pkk6Rg" endpointURI="/phonebookPT/"/>
+      <defaultBindingType xmi:id="_nwUsMHhiEeG7iZp7pkk6Rg"/>
+    </soapbt:binding.soap.service>
+    <scact:bindingAdjunct xmi:id="_np1Co3hiEeG7iZp7pkk6Rg" bindingName="Virtualization"/>
+    <scact:bindingAdjunct xmi:id="_nwV6UXhiEeG7iZp7pkk6Rg" bindingName="PhonebookSOAP">
+      <sca:property xmi:id="_nwV6UnhiEeG7iZp7pkk6Rg" mustSupply="true" name="HttpInboundConnectionConfig" type="xsd:string" scaext:simpleValue="httpConnector"/>
+    </scact:bindingAdjunct>
+  </sca:service>
+  <sca:property xmi:id="_gm8_8HqKEeGUv7EQeN2L7A" mustSupply="true" name="database" type="jdbc:JdbcDataSource" scaext:simpleValue="hsqldb"/>
+  <sca:component xmi:id="_np0blHhiEeG7iZp7pkk6Rg" name="JavaPhonebookComponent" compositeext:version="1.0.0.qualifier">
+    <sca:implementation.java xmi:id="_np0blXhiEeG7iZp7pkk6Rg" class="com.sample.phonebook.PhonebookImpl" packageImplementationBundle="jv.phonebook.jv">
+      <scaext:packageVersionRange xmi:id="_rLo8gHhiEeG7iZp7pkk6Rg" lower="1.0.0.qualifier" upper="1.0.0.qualifier" upperIncluded="true"/>
+      <java:featureDependency xmi:id="_8DaKgHqJEeGUv7EQeN2L7A" name="jv.phonebook.soa.customfeature.id">
+        <range xmi:id="_8DaxkHqJEeGUv7EQeN2L7A" lower="1.0.0.qualifier" upper="1.0.0.qualifier" upperIncluded="true"/>
+      </java:featureDependency>
+      <java:featureDependency xmi:id="_rao4EHqiEeGUv7EQeN2L7A" name="jv.hsqldb.jv.feature">
+        <range xmi:id="_rao4EXqiEeGUv7EQeN2L7A" lower="1.8.1" upper="2.0.0"/>
+      </java:featureDependency>
+    </sca:implementation.java>
+    <sca:service xmi:id="_np0blnhiEeG7iZp7pkk6Rg" name="PhonebookPT">
+      <sca:interface.wsdl xmi:id="_np0bl3hiEeG7iZp7pkk6Rg" interface="http://ns.tibco.com/Phonebook/#wsdl.interface(PhonebookPT)" scaext:wsdlLocation="../Service%20Descriptors/Phonebook.wsdl"/>
+    </sca:service>
+    <sca:property xmi:id="_S8Ub8HqKEeGUv7EQeN2L7A" mustSupply="true" name="database" type="jdbc:JdbcDataSource" scaext:simpleValue="" source="$database"/>
+  </sca:component>
+  <notation:diagram xsi:type="notation:Diagram" xmi:id="_np0bkHhiEeG7iZp7pkk6Rg" type="Composite" element="#/" name="SCA Composite" measurementUnit="Pixel">
+    <children xmi:id="_wyrZAHnMEeGUv7EQeN2L7A" type="2001" element="#_npymYXhiEeG7iZp7pkk6Rg">
+      <children xmi:id="_wysnIHnMEeGUv7EQeN2L7A" type="5004"/>
+      <children xmi:id="_wysnIXnMEeGUv7EQeN2L7A" type="7001">
+        <styles xsi:type="notation:SortingStyle" xmi:id="_wytOMHnMEeGUv7EQeN2L7A"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_wytOMXnMEeGUv7EQeN2L7A"/>
+      </children>
+      <children xmi:id="_wytOMnnMEeGUv7EQeN2L7A" type="7002">
+        <styles xsi:type="notation:SortingStyle" xmi:id="_wytOM3nMEeGUv7EQeN2L7A"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_wytONHnMEeGUv7EQeN2L7A"/>
+      </children>
+      <children xmi:id="_wyt1QHnMEeGUv7EQeN2L7A" type="7003">
+        <children xmi:id="_wy73sHnMEeGUv7EQeN2L7A" type="3003" element="#_np0blHhiEeG7iZp7pkk6Rg">
+          <children xmi:id="_wy9F0HnMEeGUv7EQeN2L7A" type="5001"/>
+          <children xmi:id="_wy9s4HnMEeGUv7EQeN2L7A" type="7004">
+            <styles xsi:type="notation:SortingStyle" xmi:id="_wy9s4XnMEeGUv7EQeN2L7A"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_wy9s4nnMEeGUv7EQeN2L7A"/>
+          </children>
+          <children xmi:id="_wy-T8HnMEeGUv7EQeN2L7A" type="7005">
+            <styles xsi:type="notation:SortingStyle" xmi:id="_wy-T8XnMEeGUv7EQeN2L7A"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_wy-T8nnMEeGUv7EQeN2L7A"/>
+          </children>
+          <children xmi:id="_wy-7AHnMEeGUv7EQeN2L7A" type="7006">
+            <children xmi:id="_wy_iEHnMEeGUv7EQeN2L7A" visible="false" type="7600">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_wy_iEXnMEeGUv7EQeN2L7A" fontName="Segoe UI" fontHeight="10"/>
+              <element xsi:nil="true"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_wy_iEnnMEeGUv7EQeN2L7A"/>
+            </children>
+            <children xmi:id="_S85qwHqKEeGUv7EQeN2L7A" type="3006" element="#_S8Ub8HqKEeGUv7EQeN2L7A">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_S85qwXqKEeGUv7EQeN2L7A" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_S85qwnqKEeGUv7EQeN2L7A"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_wy-7AXnMEeGUv7EQeN2L7A"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_wy-7AnnMEeGUv7EQeN2L7A"/>
+            <styles xsi:type="compositenotation:CollapseStyle" xmi:id="_wy-7A3nMEeGUv7EQeN2L7A"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_wy73sXnMEeGUv7EQeN2L7A" fontName="Segoe UI" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_wy73snnMEeGUv7EQeN2L7A" gradStartColor="16642791" gradEndColor="14072216"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_wy73s3nMEeGUv7EQeN2L7A"/>
+          <styles xsi:type="compositenotation:CustomComponentIconStyle" xmi:id="_wy73tHnMEeGUv7EQeN2L7A"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_wy73tXnMEeGUv7EQeN2L7A"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_wyt1QXnMEeGUv7EQeN2L7A"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_wyt1QnnMEeGUv7EQeN2L7A"/>
+      </children>
+      <children xmi:id="_wyucUHnMEeGUv7EQeN2L7A" type="7007">
+        <children xmi:id="_wyvDYHnMEeGUv7EQeN2L7A" visible="false" type="7600">
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_wyvDYXnMEeGUv7EQeN2L7A" fontName="Segoe UI" fontHeight="10"/>
+          <element xsi:nil="true"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_wyvDYnnMEeGUv7EQeN2L7A"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_wyucUXnMEeGUv7EQeN2L7A"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_wyucUnnMEeGUv7EQeN2L7A"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" xmi:id="_wyrZAXnMEeGUv7EQeN2L7A" fontName="Segoe UI" fontHeight="10"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_wyrZAnnMEeGUv7EQeN2L7A" x="10" y="10" width="500" height="350"/>
+    </children>
+    <styles xsi:type="notation:DiagramStyle" xmi:id="_np0bkXhiEeG7iZp7pkk6Rg"/>
+    <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_np0bknhiEeG7iZp7pkk6Rg"/>
+    <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_np0bk3hiEeG7iZp7pkk6Rg"/>
+  </notation:diagram>
+</sca:composite>

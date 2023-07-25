@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://ejb3.creditcard.tibco.com" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ax21="http://ejb3.creditcard.tibco.com/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://ejb3.creditcard.tibco.com">
+    <wsdl:types>
+        <xs:schema xmlns:ax22="http://ejb3.creditcard.tibco.com/xsd" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://ejb3.creditcard.tibco.com">
+            <xs:import namespace="http://ejb3.creditcard.tibco.com/xsd"/>
+            <xs:element name="sayHelloResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="checkResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="authorizationResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax22:CreditCardResponse"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="authorizationargs0" nillable="true" type="ax22:CreditCardRequest"/>
+            <xs:element name="sayHelloargs0" nillable="true" type="xs:string"/>
+            <xs:element name="sayHelloargs1" nillable="true" type="xs:string"/>
+            <xs:element name="checkargs0" nillable="true" type="xs:string"/>
+        </xs:schema>
+        <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://ejb3.creditcard.tibco.com/xsd">
+            <xs:complexType name="CreditCardRequest">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="cardNo" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="dealDatetime" nillable="true" type="xs:dateTime"/>
+                    <xs:element minOccurs="0" name="merchantNo" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="money" type="xs:double"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="CreditCardResponse">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="authDesc" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="authResult" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="checkRequest">
+        <wsdl:part name="checkargs0" element="ns:checkargs0"/>
+    </wsdl:message>
+    <wsdl:message name="sayHelloResponse">
+        <wsdl:part name="parameters" type="xs:string"/>
+    </wsdl:message>
+    <wsdl:message name="authorizationRequest">
+        <wsdl:part name="authorizationargs0" element="ns:authorizationargs0"/>
+    </wsdl:message>
+    <wsdl:message name="checkResponse">
+        <wsdl:part name="parameters" type="xs:string"/>
+    </wsdl:message>
+    <wsdl:message name="authorizationResponse">
+        <wsdl:part name="parameters" element="ns:authorizationResponse"/>
+    </wsdl:message>
+    <wsdl:message name="sayHelloRequest">
+        <wsdl:part name="sayHelloargs0" element="ns:sayHelloargs0"/>
+        <wsdl:part name="sayHelloargs1" element="ns:sayHelloargs1"/>
+    </wsdl:message>
+    <wsdl:portType name="CreditCardRemotePortType">
+        <wsdl:operation name="authorization">
+            <wsdl:input message="ns:authorizationRequest" wsaw:Action="urn:authorization"/>
+            <wsdl:output message="ns:authorizationResponse" wsaw:Action="urn:authorizationResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="check">
+            <wsdl:input message="ns:checkRequest" wsaw:Action="urn:check"/>
+            <wsdl:output message="ns:checkResponse" wsaw:Action="urn:checkResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="sayHello">
+            <wsdl:input message="ns:sayHelloRequest" wsaw:Action="urn:sayHello"/>
+            <wsdl:output message="ns:sayHelloResponse" wsaw:Action="urn:sayHelloResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:service name="CreditCardRemote"/>
+</wsdl:definitions>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:sca="http://www.springframework.org/schema/sca" xmlns:tibco="http://xsd.tns.tibco.com/2008/amf/extension/spring"
+	xsi:schemaLocation="http://xsd.tns.tibco.com/2008/amf/extension/spring http://xsd.tns.tibco.com/schema/sca/tibco-ext-spring-sca.xsd http://www.springframework.org/schema/sca http://www.osoa.org/xmlns/sca/1.0/spring-sca.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="AllMEPsWSDLFileBean" class="org.example.www.AllMEPsWSDLFile.AllMEPsWSDLFileImpl"
+		destroy-method="destroy" init-method="init">
+		<property name="allMEPsWSDLFileRef1" ref="AllMEPsWSDLFileRef1" />
+	</bean>
+	<sca:service name="AllMEPsWSDLFile" target="AllMEPsWSDLFileBean"
+		type="org.example.allmepswsdlfile.AllMEPsWSDLFile" />
+	<tibco:service-metadata name="AllMEPsWSDLFile"
+		wsdl-location="/BAT7.1/Service Descriptors/AllMEPsWSDLFile.wsdl"
+		wsdl-interface="http://www.example.org/AllMEPsWSDLFile/#AllMEPsWSDLFile" />
+	<sca:reference name="AllMEPsWSDLFileRef1"
+		type="org.example.allmepswsdlfile.AllMEPsWSDLFile" />
+	<tibco:reference-metadata name="AllMEPsWSDLFileRef1"
+		target="AllMEPsWSDLFileBean" wsdl-location="/BAT7.1/Service Descriptors/AllMEPsWSDLFile.wsdl"
+		wsdl-interface="http://www.example.org/AllMEPsWSDLFile/#AllMEPsWSDLFile" />
+</beans>

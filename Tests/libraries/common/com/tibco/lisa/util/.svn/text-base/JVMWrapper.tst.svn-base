@@ -1,0 +1,511 @@
+<?xml version="1.0" ?>
+
+
+<!-- Test Case created by LISA Test Editor -->
+<!-- On: Thu Oct 14 01:13:15 PDT 2010 -->
+
+
+<TestCase name="JVMWrapper" version="2">
+<id>f50c952e</id>
+<Documentation>Call the TIBCO Wrapper.&#13;&#10;Syntax: &lt;wrapperName&gt; &lt;command&gt; --propFile &lt;propFile&gt; &lt;extraCommand&gt;&#13;&#10;where &#13;&#10;&lt;wrapperName&gt; the absolute path to the wrapper application. Required&#13;&#10;&lt;propFile&gt; the absolute path to the tra file used to launch the wrapper (optional).&#13;&#10;&lt;command&gt; can be one of the following command switches (optional):&#13;&#10;   --install, installs the wrapped application as a windows service&#13;&#10;   --uninstall, uninstalls a previously installed Windows service&#13;&#10;   --update, updates a previously installed wrapped application or installs if non-existing&#13;&#10;   --start, starts a previously installed Windows service&#13;&#10;   --stop, stops a running Windows service&#13;&#10;   --run, runs the wrapped application as a console application&#13;&#10;&lt;extraCommand&gt; Extra command needed by specific wrapper (optional). For instance BW needs the repository path.&#13;&#10;&#13;&#10;For optional input, use &lt;&lt;null&gt;&gt; as value in order no to pass the input parameter&#13;&#10;</Documentation>
+<sig>ZWQ9MiZ0Y3Y9MiZsaXNhdj00LjYuNyAoNC42LjcuMTYpJm5vZGVzPS04MzM4MjM5NTY=</sig>
+<rootNode>validate</rootNode>
+<subprocess>true</subprocess>
+
+<initState>
+    <Parameter>
+    <key>wrapperName</key>
+    <value></value>
+    <name>Absolute path to the wrapper application</name>
+    </Parameter>
+    <Parameter>
+    <key>command</key>
+    <value>&lt;&lt;null&gt;&gt;</value>
+    <name>One of the following command switches: --install, --uninstall, --update, --start, --stop, --run</name>
+    </Parameter>
+    <Parameter>
+    <key>propFile</key>
+    <value></value>
+    <name>Absolute path to the tra file used to launch the wrapper</name>
+    </Parameter>
+    <Parameter>
+    <key>extraCommand</key>
+    <value>&lt;&lt;null&gt;&gt;</value>
+    <name>Extra command a specific wrapper might need</name>
+    </Parameter>
+    <Parameter>
+    <key>startInDir</key>
+    <value>{{user.home}}</value>
+    <name>Execute from directory</name>
+    </Parameter>
+    <Parameter>
+    <key>waitForCompletion</key>
+    <value>false</value>
+    <name>Wait for the command to complete (true or false)</name>
+    </Parameter>
+    <Parameter>
+    <key>waitBeforeOnWindows</key>
+    <value>0</value>
+    <name>Number of seconds to sleep on Windows platforms before starting the JVM wrapper</name>
+    </Parameter>
+    <Parameter>
+    <key>waitBeforeOnUnix</key>
+    <value>0</value>
+    <name>Number of seconds to sleep on Unix platforms before starting the JVM wrapper</name>
+    </Parameter>
+    <Parameter>
+    <key>waitAfterOnWindows</key>
+    <value>10</value>
+    <name>Number of seconds to sleep on Windows platforms after starting the JVM wrapper</name>
+    </Parameter>
+    <Parameter>
+    <key>waitAfterOnUnix</key>
+    <value>20</value>
+    <name>Number of seconds to sleep on Unix platforms after starting the JVM wrapper</name>
+    </Parameter>
+</initState>
+
+<resultState>
+    <Parameter>
+    <key>lisa.callWrapper.rsp</key>
+    <value>Set in Step callWrapper</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.callWrapper.rsp.time</key>
+    <value>Set in Step callWrapper</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.command.exit.code</key>
+    <value>Set in Step callWrapper</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.command.pid_handle</key>
+    <value>Set in Step callWrapper</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.fail.rsp</key>
+    <value>Set in Step fail</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.fail.rsp.time</key>
+    <value>Set in Step fail</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.end.rsp</key>
+    <value>Set in Step end</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.end.rsp.time</key>
+    <value>Set in Step end</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.getCommand.rsp</key>
+    <value>Set in Step getCommand</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.getCommand.rsp.time</key>
+    <value>Set in Step getCommand</value>
+    </Parameter>
+    <Parameter>
+    <key>command</key>
+    <value>Set in Step getCommand</value>
+    </Parameter>
+    <Parameter>
+    <key>commandProp</key>
+    <value>Set in Step getCommand</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.waitBefore.rsp</key>
+    <value>Set in Step waitBefore</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.waitBefore.rsp.time</key>
+    <value>Set in Step waitBefore</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.waitAfter.rsp</key>
+    <value>Set in Step waitAfter</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.waitAfter.rsp.time</key>
+    <value>Set in Step waitAfter</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.getExtraCommand.rsp</key>
+    <value>Set in Step getExtraCommand</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.getExtraCommand.rsp.time</key>
+    <value>Set in Step getExtraCommand</value>
+    </Parameter>
+    <Parameter>
+    <key>extraCommandProp</key>
+    <value>Set in Step getExtraCommand</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.getPropFile.rsp</key>
+    <value>Set in Step getPropFile</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.getPropFile.rsp.time</key>
+    <value>Set in Step getPropFile</value>
+    </Parameter>
+    <Parameter>
+    <key>propFileProp</key>
+    <value>Set in Step getPropFile</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.Log.rsp</key>
+    <value>Set in Step Log</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.Log.rsp.time</key>
+    <value>Set in Step Log</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.timeoutFail.rsp</key>
+    <value>Set in Step timeoutFail</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.timeoutFail.rsp.time</key>
+    <value>Set in Step timeoutFail</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.getWaitAfterProperty.rsp</key>
+    <value>Set in Step getWaitAfterProperty</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.getWaitAfterProperty.rsp.time</key>
+    <value>Set in Step getWaitAfterProperty</value>
+    </Parameter>
+    <Parameter>
+    <key>waitAfter</key>
+    <value>Set in Step getWaitAfterProperty</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.validate.rsp</key>
+    <value>Set in Step validate</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.validate.rsp.time</key>
+    <value>Set in Step validate</value>
+    </Parameter>
+    <Parameter>
+    <key>baseErrorMsg</key>
+    <value>Property From Config</value>
+    </Parameter>
+    <Parameter>
+    <key>baseSuccessMsg</key>
+    <value>Property From Config</value>
+    </Parameter>
+</resultState>
+
+<Configurations>
+<Configuration>
+<name>default</name>
+<external>false</external>
+<props>
+</props>
+</Configuration>
+</Configurations>
+    <Node name="validate" log=""
+          type="com.itko.lisa.test.ScriptNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="getPropFile" > 
+
+<graphx>212</graphx>
+<graphy>748</graphy>
+<onerror>fail</onerror>
+<script>String baseErrorMsg = &quot;Wrapper Validation Error&quot;;&#10;String baseSuccessMsg = &quot;Wrapper Validation Success&quot;;&#10;&#10;// Check Timeout function&#10;String checkTimeout(String timeout) {&#10; if (timeout.equals(&quot;&quot;) || timeout.equals(&quot;&lt;&lt;null&gt;&gt;&quot;))&#10;  return baseErrorMsg + &quot;: Timeout is required.&quot;;&#10; try {&#10;  int t = Integer.parseInt(timeout);&#10;  return baseSuccessMsg;&#10; }&#10; catch (NumberFormatException nfe) {&#10;  return baseErrorMsg + &quot;: Timeout format Exception: &quot; + nfe.getMessage();&#10; }&#10;}&#10;&#10;// Check wrapper exists&#10;wrapperName = testExec.parseInState(wrapperName).replace(&apos;\\&apos;,&apos;/&apos;);&#10;if (com.itko.util.Utilities.isWindows() &amp;&amp; !wrapperName.endsWith(&quot;.exe&quot;))&#10; wrapperName = wrapperName + &quot;.exe&quot;;&#10;File f = new File(wrapperName);&#10;if (!f.exists()) &#10; return baseErrorMsg + &quot;: Wrapper (&quot; + wrapperName + &quot;) does not exist.&quot;;&#10;&#10;// Check working directory exists&#10;startInDir = testExec.parseInState(startInDir).replace(&apos;\\&apos;,&apos;/&apos;);&#10;f = new File(startInDir);&#10;if (!f.exists())&#10; return baseErrorMsg + &quot;: Start-In directory (&quot; + startInDir + &quot;) does not exist.&quot;;&#10;&#10;// Check prop file&#10;propFile = testExec.parseInState(propFile).replace(&apos;\\&apos;,&apos;/&apos;);&#10;&#10;// all the timeout parameters&#10;checkTimeout(testExec.parseInState(waitBeforeOnWindows.toString()));&#10;checkTimeout(testExec.parseInState(waitAfterOnWindows.toString()));&#10;checkTimeout(testExec.parseInState(waitBeforeOnUnix.toString()));&#10;checkTimeout(testExec.parseInState(waitAfterOnUnix.toString()));&#10;&#10;// Ok&#10;return baseSuccessMsg;</script>
+
+      <!-- Result Elements -->
+<CheckResult assertTrue="true" name="Any Exception Then Fail" type="com.itko.lisa.dynexec.CheckInvocationEx">
+<log>validate had thrown Exception</log>
+<then>fail</then>
+<valueToAssertKey></valueToAssertKey>
+        <param>.*</param>
+</CheckResult>
+
+<CheckResult assertTrue="true" name="Assert93" type="com.itko.lisa.test.CheckResultContains">
+<log>{{LASTRESPONSE}}</log>
+<then>fail</then>
+<valueToAssertKey></valueToAssertKey>
+        <param>Wrapper Validation Error</param>
+</CheckResult>
+
+    </Node>
+
+
+    <Node name="getPropFile" log=""
+          type="com.itko.lisa.test.ScriptNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="getCommand" > 
+
+<graphx>70</graphx>
+<graphy>622</graphy>
+<onerror>fail</onerror>
+<script>String propFileStr = &quot;&quot;;&#13;&#10;if (!propFile.equals(&quot;&lt;&lt;null&gt;&gt;&quot;)) {&#13;&#10;  if (com.itko.util.Utilities.isWindows()) {&#13;&#10;    // Support for blank space in path on Windows&#13;&#10;    propFileStr = &quot;--propFile \&quot;&quot; + propFile + &quot;\&quot;&quot;; // that does not work on Unix (tried on solaris)&#13;&#10;  }&#13;&#10;  else { // Unix. No support for blank space&#13;&#10;    propFileStr = &quot;--propFile &quot; + propFile;&#13;&#10;  }&#13;&#10;}&#13;&#10;return propFileStr.replace(&apos;\\&apos;,&apos;/&apos;);</script>
+
+      <!-- Filters -->
+      <Filter type="com.itko.lisa.test.FilterSaveResponse">
+        <valueToFilterKey>lisa.getPropFile.rsp</valueToFilterKey>
+      <prop>propFileProp</prop>
+      </Filter>
+
+    </Node>
+
+
+    <Node name="getCommand" log=""
+          type="com.itko.lisa.test.ScriptNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="getExtraCommand" > 
+
+<graphx>2</graphx>
+<graphy>444</graphy>
+<onerror>fail</onerror>
+<script>String commandStr = &quot;&quot;;&#10;if (!command.equals(&quot;&lt;&lt;null&gt;&gt;&quot;))&#10;  commandStr = command;&#10;&#10;return commandStr;</script>
+
+      <!-- Filters -->
+      <Filter type="com.itko.lisa.test.FilterSaveResponse">
+              <prop>commandProp</prop>
+      </Filter>
+
+    </Node>
+
+
+    <Node name="getExtraCommand" log=""
+          type="com.itko.lisa.test.ScriptNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="waitBefore" > 
+
+<graphx>25</graphx>
+<graphy>256</graphy>
+<onerror>fail</onerror>
+<script>String extraCommandStr = &quot;&quot;;&#10;if (!extraCommand.equals(&quot;&lt;&lt;null&gt;&gt;&quot;))&#10;  extraCommandStr = extraCommand;&#10;&#10;return extraCommandStr;</script>
+
+      <!-- Filters -->
+      <Filter type="com.itko.lisa.test.FilterSaveResponse">
+              <prop>extraCommandProp</prop>
+      </Filter>
+
+    </Node>
+
+
+    <Node name="waitBefore" log=""
+          type="com.itko.lisa.utils.ExecSubProcessNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="Log" > 
+
+<graphx>133</graphx>
+<graphy>99</graphy>
+<Subprocess>{{TIBCO_COMMON_LIBRARY}}/com/tibco/lisa/util/Sleep.tst</Subprocess>
+<getEvents>0</getEvents>
+<sendConfig>false</sendConfig>
+<fullyParseProps>true</fullyParseProps>
+<sendCommonState>false</sendCommonState>
+<getCommonState>false</getCommonState>
+<onFail>fail</onFail>
+<Parameters>
+    <Parameter>
+    <key>windowsSleep</key>
+    <value>{{waitBeforeOnWindows}}</value>
+    <name>Number of seconds to sleep on Windows platforms</name>
+    </Parameter>
+    <Parameter>
+    <key>unixSleep</key>
+    <value>{{waitBeforeOnUnix}}</value>
+    <name>Number of seconds to sleep on Unix platforms</name>
+    </Parameter>
+</Parameters>
+<SaveProps>
+</SaveProps>
+    </Node>
+
+
+    <Node name="Log" log=""
+          type="com.itko.lisa.test.TestNodeLogger" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="getWaitAfterProperty" > 
+
+<graphx>301</graphx>
+<graphy>11</graphy>
+      <log>Executing &quot;{{wrapperName}} {{commandProp}} {{propFileProp}} {{extraCommandProp}}&quot;...</log>
+    </Node>
+
+
+    <Node name="getWaitAfterProperty" log=""
+          type="com.itko.lisa.test.ScriptNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="escape command line params" > 
+
+<graphx>492</graphx>
+<graphy>11</graphy>
+<onerror>fail</onerror>
+<script>if (com.itko.util.Utilities.isWindows())&#10;  return waitAfterOnWindows;&#10;else&#10;  return waitAfterOnUnix;</script>
+
+      <!-- Filters -->
+      <Filter type="com.itko.lisa.test.FilterSaveResponse">
+              <prop>waitAfter</prop>
+      </Filter>
+
+    </Node>
+
+
+    <Node name="escape command line params" log=""
+          type="com.itko.lisa.test.ScriptNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="callWrapper" > 
+
+<graphx>660</graphx>
+<graphy>99</graphy>
+<onerror>fail</onerror>
+<script>commandProp = commandProp.replaceAll(&quot;\\\\&quot;, &quot;\\\\\\\\&quot;);&#10;propFileProp = propFileProp.replaceAll(&quot;\\\\&quot;, &quot;\\\\\\\\&quot;);&#10;extraCommandProp = extraCommandProp.replaceAll(&quot;\\\\&quot;, &quot;\\\\\\\\&quot;);</script>
+
+      <!-- Result Elements -->
+<CheckResult assertTrue="true" name="Any Exception Then Fail" type="com.itko.lisa.dynexec.CheckInvocationEx">
+<log>Assert [Any Exception Then Fail] fired true of type Assert on Invocation Exception</log>
+<then>fail</then>
+<valueToAssertKey></valueToAssertKey>
+        <param>.*</param>
+</CheckResult>
+
+    </Node>
+
+
+    <Node name="callWrapper" log=""
+          type="com.itko.lisa.utils.CommandLineExecNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="end" > 
+
+<graphx>768</graphx>
+<graphy>256</graphy>
+<cmd>{{wrapperName}} {{commandProp}} {{propFileProp}} {{extraCommandProp}}</cmd>
+<basedir>{{startInDir}}</basedir>
+<toNode>timeoutFail</toNode>
+<exceptionNode>fail</exceptionNode>
+<timeOut>{{waitAfter}}</timeOut>
+<killAtEnd>false</killAtEnd>
+<wait>{{waitForCompletion}}</wait>
+<addToEnv>false</addToEnv>
+<spawn>false</spawn>
+<execShell>false</execShell>
+<env>
+</env>
+<exitCodes>
+</exitCodes>
+
+      <!-- Result Elements -->
+<CheckResult assertTrue="true" name="Assert165" type="com.itko.lisa.test.CheckResultPropRegEx">
+<log>Assert [Assert165] fired true of type Property Value Expression</log>
+<then>waitAfter</then>
+<valueToAssertKey></valueToAssertKey>
+        <prop>waitForCompletion</prop>
+        <param>false</param>
+</CheckResult>
+
+    </Node>
+
+
+    <Node name="waitAfter" log=""
+          type="com.itko.lisa.utils.ExecSubProcessNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="end" > 
+
+<graphx>791</graphx>
+<graphy>444</graphy>
+<Subprocess>{{TIBCO_COMMON_LIBRARY}}/com/tibco/lisa/util/Sleep.tst</Subprocess>
+<getEvents>0</getEvents>
+<sendConfig>false</sendConfig>
+<fullyParseProps>true</fullyParseProps>
+<sendCommonState>false</sendCommonState>
+<getCommonState>false</getCommonState>
+<onFail>fail</onFail>
+<Parameters>
+    <Parameter>
+    <key>windowsSleep</key>
+    <value>{{waitAfterOnWindows}}</value>
+    <name>Number of seconds to sleep on Windows platforms</name>
+    </Parameter>
+    <Parameter>
+    <key>unixSleep</key>
+    <value>{{waitAfterOnUnix}}</value>
+    <name>Number of seconds to sleep on Unix platforms</name>
+    </Parameter>
+</Parameters>
+<SaveProps>
+</SaveProps>
+    </Node>
+
+
+    <Node name="timeoutFail" log=""
+          type="com.itko.lisa.test.ScriptNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="fail" > 
+
+<graphx>723</graphx>
+<graphy>622</graphy>
+<onerror>fail</onerror>
+<script>return &quot;Timeout! the command did not complete within {{waitAfter}} seconds&quot;;</script>
+    </Node>
+
+
+    <Node name="end" log=""
+          type="com.itko.lisa.test.NormalEnd" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="true" 
+          next="fail" > 
+
+<graphx>397</graphx>
+<graphy>794</graphy>
+    </Node>
+
+
+    <Node name="fail" log=""
+          type="com.itko.lisa.test.Abend" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="true" 
+          next="unknown" > 
+
+<graphx>581</graphx>
+<graphy>748</graphy>
+    </Node>
+
+
+</TestCase>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions  name="HelloWorld"
+		   targetNamespace="http://com.tibco.amx.it.mediation.sample/HelloWorld/definitions"
+		   xmlns:tns="http://com.tibco.amx.it.mediation.sample/HelloWorld/definitions" 
+		   xmlns:ns0="http://com.tibco.amx.it.mediation.sample/HelloWorld/schemas"
+		   xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+
+	<wsdl:types>
+    	<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://com.tibco.amx.it.mediation.sample/HelloWorld/definitions">
+   	    <xs:import namespace="http://com.tibco.amx.it.mediation.sample/HelloWorld/schemas" schemaLocation="HelloWorld.xsd"/>
+    	    <xs:include schemaLocation="HelloWorldFault.xsd"/>
+    	</xs:schema>
+    </wsdl:types>
+
+    <wsdl:message name="sayHelloRequest">
+        <wsdl:part name="name" element="ns0:Name"/>
+    </wsdl:message>
+    <wsdl:message name="sayHelloResponse">
+        <wsdl:part name="greeting" element="ns0:Greeting"/>
+    </wsdl:message>
+    <wsdl:message name="sayHelloNoSuchNameFault">
+    	<wsdl:part name="no_such_name_fault" element="tns:NoSuchNameFault"/>
+    </wsdl:message>
+    <wsdl:message name="sayHelloNoGreetingFoundFault">
+    	<wsdl:part name="no_greeting_found_fault" element="tns:NoGreetingFoundFault"/>
+    </wsdl:message>
+     <wsdl:message name="sayHelloTimeoutFault">
+    	<wsdl:part name="timeout_fault" element="tns:TimeoutFault"/>
+    </wsdl:message>
+    
+    <wsdl:portType name="HelloWorld">
+        <wsdl:operation name="sayHello">
+            <wsdl:input message="tns:sayHelloRequest"/>
+            <wsdl:output message="tns:sayHelloResponse"/>
+            <wsdl:fault name="no_such_name_fault" message="tns:sayHelloNoSuchNameFault"/>
+            <wsdl:fault name="no_greeting_found_fault" message="tns:sayHelloNoGreetingFoundFault"/>
+            <wsdl:fault name="timeout_fault" message="tns:sayHelloTimeoutFault"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

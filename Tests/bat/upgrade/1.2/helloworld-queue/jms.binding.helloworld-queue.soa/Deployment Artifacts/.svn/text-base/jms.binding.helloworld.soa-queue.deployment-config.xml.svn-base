@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<amxdata_base:Enterprise xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types" xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base" xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference" xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types platform:/plugin/com.tibco.amf.tools.admincligen/model/cli_data.ecore#//types http://tibco.com/amxadministrator/command/line/types_base platform:/plugin/com.tibco.amf.tools.admincligen/model/cli_data.ecore http://tibco.com/amxadministrator/command/line/types_reference platform:/plugin/com.tibco.amf.tools.admincligen/model/cli_data.ecore#//types/types_reference">
+  <Environment xsi:type="amxdata:Environment" name="DevEnvironment">
+    <Node xsi:type="amxdata:Node" name="abc">
+      <ResourceInstance xsi:type="amxdata:ResourceInstance" name="HelloWorld_ConnFactory" resourceTemplateName="HelloWorld_ConnFactory"/>
+    </Node>
+    <Node xsi:type="amxdata:Node" name="xyz">
+      <ResourceInstance xsi:type="amxdata:ResourceInstance" name="HelloWorld_ConnFactory" resourceTemplateName="HelloWorld_ConnFactory"/>
+      <ResourceInstance xsi:type="amxdata:ResourceInstance" name="HelloWorld_ServiceReplyDestination" resourceTemplateName="HelloWorld_ServiceReplyDestination"/>
+      <ResourceInstance xsi:type="amxdata:ResourceInstance" name="HelloWorld_ServiceRequestDestination" resourceTemplateName="HelloWorld_ServiceRequestDestination"/>
+    </Node>
+    <Application xsi:type="amxdata:Application" name="jms.binding.helloworld.soa" importResourceTemplates="true">
+      <Component xsi:type="amxdata_base:Component_base" name="HelloWorldComponent">
+        <Node xsi:type="amxdata_reference:Node_reference" name="abc" environmentName="DevEnvironment"/>
+      </Component>
+      <PromotedService xsi:type="amxdata_base:Service_base" name="HelloWorldService">
+        <Binding xsi:type="amxdata_base:Binding_base" name="JMSService_Binding1">
+          <Node xsi:type="amxdata_reference:Node_reference" name="xyz" environmentName="DevEnvironment"/>
+          <Property xsi:type="amxdata:Property" name="ReplyDestination" value="HelloWorld_ServiceReplyDestination"/>
+          <Property xsi:type="amxdata:Property" name="RequestConnectionFactory" value="HelloWorld_ConnFactory"/>
+          <Property xsi:type="amxdata:Property" name="RequestDestination" value="HelloWorld_ServiceRequestDestination"/>
+        </Binding>
+      </PromotedService>
+      <PromotedReference xsi:type="amxdata_base:Reference_base" name="HelloWorldReference">
+        <Binding xsi:type="amxdata_base:Binding_base" name="JMSReference_Binding1">
+          <Node xsi:type="amxdata_reference:Node_reference" name="abc" environmentName="DevEnvironment"/>
+          <Property xsi:type="amxdata:Property" name="RequestConnectionFactory" value="HelloWorld_ConnFactory"/>
+        </Binding>
+      </PromotedReference>
+      <ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="jms.binding.helloworld.soa" version="1.0.0.v2012-08-07-1540"/>
+      <ImportResourceTemplateName>HelloWorld_ServiceReplyDestination</ImportResourceTemplateName>
+      <ImportResourceTemplateName>HelloWorld_ConnFactory</ImportResourceTemplateName>
+      <ImportResourceTemplateName>HelloWorld_JNDI</ImportResourceTemplateName>
+      <ImportResourceTemplateName>HelloWorld_ServiceRequestDestination</ImportResourceTemplateName>
+    </Application>
+  </Environment>
+  <DAA xsi:type="amxdata:DAA" location="C:\samples\helloworld-queue\jms.binding.helloworld-queue.soa\Deployment Artifacts\jms.binding.helloworld.soa-queue.daa">
+    <importFeatureIdentifier>jms.binding.helloworld-queue.soa.customfeature.id:1.0.0.v2012-08-07-1540</importFeatureIdentifier>
+  </DAA>
+  <Feature xsi:type="amxdata_base:FeatureID" componentID="jms.binding.helloworld-queue.soa.customfeature.id" version="1.0.0.v2012-08-07-1540"/>
+  <AppTemplate xsi:type="amxdata_base:AppTemplateID" name="jms.binding.helloworld.soa" version="1.0.0"/>
+</amxdata_base:Enterprise>

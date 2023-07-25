@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:compositenotation="http://www.tibco.com/models/compositenotation" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.1/notation" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmlns:soapbt="http://xsd.tns.tibco.com/amf/models/sca/binding/soap" xmlns:spring="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/spring" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmi:id="_H8sugVKNEd-d8-0D7_YcEQ" targetNamespace="http://www.example.com/amx30.bat.55.ssprings.soa.composite" name="amx30.bat.55.ssprings.soa" compositeext:version="1.0.0.qualifier" compositeext:formatVersion="2">
+  <sca:service xmi:id="_H8sujlKNEd-d8-0D7_YcEQ" name="echoService" promote="echoSpringComponent/EchoStringRLE">
+    <sca:interface.wsdl xmi:id="_H8suj1KNEd-d8-0D7_YcEQ" interface="http://www.example.org/echoStringRLE/#wsdl.interface(echoStringRLE)" scaext:wsdlLocation="../Service%20Descriptors/echoStringRLE.wsdl"/>
+    <soapbt:binding.soap.service xmi:id="_ucyTsFKOEd-d8-0D7_YcEQ" name="SOAPService_Binding1" transportBindingType="HTTP" attachmentStyle="DOCUMENT" portType="../Service%20Descriptors/echoStringRLE.wsdl#//@ePortTypes.0">
+      <operationConfiguration xmi:id="_udh6kVKOEd-d8-0D7_YcEQ" operation="../Service%20Descriptors/echoStringRLE.wsdl#//@ePortTypes.0/@eOperations.0" action="echo" description="">
+        <messageConfiguration xmi:id="_udh6k1KOEd-d8-0D7_YcEQ" message="../Service%20Descriptors/echoStringRLE.wsdl#//@eMessages.0">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_udh6lFKOEd-d8-0D7_YcEQ" messagePart="../Service%20Descriptors/echoStringRLE.wsdl#//@eMessages.0/@eParts.0"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_udh6lVKOEd-d8-0D7_YcEQ" message="../Service%20Descriptors/echoStringRLE.wsdl#//@eMessages.1" messageDirection="OUTPUT">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_udh6llKOEd-d8-0D7_YcEQ" messagePart="../Service%20Descriptors/echoStringRLE.wsdl#//@eMessages.1/@eParts.0"/>
+        </messageConfiguration>
+        <bindingType xmi:id="_udh6klKOEd-d8-0D7_YcEQ"/>
+      </operationConfiguration>
+      <inboundConfiguration xsi:type="soapbt:HttpTransportConfiguration" xmi:id="_udh6l1KOEd-d8-0D7_YcEQ" endpointURI="/echoStringRLE/"/>
+      <defaultBindingType xmi:id="_udh6kFKOEd-d8-0D7_YcEQ" style="RPC"/>
+    </soapbt:binding.soap.service>
+    <scact:bindingAdjunct xmi:id="_udh6mFKOEd-d8-0D7_YcEQ" bindingName="SOAPService_Binding1">
+      <sca:property xmi:id="_udh6mVKOEd-d8-0D7_YcEQ" mustSupply="true" name="HttpInboundConnectionConfig" type="xsd:string" scaext:simpleValue="httpConnector1"/>
+    </scact:bindingAdjunct>
+  </sca:service>
+  <sca:reference xmi:id="_H8suklKNEd-d8-0D7_YcEQ" multiplicity="1..1" name="echoReference" wiredByImpl="false" promote="echoSpringComponent/echoReference">
+    <sca:interface.wsdl xmi:id="_H8suk1KNEd-d8-0D7_YcEQ" interface="http://www.example.org/echoStringRLE/#wsdl.interface(echoStringRLE)" scaext:wsdlLocation="../Service%20Descriptors/echoStringRLE.wsdl"/>
+  </sca:reference>
+  <sca:component xmi:id="_H8suiVKNEd-d8-0D7_YcEQ" name="echoSpringComponent" compositeext:version="1.0.0.qualifier">
+    <spring:implementation.spring xmi:id="_NqUYoFKNEd-d8-0D7_YcEQ" location="config-amx30-bat-55-ssprings-soa-Component1/amx30-bat-55-ssprings-soa_Component1_beans.xml" pluginName="amx30.bat.case55.spring.component1">
+      <spring:featureDependency xmi:id="_r9li0FKNEd-d8-0D7_YcEQ" name="amx30.bat.55.ssprings.soa.customfeature.id">
+        <range xmi:id="_r9li0VKNEd-d8-0D7_YcEQ" lower="1.0.0" upper="2.0.0"/>
+      </spring:featureDependency>
+    </spring:implementation.spring>
+    <sca:service xmi:id="_H8suilKNEd-d8-0D7_YcEQ" name="EchoStringRLE">
+      <sca:interface.wsdl xmi:id="_bWI_oGlbEd-hQfbl93zWVw" interface="http://www.example.org/echoStringRLE/#wsdl.interface(echoStringRLE)" scaext:wsdlLocation="../Service%20Descriptors/echoStringRLE.wsdl"/>
+    </sca:service>
+    <sca:reference xmi:id="_H8sujFKNEd-d8-0D7_YcEQ" name="echoReference" wiredByImpl="false">
+      <sca:interface.wsdl xmi:id="_xA6-8JoMEd-I3bKUrQDK0w" interface="http://www.example.org/echoStringRLE/#wsdl.interface(echoStringRLE)" scaext:wsdlLocation="../Service%20Descriptors/echoStringRLE.wsdl"/>
+    </sca:reference>
+  </sca:component>
+  <notation:diagram xsi:type="notation:Diagram" xmi:id="_H8suhVKNEd-d8-0D7_YcEQ" type="Composite" element="#/" name="SCA Composite" measurementUnit="Pixel">
+    <children xmi:id="_H-e3MFKNEd-d8-0D7_YcEQ" type="2001" element="#_H8sugVKNEd-d8-0D7_YcEQ">
+      <children xmi:id="_H-e3M1KNEd-d8-0D7_YcEQ" type="5004"/>
+      <children xmi:id="_H-e3NFKNEd-d8-0D7_YcEQ" type="7001">
+        <styles xsi:type="notation:SortingStyle" xmi:id="_H-e3NVKNEd-d8-0D7_YcEQ"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_H-e3NlKNEd-d8-0D7_YcEQ"/>
+      </children>
+      <children xmi:id="_H-e3N1KNEd-d8-0D7_YcEQ" type="7002">
+        <styles xsi:type="notation:SortingStyle" xmi:id="_H-e3OFKNEd-d8-0D7_YcEQ"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_H-e3OVKNEd-d8-0D7_YcEQ"/>
+      </children>
+      <children xmi:id="_H-e3OlKNEd-d8-0D7_YcEQ" type="7003">
+        <children xmi:id="_H-ooMVKNEd-d8-0D7_YcEQ" type="3003" element="#_H8suiVKNEd-d8-0D7_YcEQ">
+          <children xmi:id="_H-ooN1KNEd-d8-0D7_YcEQ" type="5001"/>
+          <children xmi:id="_H-ooOFKNEd-d8-0D7_YcEQ" type="7004">
+            <styles xsi:type="notation:SortingStyle" xmi:id="_H-ooOVKNEd-d8-0D7_YcEQ"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_H-ooOlKNEd-d8-0D7_YcEQ"/>
+          </children>
+          <children xmi:id="_H-ooO1KNEd-d8-0D7_YcEQ" type="7005">
+            <styles xsi:type="notation:SortingStyle" xmi:id="_H-ooPFKNEd-d8-0D7_YcEQ"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_H-ooPVKNEd-d8-0D7_YcEQ"/>
+          </children>
+          <children xmi:id="_H-ooPlKNEd-d8-0D7_YcEQ" type="7006">
+            <children xmi:id="_H-ooQlKNEd-d8-0D7_YcEQ" visible="false" type="7600">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_H-ooQ1KNEd-d8-0D7_YcEQ" fontHeight="10"/>
+              <element xsi:nil="true"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_H-ooRFKNEd-d8-0D7_YcEQ"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_H-ooP1KNEd-d8-0D7_YcEQ"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_H-ooQFKNEd-d8-0D7_YcEQ"/>
+            <styles xsi:type="compositenotation:CollapseStyle" xmi:id="_H-ooQVKNEd-d8-0D7_YcEQ"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_H-ooMlKNEd-d8-0D7_YcEQ" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_H-ooM1KNEd-d8-0D7_YcEQ" gradStartColor="16642791" gradEndColor="14072216"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_H-ooNFKNEd-d8-0D7_YcEQ"/>
+          <styles xsi:type="compositenotation:CustomComponentIconStyle" xmi:id="_H-ooNVKNEd-d8-0D7_YcEQ"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_H-ooNlKNEd-d8-0D7_YcEQ" x="100" y="87"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_H-e3O1KNEd-d8-0D7_YcEQ"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_H-e3PFKNEd-d8-0D7_YcEQ"/>
+      </children>
+      <children xmi:id="_H-e3PVKNEd-d8-0D7_YcEQ" type="7007">
+        <children xmi:id="_H-e3QFKNEd-d8-0D7_YcEQ" visible="false" type="7600">
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_H-e3QVKNEd-d8-0D7_YcEQ" fontHeight="10"/>
+          <element xsi:nil="true"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_H-e3QlKNEd-d8-0D7_YcEQ"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_H-e3PlKNEd-d8-0D7_YcEQ"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_H-e3P1KNEd-d8-0D7_YcEQ"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" xmi:id="_H-e3MVKNEd-d8-0D7_YcEQ" fontHeight="10"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_H-e3MlKNEd-d8-0D7_YcEQ" x="10" y="10" width="567" height="350"/>
+    </children>
+    <styles xsi:type="notation:DiagramStyle" xmi:id="_H8suhlKNEd-d8-0D7_YcEQ"/>
+    <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_H8suh1KNEd-d8-0D7_YcEQ"/>
+    <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_H8suiFKNEd-d8-0D7_YcEQ"/>
+  </notation:diagram>
+</sca:composite>

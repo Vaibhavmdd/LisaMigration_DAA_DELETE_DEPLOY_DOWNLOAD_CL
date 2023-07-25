@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--@Overridable true-->
+<amxdata_base:Enterprise xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types" xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base" xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+
+    <Environment xsi:type="amxdata:Environment" name="IntegrationEnvironment" description="integration environment" contact="TIBCO">
+        <Node xsi:type="amxdata:Node" name="IntegrationNode">
+        </Node>
+        <Application xsi:type="amxdata:Application" name="implementation.upgrade.daa" contact="TIBCO Inc." description="implementation upgrade daa application">
+            <Node name="IntegrationNode" environmentName="IntegrationEnvironment"/>
+            <ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="it.upgrade.daa"/>
+        </Application>
+    </Environment>
+	<DAA xsi:type="amxdata:DAA" description="implementation upgrade daa" location="Deployment Artifacts/implementation-upgrade.daa" importResourceTemplates="true"/>
+
+</amxdata_base:Enterprise>

@@ -1,0 +1,35 @@
+<project default="deploy.app">
+	<import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+	
+        <target name="stopstart.logservice">
+           <stop.app description="stopLog Service Application" dataFile="${amxConfigFile}" objectSelector="Environment[1]/Application"  timeout="${timeout}"/>
+           <start.app description="startLog Service Application"  dataFile="${amxConfigFile}" objectSelector="Environment[1]/Application" timeout="${timeout}"/>    
+        </target>
+        
+        <target name="add_group" description="Create a new group into the realm">
+        <add.group objectSelector="Group[@name='groupQA']" description="create a new group named with groupQA" dataFile="${amxConfigFile}" />
+        </target>
+
+       <target name="del_group" description="Delete the user from realm">
+       <delete.group objectSelector="Group[@name='groupQA']" description="Delete newly created group named with groupQA" dataFile="${amxConfigFile}" />
+       </target> 
+     
+       <target name="add.CreateLogAppender.permissions" description="Set create_log_appender Permissions to a group">
+       <add.ent.permissions dataFile="${amxConfigFile}" />
+       </target> 
+       
+       <target name="delete.CreateLogAppender.permissions" description="Remove create_log_appender Permissions of a group">
+        <AMXAdminTask
+            remote="true"
+            propsFile="${remotePropsFile}"
+            action="delete"
+            dataFile="${amxConfigFile}"
+            objectSelector="TopLevelPermission/Permissions"
+            overwrite="true"
+            merge="true"
+            createIfNotExists="true"
+            force="true"
+            failOnError="false"/>
+     </target>
+    
+</project>

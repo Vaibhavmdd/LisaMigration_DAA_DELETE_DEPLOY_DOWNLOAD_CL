@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:ns1="http://www.tibco.com/pe/EngineTypes" xmlns:pfx="http://tibco.com/matrix/qa/wsdl/group" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns3="http://tibco.com/matrix/qa/wsdl/group/bwService" xmlns:ns="http://www.tibco.com/pe/GenerateErrorActivity/InputSchema" xmlns:ns2="http://tibco.com/matrix/qa/xsd/group" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    <wsdl:import namespace="http://tibco.com/matrix/qa/wsdl/group" location="/BookStore.wsdl"/>
+    <pd:name>Service/GetBooksOperation_Impl.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType wsMsgRef="pfx:GetBooksInput"/>
+    <pd:startX>115</pd:startX>
+    <pd:startY>86</pd:startY>
+    <pd:returnBindings>
+        <pfx:GetBooksOutput>
+            <OutPart>
+                <ns2:BookStore>
+                    <xsl:attribute name="ServiceProvider">
+                        <xsl:value-of select="concat(&quot;Response received from &quot;,$Start/pfx:GetBooksInput/InPart/ns2:BookStore/@ServiceProvider)"/>
+                    </xsl:attribute>
+                    <ns2:Title>
+                        <xsl:value-of select="$Start/pfx:GetBooksInput/InPart/ns2:BookStore/ns2:Title"/>
+                    </ns2:Title>
+                    <ns2:Author>
+                        <xsl:value-of select="$Start/pfx:GetBooksInput/InPart/ns2:BookStore/ns2:Author"/>
+                    </ns2:Author>
+                    <ns2:Date>
+                        <xsl:value-of select="$Start/pfx:GetBooksInput/InPart/ns2:BookStore/ns2:Date"/>
+                    </ns2:Date>
+                    <ns2:ISBN>
+                        <xsl:value-of select="$Start/pfx:GetBooksInput/InPart/ns2:BookStore/ns2:ISBN"/>
+                    </ns2:ISBN>
+                    <ns2:Publisher>
+                        <xsl:value-of select="$Start/pfx:GetBooksInput/InPart/ns2:BookStore/ns2:Publisher"/>
+                    </ns2:Publisher>
+                </ns2:BookStore>
+                <ns2:Echo>
+                    <xsl:value-of select="$Start/pfx:GetBooksInput/InPart/ns2:Echo"/>
+                </ns2:Echo>
+            </OutPart>
+        </pfx:GetBooksOutput>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType wsMsgRef="pfx:GetBooksOutput"/>
+    <pd:endX>543</pd:endX>
+    <pd:endY>88</pd:endY>
+    <pd:errorSchemas>
+        <BookFault wsMsgRef="pfx:GetBooksFault"/>
+    </pd:errorSchemas>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1268436751940</pd:targetNamespace>
+    <pd:activity name="Declared-Fault">
+        <pd:type>com.tibco.pe.core.GenerateErrorActivity</pd:type>
+        <pd:resourceType>ae.activities.throw</pd:resourceType>
+        <pd:x>402</pd:x>
+        <pd:y>178</pd:y>
+        <config>
+            <faultName>BookFault</faultName>
+        </config>
+        <pd:inputBindings>
+            <ns:ActivityInput>
+                <message>
+                    <xsl:value-of select="&quot;Fault from BW Provider&quot;"/>
+                </message>
+                <messageCode>
+                    <xsl:value-of select="&quot;fault message code&quot;"/>
+                </messageCode>
+                <data>
+                    <pfx:GetBooksFault>
+                        <fault>
+                            <ns2:BookStoreFault>
+                                <xsl:value-of select="concat(&quot;Invalid Author &quot;, $Start/pfx:GetBooksInput/InPart/ns2:BookStore/ns2:Author, &quot; with title - &quot;,$Start/pfx:GetBooksInput/InPart/ns2:BookStore/ns2:Title)"/>
+                            </ns2:BookStoreFault>
+                        </fault>
+                    </pfx:GetBooksFault>
+                </data>
+            </ns:ActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Undeclared-Fault">
+        <pd:type>com.tibco.pe.core.GenerateErrorActivity</pd:type>
+        <pd:resourceType>ae.activities.throw</pd:resourceType>
+        <pd:x>396</pd:x>
+        <pd:y>283</pd:y>
+        <config>
+            <faultName/>
+        </config>
+        <pd:inputBindings>
+            <ns:ActivityInput>
+                <message>
+                    <xsl:value-of select="&quot;Undeclared fault from BW&quot;"/>
+                </message>
+                <messageCode>
+                    <xsl:value-of select="&quot;Undeclared Fault&quot;"/>
+                </messageCode>
+            </ns:ActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>End</pd:to>
+        <pd:xpathDescription>Author = Vivek</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/pfx:GetBooksInput/InPart/ns2:BookStore/ns2:Author="Vivek"</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>Declared-Fault</pd:to>
+        <pd:xpathDescription>Declared-Fault</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-52429</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/pfx:GetBooksInput/InPart/ns2:BookStore/ns2:Author="DeclaredFault"</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>Undeclared-Fault</pd:to>
+        <pd:xpathDescription>Undeclared-Fault</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-52429</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$Start/pfx:GetBooksInput/InPart/ns2:BookStore/ns2:Author="UnDeclaredFault"</pd:xpath>
+    </pd:transition>
+</pd:ProcessDefinition>

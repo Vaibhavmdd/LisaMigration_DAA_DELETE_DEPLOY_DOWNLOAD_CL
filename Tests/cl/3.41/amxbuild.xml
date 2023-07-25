@@ -1,0 +1,35 @@
+<project default="deploy.app">
+  <import file="${TIBCO_AMXADMIN_HOME}/bin/taskdef.xml" />
+	<import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+	
+	<target name="CreateAppender">
+		<create.log.appender dataFile="${amxConfigFile}" />
+	</target>
+	
+	<target name="addappendertoLogger">
+    <AMXAdminTask
+        remote="true"
+        propsFile="C:\Lisa1072\Projects\AMX\Tests\cl\remote_props.properties"
+        action="add"
+        dataFile="${amxConfigFile}"
+        objectSelector="Environment//Node/Logger[@name='com.tibco']"/>
+  </target>
+    
+  <target name="deploy.logging">
+		<deploy.action objector="Environment/Node" description="Apply Node Logger" dataFile="${amxConfigFile}" />
+	</target>
+	
+  <target name="verifyLoggingFile">
+	</target>	
+			
+	<target name="deleteAppender">
+    <AMXAdminTask
+        remote="true"
+        propsFile="C:\Lisa1072\Projects\AMX\Tests\cl\remote_props.properties"
+        action="delete"
+        dataFile="${amxConfigFile}"
+        objectSelector="Environment//Node/Logger[@name='com.tibco']"/>
+	   <delete.log.appender objectSelector="LogAppender[@name='qaFileLogAppender3_41']" dataFile="${amxConfigFile}" />
+	 </target>
+
+</project>

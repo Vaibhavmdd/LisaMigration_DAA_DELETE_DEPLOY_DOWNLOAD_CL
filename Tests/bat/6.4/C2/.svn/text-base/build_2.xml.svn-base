@@ -1,0 +1,14 @@
+<project default="deploy.app">
+  <import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+	
+	<target name="deploy.app" >
+		<upload.daa dataFile="${amxConfigFile}" />
+		<create.app dataFile="${amxConfigFile}" />
+		<map.app.to.node dataFile="${amxConfigFile}" />
+		<deploy.app dataFile="${amxConfigFile}" appName="bat64_c2" timeout="${deployTimeout}" />
+	</target>
+	<target name="undeploy.app">
+		<undeploy.app dataFile="${amxConfigFile}" appName="bat64_c2" timeout="${deployTimeout}" />
+		<delete.app dataFile="${amxConfigFile}" />
+	</target>
+</project>

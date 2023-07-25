@@ -1,0 +1,17 @@
+<project name="host_build" default="e2e">
+     <import file="${TIBCO_AMXADMIN_HOME}/bin/taskdef.xml" />
+      
+        <import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+
+<target name="update.host">
+	 
+		    <AMXAdminTask
+			remote="true"
+			propsFile="${remotePropsFile}"
+			action="edit"
+			dataFile="${amxConfigFile}"
+			objectSelector="Host"
+			options="mergeJvmArgs"
+			failOnError="true"/>
+	  </target>
+	  </project>

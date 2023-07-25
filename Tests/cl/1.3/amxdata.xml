@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+
+	<Environment 
+		xsi:type="amxdata:Environment" 
+		description="QA Environment" 
+		name="QAEnvironment_na2devasgora03">	
+		<Node xsi:type="amxdata:Node" name="QANode1" hostName="SystemHost_na2devasgora03">
+		    <ResourceInstance xsi:type="amxdata:ResourceInstance" name="httpConnectorCL1_3" resourceTemplateName="httpConnectorCL1_3"/>
+		</Node>
+		
+		<Application
+			xsi:type="amxdata:Application"
+			name="cl1_3"
+			contact="Gavin Chen"
+			description="cl1_3 application">
+      <Component xsi:type="amxdata:Component" name="JavaComp">
+		      <Node name="QANode2" environmentName="QAEnvironment_na2devasgora03"/>	
+      </Component>      	
+			<PromotedService xsi:type="amxdata_base:Service_base" name="LotteryPortService">
+				<Binding xsi:type="amxdata:Binding" name="SOAPService_Binding">
+					<Node name="QANode1" environmentName="QAEnvironment_na2devasgora03" />				
+				</Binding>
+			</PromotedService>	    
+			<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="cl1_3"/>
+			<!--Configure Logging-->
+			<Logger xsi:type="amxdata:Logger" name ="com.tibco" additivity="false">
+				<AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="INFO">
+					<Appender xsi:type="amxdata_reference:LogAppender_reference" name="qaFileLogAppender7"/>
+				</AppenderRef>
+				<AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="WARN">
+					<Appender xsi:type="amxdata_reference:LogAppender_reference" name="qaFileLogAppender8"/>
+				</AppenderRef>
+				<AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="DEBUG">
+					<Appender xsi:type="amxdata_reference:LogAppender_reference" name="qaFileLogAppender9"/>
+				</AppenderRef>
+				<AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="ERROR">
+					<Appender xsi:type="amxdata_reference:LogAppender_reference" name="qaFileLogAppender10"/>
+				</AppenderRef>
+				<AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="TRACE">
+					<Appender xsi:type="amxdata_reference:LogAppender_reference" name="qaFileLogAppender11"/>
+				</AppenderRef>
+				<AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="OFF">
+					<Appender xsi:type="amxdata_reference:LogAppender_reference" name="qaFileLogAppender12"/>
+				</AppenderRef>
+			</Logger>		
+		</Application>		
+	</Environment>	
+	
+	<ResourceTemplate xsi:type="amxdata:HttpConnectorResourceTemplate" name="httpConnectorCL1_3" host="na2devasgora03" port="22003" headerBufferSize="512" requestBufferSize="512"	responseBufferSize="512" maxIdleTime="200000" lowResourceMaxIdleTime="512" description="This is HttpConnector RT"/> 
+	
+	<DAA
+		xsi:type="amxdata:DAA"
+		description="DAA For cl0101"
+		location="C:/Lisa1072/Projects/AMX/Tests/cl/1.3/SoaProject/Deployment Artifacts/cl1_3.daa"
+	  importResourceTemplates="false">
+	</DAA>
+	
+	<!--Define Log Appender-->
+	<LogAppender
+		xsi:type="amxdata:FileLogAppender"
+		name="qaFileLogAppender7"
+		type="cbe"
+		description="QA File LogAppender7"
+		filePath="C:/Lisa1072/reports/CL1_3_INFO.log"
+		maxSize="10240"
+		maxBackupNum="5"/>		
+	<LogAppender
+		xsi:type="amxdata:FileLogAppender"
+		name="qaFileLogAppender8"
+		type="cbe"
+		description="QA File LogAppender8"
+		filePath="C:/Lisa1072/reports/CL1_3_WARN.log"
+		maxSize="10240"
+		maxBackupNum="5"/>
+		<LogAppender
+		xsi:type="amxdata:FileLogAppender"
+		name="qaFileLogAppender9"
+		type="cbe"
+		description="QA File LogAppender9"
+		filePath="C:/Lisa1072/reports/CL1_3_DEBUG.log"
+		maxSize="10240"
+		maxBackupNum="5"/>		
+	<LogAppender
+		xsi:type="amxdata:FileLogAppender"
+		name="qaFileLogAppender10"
+		type="cbe"
+		description="QA File LogApender10"
+		filePath="C:/Lisa1072/reports/CL1_3_ERROR.log"
+		maxSize="10240"
+		maxBackupNum="5"/>
+	<LogAppender
+		xsi:type="amxdata:FileLogAppender"
+		name="qaFileLogAppender11"
+		type="cbe"
+		description="QA File LogAppender11"
+		filePath="C:/Lisa1072/reports/CL1_3_TRACE.log"
+		maxSize="10240"
+		maxBackupNum="5"/>		
+	<LogAppender
+		xsi:type="amxdata:FileLogAppender"
+		name="qaFileLogAppender12"
+		type="cbe"
+		description="QA File LogAppender12"
+		filePath="C:/Lisa1072/reports/CL1_3_OFF.log"
+		maxSize="10240"
+		maxBackupNum="5"/>		
+
+</amxdata_base:Enterprise>

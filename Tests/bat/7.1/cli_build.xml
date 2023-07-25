@@ -1,0 +1,15 @@
+<project default="create.app">
+	<import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+
+	<target name="create.app">
+		<create.app dataFile="${amxConfigFile}" appName="com.tibco.amx.it.cpp.app" />
+		<map.app.to.node dataFile="${amxConfigFile}" appName="com.tibco.amx.it.cpp.app" />
+		<deploy.app dataFile="${amxConfigFile}" timeout="${deployTimeout}" appName="com.tibco.amx.it.cpp.app" />
+	</target>
+
+	<target name="undeploy.app">
+		<undeploy.app dataFile="${amxConfigFile}" appName="com.tibco.amx.it.cpp.app"/>
+	</target>
+
+		
+</project>

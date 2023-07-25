@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+
+	<SVar xsi:type="amxdata_base:SubstitutionVariable" name="bwhost1" type="String" value="AMX-BACKEND-2.na.tibco.com" description="svar"/>
+    <SVar xsi:type="amxdata_base:SubstitutionVariable" name="bwport61" type="Integer" value="9105" description="svar"/>
+	<SVar xsi:type="amxdata_base:SubstitutionVariable" name="socketTimeout" type="Integer" value="10000" description="svar"/>
+	<Environment 
+		xsi:type="amxdata:Environment" 
+	    name="QAEnvironment_amxrel2qa1.na.tibco.com" 
+	    description="integration environment" 
+	    contact="TIBCO QA">
+		<Node xsi:type="amxdata:Node" name="QANode1" hostName="SystemHost_amxrel2qa1.na.tibco.com" description="Node" contact="TIBCO" >
+		    <ResourceInstance xsi:type="amxdata:ResourceInstance" name="httpConnector61" resourceTemplateName="httpConnector61"/>
+		    <ResourceInstance xsi:type="amxdata:ResourceInstance" name="HttpClient_SOAPEventSource_61" resourceTemplateName="HttpClient_SOAPEventSource_61"/>	
+		    <ResourceInstance xsi:type="amxdata:ResourceInstance" name="HttpClient_SOAPEventSource_61_timeout" resourceTemplateName="HttpClient_SOAPEventSource_61_timeout"/>	
+		</Node>
+		
+		<Application
+			xsi:type="amxdata:Application"
+			name="bat61_plugin"
+			contact="TIBCO Software Inc."
+			description="This is the plugin for CMT which is source for bat61 daa">
+			<Node name="QANode2" environmentName="QAEnvironment_amxrel2qa1.na.tibco.com"/>
+			<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="cmt_V30_01_runtime.apt"/>
+		</Application>	
+		
+		<Application
+			xsi:type="amxdata:Application"
+			name="bat61_app"
+			contact="TIBCO Software Inc."
+			description="BAT 6.1 SOAP-MED-SOAP (In-Out) with CMT and Faults"
+			importResourceTemplates="false">
+            <Component xsi:type="amxdata:Component" name="Mediation1">
+		    <Node name="QANode2" environmentName="QAEnvironment_amxrel2qa1.na.tibco.com"/>				
+        	</Component>
+        	
+			<PromotedService xsi:type="amxdata_base:Service_base" name="AddressPort">
+				<Binding xsi:type="amxdata:Binding" name="SOAPService_Binding1">
+					<Node name="QANode1" environmentName="QAEnvironment_amxrel2qa1.na.tibco.com" />				
+				</Binding>
+			</PromotedService>		
+			    
+			<PromotedReference xsi:type="amxdata_base:Reference_base" name="EchoStringPort1">
+				<Binding xsi:type="amxdata:Binding" name="SOAPReference_Binding1">
+                    <Node name="QANode1" environmentName="QAEnvironment_amxrel2qa1.na.tibco.com" />                
+				</Binding>
+			</PromotedReference> 
+			<PromotedReference xsi:type="amxdata_base:Reference_base" name="EchoStringPort21">
+				<Binding xsi:type="amxdata:Binding" name="SOAPReference_Binding1">
+                    <Node name="QANode1" environmentName="QAEnvironment_amxrel2qa1.na.tibco.com" />                
+				</Binding>
+			</PromotedReference> 
+			<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="bat61"/>
+			<Logger xsi:type="amxdata:Logger" name ="com.tibco" additivity="false">
+				<AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="DEBUG">
+					<Appender xsi:type="amxdata_reference:LogAppender_reference" name="qaFileLogAppenderBAT6_1"/>
+				</AppenderRef>
+			</Logger>
+		</Application>		
+	</Environment>
+	 
+	<ResourceTemplate 
+		xsi:type="amxdata:HttpConnectorResourceTemplate" 
+		name="httpConnector61" 
+		host="amxrel2qa1.na.tibco.com" 
+		port="8877" 
+		headerBufferSize="512" 
+		requestBufferSize="512"	
+		responseBufferSize="512" 
+		maxIdleTime="200000" 
+		lowResourceMaxIdleTime="512" 
+		description="This is HttpConnector RT for BAT 6.1"/>
+	<ResourceTemplate 
+		xsi:type="amxdata:HttpClientResourceTemplate"
+		name="HttpClient_SOAPEventSource_61" 
+		isAcceptRedirect="true"
+		soTimeout="0"
+		host="%%bwhost1%%"
+		port="%%bwport61%%" 
+		description="Http Client for BAT 6.1"/>
+	<ResourceTemplate 
+		xsi:type="amxdata:HttpClientResourceTemplate"
+		name="HttpClient_SOAPEventSource_61_timeout" 
+		isAcceptRedirect="true"
+		soTimeout="%%socketTimeout%%"
+		host="%%bwhost1%%"
+		port="%%bwport61%%" 
+		description="Http Client for BAT 6.1 Timeout"/>
+		
+	<DAA
+		xsi:type="amxdata:DAA"
+		description="DAA CMT Test"
+		location="CMT/CMTSource/cmt_V30_01_runtime.deploy.soa/Deployment Artifacts/cmt_V30_01_runtime.apt.daa">
+	</DAA>
+	<DAA
+		xsi:type="amxdata:DAA"
+		description="DAA For Usecase CMT"
+		location="SOA/bat61/Deployment Artifacts/bat61.daa">
+	</DAA>
+	
+	<LogAppender
+		xsi:type="amxdata:FileLogAppender"
+		name="qaFileLogAppenderBAT6_1"
+		description="QA File LogAppender for BAT 6.1"
+		filePath="/groupfiler/tests/tests/amsg/3.0/reports/linux24gl23_x86/amsg-3.1.5-2012-09-03-01-06-44/func/runtime/bat/bat_2node_hsql/6.1/BAT61_Application.log"
+		maxSize="10240"
+		maxBackupNum="5"/>
+
+</amxdata_base:Enterprise>

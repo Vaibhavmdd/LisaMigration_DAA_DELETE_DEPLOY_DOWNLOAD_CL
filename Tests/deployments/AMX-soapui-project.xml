@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project name="AMX" resourceRoot="" soapui-version="4.0.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="AMXServiceBinding1.2" type="wsdl" bindingName="{urn:amx:DevEnvironment/AMXTestCase1.2}AMXServiceBinding1.2" soapVersion="1_1" anonymous="optional" definition="http://localhost:8120/amxadministrator/generate_wsdl?svc_binding_id=206&amp;svc_binding_name=AMXServiceBinding1.2&amp;svc_node_id=2&amp;svc_node_name=DevNode" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8120/amxadministrator/generate_wsdl?svc_binding_id=206&amp;svc_binding_name=AMXServiceBinding1.2&amp;svc_node_id=2&amp;svc_node_name=DevNode"><con:part><con:url>http://localhost:8120/amxadministrator/generate_wsdl?svc_binding_id=206&amp;svc_binding_name=AMXServiceBinding1.2&amp;svc_node_id=2&amp;svc_node_name=DevNode</con:url><con:content><![CDATA[<!--Created by TIBCO WSDL-->
+<wsdl:definitions name="JavaNewComponent_1.0.0.201109201622_service_AMXTestCaseService1.2_AMXTestCase12" targetNamespace="urn:amx:DevEnvironment/AMXTestCase1.2" xmlns:tns="urn:amx:DevEnvironment/AMXTestCase1.2" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns0="http://www.example.org/AMXTestCase1.2/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <xs:schema targetNamespace="http://www.example.org/AMXTestCase1.2/" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="NewOperation">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="in" form="unqualified" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="NewOperationResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="out" form="unqualified" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="NewOperationRequest">
+    <wsdl:part name="parameters" element="ns0:NewOperation"/>
+  </wsdl:message>
+  <wsdl:message name="NewOperationResponse">
+    <wsdl:part name="parameters" element="ns0:NewOperationResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="AMXTestCase1.2">
+    <wsdl:operation name="NewOperation">
+      <wsdl:input message="tns:NewOperationRequest"/>
+      <wsdl:output message="tns:NewOperationResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AMXServiceBinding1.2" type="tns:AMXTestCase1.2">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="NewOperation">
+      <wsdl:documentation/>
+      <soap:operation style="document" soapAction="NewOperation"/>
+      <wsdl:input>
+        <soap:body use="literal" parts="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="JavaNewComponent_1.0.0.201109201622_service_AMXTestCaseService1.2_AMXTestCase12">
+    <wsdl:port name="AMXServiceBinding1.2" binding="tns:AMXServiceBinding1.2">
+      <soap:address location="http://0.0.0.0:9090/aMXTestCase1.2/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://0.0.0.0:9090/aMXTestCase1.2/</con:endpoint></con:endpoints><con:operation isOneWay="false" action="NewOperation" name="NewOperation" bindingOperationName="NewOperation" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://0.0.0.0:9090/aMXTestCase1.2/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:amx="http://www.example.org/AMXTestCase1.2/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <amx:NewOperation>
+         <in>?</in>
+      </amx:NewOperation>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="NewOperation"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/></con:soapui-project>

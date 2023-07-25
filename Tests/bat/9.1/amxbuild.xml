@@ -1,0 +1,60 @@
+<project default="deploy.app">
+	<import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+   
+		<target name="deploy.app">
+			<upload.daa dataFile="${amxConfigFile}" />
+			<create.app dataFile="${amxConfigFile}" />
+			<map.component.to.node dataFile="${amxConfigFile}" />
+			<map.service.binding.to.node dataFile="${amxConfigFile}" />
+			<map.reference.binding.to.node dataFile="${amxConfigFile}" />
+			<deploy.app dataFile="${amxConfigFile}" timeout="${deployTimeout}" />
+		</target>
+	
+		<target name="undeploy.app">
+			<undeploy.app dataFile="${amxConfigFile}" timeout="${deployTimeout}" />
+			<delete.app dataFile="${amxConfigFile}"/>
+			<remove.feature dataFile="${amxConfigFile}" />
+		    <remove.apptemplate dataFile="${amxConfigFile}" />
+			</target>
+			
+		<target name="setupRT">
+		<setup.ri dataFile="${amxConfigFile}" timeout="${deployTimeout}" />
+	</target>
+	
+	<target name="setupRT2">
+		<setup.ri dataFile="${amxConfigFile}" timeout="${deployTimeout}" />
+		<create.app dataFile="${amxConfigFile}" createIfNotExists="true" force="true"/>
+		<map.app.to.node dataFile="${amxConfigFile}" />
+	</target>
+	
+	
+		<target name="create.ri">
+		<AMXAdminTask
+			action="add"
+			objectSelector="Host/ResourceInstance | Environment/Node/ResourceInstance"
+			remote="true"
+			propsFile="${remotePropsFile}"
+			dataFile="${amxConfigFile}"
+			overwrite="true"
+			merge="true"
+			createIfNotExists="true"
+			force="true"
+			failOnError="false"/>
+	</target>
+	
+	<target name="install.ri">
+		<AMXAdminTask
+			action="install"
+			objectSelector="Host/ResourceInstance | Environment/Node/ResourceInstance"
+			remote="true"
+			propsFile="${remotePropsFile}"
+			dataFile="${amxConfigFile}"
+			force="false"
+			failOnError="false"/>
+	</target>
+	
+		</project>
+
+	
+	
+	

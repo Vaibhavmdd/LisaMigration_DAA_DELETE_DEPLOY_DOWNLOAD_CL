@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise xmlns:amxdata_jmsssr="http://tibco.com/amxadministrator/command/line/types_jmssr" 
+xmlns:amxdata_jmssr_base="http://tibco.com/amxadministrator/command/line/types_jmssr_base" xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types" xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base" xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+
+    <Environment xsi:type="amxdata:Environment" name="QAEnvironment_jpandya-dt" description="environment" contact="TIBCO">
+
+        <Application xsi:type="amxdata:Application" name="faults" contact="TIBCO Inc." description="faults">
+		<Component xsi:type="amxdata:Component" name="Java1">
+			<Node name="QANode2" environmentName="QAEnvironment_jpandya-dt"/>
+		</Component>
+		<PromotedService xsi:type="amxdata_base:Service_base" name="FaultTests">
+			<Binding xsi:type="amxdata:Binding" name="SOAPService_Binding1">
+				<Node name="QANode1" environmentName="QAEnvironment_jpandya-dt" />                
+				<Property  xsi:type="amxdata:Property" name="HttpInboundConnectionConfig"  value="http_1"/>
+			</Binding>
+		</PromotedService>
+		<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="faults"/>
+        </Application>
+
+    </Environment>
+	
+<DAA xsi:type="amxdata:DAA" description="faults" location="faults/Deployment Artifacts/faults.daa" importResourceTemplates="false"/>
+<Feature xsi:type="amxdata_base:FeatureID" componentID="faults.faults.customfeature.id" version="1.0.0.000"/>
+<AppTemplate xsi:type="amxdata_base:AppTemplateID" name="faults" version="1.0.0.000"/>
+
+	
+</amxdata_base:Enterprise>

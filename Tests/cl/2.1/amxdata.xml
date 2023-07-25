@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+	xmlns:amxdata_jmssr="http://tibco.com/amxadministrator/command/line/types_jmssr"
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd http://tibco.com/amxadministrator/command/line/types_jmssr ../schemas/jmssr.xsd">
+
+	<Environment 
+		xsi:type="amxdata:Environment" 
+		description="QA Environment" 
+		name="QAEnvironment_na2devasgora03"> 
+		<Node xsi:type="amxdata:Node" name="QANode1" hostName="SystemHost_na2devasgora03">
+				<ResourceInstance xsi:type="amxdata:ResourceInstance" name="httpConnectorCL" resourceTemplateName="httpConnectorCL"/>
+		</Node>
+			
+		<Application
+			xsi:type="amxdata:Application"
+			name="cl2_1"
+			contact="Gavin Chen"
+			description="cl2_1 application">
+      <Component xsi:type="amxdata:Component" name="MedComp1">
+		      <Node name="QANode2" environmentName="QAEnvironment_na2devasgora03"/>				
+      </Component>   
+      <Component xsi:type="amxdata:Component" name="MedComp2">
+		      <Node name="QANode2" environmentName="QAEnvironment_na2devasgora03"/>				
+      </Component>       	
+			<PromotedService xsi:type="amxdata_base:Service_base" name="MathServiceSoap">
+				<Binding xsi:type="amxdata:Binding" name="SOAPService_Binding">
+					<Node name="QANode1" environmentName="QAEnvironment_na2devasgora03" />				
+				</Binding>
+			</PromotedService>
+			<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="cl"/>
+	
+	
+	        <Logger xsi:type="amxdata:Logger" name ="com.tibco.amx.it.mediation" additivity="false">
+		                 <AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="DEBUG">
+					<Appender xsi:type="amxdata_reference:LogAppender_reference" name="qaFileLogAppender101"/>
+				</AppenderRef>
+	        </Logger>	
+		
+		
+		
+		</Application>		
+	</Environment>	 
+	
+	<ResourceTemplate xsi:type="amxdata:HttpConnectorResourceTemplate"
+		name="httpConnectorCL" 
+		host="na2devasgora03"
+		port="22015"
+		headerBufferSize="4096"
+		requestBufferSize="8192"
+		responseBufferSize="24576"
+		maxIdleTime="200000" 
+		lowResourceMaxIdleTime="-1"
+		description="This is Http Connector Resource Template"/>
+	
+	<DAA
+		xsi:type="amxdata:DAA"
+		description="DAA For cl"
+		location="C:/Lisa1072/Projects/AMX/Tests/cl/2.1/SoaProject/Deployment Artifacts/cl.daa"
+	  importResourceTemplates="false">
+	</DAA>
+
+	<LogAppender
+		xsi:type="amxdata:FileLogAppender"
+		name="qaFileLogAppender101"
+		description="QA File LogAppender6"
+		filePath="C:/Lisa1072/reports/CL1_1.log"
+		maxSize="10240"
+		maxBackupNum="5"/>
+
+</amxdata_base:Enterprise>

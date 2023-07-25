@@ -1,0 +1,85 @@
+<project default="deploy.app">
+	<import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+	
+	<!--
+	<target name="prepare.app">
+		<upload.daa dataFile="${amxConfigFile}" />
+		<create.app dataFile="${amxConfigFile}" />
+	</target>
+	-->
+	
+	<target name="deploy.app">
+		<create.rt dataFile="${amxConfigFile}" objectSelector="declare namespace amxdata_jmsssr='http://tibco.com/amxadministrator/command/line/types_jmssr'; amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate | amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate | amxdata_jmsssr:JNDIDestinationResourceTemplate | amxdata_jmsssr:JNDIConnectionFactoryConfigurationResourceTemplate | amxdata_jmsssr:JNDIDestinationConfigurationResourceTemplate" />
+		<create.ri dataFile="${amxConfigFile}" />
+		<install.ri dataFile="${amxConfigFile}" />
+		<upload.daa dataFile="${amxConfigFile}" />
+		<create.app dataFile="${amxConfigFile}" />
+		<map.app.to.node dataFile="${amxConfigFile}" appName="bat66_pluginXPF3.apt" />
+		<map.component.to.node dataFile="${amxConfigFile}" appName="bat66_cxftest" />
+		<map.service.binding.to.node dataFile="${amxConfigFile}" appName="bat66_cxftest" />
+		<deploy.app dataFile="${amxConfigFile}"  appName="bat66_pluginXPF3.apt" timeout="${deployTimeout}" />
+		<deploy.app dataFile="${amxConfigFile}" appName="bat66_cxftest" timeout="${deployTimeout}" />
+	</target>
+	
+	<target name="undeploy.app">
+		<undeploy.app dataFile="${amxConfigFile}" appName="bat66_cxftest" timeout="${deployTimeout}"/>
+		<undeploy.app dataFile="${amxConfigFile}" appName="bat66_pluginXPF3.apt" timeout="${deployTimeout}"/>
+		<delete.app dataFile="${amxConfigFile}" />
+		<uninstall.ri dataFile="${amxConfigFile}" resourceInstanceName = "BAT66JmsDestConf"/>
+		<delete.ri dataFile="${amxConfigFile}" resourceInstanceName = "BAT66JmsDestConf"/>
+		<uninstall.ri dataFile="${amxConfigFile}" resourceInstanceName = "BAT66JmsConnFactoryConf"/>
+		<delete.ri dataFile="${amxConfigFile}" resourceInstanceName = "BAT66JmsConnFactoryConf"/>
+		<uninstall.ri dataFile="${amxConfigFile}" resourceInstanceName = "BAT66JmsConnFactory"/>
+		<delete.ri dataFile="${amxConfigFile}" resourceInstanceName = "BAT66JmsConnFactory"/>
+		<uninstall.ri dataFile="${amxConfigFile}" resourceInstanceName = "BAT66JndiConnConf"/>
+		<delete.ri dataFile="${amxConfigFile}" resourceInstanceName = "BAT66JndiConnConf"/>
+		<delete.rt dataFile="${amxConfigFile}" objectSelector="declare namespace amxdata_jmsssr='http://tibco.com/amxadministrator/command/line/types_jmssr'; amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate | amxdata_jmsssr:JNDIDestinationResourceTemplate | amxdata_jmsssr:JNDIConnectionFactoryConfigurationResourceTemplate | amxdata_jmsssr:JNDIDestinationConfigurationResourceTemplate" />
+		<delete.rt dataFile="${amxConfigFile}" objectSelector="declare namespace amxdata_jmsssr='http://tibco.com/amxadministrator/command/line/types_jmssr'; amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate" />
+	</target>
+	
+	<!--
+	<target name="add.jms.rt">
+		<AMXAdminTask 
+		  remote="true"
+		  propsFile="${remotePropsFile}" 
+		  action="add" 
+		  dataFile="${amxConfigFile}" 
+		  objectSelector="declare namespace  amxdata_jmsssr='http://tibco.com/amxadministrator/command/line/types_jmssr'; amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate | amxdata_jmsssr:JNDIConnectionFactoryConfigurationResourceTemplate | amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate | amxdata_jmsssr:JNDIDestinationResourceTemplate | amxdata_jmsssr:JNDIDestinationConfigurationResourceTemplate" 
+		  overwrite="true" 
+		  merge="true" 
+		  createIfNotExists="true" 
+		  force="true" 
+		  failOnError="false" />
+	</target>
+
+	<target name="edit.jms.rt">
+		<AMXAdminTask 
+		  remote="true" 
+		  propsFile="${remotePropsFile}" 
+		  action="edit" 
+		  dataFile="${amxConfigFile}" 
+		  objectSelector="declare namespace amxdata_jmsssr='http://tibco.com/amxadministrator/command/line/types_jmssr'; amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate | amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate | amxdata_jmsssr:JNDIDestinationResourceTemplate | amxdata_jmsssr:JNDIConnectionFactoryConfigurationResourceTemplate | amxdata_jmsssr:JNDIDestinationConfigurationResourceTemplate" 
+		  overwrite="true" 
+		  merge="true" 
+		  createIfNotExists="true" 
+		  force="true" 
+		  failOnError="false" />
+	</target>
+	
+	<target name="delete.jms.rt">
+		<AMXAdminTask 
+		  remote="true" 
+		  propsFile="${remotePropsFile}" 
+		  action="delete" 
+		  dataFile="${amxConfigFile}" 
+		  objectSelector="declare namespace amxdata_jmsssr='http://tibco.com/amxadministrator/command/line/types_jmssr'; amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate | amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate | amxdata_jmsssr:JNDIDestinationResourceTemplate | amxdata_jmsssr:JNDIConnectionFactoryConfigurationResourceTemplate | amxdata_jmsssr:JNDIDestinationConfigurationResourceTemplate" 
+		  overwrite="true" 
+		  merge="true" 
+		  createIfNotExists="true" 
+		  force="true" 
+		  failOnError="false" />
+	</target>
+	-->
+	
+</project>
+

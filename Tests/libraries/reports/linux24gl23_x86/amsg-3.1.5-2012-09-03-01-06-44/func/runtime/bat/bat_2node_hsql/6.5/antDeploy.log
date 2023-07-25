@@ -1,0 +1,153 @@
+     [echo] Script base is: "/opt/tibco/amx31x/administrator/3.1/scripts/basic_cli.xml"
+
+deploy.app:
+     [echo] 
+     [echo] 
+     [echo] setup the resource instance using:
+     [echo] resourceInstanceName: 
+     [echo] resourceTemplateName: 
+     [echo] envName: 
+     [echo] nodeName: 
+     [echo] hostName: 
+     [echo] dataFile: /groupfiler/tests/tests/amsg/3.0/reports/linux24gl23_x86/amsg-3.1.5-2012-09-03-01-06-44/func/runtime/bat/bat_2node_hsql/6.5/amxconfig.xml
+     [echo] remotePropsFile: /groupfiler/tests/tests/amsg/3.0/reports/linux24gl23_x86/amsg-3.1.5-2012-09-03-01-06-44/func/runtime/bat/bat_2node_hsql/admin.properties
+     [echo] objectSelector: 
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] options: auto-resolve
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] timeout: 300
+     [echo] 
+     [echo] 
+     [echo] Create the resource template using:
+     [echo] resourceTemplateName: 
+     [echo] dataFile: /groupfiler/tests/tests/amsg/3.0/reports/linux24gl23_x86/amsg-3.1.5-2012-09-03-01-06-44/func/runtime/bat/bat_2node_hsql/6.5/amxconfig.xml
+     [echo] remotePropsFile: /groupfiler/tests/tests/amsg/3.0/reports/linux24gl23_x86/amsg-3.1.5-2012-09-03-01-06-44/func/runtime/bat/bat_2node_hsql/admin.properties
+     [echo] objectSelector: 
+     [echo] action: add
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] Invoking Admin task using the objectselector: ResourceTemplate
+[AMXAdminTask]  INFO - Processing 2 objects
+[AMXAdminTask]  INFO - Unable to sendViaPost to url[http://localhost:8120/amxadministrator.httpbasic/services/ResourceTemplateService]
+[AMXAdminTask] java.net.ConnectException: Connection refused
+[AMXAdminTask] 	at java.net.PlainSocketImpl.socketConnect(Native Method)
+[AMXAdminTask] 	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+[AMXAdminTask] 	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+[AMXAdminTask] 	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+[AMXAdminTask] 	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:391)
+[AMXAdminTask] 	at java.net.Socket.connect(Socket.java:579)
+[AMXAdminTask] 	at java.net.Socket.connect(Socket.java:528)
+[AMXAdminTask] 	at java.net.Socket.<init>(Socket.java:425)
+[AMXAdminTask] 	at java.net.Socket.<init>(Socket.java:280)
+[AMXAdminTask] 	at org.apache.commons.httpclient.protocol.DefaultProtocolSocketFactory.createSocket(DefaultProtocolSocketFactory.java:80)
+[AMXAdminTask] 	at org.apache.commons.httpclient.protocol.DefaultProtocolSocketFactory.createSocket(DefaultProtocolSocketFactory.java:122)
+[AMXAdminTask] 	at org.apache.commons.httpclient.HttpConnection.open(HttpConnection.java:707)
+[AMXAdminTask] 	at org.apache.commons.httpclient.MultiThreadedHttpConnectionManager$HttpConnectionAdapter.open(MultiThreadedHttpConnectionManager.java:1361)
+[AMXAdminTask] 	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:387)
+[AMXAdminTask] 	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+[AMXAdminTask] 	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+[AMXAdminTask] 	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:346)
+[AMXAdminTask] 	at org.apache.axis2.transport.http.AbstractHTTPSender.executeMethod(AbstractHTTPSender.java:542)
+[AMXAdminTask] 	at org.apache.axis2.transport.http.HTTPSender.sendViaPost(HTTPSender.java:189)
+[AMXAdminTask] 	at org.apache.axis2.transport.http.HTTPSender.send(HTTPSender.java:75)
+[AMXAdminTask] 	at org.apache.axis2.transport.http.CommonsHTTPTransportSender.writeMessageWithCommons(CommonsHTTPTransportSender.java:371)
+[AMXAdminTask] 	at org.apache.axis2.transport.http.CommonsHTTPTransportSender.invoke(CommonsHTTPTransportSender.java:209)
+[AMXAdminTask] 	at org.apache.axis2.engine.AxisEngine.send(AxisEngine.java:448)
+[AMXAdminTask] 	at org.apache.axis2.description.OutInAxisOperationClient.send(OutInAxisOperation.java:401)
+[AMXAdminTask] 	at org.apache.axis2.description.OutInAxisOperationClient.executeImpl(OutInAxisOperation.java:228)
+[AMXAdminTask] 	at org.apache.axis2.client.OperationClient.execute(OperationClient.java:163)
+[AMXAdminTask] 	at org.apache.axis2.client.ServiceClient.sendReceive(ServiceClient.java:548)
+[AMXAdminTask] 	at org.apache.axis2.client.ServiceClient.sendReceive(ServiceClient.java:528)
+[AMXAdminTask] 	at org.apache.axis2.rpc.client.RPCServiceClient.invokeBlocking(RPCServiceClient.java:102)
+[AMXAdminTask] 	at com.tibco.amf.admin.api.servicefactory.remote.axis2.Axis2ProxyServiceFactory$Axis2ServiceInvocationHandler.invoke(Axis2ProxyServiceFactory.java:225)
+[AMXAdminTask] 	at $Proxy3.getResourceTemplateIdByName(Unknown Source)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.restemplate.ResourceTemplateProcessor.getIdentifier(ResourceTemplateProcessor.java:31)
+[AMXAdminTask] 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[AMXAdminTask] 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+[AMXAdminTask] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[AMXAdminTask] 	at java.lang.reflect.Method.invoke(Method.java:601)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.IdentityRetriever.invoke(ProcessorProxyFactory.java:78)
+[AMXAdminTask] 	at $Proxy0.getIdentifier(Unknown Source)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.Processor.getChildIdentifier(Processor.java:320)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.Processor.processChild(Processor.java:205)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.Processor.process(Processor.java:148)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.Processor.processChildren(Processor.java:40)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.ant.AMXAdminTask.process(AMXAdminTask.java:352)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.ant.AMXAdminTask.execute(AMXAdminTask.java:272)
+[AMXAdminTask] 	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+[AMXAdminTask] 	at sun.reflect.GeneratedMethodAccessor6.invoke(Unknown Source)
+[AMXAdminTask] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[AMXAdminTask] 	at java.lang.reflect.Method.invoke(Method.java:601)
+[AMXAdminTask] 	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+[AMXAdminTask] 	at org.apache.tools.ant.Task.perform(Task.java:348)
+[AMXAdminTask] 	at org.apache.tools.ant.taskdefs.Sequential.execute(Sequential.java:68)
+[AMXAdminTask] 	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+[AMXAdminTask] 	at sun.reflect.GeneratedMethodAccessor6.invoke(Unknown Source)
+[AMXAdminTask] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[AMXAdminTask] 	at java.lang.reflect.Method.invoke(Method.java:601)
+[AMXAdminTask] 	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+[AMXAdminTask] 	at org.apache.tools.ant.Task.perform(Task.java:348)
+[AMXAdminTask] 	at org.apache.tools.ant.taskdefs.MacroInstance.execute(MacroInstance.java:398)
+[AMXAdminTask] 	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+[AMXAdminTask] 	at sun.reflect.GeneratedMethodAccessor6.invoke(Unknown Source)
+[AMXAdminTask] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[AMXAdminTask] 	at java.lang.reflect.Method.invoke(Method.java:601)
+[AMXAdminTask] 	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+[AMXAdminTask] 	at org.apache.tools.ant.Task.perform(Task.java:348)
+[AMXAdminTask] 	at org.apache.tools.ant.taskdefs.Sequential.execute(Sequential.java:68)
+[AMXAdminTask] 	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+[AMXAdminTask] 	at sun.reflect.GeneratedMethodAccessor6.invoke(Unknown Source)
+[AMXAdminTask] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[AMXAdminTask] 	at java.lang.reflect.Method.invoke(Method.java:601)
+[AMXAdminTask] 	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+[AMXAdminTask] 	at org.apache.tools.ant.Task.perform(Task.java:348)
+[AMXAdminTask] 	at org.apache.tools.ant.taskdefs.MacroInstance.execute(MacroInstance.java:398)
+[AMXAdminTask] 	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+[AMXAdminTask] 	at sun.reflect.GeneratedMethodAccessor6.invoke(Unknown Source)
+[AMXAdminTask] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[AMXAdminTask] 	at java.lang.reflect.Method.invoke(Method.java:601)
+[AMXAdminTask] 	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+[AMXAdminTask] 	at org.apache.tools.ant.Task.perform(Task.java:348)
+[AMXAdminTask] 	at org.apache.tools.ant.Target.execute(Target.java:390)
+[AMXAdminTask] 	at org.apache.tools.ant.Target.performTasks(Target.java:411)
+[AMXAdminTask] 	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+[AMXAdminTask] 	at org.apache.tools.ant.Project.executeTarget(Project.java:1368)
+[AMXAdminTask] 	at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)
+[AMXAdminTask] 	at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+[AMXAdminTask] 	at org.apache.tools.ant.Main.runBuild(Main.java:809)
+[AMXAdminTask] 	at org.apache.tools.ant.Main.startAnt(Main.java:217)
+[AMXAdminTask] 	at org.apache.tools.ant.launch.Launcher.run(Launcher.java:280)
+[AMXAdminTask] 	at org.apache.tools.ant.launch.Launcher.main(Launcher.java:109)
+[AMXAdminTask] ERROR - java.lang.reflect.UndeclaredThrowableException: java.lang.reflect.UndeclaredThrowableException
+[AMXAdminTask] at $Proxy3.getResourceTemplateIdByName(Unknown Source)
+[AMXAdminTask] at com.tibco.amf.admin.cmdline.restemplate.ResourceTemplateProcessor.getIdentifier(ResourceTemplateProcessor.java:31)
+[AMXAdminTask] at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[AMXAdminTask] at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+[AMXAdminTask]  ....
+[AMXAdminTask] Caused by: org.apache.axis2.AxisFault: Connection refused
+[AMXAdminTask] at org.apache.axis2.AxisFault.makeFault(AxisFault.java:430)
+[AMXAdminTask] at org.apache.axis2.transport.http.HTTPSender.sendViaPost(HTTPSender.java:193)
+[AMXAdminTask] at org.apache.axis2.transport.http.HTTPSender.send(HTTPSender.java:75)
+[AMXAdminTask] at org.apache.axis2.transport.http.CommonsHTTPTransportSender.writeMessageWithCommons(CommonsHTTPTransportSender.java:371)
+[AMXAdminTask]  ....
+[AMXAdminTask] Caused by: java.net.ConnectException: Connection refused
+[AMXAdminTask] at java.net.PlainSocketImpl.socketConnect(Native Method)
+[AMXAdminTask] at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+[AMXAdminTask] at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+[AMXAdminTask] at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+[AMXAdminTask]  ....
+[AMXAdminTask] 
+[AMXAdminTask] ERROR - Error getting identifier for add
+
+BUILD FAILED
+/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/6.5/amxbuild.xml:5: The following error occurred while executing this line:
+/groupfiler/tests/tests/amsg/3.0/libraries/amx/bin/amx-macrodefs.xml:4195: The following error occurred while executing this line:
+/groupfiler/tests/tests/amsg/3.0/libraries/amx/bin/amx-macrodefs.xml:4006: Failed on error
+
+Total time: 8 seconds

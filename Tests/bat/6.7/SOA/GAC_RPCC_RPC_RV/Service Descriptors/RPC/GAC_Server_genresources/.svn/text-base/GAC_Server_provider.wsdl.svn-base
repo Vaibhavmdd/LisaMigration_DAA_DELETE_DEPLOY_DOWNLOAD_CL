@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:aebinding="http://xsd.tns.tibco.com/aebinding/2006" xmlns:jndi="http://xsd.tns.tibco.com/corona/models/jndiwsdlmodel" xmlns:ns1="http://www.tibco.com/xmlns/ae2xsd/2002/05/ae/GACSchemas" xmlns:rv="http://xsd.tns.tibco.com/corona/models/rvwsdlmodel" xmlns:tns="urn:GACAdapter:GAC_Server" targetNamespace="urn:GACAdapter:GAC_Server">
+  <aebinding:Import appName="GACAdapter" configUrl="/tibco/private/adapter/GAC_Server" repoUrl="GAC_Server_8309585967634840647.dat"/>
+  <import location="../schema/ae/GACSchemas.xsd" namespace="http://www.tibco.com/xmlns/ae2xsd/2002/05/ae/GACSchemas"/>
+  <types>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:GACAdapter:GAC_Server/types">
+      <xsd:import namespace="http://www.tibco.com/xmlns/ae2xsd/2002/05/ae/GACSchemas" schemaLocation="../schema/ae/GACSchemas.xsd"/>
+    </xsd:schema>
+  </types>
+  <message name="GetSalesOrderById__request">
+    <part element="ns1:__caret_request_caret_GetSalesOrderById_caret_GetSalesOrderById" name="request"/>
+  </message>
+  <message name="GetSalesOrderById__response">
+    <part element="ns1:__caret_reply_caret_GetSalesOrderById_caret_GetSalesOrderById" name="response"/>
+  </message>
+  <message name="OrderNotFound__exception">
+    <part element="ns1:__caret_fault_caret_GetSalesOrderById_caret_GetSalesOrderById" name="exception"/>
+  </message>
+  <portType name="GetSalesOrderById">
+    <operation name="GetSalesOrderById">
+      <input message="tns:GetSalesOrderById__request"/>
+      <output message="tns:GetSalesOrderById__response"/>
+      <fault message="tns:OrderNotFound__exception" name="OrderNotFound"/>
+    </operation>
+  </portType>
+  <binding name="GetSalesOrderById_binding" type="tns:GetSalesOrderById">
+    <aebinding:AEBinding packingFormat="10" transport="http://xsd.tns.tibco.com/aebinding/2006/TIBRV" version="2.0"/>
+    <operation name="GetSalesOrderById">
+      <aebinding:AEOperation name="GetSalesOrderById" style="document"/>
+      <input>
+        <aebinding:AEBody encodingStyle="http://xsd.tns.tibco.com/aebinding/2006/encoding/ae" use="encoded"/>
+      </input>
+      <output>
+        <aebinding:AEBody encodingStyle="http://xsd.tns.tibco.com/aebinding/2006/encoding/ae" use="encoded"/>
+      </output>
+      <fault name="OrderNotFound">
+        <aebinding:AEBody encodingStyle="http://xsd.tns.tibco.com/aebinding/2006/encoding/ae" use="encoded"/>
+      </fault>
+    </operation>
+  </binding>
+  <service name="GetSalesOrderById_service">
+    <port binding="tns:GetSalesOrderById_binding" name="GetSalesOrderById_port">
+      <rv:RVConfiguration daemon="%%RvDaemon%%" network="%%RvNetwork%%" service="%%RvService%%">
+        <rv:TargetAddress subject="bat67.reference"/>
+      </rv:RVConfiguration>
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Adapter="http://xsd.tns.tibco.com/amf/models/sca/binding/adapter" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:componentmodel="http://xsd.tns.tibco.com/amsb/core/models/componentmodel" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:compositenotation="http://www.tibco.com/models/compositenotation" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.1/notation" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmi:id="_nZbhcYQtEd-Xoc9J4tQR3g" targetNamespace="http://www.example.com/GAC_RPCC_RPC_RV.composite" name="GAC_RPCC_RPC_RV" compositeext:version="1.0.0.qualifier" compositeext:formatVersion="2">
+  <sca:service xmi:id="_4haDcNXZEd-9N_BRuN6gMA" name="QueryExternalCustomer" promote="Component1/QueryExternalCustomer">
+    <sca:interface.wsdl xmi:id="_4haDcdXZEd-9N_BRuN6gMA" interface="urn:GACAdapter:GAC_Client#wsdl.interface(QueryExternalCustomer)" scaext:wsdlLocation="../Service%20Descriptors/RPCC/GAC_Client_genresources/GAC_Client_consumer.wsdl"/>
+    <Adapter:binding.adapter.service xmi:id="_6Z85cNXZEd-9N_BRuN6gMA" name="ADAPTERService_Binding1" wsdlLocation="../Service%20Descriptors/RPCC/GAC_Client_genresources/GAC_Client_consumer.wsdl" portType="urn:GACAdapter:GAC_Client#wsdl.interface(QueryExternalCustomer)" appName="GACAdapter" configUrl="/tibco/private/adapter/GAC_Client" repoUrl="GAC_Client_1033341943780981250.dat">
+      <endPointConfiguration xmi:id="_6Z85cdXZEd-9N_BRuN6gMA" name="QueryExternalCustomer" transportType="RV" sdkComponentType="CLIENT" aeSchemaClass="/tibco/public/class/ae/GACSchemas/QueryExternalCustomer" sdkComponentName="QueryExternalCustomer">
+        <transportConfiguration xmi:id="_6aP0YNXZEd-9N_BRuN6gMA" rvDaemon="tcp:7500" rvNetwork="" rvService="7500"/>
+      </endPointConfiguration>
+    </Adapter:binding.adapter.service>
+    <scact:bindingAdjunct xmi:id="_6aP0YdXZEd-9N_BRuN6gMA" bindingName="ADAPTERService_Binding1">
+      <sca:property xmi:id="_6aZlYNXZEd-9N_BRuN6gMA" mustSupply="true" name="rvService" type="XMLSchema:string" scaext:simpleValue="7500"/>
+      <sca:property xmi:id="_6aZlYdXZEd-9N_BRuN6gMA" mustSupply="true" name="rvDaemon" type="XMLSchema:string" scaext:simpleValue="tcp:7500"/>
+    </scact:bindingAdjunct>
+  </sca:service>
+  <sca:reference xmi:id="_4hs-YNXZEd-9N_BRuN6gMA" multiplicity="1..1" name="GetSalesOrderById1" wiredByImpl="false" promote="Component1/GetSalesOrderById">
+    <sca:interface.wsdl xmi:id="_4hs-YdXZEd-9N_BRuN6gMA" interface="urn:GACAdapter:GAC_Server#wsdl.interface(GetSalesOrderById)" scaext:wsdlLocation="../Service%20Descriptors/RPC/GAC_Server_genresources/GAC_Server_provider.wsdl"/>
+    <Adapter:binding.adapter.reference xmi:id="_7FnFkNXZEd-9N_BRuN6gMA" name="ADAPTERReference_Binding1" wsdlLocation="../Service%20Descriptors/RPC/GAC_Server_genresources/GAC_Server_provider.wsdl" portType="urn:GACAdapter:GAC_Server#wsdl.interface(GetSalesOrderById)" appName="GACAdapter" configUrl="/tibco/private/adapter/GAC_Server" repoUrl="GAC_Server_8309585967634840647.dat">
+      <endPointConfiguration xmi:id="_7FnFkdXZEd-9N_BRuN6gMA" name="GetSalesOrderById" transportType="RV" sdkComponentType="SERVER" aeSchemaClass="/tibco/public/class/ae/GACSchemas/GetSalesOrderById" sdkComponentName="GetSalesOrderById">
+        <transportConfiguration xmi:id="_7FnFktXZEd-9N_BRuN6gMA" rvDaemon="tcp:7500" rvNetwork="" rvService="7500"/>
+      </endPointConfiguration>
+    </Adapter:binding.adapter.reference>
+    <scact:bindingAdjunct xmi:id="_7F6AgNXZEd-9N_BRuN6gMA" bindingName="ADAPTERReference_Binding1">
+      <sca:property xmi:id="_7F6AgdXZEd-9N_BRuN6gMA" mustSupply="true" name="rvService" type="XMLSchema:string" scaext:simpleValue="7500"/>
+      <sca:property xmi:id="_7F6AgtXZEd-9N_BRuN6gMA" mustSupply="true" name="rvDaemon" type="XMLSchema:string" scaext:simpleValue="tcp:7500"/>
+    </scact:bindingAdjunct>
+  </sca:reference>
+  <sca:component xmi:id="_4HB0kNXZEd-9N_BRuN6gMA" name="Component1" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="componentmodel:MediationImplementation" xmi:id="_4HB0kdXZEd-9N_BRuN6gMA" mediationService="../Mediation%20Flows/default.mediation#_YwJ4UNXZEd-9N_BRuN6gMA"/>
+    <sca:service xmi:id="_4HLlkNXZEd-9N_BRuN6gMA" name="QueryExternalCustomer">
+      <sca:interface.wsdl xmi:id="_4HLlkdXZEd-9N_BRuN6gMA" interface="urn:GACAdapter:GAC_Client#wsdl.interface(QueryExternalCustomer)" scaext:wsdlLocation="../Service%20Descriptors/RPCC/GAC_Client_genresources/GAC_Client_consumer.wsdl"/>
+    </sca:service>
+    <sca:reference xmi:id="_4HLlktXZEd-9N_BRuN6gMA" name="GetSalesOrderById" wiredByImpl="false">
+      <sca:interface.wsdl xmi:id="_4HLlk9XZEd-9N_BRuN6gMA" interface="urn:GACAdapter:GAC_Server#wsdl.interface(GetSalesOrderById)" scaext:wsdlLocation="../Service%20Descriptors/RPC/GAC_Server_genresources/GAC_Server_provider.wsdl"/>
+    </sca:reference>
+  </sca:component>
+  <notation:diagram xsi:type="notation:Diagram" xmi:id="_nan0QIQtEd-Xoc9J4tQR3g" type="Composite" element="#/" name="SCA Composite" measurementUnit="Pixel">
+    <children xmi:id="_n0P1MIQtEd-Xoc9J4tQR3g" type="2001" element="#_nZbhcYQtEd-Xoc9J4tQR3g">
+      <children xmi:id="_n0P1M4QtEd-Xoc9J4tQR3g" type="5004"/>
+      <children xmi:id="_n0P1NIQtEd-Xoc9J4tQR3g" type="7001">
+        <children xmi:id="_4hs-YtXZEd-9N_BRuN6gMA" type="3001" element="#_4haDcNXZEd-9N_BRuN6gMA">
+          <children xmi:id="_4h_5UNXZEd-9N_BRuN6gMA" type="5002"/>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_4hs-Y9XZEd-9N_BRuN6gMA" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_4hs-ZNXZEd-9N_BRuN6gMA" gradStartColor="14150097" gradEndColor="7844710"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_4hs-ZdXZEd-9N_BRuN6gMA"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_4hs-ZtXZEd-9N_BRuN6gMA"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_n0P1NYQtEd-Xoc9J4tQR3g"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_n0P1NoQtEd-Xoc9J4tQR3g"/>
+      </children>
+      <children xmi:id="_n0P1N4QtEd-Xoc9J4tQR3g" type="7002">
+        <children xmi:id="_4imWRNXZEd-9N_BRuN6gMA" type="3002" element="#_4hs-YNXZEd-9N_BRuN6gMA">
+          <children xmi:id="_4ivgMNXZEd-9N_BRuN6gMA" type="5003"/>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_4imWRdXZEd-9N_BRuN6gMA" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_4imWRtXZEd-9N_BRuN6gMA" gradStartColor="15457762" gradEndColor="11302063"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_4imWR9XZEd-9N_BRuN6gMA"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_4imWSNXZEd-9N_BRuN6gMA"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_n0P1OIQtEd-Xoc9J4tQR3g"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_n0P1OYQtEd-Xoc9J4tQR3g"/>
+      </children>
+      <children xmi:id="_n0ZmMIQtEd-Xoc9J4tQR3g" type="7003">
+        <children xmi:id="_4HUvgNXZEd-9N_BRuN6gMA" type="3003" element="#_4HB0kNXZEd-9N_BRuN6gMA">
+          <children xmi:id="_4HUvhtXZEd-9N_BRuN6gMA" type="5001"/>
+          <children xmi:id="_4HUvh9XZEd-9N_BRuN6gMA" type="7004">
+            <children xmi:id="_4Hegh9XZEd-9N_BRuN6gMA" type="3004" element="#_4HLlkNXZEd-9N_BRuN6gMA">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_4HegiNXZEd-9N_BRuN6gMA" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_4HegidXZEd-9N_BRuN6gMA"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_4HUviNXZEd-9N_BRuN6gMA"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_4HUvidXZEd-9N_BRuN6gMA"/>
+          </children>
+          <children xmi:id="_4HUvitXZEd-9N_BRuN6gMA" type="7005">
+            <children xmi:id="_4HegitXZEd-9N_BRuN6gMA" type="3005" element="#_4HLlktXZEd-9N_BRuN6gMA">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_4Hegi9XZEd-9N_BRuN6gMA" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_4HegjNXZEd-9N_BRuN6gMA"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_4HUvi9XZEd-9N_BRuN6gMA"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_4HUvjNXZEd-9N_BRuN6gMA"/>
+          </children>
+          <children xmi:id="_4HeggNXZEd-9N_BRuN6gMA" type="7006">
+            <children xmi:id="_4HeghNXZEd-9N_BRuN6gMA" visible="false" type="7600">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_4HeghdXZEd-9N_BRuN6gMA" fontHeight="10"/>
+              <element xsi:nil="true"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_4HeghtXZEd-9N_BRuN6gMA"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_4HeggdXZEd-9N_BRuN6gMA"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_4HeggtXZEd-9N_BRuN6gMA"/>
+            <styles xsi:type="compositenotation:CollapseStyle" xmi:id="_4Hegg9XZEd-9N_BRuN6gMA"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_4HUvgdXZEd-9N_BRuN6gMA" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_4HUvgtXZEd-9N_BRuN6gMA" gradStartColor="16642791" gradEndColor="14072216"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_4HUvg9XZEd-9N_BRuN6gMA"/>
+          <styles xsi:type="compositenotation:CustomComponentIconStyle" xmi:id="_4HUvhNXZEd-9N_BRuN6gMA"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_4HUvhdXZEd-9N_BRuN6gMA" x="177" y="161"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_n0ZmMYQtEd-Xoc9J4tQR3g"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_n0ZmMoQtEd-Xoc9J4tQR3g"/>
+      </children>
+      <children xmi:id="_n0ZmM4QtEd-Xoc9J4tQR3g" type="7007">
+        <children xmi:id="_n0ZmNoQtEd-Xoc9J4tQR3g" visible="false" type="7600">
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_n0ZmN4QtEd-Xoc9J4tQR3g" fontHeight="10"/>
+          <element xsi:nil="true"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_n0ZmOIQtEd-Xoc9J4tQR3g"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_n0ZmNIQtEd-Xoc9J4tQR3g"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_n0ZmNYQtEd-Xoc9J4tQR3g"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" xmi:id="_n0P1MYQtEd-Xoc9J4tQR3g" fontHeight="10"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_n0P1MoQtEd-Xoc9J4tQR3g" x="10" y="10" width="500" height="350"/>
+    </children>
+    <styles xsi:type="notation:DiagramStyle" xmi:id="_nan0QYQtEd-Xoc9J4tQR3g"/>
+    <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_nan0QoQtEd-Xoc9J4tQR3g"/>
+    <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_nan0Q4QtEd-Xoc9J4tQR3g"/>
+    <edges xmi:id="_4imWQNXZEd-9N_BRuN6gMA" type="4002" source="#_4hs-YtXZEd-9N_BRuN6gMA" target="#_4Hegh9XZEd-9N_BRuN6gMA">
+      <styles xsi:type="notation:ConnectorStyle" xmi:id="_4imWQdXZEd-9N_BRuN6gMA" routing="Rectilinear"/>
+      <styles xsi:type="notation:FontStyle" xmi:id="_4imWQtXZEd-9N_BRuN6gMA" fontHeight="10"/>
+      <element xsi:nil="true"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_4imWQ9XZEd-9N_BRuN6gMA" points="[0, 30, -272, -191]$[266, 224, -6, 3]"/>
+    </edges>
+    <edges xmi:id="_4i5RMNXZEd-9N_BRuN6gMA" type="4003" source="#_4imWRNXZEd-9N_BRuN6gMA" target="#_4HegitXZEd-9N_BRuN6gMA">
+      <styles xsi:type="notation:ConnectorStyle" xmi:id="_4i5RMdXZEd-9N_BRuN6gMA" routing="Rectilinear"/>
+      <styles xsi:type="notation:FontStyle" xmi:id="_4i5RMtXZEd-9N_BRuN6gMA" fontHeight="10"/>
+      <element xsi:nil="true"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_4i5RM9XZEd-9N_BRuN6gMA" points="[20, 35, -361, -186]$[393, 224, 12, 3]"/>
+    </edges>
+  </notation:diagram>
+</sca:composite>

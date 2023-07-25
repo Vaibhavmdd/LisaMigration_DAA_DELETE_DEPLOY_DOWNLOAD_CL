@@ -1,0 +1,14 @@
+<project default="deploy.app">
+  <import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+
+<target name="deploy.app">
+		<create.app dataFile="${amxConfigFile}" />
+		<map.app.to.node dataFile="${amxConfigFile}" objectSelector="Environment/Application/Node[1]"/>
+		<add.app.to.node dataFile="${amxConfigFile}" objectSelector="Environment/Application/Node[2]"/>
+		<deploy.app dataFile="${amxConfigFile}"   />
+		<!-- <start.app dataFile="${amxConfigFile}"   /> -->
+	</target>
+
+
+</project>
+

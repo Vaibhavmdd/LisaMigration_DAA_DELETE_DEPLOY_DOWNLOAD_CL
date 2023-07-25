@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tibex="http://www.tibco.com/bs3.2/extensions" xmlns:tns="http://ns.tibco.com/Hello/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="HelloPT" targetNamespace="http://ns.tibco.com/Hello/" tibex:src="file:/C:/Users/apatanka/Desktop/InOut.wsdl">
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ns.tibco.com/Hello/">
+            <xs:element name="HelloRequest" type="xs:string"/>
+            <xs:element name="HelloResponse" type="xs:string"/>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="OperationRequest">
+        <wsdl:part element="tns:HelloRequest" name="firstName"/>
+    </wsdl:message>
+    <wsdl:message name="OperationResponse">
+        <wsdl:part element="tns:HelloResponse" name="greeting"/>
+    </wsdl:message>
+    <wsdl:portType name="HelloPT">
+        <wsdl:operation name="sayHello">
+            <wsdl:input message="tns:OperationRequest"/>
+            <wsdl:output message="tns:OperationResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

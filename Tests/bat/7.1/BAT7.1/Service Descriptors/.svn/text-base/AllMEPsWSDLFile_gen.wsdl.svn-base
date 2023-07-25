@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created by TIBCO WSDL-->
+<wsdl:definitions xmlns:tns="http://www.example.org/AllMEPsWSDLFile/_gen" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns0="http://www.example.org/AllMEPsWSDLFile/" xmlns:jms="http://www.tibco.com/namespaces/ws/2004/soap/binding/JMS" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:jndi="http://www.tibco.com/namespaces/ws/2004/soap/apis/jndi" name="AllMEPsWSDLFile" targetNamespace="http://www.example.org/AllMEPsWSDLFile/_gen">
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/AllMEPsWSDLFile/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:element name="NewOperationFault_data">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="fault" form="unqualified" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="NewOperationResponse_data">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="out" form="unqualified" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="NewOperationResponse_data_binary" type="xs:base64Binary"/>
+            <xs:element name="NewOperationResponse_data_text" type="xs:string"/>
+            <xs:element name="NewOperation_data">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="in" form="unqualified" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="NewOperation_data_binary" type="xs:base64Binary"/>
+            <xs:element name="NewOperation_data_text" type="xs:string"/>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="NewOperationRequest">
+        <wsdl:part name="parameters" element="ns0:NewOperation_data"/>
+    </wsdl:message>
+    <wsdl:message name="NewOperationRequest_binary">
+        <wsdl:part name="parameters" element="ns0:NewOperation_data_binary"/>
+    </wsdl:message>
+    <wsdl:message name="NewOperationResponse_text">
+        <wsdl:part name="parameters" element="ns0:NewOperationResponse_data_text"/>
+    </wsdl:message>
+    <wsdl:message name="NewOperationFault">
+        <wsdl:part name="parameters" element="ns0:NewOperationFault_data"/>
+    </wsdl:message>
+    <wsdl:message name="NewOperationResponse">
+        <wsdl:part name="parameters" element="ns0:NewOperationResponse_data"/>
+    </wsdl:message>
+    <wsdl:portType name="AllMEPsWSDLFile">
+        <wsdl:operation name="In">
+            <wsdl:input message="tns:NewOperationRequest"/>
+        </wsdl:operation>
+        <wsdl:operation name="InOutFault">
+            <wsdl:input message="tns:NewOperationRequest_binary"/>
+            <wsdl:output message="tns:NewOperationResponse_text"/>
+            <wsdl:fault name="fault" message="tns:NewOperationFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="InOut">
+            <wsdl:input message="tns:NewOperationRequest"/>
+            <wsdl:output message="tns:NewOperationResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="SOAPService_Binding1" type="tns:AllMEPsWSDLFile">
+        <soap:binding style="document" transport="http://www.tibco.com/namespaces/ws/2004/soap/binding/JMS"/>
+        <jms:binding messageFormat="text"/>
+        <wsdl:operation name="In">
+            <wsdl:documentation/>
+            <soap:operation style="document" soapAction="In"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="InOutFault">
+            <wsdl:documentation/>
+            <soap:operation style="document" soapAction="InOutFault"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="parameters"/>
+            </wsdl:output>
+            <wsdl:fault name="fault">
+                <soap:fault use="literal" name="fault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="InOut">
+            <wsdl:documentation/>
+            <soap:operation style="document" soapAction="InOut"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="AllMEPsWSDLFile">
+        <wsdl:port name="SOAPService_Binding1" binding="tns:SOAPService_Binding1">
+            <soap:address location=""/>
+            <jndi:context/>
+            <jms:connectionFactory>JMSConnectionFactory</jms:connectionFactory>
+            <!--The element targetAddress value (topic.sample) is the jndi name of the destination. Please replace this with physical destination name at the service consumption point.-->
+            <jms:targetAddress destination="topic">topic.sample</jms:targetAddress>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

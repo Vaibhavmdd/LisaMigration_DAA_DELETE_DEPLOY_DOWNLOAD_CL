@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:sca="http://www.springframework.org/schema/sca" xmlns:tibco="http://xsd.tns.tibco.com/2008/amf/extension/spring"
+	xsi:schemaLocation="http://xsd.tns.tibco.com/2008/amf/extension/spring http://xsd.tns.tibco.com/schema/sca/tibco-ext-spring-sca.xsd http://www.springframework.org/schema/sca http://www.osoa.org/xmlns/sca/1.0/spring-sca.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="HelloPTBean" class="com.tibco.ns.Hello.HelloPTImpl"
+		destroy-method="destroy" init-method="init">
+		<property name="helloPT2" ref="HelloPT2" />
+		<property name="BAT_5_13_jbdc_2" ref="BAT_5_13_jbdc_2" />
+	</bean>
+	<sca:service name="HelloPT" target="HelloPTBean"
+		type="com.tibco.ns.Hello.HelloPT" />
+	<tibco:service-metadata name="HelloPT"
+		wsdl-location="/BAT_5_13/Service Descriptors/InOut.wsdl"
+		wsdl-interface="http://ns.tibco.com/Hello/#HelloPT" />
+	<sca:reference name="HelloPT2" type="com.tibco.ns.Hello.HelloPT" />
+	<tibco:reference-metadata name="HelloPT2"
+		target="HelloPTBean" wsdl-location="/BAT_5_13/Service Descriptors/InOut.wsdl"
+		wsdl-interface="http://ns.tibco.com/Hello/#HelloPT" />
+	<sca:property id="BAT_5_13_jbdc_2" name="BAT_5_13_jbdc_2"
+		type="javax.sql.DataSource" />
+</beans>

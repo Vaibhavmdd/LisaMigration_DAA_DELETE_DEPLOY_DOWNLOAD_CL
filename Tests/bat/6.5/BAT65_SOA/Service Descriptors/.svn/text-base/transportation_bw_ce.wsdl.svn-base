@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created by TIBCO WSDL-->
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tibco.com/matrix/qa/wsdl/choice/ChoiceOperationImpl/ChoiceOperationImpl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns0="http://tibco.com/matrix/qa/xsd/transportation" name="Untitled" targetNamespace="http://tibco.com/matrix/qa/wsdl/choice/ChoiceOperationImpl/ChoiceOperationImpl">
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://tibco.com/matrix/qa/xsd/transportation" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:element name="FaultMessage">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="FaukResaon" type="xs:string"/>
+                        <xs:element name="FaultCode" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="transportation">
+                <xs:complexType>
+                    <xs:choice>
+                        <xs:element name="automobile" type="xs:string"/>
+                        <xs:element name="plane" type="xs:string"/>
+                        <xs:element name="train" type="xs:string"/>
+                    </xs:choice>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:service name="Transporation">
+        <wsdl:port name="SOAPEventSource" binding="tns:SOAPEventSourceBinding">
+            <soap:address location="http://localhost:9108/Server/Transporation"/>
+        </wsdl:port>
+    </wsdl:service>
+    <wsdl:portType name="ChoicePortType">
+        <wsdl:operation name="ChoiceOperation">
+            <wsdl:input message="tns:ChoiceInput"/>
+            <wsdl:output message="tns:ChoiceOutput"/>
+            <wsdl:fault name="fault1" message="tns:Faut"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="SOAPEventSourceBinding" type="tns:ChoicePortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="ChoiceOperation">
+            <soap:operation style="rpc" soapAction="/Server/Transporation"/>
+            <wsdl:input>
+                <soap:body use="literal" namespace="http://InputMessageNamespace" parts="InPart"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" namespace="http://OutputMessageNamespace" parts="OutPart"/>
+            </wsdl:output>
+            <wsdl:fault name="fault1">
+                <soap:fault use="literal" namespace="http://FaultMessageNamespace" name="fault1"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:message name="ChoiceInput">
+        <wsdl:part name="InPart" element="ns0:transportation"/>
+    </wsdl:message>
+    <wsdl:message name="ChoiceOutput">
+        <wsdl:part name="OutPart" element="ns0:transportation"/>
+    </wsdl:message>
+    <wsdl:message name="Faut">
+        <wsdl:part name="part1" element="ns0:FaultMessage"/>
+    </wsdl:message>
+</wsdl:definitions>

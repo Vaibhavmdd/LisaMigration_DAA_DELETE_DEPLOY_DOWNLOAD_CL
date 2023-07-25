@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types" xmlns:amxdata_binding="http://tibco.com/amxadministrator/command/line/types_binding" xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base" xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd http://tibco.com/amxadministrator/command/line/types_binding ../schemas/bindingdata.xsd" >
+
+<Environment xsi:type="amxdata:Environment" name="QAEnvironment_jpandya-dt" description="Test Environment" contact="TIBCO">
+    
+    <Node xsi:type="amxdata:Node" name="QANode1">
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="http_1" resourceTemplateName="http_1"/>
+	</Node>
+	
+	<Application xsi:type="amxdata:Application" name="Context-1" contact="TIBCO Inc." description="AMTAK 3.0 - Context Test Case - SOAP -> Java">
+		<Component xsi:type="amxdata:Component" name="Java1">
+		        <Node name="QANode2" environmentName="QAEnvironment_jpandya-dt"/>
+		</Component>
+	    
+		<PromotedService xsi:type="amxdata_base:Service_base" name="HelloPT">
+			<Binding xsi:type="amxdata:Binding" name="SOAPService_Binding1" >
+                <Node name="QANode1" environmentName="QAEnvironment_jpandya-dt" />
+				<Property  xsi:type="amxdata:Property" name="HttpInboundConnectionConfig"  value="http_1"/>
+				<!-- FOR Reference binding
+				Property  xsi:type="amxdata:Property" name="HttpOutboundConnectionConfig"  value="httpClient1"/-->
+			</Binding>
+		</PromotedService>
+		
+		<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="ContextParameters"/>
+    </Application>
+</Environment>		
+		
+	<ResourceTemplate xsi:type="amxdata:HttpConnectorResourceTemplate" name="http_1" host="jpandya-dt" port="8890" headerBufferSize="4096" requestBufferSize="8192" responseBufferSize="24576" maxIdleTime="200000" lowResourceMaxIdleTime="-1" description="This is HttpConnector RT"/>
+	
+	<DAA xsi:type="amxdata:DAA" description="Simple-ContextApp" location="./ContextParameters/Deployment Artifacts/ContextParameters.daa" importResourceTemplates="false"/>
+
+</amxdata_base:Enterprise>

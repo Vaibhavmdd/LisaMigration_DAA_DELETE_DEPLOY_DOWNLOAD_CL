@@ -1,0 +1,16 @@
+#The setup_eb.tst is only used for the scenario which manully copy eb files or replace jar files.
+#The setup_eb.tst is only used for the scenario which manully copy eb files or replace jar files.
+#To avoid any impact of exsiting setup.tst, you can just achive by below ways:
+1. rename the setup.tst to setup.tst.orig
+2. rename the setup_eb.tst to setup.tst.
+3. After automation is done, rename setup.tst.orig to setup.tst
+
+You will have to check out the subcase located at :
+Affected files:
+1. subcase is added.
+ https://svn.tibco.com/svn/amf/trunk/qa/3.0/libraries/amx/com/tibco/amx/CopyEBJars.tst
+2.bat\setup\enableEB.properties
+3. bat\setup\setup_eb.tst 
+For the case your suite is using setup.tst
+4. bat\setup\tctSilentSetup_eb.tst
+For the case your suite is using tct tctSilentSetup.tst

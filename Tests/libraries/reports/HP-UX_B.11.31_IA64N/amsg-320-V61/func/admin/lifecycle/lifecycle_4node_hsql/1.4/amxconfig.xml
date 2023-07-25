@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise 
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/trinity/server/credentialserver/cmdline/credentialserver ../schemas/CredentialServer.xsd http://tibco.com/amf/hpa/core/admin/bootstrap/types ../schemas/amxdata_bootstrap.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd http://tibco.com/amxadministrator/command/line/types_jmssr_base ../schemas/jmssr_base.xsd http://tibco.com/governance/common/cli/types_govobj ../schemas/govObj.xsd" 
+	xmlns:xalan="http://xml.apache.org/xalan" 
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types" 
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base" 
+	xmlns:cs="http://tibco.com/trinity/server/credentialserver/cmdline/credentialserver" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:amxdata_binding="http://tibco.com/amxadministrator/command/line/types_binding"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference" 
+	xmlns:amxdata_bootstrap="http://tibco.com/amf/hpa/core/admin/bootstrap/types"
+	xmlns:amxdata_jmssr="http://tibco.com/amxadministrator/command/line/types_jmssr"
+	xmlns:amxdata_jmssr_base="http://tibco.com/amxadministrator/command/line/types_jmssr_base"
+	xmlns:govobj="http://tibco.com/governance/common/cli/types_govobj">
+
+<Environment 
+	xsi:type="amxdata:Environment" 
+	name="QAEnvironment_hpita17" 
+	description="QA BAT Environment" 
+	contact="TIBCO">
+   	
+			<Node xsi:type="amxdata:Node" 
+			description="QA Node 1" 
+			contact="TIBCO QA" 
+			hostName="SystemHost_hpita17" 
+			name="QANode1" 
+			portNumber="6021"
+			enableDebug="true"
+            debugPortNumber="1129" >
+			</Node>
+			
+			<Node xsi:type="amxdata:Node" 
+			description="QA Node 2" 
+			contact="TIBCO QA" 
+			hostName="SystemHost_hpita17" 
+			name="QANode2" 
+			portNumber="6031"
+			enableDebug="true"
+            debugPortNumber="1139" >
+			</Node>
+			
+			<Node xsi:type="amxdata:Node" 
+			description="QA Node 3" 
+			contact="TIBCO QA" 
+			hostName="SystemHost_hpita17" 
+			name="QANode3" 
+			portNumber="6041"
+			enableDebug="true"
+            debugPortNumber="1149" >
+			</Node>
+			
+			<Node xsi:type="amxdata:Node" 
+			description="QA Node 4" 
+			contact="TIBCO QA" 
+			hostName="SystemHost_hpita17" 
+			name="QANode4" 
+			portNumber="6061"
+			enableDebug="true"
+            debugPortNumber="1159" >
+			</Node>
+				
+		<Application xsi:type="amxdata:Application" name="LifeCycleTestApp1"
+			importBindings="true" contact="TIBCO Inc."
+			description="">
+				
+			<Component xsi:type="amxdata:Component" name="Component1">
+				<Node name="QANode1" environmentName="QAEnvironment_hpita17" />
+			</Component>
+
+			<Component xsi:type="amxdata:Component" name="Component2">
+				<Node name="QANode1" environmentName="QAEnvironment_hpita17" />
+			</Component>
+			<Component xsi:type="amxdata:Component" name="Component3">
+				<Node name="QANode1" environmentName="QAEnvironment_hpita17" />
+			</Component>
+
+			<Component xsi:type="amxdata:Component" name="Java3">
+				<Node name="QANode2" environmentName="QAEnvironment_hpita17" />
+			</Component>
+			<Component xsi:type="amxdata:Component" name="Java4">
+				<Node name="QANode4" environmentName="QAEnvironment_hpita17" />
+			</Component>
+			
+				
+			<PromotedService xsi:type="amxdata_base:Service_base"
+				name="echoString1">
+				
+				<Binding xsi:type="amxdata_binding:SoapHttpServiceBinding" name="soap.bindingBinding1" 
+					description="desc"
+					style="document"
+					encoding="literal"
+					endpointURI="/echoString1/"
+					httpInboundConnectionJNDIName="httpConnector1" >
+					<Node name="QANode1" environmentName="QAEnvironment_hpita17" />
+				</Binding>
+				
+			</PromotedService>
+
+            	     
+			<PromotedService xsi:type="amxdata_base:Service_base" name="mathService1">
+			
+			<Binding xsi:type="amxdata_binding:SoapHttpServiceBinding"	name="soap.bindingAddedInAdmin" 
+					description="desc"
+					style="document"
+					encoding="literal"
+					endpointURI="/mathService1/"
+					httpInboundConnectionJNDIName="httpConnector1" >
+					<Node name="QANode1" environmentName="QAEnvironment_hpita17" />
+				</Binding>
+							
+				
+			</PromotedService>
+			
+			<PromotedService xsi:type="amxdata_base:Service_base" name="mathService1">
+				
+				<Binding xsi:type="amxdata_binding:SoapHttpServiceBinding"	name="soap.bindingBinding1" />
+			</PromotedService>
+		     
+			<PromotedService xsi:type="amxdata_base:Service_base"
+				name="echoString2">
+				
+				<Binding xsi:type="amxdata_binding:SoapHttpServiceBinding"	name="soap.bindingBinding1" 
+					description="desc"
+					style="document"
+					encoding="literal"
+					endpointURI="/echoString2/"
+					httpInboundConnectionJNDIName="httpConnector1">
+				       <Node name="QANode1" environmentName="QAEnvironment_hpita17" />
+				</Binding>
+				
+			</PromotedService>
+
+			<PromotedService xsi:type="amxdata_base:Service_base"
+				name="mathService2">
+							
+				<Binding xsi:type="amxdata_binding:SoapHttpServiceBinding"	name="soap.bindingAddedInAdmin" 
+					description="desc"
+					style="document"
+					encoding="literal"
+					endpointURI="/mathService2/"
+					httpInboundConnectionJNDIName="httpConnector1" >
+					<Node name="QANode1" environmentName="QAEnvironment_hpita17" />
+				</Binding>
+				
+				
+			</PromotedService>
+			
+            	       <PromotedReference xsi:type="amxdata_base:Reference_base" name="Reference1">
+				<Wire xsi:type="amxdata:Wire">
+					<ServiceBinding xsi:type="amxdata_reference:Binding_reference"
+						bindingName="virtualization" serviceName="echoString1" ownerName="TargetSvcForLifeCycleTestApp1"
+						ownerType="Application" />
+				</Wire>
+			
+			</PromotedReference>
+			
+            	       <PromotedReference xsi:type="amxdata_base:Reference_base" name="Reference2">
+				<Wire xsi:type="amxdata:Wire">
+					<ServiceBinding xsi:type="amxdata_reference:Binding_reference"
+						bindingName="virtualization" serviceName="echoString1" ownerName="TargetSvcForLifeCycleTestApp1"
+						ownerType="Application" />
+				</Wire>
+			
+			</PromotedReference>
+			
+			<PromotedReference xsi:type="amxdata_base:Reference_base" name="Reference3">
+				<Wire xsi:type="amxdata:Wire">
+					<ServiceBinding xsi:type="amxdata_reference:Binding_reference"
+						bindingName="virtualization" serviceName="echoString1" ownerName="TargetSvcForLifeCycleTestApp1"
+						ownerType="Application" />
+				</Wire>
+			
+			</PromotedReference>
+			
+			<PromotedReference xsi:type="amxdata_base:Reference_base" name="Reference4">
+				<Wire xsi:type="amxdata:Wire">
+					<ServiceBinding xsi:type="amxdata_reference:Binding_reference"
+						bindingName="virtualization" serviceName="echoString1" ownerName="TargetSvcForLifeCycleTestApp1"
+						ownerType="Application" />
+				</Wire>
+						
+			</PromotedReference>
+			
+			
+			<ApplicationTemplate
+				xsi:type="amxdata_reference:ApplicationTemplate_reference" name="com.tibco.qa.gui.test.soa" />
+		</Application>
+		
+		<Application xsi:type="amxdata:Application" name="TargetSvcForLifeCycleTestApp1"
+			importBindings="true" contact="TIBCO Inc."
+			description="">
+						
+				
+			<Node name="QANode1" environmentName="QAEnvironment_hpita17" />
+							
+			
+			<ApplicationTemplate
+				xsi:type="amxdata_reference:ApplicationTemplate_reference" name="com.tibco.qa.gui.test.target.soa" />
+		</Application>
+	</Environment>
+	
+	<DAA xsi:type="amxdata:DAA" description="com.tibco.qa.gui.test.soa"
+		location="com.tibco.qa.gui.test.soa.daa" importResourceTemplates="false">
+	</DAA>
+	
+
+	<DAA xsi:type="amxdata:DAA" description="com.tibco.qa.gui.test.target.soa"
+		location="com.tibco.qa.gui.test.target.soa.daa" importResourceTemplates="false">
+	</DAA>
+</amxdata_base:Enterprise>

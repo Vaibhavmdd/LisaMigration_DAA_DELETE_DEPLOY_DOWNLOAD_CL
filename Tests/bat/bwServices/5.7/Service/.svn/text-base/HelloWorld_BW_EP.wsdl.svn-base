@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created by TIBCO WSDL-->
+<wsdl:definitions xmlns:ns0="http://ns.tibco.com/Hello1/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.example.com/HelloWorld1/sayHelloWorld1Impl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="Untitled" targetNamespace="http://www.example.com/HelloWorld1/sayHelloWorld1Impl">
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ns.tibco.com/Hello1/">
+            <xs:element name="HelloWorldRequest" type="xs:string"/>
+            <xs:element name="HelloWorldResponse" type="xs:string"/>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:service name="Service__5.7">
+        <wsdl:port binding="tns:SOAPEventSourceBinding" name="SOAPEventSource">
+            <soap:address location="https://SPIDERMAN:6767/5.7/Service/Service_5.7"/>
+        </wsdl:port>
+    </wsdl:service>
+    <wsdl:portType name="HelloWorld1PT">
+        <wsdl:operation name="sayHelloWorld">
+            <wsdl:input message="tns:OperationWorldRequest"/>
+            <wsdl:output message="tns:OperationWorldResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="SOAPEventSourceBinding" type="tns:HelloWorld1PT">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="sayHelloWorld">
+            <soap:operation soapAction="/5.7/Service/Service_5.7" style="rpc"/>
+            <wsdl:input>
+                <soap:body namespace="http://InputMessageNamespace" parts="name" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body namespace="http://OutputMessageNamespace" parts="greeting" use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:message name="OperationWorldRequest">
+        <wsdl:part element="ns0:HelloWorldRequest" name="name"/>
+    </wsdl:message>
+    <wsdl:message name="OperationWorldResponse">
+        <wsdl:part element="ns0:HelloWorldResponse" name="greeting"/>
+    </wsdl:message>
+</wsdl:definitions>

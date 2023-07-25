@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:pfx2="http://xmlns.example.com/1197425851950" xmlns:pfx3="http://xmlns.example.com/1197425851950/GetNumberImpl" xmlns:pfx="http://tibco.com/matrix/qa/wsdl/list" xmlns:pfx7="http://tibco.com/matrix/qa/wsdl/echostring/OperationImpl/OperationImpl" xmlns:pfx4="http://tibco.com/matrix/qa/wsdl/purchaseorder" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:pfx8="http://tibco.com/matrix/qa/wsdl/choice/ChoiceOperationImpl" xmlns:ns1="http://www.tibco.com/pe/DeployedVarsType" xmlns:pfx9="http://xmlns.example.com/1189812480562/OperationImpl" xmlns:pfx5="http://tibco.com/matrix/qa/wsdl/echostring" xmlns:pfx6="http://tibco.com/matrix/qa/xsd/echostring" xmlns:ns="www.tibco.com/plugin/Sleep" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    <wsdl:import namespace="http://tibco.com/matrix/qa/wsdl/list"/>
+    <wsdl:import namespace="http://xmlns.example.com/1197425851950" location="/WSDL/Lottery.wsdl"/>
+    <wsdl:import namespace="http://xmlns.example.com/1197425851950/GetNumberImpl" location="/Client/LotteryType.wsdl"/>
+    <wsdl:import namespace="http://tibco.com/matrix/qa/wsdl/purchaseorder" location="/WSDL/PurchaseOrder.wsdl"/>
+    <wsdl:import namespace="http://tibco.com/matrix/qa/wsdl/echostring"/>
+    <wsdl:import namespace="http://tibco.com/matrix/qa/wsdl/echostring/OperationImpl/OperationImpl"/>
+    <pd:name>Server/EchoStringServer.process</pd:name>
+    <pd:startName>SOAPEventSource</pd:startName>
+    <pd:startX>0</pd:startX>
+    <pd:startY>0</pd:startY>
+    <pd:returnBindings/>
+    <pd:starter name="SOAPEventSource">
+        <pd:type>com.tibco.plugin.soap.SOAPEventSource</pd:type>
+        <pd:resourceType>ae.activities.SOAPEventSourceUI</pd:resourceType>
+        <pd:x>64</pd:x>
+        <pd:y>135</pd:y>
+        <config>
+            <soapVersion>SOAP 1.1</soapVersion>
+            <sharedChannel>/Sharedresouce/HTTP Connection.sharedhttp</sharedChannel>
+            <service>pfx7:EchoStringPort</service>
+            <wsdlNamespaceRoot>http://tibco.com/matrix/qa/wsdl/echostring/OperationImpl/OperationImpl/OperationImpl</wsdlNamespaceRoot>
+            <operation>Operation</operation>
+            <portAddressPrefix/>
+            <operationStyle>rpc</operationStyle>
+            <soapUse>literal</soapUse>
+            <inputNamespace>http://InputMessageNamespace</inputNamespace>
+            <outputNamespace>http://OutputMessageNamespace</outputNamespace>
+            <faultNamespace>http://FaultMessageNamespace</faultNamespace>
+            <embedWsdlComponents>true</embedWsdlComponents>
+            <embedSchemaComponents>true</embedSchemaComponents>
+            <soapAction>/Server/EchoStringInOut</soapAction>
+            <soapAttachmentStyle>SwA</soapAttachmentStyle>
+            <inputAttachmentBindings/>
+            <outputAttachmentBindings/>
+        </config>
+        <pd:inputBindings/>
+    </pd:starter>
+    <pd:endName>End</pd:endName>
+    <pd:endX>635</pd:endX>
+    <pd:endY>115</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1262848903769</pd:targetNamespace>
+    <pd:activity name="SOAPSendReply">
+        <pd:type>com.tibco.plugin.soap.SOAPSendReplyActivity</pd:type>
+        <pd:resourceType>ae.activities.SOAPSendReplyUI</pd:resourceType>
+        <pd:x>233</pd:x>
+        <pd:y>44</pd:y>
+        <config>
+            <eventSource>SOAPEventSource</eventSource>
+        </config>
+        <pd:inputBindings>
+            <OperationResponse>
+                <OutPart>
+                    <pfx6:OutString>
+                        <xsl:value-of select="&quot;as&quot;"/>
+                    </pfx6:OutString>
+                </OutPart>
+            </OperationResponse>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="SOAPSendFault">
+        <pd:type>com.tibco.plugin.soap.SOAPSendFaultActivity</pd:type>
+        <pd:resourceType>ae.activities.SOAPSendFaultUI</pd:resourceType>
+        <pd:x>293</pd:x>
+        <pd:y>223</pd:y>
+        <config>
+            <faultMessage>&lt;Default&gt;</faultMessage>
+            <eventSource>SOAPEventSource</eventSource>
+        </config>
+        <pd:inputBindings>
+            <defaultFaultElement>
+                <faultcode>
+                    <xsl:value-of select="&quot;undeclaredfaultcode&quot;"/>
+                </faultcode>
+                <faultstring>
+                    <xsl:value-of select="&quot;undeclaredfaultstring&quot;"/>
+                </faultstring>
+                <faultactor>
+                    <xsl:value-of select="&quot;undeclaredfaultactor&quot;"/>
+                </faultactor>
+            </defaultFaultElement>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="SOAPSendFault-1">
+        <pd:type>com.tibco.plugin.soap.SOAPSendFaultActivity</pd:type>
+        <pd:resourceType>ae.activities.SOAPSendFaultUI</pd:resourceType>
+        <pd:x>283</pd:x>
+        <pd:y>131</pd:y>
+        <config>
+            <faultMessage>FaultMessage</faultMessage>
+            <eventSource>SOAPEventSource</eventSource>
+        </config>
+        <pd:inputBindings>
+            <FaultMessage>
+                <faultcode>
+                    <xsl:value-of select="&quot;declaredfaultcode&quot;"/>
+                </faultcode>
+                <faultstring>
+                    <xsl:value-of select="&quot;declaredfaultstring&quot;"/>
+                </faultstring>
+                <faultactor>
+                    <xsl:value-of select="&quot;declaredfaultactor&quot;"/>
+                </faultactor>
+                <detail>
+                    <pfx6:FaultString>
+                        <xsl:value-of select="&quot;declaredfaultstringdetail&quot;"/>
+                    </pfx6:FaultString>
+                </detail>
+            </FaultMessage>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Sleep">
+        <pd:type>com.tibco.plugin.timer.SleepActivity</pd:type>
+        <pd:resourceType>ae.activities.sleep</pd:resourceType>
+        <pd:x>204</pd:x>
+        <pd:y>290</pd:y>
+        <config/>
+        <pd:inputBindings>
+            <ns:SleepInputSchema>
+                <IntervalInMillisec>
+                    <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/bat_6_1/timeout"/>
+                </IntervalInMillisec>
+            </ns:SleepInputSchema>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="SOAPSendReply-1">
+        <pd:type>com.tibco.plugin.soap.SOAPSendReplyActivity</pd:type>
+        <pd:resourceType>ae.activities.SOAPSendReplyUI</pd:resourceType>
+        <pd:x>429</pd:x>
+        <pd:y>286</pd:y>
+        <config>
+            <eventSource>SOAPEventSource</eventSource>
+        </config>
+        <pd:inputBindings>
+            <OperationResponse>
+                <OutPart>
+                    <pfx6:OutString>
+                        <xsl:value-of select="$SOAPEventSource/Operation/InPart/pfx6:InString"/>
+                    </pfx6:OutString>
+                </OutPart>
+            </OperationResponse>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>SOAPEventSource</pd:from>
+        <pd:to>SOAPSendFault</pd:to>
+        <pd:xpathDescription>undeclaredfault</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$SOAPEventSource/Operation/InPart/pfx6:InString="undeclaredfault"</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>SOAPSendFault</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>SOAPEventSource</pd:from>
+        <pd:to>SOAPSendFault-1</pd:to>
+        <pd:xpathDescription>declaredfault</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$SOAPEventSource/Operation/InPart/pfx6:InString="declaredfault"</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>SOAPSendFault-1</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>SOAPEventSource</pd:from>
+        <pd:to>SOAPSendReply</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>otherwise</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>SOAPSendReply</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>SOAPEventSource</pd:from>
+        <pd:to>Sleep</pd:to>
+        <pd:xpathDescription>timeoutfault</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$SOAPEventSource/Operation/InPart/pfx6:InString="timeout"</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Sleep</pd:from>
+        <pd:to>SOAPSendReply-1</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>SOAPSendReply-1</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>

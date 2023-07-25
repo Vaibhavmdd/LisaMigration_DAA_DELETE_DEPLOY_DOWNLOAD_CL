@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created by TIBCO WSDL-->
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tibco.com/matrix/qa/wsdl/echostring/OperationImpl/opeChineseImpl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns0="http://tibco.com/matrix/qa/xsd/echostring" name="Untitled" targetNamespace="http://tibco.com/matrix/qa/wsdl/echostring/OperationImpl/opeChineseImpl">
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://tibco.com/matrix/qa/xsd/echostring" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:element name="FaultString" type="xs:string"/>
+            <xs:element name="InString" type="xs:string"/>
+            <xs:element name="OutString" type="xs:string"/>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:service name="EchoStringChinese">
+        <wsdl:port name="SOAPEventSource" binding="tns:SOAPEventSourceBinding">
+            <soap:address location="http://rainkang:9015/Element_Simple/Server/EchoStringChinese"/>
+        </wsdl:port>
+    </wsdl:service>
+    <wsdl:portType name="EchoStringPort">
+        <wsdl:operation name="opeChinese">
+            <wsdl:input message="tns:InputChinese"/>
+            <wsdl:output message="tns:OutChinese"/>
+            <wsdl:fault name="fault1" message="tns:FaultChinese"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="SOAPEventSourceBinding" type="tns:EchoStringPort">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="opeChinese">
+            <soap:operation style="document" soapAction="/Server/EchoString"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="InPart"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="OutPart"/>
+            </wsdl:output>
+            <wsdl:fault name="fault1">
+                <soap:fault use="literal" name="fault1"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:message name="InputChinese">
+        <wsdl:part name="InPart" element="ns0:InString"/>
+    </wsdl:message>
+    <wsdl:message name="OutChinese">
+        <wsdl:part name="OutPart" element="ns0:OutString"/>
+    </wsdl:message>
+    <wsdl:message name="FaultChinese">
+        <wsdl:part name="part" element="ns0:FaultString"/>
+    </wsdl:message>
+</wsdl:definitions>

@@ -1,0 +1,12 @@
+<project default="deploy.app">
+
+  <import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+  <target name="deploy.app">		
+		<upload.daa dataFile="${amxConfigFile}" />
+		<enable.feature dataFile="${amxConfigFile}" />
+		<reprovision.Node dataFile="${amxConfigFile}" />	
+	</target>
+</project>
+
+
+

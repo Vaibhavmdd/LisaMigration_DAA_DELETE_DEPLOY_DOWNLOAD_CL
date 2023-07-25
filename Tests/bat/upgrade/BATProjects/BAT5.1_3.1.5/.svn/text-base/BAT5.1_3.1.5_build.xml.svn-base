@@ -1,0 +1,274 @@
+<project name="application_build" default="all">
+
+    <!-- This property lets you safely define all paths relative to the absolute location
+         of this Ant file. -->
+    <dirname property="admin.samples.directory" file="${ant.file.application_build}"/>
+
+    <!-- This import defines the custom AMXAdminTask. -->
+    <import file="${admin.samples.directory}/admin-scripts-base.xml"/>
+    
+    <!-- Predefine ${dataFile} to apply the targets in this script with different parameters. -->
+    <property name="dataFile" value="${admin.samples.directory}/BAT5.1_3.1.5_data.xml"/>
+    
+    <!-- Predefine ${instanceProperties} to control a different Administrator server with this script. -->
+    <property name="instanceProperties" value="${admin.samples.directory}/remote_props.properties"/>
+    
+    <target name="all" depends="stop-applications, create-resourcetemplate, create-resourceinstance, add-daa, add-applications, map-application-to-node, deploy-applications"/> <!--prepare-to-undeploy, remove.feature, remove.apptemplate, delete-applications,-->
+
+	<target name="create-resourcetemplate">
+		<AMXAdminTask
+			remote="true"
+			propsFile="${instanceProperties}"
+			action="add"
+			dataFile="${dataFile}"
+			objectSelector="ResourceTemplate"
+			overwrite="true"
+			merge="true"
+			createIfNotExists="true"
+			force="true"
+			failOnError="false"/>
+	</target>
+  
+	
+    <target name="add-daa">
+        <AMXAdminTask 
+            action="add" 
+            objectSelector="DAA" 
+            remote="true" 
+            propsFile="${instanceProperties}" 
+            dataFile="${dataFile}" 
+            overwrite="true" merge="true" createIfNotExists="true" force="false" failOnError="false" /> 
+    </target>
+
+    <target name="add-applications">
+        <AMXAdminTask 
+            action="add" 
+            objectSelector="Environment" 
+            remote="true" 
+            propsFile="${instanceProperties}" 
+            dataFile="${dataFile}" 
+            overwrite="true" merge="true" createIfNotExists="true" force="true" failOnError="false" /> 
+    
+        <AMXAdminTask 
+            action="add" 
+            objectSelector="*/Application" 
+            remote="true" 
+            propsFile="${instanceProperties}" 
+            dataFile="${dataFile}" 
+            overwrite="true" merge="true" createIfNotExists="true" force="true" failOnError="false" /> 
+    </target>
+
+    <target name="edit-properties">
+        <AMXAdminTask 
+            action="edit" 
+            objectSelector="//Application/Property" 
+            remote="true" 
+            propsFile="${instanceProperties}" 
+            dataFile="${dataFile}" 
+            overwrite="true" merge="true" createIfNotExists="true" force="false" failOnError="false" /> 
+    </target>
+
+   <!-- <target name="edit-applications">
+        <AMXAdminTask 
+            action="edit" 
+            objectSelector="Environment//Application" 
+            remote="true" 
+            propsFile="${instanceProperties}" 
+            dataFile="${dataFile}" 
+            overwrite="true" merge="true" createIfNotExists="true" force="true" failOnError="false" /> 
+        <AMXAdminTask 
+            action="edit" 
+            objectSelector="Environment/Application" 
+            remote="true" 
+            propsFile="${instanceProperties}" 
+            dataFile="${dataFile}" 
+            overwrite="true" merge="true" createIfNotExists="true" force="true" failOnError="false" /> 
+    </target>
+--> 
+    <target name="wire-applications">
+        <AMXAdminTask
+            action="set"
+            objectSelector="//PromotedReference/Wire"
+            remote="true"
+            propsFile="${instanceProperties}"
+            dataFile="${dataFile}" 
+            overwrite="true" merge="true" createIfNotExists="true" force="true" failOnError="false"/>
+    </target>
+
+    
+    <target name="deploy-applications" depends="install-resourceinstance, wire-applications">
+        <AMXAdminTask 
+            action="deploy" 
+            objectSelector="Environment//Application" 
+            remote="true" 
+            propsFile="${instanceProperties}" 
+            dataFile="${dataFile}" 
+            force="true" failOnError="true" /> 
+    </target>
+    
+    
+  <target name="delete-applications">
+        <AMXAdminTask 
+            action="delete" 
+            objectSelector="Environment//Application" 
+            remote="true" 
+            propsFile="${instanceProperties}" 
+            dataFile="${dataFile}" 
+            force="false" failOnError="false" /> 
+    </target>
+    
+    <target name="start-applications">
+        <AMXAdminTask 
+            action="start" 
+            objectSelector="Environment//Application" 
+            remote="true" 
+            propsFile="${instanceProperties}" 
+            dataFile="${dataFile}" 
+            failOnError="false" /> 
+    </target>
+    
+    <target name="stop-applications">
+        <AMXAdminTask 
+            action="stop" 
+            objectSelector="Environment//Application" 
+            remote="true" 
+            propsFile="${instanceProperties}" 
+            dataFile="${dataFile}" 
+            force="true" failOnError="false" /> 
+    </target>
+    
+    <target name="prepare-to-undeploy">
+        <AMXAdminTask 
+            action="prepareToUndeploy" 
+            objectSelector="Environment//Application" 
+            remote="true" 
+            propsFile="${instanceProperties}" 
+            dataFile="${dataFile}" 
+            failOnError="false" /> 
+    </target>
+    
+    <!--<target name="start-application-on-node">
+        <AMXAdminTask 
+            action="start" 
+            objectSelector="Environment//Application/Node" 
+            remote="true" 
+            propsFile="${instanceProperties}" 
+            dataFile="${dataFile}" 
+            failOnError="false" /> 
+    </target>
+    
+    <target name="stop-application-on-node">
+        <AMXAdminTask 
+            action="stop" 
+            objectSelector="Environment//Application/Node" 
+            remote="true" 
+            propsFile="${instanceProperties}" 
+            dataFile="${dataFile}" 
+            force="true" failOnError="false" /> 
+    </target> -->
+    
+    <target name="map-application-to-node">
+        <AMXAdminTask 
+            action="set" 
+            objectSelector="Environment//Application/Node" 
+            remote="true" 
+            propsFile="${instanceProperties}" 
+            dataFile="${dataFile}" 
+            overwrite="true" merge="true" createIfNotExists="true" force="true" failOnError="false" /> 
+    </target>
+    
+    <!--<target name="setLog">
+        <AMXAdminTask
+            action="set"
+            objectSelector="Environment//Application/Logger"
+            remote="true"
+            propsFile="${instanceProperties}"
+            dataFile="${dataFile}"
+            overwrite="true"
+            merge="true"
+            createIfNotExists="true"
+            failOnError="false"/>
+    </target>
+    
+    <target name="deployLog">
+        <AMXAdminTask
+            action="deployLog"
+            objectSelector="Environment//Application"
+            remote="true"
+            propsFile="${instanceProperties}"
+            dataFile="${dataFile}"
+            force="true"
+            failOnError="false"/>
+    </target>
+        
+    <target name="installRI">
+        <AMXAdminTask
+            action="add"
+            objectSelector="//Node/ResourceInstance"
+            remote="true"
+            propsFile="${instanceProperties}"
+            dataFile="${dataFile}"
+            overwrite="true"
+            merge="true"
+            createIfNotExists="true"
+            force="true"
+            failOnError="false"/>
+            
+        <AMXAdminTask
+            action="install"
+            objectSelector="//Node/ResourceInstance"
+            remote="true"
+            propsFile="${instanceProperties}"
+            dataFile="${dataFile}"
+            force="true"
+            failOnError="false"/>           
+    </target> -->   
+    
+    <target name="remove.feature">
+        <AMXAdminTask 
+            remote="true" 
+            propsFile="${instanceProperties}" 
+            action="delete" 
+            dataFile="${dataFile}"
+            objectSelector="Feature" overwrite="true" merge="true"
+            createIfNotExists="true" force="true" failOnError="true" />
+    </target>
+
+    <target name="remove.apptemplate">
+        <AMXAdminTask 
+            remote="true" 
+            propsFile="${instanceProperties}"
+            action="delete"
+            dataFile="${dataFile}"
+            objectSelector="AppTemplate" overwrite="true" merge="true"
+            createIfNotExists="true" force="true" failOnError="true" />
+    </target>
+	
+	<target name="create-resourceinstance">
+		<AMXAdminTask
+			action="add"
+			objectSelector="Host/ResourceInstance | Environment/Node/ResourceInstance"
+			remote="true"
+			propsFile="${instanceProperties}"
+			dataFile="${dataFile}"
+			overwrite="true"
+			merge="true"
+			createIfNotExists="true"
+			force="true"
+			failOnError="false"/>
+	</target>
+
+	<target name="install-resourceinstance">
+		<AMXAdminTask
+			action="install"
+			objectSelector="Host/ResourceInstance | Environment/Node/ResourceInstance"
+			remote="true"
+			propsFile="${instanceProperties}"
+			dataFile="${dataFile}"
+			force="false"
+			failOnError="false"/>
+	</target>
+
+
+        
+</project>

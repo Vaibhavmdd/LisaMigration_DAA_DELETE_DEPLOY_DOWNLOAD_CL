@@ -1,0 +1,36 @@
+<project default="setup.app">
+	<import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+
+	<target name="setup.app">
+		<upload.daa dataFile="${amxConfigFile}" />
+		<create.app dataFile="${amxConfigFile}" />
+		<map.service.binding.to.node dataFile="${amxConfigFile}" />
+		<map.reference.binding.to.node dataFile="${amxConfigFile}" />
+		<map.component.to.node dataFile="${amxConfigFile}" />
+		<set.service.binding.property dataFile="${amxConfigFile}" />
+		<set.reference.binding.property dataFile="${amxConfigFile}" />
+		<deploy.app dataFile="${amxConfigFile}" timeout="600" />		
+	</target>
+
+	<target name="undeploy.app">
+		<undeploy.app dataFile="${amxConfigFile}" />
+	</target>
+
+	<target name="ImportAndRegenerateDAA">
+		<echo message="Importing Projects"></echo>
+		<sds.importProject projectLoc="${soa.project.loc}" overwrite="true" />		
+		<sds.importProject projectLoc="${java.project.loc}" overwrite="true"/>	
+		<echo message="Create DAA"></echo>
+		<sds.createDAA projectname="${projectName}"	daaloc="Deployment Artifacts/${daa1}" overwriteexistingdaa="true">
+			<application compositename="${compositeName1}" projectname="${projectName}">  
+			</application>			
+			<feature id="${featureid}" />				
+		</sds.createDAA>		
+		<sds.createDAA projectname="${projectName}"	daaloc="Deployment Artifacts/${daa2}" overwriteexistingdaa="true">
+			<application compositename="${compositeName2}" projectname="${projectName}">  
+			</application>			
+			<feature id="${featureid}" />				
+		</sds.createDAA>				
+	</target>
+		
+</project>

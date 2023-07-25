@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ae="http://www.tibco.com/xmlns/ae2xsd/2002/05" xmlns:ns0="http://www.tibco.com/xmlns/ae2xsd/2002/05/BAT6.10" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://www.tibco.com/xmlns/ae2xsd/2002/05/BAT6.10">
+    <import namespace="http://www.tibco.com/xmlns/ae2xsd/2002/05" schemaLocation="ae2xsd.xsd"/>
+    <complexType ae:directory="/AESchemas/BAT6.10.aeschema#class.Employee" ae:type="class" ae:typename="/tibco/public/class/BAT6.10/Employee" name="Employee">
+        <sequence>
+            <element ae:default="" ae:key="false" ae:readable="true" ae:writeable="true" form="unqualified" minOccurs="0" name="Name" nillable="true" type="ae:string"/>
+            <element ae:default="" ae:key="true" ae:readable="true" ae:writeable="false" form="unqualified" minOccurs="0" name="Id" nillable="true" type="ae:i1"/>
+            <element ae:default="" ae:key="false" ae:readable="true" ae:writeable="true" form="unqualified" minOccurs="0" name="HiringDate" nillable="true" type="ae:date"/>
+        </sequence>
+    </complexType>
+    <complexType ae:directory="/AESchemas/BAT6.10.aeschema#class.Operation" ae:type="class" ae:typename="/tibco/public/class/BAT6.10/Operation" name="Operation"/>
+    <complexType ae:typename="/tibco/public/class/BAT6.10/^fault^Operation^GetEmployeeById" name="__caret_fault_caret_Operation_caret_GetEmployeeById">
+        <complexContent>
+            <extension base="ae:operationExceptionType">
+                <choice>
+                    <element form="unqualified" name="EmployeeIdNotFound" nillable="true" type="ae:string"/>
+                </choice>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType ae:typename="/tibco/public/class/BAT6.10/^reply^Operation^GetEmployeeById" name="__caret_reply_caret_Operation_caret_GetEmployeeById">
+        <complexContent>
+            <extension base="ae:new-operationReplyType">
+                <sequence>
+                    <element form="unqualified" minOccurs="0" name="__caret_hasException_caret_" nillable="true" type="ae:boolean"/>
+                    <element form="unqualified" minOccurs="0" name="__caret_exceptionName_caret_" nillable="true" type="ae:string"/>
+                    <element form="unqualified" minOccurs="0" name="__caret_exceptionData_caret_" nillable="true" type="anyType"/>
+                    <element form="unqualified" minOccurs="0" name="__caret_returnValue_caret_" nillable="true" type="ns0:Employee"/>
+                    <element form="unqualified" minOccurs="0" name="__caret_closure_caret_" nillable="true" type="anyType"/>
+                    <element form="unqualified" minOccurs="0" name="__caret_userClosure_caret_" nillable="true" type="anyType"/>
+                    <element form="unqualified" minOccurs="0" name="Employee" type="ns0:Employee"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType ae:typename="/tibco/public/class/BAT6.10/^reply^Operation^GetEmployeeByIdWithWrongData" name="__caret_reply_caret_Operation_caret_GetEmployeeByIdWithWrongData">
+        <complexContent>
+            <extension base="ae:new-operationReplyType">
+                <sequence>
+                    <element form="unqualified" minOccurs="0" name="__caret_hasException_caret_" nillable="true" type="ae:boolean"/>
+                    <element form="unqualified" minOccurs="0" name="__caret_exceptionName_caret_" nillable="true" type="ae:string"/>
+                    <element form="unqualified" minOccurs="0" name="__caret_exceptionData_caret_" nillable="true" type="anyType"/>
+                    <element form="unqualified" minOccurs="0" name="__caret_returnValue_caret_" nillable="true" type="ae:string"/>
+                    <element form="unqualified" minOccurs="0" name="__caret_closure_caret_" nillable="true" type="anyType"/>
+                    <element form="unqualified" minOccurs="0" name="__caret_userClosure_caret_" nillable="true" type="anyType"/>
+                    <element form="unqualified" minOccurs="0" name="Name" nillable="true" type="ae:binary"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType ae:typename="/tibco/public/class/BAT6.10/^request^Operation^GetEmployeeById" name="__caret_request_caret_Operation_caret_GetEmployeeById">
+        <complexContent>
+            <extension base="ae:new-operationRequestType">
+                <sequence>
+                    <element form="unqualified" minOccurs="0" name="Id" nillable="true" type="ae:i1"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType ae:typename="/tibco/public/class/BAT6.10/^request^Operation^GetEmployeeByIdWithWrongData" name="__caret_request_caret_Operation_caret_GetEmployeeByIdWithWrongData">
+        <complexContent>
+            <extension base="ae:new-operationRequestType">
+                <sequence>
+                    <element form="unqualified" minOccurs="0" name="Id" nillable="true" type="ae:i1"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <element name="Employee" type="ns0:Employee"/>
+    <element name="__caret_fault_caret_Operation_caret_GetEmployeeById" type="ns0:__caret_fault_caret_Operation_caret_GetEmployeeById"/>
+    <element name="__caret_reply_caret_Operation_caret_GetEmployeeById" type="ns0:__caret_reply_caret_Operation_caret_GetEmployeeById"/>
+    <element name="__caret_reply_caret_Operation_caret_GetEmployeeByIdWithWrongData" type="ns0:__caret_reply_caret_Operation_caret_GetEmployeeByIdWithWrongData"/>
+    <element name="__caret_request_caret_Operation_caret_GetEmployeeById" type="ns0:__caret_request_caret_Operation_caret_GetEmployeeById"/>
+    <element name="__caret_request_caret_Operation_caret_GetEmployeeByIdWithWrongData" type="ns0:__caret_request_caret_Operation_caret_GetEmployeeByIdWithWrongData"/>
+</schema>

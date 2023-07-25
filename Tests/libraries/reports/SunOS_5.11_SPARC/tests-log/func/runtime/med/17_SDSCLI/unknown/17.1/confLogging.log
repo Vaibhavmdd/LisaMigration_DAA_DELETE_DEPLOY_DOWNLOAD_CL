@@ -1,0 +1,63 @@
+     [echo] Script base is: "/opt/tibco/amx330v39b32/administrator/3.3/scripts/basic_cli.xml"
+
+conf.logging:
+     [echo] 
+     [echo] 
+     [echo] Create Log Appender using:
+     [echo] dataFile: /groupfiler/tests/tests/amsg/3.0/reports/SunOS_5.11_SPARC/tests-log/func/runtime/med/17_SDSCLI/unknown/17.1/amxconfig.xml
+     [echo] remotePropsFile: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/med/2node.config
+     [echo] objectSelector: LogAppender
+     [echo] action: add
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+[AMXAdminTask] 06 Aug 2013 12:10:31  INFO - Connecting to AMX Admin server at 'http://localhost:8120' as user 'root'.
+[AMXAdminTask] 06 Aug 2013 12:10:32  INFO - Processing 1 objects
+[AMXAdminTask] 06 Aug 2013 12:10:34  INFO - FileLogAppender qaINFOFileLogAppender1701 exists on Enterprise, overwriting by merging with existing FileLogAppender
+[AMXAdminTask] 06 Aug 2013 12:10:34  INFO - Successfully updated File log appender with name qaINFOFileLogAppender1701
+[AMXAdminTask] 06 Aug 2013 12:10:34  INFO - Action finished at 8/6/13 12:10 PM in 0.074 seconds
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Set Logger for Application using:
+     [echo] envName: 
+     [echo] appName: 
+     [echo] loggerName: 
+     [echo] dataFile: /groupfiler/tests/tests/amsg/3.0/reports/SunOS_5.11_SPARC/tests-log/func/runtime/med/17_SDSCLI/unknown/17.1/amxconfig.xml
+     [echo] remotePropsFile: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/med/2node.config
+     [echo] objectSelector: 
+     [echo] action: set
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] Invoking Admin task using the objectselector: Environment//Application/Logger
+[AMXAdminTask] 06 Aug 2013 12:10:34  INFO - Processing 1 objects
+[AMXAdminTask] 06 Aug 2013 12:10:35  INFO - Set logging configuration of Application...
+[AMXAdminTask] 06 Aug 2013 12:10:35  INFO - Successfully set log configuration to Application 'med1701'
+[AMXAdminTask] 06 Aug 2013 12:10:35  INFO - Action finished at 8/6/13 12:10 PM in 0.134 seconds
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Action name: deploy
+     [echo] description: Apply Application Logging Configuration
+     [echo] objector: Environment/Application
+     [echo] propsFile: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/med/2node.config
+     [echo] dataFile: /groupfiler/tests/tests/amsg/3.0/reports/SunOS_5.11_SPARC/tests-log/func/runtime/med/17_SDSCLI/unknown/17.1/amxconfig.xml
+[AMXAdminTask] 06 Aug 2013 12:10:35  INFO - Processing 1 objects
+[AMXAdminTask] 06 Aug 2013 12:10:35  INFO - Deploying application...
+[AMXAdminTask] 06 Aug 2013 12:10:36  INFO - Deploying Application 'med1701' in background : TIBCO-AMX-ADMIN-012015: Deployment succeeded for application 'med1701' at 8/6/13 12:10 PM on node(s): 'QANode2, QANode1'.
+[AMXAdminTask] 06 Aug 2013 12:10:36  INFO - Action finished in Admin at 8/6/13 12:10 PM in 0.819 seconds. Waiting for runtime tasks to be finished.
+[AMXAdminTask] 06 Aug 2013 12:10:37  INFO - .
+[AMXAdminTask] 06 Aug 2013 12:10:39  INFO - Application Deploy with Start finished successfully
+[AMXAdminTask] 06 Aug 2013 12:10:39  INFO - Action finished at 8/6/13 12:10 PM in 4.072 seconds
+     [echo] 
+     [echo] 
+
+BUILD SUCCESSFUL
+Total time: 12 seconds

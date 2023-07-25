@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:aebinding="http://xsd.tns.tibco.com/aebinding/2006" xmlns:jndi="http://xsd.tns.tibco.com/corona/models/jndiwsdlmodel" xmlns:ns1="http://www.tibco.com/xmlns/ae2xsd/2002/05/ae/GACSchemas" xmlns:rv="http://xsd.tns.tibco.com/corona/models/rvwsdlmodel" xmlns:tns="urn:GACAdapter:GAC_Client" targetNamespace="urn:GACAdapter:GAC_Client">
+  <aebinding:Import appName="GACAdapter" configUrl="/tibco/private/adapter/GAC_Client" repoUrl="GAC_Client_1033341943780981250.dat"/>
+  <import location="../schema/ae/GACSchemas.xsd" namespace="http://www.tibco.com/xmlns/ae2xsd/2002/05/ae/GACSchemas"/>
+  <types>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:GACAdapter:GAC_Client/types">
+      <xsd:import namespace="http://www.tibco.com/xmlns/ae2xsd/2002/05/ae/GACSchemas" schemaLocation="../schema/ae/GACSchemas.xsd"/>
+    </xsd:schema>
+  </types>
+  <message name="QueryExternalCustomer__request">
+    <part element="ns1:__caret_request_caret_QueryExternalCustomer_caret_QueryExternalCustomer" name="request"/>
+  </message>
+  <message name="QueryExternalCustomer__response">
+    <part element="ns1:__caret_reply_caret_QueryExternalCustomer_caret_QueryExternalCustomer" name="response"/>
+  </message>
+  <message name="CustomerNotFound__exception">
+    <part element="ns1:__caret_fault_caret_QueryExternalCustomer_caret_QueryExternalCustomer" name="exception"/>
+  </message>
+  <portType name="QueryExternalCustomer">
+    <operation name="QueryExternalCustomer">
+            <input message="tns:QueryExternalCustomer__request"/>
+            <output message="tns:QueryExternalCustomer__response"/>
+            <fault message="tns:CustomerNotFound__exception" name="CustomerNotFound"/>
+    </operation>
+  </portType>
+  <binding name="QueryExternalCustomer_binding" type="tns:QueryExternalCustomer">
+    <aebinding:AEBinding packingFormat="10" transport="http://xsd.tns.tibco.com/aebinding/2006/TIBRV" version="2.0"/>
+    <operation name="QueryExternalCustomer">
+      <aebinding:AEOperation name="QueryExternalCustomer" style="document"/>
+      <input>
+        <aebinding:AEBody encodingStyle="http://xsd.tns.tibco.com/aebinding/2006/encoding/ae" use="encoded"/>
+      </input>
+      <output>
+        <aebinding:AEBody encodingStyle="http://xsd.tns.tibco.com/aebinding/2006/encoding/ae" use="encoded"/>
+      </output>
+      <fault name="CustomerNotFound">
+        <aebinding:AEBody encodingStyle="http://xsd.tns.tibco.com/aebinding/2006/encoding/ae" use="encoded"/>
+      </fault>
+    </operation>
+  </binding>
+  <service name="QueryExternalCustomer_service">
+    <port binding="tns:QueryExternalCustomer_binding" name="QueryExternalCustomer_port">
+      <rv:RVConfiguration daemon="%%RvDaemon%%" network="%%RvNetwork%%" service="%%RvService%%">
+        <rv:TargetAddress subject="bat67.service"/>
+      </rv:RVConfiguration>
+    </port>
+  </service>
+</definitions>

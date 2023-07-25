@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://ns.tibco.com/Hello/" name="HelloPT" targetNamespace="http://ns.tibco.com/Hello/">
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ns.tibco.com/Hello/">
+            <xs:element name="HelloRequest" type="xs:string"/>
+            <xs:element name="inputString" type="xs:string"/>
+            <xs:element name="HelloResponse" type="xs:string"/>
+            <xs:element name="FaultString" type="xs:string"/>
+            <xs:element name="Fault_Element">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element ref="tns:FaultString"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="OperationRequest">
+        <!-- wsdl:part element="tns:inputString" name="inputString"/-->
+        <wsdl:part element="tns:HelloRequest" name="firstName"/>
+    </wsdl:message>
+    <wsdl:message name="OperationResponse">
+        <wsdl:part element="tns:HelloResponse" name="greeting"/>
+    </wsdl:message>
+    <wsdl:message name="HelloRequest_Fault">
+        <wsdl:part element="tns:Fault_Element" name="FaultPart"/>
+    </wsdl:message>
+    <wsdl:portType name="HelloPT">
+        <wsdl:operation name="sayHello">
+            <wsdl:input message="tns:OperationRequest"/>
+            <wsdl:output message="tns:OperationResponse"/>
+            <wsdl:fault message="tns:HelloRequest_Fault" name="Fault"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

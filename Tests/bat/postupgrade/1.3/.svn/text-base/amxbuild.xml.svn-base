@@ -1,0 +1,90 @@
+<project default="test">
+	<import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+
+	<target name="setup" depends="setup.ri,deploy.mock-it,deploy.mock-app, undeploy.mock.app,upgrade.mock-it"/> 
+	<target name="start" depends="start.app"/> 
+	<target name="cleanup" depends="cleanup.app"/> 
+	<target name="auto-deploy-test" depends="setup.ri,deploy.mock-it-only,deploy.mock-app, undeploy.mock.app,upgrade.mock-it"/> 
+	
+	<target name="setup.ri">
+		<setup.ri dataFile="${amxConfigFile}" />
+	</target>
+	
+	<target name="deploy.mock-it">
+		<upload.daa dataFile="${amxConfigFile}" objectSelector="DAA[@location='mock_IT-1.daa']"/>
+		<create.app dataFile="${amxConfigFile}" appName="it.Mock.daa"/>
+		<map.component.to.node dataFile="${amxConfigFile}" appName="it.Mock.daa" />
+		<deploy.app dataFile="${amxConfigFile}" appName="it.Mock.daa"/>
+	</target>
+	
+	<target name="deploy.mock-it-only">
+		<upload.daa dataFile="${amxConfigFile}" objectSelector="DAA[@location='mock_IT-1.daa']"/>
+	</target>
+	
+	<target name="deploy.mock-app">
+		<upload.daa dataFile="${amxConfigFile}" objectSelector="DAA[@location='mock_app_100.daa']" createIfNotExists="true" force="true" />
+		<create.app dataFile="${amxConfigFile}" appName="mock-app"/>
+		<map.component.to.node dataFile="${amxConfigFile}" appName="mock-app" />
+		<delete.app.svars dataFile="${amxConfigFile}" appName="mock-app" svarName="connector_svar"/>
+		<add.app.svars dataFile="${amxConfigFile}" appName="mock-app" svarName="new_svar" />
+		<add.node.svars dataFile="${amxConfigFile}" />
+		<deploy.app dataFile="${amxConfigFile}" appName="mock-app" />
+	</target>
+	
+	<target name="undeploy.mock.app">
+		<undeploy.app dataFile="${amxConfigFile}" appName="mock-app" timeout="60" failOnError="false" />
+	</target>
+	
+	<target name="upgrade.mock-it">
+	   	<upload.daa dataFile="${amxConfigFile}" objectSelector="DAA[@location='mock_IT-2.daa']" createIfNotExists="true" force="true" />
+		<upgrade.app appName="it.Mock.daa" dataFile="${amxConfigFile}" />
+		<map.component.to.node dataFile="${amxConfigFile}" appName="it.Mock.daa" />
+		<deploy.app dataFile="${amxConfigFile}" appName="it.Mock.daa" />
+	</target>
+	
+	<target name="start.app">
+		<start.app dataFile="${amxConfigFile}" appName="mock-app" timeout="60" />
+	</target>
+	
+	<target name="stop.app">
+		<stop.app dataFile="${amxConfigFile}" appName="mock-app" timeout="60" />
+	</target>
+	
+	<target name="cleanup.app">
+		<undeploy.app dataFile="${amxConfigFile}" appName="mock-app" timeout="60" force="true" failOnError="false"/>
+		<undeploy.app dataFile="${amxConfigFile}" appName="it.Mock.daa" timeout="60" force="false" failOnError="false"/>
+		<delete.app dataFile="${amxConfigFile}" appName="mock-app" failOnError="false" />
+		<delete.app dataFile="${amxConfigFile}" appName="it.Mock.daa" failOnError="false" />
+		<delete.node.svars dataFile="${amxConfigFile}" failOnError="false"/>
+		<remove.apptemplate dataFile="${amxConfigFile}" failOnError="false"/>	        		
+	    <remove.feature dataFile="${amxConfigFile}" />
+		<uninstall.ri dataFile="${amxConfigFile}" failOnError="false"/>	        		
+		<delete.ri dataFile="${amxConfigFile}" failOnError="false"/>	        		
+	    <delete.rt dataFile="${amxConfigFile}" failOnError="false"/>
+	</target>
+	
+	<target name="force.undeploy.app">
+		<undeploy.app dataFile="${amxConfigFile}" appName="mock-app" timeout="60" force="true"/>
+		<undeploy.app dataFile="${amxConfigFile}" appName="it.Mock.daa" timeout="60" force="false"/>
+	</target>
+
+	<target name="undeploy.mock.it">
+		<undeploy.app dataFile="${amxConfigFile}" appName="it.Mock.daa" timeout="60" />
+	</target>
+	
+	<target name="undeploy.app">
+		<undeploy.app dataFile="${amxConfigFile}" appName="mock-app" timeout="60" />
+		<undeploy.app dataFile="${amxConfigFile}" appName="it.Mock.daa" timeout="60" />
+	</target>
+	
+	<target name="update.app.svar.deploy">
+		<delete.app.svars dataFile="${amxConfigFile}" appName="mock-app" svarName="new_svar"/>
+		<add.node.svars dataFile="${amxConfigFile}" />
+		<deploy.app dataFile="${amxConfigFile}" appName="mock-app" />
+		<start.app dataFile="${amxConfigFile}" appName="mock-app" />
+	</target>
+	
+	
+	
+</project>
+

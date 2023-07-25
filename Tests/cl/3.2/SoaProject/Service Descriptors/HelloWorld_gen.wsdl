@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created by TIBCO WSDL-->
+<wsdl:definitions xmlns:tns="http://ns.tibco.com/Hello/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="HelloWorldPT" targetNamespace="http://ns.tibco.com/Hello/">
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ns.tibco.com/Hello/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:element name="HelloRequest" type="xs:string"/>
+            <xs:element name="HelloResponse" type="xs:string"/>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="OperationRequest">
+        <wsdl:part name="firstName" element="tns:HelloRequest"/>
+    </wsdl:message>
+    <wsdl:message name="OperationResponse">
+        <wsdl:part name="greeting" element="tns:HelloResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="HelloWorldPT">
+        <wsdl:operation name="sayHello">
+            <wsdl:input message="tns:OperationRequest"/>
+            <wsdl:output message="tns:OperationResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="SOAPService_Binding" type="tns:HelloWorldPT">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="sayHello">
+            <wsdl:documentation/>
+            <soap:operation style="document" soapAction="sayHello"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="firstName"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="greeting"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="HelloWorldPT">
+        <wsdl:port name="SOAPService_Binding" binding="tns:SOAPService_Binding">
+            <soap:address location="http://localhost:80/helloWorldPT/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

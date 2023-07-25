@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="HelloWorld_XmlPayload"
+		  targetNamespace="http://com.tibco.amx.it.mediation.sample/HelloWorld_XmlPayload/definitions"
+		  xmlns:tns="http://com.tibco.amx.it.mediation.sample/HelloWorld_XmlPayload/definitions"
+		  xmlns:ns0="http://com.tibco.amx.it.mediation.sample/HelloWorld_XmlPayload/schemas" 
+		  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+
+	<wsdl:types>
+    	    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+		       targetNamespace="http://com.tibco.amx.it.mediation.sample/HelloWorld_XmlPayload/schemas" 
+		       elementFormDefault="qualified" 
+		       attributeFormDefault="unqualified">
+              <xs:element name="XMLPayload" type="xs:string"/>
+    	    </xs:schema>
+	</wsdl:types>
+	
+	<wsdl:message name="sayHelloRequest">
+    	    <wsdl:part name="in" element="ns0:XMLPayload"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="sayHelloResponse">
+            <wsdl:part name="out" element="ns0:XMLPayload"></wsdl:part>
+	</wsdl:message>
+
+	<wsdl:portType name="HelloWorld_XmlPayload">
+    	    <wsdl:operation name="sayHello">
+                <wsdl:input message="tns:sayHelloRequest"/>
+		<wsdl:output message="tns:sayHelloResponse"/>
+    	    </wsdl:operation>
+	</wsdl:portType>
+</wsdl:definitions>

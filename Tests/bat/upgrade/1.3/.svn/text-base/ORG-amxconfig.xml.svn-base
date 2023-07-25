@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise 
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types" 
+	xmlns:amxdata_binding="http://tibco.com/amxadministrator/command/line/types_binding" 
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base" 
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd http://tibco.com/amxadministrator/command/line/types_binding ../schemas/bindingdata.xsd" >
+
+<Environment 
+	xsi:type="amxdata:Environment" 
+	name="[[new.env.name]]" 
+	description="Dev Environment" 
+	contact="TIBCO">
+    
+	<Node xsi:type="amxdata:Node" name="[[new.env.node1.name]]" >
+		<ResourceInstance xsi:type="amxdata:ResourceInstance" name="httpConnector_mock" resourceTemplateName="httpConnector_mockRT" />
+        <SVar xsi:type="amxdata_base:SubstitutionVariable" name="new_svar" type="String" value="1" description="svar" />
+		<SVar xsi:type="amxdata_base:SubstitutionVariable" name="connector_svar" type="String" value="httpConnector_mock" description="svar" />
+    </Node>
+	
+	<Application xsi:type="amxdata:Application" name="mock-it" contact="jpandya">
+      <Component xsi:type="amxdata_base:Component_base" name="implementation.Mock">
+        <Node xsi:type="amxdata_reference:Node_reference" name="[[new.env.node1.name]]" environmentName="[[new.env.name]]"/>
+      </Component>
+      <ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="it.Mock.daa" />
+    </Application>
+  
+	<Application xsi:type="amxdata:Application" name="mock-app" contact="jpandya">
+      <Component xsi:type="amxdata_base:Component_base" name="MockIT1">
+		<Node name="[[new.env.node1.name]]" environmentName="[[new.env.name]]"/>
+     </Component>   
+	  <SVar xsi:type="amxdata_base:SubstitutionVariable" name="new_svar" type="String" value="noError" description="svar" />
+	  <SVar xsi:type="amxdata_base:SubstitutionVariable" name="connector_svar" type="String" value="httpConnector_mock" description="svar" />
+	    
+      <PromotedService xsi:type="amxdata_base:Service_base" name="HelloPT">
+        <Binding xsi:type="amxdata_base:Binding_base" name="SOAPService_Binding1">
+			<Node name="[[new.env.node1.name]]" environmentName="[[new.env.name]]"/>
+		</Binding>
+      </PromotedService>
+	  
+	  <ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="mock_app" />
+	  
+    </Application>
+	
+	</Environment>
+	
+	<ResourceTemplate
+        xsi:type="amxdata:HttpConnectorResourceTemplate"
+        name="httpConnector_mockRT"
+        host="localhost"
+        port="9080">
+    </ResourceTemplate>	
+	
+	<DAA xsi:type="amxdata:DAA" 
+		 location="mock_IT-1.daa"/>
+	
+	
+	<DAA xsi:type="amxdata:DAA" 
+		 location="mock_IT-2.daa"/>
+	
+	<DAA xsi:type="amxdata:DAA" 
+		 description="V1.0.0"
+		location="mock_app_100.daa"/>
+		
+	<Feature xsi:type="amxdata_base:FeatureID" componentID="com.tibco.amx.it.mock.runtime.product.feature" version="1.0.0"/>
+    <AppTemplate xsi:type="amxdata_base:AppTemplateID" name="it.Mock.daa" version="1.0.0"/>
+	<AppTemplate xsi:type="amxdata_base:AppTemplateID" name="it.Mock.daa" version="1.1.0"/>
+	<AppTemplate xsi:type="amxdata_base:AppTemplateID" name="mock_app" version="1.0.0"/>
+		
+</amxdata_base:Enterprise>

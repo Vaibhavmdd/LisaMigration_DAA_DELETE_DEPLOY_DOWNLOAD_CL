@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:compositenotation="http://www.tibco.com/models/compositenotation" xmlns:http="http://xsd.tns.tibco.com/amf/models/sharedresource/httpclient" xmlns:java="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/java" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:notation_1="http://www.eclipse.org/gmf/runtime/1.0.1/notation" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmlns:soapCompRefTimeout.composite="http://www.example.com/soapCompRefTimeout.composite" xmlns:soapbt="http://xsd.tns.tibco.com/amf/models/sca/binding/soap" xmlns:systempolicy="http://xsd.tns.tibco.com/amf/models/sca/policy/system" xmlns:template_2010="http://xsd.tns.tibco.com/governance/rule/template/2010" xmlns:tp="http://xsd.tns.tibco.com/amf/models/sharedresource/threadpool" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmi:id="_u6amcSK5EeCuhJRnDNqfFw" targetNamespace="http://www.example.com/soapCompRefTimeout.composite" name="soapCompRefTimeout" compositeext:version="1.0.0" compositeext:formatVersion="2">
+  <sca:service xmi:id="_751DMCK5EeCuhJRnDNqfFw" name="Service1" promote="Java2/NewWSDLFile">
+    <sca:interface.wsdl xmi:id="_751qQCK5EeCuhJRnDNqfFw" interface="http://www.example.org/NewWSDLFile/#wsdl.interface(NewWSDLFile)" scaext:wsdlLocation="../Service%20Descriptors/NewWSDLFile.wsdl"/>
+    <sca:binding.sca xmi:id="_751qQSK5EeCuhJRnDNqfFw" name="Virtualization"/>
+    <soapbt:binding.soap.service xmi:id="_am5ikCK8EeCuhJRnDNqfFw" name="SOAPService_BindingSJS" transportBindingType="HTTP" attachmentStyle="DOCUMENT" portType="../Service%20Descriptors/NewWSDLFile.wsdl#//@ePortTypes.0" targetNamespace="http://www.example.org/NewWSDLFile/Service1">
+      <operationConfiguration xmi:id="_am6JoSK8EeCuhJRnDNqfFw" operation="../Service%20Descriptors/NewWSDLFile.wsdl#//@ePortTypes.0/@eOperations.0" action="NewOperation">
+        <messageConfiguration xmi:id="_am6JoiK8EeCuhJRnDNqfFw" message="../Service%20Descriptors/NewWSDLFile.wsdl#//@eMessages.0">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_am6JoyK8EeCuhJRnDNqfFw" messagePart="../Service%20Descriptors/NewWSDLFile.wsdl#//@eMessages.0/@eParts.0"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_am6JpCK8EeCuhJRnDNqfFw" message="../Service%20Descriptors/NewWSDLFile.wsdl#//@eMessages.1" messageDirection="OUTPUT">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_am6JpSK8EeCuhJRnDNqfFw" messagePart="../Service%20Descriptors/NewWSDLFile.wsdl#//@eMessages.1/@eParts.0"/>
+        </messageConfiguration>
+        <bindingType xmi:id="_am6JpiK8EeCuhJRnDNqfFw"/>
+      </operationConfiguration>
+      <inboundConfiguration xsi:type="soapbt:HttpTransportConfiguration" xmi:id="_am6JpyK8EeCuhJRnDNqfFw" endpointURI="/5_24_BAT_TP/"/>
+      <defaultBindingType xmi:id="_am6JoCK8EeCuhJRnDNqfFw"/>
+    </soapbt:binding.soap.service>
+    <scact:bindingAdjunct xmi:id="_751qQiK5EeCuhJRnDNqfFw" bindingName="Virtualization"/>
+    <scact:bindingAdjunct xmi:id="_am6JqCK8EeCuhJRnDNqfFw" bindingName="SOAPService_BindingSJS">
+      <sca:property xmi:id="_am6JqSK8EeCuhJRnDNqfFw" mustSupply="true" name="HttpInboundConnectionConfig" type="xs:string" scaext:simpleValue="httpConnector"/>
+    </scact:bindingAdjunct>
+  </sca:service>
+  <sca:property xmi:id="_mkQh4CK7EeCuhJRnDNqfFw" mustSupply="true" name="t2" type="xs:int" scaext:simpleValue="%%t2%%"/>
+  <sca:component xmi:id="_z3rKoCK5EeCuhJRnDNqfFw" name="Java3" compositeext:version="1.0.0.qualifier">
+    <sca:implementation.java xmi:id="_z3xRQCK5EeCuhJRnDNqfFw" class="com.sample.soapcompreftimeout.Java3">
+      <scaext:packageVersionRange xmi:id="_z3xRQSK5EeCuhJRnDNqfFw" lower="1.0.0" upper="2.0.0"/>
+      <java:featureDependency xmi:id="_ZmbO8CK6EeCuhJRnDNqfFw" name="soapCompRefTimeout.soapCompRefTimeout.customfeature.id">
+        <range xmi:id="_ZmbO8SK6EeCuhJRnDNqfFw" lower="1.0.0" upper="2.0.0"/>
+      </java:featureDependency>
+    </sca:implementation.java>
+    <sca:service xmi:id="_3zQPYCK5EeCuhJRnDNqfFw" name="NewWSDLFile">
+      <sca:interface.wsdl xmi:id="_3zQPYSK5EeCuhJRnDNqfFw" interface="http://www.example.org/NewWSDLFile/#wsdl.interface(NewWSDLFile)" scaext:wsdlLocation="../Service%20Descriptors/NewWSDLFile.wsdl"/>
+    </sca:service>
+    <sca:property xmi:id="_l9omwCK7EeCuhJRnDNqfFw" mustSupply="true" name="t2" type="xs:int" scaext:simpleValue="" source="$t2"/>
+  </sca:component>
+  <sca:component xmi:id="_0WRLICK5EeCuhJRnDNqfFw" name="Java2" compositeext:version="1.0.0.qualifier">
+    <sca:implementation.java xmi:id="_0WRyMCK5EeCuhJRnDNqfFw" class="com.sample.soapcompreftimeout.Java2">
+      <scaext:packageVersionRange xmi:id="_0WRyMSK5EeCuhJRnDNqfFw" lower="1.0.0" upper="2.0.0"/>
+      <java:featureDependency xmi:id="_X6q3wCK6EeCuhJRnDNqfFw" name="soapCompRefTimeout.soapCompRefTimeout.customfeature.id">
+        <range xmi:id="_X6q3wSK6EeCuhJRnDNqfFw" lower="1.0.0" upper="2.0.0"/>
+      </java:featureDependency>
+    </sca:implementation.java>
+    <sca:service xmi:id="_3ZWhoCK5EeCuhJRnDNqfFw" name="NewWSDLFile">
+      <sca:interface.wsdl xmi:id="_3ZWhoSK5EeCuhJRnDNqfFw" interface="http://www.example.org/NewWSDLFile/#wsdl.interface(NewWSDLFile)" scaext:wsdlLocation="../Service%20Descriptors/NewWSDLFile.wsdl"/>
+    </sca:service>
+    <sca:reference xmi:id="_3EqrECK5EeCuhJRnDNqfFw" name="NewWSDLFile" policySets="soapCompRefTimeout.composite:ThreadingPolicy_Java2_NewWSDLFile" scaext:policySetLocations="#embedded">
+      <sca:interface.wsdl xmi:id="_3EqrESK5EeCuhJRnDNqfFw" interface="http://www.example.org/NewWSDLFile/#wsdl.interface(NewWSDLFile)" scaext:wsdlLocation="../Service%20Descriptors/NewWSDLFile.wsdl"/>
+    </sca:reference>
+  </sca:component>
+  <sca:wire xmi:id="_8nidwCK5EeCuhJRnDNqfFw" source="Java2/NewWSDLFile" target="Java3/NewWSDLFile"/>
+  <notation_1:diagram xsi:type="notation_1:Diagram" xmi:id="_5sX3sIeFEeKMwu2RJf2drA" type="Composite" element="#/" name="SCA Composite" measurementUnit="Pixel">
+    <children xmi:id="_59OXIIeFEeKMwu2RJf2drA" type="2001" element="#_u6amcSK5EeCuhJRnDNqfFw">
+      <children xmi:id="_59PlQIeFEeKMwu2RJf2drA" type="5004"/>
+      <children xmi:id="_59SBgIeFEeKMwu2RJf2drA" type="7001">
+        <styles xsi:type="notation_1:SortingStyle" xmi:id="_59SBgYeFEeKMwu2RJf2drA"/>
+        <styles xsi:type="notation_1:FilteringStyle" xmi:id="_59SBgoeFEeKMwu2RJf2drA"/>
+      </children>
+      <children xmi:id="_59XhEIeFEeKMwu2RJf2drA" type="7002">
+        <styles xsi:type="notation_1:SortingStyle" xmi:id="_59XhEYeFEeKMwu2RJf2drA"/>
+        <styles xsi:type="notation_1:FilteringStyle" xmi:id="_59XhEoeFEeKMwu2RJf2drA"/>
+      </children>
+      <children xmi:id="_59YIIIeFEeKMwu2RJf2drA" type="7003">
+        <children xmi:id="_6A1EwIeFEeKMwu2RJf2drA" type="3003" element="#_z3rKoCK5EeCuhJRnDNqfFw">
+          <children xmi:id="_6A1r0IeFEeKMwu2RJf2drA" type="5001"/>
+          <children xmi:id="_6A2S4IeFEeKMwu2RJf2drA" type="7004">
+            <styles xsi:type="notation_1:SortingStyle" xmi:id="_6A2S4YeFEeKMwu2RJf2drA"/>
+            <styles xsi:type="notation_1:FilteringStyle" xmi:id="_6A2S4oeFEeKMwu2RJf2drA"/>
+          </children>
+          <children xmi:id="_6A2S44eFEeKMwu2RJf2drA" type="7005">
+            <styles xsi:type="notation_1:SortingStyle" xmi:id="_6A2S5IeFEeKMwu2RJf2drA"/>
+            <styles xsi:type="notation_1:FilteringStyle" xmi:id="_6A2S5YeFEeKMwu2RJf2drA"/>
+          </children>
+          <children xmi:id="_6A258IeFEeKMwu2RJf2drA" type="7006">
+            <children xmi:id="_6A259IeFEeKMwu2RJf2drA" visible="false" type="7600">
+              <styles xsi:type="notation_1:ShapeStyle" xmi:id="_6A259YeFEeKMwu2RJf2drA" fontName="Segoe UI" fontHeight="10"/>
+              <element xsi:nil="true"/>
+              <layoutConstraint xsi:type="notation_1:Bounds" xmi:id="_6A259oeFEeKMwu2RJf2drA"/>
+            </children>
+            <styles xsi:type="notation_1:SortingStyle" xmi:id="_6A258YeFEeKMwu2RJf2drA"/>
+            <styles xsi:type="notation_1:FilteringStyle" xmi:id="_6A258oeFEeKMwu2RJf2drA"/>
+            <styles xsi:type="compositenotation:CollapseStyle" xmi:id="_6A2584eFEeKMwu2RJf2drA"/>
+          </children>
+          <styles xsi:type="notation_1:ShapeStyle" xmi:id="_6A1EwYeFEeKMwu2RJf2drA" fontName="Segoe UI" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_6A1EwoeFEeKMwu2RJf2drA" gradStartColor="16642791" gradEndColor="14072216"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_6A1Ew4eFEeKMwu2RJf2drA"/>
+          <styles xsi:type="compositenotation:CustomComponentIconStyle" xmi:id="_6A1ExIeFEeKMwu2RJf2drA"/>
+          <layoutConstraint xsi:type="notation_1:Bounds" xmi:id="_6A1ExYeFEeKMwu2RJf2drA" x="208" y="39"/>
+        </children>
+        <children xmi:id="_6A4IEIeFEeKMwu2RJf2drA" type="3003" element="#_0WRLICK5EeCuhJRnDNqfFw">
+          <children xmi:id="_6A4IFoeFEeKMwu2RJf2drA" type="5001"/>
+          <children xmi:id="_6A4IF4eFEeKMwu2RJf2drA" type="7004">
+            <styles xsi:type="notation_1:SortingStyle" xmi:id="_6A4IGIeFEeKMwu2RJf2drA"/>
+            <styles xsi:type="notation_1:FilteringStyle" xmi:id="_6A4IGYeFEeKMwu2RJf2drA"/>
+          </children>
+          <children xmi:id="_6A4vIIeFEeKMwu2RJf2drA" type="7005">
+            <styles xsi:type="notation_1:SortingStyle" xmi:id="_6A4vIYeFEeKMwu2RJf2drA"/>
+            <styles xsi:type="notation_1:FilteringStyle" xmi:id="_6A4vIoeFEeKMwu2RJf2drA"/>
+          </children>
+          <children xmi:id="_6A4vI4eFEeKMwu2RJf2drA" type="7006">
+            <children xmi:id="_6A4vJ4eFEeKMwu2RJf2drA" visible="false" type="7600">
+              <styles xsi:type="notation_1:ShapeStyle" xmi:id="_6A4vKIeFEeKMwu2RJf2drA" fontName="Segoe UI" fontHeight="10"/>
+              <element xsi:nil="true"/>
+              <layoutConstraint xsi:type="notation_1:Bounds" xmi:id="_6A4vKYeFEeKMwu2RJf2drA"/>
+            </children>
+            <styles xsi:type="notation_1:SortingStyle" xmi:id="_6A4vJIeFEeKMwu2RJf2drA"/>
+            <styles xsi:type="notation_1:FilteringStyle" xmi:id="_6A4vJYeFEeKMwu2RJf2drA"/>
+            <styles xsi:type="compositenotation:CollapseStyle" xmi:id="_6A4vJoeFEeKMwu2RJf2drA"/>
+          </children>
+          <styles xsi:type="notation_1:ShapeStyle" xmi:id="_6A4IEYeFEeKMwu2RJf2drA" fontName="Segoe UI" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_6A4IEoeFEeKMwu2RJf2drA" gradStartColor="16642791" gradEndColor="14072216"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_6A4IE4eFEeKMwu2RJf2drA"/>
+          <styles xsi:type="compositenotation:CustomComponentIconStyle" xmi:id="_6A4IFIeFEeKMwu2RJf2drA"/>
+          <layoutConstraint xsi:type="notation_1:Bounds" xmi:id="_6A4IFYeFEeKMwu2RJf2drA" x="16" y="159"/>
+        </children>
+        <styles xsi:type="notation_1:SortingStyle" xmi:id="_59YIIYeFEeKMwu2RJf2drA"/>
+        <styles xsi:type="notation_1:FilteringStyle" xmi:id="_59YIIoeFEeKMwu2RJf2drA"/>
+      </children>
+      <children xmi:id="_59YvMIeFEeKMwu2RJf2drA" type="7007">
+        <children xmi:id="_59ZWQIeFEeKMwu2RJf2drA" visible="false" type="7600">
+          <styles xsi:type="notation_1:ShapeStyle" xmi:id="_59ZWQYeFEeKMwu2RJf2drA" fontName="Segoe UI" fontHeight="10"/>
+          <element xsi:nil="true"/>
+          <layoutConstraint xsi:type="notation_1:Bounds" xmi:id="_59ZWQoeFEeKMwu2RJf2drA"/>
+        </children>
+        <styles xsi:type="notation_1:SortingStyle" xmi:id="_59YvMYeFEeKMwu2RJf2drA"/>
+        <styles xsi:type="notation_1:FilteringStyle" xmi:id="_59YvMoeFEeKMwu2RJf2drA"/>
+      </children>
+      <styles xsi:type="notation_1:ShapeStyle" xmi:id="_59OXIYeFEeKMwu2RJf2drA" fontName="Segoe UI" fontHeight="10"/>
+      <layoutConstraint xsi:type="notation_1:Bounds" xmi:id="_59OXIoeFEeKMwu2RJf2drA" x="10" y="10" width="627" height="350"/>
+    </children>
+    <styles xsi:type="notation_1:DiagramStyle" xmi:id="_5sX3sYeFEeKMwu2RJf2drA"/>
+    <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_5sX3soeFEeKMwu2RJf2drA"/>
+    <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_5sX3s4eFEeKMwu2RJf2drA"/>
+  </notation_1:diagram>
+  <scaext:EmbeddedPolicySet xmi:id="_UnDK4CK6EeCuhJRnDNqfFw" name="ThreadingPolicy_Java2_NewWSDLFile" appliesTo="sca:binding.sca.reference | sca:binding.sca.service | soapbt:binding.soap.reference | soapbt:binding.soap.service" policyTemplateName="template_2010:ThreadingPolicy" policyTemplateVersion="1.0.0">
+    <systempolicy:threadingPolicy xmi:id="_n0r4oF6tEeKjiowaj7VJjg" scaext:label="Threading Policy" invocationTimeOut="10">
+      <scaext:property xmi:id="_n0r4oV6tEeKjiowaj7VJjg" name="threadpool" type="tp:ThreadPoolConfiguration" scaext:simpleValue="ThreadPool_5_24" source="$threadpool"/>
+      <scaext:description>On a service, this indicates that the message must be dispatched using the configured thread pool. On a reference, this indicates that the message must be send using the configured thread pool. If a timeout is set on a reference, it indicates that the reference invocation will timeout if the invocation takes more than the configured value.If this policy is applied to any binding other than Virtualization and SOAP, then it will take effect on the virtualization proxy between the binding and the component.If this policy is applied to any binding other than Virtualization, then it will take effect on the virtualization proxy between the binding and the component.</scaext:description>
+    </systempolicy:threadingPolicy>
+    <scaext:property xmi:id="_UnDK4yK6EeCuhJRnDNqfFw" mustSupply="false" name="threadpool" type="tp:ThreadPoolConfiguration" scaext:simpleValue="ThreadPool_5_24"/>
+  </scaext:EmbeddedPolicySet>
+</sca:composite>

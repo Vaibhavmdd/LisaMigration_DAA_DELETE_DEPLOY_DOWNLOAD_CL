@@ -1,0 +1,32 @@
+<project default="deploy.app">
+	<import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+	
+	<target name="deploy.app">
+	  <create.rt dataFile="${amxConfigFile}" objectSelector="ResourceTemplate | JNDIConnectionConfigurationResourceTemplate | JNDIConnectionFactoryResourceTemplate | JNDIDestinationResourceTemplate" />
+		<create.ri dataFile="${amxConfigFile}" />
+		<install.ri dataFile="${amxConfigFile}" />
+	  <upload.daa dataFile="${amxConfigFile}" force="true" />
+		<create.app dataFile="${amxConfigFile}" />
+		<map.component.to.node dataFile="${amxConfigFile}" />
+		<map.service.binding.to.node dataFile="${amxConfigFile}" />
+		<map.reference.binding.to.node dataFile="${amxConfigFile}" />
+		<deploy.app dataFile="${amxConfigFile}" timeout="${timeout}" />
+	</target>
+	
+	 <target name="conf.logging">
+		<create.log.appender dataFile="${amxConfigFile}" />
+		<set.logger.to.app dataFile="${amxConfigFile}" />
+		<deploy.action objector="Environment/Application" description="Apply Application Logger" dataFile="${amxConfigFile}" />
+	</target>
+	
+	<target name="undeploy.app">
+    <undeploy.app dataFile="${amxConfigFile}" timeout="${timeout}" />
+		<delete.app dataFile="${amxConfigFile}" />
+		<uninstall.ri dataFile="${amxConfigFile}" />
+		<delete.ri dataFile="${amxConfigFile}" />
+		<delete.log.appender dataFile="${amxConfigFile}" />
+		<delete.rt dataFile="${amxConfigFile}" objectSelector="ResourceTemplate | JNDIConnectionConfigurationResourceTemplate | JNDIConnectionFactoryResourceTemplate | JNDIDestinationResourceTemplate" />
+		
+	</target>
+	
+</project>

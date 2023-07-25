@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:GreetWsdl="http://www.example.org/GreetWsdl/" xmlns:PATH_QUERY_RrcResource="http://ns.tibco.com/RSBT/PATH_QUERY_RrcResource" xmlns:PATH_QUERY_SCHEMA="http://www.example.org/PATH_QUERY_SCHEMA" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wadl="http://wadl.dev.java.net/2009/02" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="PATH_QUERY_RrcResource" targetNamespace="http://ns.tibco.com/RSBT/PATH_QUERY_RrcResource">
+  <wsdl:types>
+    <xsd:schema>
+      <xsd:import namespace="http://www.example.org/GreetWsdl/" schemaLocation="GreetWsdlWsdl.xsd"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="GreetPOSTRequest">
+    <wsdl:part name="POST_PP_STRING" type="xsd:string"/>
+    <wsdl:part name="POST_PP_BOOLEAN" type="xsd:boolean"/>
+    <wsdl:part name="POST_PP_BYTE" type="xsd:byte"/>
+    <wsdl:part name="POST_PP_SHORT" type="xsd:short"/>
+    <wsdl:part name="POST_PP_INTEGER" type="xsd:int"/>
+    <wsdl:part name="POST_PP_LONG" type="xsd:long"/>
+    <wsdl:part name="POST_PP_FLOAT" type="xsd:float"/>
+    <wsdl:part name="POST_PP_DOUBLE" type="xsd:double"/>
+    <wsdl:part element="GreetWsdl:GreetPOST" name="__body"/>
+  </wsdl:message>
+  <wsdl:message name="GreetPOSTResponse">
+    <wsdl:part element="GreetWsdl:GreetPOSTResponse" name="__body"/>
+  </wsdl:message>
+  <wsdl:message name="GreetGETRequest">
+    <wsdl:part name="GET_PP_STRING" type="xsd:string"/>
+    <wsdl:part name="GET_PP_BOOLEAN" type="xsd:boolean"/>
+    <wsdl:part name="GET_PP_BYTE" type="xsd:byte"/>
+    <wsdl:part name="GET_PP_SHORT" type="xsd:short"/>
+    <wsdl:part name="GET_PP_INTEGER" type="xsd:int"/>
+    <wsdl:part name="GET_PP_LONG" type="xsd:long"/>
+    <wsdl:part name="GET_PP_FLOAT" type="xsd:float"/>
+    <wsdl:part name="GET_PP_DOUBLE" type="xsd:double"/>
+  </wsdl:message>
+  <wsdl:message name="GreetGETResponse">
+    <wsdl:part element="GreetWsdl:GreetGETResponse" name="__body"/>
+  </wsdl:message>
+  <wsdl:message name="GreetPUTRequest">
+    <wsdl:part name="PUT_PP_STRING" type="xsd:string"/>
+    <wsdl:part name="PUT_PP_BOOLEAN" type="xsd:boolean"/>
+    <wsdl:part name="PUT_PP_BYTE" type="xsd:byte"/>
+    <wsdl:part name="PUT_PP_SHORT" type="xsd:short"/>
+    <wsdl:part name="PUT_PP_INTEGER" type="xsd:int"/>
+    <wsdl:part name="PUT_PP_LONG" type="xsd:long"/>
+    <wsdl:part name="PUT_PP_FLOAT" type="xsd:float"/>
+    <wsdl:part name="PUT_PP_DOUBLE" type="xsd:double"/>
+    <wsdl:part element="GreetWsdl:GreetPUT" name="__body"/>
+  </wsdl:message>
+  <wsdl:message name="GreetPUTResponse">
+    <wsdl:part element="GreetWsdl:GreetPUTResponse" name="__body"/>
+  </wsdl:message>
+  <wsdl:message name="GreetDELETERequest">
+    <wsdl:part name="DELETE_PP_STRING" type="xsd:string"/>
+    <wsdl:part name="DELETE_PP_BOOLEAN" type="xsd:boolean"/>
+    <wsdl:part name="DELETE_PP_BYTE" type="xsd:byte"/>
+    <wsdl:part name="DELETE_PP_SHORT" type="xsd:short"/>
+    <wsdl:part name="DELETE_PP_INTEGER" type="xsd:int"/>
+    <wsdl:part name="DELETE_PP_LONG" type="xsd:long"/>
+    <wsdl:part name="DELETE_PP_FLOAT" type="xsd:float"/>
+    <wsdl:part name="DELETE_PP_DOUBLE" type="xsd:double"/>
+  </wsdl:message>
+  <wsdl:message name="GreetDELETEResponse">
+    <wsdl:part element="GreetWsdl:GreetDELETEResponse" name="__body"/>
+  </wsdl:message>
+  <wsdl:portType name="PATH_QUERY_RrcResource">
+    <wsdl:operation name="GreetPOST">
+      <wsdl:input message="PATH_QUERY_RrcResource:GreetPOSTRequest"/>
+      <wsdl:output message="PATH_QUERY_RrcResource:GreetPOSTResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GreetGET">
+      <wsdl:input message="PATH_QUERY_RrcResource:GreetGETRequest"/>
+      <wsdl:output message="PATH_QUERY_RrcResource:GreetGETResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GreetPUT">
+      <wsdl:input message="PATH_QUERY_RrcResource:GreetPUTRequest"/>
+      <wsdl:output message="PATH_QUERY_RrcResource:GreetPUTResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GreetDELETE">
+      <wsdl:input message="PATH_QUERY_RrcResource:GreetDELETERequest"/>
+      <wsdl:output message="PATH_QUERY_RrcResource:GreetDELETEResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

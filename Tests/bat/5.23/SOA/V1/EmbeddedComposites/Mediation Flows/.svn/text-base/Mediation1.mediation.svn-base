@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpel:process exitOnStandardFault="yes" name="Mediation1"
+    suppressJoinFailure="no"
+    targetNamespace="http://com.tibco.amsb/mediation/1314921194096"
+    variableAccessSerializable="no"
+    xmlns:amsb="http://schemas.tibco.com/amsb/3.3.0/mediation"
+    xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+    xmlns:jdbc="http://xsd.tns.tibco.com/amf/models/sharedresource/jdbc"
+    xmlns:ns="http://www.example.org/NewWSDLFile/"
+    xmlns:ns0="http:///com.tibco.amsb.core.common.exchange/mediationcontext"
+    xmlns:ns1="http://schemas.tibco.com/amsb/rt/exceptions" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <plnk:partnerLinkType
+        name="ns:NewWSDLFile-NewWSDLFileProvider-partnerLinkType" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+        <plnk:role name="Provider" portType="ns:NewWSDLFile"/>
+    </plnk:partnerLinkType>
+    <mediationmodel:MediationService name="Mediation1"
+        targetNamespace="http://com.tibco.amsb/mediation/1314921194096"
+        version="3.3.0" xmi:id="_jlJ3ANT1EeC67oKZt23n4A"
+        xmi:version="2.0"
+        xmlns:medct="http://xsd.tns.tibco.com/amsb/core/models/componentType"
+        xmlns:mediationmodel="http://xsd.tns.tibco.com/amsb/core/models/mediationmodel"
+        xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <interfaces name="NewWSDLFile" xmi:id="_kjsQ8NT3EeC67oKZt23n4A">
+            <interface xsi:type="medct:Wsdl11Interface">
+                <portType href="platform:/resource/EmbeddedComposites/Service%20Descriptors/NewWSDLFile.wsdl#//@ePortTypes.0"/>
+            </interface>
+        </interfaces>
+        <operationImplementations operationName="NewWSDLFile^NewOperation">
+            <mediationContextConfig hideStaticSecurityContext="true" hideStaticTransportContext="true"/>
+        </operationImplementations>
+    </mediationmodel:MediationService>
+    <bpel:documentation>Mediation1</bpel:documentation>
+    <bpel:import importType="http://schemas.xmlsoap.org/wsdl/"
+        location="../Service%20Descriptors/NewWSDLFile.wsdl" namespace="http://www.example.org/NewWSDLFile/"/>
+    <bpel:import importType="http://www.w3.org/2001/XMLSchema"
+        location="../../com.tibco.mediation.it.common/schema/mediationcontext.xsd" namespace="http:///com.tibco.amsb.core.common.exchange/mediationcontext"/>
+    <bpel:import importType="http://www.w3.org/2001/XMLSchema"
+        location="../../com.tibco.mediation.it.common/schema/exceptions.xsd" namespace="http://schemas.tibco.com/amsb/rt/exceptions"/>
+    <bpel:import importType="http://www.w3.org/2001/XMLSchema"
+        location="../../com.tibco.mediation.it.common/schema/ws-bpel_serviceref.xsd" namespace="http://docs.oasis-open.org/wsbpel/2.0/serviceref"/>
+    <bpel:partnerLinks>
+        <bpel:partnerLink myRole="Provider" name="NewWSDLFileProvider" partnerLinkType="ns:NewWSDLFile-NewWSDLFileProvider-partnerLinkType">
+            <bpel:documentation>MyRole</bpel:documentation>
+        </bpel:partnerLink>
+    </bpel:partnerLinks>
+    <bpel:variables>
+        <bpel:variable name="SampleProperty" type="xsd:string">
+            <medct:Property name="SampleProperty" simpleValue=""
+                type="string" xmi:id="_nGTpkNT1EeC67oKZt23n4A"
+                xmi:version="2.0"
+                xmlns:medct="http://xsd.tns.tibco.com/amsb/core/models/componentType" xmlns:xmi="http://www.omg.org/XMI"/>
+            <bpel:from/>
+        </bpel:variable>
+        <bpel:variable messageType="ns:NewOperationRequest" name="NewOperationRequestVar"/>
+        <bpel:variable messageType="ns:NewOperationResponse" name="NewOperationResponseVar"/>
+    </bpel:variables>
+    <bpel:extensions>
+        <bpel:extension mustUnderstand="no" namespace="http://xsd.tns.tibco.com/amsb/task/transform/models/transformmediationtaskmodel"/>
+    </bpel:extensions>
+    <bpel:pick>
+        <bpel:onMessage operation="NewOperation"
+            partnerLink="NewWSDLFileProvider" portType="ns:NewWSDLFile" variable="NewOperationRequestVar">
+            <bpel:scope name="NewOperation">
+                <bpel:variables>
+                    <bpel:variable element="ns0:MessageContext" name="MessageContextVar"/>
+                    <bpel:variable element="ns1:MediationFault" name="MediationFaultVar"/>
+                    <bpel:variable element="ns1:MediationRuntimeFault" name="MediationRuntimeFaultVar"/>
+                    <bpel:variable element="ns1:MediationTaskFault" name="MediationTaskFaultVar"/>
+                    <bpel:variable
+                        element="ns1:MediationTaskRuntimeFault" name="MediationTaskRuntimeFaultVar"/>
+                    <bpel:variable element="ns1:UndeclaredFault" name="UndeclaredFaultVar"/>
+                    <bpel:variable element="ns1:DefaultMediationFault" name="DefaultMediationFaultVar"/>
+                </bpel:variables>
+                <bpel:faultHandlers>
+                    <bpel:catch faultName="ns1:MediationTaskFault">
+                        <bpel:flow>
+                            <bpel:links>
+                                <bpel:link name="transform-to-SendFault-MediationTaskFaultReplyWithFault"/>
+                            </bpel:links>
+                            <bpel:assign name="transform" validate="no">
+
+                                <transformmediationtaskmodel:MapperTransformationMediationTask
+                                    description="" name="transform"
+                                    xmi:id="_mN7lONT3EeC67oKZt23n4A"
+                                    xmi:version="2.0"
+                                    xmlns:transformmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/transform/models/transformmediationtaskmodel" xmlns:xmi="http://www.omg.org/XMI">
+                                    <transform queryLanguage="xslt" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:tns=&quot;http://schemas.tibco.com/amsb/rt/exceptions&quot; xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;MediationFlowProperties&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageContext&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageData&quot;/>&#xa;    &lt;xsl:template name=&quot;MessageData&quot; match=&quot;/&quot;>&#xa;        &lt;tns:UndeclaredFault>&#xa;            &lt;xsl:if test=&quot;$MessageData/tns:MediationTaskFault/message&quot;>&#xa;                &lt;message>&#xa;                    &lt;xsl:value-of select=&quot;$MessageData/tns:MediationTaskFault/message&quot;/>&#xa;                &lt;/message>&#xa;            &lt;/xsl:if>&#xa;        &lt;/tns:UndeclaredFault>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>&#xa;"/>
+                                </transformmediationtaskmodel:MapperTransformationMediationTask>
+                                <bpel:sources>
+                                    <bpel:source linkName="transform-to-SendFault-MediationTaskFaultReplyWithFault"/>
+                                </bpel:sources>
+                                <bpel:copy>
+                                    <bpel:from><![CDATA[bpel:doXslTransform("transform.xsl",$UndeclaredFaultVar,"MessageData",$MediationTaskFaultVar)]]></bpel:from>
+                                    <bpel:to variable="UndeclaredFaultVar"/>
+                                </bpel:copy>
+                            </bpel:assign>
+                            <bpel:reply faultName="ns1:UndeclaredFault"
+                                name="SendFault-MediationTaskFaultReplyWithFault"
+                                operation="NewOperation"
+                                partnerLink="NewWSDLFileProvider"
+                                portType="ns:NewWSDLFile" variable="UndeclaredFaultVar">
+                                <bpel:targets>
+                                    <bpel:target linkName="transform-to-SendFault-MediationTaskFaultReplyWithFault"/>
+                                </bpel:targets>
+                            </bpel:reply>
+                        </bpel:flow>
+                    </bpel:catch>
+                    <bpel:catch faultName="ns1:MediationTaskRuntimeFault">
+                        <bpel:flow>
+                            <bpel:links>
+                                <bpel:link name="transform1-to-SendFault-MediationTaskRuntimeFaultReplyWithFault"/>
+                            </bpel:links>
+                            <bpel:assign name="transform1" validate="no">
+
+                                <transformmediationtaskmodel:MapperTransformationMediationTask
+                                    description="" name="transform1"
+                                    xmi:id="_mN7lP9T3EeC67oKZt23n4A"
+                                    xmi:version="2.0"
+                                    xmlns:transformmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/transform/models/transformmediationtaskmodel" xmlns:xmi="http://www.omg.org/XMI">
+                                    <transform queryLanguage="xslt" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:tns=&quot;http://schemas.tibco.com/amsb/rt/exceptions&quot; xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;MediationFlowProperties&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageContext&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageData&quot;/>&#xa;    &lt;xsl:template name=&quot;MessageData&quot; match=&quot;/&quot;>&#xa;        &lt;tns:UndeclaredFault>&#xa;            &lt;xsl:if test=&quot;$MessageData/tns:MediationTaskRuntimeFault/message&quot;>&#xa;                &lt;message>&#xa;                    &lt;xsl:value-of select=&quot;$MessageData/tns:MediationTaskRuntimeFault/message&quot;/>&#xa;                &lt;/message>&#xa;            &lt;/xsl:if>&#xa;        &lt;/tns:UndeclaredFault>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>&#xa;"/>
+                                </transformmediationtaskmodel:MapperTransformationMediationTask>
+                                <bpel:sources>
+                                    <bpel:source linkName="transform1-to-SendFault-MediationTaskRuntimeFaultReplyWithFault"/>
+                                </bpel:sources>
+                                <bpel:copy>
+                                    <bpel:from><![CDATA[bpel:doXslTransform("transform1.xsl",$UndeclaredFaultVar,"MessageData",$MediationTaskRuntimeFaultVar)]]></bpel:from>
+                                    <bpel:to variable="UndeclaredFaultVar"/>
+                                </bpel:copy>
+                            </bpel:assign>
+                            <bpel:reply faultName="ns1:UndeclaredFault"
+                                name="SendFault-MediationTaskRuntimeFaultReplyWithFault"
+                                operation="NewOperation"
+                                partnerLink="NewWSDLFileProvider"
+                                portType="ns:NewWSDLFile" variable="UndeclaredFaultVar">
+                                <bpel:targets>
+                                    <bpel:target linkName="transform1-to-SendFault-MediationTaskRuntimeFaultReplyWithFault"/>
+                                </bpel:targets>
+                            </bpel:reply>
+                        </bpel:flow>
+                    </bpel:catch>
+                </bpel:faultHandlers>
+                <bpel:flow>
+                    <bpel:links>
+                        <bpel:link name="pre_generate_reply_assign_sequence-to-handle_reply"/>
+                        <bpel:link name="handle_reply-to-NewOperationReply"/>
+                    </bpel:links>
+                    <bpel:sequence name="pre_generate_reply_assign_sequence">
+                        <bpel:sources>
+                            <bpel:source linkName="pre_generate_reply_assign_sequence-to-handle_reply"/>
+                        </bpel:sources>
+                        <bpel:assign validate="no">
+                            <bpel:documentation>pre_generate_reply_assign</bpel:documentation>
+                        </bpel:assign>
+                        <bpel:extensionActivity>
+
+                            <tibco-bpel-generatereply:tibcoGenerateReplyExtensionActivity
+                                name="generate_reply" xmlns:tibco-bpel-generatereply="http://xsd.tns.tibco.com/bpel/extension/activity/generatereply/models/generatereplytaskmodel">
+                                <bpel:sources/>
+                                <mediationmodel:GenerateReply
+                                    description="" name="generate_reply"
+                                    xmi:id="_mN7lMNT3EeC67oKZt23n4A"
+                                    xmi:version="2.0"
+                                    xmlns:mediationmodel="http://xsd.tns.tibco.com/amsb/core/models/mediationmodel" xmlns:xmi="http://www.omg.org/XMI">
+                                    <inputDataBinding
+                                    queryLanguage="xslt" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:extns0=&quot;http://www.example.org/NewWSDLFile/&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;MediationFlowProperties&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageData&quot;/>&#xa;    &lt;xsl:template name=&quot;Task Input&quot; match=&quot;/&quot;>&#xa;        &lt;extns0:NewOperationResponse>&#xa;            &lt;extns0:parameters>&#xa;                &lt;extns0:NewOperationResponse>&#xa;                    &lt;out>&#xa;                        &lt;xsl:value-of select=&quot;$MessageData/extns0:NewOperationRequest/extns0:parameters/extns0:NewOperation/in&quot;/>&#xa;                    &lt;/out>&#xa;                &lt;/extns0:NewOperationResponse>&#xa;            &lt;/extns0:parameters>&#xa;        &lt;/extns0:NewOperationResponse>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>"/>
+                                </mediationmodel:GenerateReply>
+                            </tibco-bpel-generatereply:tibcoGenerateReplyExtensionActivity>
+                        </bpel:extensionActivity>
+                    </bpel:sequence>
+                    <bpel:extensionActivity>
+
+                        <tibco-bpel-handlereply:tibcoHandleReplyExtensionActivity
+                            name="handle_reply" xmlns:tibco-bpel-handlereply="http://xsd.tns.tibco.com/bpel/extension/activity/handlereply/models/handlereplytaskmodel">
+                            <bpel:targets>
+                                <bpel:target linkName="pre_generate_reply_assign_sequence-to-handle_reply"/>
+                            </bpel:targets>
+                            <bpel:sources>
+                                <bpel:source linkName="handle_reply-to-NewOperationReply"/>
+                            </bpel:sources>
+                            <mediationmodel:HandleReply description=""
+                                name="handle_reply" xmi:version="2.0"
+                                xmlns:mediationmodel="http://xsd.tns.tibco.com/amsb/core/models/mediationmodel" xmlns:xmi="http://www.omg.org/XMI"/>
+                        </tibco-bpel-handlereply:tibcoHandleReplyExtensionActivity>
+                    </bpel:extensionActivity>
+                    <bpel:reply name="NewOperationReply"
+                        operation="NewOperation"
+                        partnerLink="NewWSDLFileProvider"
+                        portType="ns:NewWSDLFile" variable="NewOperationResponseVar">
+                        <bpel:targets>
+                            <bpel:target linkName="handle_reply-to-NewOperationReply"/>
+                        </bpel:targets>
+                    </bpel:reply>
+                </bpel:flow>
+            </bpel:scope>
+        </bpel:onMessage>
+    </bpel:pick>
+</bpel:process>

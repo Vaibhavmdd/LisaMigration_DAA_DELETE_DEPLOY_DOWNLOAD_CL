@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created by TIBCO WSDL-->
+<wsdl:definitions xmlns:tns="http://www.example.org/asyncAppender/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="asyncAppender" targetNamespace="http://www.example.org/asyncAppender/">
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/asyncAppender/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:element name="testAsyncAppender">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="in" form="unqualified" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="testAsyncAppenderResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="out" form="unqualified" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="testAsyncAppenderRequest">
+        <wsdl:part name="parameters" element="tns:testAsyncAppender"/>
+    </wsdl:message>
+    <wsdl:message name="testAsyncAppenderResponse">
+        <wsdl:part name="parameters" element="tns:testAsyncAppenderResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="asyncAppender">
+        <wsdl:operation name="testAsyncAppender">
+            <wsdl:input message="tns:testAsyncAppenderRequest"/>
+            <wsdl:output message="tns:testAsyncAppenderResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="SoapComp" type="tns:asyncAppender">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="testAsyncAppender">
+            <wsdl:documentation/>
+            <soap:operation style="document" soapAction="testAsyncAppender"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="asyncAppender">
+        <wsdl:port name="SoapComp" binding="tns:SoapComp">
+            <soap:address location="http://localhost:20211/asyncAppender/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

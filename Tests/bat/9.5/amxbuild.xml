@@ -1,0 +1,108 @@
+<project default="deploy.app">
+	<import file="${TIBCO_AMXADMIN_HOME}/bin/taskdef.xml" />
+   	<import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+	
+	<target name="stop.node">
+		<stop.node dataFile="${amxConfigFile}" nodeName="${env.node2.name}"/>
+	</target>
+	
+	 <target name="start.node">
+		<start.node dataFile="${amxConfigFile}" nodeName="${env.node2.name}" />
+	</target>
+	
+	<target name="setReadOnly">
+		<AMXAdminTask
+			remote="true"
+			propsFile="${remotePropsFile}"
+			action="setReadOnly"
+			dataFile="${amxConfigFile}"
+			objectSelector="Enterprise"
+			options="note ${note}"
+			force="false"
+			failOnError="false"
+		   />
+	</target>
+	
+	<target name="unsetReadOnly">
+		<AMXAdminTask
+			remote="true"
+			propsFile="${remotePropsFile}"
+			action="unsetReadOnly"
+			dataFile="${amxConfigFile}"
+			objectSelector="Enterprise"
+			failOnError="false"
+		   />
+	</target>
+		
+	<target name="statusReadOnly">
+		<AMXAdminTask
+			remote="true"
+			propsFile="${remotePropsFile}"
+			action="statusReadOnly"
+			dataFile="${amxConfigFile}"
+			objectSelector="Enterprise"
+			failOnError="false"
+		   />
+	</target>
+	
+	<target name="suspend">
+		<AMXAdminTask
+			remote="true"
+			propsFile="${remotePropsFile}"
+			action="suspend"
+			dataFile="${amxConfigFile}"
+			objectSelector="Enterprise"
+			options="suspendEnterpriseTimeoutInSec 1800,suspendCfTimeoutInSec 1800,note ${note}"
+			force="false"
+			failOnError="false"
+		   />
+	</target>
+	
+	<target name="unsuspend">
+		<AMXAdminTask
+			remote="true"
+			propsFile="${remotePropsFile}"
+			action="unsuspend"
+			dataFile="${amxConfigFile}"
+			objectSelector="Enterprise"
+			failOnError="false"
+		   />
+	</target>
+		
+	<target name="status">
+		<AMXAdminTask
+			remote="true"
+			propsFile="${remotePropsFile}"
+			action="status"
+			dataFile="${amxConfigFile}"
+			objectSelector="Enterprise"
+			failOnError="false"
+		   />
+	</target>
+	
+	<target name="deploy.app">
+		<upload.daa dataFile="${amxConfigFile}" createIfNotExists="true" force="true" />
+		<create.rt dataFile="${amxConfigFile}" /> 
+	    <create.ri dataFile="${amxConfigFile}" />
+		<install.ri dataFile="${amxConfigFile}" />
+		<create.app dataFile="${amxConfigFile}" />
+		<map.app.to.node dataFile="${amxConfigFile}" />
+		<map.component.to.node dataFile="${amxConfigFile}" />
+		<map.service.binding.to.node dataFile="${amxConfigFile}" />
+		<set.service.binding.property  dataFile="${amxConfigFile}"/>
+		<set.app.property  dataFile="${amxConfigFile}"/>  <!-- this is for IWAP's inbound httpConnector-->
+		
+		<deploy.app dataFile="${amxConfigFile}" />
+	</target>
+	
+	<target name="undeploy.app">
+		<undeploy.app dataFile="${amxConfigFile}"  timeout="${deployTimeout}" />
+		<delete.app dataFile="${amxConfigFile}"/>
+		<uninstall.ri  dataFile="${amxConfigFile}"/>
+		<delete.ri  dataFile="${amxConfigFile}"/>		
+		<delete.rt dataFile="${amxConfigFile}" />
+		<upload.daa dataFile="${amxConfigFile}" action="delete" />
+	</target>
+	
+</project>
+

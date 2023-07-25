@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:pfx="http://www.example.org/SoapException1">
+    <wsdl:import namespace="http://www.example.org/SoapException1" location="/Service/SoapException1.wsdl"/>
+    <pd:name>Service/Service_declaredFaultDoc.process</pd:name>
+    <pd:startName>SOAPEventSource</pd:startName>
+    <pd:startX>0</pd:startX>
+    <pd:startY>0</pd:startY>
+    <pd:returnBindings/>
+    <pd:starter name="SOAPEventSource">
+        <pd:type>com.tibco.plugin.soap.SOAPEventSource</pd:type>
+        <pd:resourceType>ae.activities.SOAPEventSourceUI</pd:resourceType>
+        <pd:x>112</pd:x>
+        <pd:y>100</pd:y>
+        <config>
+            <service>pfx:SoapException1PT</service>
+            <wsdlNamespaceRoot>http://www.example.org/SoapException1/submitSoapException1Impl</wsdlNamespaceRoot>
+            <operation>submitSoapException1</operation>
+            <portAddressPrefix/>
+            <operationStyle>document</operationStyle>
+            <soapUse>literal</soapUse>
+            <embedWsdlComponents>true</embedWsdlComponents>
+            <embedSchemaComponents>true</embedSchemaComponents>
+            <soapAction>/Service/Service_declaredFaultDoc</soapAction>
+            <sharedChannel>/SharedResources/HTTP_7007.sharedhttp</sharedChannel>
+            <inputAttachmentBindings/>
+            <outputAttachmentBindings/>
+        </config>
+        <pd:inputBindings/>
+    </pd:starter>
+    <pd:endName>End</pd:endName>
+    <pd:endX>705</pd:endX>
+    <pd:endY>74</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1291145538435</pd:targetNamespace>
+    <pd:activity name="SOAPSendReply">
+        <pd:type>com.tibco.plugin.soap.SOAPSendReplyActivity</pd:type>
+        <pd:resourceType>ae.activities.SOAPSendReplyUI</pd:resourceType>
+        <pd:x>374</pd:x>
+        <pd:y>37</pd:y>
+        <config>
+            <eventSource>SOAPEventSource</eventSource>
+        </config>
+        <pd:inputBindings>
+            <outputMessage>
+                <pfx:SoapException1Response>
+                    <xsl:value-of select="concat(&quot;Response from BW for inputString = &quot;, $SOAPEventSource/inputMessage/pfx:SoapException1Request/InputString)"/>
+                </pfx:SoapException1Response>
+            </outputMessage>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="SOAPSendFault_compType">
+        <pd:type>com.tibco.plugin.soap.SOAPSendFaultActivity</pd:type>
+        <pd:resourceType>ae.activities.SOAPSendFaultUI</pd:resourceType>
+        <pd:x>383</pd:x>
+        <pd:y>132</pd:y>
+        <config>
+            <faultMessage>SoapException1Fault1</faultMessage>
+            <eventSource>SOAPEventSource</eventSource>
+        </config>
+        <pd:inputBindings>
+            <FaultMessage>
+                <faultcode>
+                    <xsl:value-of select="$SOAPEventSource/inputMessage/pfx:SoapException1Request/POJO2/faultCode"/>
+                </faultcode>
+                <faultstring>
+                    <xsl:value-of select="$SOAPEventSource/inputMessage/pfx:SoapException1Request/POJO2/faultString"/>
+                </faultstring>
+                <faultactor>
+                    <xsl:value-of select="$SOAPEventSource/inputMessage/pfx:SoapException1Request/POJO2/faultRoleOrActor"/>
+                </faultactor>
+                <detail>
+                    <pfx:SoapException1Fault1>
+                        <faultDetailReason>
+                            <xsl:value-of select="$SOAPEventSource/inputMessage/pfx:SoapException1Request/POJO2/detail"/>
+                        </faultDetailReason>
+                    </pfx:SoapException1Fault1>
+                </detail>
+            </FaultMessage>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="SOAPSendFault_primString">
+        <pd:type>com.tibco.plugin.soap.SOAPSendFaultActivity</pd:type>
+        <pd:resourceType>ae.activities.SOAPSendFaultUI</pd:resourceType>
+        <pd:x>400</pd:x>
+        <pd:y>210</pd:y>
+        <config>
+            <faultMessage>SoapException1Fault2</faultMessage>
+            <eventSource>SOAPEventSource</eventSource>
+        </config>
+        <pd:inputBindings>
+            <FaultMessage>
+                <faultcode>
+                    <xsl:value-of select="$SOAPEventSource/inputMessage/pfx:SoapException1Request/POJO2/faultCode"/>
+                </faultcode>
+                <faultstring>
+                    <xsl:value-of select="$SOAPEventSource/inputMessage/pfx:SoapException1Request/POJO2/faultString"/>
+                </faultstring>
+                <faultactor>
+                    <xsl:value-of select="$SOAPEventSource/inputMessage/pfx:SoapException1Request/POJO2/faultRoleOrActor"/>
+                </faultactor>
+                <detail>
+                    <pfx:SoapException1Fault2>
+                        <xsl:value-of select="$SOAPEventSource/inputMessage/pfx:SoapException1Request/POJO2/detail"/>
+                    </pfx:SoapException1Fault2>
+                </detail>
+            </FaultMessage>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="SOAPSendFault_compTypeRef">
+        <pd:type>com.tibco.plugin.soap.SOAPSendFaultActivity</pd:type>
+        <pd:resourceType>ae.activities.SOAPSendFaultUI</pd:resourceType>
+        <pd:x>392</pd:x>
+        <pd:y>296</pd:y>
+        <config>
+            <faultMessage>SoapException1Fault3</faultMessage>
+            <eventSource>SOAPEventSource</eventSource>
+        </config>
+        <pd:inputBindings>
+            <FaultMessage>
+                <faultcode>
+                    <xsl:value-of select="$SOAPEventSource/inputMessage/pfx:SoapException1Request/POJO2/faultCode"/>
+                </faultcode>
+                <faultstring>
+                    <xsl:value-of select="$SOAPEventSource/inputMessage/pfx:SoapException1Request/POJO2/faultString"/>
+                </faultstring>
+                <faultactor>
+                    <xsl:value-of select="$SOAPEventSource/inputMessage/pfx:SoapException1Request/POJO2/faultRoleOrActor"/>
+                </faultactor>
+                <detail>
+                    <pfx:SoapException1Fault3>
+                        <pfx:FaultReason>
+                            <xsl:value-of select="$SOAPEventSource/inputMessage/pfx:SoapException1Request/POJO2/detail"/>
+                        </pfx:FaultReason>
+                    </pfx:SoapException1Fault3>
+                </detail>
+            </FaultMessage>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>SOAPEventSource</pd:from>
+        <pd:to>SOAPSendReply</pd:to>
+        <pd:xpathDescription>Success</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>($SOAPEventSource/inputMessage/pfx:SoapException1Request/InputString!="BW_declaredFault_compType") and ($SOAPEventSource/inputMessage/pfx:SoapException1Request/InputString!="BW_declaredFault_primString") and ($SOAPEventSource/inputMessage/pfx:SoapException1Request/InputString!="BW_declaredFault_compTypeRef")</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>SOAPSendReply</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>SOAPEventSource</pd:from>
+        <pd:to>SOAPSendFault_compType</pd:to>
+        <pd:xpathDescription>DeclaredFault_compType</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$SOAPEventSource/inputMessage/pfx:SoapException1Request/InputString="BW_declaredFault_compType"</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>SOAPSendFault_compType</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>SOAPEventSource</pd:from>
+        <pd:to>SOAPSendFault_primString</pd:to>
+        <pd:xpathDescription>DeclaredFault_primString</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$SOAPEventSource/inputMessage/pfx:SoapException1Request/InputString="BW_declaredFault_primString"</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>SOAPSendFault_primString</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>SOAPEventSource</pd:from>
+        <pd:to>SOAPSendFault_compTypeRef</pd:to>
+        <pd:xpathDescription>DeclaredFault_compTypeRef</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$SOAPEventSource/inputMessage/pfx:SoapException1Request/InputString="BW_declaredFault_compTypeRef"</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>SOAPSendFault_compTypeRef</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>

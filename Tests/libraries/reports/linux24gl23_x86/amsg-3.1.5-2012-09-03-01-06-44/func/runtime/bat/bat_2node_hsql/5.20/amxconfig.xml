@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise 
+	xmlns:amxdata_jmsssr="http://tibco.com/amxadministrator/command/line/types_jmssr" 
+	xmlns:amxdata_jmssr_base="http://tibco.com/amxadministrator/command/line/types_jmssr_base" 
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types" 
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base" 
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+
+    <Environment xsi:type="amxdata:Environment" 
+		name="QAEnvironment_amxrel2qa1.na.tibco.com" 
+		description="environment" 
+		contact="TIBCO">
+
+		<Node xsi:type="amxdata:Node" name="QANode2">
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="bat520_out_jcf" resourceTemplateName="bat520_out_jcf"/>
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="bat520_out_jd" resourceTemplateName="bat520_out_jd"/>
+		 </Node>
+
+        <Application xsi:type="amxdata:Application" name="bat520" contact="TIBCO Inc." description="bat520">
+		<Component xsi:type="amxdata:Component" name="Java1">
+			<Node name="QANode2" environmentName="QAEnvironment_amxrel2qa1.na.tibco.com"/>
+		</Component>
+		<Component xsi:type="amxdata:Component" name="Java2">
+			<Node name="QANode2" environmentName="QAEnvironment_amxrel2qa1.na.tibco.com"/>
+		</Component>
+		<Component xsi:type="amxdata:Component" name="Java3">
+			<Node name="QANode2" environmentName="QAEnvironment_amxrel2qa1.na.tibco.com"/>
+		</Component>
+		<PromotedService xsi:type="amxdata_base:Service_base" name="Service">
+			<Binding xsi:type="amxdata:Binding" name="SOAPService_Binding1">
+				<Node name="QANode1" environmentName="QAEnvironment_amxrel2qa1.na.tibco.com" />                
+				<Property  xsi:type="amxdata:Property" name="HttpInboundConnectionConfig"  value="httpConnector1"/>
+			</Binding>
+		</PromotedService>
+		<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="bat520"/>
+        </Application>
+
+    </Environment>
+	
+<DAA xsi:type="amxdata:DAA" description="bat520" location="bat520/Deployment Artifacts/bat520.daa" importResourceTemplates="false"/>
+<Feature xsi:type="amxdata_base:FeatureID" componentID="bat520.bat520.customfeature.id" version="1.0.0.000"/>
+<AppTemplate xsi:type="amxdata_base:AppTemplateID" name="bat520" version="1.0.0.000"/>
+
+<amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate
+	xsi:type="amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate"
+	name="bat520_out_jcf"
+	jndiName="GenericConnectionFactory"
+	jndiConnectionConfigurationName="bat520_jndi_ccrt"
+	description="bat520_in_jndi">	
+	<InlineCredentials username="amxemspwd" password="amxemspwd"/>
+	</amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate>
+<amxdata_jmsssr:JNDIDestinationResourceTemplate 
+	xsi:type="amxdata_jmsssr:JNDIDestinationResourceTemplate" 
+	name="bat520_out_jd"
+	jndiName="bat520_jndi_amxrel2qa1.na.tibco.com" 
+	jndiConnectionConfigurationName="bat520_jndi_ccrt"
+	description="bat520 response queue"/>
+<amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate
+	xsi:type="amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate"
+	name="bat520_jndi_ccrt"
+	initialContextFactory="com.tibco.tibjms.naming.TibjmsInitialContextFactory"
+	providerUrl="tibjmsnaming://AMX-BACKEND.na.tibco.com:7622"
+	description="JndiConnectionConfiguration">
+	<InlineCredentials username="amxjndipwd" password="amxjndipwd"/>
+	</amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate>
+
+</amxdata_base:Enterprise>

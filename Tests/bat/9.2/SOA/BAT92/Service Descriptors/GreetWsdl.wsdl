@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.example.org/GreetWsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="GreetWsdl" targetNamespace="http://www.example.org/GreetWsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.example.org/GreetWsdl/">
+      <xsd:element name="GreetPOST">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="in" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GreetPOSTResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GreetGET">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="in" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GreetGETResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="out" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GreetPUT">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="in" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GreetPUTResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="out" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GreetDELETE">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="in" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GreetDELETEResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="out" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="GreetPOSTRequest">
+    <wsdl:part element="tns:GreetPOST" name="inputParam"/>
+    <wsdl:part name="POST_PP_STRING" type="xsd:string"></wsdl:part>
+    <wsdl:part name="POST_PP_BOOLEAN" type="xsd:boolean"></wsdl:part>
+    <wsdl:part name="POST_PP_BYTE" type="xsd:byte"></wsdl:part>
+    <wsdl:part name="POST_PP_SHORT" type="xsd:short"></wsdl:part>
+    <wsdl:part name="POST_PP_INTEGER" type="xsd:integer"></wsdl:part>
+    <wsdl:part name="POST_PP_LONG" type="xsd:long"></wsdl:part>
+    <wsdl:part name="POST_PP_FLOAT" type="xsd:float"></wsdl:part>
+    <wsdl:part name="POST_PP_DOUBLE" type="xsd:double"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GreetPOSTResponse">
+    <wsdl:part element="tns:GreetPOSTResponse" name="outputParam"/>
+  </wsdl:message>
+  <wsdl:message name="GreetGETRequest">
+    <wsdl:part name="inputParam" type="xsd:string"></wsdl:part>
+    <wsdl:part name="GET_PP_STRING" type="xsd:string"></wsdl:part>
+    <wsdl:part name="GET_PP_BOOLEAN" type="xsd:boolean"></wsdl:part>
+    <wsdl:part name="GET_PP_BYTE" type="xsd:byte"></wsdl:part>
+    <wsdl:part name="GET_PP_SHORT" type="xsd:short"></wsdl:part>
+    <wsdl:part name="GET_PP_INTEGER" type="xsd:integer"></wsdl:part>
+    <wsdl:part name="GET_PP_LONG" type="xsd:long"></wsdl:part>
+    <wsdl:part name="GET_PP_FLOAT" type="xsd:float"></wsdl:part>
+    <wsdl:part name="GET_PP_DOUBLE" type="xsd:double"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GreetGETResponse">
+  	<wsdl:part name="outputParam" element="tns:GreetGETResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GreetPUTRequest">
+  	<wsdl:part name="inputParam" element="tns:GreetPUT"></wsdl:part>
+    <wsdl:part name="PUT_PP_STRING" type="xsd:string"></wsdl:part>
+    <wsdl:part name="PUT_PP_BOOLEAN" type="xsd:boolean"></wsdl:part>
+    <wsdl:part name="PUT_PP_BYTE" type="xsd:byte"></wsdl:part>
+    <wsdl:part name="PUT_PP_SHORT" type="xsd:short"></wsdl:part>
+    <wsdl:part name="PUT_PP_INTEGER" type="xsd:integer"></wsdl:part>
+    <wsdl:part name="PUT_PP_LONG" type="xsd:long"></wsdl:part>
+    <wsdl:part name="PUT_PP_FLOAT" type="xsd:float"></wsdl:part>
+    <wsdl:part name="PUT_PP_DOUBLE" type="xsd:double"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GreetPUTResponse">
+  	<wsdl:part name="outputParam" element="tns:GreetPUTResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GreetDELETERequest">
+        <wsdl:part name="inputParam" type="xsd:string"></wsdl:part>
+    <wsdl:part name="DELETE_PP_STRING" type="xsd:string"></wsdl:part>
+    <wsdl:part name="DELETE_PP_BOOLEAN" type="xsd:boolean"></wsdl:part>
+    <wsdl:part name="DELETE_PP_BYTE" type="xsd:byte"></wsdl:part>
+    <wsdl:part name="DELETE_PP_SHORT" type="xsd:short"></wsdl:part>
+    <wsdl:part name="DELETE_PP_INTEGER" type="xsd:integer"></wsdl:part>
+    <wsdl:part name="DELETE_PP_LONG" type="xsd:long"></wsdl:part>
+    <wsdl:part name="DELETE_PP_FLOAT" type="xsd:float"></wsdl:part>
+    <wsdl:part name="DELETE_PP_DOUBLE" type="xsd:double"></wsdl:part>	  </wsdl:message>
+  <wsdl:message name="GreetDELETEResponse">
+  	<wsdl:part name="outputParam" element="tns:GreetDELETEResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="GreetWsdl">
+    <wsdl:operation name="GreetPOST">
+      <wsdl:input message="tns:GreetPOSTRequest"/>
+      <wsdl:output message="tns:GreetPOSTResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GreetGET">
+    	<wsdl:input message="tns:GreetGETRequest"></wsdl:input>
+    	<wsdl:output message="tns:GreetGETResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GreetPUT">
+    	<wsdl:input message="tns:GreetPUTRequest"></wsdl:input>
+    	<wsdl:output message="tns:GreetPUTResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GreetDELETE">
+    	<wsdl:input message="tns:GreetDELETERequest"></wsdl:input>
+    	<wsdl:output message="tns:GreetDELETEResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GreetWsdlSOAP" type="tns:GreetWsdl">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GreetPOST">
+      <soap:operation soapAction="http://www.example.org/GreetWsdl/GreetPOST"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GreetWsdl">
+    <wsdl:port binding="tns:GreetWsdlSOAP" name="GreetWsdlSOAP">
+      <soap:address location="http://www.example.org/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

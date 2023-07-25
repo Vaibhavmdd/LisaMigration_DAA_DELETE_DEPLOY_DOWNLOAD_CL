@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tibex="http://www.tibco.com/bs3.2/extensions" xmlns:tns="http://www.tibco.com/ws/spline/wsdl/elements/mathservice" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://www.tibco.com/ws/spline/wsdl/elements/mathservice" tibex:src="file:/C:/Silver/AMSG/M6/WorkspaceV21/workspace1/p1/Service%20Descriptors/MathService.wsdl">
+    <wsdl:types>
+        <s:schema elementFormDefault="qualified" targetNamespace="http://www.tibco.com/ws/spline/wsdl/elements/mathservice">
+            <s:element name="Add">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="1" name="a" type="s:float"/>
+                        <s:element maxOccurs="1" minOccurs="1" name="b" type="s:float"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="AddResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="1" name="AddResult" type="s:float"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="Subtract">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="1" name="a" type="s:float"/>
+                        <s:element maxOccurs="1" minOccurs="1" name="b" type="s:float"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="SubtractResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="1" name="SubtractResult" type="s:float"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="Multiply">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="1" name="a" type="s:float"/>
+                        <s:element maxOccurs="1" minOccurs="1" name="b" type="s:float"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="MultiplyResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="1" name="MultiplyResult" type="s:float"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="Divide">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="1" name="a" type="s:float"/>
+                        <s:element maxOccurs="1" minOccurs="1" name="b" type="s:float"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="DivideResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="1" name="DivideResult" type="s:float"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="float" type="s:float"/>
+        </s:schema>
+    </wsdl:types>
+    <wsdl:message name="AddSoapIn">
+        <wsdl:part element="tns:Add" name="parameters"/>
+    </wsdl:message>
+    <wsdl:message name="AddSoapOut">
+        <wsdl:part element="tns:AddResponse" name="parameters"/>
+    </wsdl:message>
+    <wsdl:message name="SubtractSoapIn">
+        <wsdl:part element="tns:Subtract" name="parameters"/>
+    </wsdl:message>
+    <wsdl:message name="SubtractSoapOut">
+        <wsdl:part element="tns:SubtractResponse" name="parameters"/>
+    </wsdl:message>
+    <wsdl:message name="MultiplySoapIn">
+        <wsdl:part element="tns:Multiply" name="parameters"/>
+    </wsdl:message>
+    <wsdl:message name="MultiplySoapOut">
+        <wsdl:part element="tns:MultiplyResponse" name="parameters"/>
+    </wsdl:message>
+    <wsdl:message name="DivideSoapIn">
+        <wsdl:part element="tns:Divide" name="parameters"/>
+    </wsdl:message>
+    <wsdl:message name="DivideSoapOut">
+        <wsdl:part element="tns:DivideResponse" name="parameters"/>
+    </wsdl:message>
+    <wsdl:portType name="AddSubtractService">
+        <wsdl:operation name="Add">
+            <wsdl:input message="tns:AddSoapIn"/>
+            <wsdl:output message="tns:AddSoapOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="Subtract">
+            <wsdl:input message="tns:SubtractSoapIn"/>
+            <wsdl:output message="tns:SubtractSoapOut"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:portType name="MultiplyDivideService">
+        <wsdl:operation name="Multiply">
+            <wsdl:input message="tns:MultiplySoapIn"/>
+            <wsdl:output message="tns:MultiplySoapOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="Divide">
+            <wsdl:input message="tns:DivideSoapIn"/>
+            <wsdl:output message="tns:DivideSoapOut"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

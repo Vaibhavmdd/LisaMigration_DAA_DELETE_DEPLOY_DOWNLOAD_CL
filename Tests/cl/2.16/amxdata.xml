@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+		
+	<Environment 
+		xsi:type="amxdata:Environment" 
+		description="QA Environment" 
+		name="QAEnvironment_na2devasgora03">
+		<Node xsi:type="amxdata:Node" name="QANode2" hostName="SystemHost_na2devasgora03">
+		    <ResourceInstance xsi:type="amxdata:ResourceInstance" name="httpConnectorCL2_16" resourceTemplateName="httpConnectorCL2_16"/>
+		</Node>
+			
+		<Application
+			xsi:type="amxdata:Application"
+			name="cl2_16"
+			contact="Amanda Wang"
+			description="SOAP-Java1->Java2-Java3(In-Out) with Common Logging">
+			<!--Component Java1-->
+			<Component xsi:type="amxdata:Component" name="Java1">
+	    		<Node name="QANode2" environmentName="QAEnvironment_na2devasgora03" />		              
+			</Component> 
+			<!--Component Java2-->
+			<Component xsi:type="amxdata:Component" name="Java2">
+	    		<Node name="QANode2" environmentName="QAEnvironment_na2devasgora03" />				  
+	    	        </Component>
+	    	       <!--Component Java3-->
+			<Component xsi:type="amxdata:Component" name="Java3">
+	    		<Node name="QANode2" environmentName="QAEnvironment_na2devasgora03" />				  
+	    	        </Component>
+			<!--Service Binding-->
+			<PromotedService xsi:type="amxdata_base:Service_base" name="helloworldService">
+	    		<Binding xsi:type="amxdata:Binding" name="soap.binding">	    		
+	    			<Node name="QANode2" environmentName="QAEnvironment_na2devasgora03" />		    		
+	    		</Binding>	
+			</PromotedService>
+			<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="helloworld2_16"/>			
+		  </Application>		
+	</Environment>
+	
+	<ResourceTemplate xsi:type="amxdata:HttpConnectorResourceTemplate" name="httpConnectorCL2_16" host="na2devasgora03" port="22026" headerBufferSize="512" requestBufferSize="512"	responseBufferSize="512" maxIdleTime="200000" lowResourceMaxIdleTime="512" description="This is HttpConnector RT"/>
+	
+	<!--Get the DAA-->
+	<DAA
+		xsi:type="amxdata:DAA"
+		description="DAA For CL2.16"
+		location="C:/Lisa1072/Projects/AMX/Tests/cl/2.16/helloworld/Deployment Artifacts/helloworld2_16.daa"
+		importResourceTemplates="true">
+	</DAA>
+</amxdata_base:Enterprise>

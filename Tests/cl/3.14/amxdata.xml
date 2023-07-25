@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+	xmlns:amxdata_jmsssr="http://tibco.com/amxadministrator/command/line/types_jmssr"
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd http://tibco.com/amxadministrator/command/line/types_jmssr ../schemas/jmssr.xsd">
+
+
+
+
+	 <LogAppender
+      xsi:type="amxdata:JmsLogAppender"
+      name="QA_JMSAppender314"
+      description="[[JMSappenderDescription]]"
+      jmsConnectionFactoryName="cl_QA_logservice_jmsConnectionFactory"
+      jmsConnectionName="cl_QA_logservice_jndiConnectionConfig"
+      jmsDestination="cl_QA_logservice_jmsDestination"
+      expireTimeInDB="10"
+		payload = "true"		
+		payloadConnectionFactoryName ="cl_QA_payloadservice_jmsConnectionFactory" 
+		payloadConnectionName="cl_QA_payloadservice_jndiConnectionConfig"
+		payloadDestination="cl_QA_payloadservice_jmsDestination"/>
+  	
+  	
+      <LogAppender
+      xsi:type="amxdata:JmsLogAppender"
+      name="QA_JMSAppender314"
+      description="[[Update_JMSappenderDescription]]"
+      jmsConnectionFactoryName="update_cl_QA_logservice_jmsConnectionFactory"
+      jmsConnectionName="update_cl_QA_logservice_jndiConnectionConfig"
+      jmsDestination="update_cl_QA_logservice_jmsDestination"
+      expireTimeInDB="10"
+		payload = "true"		
+		payloadConnectionFactoryName ="update_cl_QA_payloadservice_jmsConnectionFactory" 
+		payloadConnectionName="update_cl_QA_payloadservice_jndiConnectionConfig"
+		payloadDestination="update_cl_QA_payloadservice_jmsDestination"/>
+  	
+  	
+  	
+  	
+  	<!--RT for Logservice part configuration of JMS appender/-->
+         
+         
+         <!--
+      		type="jndi"
+		sync="false"
+		sharedDiskURL="C:\temp"
+		-->
+
+<!--
+<ResourceTemplate description="TIBCO Common Logging Log Service JDBC RT" name="cl_logservice_jdbc" xsi:type="amxdata:JdbcResourceTemplate" maxConnections="10">
+    <Direct loginTimeOut="60000" isTransactional="true" xsi:type="amxdata:Direct" dbUrl="${logging.db.url}" jdbcDriver="org.hsqldb.jdbcDriver"/>
+    <InlineCredentials username="sa" password="#!t0Fkc4qsDN4UaA18oNF2LA=="/>
+  </ResourceTemplate>
+  
+  <ResourceTemplate datasourceName="cl_logservice_jdbc" statementBatchSize="10" sqlLogging="true" schemaGeneration="update" contact="admin" description="TIBCO Common Logging Log Service Teneo RT" name="cl_logservice_teneo" xsi:type="amxdata:TeneoResourceTemplate" dialect="org.hibernate.dialect.HSQLDialect">
+    <advancedProperties xsi:type="amxdata:Properties">
+      <Property value="thread" name="currentSessionContextProvider" xsi:type="amxdata:Property"/>
+      <Property value="30" name="maximumSqlNameLength" xsi:type="amxdata:Property"/>
+      <Property value="uppercase" name="sqlCaseStratrgy" xsi:type="amxdata:Property"/>
+    </advancedProperties>
+  </ResourceTemplate>
+      /-->
+      
+      
+  <amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate 
+  description="[[LogserviceRT_JndiConnectionConfiguration]]" 
+  initialContextFactory="com.tibco.tibjms.naming.TibjmsInitialContextFactory" 
+  name="cl_QA_logservice_jndiConnectionConfig" 
+  xsi:type="amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate" providerUrl="tibjmsnaming://[[emshost]]:[[emsport]]">
+  <InlineCredentials username="[[emsuser]]" password="[[emspwd]]"/>
+  </amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate>
+    
+  <amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate 
+  description="[[LogserviceRT_JndiConnectionFactory]]" 
+  jndiConnectionConfigurationName="cl_QA_logservice_jndiConnectionConfig" 
+  jndiName="GenericConnectionFactory" 
+  name="cl_QA_logservice_jmsConnectionFactory" 
+  xsi:type="amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate">
+  <InlineCredentials username="[[emsuser]]" password="[[emspwd]]"/>
+  </amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate>
+  
+  
+  <amxdata_jmsssr:JNDIDestinationResourceTemplate 
+  description="[[LogserviceRT_JndiDestination]]" 
+  jndiConnectionConfigurationName="cl_QA_logservice_jndiConnectionConfig" 
+  jndiName="cl_logservice_queue" 
+  name="cl_QA_logservice_jmsDestination" 
+  xsi:type="amxdata_jmsssr:JNDIDestinationResourceTemplate"/>
+
+
+<!--  RT for update testing -->
+
+
+
+
+
+ <amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate 
+  description="[[Update_LogserviceRT_JndiConnectionConfiguration]]" 
+  initialContextFactory="com.tibco.tibjms.naming.TibjmsInitialContextFactory" 
+  name="update_cl_QA_logservice_jndiConnectionConfig" 
+  xsi:type="amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate" providerUrl="tibjmsnaming://[[emshost]]:[[emsport]]">
+  <InlineCredentials username="[[emsuser]]" password="[[emspwd]]"/>
+  </amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate>
+    
+  <amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate 
+  description="[[Update_LogserviceRT_JndiConnectionFactory]]" 
+  jndiConnectionConfigurationName="cl_QA_logservice_jndiConnectionConfig" 
+  jndiName="GenericConnectionFactory" 
+  name="update_cl_QA_logservice_jmsConnectionFactory" 
+  xsi:type="amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate">
+  <InlineCredentials username="[[emsuser]]" password="[[emspwd]]"/>
+  </amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate>
+  
+  
+  <amxdata_jmsssr:JNDIDestinationResourceTemplate 
+  description="[[Update_LogserviceRT_JndiDestination]]" 
+  jndiConnectionConfigurationName="cl_QA_logservice_jndiConnectionConfig" 
+  jndiName="cl_logservice_queue" 
+  name="update_cl_QA_logservice_jmsDestination" 
+  xsi:type="amxdata_jmsssr:JNDIDestinationResourceTemplate"/>
+
+
+
+
+
+
+<!--RT for payload part configuration of JMS appender/-->
+     	
+     	
+     	<!--
+     	   <ResourceTemplate datasourceName="payloadJdbcSharedResource" statementBatchSize="10" sqlLogging="true" schemaGeneration="update" contact="admin" 
+    description="This is Teneo RT for TIBCO Common Logging Payload Service" 
+    name="payloadTeneoSharedResource" 
+    xsi:type="amxdata:TeneoResourceTemplate" dialect="org.hibernate.dialect.HSQLDialect">
+    <advancedProperties xsi:type="amxdata:Properties">
+      <Property value="thread" name="currentSessionContextProvider" xsi:type="amxdata:Property"/>
+      <Property value="30" name="maximumSqlNameLength" xsi:type="amxdata:Property"/>
+      <Property value="uppercase" name="sqlCaseStratrgy" xsi:type="amxdata:Property"/>
+    </advancedProperties>
+   </ResourceTemplate>
+  
+  <ResourceTemplate description="TIBCO Common Logging Payload Service JDBC RT" name="payloadJdbcSharedResource" 
+    xsi:type="amxdata:JdbcResourceTemplate" maxConnections="10">
+    <Direct loginTimeOut="60000" isTransactional="true" xsi:type="amxdata:Direct" dbUrl="${payload.db.url}" jdbcDriver="org.hsqldb.jdbcDriver"/>
+    <InlineCredentials username="sa" password="#!t0Fkc4qsDN4UaA18oNF2LA=="/>
+  </ResourceTemplate>
+      /-->
+
+  
+  <amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate description="[[PayloadserviceRT_JndiConnectionConfiguration]]" 
+     initialContextFactory="com.tibco.tibjms.naming.TibjmsInitialContextFactory" 
+     name="cl_QA_payloadservice_jndiConnectionConfig" 
+     xsi:type="amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate" providerUrl="tibjmsnaming://[[emshost]]:[[emsport]]">
+    <InlineCredentials username="[[emsuser]]" password="[[emspwd]]"/>
+  </amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate>
+  
+  <amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate description="[[PayloadserviceRT_JndiConnectionFactory]]" 
+    jndiConnectionConfigurationName="cl_QA_payloadservice_jndiConnectionConfig" 
+    jndiName="GenericConnectionFactory" 
+    name="cl_QA_payloadservice_jmsConnectionFactory" 
+    xsi:type="amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate">
+    <InlineCredentials username="[[emsuser]]" password="[[emspwd]]"/>
+  </amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate>
+  
+  
+  <amxdata_jmsssr:JNDIDestinationResourceTemplate 
+  description="[[PayloadserviceRT_JndiDestination]]" 
+  jndiConnectionConfigurationName="cl_QA_payloadservice_jndiConnectionConfig" 
+  jndiName="cl_payload_queue" 
+  name="cl_QA_payloadservice_jmsDestination" 
+  xsi:type="amxdata_jmsssr:JNDIDestinationResourceTemplate"/>
+
+
+
+<!--  RT for update testing -->	
+
+  <amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate description="[[Update_PayloadserviceRT_JndiConnectionConfiguration]]" 
+     initialContextFactory="com.tibco.tibjms.naming.TibjmsInitialContextFactory" 
+     name="update_cl_QA_payloadservice_jndiConnectionConfig" 
+     xsi:type="amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate" providerUrl="tibjmsnaming://[[emshost]]:[[emsport]]">
+    <InlineCredentials username="[[emsuser]]" password="[[emspwd]]"/>
+  </amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate>
+  
+  <amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate description="[[Update_PayloadserviceRT_JndiConnectionFactory]]" 
+    jndiConnectionConfigurationName="cl_QA_payloadservice_jndiConnectionConfig" 
+    jndiName="GenericConnectionFactory" 
+    name="update_cl_QA_payloadservice_jmsConnectionFactory" 
+    xsi:type="amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate">
+    <InlineCredentials username="[[emsuser]]" password="[[emspwd]]"/>
+  </amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate>
+  
+  
+  <amxdata_jmsssr:JNDIDestinationResourceTemplate 
+  description="[[Update_PayloadserviceRT_JndiDestination]]" 
+  jndiConnectionConfigurationName="cl_QA_payloadservice_jndiConnectionConfig" 
+  jndiName="cl_payload_queue" 
+  name="update_cl_QA_payloadservice_jmsDestination" 
+  xsi:type="amxdata_jmsssr:JNDIDestinationResourceTemplate"/>
+
+
+</amxdata_base:Enterprise>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:aebinding="http://xsd.tns.tibco.com/aebinding/2006" xmlns:jms="http://xsd.tns.tibco.com/amf/models/adapter/wsdl/jms" xmlns:jndi="http://xsd.tns.tibco.com/amf/models/adapter/wsdl/jndi" xmlns:ns1="http://www.tibco.com/xmlns/ae2xsd/2002/05/BAT6.10" xmlns:rv="http://xsd.tns.tibco.com/amf/models/adapter/wsdl/rv" xmlns:tns="urn:BAT6_10:BAT6_10" targetNamespace="urn:BAT6_10:BAT6_10">
+  <Import xmlns="http://xsd.tns.tibco.com/amf/models/adapter/wsdl" appName="BAT6_10" configUrl="/tibco/private/adapter/BAT6_10" repoUrl="BAT6_10_2869864322778991620.dat"/>
+  <import location="../schema/BAT6.10.xsd" namespace="http://www.tibco.com/xmlns/ae2xsd/2002/05/BAT6.10"/>
+  <types>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:BAT6_10:BAT6_10/types">
+      <xsd:import namespace="http://www.tibco.com/xmlns/ae2xsd/2002/05/BAT6.10" schemaLocation="../schema/BAT6.10.xsd"/>
+    </xsd:schema>
+  </types>
+  <message name="GetEmployeeById__request">
+    <part element="ns1:__caret_request_caret_Operation_caret_GetEmployeeById" name="request"/>
+  </message>
+  <message name="GetEmployeeById__response">
+    <part element="ns1:__caret_reply_caret_Operation_caret_GetEmployeeById" name="response"/>
+  </message>
+  <message name="EmployeeIdNotFound__exception">
+    <part element="ns1:__caret_fault_caret_Operation_caret_GetEmployeeById" name="exception"/>
+  </message>
+  <message name="GetEmployeeByIdWithWrongData__request">
+    <part element="ns1:__caret_request_caret_Operation_caret_GetEmployeeByIdWithWrongData" name="request"/>
+  </message>
+  <message name="GetEmployeeByIdWithWrongData__response">
+    <part element="ns1:__caret_reply_caret_Operation_caret_GetEmployeeByIdWithWrongData" name="response"/>
+  </message>
+  <portType name="BAT6.10Service">
+    <operation name="GetEmployeeById">
+      <input message="tns:GetEmployeeById__request"/>
+      <output message="tns:GetEmployeeById__response"/>
+      <fault message="tns:EmployeeIdNotFound__exception" name="EmployeeIdNotFound"/>
+    </operation>
+    <operation name="GetEmployeeByIdWithWrongData">
+      <input message="tns:GetEmployeeByIdWithWrongData__request"/>
+      <output message="tns:GetEmployeeByIdWithWrongData__response"/>
+    </operation>
+  </portType>
+  <binding name="BAT6.10Service_binding" type="tns:BAT6.10Service">
+    <aebinding:AEBinding packingFormat="10" transport="http://xsd.tns.tibco.com/aebinding/2006/TIBJMS" version="2.0"/>
+    <operation name="GetEmployeeById">
+      <aebinding:AEOperation name="GetEmployeeById" style="document"/>
+      <input>
+        <aebinding:AEBody encodingStyle="http://xsd.tns.tibco.com/aebinding/2006/encoding/aeXML" use="encoded"/>
+      </input>
+      <output>
+        <aebinding:AEBody encodingStyle="http://xsd.tns.tibco.com/aebinding/2006/encoding/aeXML" use="encoded"/>
+      </output>
+      <fault name="EmployeeIdNotFound">
+        <aebinding:AEBody encodingStyle="http://xsd.tns.tibco.com/aebinding/2006/encoding/aeXML" use="encoded"/>
+      </fault>
+    </operation>
+  </binding>
+  <service name="BAT6.10Service_service">
+    <port binding="tns:BAT6.10Service_binding" name="BAT6.10Service_port">
+      <jms:JMSConnectionConfiguration connectionFactory="QueueConnectionFactory" providerURL="tcp://localhost:7222">
+        <jms:JMSDestination name="BAT6_10_Queue"/>
+        <jndi:JNDIConfiguration contextFactory="com.tibco.tibjms.naming.TibjmsInitialContextFactory" contextURL="%%BAT6_10/jmsProviderUrl%%"/>
+      </jms:JMSConnectionConfiguration>
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,60 @@
+<?xml version="1.0" ?>
+<project name="SDSCLI" basedir="." default="all">
+<!-- 
+Create a new composite in the project and create component and promote the service on the component and create DAA
+-->
+
+	<target name="all" depends="importProjects, createComposite, createComponent, promoteService, createDAA">
+	
+	</target>
+
+	
+	<target name="importProjects">
+
+		<sds.importProject projectLoc="${soa.project.loc}" />
+		<sds.importProject projectLoc="${java.project.loc}" />
+
+	</target>
+
+<!-- The task sds.javait.upgradeJarsForJre17 is only available in AMX 3.2.1 and beyond -->
+<!--
+	<target name="fixJars">
+		<sds.javait.upgradeJarsForJre17 failoninvalidlocation="true" includenonlibraryjars="true">
+			<jarlocation path="${java.project.loc}/lib"/>
+		</sds.javait.upgradeJarsForJre17>
+	</target>
+-->	
+	<target name="createComposite" >
+			<echo message="Create composite"></echo>
+			<sds.createComposite projectName="${projectName}" compositeName="${newCompositeName}" />
+
+	</target>
+	<target name="createComponent">
+			<echo message="Create Component"></echo>
+			<sds.createComponent projectName="${projectName}" compositeName="${newCompositeName}" componentName="${componentName}" implementationLoc="${implementationLoc}">
+				<param name="feature.id" value="${featureid}"/>
+				<param name="feature.file.path" value="/${projectName}/Deployment Artifacts/${featureid}"/>
+				<param name="use.existing.feature" value="true"/>
+				<param name="create.new.feature" value="false"/>
+				<param name="feature.version" value="1.0.0.qualifier"/>
+			</sds.createComponent>
+		</target>
+	<target name="promoteService">
+			<echo message="Promote service"></echo>
+			<sds.promoteAll projectName="${projectName}" compositeName="${newCompositeName}" componentName="${componentName}" />
+
+	</target>
+
+	<target name="createDAA">
+		<echo message="Create DAA"></echo>
+		<sds.createDAA projectName="${projectName}"	daaLoc="${daaLoc}" overwriteExistingDAA="true">
+			<application compositeName="${newCompositeName}" projectName="${projectName}">  
+			</application>
+			
+			<feature id="${featureid}.id" />
+				
+		</sds.createDAA>
+
+	</target>
+
+</project>

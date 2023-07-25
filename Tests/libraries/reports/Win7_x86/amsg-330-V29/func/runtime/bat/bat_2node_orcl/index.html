@@ -1,0 +1,125 @@
+<hr><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>TIBCO Product Engineering Test Report</title>
+</head>
+<body>
+<center>
+<h1>
+<font color="0000ff">TIBCO ActiveMatrix Service Grid</font>
+</h1>
+<h1>
+<font color="0000ff">Automation Tests Report</font>
+</h1>
+<table cellspacing="1" cellpadding="5" border="1">
+<tr>
+<th>Report Time</th><th>Product Version</th><th>Platform</th><th>Test Machine</th><th>User Name</th>
+</tr>
+<tr>
+<td>2013/05/23 Thu 10:43:45</td><td>Version 3.3.0 build V29</td><td>Win7_x86</td><td><a target="_blank" href="http://qa.na.tibco.com/php/tsi_tests_host.php?oracle_sid=bwqadb&amp;hostname=jpandya-z400">jpandya-z400</a></td><td>superuser</td>
+</tr>
+</table>
+</center>
+<hr>
+<h2>
+<font color="0000ff">Test Set Summary</font>
+</h2>
+<table cellspacing="1" cellpadding="5" border="1">
+<tr>
+<th>Test Set Name</th><th>PASSED</th><th>FAILED</th><th>ERROR</th><th>TOTAL</th><th>Product Quality</th>
+</tr>
+<tr>
+<td>bat_2node_orcl</td><td align="right">0</td><td align="right">4</td><td align="right">0</td><td align="right">4</td><td><applet height="68" width="250" code="barchart.class"><param value="3" name="columns"><param value="horizontal" name="orientation"><param value="2" name="scale"><param value="%" name="unit_string"><param value="0" name="c1"><param value="green" name="c1_color"><param value="solid" name="c1_style"><param value="100" name="c2"><param value="red" name="c2_color"><param value="solid" name="c2_style"><param value="0" name="c3"><param value="gray" name="c3_color"><param value="solid" name="c3_style"></applet></td>
+</tr>
+</table>
+<hr>
+<h3>
+<a name="#testSet-bat_2node_orcl"></a><font color="0000ff">bat_2node_orcl Detailed Test Case Report</font>
+</h3>
+<table cellspacing="1" cellpadding="5" border="1">
+<tr>
+<th>Case ID</th><th>Description</th><th>Test Result</th><th>Diagnostic Files</th><th>Test Directories</th>
+</tr>
+<tr>
+<td><a name="#bat_2node_orcl-install2"><font color="red">install2</font></a></td><td><font color="red">
+<pre>suite installation in silent mode of:
+- ActiveMatrix Service Grid
+- CPP IT
+- Adapter BT
+- EJB BT
+- CLR IT (on Windows only)</pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/runtime/bat/install">Source</a>&nbsp;
+				<a href="install2">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#bat_2node_orcl-setup"><font color="red">setup</font></a></td><td><font color="red">
+<pre>Create TPShell and Provision DB driver if Oracle/SQLServer/DB2
+Bootstrap TIBCOHost 
+Bootstrap Admin SystemNode
+Setup Nodes (osgi console port 1129 and 1139)
+Set Node Loggers
+Install Resources Instances
+Deploy Dashboard
+Deploy MCR (optional) 
+Deploy Log Service (optional)
+Deploy Payload Service (optional)
+Deploy Mediation</pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/runtime/bat/setup">Source</a>&nbsp;
+				<a href="setup">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#bat_2node_orcl-5.1"><font color="red">5.1</font></a></td><td><font color="red">
+<pre>Description : Test Declared / Undeclared fault with AMX and BW Provider
+Scenario: 	Composite 1: 
+			SOAP BT(HTTP) &lt;-&gt; JAVA &lt;-&gt; JAVA &lt;-&gt; SOAP BT(HTTP) (Configured for AMX Provider)
+									   SOAP BT(HTTP) (Configured for BW Provider)
+			Composite 2:	
+			SOAP BT(HTTP) &lt;-&gt; JAVA
+
+MEP: In-Out 
+SOAP Version: 1.1 
+SOAP Style/Encoding: Document/Literal 
+</pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/runtime/bat/5.1">Source</a>&nbsp;
+				<a href="5.1">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#bat_2node_orcl-5.2"><font color="red">5.2</font></a></td><td><font color="red">
+<pre>JMS BT Service and Reference.
+JMS RT (not imported from design-time) with inline credentials.
+
+Composite1: 
+JMS BT (Topic - Serv1) &lt;-&gt; SPRING &lt;-&gt; JMS BT (Queue - Ref1)
+                       &lt;-&gt; JMS BT (Queue - Ref1)
+Composite2:
+JMS BT (Queue - Serv2) &lt;-&gt; JAVA
+                                     
+JMS Service1 and JMS Ref1 bindings are created in Admin through CLI.
+JMS Service2 and Ref2 are created at design-time.
+
+Project1 is configured for BW Provider for following cases:
+       </pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/runtime/bat/5.2">Source</a>&nbsp;
+				<a href="5.2">Log</a>&nbsp;
+			</td>
+</tr>
+</table>
+<hr>
+<center>
+<h2>
+<font color="0000ff">End of Test Set Detailed Report</font>
+</h2>
+</center>
+</body>
+</html>

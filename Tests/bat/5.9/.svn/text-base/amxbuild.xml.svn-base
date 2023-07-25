@@ -1,0 +1,42 @@
+<project name="appupgrade" default="">
+	<import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+	
+	<target name="deploy.app">
+		<upload.daa dataFile="${amxConfigFile}" />
+		<add.node.svars dataFile="${amxConfigFile}" />
+		
+		<echo>Create app2 for the BAT test bat5.9</echo>
+		<create.app dataFile="${amxConfigFile}" appName="bat5.9-app2" />
+		<map.component.to.node dataFile="${amxConfigFile}" appName="bat5.9-app2" />
+		
+		<set.service.binding.property dataFile="${amxConfigFile}" appName="bat5.9-app2" />
+		
+		<map.service.binding.to.node dataFile="${amxConfigFile}" appName="bat5.9-app2" />
+		<deploy.app options="nostart" dataFile="${amxConfigFile}" appName="bat5.9-app2" timeout="${tcTimeout}" />
+
+		<echo>Create app1 for the BAT test bat5.9</echo>
+		<create.app dataFile="${amxConfigFile}" appName="bat5.9-app1" />
+		<map.component.to.node dataFile="${amxConfigFile}" appName="bat5.9-app1" />
+		<set.service.binding.property dataFile="${amxConfigFile}" appName="bat5.9-app1" />
+		<map.service.binding.to.node dataFile="${amxConfigFile}" appName="bat5.9-app1" />
+		<set.reference.wiring dataFile="${amxConfigFile}" appName="bat5.9-app1" />
+		<deploy.app options="nostart" dataFile="${amxConfigFile}" appName="bat5.9-app1" timeout="${tcTimeout}" />
+	</target>
+	
+	<target name="start.app1">
+		<start.app options="handleDependencies" dataFile="${amxConfigFile}" appName="bat5.9-app1" timeout="${tcTimeout}" />
+	</target>
+	
+	<target name="stop.app2">
+		<stop.app options="handleDependencies" dataFile="${amxConfigFile}" appName="bat5.9-app2" timeout="${tcTimeout}" />
+	</target>
+	
+	<target name="cleanup">
+		<undeploy.app dataFile="${amxConfigFile}" appName="bat5.9-app1" failOnError="false" timeout="${tcTimeout}" />
+		<delete.app dataFile="${amxConfigFile}" appName="bat5.9-app1" failOnError="false" />
+
+		<undeploy.app dataFile="${amxConfigFile}" appName="bat5.9-app2" failOnError="false" timeout="${tcTimeout}" />
+		<delete.app dataFile="${amxConfigFile}" appName="bat5.9-app2" failOnError="false" />
+	</target>
+
+</project>

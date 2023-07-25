@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+	
+	<Environment xsi:type="amxdata:Environment" 
+	       name="QAEnvironment_amxrel2qa1.na.tibco.com" 
+	       description="integration environment" 
+	       contact="TIBCO">
+		<Node xsi:type="amxdata:Node" name="QANode1" hostName="SystemHost_amxrel2qa1.na.tibco.com" description="QA Node" contact="TIBCO" >
+		    <ResourceInstance xsi:type="amxdata:ResourceInstance" name="httpConnector63" resourceTemplateName="httpConnector63"/>
+		    <ResourceInstance xsi:type="amxdata:ResourceInstance" name="HttpClient_SOAPEventSource_63" resourceTemplateName="HttpClient_SOAPEventSource_63"/>	
+		</Node>
+		<Application
+			xsi:type="amxdata:Application"
+			name="bat63"
+			contact="TIBCO Software Inc."
+			description="BAT">		
+			<Component xsi:type="amxdata:Component" name="Mediation1">
+		        <Node name="QANode2" environmentName="QAEnvironment_amxrel2qa1.na.tibco.com"/>				
+        	</Component>
+        	<Component xsi:type="amxdata:Component" name="Java1">
+		        <Node name="QANode2" environmentName="QAEnvironment_amxrel2qa1.na.tibco.com"/>				
+        	</Component>
+			<PromotedService xsi:type="amxdata_base:Service_base" name="Raiseamerica">
+				<Binding xsi:type="amxdata:Binding" name="SOAPService_Binding1">
+					<Node name="QANode1" environmentName="QAEnvironment_amxrel2qa1.na.tibco.com" />				
+				</Binding>
+			</PromotedService>			
+			<PromotedReference xsi:type="amxdata_base:Reference_base" name="raiseamerica1">
+				<Binding xsi:type="amxdata:Binding" name="SOAPReference_Binding1">
+                    <Node name="QANode1" environmentName="QAEnvironment_amxrel2qa1.na.tibco.com" />                
+				</Binding>
+			</PromotedReference> 
+			<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="BAT_63"/>
+		</Application>		
+	</Environment>
+	 <ResourceTemplate
+        xsi:type="amxdata:HttpClientResourceTemplate"
+        name="HttpClient_SOAPEventSource_63"
+        isAcceptRedirect="true"
+        connectionTimeout="8888"
+        host="AMX-BACKEND-2.na.tibco.com"
+        port="9038"
+        description="This is HttpClient RT">
+    </ResourceTemplate>
+	<ResourceTemplate 
+		xsi:type="amxdata:HttpConnectorResourceTemplate" 
+		name="httpConnector63" 
+		host="amxrel2qa1.na.tibco.com" 
+		port="8878" 
+		headerBufferSize="512" 
+		requestBufferSize="512"	
+		responseBufferSize="512" 
+		maxIdleTime="200000" 
+		lowResourceMaxIdleTime="512" 
+		description="This is HttpConnector RT for HelloWorld"/>
+	<DAA
+		xsi:type="amxdata:DAA"
+		description="DAA For Usecase CMT"
+		location="SOA/BAT_63/Deployment Artifacts/BAT_63.daa"
+		importResourceTemplates="false">
+	</DAA>
+
+</amxdata_base:Enterprise>

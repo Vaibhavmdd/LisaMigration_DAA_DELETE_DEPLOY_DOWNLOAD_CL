@@ -1,0 +1,2433 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- TIBCO ActiveMatrix Enterprise Deployment Health Check Report -->
+<healthCheckOutput healthCheckReportVersion="3.4" healthCheckCliUser="root" healthCheckCliOsUser="rel2qa" overAllHealthCheckStatus="Passed" healthCheckCliStartedOn="27 Sep 2021 08:01:42,671" healthCheckCliEndedOn="27 Sep 2021 08:04:39,525" healthCheckTimeTaken="176.854 seconds" CLIAntHome="/groupfiler/tests/tests/amsg/3.0/libraries/common" CLIAntTargets="health.ent" CLIJavaVersion="1.7" CLIStartedFrom="/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/8.6" healthCheckOperationId="root:healthcheck:2021-09-27-080142" healthCheckRanFrom="spiderman.na.tibco.com" xmlns:ns2="http://types.core.api.admin.amf.tibco.com/xsd" xmlns:ns3="http://host.amx.api.admin.amf.tibco.com/xsd">
+    <participants>
+        <ns2:id>1</ns2:id>
+        <ns2:name>AMXAdmin</ns2:name>
+        <ns2:type>ENTERPRISE</ns2:type>
+        <ns2:parent xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </participants>
+    <adminMetaData healthCheckStatus="Passed" healthCheckObjectCreatedOn="27 Sep 2021 08:01:43,761" healthCheckDescription="Administrator configuration information">
+        <enterpriseName>AMXAdmin</enterpriseName>
+        <adminVersion>3.4.0.HF5</adminVersion>
+        <adminNodeName>SystemNode</adminNodeName>
+        <adminCreatedTime>27 Sep 2021 06:01:40,000</adminCreatedTime>
+        <adminConnectionInfo>
+            <baseURL>http://spiderman.na.tibco.com:8120</baseURL>
+            <httpSessionTimeOutInMin>30</httpSessionTimeOutInMin>
+        </adminConnectionInfo>
+        <adminAuthenticationRealm>
+            <realmType>Database</realmType>
+            <connectionAttributes>
+                <attributes name="teneoSharedResource" value="java:AdminTeneoResource"/>
+            </connectionAttributes>
+        </adminAuthenticationRealm>
+        <tibcoHome>/opt/tibco/amx340hf</tibcoHome>
+        <tibcoConfigHome>/opt/tibco/amx340hf/conf</tibcoConfigHome>
+        <notificationServerConnectionInfo>
+            <notificationServerUrl>tcp://spiderman.na.tibco.com:7222,tcp://spiderman.na.tibco.com:7222</notificationServerUrl>
+            <notificationServerUser>admin</notificationServerUser>
+            <notificationServerConnectionRecoveryAttemptDelayInMs>600</notificationServerConnectionRecoveryAttemptDelayInMs>
+            <notificationServerConnectionRecoveryTimerTimeoutInMs>1600</notificationServerConnectionRecoveryTimerTimeoutInMs>
+            <notificationServerGroupName>AMXAdmin</notificationServerGroupName>
+            <notificationServerSSLEnabled>false</notificationServerSSLEnabled>
+        </notificationServerConnectionInfo>
+        <systemNodes>
+            <adminNodeInfo name="SystemNode" managedByHost="SystemHost" runningOnMachine="spiderman.na.tibco.com" appliedPatches="3.4.0 to 3.4.0.HF5">
+                <httpConnectorsOnNode>
+                    <runningConnector>TIBCO ActiveMatrix Internal HTTP Connector Resource [http://0.0.0.0:19767]</runningConnector>
+                    <runningConnector>amxAdminDefaultHttpConnector [http://0.0.0.0:8120]</runningConnector>
+                </httpConnectorsOnNode>
+            </adminNodeInfo>
+        </systemNodes>
+        <adminBackendDBInfo>
+            <dbProductName>Oracle</dbProductName>
+            <dbProductVersion>Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64bit Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options</dbProductVersion>
+            <dbUrl>jdbc:oracle:thin:@amx-qa-batman:1521:ORCL</dbUrl>
+            <dbUserName>BATUSER</dbUserName>
+            <driverName>Oracle JDBC driver</driverName>
+            <driverVersion>11.2.0.1.0</driverVersion>
+        </adminBackendDBInfo>
+        <sharedFolderLocation>/opt/tibco/amx340hf/conf/admin/AMXAdmin/shared</sharedFolderLocation>
+        <spmServiceProbeInfo isServiceProbeOn="false"/>
+        <adminMetaDataDescErrors>
+            <totalErrors>0</totalErrors>
+        </adminMetaDataDescErrors>
+    </adminMetaData>
+    <adminSummary healthCheckStatus="Passed" healthCheckObjectCreatedOn="27 Sep 2021 08:02:46,437" timeitTookToBuildHealthCheckObjectInMs="207">
+        <TotalRunningNodes>6</TotalRunningNodes>
+        <TotalNotRunningNodes>0</TotalNotRunningNodes>
+        <TotalRunningHosts>4</TotalRunningHosts>
+        <TotalNotRunningHosts>0</TotalNotRunningHosts>
+        <TotalRunningApplications>30</TotalRunningApplications>
+        <TotalNotRunningApplications>2</TotalNotRunningApplications>
+        <TotalNotDeployedApplications>4</TotalNotDeployedApplications>
+        <TotalAMXEnvironments>2</TotalAMXEnvironments>
+        <MostAmountApplicationsDeployedOnNode>QANode1</MostAmountApplicationsDeployedOnNode>
+        <MostAmountApplicationsDeployedOnNodeCount>26</MostAmountApplicationsDeployedOnNodeCount>
+        <MostAmountApplicationsDeployedOnNodeManagedBy>SystemHost</MostAmountApplicationsDeployedOnNodeManagedBy>
+        <MostAmountOfApplicationsDeployedInEnvironment>QAEnvironment_spiderman.na.tibco.com</MostAmountOfApplicationsDeployedInEnvironment>
+        <MostAmountOfApplicationsDeployedInEnvironmentCount>27</MostAmountOfApplicationsDeployedInEnvironmentCount>
+        <MostAmountOfNodesManagedByHost>SystemHost</MostAmountOfNodesManagedByHost>
+        <MostAmountOfNodesManagedByHostCount>4</MostAmountOfNodesManagedByHostCount>
+        <MostAmountOfHostRunningOnMachine>spiderman.na.tibco.com</MostAmountOfHostRunningOnMachine>
+        <MostAmountOfHostRunningOnMachineCount>4</MostAmountOfHostRunningOnMachineCount>
+        <MostAmountOfNodeRunningOnMachine>spiderman.na.tibco.com</MostAmountOfNodeRunningOnMachine>
+        <MostAmountOfNodeRunningOnMachineCount>6</MostAmountOfNodeRunningOnMachineCount>
+        <MostAmountOfApplicationsRunningOnMachines>spiderman.na.tibco.com</MostAmountOfApplicationsRunningOnMachines>
+        <MostAmountOfApplicationsRunningOnMachinesCount>32</MostAmountOfApplicationsRunningOnMachinesCount>
+        <MachineThatHasHighestAmountOfCPUInUse>spiderman.na.tibco.com</MachineThatHasHighestAmountOfCPUInUse>
+        <CpuLoadOfMachineThatHasHighestAmountOfCPUInUse>0.0</CpuLoadOfMachineThatHasHighestAmountOfCPUInUse>
+        <MachineThatHasHighestAmountOfMemoryInUse>spiderman.na.tibco.com</MachineThatHasHighestAmountOfMemoryInUse>
+        <UsedMemoryOfMachineThatHasHighestAmountOfMemoryInUse>7.5 GB</UsedMemoryOfMachineThatHasHighestAmountOfMemoryInUse>
+        <NotRunningOrOutofsyncApplications notRunning="true">
+            <ns2:id>24335</ns2:id>
+            <ns2:name>bat5.9-app2</ns2:name>
+            <node>QANode1,QANode2</node>
+            <environment>QAEnvironment_spiderman.na.tibco.com</environment>
+        </NotRunningOrOutofsyncApplications>
+        <NotRunningOrOutofsyncApplications notRunning="true">
+            <ns2:id>24676</ns2:id>
+            <ns2:name>bat5.9-app1</ns2:name>
+            <node>QANode1,QANode2</node>
+            <environment>QAEnvironment_spiderman.na.tibco.com</environment>
+        </NotRunningOrOutofsyncApplications>
+    </adminSummary>
+    <adminInfo healthCheckStatus="Passed" healthCheckObjectCreatedOn="27 Sep 2021 08:01:50,311" healthCheckDescription="Current state of administrator's runtime information" timeitTookToBuildHealthCheckObjectInMs="6372">
+        <uptimeInMs>3435020</uptimeInMs>
+        <enterpriseName>AMXAdmin</enterpriseName>
+        <adminVersion>3.4.0.HF5</adminVersion>
+        <pingDatabaseTimeInMs>3</pingDatabaseTimeInMs>
+        <pingQinNotificationTime>18ms</pingQinNotificationTime>
+        <pingAdminTimeInMs>26</pingAdminTimeInMs>
+        <adminStartupInfo>
+            <adminStartupStartedOn>27 Sep 2021 07:04:29,687</adminStartupStartedOn>
+            <adminStartupEndedOn>27 Sep 2021 07:08:28,296</adminStartupEndedOn>
+            <adminStartUpTime>03 minutes, 58 seconds</adminStartUpTime>
+        </adminStartupInfo>
+        <numberOfProcessedNotifications>5155</numberOfProcessedNotifications>
+        <adminSharedFolderInfo hasSharedFolderMoved="false">
+            <sharedFolderPath>/opt/tibco/amx340hf/conf/admin/AMXAdmin/shared</sharedFolderPath>
+            <numberOfRDAsInRuntimeFolder>3</numberOfRDAsInRuntimeFolder>
+            <numberOfZIPFilesInRuntimeFolder>0</numberOfZIPFilesInRuntimeFolder>
+            <sharedFolderSizeInK>11940783</sharedFolderSizeInK>
+            <sharedFolderCreationDate>27 Sep 2021 06:09:57,000</sharedFolderCreationDate>
+        </adminSharedFolderInfo>
+        <deploymentHistory numberOfTasks="0" numberOfCompletedTasks="3285" numberOfFailedUserActions="0" numberOfPendingUserActions="0" numberOfUserActions="165">
+            <lastFailedUserAction>
+                <id>0</id>
+                <runningDurationInMs>0</runningDurationInMs>
+            </lastFailedUserAction>
+            <lastSucessUserAction>
+                <createdOn>2021-09-27 08:00:51.125</createdOn>
+                <amxObjectType>COMPONENT</amxObjectType>
+                <createdByUser>root</createdByUser>
+                <amxEnvId>[3324]</amxEnvId>
+                <action>START</action>
+                <finishedOn>2021-09-27 08:01:29.009</finishedOn>
+                <userActionStatus>SUCCESS</userActionStatus>
+                <id>55480</id>
+                <runningDurationInMs>37884</runningDurationInMs>
+                <amxObjectIds>54756</amxObjectIds>
+            </lastSucessUserAction>
+            <lastPendingUserAction>
+                <id>0</id>
+                <runningDurationInMs>0</runningDurationInMs>
+            </lastPendingUserAction>
+            <oldestPendingUserAction>
+                <id>0</id>
+                <runningDurationInMs>0</runningDurationInMs>
+            </oldestPendingUserAction>
+        </deploymentHistory>
+        <machineAndJvmInfo healthCheckStatus="Passed" healthCheckObjectCreatedOn="27 Sep 2021 08:01:49,508" healthCheckDescription="Administrator's machine and jvm information" timeitTookToBuildHealthCheckObjectInMs="4976">
+            <AmxVersion>3.4.0.HF5</AmxVersion>
+            <jvmInfo healthCheckStatus="Passed" healthCheckObjectCreatedOn="27 Sep 2021 08:01:44,699" healthCheckDescription="Java runtime specific information" timeitTookToBuildHealthCheckObjectInMs="21">
+                <jvmJavaHome>/opt/tibco/amx340hf/tibcojre64/1.8.0</jvmJavaHome>
+                <jvmArgs>-DTIBCO_HOME=/opt/tibco/amx340hf -Djceks.key.serialFilter=com.tibco.**;java.lang.Enum;java.security.KeyRep;java.security.KeyRep$Type;javax.crypto.spec.SecretKeySpec;!* -Xmx1024m -Xms128m -XX:MaxPermSize=256m -XX:+HeapDumpOnOutOfMemoryError -Djava.library=/opt/tibco/amx340hf/tibcojre64/1.8.0/lib/amd64/server/libjvm.so -Dapplication.processid=19298 -Dwrapper.tra.file=/opt/tibco/amx340hf/conf/tibcohost/Admin-AMXAdmin-admin1/data_3.2.x/nodes/SystemNode/bin/tibamx_SystemNode.tra </jvmArgs>
+                <jvmUpTimeInMs>3435188</jvmUpTimeInMs>
+                <jvmInfo>1.8.0_301 [Java HotSpot(TM) 64-Bit Server VM by : Oracle Corporation]</jvmInfo>
+                <jvmPID>19298</jvmPID>
+                <jvmProcessCpuTime>1437.3 seconds</jvmProcessCpuTime>
+                <jvmProcessCpuLoad>0.0 %</jvmProcessCpuLoad>
+                <jvmMemoryUsage>
+                    <allocatedMemoryInK>850432</allocatedMemoryInK>
+                    <freeMemoryInK>506631</freeMemoryInK>
+                    <maxMemoryInK>932352</maxMemoryInK>
+                    <usedMemoryInK>343800</usedMemoryInK>
+                </jvmMemoryUsage>
+                <jvmPermGenMemoryUsage/>
+                <jvmThreadInfo>
+                    <jvmTotalStartedThreadCount>1992</jvmTotalStartedThreadCount>
+                    <jvmPeakThreadCount>212</jvmPeakThreadCount>
+                    <jvmTotalLiveThreadCount>47</jvmTotalLiveThreadCount>
+                    <jvmsMostBusyThread>
+                        <threadID>amxAdminDefaultHttpConnector_12</threadID>
+                        <threadsCPUtimeseconds>59.41 (seconds)</threadsCPUtimeseconds>
+                    </jvmsMostBusyThread>
+                </jvmThreadInfo>
+                <jvmTotalLoadedClassesCount>24541</jvmTotalLoadedClassesCount>
+                <jvmSystemPropertyesForTIBCO/>
+                <jvmFileDescriptor>
+                    <maxFileDescriptorCount>800000</maxFileDescriptorCount>
+                    <openFileDescriptorCount>950</openFileDescriptorCount>
+                </jvmFileDescriptor>
+            </jvmInfo>
+            <tibcoJvmInfo healthCheckStatus="Passed" healthCheckObjectCreatedOn="27 Sep 2021 08:01:49,505" healthCheckDescription="Tibco JVM specific information" tibcoJvmStartupTime="02 min, 36 sec" tibcoJvmHasInitialized="true" timeitTookToBuildHealthCheckObjectInMs="4806">
+                <tibcoJvmType>Node</tibcoJvmType>
+                <tibcoHomeInfo>
+                    <tibcoHome>/opt/tibco/amx340hf</tibcoHome>
+                    <tibcoHomeSizeInK>4009432324</tibcoHomeSizeInK>
+                    <tibcoHomeCreatedOn>27 Sep 2021 06:19:01,000</tibcoHomeCreatedOn>
+                    <tibcoHomeProducts>
+                        <productsFrom_installInfo>
+                            <tibcoHomeProduct>spm-required_2.3.1</tibcoHomeProduct>
+                            <tibcoHomeProduct>spm-webcontainer_7.0.57</tibcoHomeProduct>
+                            <tibcoHomeProduct>amx-admin_3.4.0.000</tibcoHomeProduct>
+                            <tibcoHomeProduct>amxspmdashboard-prod_3.4.0.000</tibcoHomeProduct>
+                            <tibcoHomeProduct>spm-runtime_2.3.1</tibcoHomeProduct>
+                            <tibcoHomeProduct>amsg-its_3.4.0.000</tibcoHomeProduct>
+                            <tibcoHomeProduct>eclipse-mapper_1.3.5.000</tibcoHomeProduct>
+                            <tibcoHomeProduct>tibcojava64-oracle-with-sunec_1.8.0.192</tibcoHomeProduct>
+                            <tibcoHomeProduct>gxml_1.0.6.000</tibcoHomeProduct>
+                            <tibcoHomeProduct>amxspmserver-contrib_2.3.1.000</tibcoHomeProduct>
+                            <tibcoHomeProduct>hf-amx340_3.4.0.005</tibcoHomeProduct>
+                            <tibcoHomeProduct>spring-it_3.4.1</tibcoHomeProduct>
+                            <tibcoHomeProduct>hf-amx340-prod_3.4.0.005</tibcoHomeProduct>
+                            <tibcoHomeProduct>mediation_3.6.0.000</tibcoHomeProduct>
+                            <tibcoHomeProduct>spm-documentation_2.3.1</tibcoHomeProduct>
+                            <tibcoHomeProduct>tibcojava64-oracle-with-sunec_1.8.0.301</tibcoHomeProduct>
+                            <tibcoHomeProduct>amx-runtime_3.4.0.000</tibcoHomeProduct>
+                            <tibcoHomeProduct>spm-webconsole_2.3.1</tibcoHomeProduct>
+                            <tibcoHomeProduct>contrib-tct_1.6.0.000</tibcoHomeProduct>
+                            <tibcoHomeProduct>bstudio_5.0.0</tibcoHomeProduct>
+                            <tibcoHomeProduct>amsg_3.4.0.000</tibcoHomeProduct>
+                            <tibcoHomeProduct>wrapper_2.4.7.002</tibcoHomeProduct>
+                            <tibcoHomeProduct>amxrsbt_3.4.0.000</tibcoHomeProduct>
+                            <tibcoHomeProduct>amx-design_3.4.0.000</tibcoHomeProduct>
+                            <tibcoHomeProduct>spm-client_2.3.1</tibcoHomeProduct>
+                            <tibcoHomeProduct>tibcoxml_5.51.607</tibcoHomeProduct>
+                        </productsFrom_installInfo>
+                    </tibcoHomeProducts>
+                </tibcoHomeInfo>
+                <tibcoConfigHomeInfo>
+                    <configHome>/opt/tibco/amx340hf/conf</configHome>
+                    <configHomeSizeInk>-1</configHomeSizeInk>
+                    <configHomeCreatedOn>27 Sep 2021 06:20:48,000</configHomeCreatedOn>
+                    <configHomeNumberOfHostInstances>4</configHomeNumberOfHostInstances>
+                </tibcoConfigHomeInfo>
+                <tibcoJvmLogsInfo>
+                    <tibcoJvmTotalLogs>24</tibcoJvmTotalLogs>
+                    <tibcoJvmAlllogsInfos>
+                        <fileName>SystemNode.log.4</fileName>
+                        <fullPath>/opt/tibco/amx340hf/conf/tibcohost/Admin-AMXAdmin-admin1/data_3.2.x/nodes/SystemNode/logs/SystemNode.log.4</fullPath>
+                        <filesizeInK>10485879</filesizeInK>
+                        <lastModifiedDate>27 Sep 2021 07:31:39,784</lastModifiedDate>
+                        <numberOfLines>37585</numberOfLines>
+                        <numberOfErrors>0</numberOfErrors>
+                        <numberOfWarns>47</numberOfWarns>
+                    </tibcoJvmAlllogsInfos>
+                    <tibcoJvmAlllogsInfos>
+                        <fileName>SystemNode.log.6</fileName>
+                        <fullPath>/opt/tibco/amx340hf/conf/tibcohost/Admin-AMXAdmin-admin1/data_3.2.x/nodes/SystemNode/logs/SystemNode.log.6</fullPath>
+                        <filesizeInK>10485768</filesizeInK>
+                        <lastModifiedDate>27 Sep 2021 07:16:48,407</lastModifiedDate>
+                        <numberOfLines>37824</numberOfLines>
+                        <numberOfErrors>0</numberOfErrors>
+                        <numberOfWarns>210</numberOfWarns>
+                    </tibcoJvmAlllogsInfos>
+                    <tibcoJvmAlllogsInfos>
+                        <fileName>SystemNode.log</fileName>
+                        <fullPath>/opt/tibco/amx340hf/conf/tibcohost/Admin-AMXAdmin-admin1/data_3.2.x/nodes/SystemNode/logs/SystemNode.log</fullPath>
+                        <filesizeInK>3655629</filesizeInK>
+                        <lastModifiedDate>27 Sep 2021 08:01:44,958</lastModifiedDate>
+                        <numberOfLines>11713</numberOfLines>
+                        <numberOfErrors>0</numberOfErrors>
+                        <numberOfWarns>0</numberOfWarns>
+                    </tibcoJvmAlllogsInfos>
+                    <tibcoJvmAlllogsInfos>
+                        <fileName>SystemNode.log.3</fileName>
+                        <fullPath>/opt/tibco/amx340hf/conf/tibcohost/Admin-AMXAdmin-admin1/data_3.2.x/nodes/SystemNode/logs/SystemNode.log.3</fullPath>
+                        <filesizeInK>10485789</filesizeInK>
+                        <lastModifiedDate>27 Sep 2021 07:43:07,157</lastModifiedDate>
+                        <numberOfLines>36928</numberOfLines>
+                        <numberOfErrors>1</numberOfErrors>
+                        <numberOfWarns>53</numberOfWarns>
+                    </tibcoJvmAlllogsInfos>
+                    <tibcoJvmAlllogsInfos>
+                        <fileName>SystemNode.log.1</fileName>
+                        <fullPath>/opt/tibco/amx340hf/conf/tibcohost/Admin-AMXAdmin-admin1/data_3.2.x/nodes/SystemNode/logs/SystemNode.log.1</fullPath>
+                        <filesizeInK>10486010</filesizeInK>
+                        <lastModifiedDate>27 Sep 2021 08:01:11,702</lastModifiedDate>
+                        <numberOfLines>36223</numberOfLines>
+                        <numberOfErrors>4</numberOfErrors>
+                        <numberOfWarns>52</numberOfWarns>
+                    </tibcoJvmAlllogsInfos>
+                    <tibcoJvmAlllogsInfos>
+                        <fileName>SystemNode.log.5</fileName>
+                        <fullPath>/opt/tibco/amx340hf/conf/tibcohost/Admin-AMXAdmin-admin1/data_3.2.x/nodes/SystemNode/logs/SystemNode.log.5</fullPath>
+                        <filesizeInK>10485965</filesizeInK>
+                        <lastModifiedDate>27 Sep 2021 07:23:33,915</lastModifiedDate>
+                        <numberOfLines>38144</numberOfLines>
+                        <numberOfErrors>0</numberOfErrors>
+                        <numberOfWarns>15</numberOfWarns>
+                    </tibcoJvmAlllogsInfos>
+                    <tibcoJvmAlllogsInfos>
+                        <fileName>SystemNode.log.8</fileName>
+                        <fullPath>/opt/tibco/amx340hf/conf/tibcohost/Admin-AMXAdmin-admin1/data_3.2.x/nodes/SystemNode/logs/SystemNode.log.8</fullPath>
+                        <filesizeInK>10485896</filesizeInK>
+                        <lastModifiedDate>27 Sep 2021 06:50:35,851</lastModifiedDate>
+                        <numberOfLines>38605</numberOfLines>
+                        <numberOfErrors>0</numberOfErrors>
+                        <numberOfWarns>57</numberOfWarns>
+                    </tibcoJvmAlllogsInfos>
+                    <tibcoJvmAlllogsInfos>
+                        <fileName>SystemNode.log.2</fileName>
+                        <fullPath>/opt/tibco/amx340hf/conf/tibcohost/Admin-AMXAdmin-admin1/data_3.2.x/nodes/SystemNode/logs/SystemNode.log.2</fullPath>
+                        <filesizeInK>10485896</filesizeInK>
+                        <lastModifiedDate>27 Sep 2021 07:52:41,719</lastModifiedDate>
+                        <numberOfLines>36732</numberOfLines>
+                        <numberOfErrors>3</numberOfErrors>
+                        <numberOfWarns>51</numberOfWarns>
+                    </tibcoJvmAlllogsInfos>
+                    <tibcoJvmAlllogsInfos>
+                        <fileName>SystemNode.log.10</fileName>
+                        <fullPath>/opt/tibco/amx340hf/conf/tibcohost/Admin-AMXAdmin-admin1/data_3.2.x/nodes/SystemNode/logs/SystemNode.log.10</fullPath>
+                        <filesizeInK>10486044</filesizeInK>
+                        <lastModifiedDate>27 Sep 2021 06:17:08,024</lastModifiedDate>
+                        <numberOfLines>37069</numberOfLines>
+                        <numberOfErrors>38</numberOfErrors>
+                        <numberOfWarns>347</numberOfWarns>
+                    </tibcoJvmAlllogsInfos>
+                    <tibcoJvmAlllogsInfos>
+                        <fileName>SystemNode.log.7</fileName>
+                        <fullPath>/opt/tibco/amx340hf/conf/tibcohost/Admin-AMXAdmin-admin1/data_3.2.x/nodes/SystemNode/logs/SystemNode.log.7</fullPath>
+                        <filesizeInK>10485897</filesizeInK>
+                        <lastModifiedDate>27 Sep 2021 06:54:49,993</lastModifiedDate>
+                        <numberOfLines>37402</numberOfLines>
+                        <numberOfErrors>0</numberOfErrors>
+                        <numberOfWarns>21</numberOfWarns>
+                    </tibcoJvmAlllogsInfos>
+                    <tibcoJvmAlllogsInfos>
+                        <fileName>SystemNode.log.9</fileName>
+                        <fullPath>/opt/tibco/amx340hf/conf/tibcohost/Admin-AMXAdmin-admin1/data_3.2.x/nodes/SystemNode/logs/SystemNode.log.9</fullPath>
+                        <filesizeInK>10485860</filesizeInK>
+                        <lastModifiedDate>27 Sep 2021 06:36:29,081</lastModifiedDate>
+                        <numberOfLines>39074</numberOfLines>
+                        <numberOfErrors>0</numberOfErrors>
+                        <numberOfWarns>228</numberOfWarns>
+                    </tibcoJvmAlllogsInfos>
+                    <tibcoJvmAlllogsInfos>
+                        <fileName>admin-task-history.log</fileName>
+                        <fullPath>/opt/tibco/amx340hf/conf/tibcohost/Admin-AMXAdmin-admin1/data_3.2.x/nodes/SystemNode/logs/admin-task-history.log</fullPath>
+                        <filesizeInK>3048271</filesizeInK>
+                        <lastModifiedDate>27 Sep 2021 08:01:31,714</lastModifiedDate>
+                        <numberOfLines>5628</numberOfLines>
+                        <numberOfErrors>0</numberOfErrors>
+                        <numberOfWarns>0</numberOfWarns>
+                    </tibcoJvmAlllogsInfos>
+                    <tibcoJvmAlllogsInfos>
+                        <fileName>SystemNode.log</fileName>
+                        <fullPath>/groupfiler/tests/tests/amsg/reports/Suse11_x86_64/amsg-3.4.0-V87-HF-5/func/runtime/bat/amsg340hf-patched_2node_orcl/setup/SystemNode.log</fullPath>
+                        <filesizeInK>907932</filesizeInK>
+                        <lastModifiedDate>27 Sep 2021 08:01:50,846</lastModifiedDate>
+                        <numberOfLines>2968</numberOfLines>
+                        <numberOfErrors>0</numberOfErrors>
+                        <numberOfWarns>0</numberOfWarns>
+                    </tibcoJvmAlllogsInfos>
+                    <tibcoJvmAlllogsInfos>
+                        <fileName>SystemNode.log.1</fileName>
+                        <fullPath>/groupfiler/tests/tests/amsg/reports/Suse11_x86_64/amsg-3.4.0-V87-HF-5/func/runtime/bat/amsg340hf-patched_2node_orcl/setup/SystemNode.log.1</fullPath>
+                        <filesizeInK>10485917</filesizeInK>
+                        <lastModifiedDate>27 Sep 2021 08:01:28,309</lastModifiedDate>
+                        <numberOfLines>34392</numberOfLines>
+                        <numberOfErrors>3</numberOfErrors>
+                        <numberOfWarns>10</numberOfWarns>
+                    </tibcoJvmAlllogsInfos>
+                    <tibcoJvmAlllogsInfos>
+                        <fileName>SystemNode.log.2</fileName>
+                        <fullPath>/groupfiler/tests/tests/amsg/reports/Suse11_x86_64/amsg-3.4.0-V87-HF-5/func/runtime/bat/amsg340hf-patched_2node_orcl/setup/SystemNode.log.2</fullPath>
+                        <filesizeInK>10485905</filesizeInK>
+                        <lastModifiedDate>27 Sep 2021 07:56:47,716</lastModifiedDate>
+                        <numberOfLines>36987</numberOfLines>
+                        <numberOfErrors>1</numberOfErrors>
+                        <numberOfWarns>51</numberOfWarns>
+                    </tibcoJvmAlllogsInfos>
+                    <tibcoJvmAlllogsInfos>
+                        <fileName>SystemNode.log.3</fileName>
+                        <fullPath>/groupfiler/tests/tests/amsg/reports/Suse11_x86_64/amsg-3.4.0-V87-HF-5/func/runtime/bat/amsg340hf-patched_2node_orcl/setup/SystemNode.log.3</fullPath>
+                        <filesizeInK>10485765</filesizeInK>
+                        <lastModifiedDate>27 Sep 2021 07:47:12,537</lastModifiedDate>
+                        <numberOfLines>36366</numberOfLines>
+                        <numberOfErrors>2</numberOfErrors>
+                        <numberOfWarns>71</numberOfWarns>
+                    </tibcoJvmAlllogsInfos>
+                    <tibcoJvmAlllogsInfos>
+                        <fileName>SystemNode.log.4</fileName>
+                        <fullPath>/groupfiler/tests/tests/amsg/reports/Suse11_x86_64/amsg-3.4.0-V87-HF-5/func/runtime/bat/amsg340hf-patched_2node_orcl/setup/SystemNode.log.4</fullPath>
+                        <filesizeInK>10485960</filesizeInK>
+                        <lastModifiedDate>27 Sep 2021 07:33:48,519</lastModifiedDate>
+                        <numberOfLines>38402</numberOfLines>
+                        <numberOfErrors>0</numberOfErrors>
+                        <numberOfWarns>65</numberOfWarns>
+                    </tibcoJvmAlllogsInfos>
+                    <tibcoJvmAlllogsInfos>
+                        <fileName>SystemNode.log.5</fileName>
+                        <fullPath>/groupfiler/tests/tests/amsg/reports/Suse11_x86_64/amsg-3.4.0-V87-HF-5/func/runtime/bat/amsg340hf-patched_2node_orcl/setup/SystemNode.log.5</fullPath>
+                        <filesizeInK>10485928</filesizeInK>
+                        <lastModifiedDate>27 Sep 2021 07:23:47,427</lastModifiedDate>
+                        <numberOfLines>37410</numberOfLines>
+                        <numberOfErrors>0</numberOfErrors>
+                        <numberOfWarns>9</numberOfWarns>
+                    </tibcoJvmAlllogsInfos>
+                    <tibcoJvmAlllogsInfos>
+                        <fileName>SystemNode.log.6</fileName>
+                        <fullPath>/groupfiler/tests/tests/amsg/reports/Suse11_x86_64/amsg-3.4.0-V87-HF-5/func/runtime/bat/amsg340hf-patched_2node_orcl/setup/SystemNode.log.6</fullPath>
+                        <filesizeInK>10485867</filesizeInK>
+                        <lastModifiedDate>27 Sep 2021 07:19:36,189</lastModifiedDate>
+                        <numberOfLines>36627</numberOfLines>
+                        <numberOfErrors>0</numberOfErrors>
+                        <numberOfWarns>211</numberOfWarns>
+                    </tibcoJvmAlllogsInfos>
+                    <tibcoJvmAlllogsInfos>
+                        <fileName>SystemNode.log.7</fileName>
+                        <fullPath>/groupfiler/tests/tests/amsg/reports/Suse11_x86_64/amsg-3.4.0-V87-HF-5/func/runtime/bat/amsg340hf-patched_2node_orcl/setup/SystemNode.log.7</fullPath>
+                        <filesizeInK>10485761</filesizeInK>
+                        <lastModifiedDate>27 Sep 2021 06:55:22,507</lastModifiedDate>
+                        <numberOfLines>37717</numberOfLines>
+                        <numberOfErrors>0</numberOfErrors>
+                        <numberOfWarns>21</numberOfWarns>
+                    </tibcoJvmAlllogsInfos>
+                    <tibcoJvmAlllogsInfos>
+                        <fileName>SystemNode.log.8</fileName>
+                        <fullPath>/groupfiler/tests/tests/amsg/reports/Suse11_x86_64/amsg-3.4.0-V87-HF-5/func/runtime/bat/amsg340hf-patched_2node_orcl/setup/SystemNode.log.8</fullPath>
+                        <filesizeInK>10485861</filesizeInK>
+                        <lastModifiedDate>27 Sep 2021 06:50:58,346</lastModifiedDate>
+                        <numberOfLines>38446</numberOfLines>
+                        <numberOfErrors>0</numberOfErrors>
+                        <numberOfWarns>57</numberOfWarns>
+                    </tibcoJvmAlllogsInfos>
+                    <tibcoJvmAlllogsInfos>
+                        <fileName>SystemNode.log.9</fileName>
+                        <fullPath>/groupfiler/tests/tests/amsg/reports/Suse11_x86_64/amsg-3.4.0-V87-HF-5/func/runtime/bat/amsg340hf-patched_2node_orcl/setup/SystemNode.log.9</fullPath>
+                        <filesizeInK>10485901</filesizeInK>
+                        <lastModifiedDate>27 Sep 2021 06:36:53,602</lastModifiedDate>
+                        <numberOfLines>38130</numberOfLines>
+                        <numberOfErrors>0</numberOfErrors>
+                        <numberOfWarns>223</numberOfWarns>
+                    </tibcoJvmAlllogsInfos>
+                    <tibcoJvmAlllogsInfos>
+                        <fileName>SystemNode.log.10</fileName>
+                        <fullPath>/groupfiler/tests/tests/amsg/reports/Suse11_x86_64/amsg-3.4.0-V87-HF-5/func/runtime/bat/amsg340hf-patched_2node_orcl/setup/SystemNode.log.10</fullPath>
+                        <filesizeInK>10485978</filesizeInK>
+                        <lastModifiedDate>27 Sep 2021 06:17:11,719</lastModifiedDate>
+                        <numberOfLines>36948</numberOfLines>
+                        <numberOfErrors>38</numberOfErrors>
+                        <numberOfWarns>347</numberOfWarns>
+                    </tibcoJvmAlllogsInfos>
+                    <tibcoJvmAlllogsInfos>
+                        <fileName>admin-user-action.log</fileName>
+                        <fullPath>/opt/tibco/amx340hf/conf/tibcohost/Admin-AMXAdmin-admin1/data_3.2.x/nodes/SystemNode/logs/admin-user-action.log</fullPath>
+                        <filesizeInK>530329</filesizeInK>
+                        <lastModifiedDate>27 Sep 2021 08:01:42,922</lastModifiedDate>
+                        <numberOfLines>2170</numberOfLines>
+                        <numberOfErrors>2</numberOfErrors>
+                        <numberOfWarns>0</numberOfWarns>
+                    </tibcoJvmAlllogsInfos>
+                </tibcoJvmLogsInfo>
+                <tibcoJvmCfFolderInfo>
+                    <cFfolderSizeInK>507943</cFfolderSizeInK>
+                    <cFfolderComponentCount>91</cFfolderComponentCount>
+                </tibcoJvmCfFolderInfo>
+                <tibcoJvmClRecoveryFolderInfo>
+                    <clRecoveryFolderSizeinK>1851</clRecoveryFolderSizeinK>
+                    <clRecoveryFolderContent>Name :4d8387a4-9179-45ba-80b9-5aa2ab2faff5 size :4096</clRecoveryFolderContent>
+                    <clRecoveryFolderContent>Name :payloadconfiguration.properties size :617</clRecoveryFolderContent>
+                    <clRecoveryFolderContent>Name :records size :4096</clRecoveryFolderContent>
+                    <clRecoveryFolderContent>Name :undeliveredLogStorage size :4096</clRecoveryFolderContent>
+                    <clRecoveryFolderContent>Name :1401822c-4f7d-48f3-b98b-db4ed904ca10 size :4096</clRecoveryFolderContent>
+                    <clRecoveryFolderContent>Name :payloadconfiguration.properties size :617</clRecoveryFolderContent>
+                    <clRecoveryFolderContent>Name :records size :4096</clRecoveryFolderContent>
+                    <clRecoveryFolderContent>Name :3f2a7bcf-c3a2-4d62-a934-cc60023fcbb8 size :4096</clRecoveryFolderContent>
+                    <clRecoveryFolderContent>Name :payloadconfiguration.properties size :617</clRecoveryFolderContent>
+                    <clRecoveryFolderContent>Name :records size :4096</clRecoveryFolderContent>
+                </tibcoJvmClRecoveryFolderInfo>
+                <tibcoJvmHowlogsFolderInfo>
+                    <howLogsFolderSizeinK>8298</howLogsFolderSizeinK>
+                    <howLogsFolderContent>Name :logger_5.log size :0</howLogsFolderContent>
+                    <howLogsFolderContent>Name :logger_2.log size :0</howLogsFolderContent>
+                    <howLogsFolderContent>Name :logger_4.log size :0</howLogsFolderContent>
+                    <howLogsFolderContent>Name :logger_1.log size :8192</howLogsFolderContent>
+                    <howLogsFolderContent>Name :logger_3.log size :0</howLogsFolderContent>
+                    <howLogsFolderContent>Name :howl.properties size :106</howLogsFolderContent>
+                </tibcoJvmHowlogsFolderInfo>
+                <tibcoJvmNodeConfigurationsFolderInfo>
+                    <nodeConfigRDAFolderSizeinK>0</nodeConfigRDAFolderSizeinK>
+                    <nodeConfigRDAFolderRDACount>0</nodeConfigRDAFolderRDACount>
+                </tibcoJvmNodeConfigurationsFolderInfo>
+                <hawkServiceStatisticsProbInfo statisticsNotificationEnabled="false"/>
+                <tibcoJvmInfoErrors>
+                    <totalErrors>0</totalErrors>
+                </tibcoJvmInfoErrors>
+            </tibcoJvmInfo>
+            <machineInfo healthCheckStatus="Passed" healthCheckObjectCreatedOn="27 Sep 2021 08:01:44,678" healthCheckDescription="Machine specific information" timeitTookToBuildHealthCheckObjectInMs="114">
+                <machineCurrentUser>rel2qa</machineCurrentUser>
+                <machineUpTimemilsec>1188480000</machineUpTimemilsec>
+                <machineName>spiderman.na.tibco.com</machineName>
+                <machineOSArchitecture>amd64</machineOSArchitecture>
+                <machineOSInfo>
+                    <osName>Linux</osName>
+                    <osVersion>2.6.32-131.0.15.el6.x86_64</osVersion>
+                </machineOSInfo>
+                <machineNumOfCpu>4</machineNumOfCpu>
+                <machineCpuLoadAverage>2.15</machineCpuLoadAverage>
+                <machineSystemCpuLoad>N/A</machineSystemCpuLoad>
+                <machineTotalPhysicalMemorySize>7.7 GB</machineTotalPhysicalMemorySize>
+                <machineUsedPhysicalMemorySize>7.5 GB</machineUsedPhysicalMemorySize>
+                <machineFreePhysicalMemorySize>179.8 MB</machineFreePhysicalMemorySize>
+                <machineTotalSwapSpaceSize>7.9 GB</machineTotalSwapSpaceSize>
+                <machineFreeSwapSpaceSize>7.7 GB</machineFreeSwapSpaceSize>
+                <machineCommittedVirtualMemorySize>5 GB</machineCommittedVirtualMemorySize>
+                <machineNetworkInterfaces>
+                    <machineNetWorkInterface isLoopBack="false" isUp="true">
+                        <interfaceName>eth0</interfaceName>
+                        <interfaceNumber>2</interfaceNumber>
+                        <ipAddress ipType="IPv6">
+                            <ip>fe80:0:0:0:214:4fff:fe78:60f8%eth0</ip>
+                            <hostNameAttached>fe80:0:0:0:214:4fff:fe78:60f8%eth0</hostNameAttached>
+                        </ipAddress>
+                        <ipAddress ipType="IPv4">
+                            <ip>10.107.128.136</ip>
+                            <hostNameAttached>spiderman.na.tibco.com</hostNameAttached>
+                        </ipAddress>
+                        <macAddress>00-14-4F-78-60-F8</macAddress>
+                    </machineNetWorkInterface>
+                    <machineNetWorkInterface isLoopBack="true" isUp="true">
+                        <interfaceName>lo</interfaceName>
+                        <interfaceNumber>1</interfaceNumber>
+                        <ipAddress ipType="IPv6">
+                            <ip>0:0:0:0:0:0:0:1%lo</ip>
+                            <hostNameAttached>localhost</hostNameAttached>
+                        </ipAddress>
+                        <ipAddress ipType="IPv4">
+                            <ip>127.0.0.1</ip>
+                            <hostNameAttached>127.0.0.1</hostNameAttached>
+                        </ipAddress>
+                    </machineNetWorkInterface>
+                </machineNetworkInterfaces>
+                <machineStorages>
+                    <storage>
+                        <storageRoot>/</storageRoot>
+                        <freeSpaceInMB>81259</freeSpaceInMB>
+                        <totalSpaceInMB>133581</totalSpaceInMB>
+                        <usableSpaceInMB>74474</usableSpaceInMB>
+                    </storage>
+                </machineStorages>
+                <machineInfoErrors>
+                    <totalErrors>0</totalErrors>
+                </machineInfoErrors>
+            </machineInfo>
+        </machineAndJvmInfo>
+        <adminObjectsInfo totalAdminObjects="371">
+            <entitiesBasicInfo>
+                <lastModifiedOn>27 Sep 2021 06:14:31,557</lastModifiedOn>
+                <total>2</total>
+                <type>Environment</type>
+            </entitiesBasicInfo>
+            <entitiesBasicInfo>
+                <lastModifiedOn>27 Sep 2021 07:58:33,941</lastModifiedOn>
+                <total>4</total>
+                <type>Host</type>
+            </entitiesBasicInfo>
+            <entitiesBasicInfo>
+                <lastModifiedOn>27 Sep 2021 07:59:08,141</lastModifiedOn>
+                <total>6</total>
+                <type>Node</type>
+            </entitiesBasicInfo>
+            <entitiesBasicInfo>
+                <lastModifiedOn>27 Sep 2021 07:59:08,345</lastModifiedOn>
+                <total>36</total>
+                <type>Application</type>
+            </entitiesBasicInfo>
+            <entitiesBasicInfo>
+                <lastModifiedOn>27 Sep 2021 08:00:35,962</lastModifiedOn>
+                <total>86</total>
+                <type>Resource Template</type>
+            </entitiesBasicInfo>
+            <entitiesBasicInfo>
+                <lastModifiedOn>N/A</lastModifiedOn>
+                <total>201</total>
+                <type>Resource Instance</type>
+            </entitiesBasicInfo>
+            <entitiesBasicInfo>
+                <lastModifiedOn>27 Sep 2021 07:42:17,584</lastModifiedOn>
+                <total>36</total>
+                <type>Application Template</type>
+            </entitiesBasicInfo>
+        </adminObjectsInfo>
+        <adminPluginsInfo totalPlugins="11" totalDeployed="11" totalUndeployed="0">
+            <adminPlugins>
+                <id>1634</id>
+                <name>amxadministrator</name>
+                <displayName>TIBCO ActiveMatrix Administrator</displayName>
+                <version>3.4.5</version>
+                <modifiedDate>27 Sep 2021 06:23:58,905</modifiedDate>
+                <packageNamespace>tibco.admin.amxadministrator</packageNamespace>
+                <contextRoot>amxadministrator</contextRoot>
+                <state>DEPLOYED</state>
+            </adminPlugins>
+            <adminPlugins>
+                <id>2953</id>
+                <name>credentialserver</name>
+                <displayName>TIBCO ActiveMatrix Administrator Plug-in for Trinity Credential Server</displayName>
+                <version>3.4.5</version>
+                <modifiedDate>27 Sep 2021 06:07:12,123</modifiedDate>
+                <packageNamespace>tibco.admin.credentialserver</packageNamespace>
+                <contextRoot>credentialserver</contextRoot>
+                <state>DEPLOYED</state>
+            </adminPlugins>
+            <adminPlugins>
+                <id>2955</id>
+                <name>govcommon</name>
+                <displayName>TIBCO Composite Application Platform Governance Common Administrator Plugin</displayName>
+                <version>3.4.5</version>
+                <modifiedDate>27 Sep 2021 06:07:12,251</modifiedDate>
+                <packageNamespace>tibco.admin.govcommon</packageNamespace>
+                <contextRoot>govcommon</contextRoot>
+                <state>DEPLOYED</state>
+            </adminPlugins>
+            <adminPlugins>
+                <id>2957</id>
+                <name>jms.admin</name>
+                <displayName>TIBCO ActiveMatrix Administrator plugin for JMS Binding</displayName>
+                <version>3.4.5</version>
+                <modifiedDate>27 Sep 2021 06:07:12,359</modifiedDate>
+                <packageNamespace>tibco.admin.jms.admin</packageNamespace>
+                <contextRoot>jms.admin</contextRoot>
+                <state>DEPLOYED</state>
+            </adminPlugins>
+            <adminPlugins>
+                <id>2962</id>
+                <name>jmssr</name>
+                <displayName>TIBCO ActiveMatrix JMS Resource Adapter Administrator Plugin</displayName>
+                <version>3.4.5</version>
+                <modifiedDate>27 Sep 2021 06:07:12,478</modifiedDate>
+                <packageNamespace>tibco.admin.jmssr</packageNamespace>
+                <contextRoot>jmssr</contextRoot>
+                <state>DEPLOYED</state>
+            </adminPlugins>
+            <adminPlugins>
+                <id>3002</id>
+                <name>logservice</name>
+                <displayName>TIBCO ActiveMatrix Administrator Plug-in for Common Logging</displayName>
+                <version>3.4.5</version>
+                <modifiedDate>27 Sep 2021 06:07:12,680</modifiedDate>
+                <packageNamespace>tibco.admin.logservice</packageNamespace>
+                <contextRoot>logservice</contextRoot>
+                <state>DEPLOYED</state>
+            </adminPlugins>
+            <adminPlugins>
+                <id>3056</id>
+                <name>mcr</name>
+                <displayName>TIBCO ActiveMatrix Metrics Collection Runtime Administrator Plug-in</displayName>
+                <version>3.4.5</version>
+                <modifiedDate>27 Sep 2021 06:07:12,940</modifiedDate>
+                <packageNamespace>tibco.admin.mcr</packageNamespace>
+                <contextRoot>mcr</contextRoot>
+                <state>DEPLOYED</state>
+            </adminPlugins>
+            <adminPlugins>
+                <id>3068</id>
+                <name>policyplatform</name>
+                <displayName>TIBCO ActiveMatrix Policy Enforcement Runtime Administrator Plug-in</displayName>
+                <version>3.4.5</version>
+                <modifiedDate>27 Sep 2021 06:07:13,293</modifiedDate>
+                <packageNamespace>tibco.admin.policyplatform</packageNamespace>
+                <contextRoot>policyplatform</contextRoot>
+                <state>DEPLOYED</state>
+            </adminPlugins>
+            <adminPlugins>
+                <id>3063</id>
+                <name>rest.bt</name>
+                <displayName>TIBCO ActiveMatrix REST BT Administrator Plug-in</displayName>
+                <version>3.4.5</version>
+                <modifiedDate>27 Sep 2021 06:23:58,683</modifiedDate>
+                <packageNamespace>tibco.admin.rest.bt</packageNamespace>
+                <contextRoot>rest.bt</contextRoot>
+                <state>DEPLOYED</state>
+            </adminPlugins>
+            <adminPlugins>
+                <id>3058</id>
+                <name>soap.bt</name>
+                <displayName>TIBCO ActiveMatrix SOAP BT Administrator Plug-in</displayName>
+                <version>3.4.5</version>
+                <modifiedDate>27 Sep 2021 06:07:13,045</modifiedDate>
+                <packageNamespace>tibco.admin.soap.bt</packageNamespace>
+                <contextRoot>soap.bt</contextRoot>
+                <state>DEPLOYED</state>
+            </adminPlugins>
+            <adminPlugins>
+                <id>3070</id>
+                <name>uddi_amxintg</name>
+                <displayName>TIBCO ActiveMatrix Administrator Plug-in for UDDI Server</displayName>
+                <version>3.4.5</version>
+                <modifiedDate>27 Sep 2021 06:07:13,409</modifiedDate>
+                <packageNamespace>tibco.admin.uddi_amxintg</packageNamespace>
+                <contextRoot>uddi_amxintg</contextRoot>
+                <state>DEPLOYED</state>
+            </adminPlugins>
+        </adminPluginsInfo>
+        <superUserAndGroupCount>
+            <numberOfSupergroups>0</numberOfSupergroups>
+            <numberOfTopLevelSuperusers>1</numberOfTopLevelSuperusers>
+            <numberOfTotalUesrsInSupperGroups>0</numberOfTotalUesrsInSupperGroups>
+        </superUserAndGroupCount>
+        <userAgentAutenticationInfo>
+            <numberOfFailedlogins>0</numberOfFailedlogins>
+            <numberOfLoginsFromCLI>3561</numberOfLoginsFromCLI>
+            <numberOfLoingFromLoadBalancer>0</numberOfLoingFromLoadBalancer>
+            <numberOfLoingsFromBrowsers>29</numberOfLoingsFromBrowsers>
+            <numberOfSuccessfullogins>3590</numberOfSuccessfullogins>
+        </userAgentAutenticationInfo>
+        <qinNotificationInfo serverVersion="7.0.1.4" clientLibraryVersion="7.0.1.8" qinServerPingtime="18">
+            <clientHeartbeatServerInterval>0</clientHeartbeatServerInterval>
+            <clientTimeoutServerConnection>0</clientTimeoutServerConnection>
+            <connectionCount>86</connectionCount>
+            <consumerCount>271</consumerCount>
+            <diskReadOperationsRate>0</diskReadOperationsRate>
+            <diskReadRate>0</diskReadRate>
+            <diskWriteOperationsRate>0</diskWriteOperationsRate>
+            <diskWriteRate>0</diskWriteRate>
+            <faultTolerantActivation>10</faultTolerantActivation>
+            <faultTolerantFailoverReread>true</faultTolerantFailoverReread>
+            <faultTolerantHeartbeat>3</faultTolerantHeartbeat>
+            <faultTolerantReconnectTimeout>60</faultTolerantReconnectTimeout>
+            <inboundBytesRate>0</inboundBytesRate>
+            <inboundMessageCount>287885</inboundMessageCount>
+            <inboundMessageRate>0</inboundMessageRate>
+            <maxConnections>0</maxConnections>
+            <maxMsgMemory>4497277</maxMsgMemory>
+            <maxStatisticsMemory>67108864</maxStatisticsMemory>
+            <messagePoolBlockSize>128</messagePoolBlockSize>
+            <messagePoolSize>0</messagePoolSize>
+            <msgMem>0</msgMem>
+            <msgMemPooled>3516416</msgMemPooled>
+            <multicastStatisticsInterval>0</multicastStatisticsInterval>
+            <nPSendCheckMode>0</nPSendCheckMode>
+            <outboundBytesRate>0</outboundBytesRate>
+            <outboundMessageCount>281796</outboundMessageCount>
+            <outboundMessageRate>0</outboundMessageRate>
+            <pendingMessageCount>15645</pendingMessageCount>
+            <pendingMessageSize>14736856</pendingMessageSize>
+            <processId>16740</processId>
+            <producerCount>64</producerCount>
+            <queueCount>1785</queueCount>
+            <queuesFile>/opt/tibco/ems7/tibco/cfgmgmt/ems/qin/queues.conf</queuesFile>
+            <rateInterval>3000</rateInterval>
+            <reserveMemory>0</reserveMemory>
+            <routeRecoverCount>0</routeRecoverCount>
+            <routeRecoverInterval>5000</routeRecoverInterval>
+            <routesFile>/opt/tibco/ems7/tibco/cfgmgmt/ems/qin/routes.conf</routesFile>
+            <serverHeartbeatClientInterval>0</serverHeartbeatClientInterval>
+            <serverHeartbeatServerInterval>0</serverHeartbeatServerInterval>
+            <serverName>EMS-SERVER</serverName>
+            <serverRateInterval>1000</serverRateInterval>
+            <serverTimeoutClientConnection>0</serverTimeoutClientConnection>
+            <serverTimeoutServerConnection>0</serverTimeoutServerConnection>
+            <tibrvcmFile>/opt/tibco/ems7/tibco/cfgmgmt/ems/qin/tibrvcm.conf</tibrvcmFile>
+            <topicCount>44</topicCount>
+            <topicsFile>/opt/tibco/ems7/tibco/cfgmgmt/ems/qin/topics.conf</topicsFile>
+            <transportsFile>/opt/tibco/ems7/tibco/cfgmgmt/ems/qin/transports.conf</transportsFile>
+            <upTime>508479842</upTime>
+            <url>tcp://spiderman.na.tibco.com:7222</url>
+            <usersFile>/opt/tibco/ems7/tibco/cfgmgmt/ems/qin/users.conf</usersFile>
+            <qinUserConnectionInfos>
+                <qinUserConnectionInfo fromHost="spiderman.na.tibco.com" connectionsCount="86"/>
+            </qinUserConnectionInfos>
+            <qinLeaderGroupInfo qinIsThisMemberLeader="true">
+                <qinLeaderName>3a634fd2_17c279308f3_-7c440a6b8088</qinLeaderName>
+                <qinMembers>
+                    <member>
+                        <memberConnectionInfo>
+                            <address>10.107.128.136</address>
+                            <clientID>EMSGMS._AMXAdmin.PARTICIPANT.3a634fd2_17c279308f3_-7c440a6b8088</clientID>
+                            <clientType>J</clientType>
+                            <consumerCount>0</consumerCount>
+                            <host>spiderman.na.tibco.com</host>
+                            <producerCount>1</producerCount>
+                            <sessionCount>1</sessionCount>
+                            <startTime>27 Sep 2021 08:00:36,156</startTime>
+                            <type>CONNECTION</type>
+                            <uncommittedCount>0</uncommittedCount>
+                            <uncommittedSize>0</uncommittedSize>
+                            <upTime>67805</upTime>
+                            <userName>admin</userName>
+                            <versionInfo>7.0.1.8</versionInfo>
+                            <uRL>[admin@spiderman.na.tibco.com]</uRL>
+                        </memberConnectionInfo>
+                        <memberName>3a634fd2_17c279308f3_-7c440a6b8088</memberName>
+                    </member>
+                </qinMembers>
+                <qinStarted>true</qinStarted>
+            </qinLeaderGroupInfo>
+        </qinNotificationInfo>
+        <environmentServiceVirtualizationInfo>
+            <serviceVirtualizationInfo forEnvironment="QAEnvironment_spiderman.na.tibco.com" testConnectionPassed="true" testConnectionTimeInMs="220">
+                <connectionInfo emsServerURL="tcp://spiderman.na.tibco.com:7222,tcp://spiderman.na.tibco.com:7222" connectionUsername="admin" emsReconnectAttemptCount="600" emsReconnectAttemptDelay="500" outboundSessionPoolSize="24" connectionPoolSize="12" sslEnabled="false"/>
+            </serviceVirtualizationInfo>
+            <serviceVirtualizationInfo forEnvironment="SystemEnvironment" testConnectionPassed="true" testConnectionTimeInMs="210">
+                <connectionInfo emsServerURL="tcp://spiderman.na.tibco.com:7222,tcp://spiderman.na.tibco.com:7222" connectionUsername="admin" emsReconnectAttemptCount="600" emsReconnectAttemptDelay="500" outboundSessionPoolSize="24" connectionPoolSize="12" sslEnabled="false"/>
+            </serviceVirtualizationInfo>
+        </environmentServiceVirtualizationInfo>
+        <adminSharedPoolsCurrentInfo>
+            <adminNodeName>SystemNode</adminNodeName>
+            <pools resourceName="java:tibco.admin.authrealm.rms">
+                <poolsCurrentRuntimeValues>
+                    <active_pool_size>3</active_pool_size>
+                    <allocated_pool>3</allocated_pool>
+                    <max_pool_size>20</max_pool_size>
+                </poolsCurrentRuntimeValues>
+                <poolResourceInterface>com.tibco.trinity.realm.core.provider.realm.db.ConnectorConnectionFactory</poolResourceInterface>
+                <poolConfigurationAttributes>
+                    <attributes name="teneoSharedResource" value="java:AdminTeneoResource"/>
+                </poolConfigurationAttributes>
+            </pools>
+            <pools resourceName="java:tibco.admin.appdb.jdbc">
+                <poolsCurrentRuntimeValues>
+                    <active_pool_size>1</active_pool_size>
+                    <allocated_pool>6</allocated_pool>
+                    <max_pool_size>10</max_pool_size>
+                </poolsCurrentRuntimeValues>
+                <poolResourceInterface>javax.sql.DataSource</poolResourceInterface>
+                <poolConfigurationAttributes>
+                    <attributes name="driver" value="oracle.jdbc.OracleDriver"/>
+                    <attributes name="POOL_MIN_SIZE" value="5"/>
+                    <attributes name="isTransactional" value="true"/>
+                    <attributes name="connectionURL" value="jdbc:oracle:thin:@amx-qa-batman:1521:ORCL"/>
+                    <attributes name="POOL_MAX_SIZE" value="10"/>
+                    <attributes name="subjectJndiName" value="java:tibco.admin.default.subject.isp"/>
+                </poolConfigurationAttributes>
+            </pools>
+            <pools resourceName="java:tibco.admin.authrealm.jaas">
+                <poolsCurrentRuntimeValues>
+                    <active_pool_size>0</active_pool_size>
+                    <allocated_pool>5</allocated_pool>
+                    <max_pool_size>20</max_pool_size>
+                </poolsCurrentRuntimeValues>
+                <poolResourceInterface>com.tibco.trinity.realm.core.provider.authn.db.ConnectorConnectionFactory</poolResourceInterface>
+                <poolConfigurationAttributes>
+                    <attributes name="teneoSharedResource" value="java:AdminTeneoResource"/>
+                </poolConfigurationAttributes>
+            </pools>
+            <pools resourceName="java:tibco/amx/platform/transport/gms">
+                <poolsCurrentRuntimeValues>
+                    <active_pool_size>0</active_pool_size>
+                    <allocated_pool>0</allocated_pool>
+                    <max_pool_size>20</max_pool_size>
+                </poolsCurrentRuntimeValues>
+                <poolResourceInterface>com.tibco.amf.sharedresource.runtime.core.qin.QinConnectionFactory</poolResourceInterface>
+                <poolConfigurationAttributes>
+                    <attributes name="reconnectAttemptDelay" value="600"/>
+                    <attributes name="serverUrl" value="tcp://spiderman.na.tibco.com:7222"/>
+                    <attributes name="reconnectAttemptCount" value="2"/>
+                    <attributes name="POOL_MIN_SIZE" value="5"/>
+                    <attributes name="POOL_MAX_SIZE" value="20"/>
+                    <attributes name="passwordCredentialProvider" value="java:tibco/amx/platform/transport/gms_passwordCredentialProvider"/>
+                </poolConfigurationAttributes>
+            </pools>
+        </adminSharedPoolsCurrentInfo>
+        <infoAboutAmxAdminDefaultHttpConnector connectorName="amxAdminDefaultHttpConnector">
+            <totalactiveConnections>11</totalactiveConnections>
+        </infoAboutAmxAdminDefaultHttpConnector>
+        <infoAboutAmxAdminInternaltHttpConnector connectorName="TIBCO ActiveMatrix Internal HTTP">
+            <totalactiveConnections>13</totalactiveConnections>
+            <connectionBlocked>
+                <name>TIBCO ActiveMatrix Internal HTTP Connector Resource_5-acceptor-2@66222dfb-TIBCO ActiveMatrix Internal HTTP Connector Resource@4c8a88af{HTTP/1.1}{0.0.0.0:19767} id :2722</name>
+                <threadState>BLOCKED</threadState>
+                <currectStack>
+        at sun.nio.ch.ServerSocketChannelImpl.accept(ServerSocketChannelImpl.java:235)
+        at org.eclipse.jetty.server.ServerConnector.accept(ServerConnector.java:377)
+        at org.eclipse.jetty.server.AbstractConnector$Acceptor.run(AbstractConnector.java:500)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)</currectStack>
+            </connectionBlocked>
+            <connectionBlocked>
+                <name>TIBCO ActiveMatrix Internal HTTP Connector Resource_3-acceptor-0@424d6e96-TIBCO ActiveMatrix Internal HTTP Connector Resource@4c8a88af{HTTP/1.1}{0.0.0.0:19767} id :2720</name>
+                <threadState>BLOCKED</threadState>
+                <currectStack>
+        at sun.nio.ch.ServerSocketChannelImpl.accept(ServerSocketChannelImpl.java:235)
+        at org.eclipse.jetty.server.ServerConnector.accept(ServerConnector.java:377)
+        at org.eclipse.jetty.server.AbstractConnector$Acceptor.run(AbstractConnector.java:500)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)</currectStack>
+            </connectionBlocked>
+        </infoAboutAmxAdminInternaltHttpConnector>
+        <adminInfoDescErrorss>
+            <totalErrors>0</totalErrors>
+        </adminInfoDescErrorss>
+        <suspendState>Unsuspended</suspendState>
+        <readOnly>Write</readOnly>
+        <suspendReadOnlyNote></suspendReadOnlyNote>
+    </adminInfo>
+    <hostInfoAndPingTime>
+        <hostsInfo healthCheckStatus="Passed" healthCheckObjectCreatedOn="27 Sep 2021 08:01:50,340" timeitTookToBuildHealthCheckObjectInMs="36735">
+            <id>387</id>
+            <name>SystemHost</name>
+            <hostInfo healthCheckStatus="Passed" healthCheckObjectCreatedOn="27 Sep 2021 08:02:20,926" healthCheckDescription="Overall health check information" timeitTookToBuildHealthCheckObjectInMs="30428">
+                <entityName>SystemHost</entityName>
+                <pingTime>134</pingTime>
+                <upgradeHistory>3.4.0 to 3.4.0.HF5</upgradeHistory>
+                <AmxVersion>3.4.0.HF5</AmxVersion>
+                <jvmInfo healthCheckStatus="Passed" healthCheckObjectCreatedOn="27 Sep 2021 08:02:11,066" healthCheckDescription="Java runtime specific information" timeitTookToBuildHealthCheckObjectInMs="6">
+                    <jvmJavaHome>/opt/tibco/amx340hf/tibcojre64/1.8.0</jvmJavaHome>
+                    <jvmArgs>-DTIBCO_HOME=/opt/tibco/amx340hf -Djceks.key.serialFilter=com.tibco.**;java.lang.Enum;java.security.KeyRep;java.security.KeyRep$Type;javax.crypto.spec.SecretKeySpec;!* -Xms24m -Xmx64m -XX:-HeapDumpOnOutOfMemoryError -Djava.library=/opt/tibco/amx340hf/tibcojre64/1.8.0/lib/amd64/server/libjvm.so -Dapplication.processid=19267 -Dwrapper.tra.file=/opt/tibco/amx340hf/conf/tibcohost/Admin-AMXAdmin-admin1/host/bin/tibcohost.tra </jvmArgs>
+                    <jvmUpTimeInMs>3467885</jvmUpTimeInMs>
+                    <jvmInfo>1.8.0_301 [Java HotSpot(TM) 64-Bit Server VM by : Oracle Corporation]</jvmInfo>
+                    <jvmPID>19267</jvmPID>
+                    <jvmProcessCpuTime>111.19 seconds</jvmProcessCpuTime>
+                    <jvmProcessCpuLoad>5.0 %</jvmProcessCpuLoad>
+                    <jvmMemoryUsage>
+                        <allocatedMemoryInK>51712</allocatedMemoryInK>
+                        <freeMemoryInK>23962</freeMemoryInK>
+                        <maxMemoryInK>58368</maxMemoryInK>
+                        <usedMemoryInK>27749</usedMemoryInK>
+                    </jvmMemoryUsage>
+                    <jvmPermGenMemoryUsage/>
+                    <jvmThreadInfo>
+                        <jvmTotalStartedThreadCount>836</jvmTotalStartedThreadCount>
+                        <jvmPeakThreadCount>67</jvmPeakThreadCount>
+                        <jvmTotalLiveThreadCount>2</jvmTotalLiveThreadCount>
+                        <jvmsMostBusyThread>
+                            <threadID>TibcoHostInstance-Admin-AMXAdmin-admin1</threadID>
+                            <threadsCPUtimeseconds>5.28 (seconds)</threadsCPUtimeseconds>
+                        </jvmsMostBusyThread>
+                    </jvmThreadInfo>
+                    <jvmTotalLoadedClassesCount>5108</jvmTotalLoadedClassesCount>
+                    <jvmSystemPropertyesForTIBCO/>
+                    <jvmFileDescriptor>
+                        <maxFileDescriptorCount>800000</maxFileDescriptorCount>
+                        <openFileDescriptorCount>141</openFileDescriptorCount>
+                    </jvmFileDescriptor>
+                </jvmInfo>
+                <tibcoJvmInfo healthCheckStatus="Passed" healthCheckObjectCreatedOn="27 Sep 2021 08:02:11,639" healthCheckDescription="Tibco JVM specific information" timeitTookToBuildHealthCheckObjectInMs="9860">
+                    <tibcoJvmType>Host</tibcoJvmType>
+                    <tibcoHomeInfo>
+                        <tibcoHome>/opt/tibco/amx340hf</tibcoHome>
+                        <tibcoHomeSizeInK>4009432324</tibcoHomeSizeInK>
+                        <tibcoHomeCreatedOn>27 Sep 2021 06:19:01,000</tibcoHomeCreatedOn>
+                        <tibcoHomeProducts>
+                            <productsFrom_installInfo>
+                                <tibcoHomeProduct>spm-required_2.3.1</tibcoHomeProduct>
+                                <tibcoHomeProduct>spm-webcontainer_7.0.57</tibcoHomeProduct>
+                                <tibcoHomeProduct>amx-admin_3.4.0.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>amxspmdashboard-prod_3.4.0.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>spm-runtime_2.3.1</tibcoHomeProduct>
+                                <tibcoHomeProduct>amsg-its_3.4.0.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>eclipse-mapper_1.3.5.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>tibcojava64-oracle-with-sunec_1.8.0.192</tibcoHomeProduct>
+                                <tibcoHomeProduct>gxml_1.0.6.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>amxspmserver-contrib_2.3.1.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>hf-amx340_3.4.0.005</tibcoHomeProduct>
+                                <tibcoHomeProduct>spring-it_3.4.1</tibcoHomeProduct>
+                                <tibcoHomeProduct>hf-amx340-prod_3.4.0.005</tibcoHomeProduct>
+                                <tibcoHomeProduct>mediation_3.6.0.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>spm-documentation_2.3.1</tibcoHomeProduct>
+                                <tibcoHomeProduct>tibcojava64-oracle-with-sunec_1.8.0.301</tibcoHomeProduct>
+                                <tibcoHomeProduct>amx-runtime_3.4.0.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>spm-webconsole_2.3.1</tibcoHomeProduct>
+                                <tibcoHomeProduct>contrib-tct_1.6.0.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>bstudio_5.0.0</tibcoHomeProduct>
+                                <tibcoHomeProduct>amsg_3.4.0.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>wrapper_2.4.7.002</tibcoHomeProduct>
+                                <tibcoHomeProduct>amxrsbt_3.4.0.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>amx-design_3.4.0.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>spm-client_2.3.1</tibcoHomeProduct>
+                                <tibcoHomeProduct>tibcoxml_5.51.607</tibcoHomeProduct>
+                            </productsFrom_installInfo>
+                        </tibcoHomeProducts>
+                    </tibcoHomeInfo>
+                    <tibcoConfigHomeInfo>
+                        <configHome>/opt/tibco/amx340hf/conf</configHome>
+                        <configHomeSizeInk>-1</configHomeSizeInk>
+                        <configHomeCreatedOn>27 Sep 2021 06:20:48,000</configHomeCreatedOn>
+                        <configHomeNumberOfHostInstances>4</configHomeNumberOfHostInstances>
+                    </tibcoConfigHomeInfo>
+                    <tibcoJvmLogsInfo>
+                        <tibcoJvmTotalLogs>3</tibcoJvmTotalLogs>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>tibcohost.log</fileName>
+                            <fullPath>/opt/tibco/amx340hf/conf/tibcohost/Admin-AMXAdmin-admin1/data_3.2.x/host/logs/tibcohost.log</fullPath>
+                            <filesizeInK>1599101</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 08:02:11,487</lastModifiedDate>
+                            <numberOfLines>6069</numberOfLines>
+                            <numberOfErrors>0</numberOfErrors>
+                            <numberOfWarns>1</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>tibcohost.log</fileName>
+                            <fullPath>/groupfiler/tests/tests/amsg/reports/Suse11_x86_64/amsg-3.4.0-V87-HF-5/func/runtime/bat/amsg340hf-patched_2node_orcl/setup/tibcohost.log</fullPath>
+                            <filesizeInK>373466</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 06:14:02,243</lastModifiedDate>
+                            <numberOfLines>1417</numberOfLines>
+                            <numberOfErrors>0</numberOfErrors>
+                            <numberOfWarns>0</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>node-stdout.log</fileName>
+                            <fullPath>/opt/tibco/amx340hf/conf/tibcohost/Admin-AMXAdmin-admin1/data_3.2.x/host/logs/node-stdout.log</fullPath>
+                            <filesizeInK>431807</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 07:23:05,659</lastModifiedDate>
+                            <numberOfLines>3230</numberOfLines>
+                            <numberOfErrors>0</numberOfErrors>
+                            <numberOfWarns>0</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                    </tibcoJvmLogsInfo>
+                    <tibcoHostPluginFolderInfo>
+                        <hostFolderSizeinK>467935807</hostFolderSizeinK>
+                        <hostFolderFilesCount>1021</hostFolderFilesCount>
+                    </tibcoHostPluginFolderInfo>
+                    <engineeringBuildsAppliedToThisHost hasAnyEBsApplied="false" latestPatchAppliedtoHost="com.tibco.amx.platform.patch_3.4.5.000" numberOfJarsChecked="808" latestPatchCreationDate="27 Sep 2021 05:37:50,000"/>
+                </tibcoJvmInfo>
+                <machineInfo healthCheckStatus="Passed" healthCheckObjectCreatedOn="27 Sep 2021 08:02:11,059" healthCheckDescription="Machine specific information" timeitTookToBuildHealthCheckObjectInMs="53">
+                    <machineCurrentUser>rel2qa</machineCurrentUser>
+                    <machineUpTimemilsec>1188480000</machineUpTimemilsec>
+                    <machineName>spiderman.na.tibco.com</machineName>
+                    <machineOSArchitecture>amd64</machineOSArchitecture>
+                    <machineOSInfo>
+                        <osName>Linux</osName>
+                        <osVersion>2.6.32-131.0.15.el6.x86_64</osVersion>
+                    </machineOSInfo>
+                    <machineNumOfCpu>4</machineNumOfCpu>
+                    <machineCpuLoadAverage>2.02</machineCpuLoadAverage>
+                    <machineSystemCpuLoad>0%</machineSystemCpuLoad>
+                    <machineTotalPhysicalMemorySize>7.7 GB</machineTotalPhysicalMemorySize>
+                    <machineUsedPhysicalMemorySize>7.5 GB</machineUsedPhysicalMemorySize>
+                    <machineFreePhysicalMemorySize>147.9 MB</machineFreePhysicalMemorySize>
+                    <machineTotalSwapSpaceSize>7.9 GB</machineTotalSwapSpaceSize>
+                    <machineFreeSwapSpaceSize>7.7 GB</machineFreeSwapSpaceSize>
+                    <machineCommittedVirtualMemorySize>3.6 GB</machineCommittedVirtualMemorySize>
+                    <machineNetworkInterfaces>
+                        <machineNetWorkInterface isLoopBack="false" isUp="true">
+                            <interfaceName>eth0</interfaceName>
+                            <interfaceNumber>2</interfaceNumber>
+                            <ipAddress ipType="IPv6">
+                                <ip>fe80:0:0:0:214:4fff:fe78:60f8%eth0</ip>
+                                <hostNameAttached>fe80:0:0:0:214:4fff:fe78:60f8%eth0</hostNameAttached>
+                            </ipAddress>
+                            <ipAddress ipType="IPv4">
+                                <ip>10.107.128.136</ip>
+                                <hostNameAttached>spiderman.na.tibco.com</hostNameAttached>
+                            </ipAddress>
+                            <macAddress>00-14-4F-78-60-F8</macAddress>
+                        </machineNetWorkInterface>
+                        <machineNetWorkInterface isLoopBack="true" isUp="true">
+                            <interfaceName>lo</interfaceName>
+                            <interfaceNumber>1</interfaceNumber>
+                            <ipAddress ipType="IPv6">
+                                <ip>0:0:0:0:0:0:0:1%lo</ip>
+                                <hostNameAttached>localhost</hostNameAttached>
+                            </ipAddress>
+                            <ipAddress ipType="IPv4">
+                                <ip>127.0.0.1</ip>
+                                <hostNameAttached>127.0.0.1</hostNameAttached>
+                            </ipAddress>
+                        </machineNetWorkInterface>
+                    </machineNetworkInterfaces>
+                    <machineStorages>
+                        <storage>
+                            <storageRoot>/</storageRoot>
+                            <freeSpaceInMB>81260</freeSpaceInMB>
+                            <totalSpaceInMB>133581</totalSpaceInMB>
+                            <usableSpaceInMB>74474</usableSpaceInMB>
+                        </storage>
+                    </machineStorages>
+                </machineInfo>
+            </hostInfo>
+            <nodeInfoDescs healthCheckStatus="Passed" healthCheckObjectCreatedOn="27 Sep 2021 08:02:25,309" healthCheckDescription="Overall health check information" timeitTookToBuildHealthCheckObjectInMs="4275">
+                <entityName>DevNode</entityName>
+                <environmentName>QAEnvironment_spiderman.na.tibco.com</environmentName>
+                <nodeJvmStartupTime>01 min, 37 sec</nodeJvmStartupTime>
+                <nodeJvmHasInitialized>true</nodeJvmHasInitialized>
+                <pingTime>12</pingTime>
+                <osgiEnabled>false</osgiEnabled>
+                <AmxVersion>3.4.0.HF5</AmxVersion>
+                <jvmInfo healthCheckStatus="Passed" healthCheckObjectCreatedOn="27 Sep 2021 08:02:25,168" healthCheckDescription="Java runtime specific information" timeitTookToBuildHealthCheckObjectInMs="9">
+                    <jvmJavaHome>/opt/tibco/amx340hf/tibcojre64/1.8.0</jvmJavaHome>
+                    <jvmArgs>-DTIBCO_HOME=/opt/tibco/amx340hf -Dcom.tibco.tibjms.connect.attempt.timeout=3000 -Djceks.key.serialFilter=com.tibco.**;java.lang.Enum;java.security.KeyRep;java.security.KeyRep$Type;javax.crypto.spec.SecretKeySpec;!* -Xmx1024m -Xms128m -XX:+HeapDumpOnOutOfMemoryError -Damx.securitymanager.enabled=false -Djava.library=/opt/tibco/amx340hf/tibcojre64/1.8.0/lib/amd64/server/libjvm.so -Dapplication.processid=19301 -Dwrapper.tra.file=/opt/tibco/amx340hf/conf/tibcohost/Admin-AMXAdmin-admin1/data_3.2.x/nodes/DevNode/bin/tibamx_DevNode.tra </jvmArgs>
+                    <jvmUpTimeInMs>3475639</jvmUpTimeInMs>
+                    <jvmInfo>1.8.0_301 [Java HotSpot(TM) 64-Bit Server VM by : Oracle Corporation]</jvmInfo>
+                    <jvmPID>19301</jvmPID>
+                    <jvmProcessCpuTime>129.93 seconds</jvmProcessCpuTime>
+                    <jvmProcessCpuLoad>0.0 %</jvmProcessCpuLoad>
+                    <jvmMemoryUsage>
+                        <allocatedMemoryInK>463360</allocatedMemoryInK>
+                        <freeMemoryInK>377592</freeMemoryInK>
+                        <maxMemoryInK>932352</maxMemoryInK>
+                        <usedMemoryInK>85767</usedMemoryInK>
+                    </jvmMemoryUsage>
+                    <jvmPermGenMemoryUsage/>
+                    <jvmThreadInfo>
+                        <jvmTotalStartedThreadCount>241</jvmTotalStartedThreadCount>
+                        <jvmPeakThreadCount>50</jvmPeakThreadCount>
+                        <jvmTotalLiveThreadCount>2</jvmTotalLiveThreadCount>
+                        <jvmsMostBusyThread>
+                            <threadID>ComponentFrameworkDelegate</threadID>
+                            <threadsCPUtimeseconds>13.36 (seconds)</threadsCPUtimeseconds>
+                        </jvmsMostBusyThread>
+                    </jvmThreadInfo>
+                    <jvmTotalLoadedClassesCount>10686</jvmTotalLoadedClassesCount>
+                    <jvmSystemPropertyesForTIBCO>
+                        <Jvmproperty>com.tibco.tibjms.connect.attempt.timeout=3000</Jvmproperty>
+                    </jvmSystemPropertyesForTIBCO>
+                    <jvmFileDescriptor>
+                        <maxFileDescriptorCount>800000</maxFileDescriptorCount>
+                        <openFileDescriptorCount>556</openFileDescriptorCount>
+                    </jvmFileDescriptor>
+                </jvmInfo>
+                <tibcoJvmInfo healthCheckStatus="Passed" healthCheckObjectCreatedOn="27 Sep 2021 08:02:25,254" healthCheckDescription="Tibco JVM specific information" tibcoJvmStartupTime="01 min, 37 sec" tibcoJvmHasInitialized="true" timeitTookToBuildHealthCheckObjectInMs="141">
+                    <tibcoJvmType>Node</tibcoJvmType>
+                    <tibcoHomeInfo>
+                        <tibcoHome>/opt/tibco/amx340hf</tibcoHome>
+                        <tibcoHomeSizeInK>4009432324</tibcoHomeSizeInK>
+                        <tibcoHomeCreatedOn>27 Sep 2021 06:19:01,000</tibcoHomeCreatedOn>
+                        <tibcoHomeProducts/>
+                    </tibcoHomeInfo>
+                    <tibcoConfigHomeInfo>
+                        <configHome>/opt/tibco/amx340hf/conf</configHome>
+                        <configHomeSizeInk>-1</configHomeSizeInk>
+                        <configHomeCreatedOn>27 Sep 2021 06:20:48,000</configHomeCreatedOn>
+                        <configHomeNumberOfHostInstances>4</configHomeNumberOfHostInstances>
+                    </tibcoConfigHomeInfo>
+                    <tibcoJvmLogsInfo>
+                        <tibcoJvmTotalLogs>1</tibcoJvmTotalLogs>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>DevNode.log</fileName>
+                            <fullPath>/opt/tibco/amx340hf/conf/tibcohost/Admin-AMXAdmin-admin1/data_3.2.x/nodes/DevNode/logs/DevNode.log</fullPath>
+                            <filesizeInK>350247</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 08:02:25,154</lastModifiedDate>
+                            <numberOfLines>1971</numberOfLines>
+                            <numberOfErrors>0</numberOfErrors>
+                            <numberOfWarns>13</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                    </tibcoJvmLogsInfo>
+                    <tibcoJvmCfFolderInfo>
+                        <cFfolderSizeInK>333580</cFfolderSizeInK>
+                        <cFfolderComponentCount>59</cFfolderComponentCount>
+                    </tibcoJvmCfFolderInfo>
+                    <tibcoJvmClRecoveryFolderInfo>
+                        <clRecoveryFolderSizeinK>1851</clRecoveryFolderSizeinK>
+                        <clRecoveryFolderContent>Name :37603f76-9c1e-45d0-a977-91e73e4e1d81 size :4096</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :payloadconfiguration.properties size :617</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :records size :4096</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :ba0d260f-60c3-42f3-a1a4-231a6f04b8c1 size :4096</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :payloadconfiguration.properties size :617</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :records size :4096</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :undeliveredLogStorage size :4096</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :852b9925-9c7e-4447-911f-ff6c4be4287a size :4096</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :payloadconfiguration.properties size :617</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :records size :4096</clRecoveryFolderContent>
+                    </tibcoJvmClRecoveryFolderInfo>
+                    <tibcoJvmHowlogsFolderInfo>
+                        <howLogsFolderSizeinK>106</howLogsFolderSizeinK>
+                        <howLogsFolderContent>Name :logger_5.log size :0</howLogsFolderContent>
+                        <howLogsFolderContent>Name :logger_2.log size :0</howLogsFolderContent>
+                        <howLogsFolderContent>Name :logger_4.log size :0</howLogsFolderContent>
+                        <howLogsFolderContent>Name :logger_1.log size :0</howLogsFolderContent>
+                        <howLogsFolderContent>Name :logger_3.log size :0</howLogsFolderContent>
+                        <howLogsFolderContent>Name :howl.properties size :106</howLogsFolderContent>
+                    </tibcoJvmHowlogsFolderInfo>
+                    <tibcoJvmNodeConfigurationsFolderInfo>
+                        <nodeConfigRDAFolderSizeinK>0</nodeConfigRDAFolderSizeinK>
+                        <nodeConfigRDAFolderRDACount>0</nodeConfigRDAFolderRDACount>
+                    </tibcoJvmNodeConfigurationsFolderInfo>
+                </tibcoJvmInfo>
+            </nodeInfoDescs>
+            <nodeInfoDescs healthCheckStatus="Passed" healthCheckObjectCreatedOn="27 Sep 2021 08:02:25,932" healthCheckDescription="Overall health check information" timeitTookToBuildHealthCheckObjectInMs="4899">
+                <entityName>QANode1</entityName>
+                <environmentName>QAEnvironment_spiderman.na.tibco.com</environmentName>
+                <nodeJvmStartupTime>01 min, 53 sec</nodeJvmStartupTime>
+                <nodeJvmHasInitialized>true</nodeJvmHasInitialized>
+                <pingTime>11</pingTime>
+                <osgiEnabled>true</osgiEnabled>
+                <osgiConsolePort>1129</osgiConsolePort>
+                <AmxVersion>3.4.0.HF5</AmxVersion>
+                <jvmInfo healthCheckStatus="Passed" healthCheckObjectCreatedOn="27 Sep 2021 08:02:23,751" healthCheckDescription="Java runtime specific information" timeitTookToBuildHealthCheckObjectInMs="22">
+                    <jvmJavaHome>/opt/tibco/amx340hf/tibcojre64/1.8.0</jvmJavaHome>
+                    <jvmArgs>-DTIBCO_HOME=/opt/tibco/amx340hf -Dcom.tibco.tibjms.connect.attempt.timeout=3000 -Damx.messaging.queue.prefix=AMX_SV_spiderman.na.tibco.com -Djceks.key.serialFilter=com.tibco.**;java.lang.Enum;java.security.KeyRep;java.security.KeyRep$Type;javax.crypto.spec.SecretKeySpec;!* -Xmx1024m -Xms128m -XX:+HeapDumpOnOutOfMemoryError -Damx.securitymanager.enabled=false -Djava.library=/opt/tibco/amx340hf/tibcojre64/1.8.0/lib/amd64/server/libjvm.so -Dapplication.processid=22705 -Dwrapper.tra.file=/opt/tibco/amx340hf/conf/tibcohost/Admin-AMXAdmin-admin1/data_3.2.x/nodes/QANode1/bin/tibamx_QANode1.tra </jvmArgs>
+                    <jvmUpTimeInMs>2419250</jvmUpTimeInMs>
+                    <jvmInfo>1.8.0_301 [Java HotSpot(TM) 64-Bit Server VM by : Oracle Corporation]</jvmInfo>
+                    <jvmPID>22705</jvmPID>
+                    <jvmProcessCpuTime>318.54 seconds</jvmProcessCpuTime>
+                    <jvmProcessCpuLoad>0.0 %</jvmProcessCpuLoad>
+                    <jvmMemoryUsage>
+                        <allocatedMemoryInK>423936</allocatedMemoryInK>
+                        <freeMemoryInK>249527</freeMemoryInK>
+                        <maxMemoryInK>932352</maxMemoryInK>
+                        <usedMemoryInK>174408</usedMemoryInK>
+                    </jvmMemoryUsage>
+                    <jvmPermGenMemoryUsage/>
+                    <jvmThreadInfo>
+                        <jvmTotalStartedThreadCount>1887</jvmTotalStartedThreadCount>
+                        <jvmPeakThreadCount>235</jvmPeakThreadCount>
+                        <jvmTotalLiveThreadCount>104</jvmTotalLiveThreadCount>
+                        <jvmsMostBusyThread>
+                            <threadID>ComponentFrameworkTask</threadID>
+                            <threadsCPUtimeseconds>32.39 (seconds)</threadsCPUtimeseconds>
+                        </jvmsMostBusyThread>
+                    </jvmThreadInfo>
+                    <jvmTotalLoadedClassesCount>19319</jvmTotalLoadedClassesCount>
+                    <jvmSystemPropertyesForTIBCO>
+                        <Jvmproperty>com.tibco.tibjms.connect.attempt.timeout=3000</Jvmproperty>
+                    </jvmSystemPropertyesForTIBCO>
+                    <jvmFileDescriptor>
+                        <maxFileDescriptorCount>800000</maxFileDescriptorCount>
+                        <openFileDescriptorCount>988</openFileDescriptorCount>
+                    </jvmFileDescriptor>
+                </jvmInfo>
+                <tibcoJvmInfo healthCheckStatus="Passed" healthCheckObjectCreatedOn="27 Sep 2021 08:02:25,835" healthCheckDescription="Tibco JVM specific information" tibcoJvmStartupTime="01 min, 53 sec" tibcoJvmHasInitialized="true" timeitTookToBuildHealthCheckObjectInMs="2181">
+                    <tibcoJvmType>Node</tibcoJvmType>
+                    <tibcoHomeInfo>
+                        <tibcoHome>/opt/tibco/amx340hf</tibcoHome>
+                        <tibcoHomeSizeInK>4009432324</tibcoHomeSizeInK>
+                        <tibcoHomeCreatedOn>27 Sep 2021 06:19:01,000</tibcoHomeCreatedOn>
+                        <tibcoHomeProducts/>
+                    </tibcoHomeInfo>
+                    <tibcoConfigHomeInfo>
+                        <configHome>/opt/tibco/amx340hf/conf</configHome>
+                        <configHomeSizeInk>-1</configHomeSizeInk>
+                        <configHomeCreatedOn>27 Sep 2021 06:20:48,000</configHomeCreatedOn>
+                        <configHomeNumberOfHostInstances>4</configHomeNumberOfHostInstances>
+                    </tibcoConfigHomeInfo>
+                    <tibcoJvmLogsInfo>
+                        <tibcoJvmTotalLogs>7</tibcoJvmTotalLogs>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>QANode1.log</fileName>
+                            <fullPath>/groupfiler/tests/tests/amsg/reports/Suse11_x86_64/amsg-3.4.0-V87-HF-5/func/runtime/bat/amsg340hf-patched_2node_orcl/setup/QANode1.log</fullPath>
+                            <filesizeInK>2420328</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 08:02:28,181</lastModifiedDate>
+                            <numberOfLines>12172</numberOfLines>
+                            <numberOfErrors>16</numberOfErrors>
+                            <numberOfWarns>66</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>QANode1.log.1</fileName>
+                            <fullPath>/groupfiler/tests/tests/amsg/reports/Suse11_x86_64/amsg-3.4.0-V87-HF-5/func/runtime/bat/amsg340hf-patched_2node_orcl/setup/QANode1.log.1</fullPath>
+                            <filesizeInK>3145809</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 07:22:58,131</lastModifiedDate>
+                            <numberOfLines>19965</numberOfLines>
+                            <numberOfErrors>30</numberOfErrors>
+                            <numberOfWarns>107</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>QANode1.log.2</fileName>
+                            <fullPath>/groupfiler/tests/tests/amsg/reports/Suse11_x86_64/amsg-3.4.0-V87-HF-5/func/runtime/bat/amsg340hf-patched_2node_orcl/setup/QANode1.log.2</fullPath>
+                            <filesizeInK>3145811</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 06:58:00,118</lastModifiedDate>
+                            <numberOfLines>17928</numberOfLines>
+                            <numberOfErrors>17</numberOfErrors>
+                            <numberOfWarns>114</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>QANode1.log.3</fileName>
+                            <fullPath>/groupfiler/tests/tests/amsg/reports/Suse11_x86_64/amsg-3.4.0-V87-HF-5/func/runtime/bat/amsg340hf-patched_2node_orcl/setup/QANode1.log.3</fullPath>
+                            <filesizeInK>3149968</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 06:51:11,119</lastModifiedDate>
+                            <numberOfLines>16476</numberOfLines>
+                            <numberOfErrors>21</numberOfErrors>
+                            <numberOfWarns>91</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>QANode1.log</fileName>
+                            <fullPath>/opt/tibco/amx340hf/conf/tibcohost/Admin-AMXAdmin-admin1/data_3.2.x/nodes/QANode1/logs/QANode1.log</fullPath>
+                            <filesizeInK>2809500</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 08:02:23,724</lastModifiedDate>
+                            <numberOfLines>22162</numberOfLines>
+                            <numberOfErrors>84</numberOfErrors>
+                            <numberOfWarns>382</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>522.log</fileName>
+                            <fullPath>/groupfiler/tests/tests/amsg/reports/Suse11_x86_64/amsg-3.4.0-V87-HF-5/func/runtime/bat/amsg340hf-patched_2node_orcl/setup/522.log</fullPath>
+                            <filesizeInK>20534</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 08:01:04,132</lastModifiedDate>
+                            <numberOfLines>149</numberOfLines>
+                            <numberOfErrors>0</numberOfErrors>
+                            <numberOfWarns>0</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>BAT62.log</fileName>
+                            <fullPath>/groupfiler/tests/tests/amsg/reports/Suse11_x86_64/amsg-3.4.0-V87-HF-5/func/runtime/bat/amsg340hf-patched_2node_orcl/setup/BAT62.log</fullPath>
+                            <filesizeInK>45026</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 07:32:37,423</lastModifiedDate>
+                            <numberOfLines>319</numberOfLines>
+                            <numberOfErrors>5</numberOfErrors>
+                            <numberOfWarns>4</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                    </tibcoJvmLogsInfo>
+                    <tibcoJvmCfFolderInfo>
+                        <cFfolderSizeInK>1044092</cFfolderSizeInK>
+                        <cFfolderComponentCount>189</cFfolderComponentCount>
+                    </tibcoJvmCfFolderInfo>
+                    <tibcoJvmClRecoveryFolderInfo>
+                        <clRecoveryFolderSizeinK>3702</clRecoveryFolderSizeinK>
+                        <clRecoveryFolderContent>Name :undeliveredLogStorage size :4096</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :a2ca5054-c698-4c6a-a8df-fdc0b330a4a7 size :4096</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :payloadconfiguration.properties size :617</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :records size :4096</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :e3b66786-ee29-4568-ba66-e1c5037799cf size :4096</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :payloadconfiguration.properties size :617</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :records size :4096</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :18754d9d-5231-4314-b90f-bf915e1ee3d5 size :4096</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :payloadconfiguration.properties size :617</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :records size :4096</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :a016d8db-1e3d-4655-a573-f219d0ec3d0f size :4096</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :payloadconfiguration.properties size :617</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :records size :4096</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :35f2807f-f307-4699-bf5c-e5726afe2f38 size :4096</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :payloadconfiguration.properties size :617</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :records size :4096</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :c7d39d48-58d6-440f-8bd2-dfdfd225e2db size :4096</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :payloadconfiguration.properties size :617</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :records size :4096</clRecoveryFolderContent>
+                    </tibcoJvmClRecoveryFolderInfo>
+                    <tibcoJvmHowlogsFolderInfo>
+                        <howLogsFolderSizeinK>65642</howLogsFolderSizeinK>
+                        <howLogsFolderContent>Name :logger_5.log size :0</howLogsFolderContent>
+                        <howLogsFolderContent>Name :logger_2.log size :0</howLogsFolderContent>
+                        <howLogsFolderContent>Name :logger_4.log size :0</howLogsFolderContent>
+                        <howLogsFolderContent>Name :logger_1.log size :65536</howLogsFolderContent>
+                        <howLogsFolderContent>Name :logger_3.log size :0</howLogsFolderContent>
+                        <howLogsFolderContent>Name :howl.properties size :106</howLogsFolderContent>
+                    </tibcoJvmHowlogsFolderInfo>
+                    <tibcoJvmNodeConfigurationsFolderInfo>
+                        <nodeConfigRDAFolderSizeinK>0</nodeConfigRDAFolderSizeinK>
+                        <nodeConfigRDAFolderRDACount>0</nodeConfigRDAFolderRDACount>
+                    </tibcoJvmNodeConfigurationsFolderInfo>
+                </tibcoJvmInfo>
+            </nodeInfoDescs>
+            <nodeInfoDescs healthCheckStatus="Passed" healthCheckObjectCreatedOn="27 Sep 2021 08:02:25,544" healthCheckDescription="Overall health check information" timeitTookToBuildHealthCheckObjectInMs="4509">
+                <entityName>QANode2</entityName>
+                <environmentName>QAEnvironment_spiderman.na.tibco.com</environmentName>
+                <nodeJvmStartupTime>01 min, 13 sec</nodeJvmStartupTime>
+                <nodeJvmHasInitialized>true</nodeJvmHasInitialized>
+                <pingTime>49</pingTime>
+                <osgiEnabled>true</osgiEnabled>
+                <osgiConsolePort>1139</osgiConsolePort>
+                <AmxVersion>3.4.0.HF5</AmxVersion>
+                <jvmInfo healthCheckStatus="Passed" healthCheckObjectCreatedOn="27 Sep 2021 08:02:23,814" healthCheckDescription="Java runtime specific information" timeitTookToBuildHealthCheckObjectInMs="14">
+                    <jvmJavaHome>/opt/tibco/amx340hf/tibcojre64/1.8.0</jvmJavaHome>
+                    <jvmArgs>-DTIBCO_HOME=/opt/tibco/amx340hf -Dcom.tibco.tibjms.connect.attempt.timeout=3000 -Damx.messaging.queue.prefix=AMX_SV_spiderman.na.tibco.com -Djceks.key.serialFilter=com.tibco.**;java.lang.Enum;java.security.KeyRep;java.security.KeyRep$Type;javax.crypto.spec.SecretKeySpec;!* -Xmx1024m -Xms128m -XX:+HeapDumpOnOutOfMemoryError -Damx.securitymanager.enabled=false -Djava.library=/opt/tibco/amx340hf/tibcojre64/1.8.0/lib/amd64/server/libjvm.so -Dapplication.processid=22874 -Dwrapper.tra.file=/opt/tibco/amx340hf/conf/tibcohost/Admin-AMXAdmin-admin1/data_3.2.x/nodes/QANode2/bin/tibamx_QANode2.tra </jvmArgs>
+                    <jvmUpTimeInMs>2369147</jvmUpTimeInMs>
+                    <jvmInfo>1.8.0_301 [Java HotSpot(TM) 64-Bit Server VM by : Oracle Corporation]</jvmInfo>
+                    <jvmPID>22874</jvmPID>
+                    <jvmProcessCpuTime>227.36 seconds</jvmProcessCpuTime>
+                    <jvmProcessCpuLoad>0.0 %</jvmProcessCpuLoad>
+                    <jvmMemoryUsage>
+                        <allocatedMemoryInK>512000</allocatedMemoryInK>
+                        <freeMemoryInK>204744</freeMemoryInK>
+                        <maxMemoryInK>932352</maxMemoryInK>
+                        <usedMemoryInK>307255</usedMemoryInK>
+                    </jvmMemoryUsage>
+                    <jvmPermGenMemoryUsage/>
+                    <jvmThreadInfo>
+                        <jvmTotalStartedThreadCount>1024</jvmTotalStartedThreadCount>
+                        <jvmPeakThreadCount>90</jvmPeakThreadCount>
+                        <jvmTotalLiveThreadCount>4</jvmTotalLiveThreadCount>
+                        <jvmsMostBusyThread>
+                            <threadID>ComponentFrameworkDelegate</threadID>
+                            <threadsCPUtimeseconds>20.49 (seconds)</threadsCPUtimeseconds>
+                        </jvmsMostBusyThread>
+                    </jvmThreadInfo>
+                    <jvmTotalLoadedClassesCount>16822</jvmTotalLoadedClassesCount>
+                    <jvmSystemPropertyesForTIBCO>
+                        <Jvmproperty>com.tibco.tibjms.connect.attempt.timeout=3000</Jvmproperty>
+                    </jvmSystemPropertyesForTIBCO>
+                    <jvmFileDescriptor>
+                        <maxFileDescriptorCount>800000</maxFileDescriptorCount>
+                        <openFileDescriptorCount>832</openFileDescriptorCount>
+                    </jvmFileDescriptor>
+                </jvmInfo>
+                <tibcoJvmInfo healthCheckStatus="Passed" healthCheckObjectCreatedOn="27 Sep 2021 08:02:25,533" healthCheckDescription="Tibco JVM specific information" tibcoJvmStartupTime="01 min, 13 sec" tibcoJvmHasInitialized="true" timeitTookToBuildHealthCheckObjectInMs="1729">
+                    <tibcoJvmType>Node</tibcoJvmType>
+                    <tibcoHomeInfo>
+                        <tibcoHome>/opt/tibco/amx340hf</tibcoHome>
+                        <tibcoHomeSizeInK>4009432324</tibcoHomeSizeInK>
+                        <tibcoHomeCreatedOn>27 Sep 2021 06:19:01,000</tibcoHomeCreatedOn>
+                        <tibcoHomeProducts/>
+                    </tibcoHomeInfo>
+                    <tibcoConfigHomeInfo>
+                        <configHome>/opt/tibco/amx340hf/conf</configHome>
+                        <configHomeSizeInk>-1</configHomeSizeInk>
+                        <configHomeCreatedOn>27 Sep 2021 06:20:48,000</configHomeCreatedOn>
+                        <configHomeNumberOfHostInstances>4</configHomeNumberOfHostInstances>
+                    </tibcoConfigHomeInfo>
+                    <tibcoJvmLogsInfo>
+                        <tibcoJvmTotalLogs>4</tibcoJvmTotalLogs>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>522.log</fileName>
+                            <fullPath>/groupfiler/tests/tests/amsg/reports/Suse11_x86_64/amsg-3.4.0-V87-HF-5/func/runtime/bat/amsg340hf-patched_2node_orcl/setup/522.log</fullPath>
+                            <filesizeInK>20534</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 08:01:04,132</lastModifiedDate>
+                            <numberOfLines>149</numberOfLines>
+                            <numberOfErrors>0</numberOfErrors>
+                            <numberOfWarns>0</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>QANode2.log</fileName>
+                            <fullPath>/groupfiler/tests/tests/amsg/reports/Suse11_x86_64/amsg-3.4.0-V87-HF-5/func/runtime/bat/amsg340hf-patched_2node_orcl/setup/QANode2.log</fullPath>
+                            <filesizeInK>2484400</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 08:02:28,198</lastModifiedDate>
+                            <numberOfLines>12184</numberOfLines>
+                            <numberOfErrors>10</numberOfErrors>
+                            <numberOfWarns>18</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>QANode2.log.1</fileName>
+                            <fullPath>/groupfiler/tests/tests/amsg/reports/Suse11_x86_64/amsg-3.4.0-V87-HF-5/func/runtime/bat/amsg340hf-patched_2node_orcl/setup/QANode2.log.1</fullPath>
+                            <filesizeInK>3145837</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 07:16:42,734</lastModifiedDate>
+                            <numberOfLines>14184</numberOfLines>
+                            <numberOfErrors>15</numberOfErrors>
+                            <numberOfWarns>13</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>QANode2.log</fileName>
+                            <fullPath>/opt/tibco/amx340hf/conf/tibcohost/Admin-AMXAdmin-admin1/data_3.2.x/nodes/QANode2/logs/QANode2.log</fullPath>
+                            <filesizeInK>1374620</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 08:02:23,797</lastModifiedDate>
+                            <numberOfLines>9264</numberOfLines>
+                            <numberOfErrors>26</numberOfErrors>
+                            <numberOfWarns>35</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                    </tibcoJvmLogsInfo>
+                    <tibcoJvmCfFolderInfo>
+                        <cFfolderSizeInK>648416</cFfolderSizeInK>
+                        <cFfolderComponentCount>134</cFfolderComponentCount>
+                    </tibcoJvmCfFolderInfo>
+                    <tibcoJvmClRecoveryFolderInfo>
+                        <clRecoveryFolderSizeinK>3085</clRecoveryFolderSizeinK>
+                        <clRecoveryFolderContent>Name :undeliveredLogStorage size :4096</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :88af341e-67eb-4b71-904b-a5fb65102f35 size :4096</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :payloadconfiguration.properties size :617</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :records size :4096</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :3048f7a1-2f38-4fc6-a9e4-ce889e4b909d size :4096</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :payloadconfiguration.properties size :617</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :records size :4096</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :58203bc1-0353-4e6a-be8a-2043f2f0097c size :4096</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :payloadconfiguration.properties size :617</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :records size :4096</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :b05f579d-ab54-4247-9d34-3814b0311884 size :4096</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :payloadconfiguration.properties size :617</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :records size :4096</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :b58d7b52-538c-4c93-a2a9-b3ff917b4f31 size :4096</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :payloadconfiguration.properties size :617</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :records size :4096</clRecoveryFolderContent>
+                    </tibcoJvmClRecoveryFolderInfo>
+                    <tibcoJvmHowlogsFolderInfo>
+                        <howLogsFolderSizeinK>16490</howLogsFolderSizeinK>
+                        <howLogsFolderContent>Name :logger_5.log size :0</howLogsFolderContent>
+                        <howLogsFolderContent>Name :logger_2.log size :0</howLogsFolderContent>
+                        <howLogsFolderContent>Name :logger_4.log size :0</howLogsFolderContent>
+                        <howLogsFolderContent>Name :logger_1.log size :16384</howLogsFolderContent>
+                        <howLogsFolderContent>Name :logger_3.log size :0</howLogsFolderContent>
+                        <howLogsFolderContent>Name :howl.properties size :106</howLogsFolderContent>
+                    </tibcoJvmHowlogsFolderInfo>
+                    <tibcoJvmNodeConfigurationsFolderInfo>
+                        <nodeConfigRDAFolderSizeinK>0</nodeConfigRDAFolderSizeinK>
+                        <nodeConfigRDAFolderRDACount>0</nodeConfigRDAFolderRDACount>
+                    </tibcoJvmNodeConfigurationsFolderInfo>
+                </tibcoJvmInfo>
+            </nodeInfoDescs>
+            <nodeInfoDescs healthCheckStatus="Passed" healthCheckObjectCreatedOn="27 Sep 2021 08:02:27,066" healthCheckDescription="Overall health check information" timeitTookToBuildHealthCheckObjectInMs="6030">
+                <entityName>SystemNode</entityName>
+                <environmentName>SystemEnvironment</environmentName>
+                <nodeJvmStartupTime>02 min, 36 sec</nodeJvmStartupTime>
+                <nodeJvmHasInitialized>true</nodeJvmHasInitialized>
+                <pingTime>11</pingTime>
+                <osgiEnabled>false</osgiEnabled>
+                <AmxVersion>3.4.0.HF5</AmxVersion>
+                <jvmInfo healthCheckStatus="Passed" healthCheckObjectCreatedOn="27 Sep 2021 08:02:23,635" healthCheckDescription="Java runtime specific information" timeitTookToBuildHealthCheckObjectInMs="34">
+                    <jvmJavaHome>/opt/tibco/amx340hf/tibcojre64/1.8.0</jvmJavaHome>
+                    <jvmArgs>-DTIBCO_HOME=/opt/tibco/amx340hf -Djceks.key.serialFilter=com.tibco.**;java.lang.Enum;java.security.KeyRep;java.security.KeyRep$Type;javax.crypto.spec.SecretKeySpec;!* -Xmx1024m -Xms128m -XX:MaxPermSize=256m -XX:+HeapDumpOnOutOfMemoryError -Djava.library=/opt/tibco/amx340hf/tibcojre64/1.8.0/lib/amd64/server/libjvm.so -Dapplication.processid=19298 -Dwrapper.tra.file=/opt/tibco/amx340hf/conf/tibcohost/Admin-AMXAdmin-admin1/data_3.2.x/nodes/SystemNode/bin/tibamx_SystemNode.tra </jvmArgs>
+                    <jvmUpTimeInMs>3474124</jvmUpTimeInMs>
+                    <jvmInfo>1.8.0_301 [Java HotSpot(TM) 64-Bit Server VM by : Oracle Corporation]</jvmInfo>
+                    <jvmPID>19298</jvmPID>
+                    <jvmProcessCpuTime>1443.42 seconds</jvmProcessCpuTime>
+                    <jvmProcessCpuLoad>4.0 %</jvmProcessCpuLoad>
+                    <jvmMemoryUsage>
+                        <allocatedMemoryInK>843776</allocatedMemoryInK>
+                        <freeMemoryInK>449917</freeMemoryInK>
+                        <maxMemoryInK>932352</maxMemoryInK>
+                        <usedMemoryInK>393858</usedMemoryInK>
+                    </jvmMemoryUsage>
+                    <jvmPermGenMemoryUsage/>
+                    <jvmThreadInfo>
+                        <jvmTotalStartedThreadCount>2005</jvmTotalStartedThreadCount>
+                        <jvmPeakThreadCount>214</jvmPeakThreadCount>
+                        <jvmTotalLiveThreadCount>47</jvmTotalLiveThreadCount>
+                        <jvmsMostBusyThread>
+                            <threadID>amxAdminDefaultHttpConnector_12</threadID>
+                            <threadsCPUtimeseconds>59.41 (seconds)</threadsCPUtimeseconds>
+                        </jvmsMostBusyThread>
+                    </jvmThreadInfo>
+                    <jvmTotalLoadedClassesCount>24574</jvmTotalLoadedClassesCount>
+                    <jvmSystemPropertyesForTIBCO/>
+                    <jvmFileDescriptor>
+                        <maxFileDescriptorCount>800000</maxFileDescriptorCount>
+                        <openFileDescriptorCount>951</openFileDescriptorCount>
+                    </jvmFileDescriptor>
+                </jvmInfo>
+                <tibcoJvmInfo healthCheckStatus="Passed" healthCheckObjectCreatedOn="27 Sep 2021 08:02:27,063" healthCheckDescription="Tibco JVM specific information" tibcoJvmStartupTime="02 min, 36 sec" tibcoJvmHasInitialized="true" timeitTookToBuildHealthCheckObjectInMs="3431">
+                    <tibcoJvmType>Node</tibcoJvmType>
+                    <tibcoHomeInfo>
+                        <tibcoHome>/opt/tibco/amx340hf</tibcoHome>
+                        <tibcoHomeSizeInK>4009432324</tibcoHomeSizeInK>
+                        <tibcoHomeCreatedOn>27 Sep 2021 06:19:01,000</tibcoHomeCreatedOn>
+                        <tibcoHomeProducts/>
+                    </tibcoHomeInfo>
+                    <tibcoConfigHomeInfo>
+                        <configHome>/opt/tibco/amx340hf/conf</configHome>
+                        <configHomeSizeInk>-1</configHomeSizeInk>
+                        <configHomeCreatedOn>27 Sep 2021 06:20:48,000</configHomeCreatedOn>
+                        <configHomeNumberOfHostInstances>4</configHomeNumberOfHostInstances>
+                    </tibcoConfigHomeInfo>
+                    <tibcoJvmLogsInfo>
+                        <tibcoJvmTotalLogs>24</tibcoJvmTotalLogs>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>admin-user-action.log</fileName>
+                            <fullPath>/opt/tibco/amx340hf/conf/tibcohost/Admin-AMXAdmin-admin1/data_3.2.x/nodes/SystemNode/logs/admin-user-action.log</fullPath>
+                            <filesizeInK>530329</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 08:01:42,922</lastModifiedDate>
+                            <numberOfLines>2170</numberOfLines>
+                            <numberOfErrors>2</numberOfErrors>
+                            <numberOfWarns>0</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>admin-task-history.log</fileName>
+                            <fullPath>/opt/tibco/amx340hf/conf/tibcohost/Admin-AMXAdmin-admin1/data_3.2.x/nodes/SystemNode/logs/admin-task-history.log</fullPath>
+                            <filesizeInK>3048271</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 08:01:31,714</lastModifiedDate>
+                            <numberOfLines>5628</numberOfLines>
+                            <numberOfErrors>0</numberOfErrors>
+                            <numberOfWarns>0</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>SystemNode.log.4</fileName>
+                            <fullPath>/opt/tibco/amx340hf/conf/tibcohost/Admin-AMXAdmin-admin1/data_3.2.x/nodes/SystemNode/logs/SystemNode.log.4</fullPath>
+                            <filesizeInK>10485879</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 07:31:39,784</lastModifiedDate>
+                            <numberOfLines>37585</numberOfLines>
+                            <numberOfErrors>0</numberOfErrors>
+                            <numberOfWarns>47</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>SystemNode.log.6</fileName>
+                            <fullPath>/opt/tibco/amx340hf/conf/tibcohost/Admin-AMXAdmin-admin1/data_3.2.x/nodes/SystemNode/logs/SystemNode.log.6</fullPath>
+                            <filesizeInK>10485768</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 07:16:48,407</lastModifiedDate>
+                            <numberOfLines>37824</numberOfLines>
+                            <numberOfErrors>0</numberOfErrors>
+                            <numberOfWarns>210</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>SystemNode.log</fileName>
+                            <fullPath>/opt/tibco/amx340hf/conf/tibcohost/Admin-AMXAdmin-admin1/data_3.2.x/nodes/SystemNode/logs/SystemNode.log</fullPath>
+                            <filesizeInK>3674810</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 08:02:23,596</lastModifiedDate>
+                            <numberOfLines>11803</numberOfLines>
+                            <numberOfErrors>0</numberOfErrors>
+                            <numberOfWarns>2</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>SystemNode.log.3</fileName>
+                            <fullPath>/opt/tibco/amx340hf/conf/tibcohost/Admin-AMXAdmin-admin1/data_3.2.x/nodes/SystemNode/logs/SystemNode.log.3</fullPath>
+                            <filesizeInK>10485789</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 07:43:07,157</lastModifiedDate>
+                            <numberOfLines>36928</numberOfLines>
+                            <numberOfErrors>1</numberOfErrors>
+                            <numberOfWarns>53</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>SystemNode.log.1</fileName>
+                            <fullPath>/opt/tibco/amx340hf/conf/tibcohost/Admin-AMXAdmin-admin1/data_3.2.x/nodes/SystemNode/logs/SystemNode.log.1</fullPath>
+                            <filesizeInK>10486010</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 08:01:11,702</lastModifiedDate>
+                            <numberOfLines>36223</numberOfLines>
+                            <numberOfErrors>4</numberOfErrors>
+                            <numberOfWarns>52</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>SystemNode.log.5</fileName>
+                            <fullPath>/opt/tibco/amx340hf/conf/tibcohost/Admin-AMXAdmin-admin1/data_3.2.x/nodes/SystemNode/logs/SystemNode.log.5</fullPath>
+                            <filesizeInK>10485965</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 07:23:33,915</lastModifiedDate>
+                            <numberOfLines>38144</numberOfLines>
+                            <numberOfErrors>0</numberOfErrors>
+                            <numberOfWarns>15</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>SystemNode.log.8</fileName>
+                            <fullPath>/opt/tibco/amx340hf/conf/tibcohost/Admin-AMXAdmin-admin1/data_3.2.x/nodes/SystemNode/logs/SystemNode.log.8</fullPath>
+                            <filesizeInK>10485896</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 06:50:35,851</lastModifiedDate>
+                            <numberOfLines>38605</numberOfLines>
+                            <numberOfErrors>0</numberOfErrors>
+                            <numberOfWarns>57</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>SystemNode.log.2</fileName>
+                            <fullPath>/opt/tibco/amx340hf/conf/tibcohost/Admin-AMXAdmin-admin1/data_3.2.x/nodes/SystemNode/logs/SystemNode.log.2</fullPath>
+                            <filesizeInK>10485896</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 07:52:41,719</lastModifiedDate>
+                            <numberOfLines>36732</numberOfLines>
+                            <numberOfErrors>3</numberOfErrors>
+                            <numberOfWarns>51</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>SystemNode.log.10</fileName>
+                            <fullPath>/opt/tibco/amx340hf/conf/tibcohost/Admin-AMXAdmin-admin1/data_3.2.x/nodes/SystemNode/logs/SystemNode.log.10</fullPath>
+                            <filesizeInK>10486044</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 06:17:08,024</lastModifiedDate>
+                            <numberOfLines>37069</numberOfLines>
+                            <numberOfErrors>38</numberOfErrors>
+                            <numberOfWarns>347</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>SystemNode.log.7</fileName>
+                            <fullPath>/opt/tibco/amx340hf/conf/tibcohost/Admin-AMXAdmin-admin1/data_3.2.x/nodes/SystemNode/logs/SystemNode.log.7</fullPath>
+                            <filesizeInK>10485897</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 06:54:49,993</lastModifiedDate>
+                            <numberOfLines>37402</numberOfLines>
+                            <numberOfErrors>0</numberOfErrors>
+                            <numberOfWarns>21</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>SystemNode.log.9</fileName>
+                            <fullPath>/opt/tibco/amx340hf/conf/tibcohost/Admin-AMXAdmin-admin1/data_3.2.x/nodes/SystemNode/logs/SystemNode.log.9</fullPath>
+                            <filesizeInK>10485860</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 06:36:29,081</lastModifiedDate>
+                            <numberOfLines>39074</numberOfLines>
+                            <numberOfErrors>0</numberOfErrors>
+                            <numberOfWarns>228</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>SystemNode.log</fileName>
+                            <fullPath>/groupfiler/tests/tests/amsg/reports/Suse11_x86_64/amsg-3.4.0-V87-HF-5/func/runtime/bat/amsg340hf-patched_2node_orcl/setup/SystemNode.log</fullPath>
+                            <filesizeInK>924842</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 08:02:27,043</lastModifiedDate>
+                            <numberOfLines>3048</numberOfLines>
+                            <numberOfErrors>0</numberOfErrors>
+                            <numberOfWarns>1</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>SystemNode.log.1</fileName>
+                            <fullPath>/groupfiler/tests/tests/amsg/reports/Suse11_x86_64/amsg-3.4.0-V87-HF-5/func/runtime/bat/amsg340hf-patched_2node_orcl/setup/SystemNode.log.1</fullPath>
+                            <filesizeInK>10485917</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 08:01:28,309</lastModifiedDate>
+                            <numberOfLines>34392</numberOfLines>
+                            <numberOfErrors>3</numberOfErrors>
+                            <numberOfWarns>10</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>SystemNode.log.2</fileName>
+                            <fullPath>/groupfiler/tests/tests/amsg/reports/Suse11_x86_64/amsg-3.4.0-V87-HF-5/func/runtime/bat/amsg340hf-patched_2node_orcl/setup/SystemNode.log.2</fullPath>
+                            <filesizeInK>10485905</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 07:56:47,716</lastModifiedDate>
+                            <numberOfLines>36987</numberOfLines>
+                            <numberOfErrors>1</numberOfErrors>
+                            <numberOfWarns>51</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>SystemNode.log.3</fileName>
+                            <fullPath>/groupfiler/tests/tests/amsg/reports/Suse11_x86_64/amsg-3.4.0-V87-HF-5/func/runtime/bat/amsg340hf-patched_2node_orcl/setup/SystemNode.log.3</fullPath>
+                            <filesizeInK>10485765</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 07:47:12,537</lastModifiedDate>
+                            <numberOfLines>36366</numberOfLines>
+                            <numberOfErrors>2</numberOfErrors>
+                            <numberOfWarns>71</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>SystemNode.log.4</fileName>
+                            <fullPath>/groupfiler/tests/tests/amsg/reports/Suse11_x86_64/amsg-3.4.0-V87-HF-5/func/runtime/bat/amsg340hf-patched_2node_orcl/setup/SystemNode.log.4</fullPath>
+                            <filesizeInK>10485960</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 07:33:48,519</lastModifiedDate>
+                            <numberOfLines>38402</numberOfLines>
+                            <numberOfErrors>0</numberOfErrors>
+                            <numberOfWarns>65</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>SystemNode.log.5</fileName>
+                            <fullPath>/groupfiler/tests/tests/amsg/reports/Suse11_x86_64/amsg-3.4.0-V87-HF-5/func/runtime/bat/amsg340hf-patched_2node_orcl/setup/SystemNode.log.5</fullPath>
+                            <filesizeInK>10485928</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 07:23:47,427</lastModifiedDate>
+                            <numberOfLines>37410</numberOfLines>
+                            <numberOfErrors>0</numberOfErrors>
+                            <numberOfWarns>9</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>SystemNode.log.6</fileName>
+                            <fullPath>/groupfiler/tests/tests/amsg/reports/Suse11_x86_64/amsg-3.4.0-V87-HF-5/func/runtime/bat/amsg340hf-patched_2node_orcl/setup/SystemNode.log.6</fullPath>
+                            <filesizeInK>10485867</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 07:19:36,189</lastModifiedDate>
+                            <numberOfLines>36627</numberOfLines>
+                            <numberOfErrors>0</numberOfErrors>
+                            <numberOfWarns>211</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>SystemNode.log.7</fileName>
+                            <fullPath>/groupfiler/tests/tests/amsg/reports/Suse11_x86_64/amsg-3.4.0-V87-HF-5/func/runtime/bat/amsg340hf-patched_2node_orcl/setup/SystemNode.log.7</fullPath>
+                            <filesizeInK>10485761</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 06:55:22,507</lastModifiedDate>
+                            <numberOfLines>37717</numberOfLines>
+                            <numberOfErrors>0</numberOfErrors>
+                            <numberOfWarns>21</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>SystemNode.log.8</fileName>
+                            <fullPath>/groupfiler/tests/tests/amsg/reports/Suse11_x86_64/amsg-3.4.0-V87-HF-5/func/runtime/bat/amsg340hf-patched_2node_orcl/setup/SystemNode.log.8</fullPath>
+                            <filesizeInK>10485861</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 06:50:58,346</lastModifiedDate>
+                            <numberOfLines>38446</numberOfLines>
+                            <numberOfErrors>0</numberOfErrors>
+                            <numberOfWarns>57</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>SystemNode.log.9</fileName>
+                            <fullPath>/groupfiler/tests/tests/amsg/reports/Suse11_x86_64/amsg-3.4.0-V87-HF-5/func/runtime/bat/amsg340hf-patched_2node_orcl/setup/SystemNode.log.9</fullPath>
+                            <filesizeInK>10485901</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 06:36:53,602</lastModifiedDate>
+                            <numberOfLines>38130</numberOfLines>
+                            <numberOfErrors>0</numberOfErrors>
+                            <numberOfWarns>223</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>SystemNode.log.10</fileName>
+                            <fullPath>/groupfiler/tests/tests/amsg/reports/Suse11_x86_64/amsg-3.4.0-V87-HF-5/func/runtime/bat/amsg340hf-patched_2node_orcl/setup/SystemNode.log.10</fullPath>
+                            <filesizeInK>10485978</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 06:17:11,719</lastModifiedDate>
+                            <numberOfLines>36948</numberOfLines>
+                            <numberOfErrors>38</numberOfErrors>
+                            <numberOfWarns>347</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                    </tibcoJvmLogsInfo>
+                    <tibcoJvmCfFolderInfo>
+                        <cFfolderSizeInK>507943</cFfolderSizeInK>
+                        <cFfolderComponentCount>91</cFfolderComponentCount>
+                    </tibcoJvmCfFolderInfo>
+                    <tibcoJvmClRecoveryFolderInfo>
+                        <clRecoveryFolderSizeinK>1851</clRecoveryFolderSizeinK>
+                        <clRecoveryFolderContent>Name :4d8387a4-9179-45ba-80b9-5aa2ab2faff5 size :4096</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :payloadconfiguration.properties size :617</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :records size :4096</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :undeliveredLogStorage size :4096</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :1401822c-4f7d-48f3-b98b-db4ed904ca10 size :4096</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :payloadconfiguration.properties size :617</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :records size :4096</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :3f2a7bcf-c3a2-4d62-a934-cc60023fcbb8 size :4096</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :payloadconfiguration.properties size :617</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :records size :4096</clRecoveryFolderContent>
+                    </tibcoJvmClRecoveryFolderInfo>
+                    <tibcoJvmHowlogsFolderInfo>
+                        <howLogsFolderSizeinK>8298</howLogsFolderSizeinK>
+                        <howLogsFolderContent>Name :logger_5.log size :0</howLogsFolderContent>
+                        <howLogsFolderContent>Name :logger_2.log size :0</howLogsFolderContent>
+                        <howLogsFolderContent>Name :logger_4.log size :0</howLogsFolderContent>
+                        <howLogsFolderContent>Name :logger_1.log size :8192</howLogsFolderContent>
+                        <howLogsFolderContent>Name :logger_3.log size :0</howLogsFolderContent>
+                        <howLogsFolderContent>Name :howl.properties size :106</howLogsFolderContent>
+                    </tibcoJvmHowlogsFolderInfo>
+                    <tibcoJvmNodeConfigurationsFolderInfo>
+                        <nodeConfigRDAFolderSizeinK>0</nodeConfigRDAFolderSizeinK>
+                        <nodeConfigRDAFolderRDACount>0</nodeConfigRDAFolderRDACount>
+                    </tibcoJvmNodeConfigurationsFolderInfo>
+                </tibcoJvmInfo>
+            </nodeInfoDescs>
+        </hostsInfo>
+        <hostsInfo healthCheckStatus="Passed" healthCheckObjectCreatedOn="27 Sep 2021 08:02:27,176" timeitTookToBuildHealthCheckObjectInMs="5770">
+            <id>54132</id>
+            <name>BAT86_Host1</name>
+            <hostInfo healthCheckStatus="Passed" healthCheckObjectCreatedOn="27 Sep 2021 08:02:31,112" healthCheckDescription="Overall health check information" timeitTookToBuildHealthCheckObjectInMs="3826">
+                <entityName>BAT86_Host1</entityName>
+                <pingTime>96</pingTime>
+                <upgradeHistory>3.4.0.HF5</upgradeHistory>
+                <AmxVersion>3.4.0.HF5</AmxVersion>
+                <jvmInfo healthCheckStatus="Passed" healthCheckObjectCreatedOn="27 Sep 2021 08:02:29,102" healthCheckDescription="Java runtime specific information" timeitTookToBuildHealthCheckObjectInMs="7">
+                    <jvmJavaHome>/opt/tibco/amx340hf/tibcojre64/1.8.0</jvmJavaHome>
+                    <jvmArgs>-DTIBCO_HOME=/opt/tibco/amx340hf -Djceks.key.serialFilter=com.tibco.**;java.lang.Enum;java.security.KeyRep;java.security.KeyRep$Type;javax.crypto.spec.SecretKeySpec;!* -Xms24m -Xmx64m -XX:-HeapDumpOnOutOfMemoryError -XX:MaxPermSize=64m -Djava.library=/opt/tibco/amx340hf/tibcojre64/1.8.0/lib/amd64/server/libjvm.so -Dapplication.processid=30777 -Dwrapper.tra.file=/opt/tibco/amx340hf/conf/tibcohost/BAT86_Host1/host/bin/tibcohost.tra </jvmArgs>
+                    <jvmUpTimeInMs>281255</jvmUpTimeInMs>
+                    <jvmInfo>1.8.0_301 [Java HotSpot(TM) 64-Bit Server VM by : Oracle Corporation]</jvmInfo>
+                    <jvmPID>30777</jvmPID>
+                    <jvmProcessCpuTime>40.66 seconds</jvmProcessCpuTime>
+                    <jvmProcessCpuLoad>0.0 %</jvmProcessCpuLoad>
+                    <jvmMemoryUsage>
+                        <allocatedMemoryInK>52736</allocatedMemoryInK>
+                        <freeMemoryInK>23052</freeMemoryInK>
+                        <maxMemoryInK>58368</maxMemoryInK>
+                        <usedMemoryInK>29683</usedMemoryInK>
+                    </jvmMemoryUsage>
+                    <jvmPermGenMemoryUsage/>
+                    <jvmThreadInfo>
+                        <jvmTotalStartedThreadCount>143</jvmTotalStartedThreadCount>
+                        <jvmPeakThreadCount>30</jvmPeakThreadCount>
+                        <jvmTotalLiveThreadCount>2</jvmTotalLiveThreadCount>
+                        <jvmsMostBusyThread>
+                            <threadID>TibcoHostInstance-BAT86_Host1</threadID>
+                            <threadsCPUtimeseconds>4.85 (seconds)</threadsCPUtimeseconds>
+                        </jvmsMostBusyThread>
+                    </jvmThreadInfo>
+                    <jvmTotalLoadedClassesCount>4567</jvmTotalLoadedClassesCount>
+                    <jvmSystemPropertyesForTIBCO/>
+                    <jvmFileDescriptor>
+                        <maxFileDescriptorCount>800000</maxFileDescriptorCount>
+                        <openFileDescriptorCount>120</openFileDescriptorCount>
+                    </jvmFileDescriptor>
+                </jvmInfo>
+                <tibcoJvmInfo healthCheckStatus="Passed" healthCheckObjectCreatedOn="27 Sep 2021 08:02:29,180" healthCheckDescription="Tibco JVM specific information" timeitTookToBuildHealthCheckObjectInMs="2009">
+                    <tibcoJvmType>Host</tibcoJvmType>
+                    <tibcoHomeInfo>
+                        <tibcoHome>/opt/tibco/amx340hf</tibcoHome>
+                        <tibcoHomeSizeInK>4009432324</tibcoHomeSizeInK>
+                        <tibcoHomeCreatedOn>27 Sep 2021 06:19:01,000</tibcoHomeCreatedOn>
+                        <tibcoHomeProducts>
+                            <productsFrom_installInfo>
+                                <tibcoHomeProduct>spm-required_2.3.1</tibcoHomeProduct>
+                                <tibcoHomeProduct>spm-webcontainer_7.0.57</tibcoHomeProduct>
+                                <tibcoHomeProduct>amx-admin_3.4.0.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>amxspmdashboard-prod_3.4.0.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>spm-runtime_2.3.1</tibcoHomeProduct>
+                                <tibcoHomeProduct>amsg-its_3.4.0.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>eclipse-mapper_1.3.5.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>tibcojava64-oracle-with-sunec_1.8.0.192</tibcoHomeProduct>
+                                <tibcoHomeProduct>gxml_1.0.6.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>amxspmserver-contrib_2.3.1.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>hf-amx340_3.4.0.005</tibcoHomeProduct>
+                                <tibcoHomeProduct>spring-it_3.4.1</tibcoHomeProduct>
+                                <tibcoHomeProduct>hf-amx340-prod_3.4.0.005</tibcoHomeProduct>
+                                <tibcoHomeProduct>mediation_3.6.0.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>spm-documentation_2.3.1</tibcoHomeProduct>
+                                <tibcoHomeProduct>tibcojava64-oracle-with-sunec_1.8.0.301</tibcoHomeProduct>
+                                <tibcoHomeProduct>amx-runtime_3.4.0.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>spm-webconsole_2.3.1</tibcoHomeProduct>
+                                <tibcoHomeProduct>contrib-tct_1.6.0.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>bstudio_5.0.0</tibcoHomeProduct>
+                                <tibcoHomeProduct>amsg_3.4.0.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>wrapper_2.4.7.002</tibcoHomeProduct>
+                                <tibcoHomeProduct>amxrsbt_3.4.0.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>amx-design_3.4.0.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>spm-client_2.3.1</tibcoHomeProduct>
+                                <tibcoHomeProduct>tibcoxml_5.51.607</tibcoHomeProduct>
+                            </productsFrom_installInfo>
+                        </tibcoHomeProducts>
+                    </tibcoHomeInfo>
+                    <tibcoConfigHomeInfo>
+                        <configHome>/opt/tibco/amx340hf/conf</configHome>
+                        <configHomeSizeInk>-1</configHomeSizeInk>
+                        <configHomeCreatedOn>27 Sep 2021 06:20:48,000</configHomeCreatedOn>
+                        <configHomeNumberOfHostInstances>4</configHomeNumberOfHostInstances>
+                    </tibcoConfigHomeInfo>
+                    <tibcoJvmLogsInfo>
+                        <tibcoJvmTotalLogs>2</tibcoJvmTotalLogs>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>tibcohost.log</fileName>
+                            <fullPath>/opt/tibco/amx340hf/conf/tibcohost/BAT86_Host1/data_3.2.x/host/logs/tibcohost.log</fullPath>
+                            <filesizeInK>174244</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 08:02:29,147</lastModifiedDate>
+                            <numberOfLines>691</numberOfLines>
+                            <numberOfErrors>0</numberOfErrors>
+                            <numberOfWarns>1</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>node-stdout.log</fileName>
+                            <fullPath>/opt/tibco/amx340hf/conf/tibcohost/BAT86_Host1/data_3.2.x/host/logs/node-stdout.log</fullPath>
+                            <filesizeInK>21177</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 07:59:30,043</lastModifiedDate>
+                            <numberOfLines>155</numberOfLines>
+                            <numberOfErrors>0</numberOfErrors>
+                            <numberOfWarns>0</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                    </tibcoJvmLogsInfo>
+                    <tibcoHostPluginFolderInfo>
+                        <hostFolderSizeinK>160592174</hostFolderSizeinK>
+                        <hostFolderFilesCount>360</hostFolderFilesCount>
+                    </tibcoHostPluginFolderInfo>
+                    <engineeringBuildsAppliedToThisHost hasAnyEBsApplied="false" latestPatchAppliedtoHost="com.tibco.amx.platform.patch_3.4.5.000" numberOfJarsChecked="405" latestPatchCreationDate="27 Sep 2021 05:37:50,000"/>
+                </tibcoJvmInfo>
+            </hostInfo>
+            <nodeInfoDescs healthCheckStatus="Passed" healthCheckObjectCreatedOn="27 Sep 2021 08:02:32,940" healthCheckDescription="Overall health check information" timeitTookToBuildHealthCheckObjectInMs="1789">
+                <entityName>BAT86_newnode1</entityName>
+                <environmentName>QAEnvironment_spiderman.na.tibco.com</environmentName>
+                <nodeJvmStartupTime>00 min, 34 sec</nodeJvmStartupTime>
+                <nodeJvmHasInitialized>true</nodeJvmHasInitialized>
+                <pingTime>25</pingTime>
+                <osgiEnabled>false</osgiEnabled>
+                <AmxVersion>3.4.0.HF5</AmxVersion>
+                <jvmInfo healthCheckStatus="Passed" healthCheckObjectCreatedOn="27 Sep 2021 08:02:32,912" healthCheckDescription="Java runtime specific information" timeitTookToBuildHealthCheckObjectInMs="9">
+                    <jvmJavaHome>/opt/tibco/amx340hf/tibcojre64/1.8.0</jvmJavaHome>
+                    <jvmArgs>-DTIBCO_HOME=/opt/tibco/amx340hf -Dcom.tibco.tibjms.connect.attempt.timeout=3000 -Djceks.key.serialFilter=com.tibco.**;java.lang.Enum;java.security.KeyRep;java.security.KeyRep$Type;javax.crypto.spec.SecretKeySpec;!* -Xmx1024m -Xms128m -XX:+HeapDumpOnOutOfMemoryError -Damx.securitymanager.enabled=false -Djava.library=/opt/tibco/amx340hf/tibcojre64/1.8.0/lib/amd64/server/libjvm.so -Dapplication.processid=30990 -Dwrapper.tra.file=/opt/tibco/amx340hf/conf/tibcohost/BAT86_Host1/data_3.2.x/nodes/BAT86_newnode1/bin/tibamx_BAT86_newnode1.tra </jvmArgs>
+                    <jvmUpTimeInMs>189001</jvmUpTimeInMs>
+                    <jvmInfo>1.8.0_301 [Java HotSpot(TM) 64-Bit Server VM by : Oracle Corporation]</jvmInfo>
+                    <jvmPID>30990</jvmPID>
+                    <jvmProcessCpuTime>123.11 seconds</jvmProcessCpuTime>
+                    <jvmProcessCpuLoad>0.0 %</jvmProcessCpuLoad>
+                    <jvmMemoryUsage>
+                        <allocatedMemoryInK>422912</allocatedMemoryInK>
+                        <freeMemoryInK>346896</freeMemoryInK>
+                        <maxMemoryInK>932352</maxMemoryInK>
+                        <usedMemoryInK>76015</usedMemoryInK>
+                    </jvmMemoryUsage>
+                    <jvmPermGenMemoryUsage/>
+                    <jvmThreadInfo>
+                        <jvmTotalStartedThreadCount>235</jvmTotalStartedThreadCount>
+                        <jvmPeakThreadCount>51</jvmPeakThreadCount>
+                        <jvmTotalLiveThreadCount>2</jvmTotalLiveThreadCount>
+                        <jvmsMostBusyThread>
+                            <threadID>ComponentFrameworkDelegate</threadID>
+                            <threadsCPUtimeseconds>14.29 (seconds)</threadsCPUtimeseconds>
+                        </jvmsMostBusyThread>
+                    </jvmThreadInfo>
+                    <jvmTotalLoadedClassesCount>10701</jvmTotalLoadedClassesCount>
+                    <jvmSystemPropertyesForTIBCO>
+                        <Jvmproperty>com.tibco.tibjms.connect.attempt.timeout=3000</Jvmproperty>
+                    </jvmSystemPropertyesForTIBCO>
+                    <jvmFileDescriptor>
+                        <maxFileDescriptorCount>800000</maxFileDescriptorCount>
+                        <openFileDescriptorCount>557</openFileDescriptorCount>
+                    </jvmFileDescriptor>
+                </jvmInfo>
+                <tibcoJvmInfo healthCheckStatus="Passed" healthCheckObjectCreatedOn="27 Sep 2021 08:02:32,934" healthCheckDescription="Tibco JVM specific information" tibcoJvmStartupTime="00 min, 34 sec" tibcoJvmHasInitialized="true" timeitTookToBuildHealthCheckObjectInMs="28">
+                    <tibcoJvmType>Node</tibcoJvmType>
+                    <tibcoHomeInfo>
+                        <tibcoHome>/opt/tibco/amx340hf</tibcoHome>
+                        <tibcoHomeSizeInK>4009432324</tibcoHomeSizeInK>
+                        <tibcoHomeCreatedOn>27 Sep 2021 06:19:01,000</tibcoHomeCreatedOn>
+                        <tibcoHomeProducts/>
+                    </tibcoHomeInfo>
+                    <tibcoConfigHomeInfo>
+                        <configHome>/opt/tibco/amx340hf/conf</configHome>
+                        <configHomeSizeInk>-1</configHomeSizeInk>
+                        <configHomeCreatedOn>27 Sep 2021 06:20:48,000</configHomeCreatedOn>
+                        <configHomeNumberOfHostInstances>4</configHomeNumberOfHostInstances>
+                    </tibcoConfigHomeInfo>
+                    <tibcoJvmLogsInfo>
+                        <tibcoJvmTotalLogs>1</tibcoJvmTotalLogs>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>BAT86_newnode1.log</fileName>
+                            <fullPath>/opt/tibco/amx340hf/conf/tibcohost/BAT86_Host1/data_3.2.x/nodes/BAT86_newnode1/logs/BAT86_newnode1.log</fullPath>
+                            <filesizeInK>154867</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 08:02:32,898</lastModifiedDate>
+                            <numberOfLines>787</numberOfLines>
+                            <numberOfErrors>0</numberOfErrors>
+                            <numberOfWarns>5</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                    </tibcoJvmLogsInfo>
+                    <tibcoJvmCfFolderInfo>
+                        <cFfolderSizeInK>338541</cFfolderSizeInK>
+                        <cFfolderComponentCount>59</cFfolderComponentCount>
+                    </tibcoJvmCfFolderInfo>
+                    <tibcoJvmClRecoveryFolderInfo>
+                        <clRecoveryFolderSizeinK>617</clRecoveryFolderSizeinK>
+                        <clRecoveryFolderContent>Name :undeliveredLogStorage size :4096</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :f84064bc-e620-4733-9551-fbaad9670daa size :4096</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :payloadconfiguration.properties size :617</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :records size :4096</clRecoveryFolderContent>
+                    </tibcoJvmClRecoveryFolderInfo>
+                    <tibcoJvmHowlogsFolderInfo>
+                        <howLogsFolderSizeinK>106</howLogsFolderSizeinK>
+                        <howLogsFolderContent>Name :logger_5.log size :0</howLogsFolderContent>
+                        <howLogsFolderContent>Name :logger_2.log size :0</howLogsFolderContent>
+                        <howLogsFolderContent>Name :logger_4.log size :0</howLogsFolderContent>
+                        <howLogsFolderContent>Name :logger_1.log size :0</howLogsFolderContent>
+                        <howLogsFolderContent>Name :logger_3.log size :0</howLogsFolderContent>
+                        <howLogsFolderContent>Name :howl.properties size :106</howLogsFolderContent>
+                    </tibcoJvmHowlogsFolderInfo>
+                    <tibcoJvmNodeConfigurationsFolderInfo>
+                        <nodeConfigRDAFolderSizeinK>0</nodeConfigRDAFolderSizeinK>
+                        <nodeConfigRDAFolderRDACount>0</nodeConfigRDAFolderRDACount>
+                    </tibcoJvmNodeConfigurationsFolderInfo>
+                </tibcoJvmInfo>
+            </nodeInfoDescs>
+        </hostsInfo>
+        <hostsInfo healthCheckStatus="Passed" healthCheckObjectCreatedOn="27 Sep 2021 08:02:33,047" timeitTookToBuildHealthCheckObjectInMs="7532">
+            <id>50901</id>
+            <name>Host8_3</name>
+            <hostInfo healthCheckStatus="Passed" healthCheckObjectCreatedOn="27 Sep 2021 08:02:38,703" healthCheckDescription="Overall health check information" timeitTookToBuildHealthCheckObjectInMs="5551">
+                <entityName>Host8_3</entityName>
+                <pingTime>92</pingTime>
+                <upgradeHistory>3.4.0.HF5</upgradeHistory>
+                <AmxVersion>3.4.0.HF5</AmxVersion>
+                <jvmInfo healthCheckStatus="Passed" healthCheckObjectCreatedOn="27 Sep 2021 08:02:34,968" healthCheckDescription="Java runtime specific information" timeitTookToBuildHealthCheckObjectInMs="8">
+                    <jvmJavaHome>/opt/tibco/amx340hf/tibcojre64/1.8.0</jvmJavaHome>
+                    <jvmArgs>-DTIBCO_HOME=/opt/tibco/amx340hf -Djceks.key.serialFilter=com.tibco.**;java.lang.Enum;java.security.KeyRep;java.security.KeyRep$Type;javax.crypto.spec.SecretKeySpec;!* -Xms24m -Xmx64m -XX:-HeapDumpOnOutOfMemoryError -XX:MaxPermSize=64m -Djava.library=/opt/tibco/amx340hf/tibcojre64/1.8.0/lib/amd64/server/libjvm.so -Dapplication.processid=28182 -Dwrapper.tra.file=/opt/tibco/amx340hf/conf/tibcohost/Host8_3/host/bin/tibcohost.tra </jvmArgs>
+                    <jvmUpTimeInMs>1025409</jvmUpTimeInMs>
+                    <jvmInfo>1.8.0_301 [Java HotSpot(TM) 64-Bit Server VM by : Oracle Corporation]</jvmInfo>
+                    <jvmPID>28182</jvmPID>
+                    <jvmProcessCpuTime>53.83 seconds</jvmProcessCpuTime>
+                    <jvmProcessCpuLoad>0.0 %</jvmProcessCpuLoad>
+                    <jvmMemoryUsage>
+                        <allocatedMemoryInK>53760</allocatedMemoryInK>
+                        <freeMemoryInK>10419</freeMemoryInK>
+                        <maxMemoryInK>58368</maxMemoryInK>
+                        <usedMemoryInK>43340</usedMemoryInK>
+                    </jvmMemoryUsage>
+                    <jvmPermGenMemoryUsage/>
+                    <jvmThreadInfo>
+                        <jvmTotalStartedThreadCount>232</jvmTotalStartedThreadCount>
+                        <jvmPeakThreadCount>29</jvmPeakThreadCount>
+                        <jvmTotalLiveThreadCount>2</jvmTotalLiveThreadCount>
+                        <jvmsMostBusyThread>
+                            <threadID>TibcoHostInstance-Host8_3</threadID>
+                            <threadsCPUtimeseconds>4.87 (seconds)</threadsCPUtimeseconds>
+                        </jvmsMostBusyThread>
+                    </jvmThreadInfo>
+                    <jvmTotalLoadedClassesCount>5817</jvmTotalLoadedClassesCount>
+                    <jvmSystemPropertyesForTIBCO/>
+                    <jvmFileDescriptor>
+                        <maxFileDescriptorCount>800000</maxFileDescriptorCount>
+                        <openFileDescriptorCount>126</openFileDescriptorCount>
+                    </jvmFileDescriptor>
+                </jvmInfo>
+                <tibcoJvmInfo healthCheckStatus="Passed" healthCheckObjectCreatedOn="27 Sep 2021 08:02:35,043" healthCheckDescription="Tibco JVM specific information" timeitTookToBuildHealthCheckObjectInMs="3735">
+                    <tibcoJvmType>Host</tibcoJvmType>
+                    <tibcoHomeInfo>
+                        <tibcoHome>/opt/tibco/amx340hf</tibcoHome>
+                        <tibcoHomeSizeInK>4009432324</tibcoHomeSizeInK>
+                        <tibcoHomeCreatedOn>27 Sep 2021 06:19:01,000</tibcoHomeCreatedOn>
+                        <tibcoHomeProducts>
+                            <productsFrom_installInfo>
+                                <tibcoHomeProduct>spm-required_2.3.1</tibcoHomeProduct>
+                                <tibcoHomeProduct>spm-webcontainer_7.0.57</tibcoHomeProduct>
+                                <tibcoHomeProduct>amx-admin_3.4.0.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>amxspmdashboard-prod_3.4.0.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>spm-runtime_2.3.1</tibcoHomeProduct>
+                                <tibcoHomeProduct>amsg-its_3.4.0.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>eclipse-mapper_1.3.5.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>tibcojava64-oracle-with-sunec_1.8.0.192</tibcoHomeProduct>
+                                <tibcoHomeProduct>gxml_1.0.6.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>amxspmserver-contrib_2.3.1.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>hf-amx340_3.4.0.005</tibcoHomeProduct>
+                                <tibcoHomeProduct>spring-it_3.4.1</tibcoHomeProduct>
+                                <tibcoHomeProduct>hf-amx340-prod_3.4.0.005</tibcoHomeProduct>
+                                <tibcoHomeProduct>mediation_3.6.0.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>spm-documentation_2.3.1</tibcoHomeProduct>
+                                <tibcoHomeProduct>tibcojava64-oracle-with-sunec_1.8.0.301</tibcoHomeProduct>
+                                <tibcoHomeProduct>amx-runtime_3.4.0.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>spm-webconsole_2.3.1</tibcoHomeProduct>
+                                <tibcoHomeProduct>contrib-tct_1.6.0.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>bstudio_5.0.0</tibcoHomeProduct>
+                                <tibcoHomeProduct>amsg_3.4.0.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>wrapper_2.4.7.002</tibcoHomeProduct>
+                                <tibcoHomeProduct>amxrsbt_3.4.0.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>amx-design_3.4.0.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>spm-client_2.3.1</tibcoHomeProduct>
+                                <tibcoHomeProduct>tibcoxml_5.51.607</tibcoHomeProduct>
+                            </productsFrom_installInfo>
+                        </tibcoHomeProducts>
+                    </tibcoHomeInfo>
+                    <tibcoConfigHomeInfo>
+                        <configHome>/opt/tibco/amx340hf/conf</configHome>
+                        <configHomeSizeInk>-1</configHomeSizeInk>
+                        <configHomeCreatedOn>27 Sep 2021 06:20:48,000</configHomeCreatedOn>
+                        <configHomeNumberOfHostInstances>4</configHomeNumberOfHostInstances>
+                    </tibcoConfigHomeInfo>
+                    <tibcoJvmLogsInfo>
+                        <tibcoJvmTotalLogs>2</tibcoJvmTotalLogs>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>tibcohost.log</fileName>
+                            <fullPath>/opt/tibco/amx340hf/conf/tibcohost/Host8_3/data_3.2.x/host/logs/tibcohost.log</fullPath>
+                            <filesizeInK>199026</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 08:02:35,008</lastModifiedDate>
+                            <numberOfLines>852</numberOfLines>
+                            <numberOfErrors>0</numberOfErrors>
+                            <numberOfWarns>1</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>node-stdout.log</fileName>
+                            <fullPath>/opt/tibco/amx340hf/conf/tibcohost/Host8_3/data_3.2.x/host/logs/node-stdout.log</fullPath>
+                            <filesizeInK>40178</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 07:47:54,290</lastModifiedDate>
+                            <numberOfLines>312</numberOfLines>
+                            <numberOfErrors>0</numberOfErrors>
+                            <numberOfWarns>0</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                    </tibcoJvmLogsInfo>
+                    <tibcoHostPluginFolderInfo>
+                        <hostFolderSizeinK>160591820</hostFolderSizeinK>
+                        <hostFolderFilesCount>360</hostFolderFilesCount>
+                    </tibcoHostPluginFolderInfo>
+                    <engineeringBuildsAppliedToThisHost hasAnyEBsApplied="false" latestPatchAppliedtoHost="com.tibco.amx.platform.patch_3.4.5.000" numberOfJarsChecked="405" latestPatchCreationDate="27 Sep 2021 05:37:50,000"/>
+                </tibcoJvmInfo>
+            </hostInfo>
+            <nodeInfoDescs healthCheckStatus="Passed" healthCheckObjectCreatedOn="27 Sep 2021 08:02:40,572" healthCheckDescription="Overall health check information" timeitTookToBuildHealthCheckObjectInMs="1834">
+                <entityName>Node8_3</entityName>
+                <environmentName>QAEnvironment_spiderman.na.tibco.com</environmentName>
+                <nodeJvmStartupTime>00 min, 36 sec</nodeJvmStartupTime>
+                <nodeJvmHasInitialized>true</nodeJvmHasInitialized>
+                <pingTime>20</pingTime>
+                <osgiEnabled>true</osgiEnabled>
+                <osgiConsolePort>5884</osgiConsolePort>
+                <AmxVersion>3.4.0.HF5</AmxVersion>
+                <jvmInfo healthCheckStatus="Passed" healthCheckObjectCreatedOn="27 Sep 2021 08:02:40,461" healthCheckDescription="Java runtime specific information" timeitTookToBuildHealthCheckObjectInMs="10">
+                    <jvmJavaHome>/opt/tibco/amx340hf/tibcojre64/1.8.0</jvmJavaHome>
+                    <jvmArgs>-DTIBCO_HOME=/opt/tibco/amx340hf -Dcom.tibco.tibjms.connect.attempt.timeout=3000 -Djceks.key.serialFilter=com.tibco.**;java.lang.Enum;java.security.KeyRep;java.security.KeyRep$Type;javax.crypto.spec.SecretKeySpec;!* -Xmx1024m -Xms128m -XX:+HeapDumpOnOutOfMemoryError -Damx.securitymanager.enabled=false -Djava.library=/opt/tibco/amx340hf/tibcojre64/1.8.0/lib/amd64/server/libjvm.so -Dapplication.processid=28713 -Dwrapper.tra.file=/opt/tibco/amx340hf/conf/tibcohost/Host8_3/data_3.2.x/nodes/Node8_3/bin/tibamx_Node8_3.tra </jvmArgs>
+                    <jvmUpTimeInMs>892470</jvmUpTimeInMs>
+                    <jvmInfo>1.8.0_301 [Java HotSpot(TM) 64-Bit Server VM by : Oracle Corporation]</jvmInfo>
+                    <jvmPID>28713</jvmPID>
+                    <jvmProcessCpuTime>113.83 seconds</jvmProcessCpuTime>
+                    <jvmProcessCpuLoad>0.0 %</jvmProcessCpuLoad>
+                    <jvmMemoryUsage>
+                        <allocatedMemoryInK>437248</allocatedMemoryInK>
+                        <freeMemoryInK>296203</freeMemoryInK>
+                        <maxMemoryInK>932352</maxMemoryInK>
+                        <usedMemoryInK>141044</usedMemoryInK>
+                    </jvmMemoryUsage>
+                    <jvmPermGenMemoryUsage/>
+                    <jvmThreadInfo>
+                        <jvmTotalStartedThreadCount>243</jvmTotalStartedThreadCount>
+                        <jvmPeakThreadCount>54</jvmPeakThreadCount>
+                        <jvmTotalLiveThreadCount>3</jvmTotalLiveThreadCount>
+                        <jvmsMostBusyThread>
+                            <threadID>ComponentFrameworkDelegate</threadID>
+                            <threadsCPUtimeseconds>12.38 (seconds)</threadsCPUtimeseconds>
+                        </jvmsMostBusyThread>
+                    </jvmThreadInfo>
+                    <jvmTotalLoadedClassesCount>10703</jvmTotalLoadedClassesCount>
+                    <jvmSystemPropertyesForTIBCO>
+                        <Jvmproperty>com.tibco.tibjms.connect.attempt.timeout=3000</Jvmproperty>
+                    </jvmSystemPropertyesForTIBCO>
+                    <jvmFileDescriptor>
+                        <maxFileDescriptorCount>800000</maxFileDescriptorCount>
+                        <openFileDescriptorCount>558</openFileDescriptorCount>
+                    </jvmFileDescriptor>
+                </jvmInfo>
+                <tibcoJvmInfo healthCheckStatus="Passed" healthCheckObjectCreatedOn="27 Sep 2021 08:02:40,533" healthCheckDescription="Tibco JVM specific information" tibcoJvmStartupTime="00 min, 36 sec" tibcoJvmHasInitialized="true" timeitTookToBuildHealthCheckObjectInMs="111">
+                    <tibcoJvmType>Node</tibcoJvmType>
+                    <tibcoHomeInfo>
+                        <tibcoHome>/opt/tibco/amx340hf</tibcoHome>
+                        <tibcoHomeSizeInK>4009432324</tibcoHomeSizeInK>
+                        <tibcoHomeCreatedOn>27 Sep 2021 06:19:01,000</tibcoHomeCreatedOn>
+                        <tibcoHomeProducts/>
+                    </tibcoHomeInfo>
+                    <tibcoConfigHomeInfo>
+                        <configHome>/opt/tibco/amx340hf/conf</configHome>
+                        <configHomeSizeInk>-1</configHomeSizeInk>
+                        <configHomeCreatedOn>27 Sep 2021 06:20:48,000</configHomeCreatedOn>
+                        <configHomeNumberOfHostInstances>4</configHomeNumberOfHostInstances>
+                    </tibcoConfigHomeInfo>
+                    <tibcoJvmLogsInfo>
+                        <tibcoJvmTotalLogs>1</tibcoJvmTotalLogs>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>Node8_3.log</fileName>
+                            <fullPath>/opt/tibco/amx340hf/conf/tibcohost/Host8_3/data_3.2.x/nodes/Node8_3/logs/Node8_3.log</fullPath>
+                            <filesizeInK>280961</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 08:02:40,446</lastModifiedDate>
+                            <numberOfLines>1494</numberOfLines>
+                            <numberOfErrors>0</numberOfErrors>
+                            <numberOfWarns>10</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                    </tibcoJvmLogsInfo>
+                    <tibcoJvmCfFolderInfo>
+                        <cFfolderSizeInK>334089</cFfolderSizeInK>
+                        <cFfolderComponentCount>59</cFfolderComponentCount>
+                    </tibcoJvmCfFolderInfo>
+                    <tibcoJvmClRecoveryFolderInfo>
+                        <clRecoveryFolderSizeinK>1234</clRecoveryFolderSizeinK>
+                        <clRecoveryFolderContent>Name :undeliveredLogStorage size :4096</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :d980fac2-254d-4fc3-ad7e-b577277b766b size :4096</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :payloadconfiguration.properties size :617</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :records size :4096</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :4a6b096b-f114-403d-9728-4917d36c3c1a size :4096</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :payloadconfiguration.properties size :617</clRecoveryFolderContent>
+                        <clRecoveryFolderContent>Name :records size :4096</clRecoveryFolderContent>
+                    </tibcoJvmClRecoveryFolderInfo>
+                    <tibcoJvmHowlogsFolderInfo>
+                        <howLogsFolderSizeinK>4202</howLogsFolderSizeinK>
+                        <howLogsFolderContent>Name :logger_5.log size :0</howLogsFolderContent>
+                        <howLogsFolderContent>Name :logger_2.log size :0</howLogsFolderContent>
+                        <howLogsFolderContent>Name :logger_4.log size :0</howLogsFolderContent>
+                        <howLogsFolderContent>Name :logger_1.log size :4096</howLogsFolderContent>
+                        <howLogsFolderContent>Name :logger_3.log size :0</howLogsFolderContent>
+                        <howLogsFolderContent>Name :howl.properties size :106</howLogsFolderContent>
+                    </tibcoJvmHowlogsFolderInfo>
+                    <tibcoJvmNodeConfigurationsFolderInfo>
+                        <nodeConfigRDAFolderSizeinK>0</nodeConfigRDAFolderSizeinK>
+                        <nodeConfigRDAFolderRDACount>0</nodeConfigRDAFolderRDACount>
+                    </tibcoJvmNodeConfigurationsFolderInfo>
+                </tibcoJvmInfo>
+            </nodeInfoDescs>
+        </hostsInfo>
+        <hostsInfo healthCheckStatus="Passed" healthCheckObjectCreatedOn="27 Sep 2021 08:02:40,679" timeitTookToBuildHealthCheckObjectInMs="5655">
+            <id>54152</id>
+            <name>BAT86_Host2</name>
+            <hostInfo healthCheckStatus="Passed" healthCheckObjectCreatedOn="27 Sep 2021 08:02:46,328" healthCheckDescription="Overall health check information" timeitTookToBuildHealthCheckObjectInMs="5260">
+                <entityName>BAT86_Host2</entityName>
+                <pingTime>367</pingTime>
+                <upgradeHistory>3.4.0.HF5</upgradeHistory>
+                <AmxVersion>3.4.0.HF5</AmxVersion>
+                <jvmInfo healthCheckStatus="Passed" healthCheckObjectCreatedOn="27 Sep 2021 08:02:42,819" healthCheckDescription="Java runtime specific information" timeitTookToBuildHealthCheckObjectInMs="9">
+                    <jvmJavaHome>/opt/tibco/amx340hf/tibcojre64/1.8.0</jvmJavaHome>
+                    <jvmArgs>-DTIBCO_HOME=/opt/tibco/amx340hf -Djceks.key.serialFilter=com.tibco.**;java.lang.Enum;java.security.KeyRep;java.security.KeyRep$Type;javax.crypto.spec.SecretKeySpec;!* -Xms24m -Xmx64m -XX:-HeapDumpOnOutOfMemoryError -XX:MaxPermSize=64m -Djava.library=/opt/tibco/amx340hf/tibcojre64/1.8.0/lib/amd64/server/libjvm.so -Dapplication.processid=30825 -Dwrapper.tra.file=/opt/tibco/amx340hf/conf/tibcohost/BAT86_Host2/host/bin/tibcohost.tra </jvmArgs>
+                    <jvmUpTimeInMs>277703</jvmUpTimeInMs>
+                    <jvmInfo>1.8.0_301 [Java HotSpot(TM) 64-Bit Server VM by : Oracle Corporation]</jvmInfo>
+                    <jvmPID>30825</jvmPID>
+                    <jvmProcessCpuTime>25.11 seconds</jvmProcessCpuTime>
+                    <jvmProcessCpuLoad>0.0 %</jvmProcessCpuLoad>
+                    <jvmMemoryUsage>
+                        <allocatedMemoryInK>45568</allocatedMemoryInK>
+                        <freeMemoryInK>27784</freeMemoryInK>
+                        <maxMemoryInK>58368</maxMemoryInK>
+                        <usedMemoryInK>17783</usedMemoryInK>
+                    </jvmMemoryUsage>
+                    <jvmPermGenMemoryUsage/>
+                    <jvmThreadInfo>
+                        <jvmTotalStartedThreadCount>35</jvmTotalStartedThreadCount>
+                        <jvmPeakThreadCount>20</jvmPeakThreadCount>
+                        <jvmTotalLiveThreadCount>2</jvmTotalLiveThreadCount>
+                        <jvmsMostBusyThread>
+                            <threadID>TibcoHostInstance-BAT86_Host2</threadID>
+                            <threadsCPUtimeseconds>5.1 (seconds)</threadsCPUtimeseconds>
+                        </jvmsMostBusyThread>
+                    </jvmThreadInfo>
+                    <jvmTotalLoadedClassesCount>4338</jvmTotalLoadedClassesCount>
+                    <jvmSystemPropertyesForTIBCO/>
+                    <jvmFileDescriptor>
+                        <maxFileDescriptorCount>800000</maxFileDescriptorCount>
+                        <openFileDescriptorCount>116</openFileDescriptorCount>
+                    </jvmFileDescriptor>
+                </jvmInfo>
+                <tibcoJvmInfo healthCheckStatus="Passed" healthCheckObjectCreatedOn="27 Sep 2021 08:02:42,867" healthCheckDescription="Tibco JVM specific information" timeitTookToBuildHealthCheckObjectInMs="3508">
+                    <tibcoJvmType>Host</tibcoJvmType>
+                    <tibcoHomeInfo>
+                        <tibcoHome>/opt/tibco/amx340hf</tibcoHome>
+                        <tibcoHomeSizeInK>4009432324</tibcoHomeSizeInK>
+                        <tibcoHomeCreatedOn>27 Sep 2021 06:19:01,000</tibcoHomeCreatedOn>
+                        <tibcoHomeProducts>
+                            <productsFrom_installInfo>
+                                <tibcoHomeProduct>spm-required_2.3.1</tibcoHomeProduct>
+                                <tibcoHomeProduct>spm-webcontainer_7.0.57</tibcoHomeProduct>
+                                <tibcoHomeProduct>amx-admin_3.4.0.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>amxspmdashboard-prod_3.4.0.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>spm-runtime_2.3.1</tibcoHomeProduct>
+                                <tibcoHomeProduct>amsg-its_3.4.0.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>eclipse-mapper_1.3.5.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>tibcojava64-oracle-with-sunec_1.8.0.192</tibcoHomeProduct>
+                                <tibcoHomeProduct>gxml_1.0.6.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>amxspmserver-contrib_2.3.1.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>hf-amx340_3.4.0.005</tibcoHomeProduct>
+                                <tibcoHomeProduct>spring-it_3.4.1</tibcoHomeProduct>
+                                <tibcoHomeProduct>hf-amx340-prod_3.4.0.005</tibcoHomeProduct>
+                                <tibcoHomeProduct>mediation_3.6.0.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>spm-documentation_2.3.1</tibcoHomeProduct>
+                                <tibcoHomeProduct>tibcojava64-oracle-with-sunec_1.8.0.301</tibcoHomeProduct>
+                                <tibcoHomeProduct>amx-runtime_3.4.0.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>spm-webconsole_2.3.1</tibcoHomeProduct>
+                                <tibcoHomeProduct>contrib-tct_1.6.0.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>bstudio_5.0.0</tibcoHomeProduct>
+                                <tibcoHomeProduct>amsg_3.4.0.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>wrapper_2.4.7.002</tibcoHomeProduct>
+                                <tibcoHomeProduct>amxrsbt_3.4.0.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>amx-design_3.4.0.000</tibcoHomeProduct>
+                                <tibcoHomeProduct>spm-client_2.3.1</tibcoHomeProduct>
+                                <tibcoHomeProduct>tibcoxml_5.51.607</tibcoHomeProduct>
+                            </productsFrom_installInfo>
+                        </tibcoHomeProducts>
+                    </tibcoHomeInfo>
+                    <tibcoConfigHomeInfo>
+                        <configHome>/opt/tibco/amx340hf/conf</configHome>
+                        <configHomeSizeInk>-1</configHomeSizeInk>
+                        <configHomeCreatedOn>27 Sep 2021 06:20:48,000</configHomeCreatedOn>
+                        <configHomeNumberOfHostInstances>4</configHomeNumberOfHostInstances>
+                    </tibcoConfigHomeInfo>
+                    <tibcoJvmLogsInfo>
+                        <tibcoJvmTotalLogs>2</tibcoJvmTotalLogs>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>node-stdout.log</fileName>
+                            <fullPath>/opt/tibco/amx340hf/conf/tibcohost/BAT86_Host2/data_3.2.x/host/logs/node-stdout.log</fullPath>
+                            <filesizeInK>0</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 07:58:07,892</lastModifiedDate>
+                            <numberOfLines>0</numberOfLines>
+                            <numberOfErrors>0</numberOfErrors>
+                            <numberOfWarns>0</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                        <tibcoJvmAlllogsInfos>
+                            <fileName>tibcohost.log</fileName>
+                            <fullPath>/opt/tibco/amx340hf/conf/tibcohost/BAT86_Host2/data_3.2.x/host/logs/tibcohost.log</fullPath>
+                            <filesizeInK>56243</filesizeInK>
+                            <lastModifiedDate>27 Sep 2021 08:02:42,856</lastModifiedDate>
+                            <numberOfLines>255</numberOfLines>
+                            <numberOfErrors>0</numberOfErrors>
+                            <numberOfWarns>1</numberOfWarns>
+                        </tibcoJvmAlllogsInfos>
+                    </tibcoJvmLogsInfo>
+                    <tibcoHostPluginFolderInfo>
+                        <hostFolderSizeinK>123324376</hostFolderSizeinK>
+                        <hostFolderFilesCount>191</hostFolderFilesCount>
+                    </tibcoHostPluginFolderInfo>
+                    <engineeringBuildsAppliedToThisHost hasAnyEBsApplied="false" latestPatchAppliedtoHost="com.tibco.amx.platform.patch_3.4.5.000" numberOfJarsChecked="270" latestPatchCreationDate="27 Sep 2021 05:37:50,000"/>
+                </tibcoJvmInfo>
+            </hostInfo>
+        </hostsInfo>
+    </hostInfoAndPingTime>
+    <deploymentHealthCheckReslut healthCheckStatus="Passed">
+        <deploymentHealthCheckReslutsByEnvironment healthCheckStatus="Passed">
+            <envResults healthCheckStatus="Passed">
+                <envId>
+                    <ns2:id>3324</ns2:id>
+                    <ns2:name>QAEnvironment_spiderman.na.tibco.com</ns2:name>
+                </envId>
+                <deploymentTime>0</deploymentTime>
+                <hostResults healthCheckStatus="Passed">
+                    <hostId>
+                        <ns2:id>54132</ns2:id>
+                        <ns2:name>BAT86_Host1</ns2:name>
+                    </hostId>
+                    <nodeResults>
+                        <nodeId>
+                            <ns2:id>54218</ns2:id>
+                            <ns2:name>BAT86_newnode1</ns2:name>
+                        </nodeId>
+                        <deploymentTime>1883</deploymentTime>
+                    </nodeResults>
+                </hostResults>
+                <hostResults healthCheckStatus="Passed">
+                    <hostId>
+                        <ns2:id>50901</ns2:id>
+                        <ns2:name>Host8_3</ns2:name>
+                    </hostId>
+                    <nodeResults>
+                        <nodeId>
+                            <ns2:id>50949</ns2:id>
+                            <ns2:name>Node8_3</ns2:name>
+                        </nodeId>
+                        <deploymentTime>1944</deploymentTime>
+                    </nodeResults>
+                </hostResults>
+                <hostResults healthCheckStatus="Passed">
+                    <hostId>
+                        <ns2:id>387</ns2:id>
+                        <ns2:name>SystemHost</ns2:name>
+                    </hostId>
+                    <nodeResults>
+                        <nodeId>
+                            <ns2:id>3341</ns2:id>
+                            <ns2:name>DevNode</ns2:name>
+                        </nodeId>
+                        <deploymentTime>8597</deploymentTime>
+                    </nodeResults>
+                    <nodeResults>
+                        <nodeId>
+                            <ns2:id>5995</ns2:id>
+                            <ns2:name>QANode1</ns2:name>
+                        </nodeId>
+                        <deploymentTime>6052</deploymentTime>
+                    </nodeResults>
+                    <nodeResults>
+                        <nodeId>
+                            <ns2:id>6033</ns2:id>
+                            <ns2:name>QANode2</ns2:name>
+                        </nodeId>
+                        <deploymentTime>2793</deploymentTime>
+                    </nodeResults>
+                </hostResults>
+            </envResults>
+            <envResults healthCheckStatus="Passed">
+                <envId>
+                    <ns2:id>429</ns2:id>
+                    <ns2:name>SystemEnvironment</ns2:name>
+                </envId>
+                <deploymentTime>0</deploymentTime>
+                <hostResults healthCheckStatus="Passed">
+                    <hostId>
+                        <ns2:id>387</ns2:id>
+                        <ns2:name>SystemHost</ns2:name>
+                    </hostId>
+                    <nodeResults>
+                        <nodeId>
+                            <ns2:id>447</ns2:id>
+                            <ns2:name>SystemNode</ns2:name>
+                        </nodeId>
+                        <deploymentTime>11201</deploymentTime>
+                    </nodeResults>
+                </hostResults>
+            </envResults>
+        </deploymentHealthCheckReslutsByEnvironment>
+    </deploymentHealthCheckReslut>
+    <allHealthCheckErrors/>
+    <notificationPingStatusInfo>
+        <ns3:entitiesResponded>
+            <ns3:entityType>Host</ns3:entityType>
+            <ns3:entityName>Host8_3</ns3:entityName>
+            <ns3:entityId>50901</ns3:entityId>
+            <ns3:entityResponseTimeInMillis>12</ns3:entityResponseTimeInMillis>
+            <ns3:entityResponseReceived>true</ns3:entityResponseReceived>
+        </ns3:entitiesResponded>
+        <ns3:entitiesResponded>
+            <ns3:entityType>Host</ns3:entityType>
+            <ns3:entityName>BAT86_Host1</ns3:entityName>
+            <ns3:entityId>54132</ns3:entityId>
+            <ns3:entityResponseTimeInMillis>39</ns3:entityResponseTimeInMillis>
+            <ns3:entityResponseReceived>true</ns3:entityResponseReceived>
+        </ns3:entitiesResponded>
+        <ns3:entitiesResponded>
+            <ns3:entityType>Host</ns3:entityType>
+            <ns3:entityName>BAT86_Host2</ns3:entityName>
+            <ns3:entityId>54152</ns3:entityId>
+            <ns3:entityResponseTimeInMillis>40</ns3:entityResponseTimeInMillis>
+            <ns3:entityResponseReceived>true</ns3:entityResponseReceived>
+        </ns3:entitiesResponded>
+        <ns3:entitiesResponded>
+            <ns3:entityType>Host</ns3:entityType>
+            <ns3:entityName>SystemHost</ns3:entityName>
+            <ns3:entityId>387</ns3:entityId>
+            <ns3:entityResponseTimeInMillis>40</ns3:entityResponseTimeInMillis>
+            <ns3:entityResponseReceived>true</ns3:entityResponseReceived>
+        </ns3:entitiesResponded>
+        <ns3:entitiesResponded>
+            <ns3:entityType>Node</ns3:entityType>
+            <ns3:entityName>QANode1</ns3:entityName>
+            <ns3:entityId>5995</ns3:entityId>
+            <ns3:entityManagedBy>SystemHost</ns3:entityManagedBy>
+            <ns3:entityResponseTimeInMillis>41</ns3:entityResponseTimeInMillis>
+            <ns3:entityResponseReceived>true</ns3:entityResponseReceived>
+        </ns3:entitiesResponded>
+        <ns3:entitiesResponded>
+            <ns3:entityType>Node</ns3:entityType>
+            <ns3:entityName>QANode2</ns3:entityName>
+            <ns3:entityId>6033</ns3:entityId>
+            <ns3:entityManagedBy>SystemHost</ns3:entityManagedBy>
+            <ns3:entityResponseTimeInMillis>41</ns3:entityResponseTimeInMillis>
+            <ns3:entityResponseReceived>true</ns3:entityResponseReceived>
+        </ns3:entitiesResponded>
+        <ns3:entitiesResponded>
+            <ns3:entityType>Node</ns3:entityType>
+            <ns3:entityName>DevNode</ns3:entityName>
+            <ns3:entityId>3341</ns3:entityId>
+            <ns3:entityManagedBy>SystemHost</ns3:entityManagedBy>
+            <ns3:entityResponseTimeInMillis>41</ns3:entityResponseTimeInMillis>
+            <ns3:entityResponseReceived>true</ns3:entityResponseReceived>
+        </ns3:entitiesResponded>
+        <ns3:entitiesResponded>
+            <ns3:entityType>Node</ns3:entityType>
+            <ns3:entityName>BAT86_newnode1</ns3:entityName>
+            <ns3:entityId>54218</ns3:entityId>
+            <ns3:entityManagedBy>BAT86_Host1</ns3:entityManagedBy>
+            <ns3:entityResponseTimeInMillis>42</ns3:entityResponseTimeInMillis>
+            <ns3:entityResponseReceived>true</ns3:entityResponseReceived>
+        </ns3:entitiesResponded>
+        <ns3:entitiesResponded>
+            <ns3:entityType>Node</ns3:entityType>
+            <ns3:entityName>SystemNode</ns3:entityName>
+            <ns3:entityId>447</ns3:entityId>
+            <ns3:entityManagedBy>SystemHost</ns3:entityManagedBy>
+            <ns3:entityResponseTimeInMillis>42</ns3:entityResponseTimeInMillis>
+            <ns3:entityResponseReceived>true</ns3:entityResponseReceived>
+        </ns3:entitiesResponded>
+        <ns3:entitiesResponded>
+            <ns3:entityType>Node</ns3:entityType>
+            <ns3:entityName>Node8_3</ns3:entityName>
+            <ns3:entityId>50949</ns3:entityId>
+            <ns3:entityManagedBy>Host8_3</ns3:entityManagedBy>
+            <ns3:entityResponseTimeInMillis>51</ns3:entityResponseTimeInMillis>
+            <ns3:entityResponseReceived>true</ns3:entityResponseReceived>
+        </ns3:entitiesResponded>
+    </notificationPingStatusInfo>
+</healthCheckOutput>

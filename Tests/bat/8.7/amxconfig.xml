@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+
+	<Environment xsi:type="amxdata:Environment" 
+		name="[[env.name]]" 
+		description="QA Environment" 
+		contact="TIBCO">
+		
+		<Node xsi:type="amxdata:Node" name="[[env.node1.name]]" >
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="HttpConnector_BAT8.7_Invoke" resourceTemplateName="HttpConnector_BAT8.7_Invoke"/>
+		</Node>	
+		<Application xsi:type="amxdata:Application" name="BAT_8_7" contact="TIBCO" description="Application to test JDBC RT and driver version">
+			            
+			<Component xsi:type="amxdata_base:Component_base" name="Java1">
+				<Node xsi:type="amxdata_reference:Node_reference" name="[[env.node1.name]]" environmentName="[[env.name]]"/>
+			</Component>
+			<Property xsi:type="amxdata:Property" name="Property1" value="BAT8.7_oracle11gJDBC1_Direct_Good"/>
+			<PromotedService xsi:type="amxdata_base:Service_base" name="Sample">
+				<Binding xsi:type="amxdata_base:Binding_base" name="SOAPService_Binding1">
+					<Node xsi:type="amxdata_reference:Node_reference" name="[[env.node1.name]]" environmentName="[[env.name]]"/>
+					<Property xsi:type="amxdata:Property" name="HttpInboundConnectionConfig" value="HttpConnector_BAT8.7_Invoke"/>
+				</Binding>
+			</PromotedService>     
+			<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="BAT87"/>
+        
+		</Application>
+    </Environment>
+	<ResourceTemplate 
+		xsi:type="amxdata:HttpConnectorResourceTemplate" 
+		name="HttpConnector_BAT8.7_Invoke" 
+		host="0.0.0.0" 
+		port="10087" 
+		headerBufferSize="512" 
+		requestBufferSize="512" 
+		responseBufferSize="512" 
+		maxIdleTime="200000" 
+		lowResourceMaxIdleTime="512" 
+		description="This is HttpConnector RT for SOAP BAT 8.7"/>
+	
+	<DAA xsi:type="amxdata:DAA" 
+		description="Driver version test" 
+		location="C:/Lisa1072/Projects/BATAutomation/Tests/bat/8.7/DAAs/BAT87.daa"
+		importResourceTemplates="false"/>
+	
+		
+</amxdata_base:Enterprise>
+
+
+

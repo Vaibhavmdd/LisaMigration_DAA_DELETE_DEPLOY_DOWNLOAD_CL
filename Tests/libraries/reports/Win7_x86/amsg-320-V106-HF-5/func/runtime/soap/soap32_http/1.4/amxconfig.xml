@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise xmlns:amxdata_jmsssr="http://tibco.com/amxadministrator/command/line/types_jmssr" 
+xmlns:amxdata_jmssr_base="http://tibco.com/amxadministrator/command/line/types_jmssr_base" xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types" xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base" xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+
+    <Environment xsi:type="amxdata:Environment" name="QAEnvironment_jpandya-dt" description="environment" contact="TIBCO">
+
+	<Node xsi:type="amxdata:Node" name="QANode2">
+		<ResourceInstance xsi:type="amxdata:ResourceInstance" name="ptype_out_jcf" resourceTemplateName="ptype_out_jcf"/>
+		<ResourceInstance xsi:type="amxdata:ResourceInstance" name="ptype_out_jd" resourceTemplateName="ptype_out_jd"/>
+		<ResourceInstance xsi:type="amxdata:ResourceInstance" name="ptype_in_jndi" resourceTemplateName="ptype_in_jndi"/>
+	 </Node>
+
+        <Application xsi:type="amxdata:Application" name="complexTypeMpartInRPC" contact="TIBCO Inc." description="complexTypeMpartInRPC">
+		<Component xsi:type="amxdata:Component" name="Java1">
+			<Node name="QANode2" environmentName="QAEnvironment_jpandya-dt"/>
+		</Component>
+		<Component xsi:type="amxdata:Component" name="Java2">
+			<Node name="QANode2" environmentName="QAEnvironment_jpandya-dt"/>
+		</Component>
+		<Component xsi:type="amxdata:Component" name="Java3">
+			<Node name="QANode2" environmentName="QAEnvironment_jpandya-dt"/>
+		</Component>
+		<PromotedService xsi:type="amxdata_base:Service_base" name="MultiPartInPortType">
+			<Binding xsi:type="amxdata:Binding" name="SOAPService_Binding">
+				<Node name="QANode1" environmentName="QAEnvironment_jpandya-dt" />                
+				<Property  xsi:type="amxdata:Property" name="HttpInboundConnectionConfig"  value="http_2"/>
+			</Binding>
+		</PromotedService>
+		<PromotedService xsi:type="amxdata_base:Service_base" name="MultiPartInPortType1">
+			<Binding xsi:type="amxdata:Binding" name="SOAPService_BindingSJS">
+				<Node name="QANode1" environmentName="QAEnvironment_jpandya-dt" />                
+				<Property  xsi:type="amxdata:Property" name="HttpInboundConnectionConfig"  value="http_1"/>
+			</Binding>
+		</PromotedService>
+		<PromotedReference xsi:type="amxdata_base:Reference_base" name="MultiPartInPortType1">
+			<Binding xsi:type="amxdata:Binding" name="SOAPReference_Binding1">
+				<Node name="QANode1" environmentName="QAEnvironment_jpandya-dt" />                
+				<Property  xsi:type="amxdata:Property" name="HttpOutboundConnectionConfig"  value="http_client_1"/>						
+			</Binding>
+		</PromotedReference>
+		<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="complexTypeMpartInRPC"/>
+        </Application>
+
+    </Environment>
+	
+<DAA xsi:type="amxdata:DAA" description="complexTypeMpartInRPC" location="complexTypeMpartInRPC/Deployment Artifacts/complexTypeMpartInRPC.daa" importResourceTemplates="false"/>
+<Feature xsi:type="amxdata_base:FeatureID" componentID="complexTypeMpartInRPC.complexTypeMpartInRPC.customfeature.id" version="1.0.0.000"/>
+<AppTemplate xsi:type="amxdata_base:AppTemplateID" name="complexTypeMpartInRPC" version="1.0.0.000"/>
+
+<amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate
+	xsi:type="amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate"
+	name="ptype_out_jcf"
+	jndiName="GenericConnectionFactory"
+	jndiConnectionConfigurationName="ptype_in_jndi"
+	description="ptype_in_jndi">	
+	<InlineCredentials username="amxemspwd" password="amxemspwd"/>
+	</amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate>
+<amxdata_jmsssr:JNDIDestinationResourceTemplate 
+	xsi:type="amxdata_jmsssr:JNDIDestinationResourceTemplate" 
+	name="ptype_out_jd" 
+	jndiName="ptype1_in_jndi" 
+	jndiConnectionConfigurationName="ptype_in_jndi"
+	description="ptype_in_jndi"/>
+<amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate
+	xsi:type="amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate"
+	name="ptype_in_jndi"
+	initialContextFactory="com.tibco.tibjms.naming.TibjmsInitialContextFactory"
+	providerUrl="tibjmsnaming://AMX-BACKEND.na.tibco.com:7622"
+	description="JndiConnectionConfiguration">
+	<InlineCredentials username="amxjndipwd" password="amxjndipwd"/>
+	</amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate>
+	
+</amxdata_base:Enterprise>

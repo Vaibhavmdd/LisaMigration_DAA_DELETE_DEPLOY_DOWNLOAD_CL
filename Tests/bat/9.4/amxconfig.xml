@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+
+	<Environment 
+		xsi:type="amxdata:Environment" 
+	    name="[[env.name]]" 
+	    description="QAEnvironment_Administrator environment" 
+	    contact="TIBCO">
+		<Node xsi:type="amxdata:Node" name="[[env.node1.name]]" hostName="[[host.name]]" description="My first node" contact="TIBCO" >
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="HttpConnector_BAT9.4" resourceTemplateName="HttpConnector_BAT9.4"/>			
+		</Node>
+		<Node xsi:type="amxdata:Node" name="[[env.node2.name]]" hostName="[[host.name]]" description="My Second node" contact="TIBCO" />
+		
+		<Application 
+			xsi:type="amxdata:Application" 
+			name="BAT9.4_MultiSerivce_Server"
+			contact="Amy Guo"
+			description="IWAP-Call-Dynamic References">
+			
+			<Component xsi:type="amxdata_base:Component_base" name="Component1">
+				<Node xsi:type="amxdata_reference:Node_reference" name="[[env.node1.name]]" environmentName="[[env.name]]"/>
+			</Component>
+			<Component xsi:type="amxdata_base:Component_base" name="Component2">
+				<Node xsi:type="amxdata_reference:Node_reference" name="[[env.node1.name]]" environmentName="[[env.name]]"/>
+			</Component>
+			
+			<Component xsi:type="amxdata_base:Component_base" name="Component3">
+				<Node xsi:type="amxdata_reference:Node_reference" name="[[env.node1.name]]" environmentName="[[env.name]]"/>
+			</Component>
+			<PromotedService name="SDRAppNamePSCase31_p1" xsi:type="amxdata_base:Service_base"/>
+			<PromotedService name="SDRAppNamePSCase31_p2" xsi:type="amxdata_base:Service_base"/>
+			<PromotedService name="SDRAppNamePSCase31_p3" xsi:type="amxdata_base:Service_base"/>
+			
+			<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="BAT9.4_Provider"/>
+		</Application>
+		
+		<Application 
+			xsi:type="amxdata:Application" 
+			name="BAT9.4_Webapp_DynamicRef"
+			contact="Amy Guo"
+			description="Service for IWAP-Call-Dynamic reference">
+		 
+			<Component xsi:type="amxdata_base:Component_base" name="WebApp1">
+				<Node xsi:type="amxdata_reference:Node_reference" name="[[env.node1.name]]" environmentName="[[env.name]]"/>
+			</Component>
+			
+			<Property name="contextRoot" propertyType="string" value="bat94" xsi:type="amxdata:Property"/>
+			<Property name="defaultConnector" propertyType="string" value="HttpConnector_BAT9.4" xsi:type="amxdata:Property"/>
+			<PromotedReference name="AddressPort1" xsi:type="amxdata_base:Reference_base"/>
+		
+			<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="BAT94_Webapp_DynamicRef"/>
+		</Application>
+		
+	</Environment>
+
+	<ResourceTemplate 
+		xsi:type="amxdata:HttpConnectorResourceTemplate" 
+		name="HttpConnector_BAT9.4" 
+		host="0.0.0.0" 
+		port="10094" 
+		headerBufferSize="512" 
+		requestBufferSize="512" 
+		responseBufferSize="512" 
+		maxIdleTime="200000" 
+		lowResourceMaxIdleTime="512" 
+		description="This is HttpConnector RT for SOAP HTTP BAT 9.4"/>
+
+
+	<DAA
+		xsi:type="amxdata:DAA"
+		description="DAA for BAT BAT9.4"
+		location="C:/Lisa1072/Projects/BATAutomation/Tests/bat/9.4/DAAs/BAT94_Provider.daa"
+	    importResourceTemplates="false">
+	</DAA>
+
+	<DAA
+		xsi:type="amxdata:DAA"
+		description="DAA for BAT BAT8.1"
+		location="C:/Lisa1072/Projects/BATAutomation/Tests/bat/9.4/DAAs/BAT94_Webapp_DynamicRef.daa"
+	    importResourceTemplates="false">
+	</DAA>
+
+	
+</amxdata_base:Enterprise>

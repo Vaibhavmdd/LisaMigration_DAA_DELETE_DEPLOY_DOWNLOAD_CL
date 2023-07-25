@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise xmlns:amxdata_jmsssr="http://tibco.com/amxadministrator/command/line/types_jmssr" 
+xmlns:amxdata_jmssr_base="http://tibco.com/amxadministrator/command/line/types_jmssr_base" xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types" xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base" xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+
+    <Environment xsi:type="amxdata:Environment" name="[[env.name]]" description="environment" contact="TIBCO">
+
+	<Node xsi:type="amxdata:Node" name="[[env.node1.name]]">
+		<ResourceInstance xsi:type="amxdata:ResourceInstance" name="ThreadPool_5_24" resourceTemplateName="ThreadPool_5_24"/>
+	 </Node>
+	<Node xsi:type="amxdata:Node" name="[[env.node2.name]]">
+		<ResourceInstance xsi:type="amxdata:ResourceInstance" name="ThreadPool_5_24" resourceTemplateName="ThreadPool_5_24"/>
+	 </Node>
+
+    <Application xsi:type="amxdata:Application" name="BAT_5_24" contact="TIBCO Inc." description="soapCompRefTimeout">
+		<Component xsi:type="amxdata:Component" name="Java2">
+			<Node name="[[env.node2.name]]" environmentName="[[env.name]]"/>
+		</Component>
+		<Component xsi:type="amxdata:Component" name="Java3">
+			<Node name="[[env.node2.name]]" environmentName="[[env.name]]"/>
+		</Component>
+		<PromotedService xsi:type="amxdata_base:Service_base" name="Service1">
+			<Binding xsi:type="amxdata:Binding" name="SOAPService_BindingSJS">
+				<Node name="[[env.node1.name]]" environmentName="[[env.name]]" />                
+				<Property  xsi:type="amxdata:Property" name="HttpInboundConnectionConfig"  value="httpConnector1"/>
+			</Binding>
+		</PromotedService>
+		<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="soapCompRefTimeout"/>
+    </Application>
+
+    </Environment>
+	
+<DAA xsi:type="amxdata:DAA" description="soapCompRefTimeout" location="soapCompRefTimeout/Deployment Artifacts/soapCompRefTimeout.daa" importResourceTemplates="true"/>
+<Feature xsi:type="amxdata_base:FeatureID" componentID="soapCompRefTimeout.soapCompRefTimeout.customfeature.id" version="1.0.0"/>
+<AppTemplate xsi:type="amxdata_base:AppTemplateID" name="soapCompRefTimeout" version="1.0.0"/>
+
+	
+</amxdata_base:Enterprise>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--@Overridable true-->
+<reqs:ApplicationRequirements xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:reqs="http://xsd.tns.tibco.com/amf/models/sca/requirements"
+    xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType">
+
+    <requirements xsi:type="reqs:ComponentRequirements" component="implementation-upgrade.composite#_PreJkPdGEd2pg9gob9IDSw">
+        <scact:requiresCapability id="com.tibco.amx.capability.implementation.spring" version="1.0.0" type="factory"/>        
+        <scact:importPackage name="com.tibco.amf.sca.model.implementationtype.spring">
+          <range lower="1.0.0" upper="2.0.0"/>
+        </scact:importPackage>
+        <scact:importPackage name="com.tibco.amx.it.upgrade.model">
+          <range lower="1.0.0" upper="2.0.0"/>
+        </scact:importPackage>
+        <scact:importPackage name="com.tibco.amx.it.upgrade.runtime">
+          <range lower="1.0.0" upper="2.0.0"/>
+        </scact:importPackage>
+    	<scact:providedCapability id="com.tibco.amx.capability.implementation.upgrade" type="factory" version="1.0.0"/>
+    	<scact:featureDependency name="com.tibco.amx.it.upgrade.runtime.product.feature">
+    	  <range lower="1.0.0" upper="2.0.0"/>
+    	</scact:featureDependency>
+    </requirements>
+</reqs:ApplicationRequirements>

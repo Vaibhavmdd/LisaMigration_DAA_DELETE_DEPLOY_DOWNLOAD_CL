@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created by TIBCO WSDL-->
+<wsdl:definitions xmlns:tns="http://tibco.com/matrix/qa/wsdl/group_gen" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns0="http://tibco.com/matrix/qa/xsd/group" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="BookPortType" targetNamespace="http://tibco.com/matrix/qa/wsdl/group_gen">
+    <wsdl:types>
+        <xsd:schema xmlns="http://tibco.com/matrix/qa/xsd/group" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://tibco.com/matrix/qa/xsd/group" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xsd:complexType name="BookStoreT">
+                <xsd:sequence>
+                    <xsd:element ref="ns0:BookStore"/>
+                    <xsd:element name="Echo" type="xsd:string" />
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="BookStore">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="Title" type="xsd:string"/>
+                        <xsd:element name="Author" type="xsd:string"/>
+                        <xsd:element name="Date" type="xsd:date"/>
+                        <xsd:element name="ISBN" type="xsd:int"/>
+                        <xsd:element name="Publisher" type="xsd:string"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="ServiceProvider" use="required" type="xsd:string"/>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="BookStoreFault" type="xsd:string"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="GetBooksInput">
+        <wsdl:part name="InPart" type="ns0:BookStoreT"/>
+    </wsdl:message>
+    <wsdl:message name="GetBooksOutput">
+        <wsdl:part name="OutPart" type="ns0:BookStoreT"/>
+    </wsdl:message>
+    <wsdl:message name="GetBooksFault">
+        <wsdl:part name="fault" element="ns0:BookStoreFault"/>
+    </wsdl:message>
+    <wsdl:portType name="BookPortType">
+        <wsdl:operation name="GetBooksOperation">
+            <wsdl:input message="tns:GetBooksInput"/>
+            <wsdl:output message="tns:GetBooksOutput"/>
+            <wsdl:fault name="fault" message="tns:GetBooksFault"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="soap.provider.Binding1" type="tns:BookPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="GetBooksOperation">
+            <wsdl:documentation/>
+            <soap:operation style="document" soapAction="GetBooksOperation"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="InPart"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="OutPart"/>
+            </wsdl:output>
+            <wsdl:fault name="fault">
+                <soap:fault use="literal" name="fault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="BookPortType">
+        <wsdl:port name="soap.provider.Binding1" binding="tns:soap.provider.Binding1">
+            <soap:address location="http://localhost:8888/BookPortType-AMX/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

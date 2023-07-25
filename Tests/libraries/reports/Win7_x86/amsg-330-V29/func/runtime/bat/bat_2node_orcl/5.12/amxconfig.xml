@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+
+	<Environment xsi:type="amxdata:Environment" 
+		name="QAEnvironment_jpandya-z400" 
+		description="QA Environment" 
+		contact="TIBCO">
+		
+		<Node xsi:type="amxdata:Node" name="QANode1" >
+  			<Feature xsi:type="amxdata_base:FeatureID" componentID="com.tibco.qa.oracle11g.driver.customfeature" version="1.0.0" />
+		 
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="BAT5_12_oracle11gJDBC1" resourceTemplateName="oracle11gJDBC1"/>
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="BAT5_12_oracle11gJDBC2" resourceTemplateName="oracle11gJDBC2"/>
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="BAT5_12_oracle11gJDBC3" resourceTemplateName="oracle11gJDBC3"/>
+		</Node>
+		
+		<Application xsi:type="amxdata:Application" name="BAT_5_12" contact="TIBCO" description="Application to test Global Txn_BAT5.12">
+		
+			<Node name="QANode1" environmentName= "QAEnvironment_jpandya-z400"/>					            
+			
+			<SVar xsi:type="amxdata_base:SubstitutionVariable" name="jndiNameOfjdbcsr1" type="String" value="BAT5_12_oracle11gJDBC1" description="svar" />
+			<SVar xsi:type="amxdata_base:SubstitutionVariable" name="jndiNameOfjdbcsr2" type="String" value="BAT5_12_oracle11gJDBC2" description="svar" />
+			<SVar xsi:type="amxdata_base:SubstitutionVariable" name="jndiNameOfjdbcsr3" type="String" value="BAT5_12_oracle11gJDBC3" description="svar" />
+        
+			<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="com.tibco.qa.m6.globaltxn.testcase2" />
+        
+        </Application>
+
+    </Environment>
+	
+	<ResourceTemplate
+        xsi:type="amxdata:JdbcResourceTemplate"
+        name="oracle11gJDBC1"
+        description="jdbc1 xa"
+        maxConnections="10">
+        <XAConnection
+            xsi:type="amxdata:XAConnection"
+            dataSourceClass="oracle.jdbc.xa.client.OracleXADataSource"/>
+        <connection-property xsi:type="amxdata:Property" name="URL" value="jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=10.107.172.71)(PORT=1521)))(CONNECT_DATA=(SID=qaorcl)(SERVER=dedicated)))"/>
+        <InlineCredentials
+            username="amxuser1"
+            password="amxuser1"/>
+    </ResourceTemplate>
+	
+	<ResourceTemplate
+        xsi:type="amxdata:JdbcResourceTemplate"
+        name="oracle11gJDBC2"
+        description="jdbc2 xa"
+        maxConnections="10">
+        <XAConnection
+            xsi:type="amxdata:XAConnection"
+            dataSourceClass="oracle.jdbc.xa.client.OracleXADataSource"/>
+        <connection-property xsi:type="amxdata:Property" name="URL" value="jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=10.107.172.71)(PORT=1521)))(CONNECT_DATA=(SID=qaorcl)(SERVER=dedicated)))"/>
+        <InlineCredentials
+            username="amxuser2"
+            password="amxuser2"/>
+    </ResourceTemplate>
+	
+	<ResourceTemplate
+        xsi:type="amxdata:JdbcResourceTemplate"
+        name="oracle11gJDBC3"
+        description="jdbc3 xa"
+        maxConnections="10">
+        <XAConnection
+            xsi:type="amxdata:XAConnection"
+            dataSourceClass="oracle.jdbc.xa.client.OracleXADataSource"/>
+        <connection-property xsi:type="amxdata:Property" name="URL" value="jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=10.107.172.71)(PORT=1521)))(CONNECT_DATA=(SID=qaorcl)(SERVER=dedicated)))"/>
+        <InlineCredentials
+            username="amxuser3"
+            password="amxuser3"/>
+    </ResourceTemplate>
+	
+	<!--Get the DAAs-->
+    <DAA xsi:type="amxdata:DAA" 
+		description="Oracle 11g Driver Feature" 
+		location="5.12Project/com.tibco.qa.oracle11g.driver.feature/com.tibco.qa.oracle11g.driver.daa" 
+		importResourceTemplates="false"/>
+	
+	<DAA 
+	xsi:type="amxdata:DAA" 
+	description="DAA for global txn testing" 
+	location="5.12Project/com.tibco.qa.m6.globaltxn.testcase2/Deployment Artifacts/com.tibco.qa.m6.globaltxn.testcase2.daa" 
+	importResourceTemplates="true"/>
+	
+	<Feature xsi:type="amxdata_base:FeatureID" componentID="com.tibco.qa.m6.globaltxn.testcase2.customfeature.id" version="1.0.0.201007141603"/>
+    <AppTemplate xsi:type="amxdata_base:AppTemplateID" name="com.tibco.qa.m6.globaltxn.testcase2" version="1.0.0.201007141603" /> 
+	  
+</amxdata_base:Enterprise>
+
+
+

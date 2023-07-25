@@ -1,0 +1,138 @@
+<?xml version="1.0" ?>
+
+
+<!-- TestCase created by LISA Test Editor -->
+<!-- On: Wed May 09 12:10:34 PDT 2007 -->
+
+
+<TestCase name="CheckFileExist" version="2">
+<id>fd735148</id>
+<Documentation>Checks whether the file or directory exists.&#10;Return &quot;true&quot; or &quot;false&quot;.</Documentation>
+<sig>ZWQ9MiZ0Y3Y9MiZsaXNhdj0zLjVlICgzMjM1KSZub2Rlcz0yMDQ0MjM3Nzk2</sig>
+<rootNode>Log</rootNode>
+<subprocess>true</subprocess>
+
+<initState>
+    <Parameter>
+    <key>file</key>
+    <value></value>
+    <name>File or directory to be checked for existence</name>
+    </Parameter>
+</initState>
+
+<resultState>
+    <Parameter>
+    <key>lisa.continue.rsp</key>
+    <value>Set in Step continue</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.continue.rsp.time</key>
+    <value>Set in Step continue</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.end.rsp</key>
+    <value>Set in Step end</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.end.rsp.time</key>
+    <value>Set in Step end</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.fail.rsp</key>
+    <value>Set in Step fail</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.fail.rsp.time</key>
+    <value>Set in Step fail</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.checkFileExists.rsp</key>
+    <value>Set in Step checkFileExists</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.checkFileExists.rsp.time</key>
+    <value>Set in Step checkFileExists</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.Log.rsp</key>
+    <value>Set in Step Log</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.Log.rsp.time</key>
+    <value>Set in Step Log</value>
+    </Parameter>
+</resultState>
+
+<Configurations>
+<Configuration>
+<name>default</name>
+<external>false</external>
+<props>
+</props>
+</Configuration>
+</Configurations>
+    <Node name="Log" log=""
+          type="com.itko.lisa.test.TestNodeLogger" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="checkFileExists" > 
+
+<graphx>-1</graphx>
+<graphy>-1</graphy>
+<Documentation></Documentation>
+<remoteServer>local</remoteServer>
+      <log>Checking existence of file &quot;{{file}}&quot; ...</log>
+    </Node>
+
+
+    <Node name="checkFileExists" log=""
+          type="com.itko.lisa.test.ScriptNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="end" > 
+
+<graphx>100</graphx>
+<graphy>0</graphy>
+<script>import java.io.File;&#10;&#10;// This function checks for file existence&#10;checkFileExists(String strFile) {&#10; File f = new File(strFile);&#10; return f.exists();         &#10;}&#10;&#10;// Main &#10;String baseErrorMsg = &quot;File Check Error&quot;; // Do not modify. Test engineers might assert on this string.&#10;file = testExec.parseInState(file).replace(&apos;\\&apos;,&apos;/&apos;);&#10;&#10;try {&#10; return checkFileExists(file);&#10;}&#10;catch(Exception e) {&#10; return baseErrorMsg + &quot;: &quot; + e.getMessage();&#10;}</script>
+
+      <!-- Result Elements -->
+<CheckResult assertTrue="true" type="com.itko.lisa.test.CheckResultContains" name="Assert78" >
+<log>{{lisa.checkFileExists.rsp}}</log>
+<then>fail</then>
+        <param>File Check Error</param>
+</CheckResult>
+
+    </Node>
+
+
+    <Node name="fail" log=""
+          type="com.itko.lisa.test.Abend" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="true" 
+          next="unknown" > 
+
+<graphx>250</graphx>
+<graphy>250</graphy>
+    </Node>
+
+
+    <Node name="end" log=""
+          type="com.itko.lisa.test.NormalEnd" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="true" 
+          next="fail" > 
+
+<graphx>100</graphx>
+<graphy>200</graphy>
+    </Node>
+
+
+</TestCase>

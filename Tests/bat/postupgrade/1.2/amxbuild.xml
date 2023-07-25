@@ -1,0 +1,25 @@
+<project default="Permissions">
+	<import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml"/>	
+		
+	<target name="deploy.myapp">
+		<upload.daa dataFile="${amxConfigFile}" />
+		<create.app dataFile="${amxConfigFile}" />
+		<map.component.to.node dataFile="${amxConfigFile}"/>
+		<map.service.binding.to.node dataFile="${amxConfigFile}" />
+		<set.service.binding.property dataFile="${amxConfigFile}" />
+                <set.reference.wiring appName="jms.binding.helloworld.soa" dataFile="${amxConfigFile}" />
+
+		<deploy.app dataFile="${amxConfigFile}"/>
+	</target>
+	
+	<target name="create.rt">
+		<create.rt dataFile="${amxConfigFile}" objectSelector="declare namespace amxdata_jmsssr='http://tibco.com/amxadministrator/command/line/types_jmssr'; amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate | amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate | amxdata_jmsssr:JNDIDestinationResourceTemplate | amxdata_jmsssr:JNDIConnectionFactoryConfigurationResourceTemplate | amxdata_jmsssr:JNDIDestinationConfigurationResourceTemplate"/>
+		<create.rt dataFile="${amxConfigFile}"/>
+	</target>
+	
+	<target name="setup.ri">
+		<create.ri dataFile="${amxConfigFile}"/>
+		<install.ri dataFile="${amxConfigFile}"/>
+	</target>
+
+	</project>

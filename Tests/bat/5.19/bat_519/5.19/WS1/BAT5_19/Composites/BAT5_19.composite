@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:java="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/java" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmi:id="_E0mD8AB4EeebzZKB0lMEgg" targetNamespace="http://www.example.com/BAT5_19" name="BAT5_19" compositeext:version="1.0.0.qualifier" compositeext:formatVersion="2">
+  <sca:service xmi:id="_FWjhgAB4EeebzZKB0lMEgg" name="HelloWorldPT" promote="Java1/HelloWorldPT">
+    <sca:interface.wsdl xmi:id="_FWkIkAB4EeebzZKB0lMEgg" interface="http://ns.tibco.com/Hello/#wsdl.interface(HelloWorldPT)" scaext:wsdlLocation="../Service%20Descriptors/HelloWorld.wsdl"/>
+    <sca:binding.sca xmi:id="_FWpBEAB4EeebzZKB0lMEgg" name="Virtualization"/>
+    <scact:bindingAdjunct xmi:id="_FWq2QAB4EeebzZKB0lMEgg" bindingName="Virtualization"/>
+  </sca:service>
+  <sca:reference xmi:id="_FWvHsAB4EeebzZKB0lMEgg" multiplicity="0..1" name="HelloWorldPT1" wiredByImpl="false" promote="Java1/HelloWorldPT">
+    <sca:interface.wsdl xmi:id="_FWwV0AB4EeebzZKB0lMEgg" interface="urn:amx:rad_Administrator_test/SOAPMediationJava/sayHelloImpl#wsdl.interface(HelloWorldPT)" scaext:wsdlLocation="../Service%20Descriptors/HWService.wsdl"/>
+  </sca:reference>
+  <sca:component xmi:id="_FDL5kAB4EeebzZKB0lMEgg" name="Java1" compositeext:version="1.0.0.qualifier">
+    <sca:implementation.java xmi:id="_FDMgoAB4EeebzZKB0lMEgg" class="com.sample.bat5_19.Java1">
+      <scaext:packageVersionRange xmi:id="_FDMgoQB4EeebzZKB0lMEgg" lower="1.0.0" upper="2.0.0"/>
+      <java:featureDependency xmi:id="_FLA_4AB4EeebzZKB0lMEgg" name="BAT5_19.BAT5_19A.customfeature.id">
+        <range xmi:id="_FLA_4QB4EeebzZKB0lMEgg" lower="1.0.0" upper="2.0.0"/>
+      </java:featureDependency>
+    </sca:implementation.java>
+    <sca:service xmi:id="_FP5f4AB4EeebzZKB0lMEgg" name="HelloWorldPT">
+      <sca:interface.wsdl xmi:id="_FP_mgAB4EeebzZKB0lMEgg" interface="http://ns.tibco.com/Hello/#wsdl.interface(HelloWorldPT)" scaext:wsdlLocation="../Service%20Descriptors/HelloWorld.wsdl"/>
+    </sca:service>
+    <sca:reference xmi:id="_FQANkAB4EeebzZKB0lMEgg" name="HelloWorldPT" wiredByImpl="false">
+      <sca:interface.wsdl xmi:id="_FQA0oAB4EeebzZKB0lMEgg" interface="urn:amx:rad_Administrator_test/SOAPMediationJava/sayHelloImpl#wsdl.interface(HelloWorldPT)" scaext:wsdlLocation="../Service%20Descriptors/HWService.wsdl"/>
+    </sca:reference>
+  </sca:component>
+</sca:composite>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report>
+    <ReportTime>2013/05/23 Thu 10:43:45</ReportTime>
+    <ReportTitle>Automation Tests Report</ReportTitle>
+    <ProductName>TIBCO ActiveMatrix Service Grid</ProductName>
+    <ProductVersion>Version 3.3.0 build V29</ProductVersion>
+    <Platform>Win7_x86</Platform>
+    <HostName>jpandya-z400</HostName>
+    <UserName>superuser</UserName>
+    <TestRun>
+        <StartTime>2013/05/23-10:43:45</StartTime>
+        <EndTime>2013/05/23-11:03:03</EndTime>
+        <TestSetTotal>2</TestSetTotal>
+        <TestCaseTotal>5</TestCaseTotal>
+        <TestCasePassedTotal>0</TestCasePassedTotal>
+        <TestCaseFailedTotal>5</TestCaseFailedTotal>
+        <TestCaseErrorTotal>0</TestCaseErrorTotal>
+        <TestSet>
+            <StartTime>2013/05/23-10:43:53</StartTime>
+            <EndTime>2013/05/23-10:51:19</EndTime>
+            <TestCaseTotal>4</TestCaseTotal>
+            <TestCasePassedTotal>0</TestCasePassedTotal>
+            <TestCaseFailedTotal>4</TestCaseFailedTotal>
+            <TestCaseErrorTotal>0</TestCaseErrorTotal>
+            <Name>bat_2node_orcl</Name>
+            <RelativeLogDir>func/runtime/bat/bat_2node_orcl</RelativeLogDir>
+            <RunStatus>Y</RunStatus>
+            <TestCase>
+                <StartTime>2013/05/23-10:43:56</StartTime>
+                <EndTime>2013/05/23-10:49:13</EndTime>
+                <ID>install2</ID>
+                <Sequence>1</Sequence>
+                <Description>
+                    <DescriptionPiece>
+                        <NonDefect>suite installation in silent mode of:
+- ActiveMatrix Service Grid
+- CPP IT
+- Adapter BT
+- EJB BT
+- CLR IT (on Windows only)</NonDefect>
+                    </DescriptionPiece>
+                </Description>
+                <Result>FAILED</Result>
+                <SourceDirectory>../../../../../../../tests/func/runtime/bat/install</SourceDirectory>
+                <ReportDirectory>install2</ReportDirectory>
+            </TestCase>
+            <TestCase>
+                <StartTime>2013/05/23-10:49:19</StartTime>
+                <EndTime>2013/05/23-10:50:18</EndTime>
+                <ID>setup</ID>
+                <Sequence>1</Sequence>
+                <Description>
+                    <DescriptionPiece>
+                        <NonDefect>Create TPShell and Provision DB driver if Oracle/SQLServer/DB2
+Bootstrap TIBCOHost 
+Bootstrap Admin SystemNode
+Setup Nodes (osgi console port 1129 and 1139)
+Set Node Loggers
+Install Resources Instances
+Deploy Dashboard
+Deploy MCR (optional) 
+Deploy Log Service (optional)
+Deploy Payload Service (optional)
+Deploy Mediation</NonDefect>
+                    </DescriptionPiece>
+                </Description>
+                <Result>FAILED</Result>
+                <SourceDirectory>../../../../../../../tests/func/runtime/bat/setup</SourceDirectory>
+                <ReportDirectory>setup</ReportDirectory>
+            </TestCase>
+            <TestCase>
+                <StartTime>2013/05/23-10:50:21</StartTime>
+                <EndTime>2013/05/23-10:50:36</EndTime>
+                <ID>5.1</ID>
+                <Sequence>1</Sequence>
+                <Description>
+                    <DescriptionPiece>
+                        <NonDefect>Description : Test Declared / Undeclared fault with AMX and BW Provider
+Scenario: 	Composite 1: 
+			SOAP BT(HTTP) &lt;-&gt; JAVA &lt;-&gt; JAVA &lt;-&gt; SOAP BT(HTTP) (Configured for AMX Provider)
+									   SOAP BT(HTTP) (Configured for BW Provider)
+			Composite 2:	
+			SOAP BT(HTTP) &lt;-&gt; JAVA
+
+MEP: In-Out 
+SOAP Version: 1.1 
+SOAP Style/Encoding: Document/Literal 
+</NonDefect>
+                    </DescriptionPiece>
+                </Description>
+                <Result>FAILED</Result>
+                <SourceDirectory>../../../../../../../tests/func/runtime/bat/5.1</SourceDirectory>
+                <ReportDirectory>5.1</ReportDirectory>
+            </TestCase>
+            <TestCase>
+                <StartTime>2013/05/23-10:50:38</StartTime>
+                <EndTime>2013/05/23-10:51:14</EndTime>
+                <ID>5.2</ID>
+                <Sequence>1</Sequence>
+                <Description>
+                    <DescriptionPiece>
+                        <NonDefect>JMS BT Service and Reference.
+JMS RT (not imported from design-time) with inline credentials.
+
+Composite1: 
+JMS BT (Topic - Serv1) &lt;-&gt; SPRING &lt;-&gt; JMS BT (Queue - Ref1)
+                       &lt;-&gt; JMS BT (Queue - Ref1)
+Composite2:
+JMS BT (Queue - Serv2) &lt;-&gt; JAVA
+                                     
+JMS Service1 and JMS Ref1 bindings are created in Admin through CLI.
+JMS Service2 and Ref2 are created at design-time.
+
+Project1 is configured for BW Provider for following cases:
+       </NonDefect>
+                    </DescriptionPiece>
+                </Description>
+                <Result>FAILED</Result>
+                <SourceDirectory>../../../../../../../tests/func/runtime/bat/5.2</SourceDirectory>
+                <ReportDirectory>5.2</ReportDirectory>
+            </TestCase>
+        </TestSet>
+        <TestSet>
+            <StartTime>2013/05/23-10:51:23</StartTime>
+            <EndTime>2013/05/23-11:03:02</EndTime>
+            <TestCaseTotal>1</TestCaseTotal>
+            <TestCasePassedTotal>0</TestCasePassedTotal>
+            <TestCaseFailedTotal>1</TestCaseFailedTotal>
+            <TestCaseErrorTotal>0</TestCaseErrorTotal>
+            <RelativeLogDir>func/runtime/bat/bat_2node_orcl</RelativeLogDir>
+            <RunStatus>Y</RunStatus>
+            <TestCase>
+                <StartTime>2013/05/23-10:51:25</StartTime>
+                <EndTime>2013/05/23-10:51:34</EndTime>
+                <ID>5.3</ID>
+                <Sequence>1</Sequence>
+                <Description>
+                    <DescriptionPiece>
+                        <NonDefect>Description :   Test File-based Logging.
+                Create 3 loggers: logger1 for Nodes (done in setup), logger2 for Java Component, logger3 for Application
+Scenario:       SOAP BT(HTTP) -&gt; Java -&gt; Spring
+
+MEP: In-Only 
+SOAP Version: 1.1 
+SOAP Style/Encoding: Document/Literal</NonDefect>
+                    </DescriptionPiece>
+                </Description>
+                <Result>FAILED</Result>
+                <SourceDirectory>../../../../../../../tests/func/runtime/bat/5.3</SourceDirectory>
+                <ReportDirectory>5.3</ReportDirectory>
+            </TestCase>
+        </TestSet>
+    </TestRun>
+</Report>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise 
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types" 
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base" 
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference" 
+	xmlns:amxdata_jmsssr="http://tibco.com/amxadministrator/command/line/types_jmssr" 
+	xmlns:amxdata_jmssr_base="http://tibco.com/amxadministrator/command/line/types_jmssr_base"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd
+	http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd 
+	http://tibco.com/amxadministrator/command/line/types_reference ../schemas/amxdata_reference.xsd 
+	http://tibco.com/amxadministrator/command/line/types_jmssr ../schemas/jmssr.xsd 
+	http://tibco.com/amxadministrator/command/line/types_jmssr_base ../schemas/jmssr_base.xsd">
+
+    <Environment xsi:type="amxdata:Environment" 
+		name="QAEnvironment_amxrel2qa1.na.tibco.com" 
+		description="test environment" 
+		contact="TIBCO">
+		
+		<Node xsi:type="amxdata:Node"
+			name="QANode1">
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="BAT5_21_JmsConnFact" resourceTemplateName="BAT5_21_JmsConnFact"/>
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="BAT5_21_JmsConnFactConf" resourceTemplateName="BAT5_21_JmsConnFactConf"/>	
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="BAT5_21_JmsDest" resourceTemplateName="BAT5_21_JmsDest"/>
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="BAT5_21_JmsDestConf" resourceTemplateName="BAT5_21_JmsDestConf"/>
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="BAT5_21_JmsDestConf2" resourceTemplateName="BAT5_21_JmsDestConf2"/>		
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="BAT5_21_JndiConn" resourceTemplateName="BAT5_21_JndiConn"/>
+		</Node>	
+
+		<Node xsi:type="amxdata:Node"
+			name="QANode2">
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="BAT5_21_JmsConnFact" resourceTemplateName="BAT5_21_JmsConnFact"/>	
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="BAT5_21_JmsDest" resourceTemplateName="BAT5_21_JmsDest"/>
+		</Node>	
+
+		<Application xsi:type="amxdata:Application" 
+			name="BAT5_21_2" 
+			contact="TIBCO Inc." 
+			description="SOAP~JMS --> Java3" 
+			importResourceTemplates="false">
+			<Component 
+				xsi:type="amxdata:Component" 
+				name="Java3">
+	    		<Node 
+					name="QANode1" 
+					environmentName="QAEnvironment_amxrel2qa1.na.tibco.com" />	    	              
+	        </Component>
+        	<ApplicationTemplate 
+				xsi:type="amxdata_reference:ApplicationTemplate_reference"			
+				name="BAT5212"/>					
+        </Application>	
+		<Application xsi:type="amxdata:Application" 
+			name="BAT5_21" 
+			contact="TIBCO Inc." 
+			description="SOAP~JMS --> Java1 --> Java2 --> SOAP~JMS" 
+			importResourceTemplates="false">
+			<Component 
+				xsi:type="amxdata:Component" 
+				name="Java1">
+	    		<Node 
+					name="QANode1" 
+					environmentName="QAEnvironment_amxrel2qa1.na.tibco.com" />	    	              
+	        </Component>
+			<Component 
+				xsi:type="amxdata:Component" 
+				name="Java2">
+	    		<Node 
+					name="QANode2" 
+					environmentName="QAEnvironment_amxrel2qa1.na.tibco.com" />	    	              
+	        </Component>
+			<ApplicationTemplate 
+				xsi:type="amxdata_reference:ApplicationTemplate_reference"	
+				name="BAT521"/>	
+        </Application>	
+		
+    </Environment>
+	
+	<DAA xsi:type="amxdata:DAA" 
+		description="SOAP~JMS --> Java3" 
+		location="BAT521/Deployment Artifacts/BAT5212.daa"/>
+	<DAA xsi:type="amxdata:DAA" 
+		description="SOAP~JMS --> Java1 --> Java2 --> SOAP~JMS" 
+		location="BAT521/Deployment Artifacts/BAT521.daa"/>
+
+	<amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate
+		xsi:type="amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate"
+		name="BAT5_21_JmsConnFact"
+		jndiName="GenericConnectionFactory"
+		jndiConnectionConfigurationName="BAT5_21_JndiConn"
+		description="Outbound JMS Connection Factory">
+		<InlineCredentials 
+			username="amxemspwd" 
+			password="amxemspwd"/>	
+	</amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate>
+	<amxdata_jmsssr:JNDIConnectionFactoryConfigurationResourceTemplate
+		xsi:type="amxdata_jmsssr:JNDIConnectionFactoryConfigurationResourceTemplate"
+		name="BAT5_21_JmsConnFactConf"
+		jndiName="GenericConnectionFactory"
+		jndiConnectionConfigurationName="BAT5_21_JndiConn"
+		description="Inbound JMS Connection Factory Configuration">
+		<InlineCredentials 
+			username="amxemspwd" 
+			password="amxemspwd"/>   
+	</amxdata_jmsssr:JNDIConnectionFactoryConfigurationResourceTemplate>
+	<amxdata_jmsssr:JNDIDestinationResourceTemplate 
+		xsi:type="amxdata_jmsssr:JNDIDestinationResourceTemplate" 
+		name="BAT5_21_JmsDest" 
+		jndiName="BAT521Destination" 
+		jndiConnectionConfigurationName="BAT5_21_JndiConn"
+		description="JndiDestination"/> 
+	<amxdata_jmsssr:JNDIDestinationConfigurationResourceTemplate 
+		xsi:type="amxdata_jmsssr:JNDIDestinationConfigurationResourceTemplate" 
+		name="BAT5_21_JmsDestConf2" 
+		jndiName="BAT5212Destination" 
+		jndiConnectionConfigurationName="BAT5_21_JndiConn"
+		description="JMS Destination Configuration"/>
+	<amxdata_jmsssr:JNDIDestinationConfigurationResourceTemplate 
+		xsi:type="amxdata_jmsssr:JNDIDestinationConfigurationResourceTemplate" 
+		name="BAT5_21_JmsDestConf" 
+		jndiName="BAT521Destination" 
+		jndiConnectionConfigurationName="BAT5_21_JndiConn"
+		description="JMS Destination Configuration"/>	
+	<amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate
+		xsi:type="amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate"
+		name="BAT5_21_JndiConn"
+		initialContextFactory="com.tibco.tibjms.naming.TibjmsInitialContextFactory"
+		providerUrl="tibjmsnaming://AMX-BACKEND.na.tibco.com:7622"
+		description="JndiConnectionConfiguration">
+		<InlineCredentials 
+			username="amxjndipwd"
+			password="amxjndipwd"/>
+	</amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate>
+
+</amxdata_base:Enterprise>

@@ -1,0 +1,27 @@
+<project default="deploy.app">
+	<import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+
+	<target name="deploy.app">
+		<upload.daa dataFile="${amxConfigFile}" />
+		<create.app dataFile="${amxConfigFile}" />
+		<create.rt dataFile="${amxConfigFile}" objectSelector="declare namespace amxdata_jmsssr='http://tibco.com/amxadministrator/command/line/types_jmssr'; amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate | amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate | amxdata_jmsssr:JNDIDestinationResourceTemplate | amxdata_jmsssr:JNDIConnectionFactoryConfigurationResourceTemplate | amxdata_jmsssr:JNDIDestinationConfigurationResourceTemplate" />
+		<create.ri dataFile="${amxConfigFile}" />
+		<install.ri dataFile="${amxConfigFile}" />
+		<map.service.binding.to.node dataFile="${amxConfigFile}" />
+		<map.component.to.node dataFile="${amxConfigFile}" />
+		<set.service.binding.property dataFile="${amxConfigFile}" />
+		<deploy.app dataFile="${amxConfigFile}" />		
+	</target>
+
+	<target name="undeploy.app">
+		<undeploy.app dataFile="${amxConfigFile}" />
+		<delete.app dataFile="${amxConfigFile}" />
+		<uninstall.ri dataFile="${amxConfigFile}" />
+		<delete.ri dataFile="${amxConfigFile}" />
+		<delete.rt dataFile="${amxConfigFile}" />
+		<remove.feature dataFile="${amxConfigFile}" />
+		<remove.apptemplate dataFile="${amxConfigFile}" />
+	</target>
+
+		
+</project>

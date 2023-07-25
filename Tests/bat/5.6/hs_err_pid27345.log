@@ -1,0 +1,312 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Cannot create GC thread. Out of system resources.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (gcTaskThread.cpp:48), pid=27345, tid=0x00007fb77ada2700
+#
+# JRE version:  (8.0_321-b25) (build )
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (25.321-b25 mixed mode linux-amd64 compressed oops)
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000555c11e5c000):  JavaThread "Unknown thread" [_thread_in_vm, id=27345, stack(0x00007fffd8de8000,0x00007fffd8ee8000)]
+
+Stack: [0x00007fffd8de8000,0x00007fffd8ee8000],  sp=0x00007fffd8edeb60,  free space=986k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0xae0635]  VMError::report_and_die()+0x2e5
+V  [libjvm.so+0x4e2aa7]  report_vm_out_of_memory(char const*, int, unsigned long, VMErrorType, char const*)+0x67
+V  [libjvm.so+0x5c699f]  GCTaskThread::GCTaskThread(GCTaskManager*, unsigned int, unsigned int)+0x13f
+V  [libjvm.so+0x5c5b6d]  GCTaskManager::initialize()+0x36d
+V  [libjvm.so+0x944552]  ParallelScavengeHeap::initialize()+0x3a2
+V  [libjvm.so+0xaa3faa]  Universe::initialize_heap()+0x16a
+V  [libjvm.so+0xaa4293]  universe_init()+0x33
+V  [libjvm.so+0x6350e0]  init_globals()+0x50
+V  [libjvm.so+0xa869f9]  Threads::create_vm(JavaVMInitArgs*, bool*)+0x409
+V  [libjvm.so+0x6dca8f]  JNI_CreateJavaVM+0x4f
+C  [libjli.so+0x7ee4]  JavaMain+0x84
+C  [libjli.so+0xd819]  ContinueInNewThread0+0x69
+C  [libjli.so+0x9c42]  ContinueInNewThread+0x52
+C  [libjli.so+0xa368]  JLI_Launch+0x5d8
+C  [java+0x69a]  main+0x3a
+C  [libc.so.6+0x1ed20]  __libc_start_main+0x100
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+
+Other Threads:
+
+=>0x0000555c11e5c000 (exited) JavaThread "Unknown thread" [_thread_in_vm, id=27345, stack(0x00007fffd8de8000,0x00007fffd8ee8000)]
+
+VM state:not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+heap address: 0x0000000083600000, size: 1994 MB, Compressed Oops mode: Non-zero based:0x00000000835ff000
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 0
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (0 events):
+No events
+
+
+Dynamic libraries:
+83600000-88a00000 rw-p 00000000 00:00 0 
+88a00000-d6780000 ---p 00000000 00:00 0 
+d6780000-d9180000 rw-p 00000000 00:00 0 
+d9180000-100000000 ---p 00000000 00:00 0 
+555c1172d000-555c1172e000 r-xp 00000000 08:03 3938400                    /opt/tibco/amx341/tibcojre64/1.8.0/bin/java
+555c1192d000-555c1192e000 r--p 00000000 08:03 3938400                    /opt/tibco/amx341/tibcojre64/1.8.0/bin/java
+555c1192e000-555c1192f000 rw-p 00001000 08:03 3938400                    /opt/tibco/amx341/tibcojre64/1.8.0/bin/java
+555c11e3e000-555c11e96000 rw-p 00000000 00:00 0                          [heap]
+7fb767e0a000-7fb7680ca000 rw-p 00000000 00:00 0 
+7fb7680ca000-7fb768339000 ---p 00000000 00:00 0 
+7fb768339000-7fb768363000 rw-p 00000000 00:00 0 
+7fb768363000-7fb7685d1000 ---p 00000000 00:00 0 
+7fb7685d1000-7fb7685e7000 rw-p 00000000 00:00 0 
+7fb7685e7000-7fb76871e000 ---p 00000000 00:00 0 
+7fb76871e000-7fb768729000 rw-p 00000000 00:00 0 
+7fb768729000-7fb768adf000 ---p 00000000 00:00 0 
+7fb768adf000-7fb768d4f000 rwxp 00000000 00:00 0 
+7fb768d4f000-7fb777adf000 ---p 00000000 00:00 0 
+7fb777adf000-7fb777afa000 r-xp 00000000 08:03 4859073                    /opt/tibco/amx341/tibcojre64/1.8.0/lib/amd64/libzip.so
+7fb777afa000-7fb777cf9000 ---p 0001b000 08:03 4859073                    /opt/tibco/amx341/tibcojre64/1.8.0/lib/amd64/libzip.so
+7fb777cf9000-7fb777cfa000 r--p 0001a000 08:03 4859073                    /opt/tibco/amx341/tibcojre64/1.8.0/lib/amd64/libzip.so
+7fb777cfa000-7fb777cfb000 rw-p 0001b000 08:03 4859073                    /opt/tibco/amx341/tibcojre64/1.8.0/lib/amd64/libzip.so
+7fb777cfb000-7fb778500000 r--s 00000000 08:03 7734500                    /var/lib/sss/mc/passwd
+7fb778500000-7fb778508000 r-xp 00000000 08:03 6685075                    /lib64/libnss_sss.so.2
+7fb778508000-7fb778707000 ---p 00008000 08:03 6685075                    /lib64/libnss_sss.so.2
+7fb778707000-7fb778708000 rw-p 00007000 08:03 6685075                    /lib64/libnss_sss.so.2
+7fb778708000-7fb778715000 r-xp 00000000 08:03 6684889                    /lib64/libnss_files-2.12.so
+7fb778715000-7fb778914000 ---p 0000d000 08:03 6684889                    /lib64/libnss_files-2.12.so
+7fb778914000-7fb778915000 r--p 0000c000 08:03 6684889                    /lib64/libnss_files-2.12.so
+7fb778915000-7fb778916000 rw-p 0000d000 08:03 6684889                    /lib64/libnss_files-2.12.so
+7fb778916000-7fb778942000 r-xp 00000000 08:03 4859072                    /opt/tibco/amx341/tibcojre64/1.8.0/lib/amd64/libjava.so
+7fb778942000-7fb778b42000 ---p 0002c000 08:03 4859072                    /opt/tibco/amx341/tibcojre64/1.8.0/lib/amd64/libjava.so
+7fb778b42000-7fb778b43000 r--p 0002c000 08:03 4859072                    /opt/tibco/amx341/tibcojre64/1.8.0/lib/amd64/libjava.so
+7fb778b43000-7fb778b45000 rw-p 0002d000 08:03 4859072                    /opt/tibco/amx341/tibcojre64/1.8.0/lib/amd64/libjava.so
+7fb778b45000-7fb778b52000 r-xp 00000000 08:03 4859062                    /opt/tibco/amx341/tibcojre64/1.8.0/lib/amd64/libverify.so
+7fb778b52000-7fb778d51000 ---p 0000d000 08:03 4859062                    /opt/tibco/amx341/tibcojre64/1.8.0/lib/amd64/libverify.so
+7fb778d51000-7fb778d53000 r--p 0000c000 08:03 4859062                    /opt/tibco/amx341/tibcojre64/1.8.0/lib/amd64/libverify.so
+7fb778d53000-7fb778d54000 rw-p 0000e000 08:03 4859062                    /opt/tibco/amx341/tibcojre64/1.8.0/lib/amd64/libverify.so
+7fb778d54000-7fb778d5b000 r-xp 00000000 08:03 6684687                    /lib64/librt-2.12.so
+7fb778d5b000-7fb778f5a000 ---p 00007000 08:03 6684687                    /lib64/librt-2.12.so
+7fb778f5a000-7fb778f5b000 r--p 00006000 08:03 6684687                    /lib64/librt-2.12.so
+7fb778f5b000-7fb778f5c000 rw-p 00007000 08:03 6684687                    /lib64/librt-2.12.so
+7fb778f5c000-7fb778fdf000 r-xp 00000000 08:03 6684743                    /lib64/libm-2.12.so
+7fb778fdf000-7fb7791de000 ---p 00083000 08:03 6684743                    /lib64/libm-2.12.so
+7fb7791de000-7fb7791df000 r--p 00082000 08:03 6684743                    /lib64/libm-2.12.so
+7fb7791df000-7fb7791e0000 rw-p 00083000 08:03 6684743                    /lib64/libm-2.12.so
+7fb7791e0000-7fb779ed8000 r-xp 00000000 08:03 5119267                    /opt/tibco/amx341/tibcojre64/1.8.0/lib/amd64/server/libjvm.so
+7fb779ed8000-7fb77a0d8000 ---p 00cf8000 08:03 5119267                    /opt/tibco/amx341/tibcojre64/1.8.0/lib/amd64/server/libjvm.so
+7fb77a0d8000-7fb77a16e000 r--p 00cf8000 08:03 5119267                    /opt/tibco/amx341/tibcojre64/1.8.0/lib/amd64/server/libjvm.so
+7fb77a16e000-7fb77a19f000 rw-p 00d8e000 08:03 5119267                    /opt/tibco/amx341/tibcojre64/1.8.0/lib/amd64/server/libjvm.so
+7fb77a19f000-7fb77a1da000 rw-p 00000000 00:00 0 
+7fb77a1da000-7fb77a365000 r-xp 00000000 08:03 6684681                    /lib64/libc-2.12.so
+7fb77a365000-7fb77a564000 ---p 0018b000 08:03 6684681                    /lib64/libc-2.12.so
+7fb77a564000-7fb77a568000 r--p 0018a000 08:03 6684681                    /lib64/libc-2.12.so
+7fb77a568000-7fb77a56a000 rw-p 0018e000 08:03 6684681                    /lib64/libc-2.12.so
+7fb77a56a000-7fb77a56e000 rw-p 00000000 00:00 0 
+7fb77a56e000-7fb77a570000 r-xp 00000000 08:03 6684713                    /lib64/libdl-2.12.so
+7fb77a570000-7fb77a770000 ---p 00002000 08:03 6684713                    /lib64/libdl-2.12.so
+7fb77a770000-7fb77a771000 r--p 00002000 08:03 6684713                    /lib64/libdl-2.12.so
+7fb77a771000-7fb77a772000 rw-p 00003000 08:03 6684713                    /lib64/libdl-2.12.so
+7fb77a772000-7fb77a789000 r-xp 00000000 08:03 5119270                    /opt/tibco/amx341/tibcojre64/1.8.0/lib/amd64/jli/libjli.so
+7fb77a789000-7fb77a988000 ---p 00017000 08:03 5119270                    /opt/tibco/amx341/tibcojre64/1.8.0/lib/amd64/jli/libjli.so
+7fb77a988000-7fb77a989000 r--p 00016000 08:03 5119270                    /opt/tibco/amx341/tibcojre64/1.8.0/lib/amd64/jli/libjli.so
+7fb77a989000-7fb77a98a000 rw-p 00017000 08:03 5119270                    /opt/tibco/amx341/tibcojre64/1.8.0/lib/amd64/jli/libjli.so
+7fb77a98a000-7fb77a9a1000 r-xp 00000000 08:03 6684682                    /lib64/libpthread-2.12.so
+7fb77a9a1000-7fb77aba1000 ---p 00017000 08:03 6684682                    /lib64/libpthread-2.12.so
+7fb77aba1000-7fb77aba2000 r--p 00017000 08:03 6684682                    /lib64/libpthread-2.12.so
+7fb77aba2000-7fb77aba3000 rw-p 00018000 08:03 6684682                    /lib64/libpthread-2.12.so
+7fb77aba3000-7fb77aba7000 rw-p 00000000 00:00 0 
+7fb77aba7000-7fb77abc7000 r-xp 00000000 08:03 6684677                    /lib64/ld-2.12.so
+7fb77aca0000-7fb77aca1000 ---p 00000000 00:00 0 
+7fb77aca1000-7fb77ada6000 rw-p 00000000 00:00 0 
+7fb77adb9000-7fb77adbc000 rw-p 00000000 00:00 0 
+7fb77adbc000-7fb77adc4000 rw-s 00000000 08:03 6554392                    /tmp/hsperfdata_svcactivemxsg/27345
+7fb77adc4000-7fb77adc5000 rw-p 00000000 00:00 0 
+7fb77adc5000-7fb77adc6000 r--p 00000000 00:00 0 
+7fb77adc6000-7fb77adc7000 rw-p 00000000 00:00 0 
+7fb77adc7000-7fb77adc8000 r--p 00020000 08:03 6684677                    /lib64/ld-2.12.so
+7fb77adc8000-7fb77adc9000 rw-p 00021000 08:03 6684677                    /lib64/ld-2.12.so
+7fb77adc9000-7fb77adca000 rw-p 00000000 00:00 0 
+7fffd8de8000-7fffd8deb000 ---p 00000000 00:00 0 
+7fffd8deb000-7fffd8ee8000 rw-p 00000000 00:00 0                          [stack]
+7fffd8f68000-7fffd8f69000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+
+VM Arguments:
+jvm_args: -Djava.classes.dir=//opt/tibco/amx341/tibcojre64/1.8.0/jre/lib 
+java_command: org.apache.tools.ant.launch.Launcher -DdeployTimeout=300 -DTIBCO_HOME=/opt/tibco/amx341 -DTIBCO_AMXADMIN_HOME=/opt/tibco/amx341/administrator/3.4 -DTIBCO_AMX_LIBRARY=/groupfiler/tests/tests/amsg/3.0/libraries/amx -DamxConfigFile=/groupfiler/tests/tests/amsg/reports/Suse11_x86_64/amsg-3.4.1-2022-01-24-00-10-43/func/runtime/bat/amsg341_2node_orcl/5.6/cli_data.xml -DremotePropsFile=/groupfiler/tests/tests/amsg/reports/Suse11_x86_64/amsg-3.4.1-2022-01-24-00-10-43/func/runtime/bat/amsg341_2node_orcl/admin.properties -Dbasedir=/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.6 -logfile /groupfiler/tests/tests/amsg/reports/Suse11_x86_64/amsg-3.4.1-2022-01-24-00-10-43/func/runtime/bat/amsg341_2node_orcl/5.6/antDeploy.log -buildfile /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.6/amxbuild.xml deploy.app
+java_class_path (initial): :/groupfiler/tests/tests/amsg/3.0/libraries/common/lib/ant-launcher.jar:/groupfiler/tests/tests/amsg/3.0/libraries/common/lib/ant-trax.jar:/groupfiler/tests/tests/amsg/3.0/libraries/common/lib/ant.jar:/groupfiler/tests/tests/amsg/3.0/libraries/common/lib/ant-contrib.jar:/groupfiler/tests/tests/amsg/3.0/libraries/common/lib/ant-nodeps.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+PATH=/opt/tibco/rv830/tibrv/8.3/bin:/opt/tibco/rv830/tibrv/8.3/lib:/usr/lib64/qt-3.3/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/home/svcactivemxsg/bin
+LD_LIBRARY_PATH=/opt/tibco/amx341/tibcojre64/1.8.0/lib/amd64/server:/opt/tibco/amx341/tibcojre64/1.8.0/lib/amd64:/opt/tibco/amx341/tibcojre64/1.8.0/../lib/amd64:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.41.x86_64/jre/lib/amd64/server:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.41.x86_64/jre/lib/amd64:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.41.x86_64/jre/../lib/amd64:/groupfiler/engrtools/software-licensed/lisa/4.6/unix/bin:/opt/tibco/rv830/tibrv/8.3/lib:/opt/tibco/rv830/tibrv/8.3/lib/64:
+SHELL=/bin/bash
+DYLD_LIBRARY_PATH=/groupfiler/engrtools/software-licensed/lisa/4.6/unix/bin:
+OS=Linux
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0xae0f50], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGBUS: [libjvm.so+0xae0f50], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGFPE: [libjvm.so+0xae0f50], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGPIPE: [libjvm.so+0x915110], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGXFSZ: [libjvm.so+0x915110], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGILL: [libjvm.so+0xae0f50], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGUSR1: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGUSR2: [libjvm.so+0x914fe0], sa_mask[0]=00100000000000000000000000000000, sa_flags=SA_RESTART|SA_SIGINFO
+SIGHUP: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGINT: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGTERM: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGQUIT: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+
+
+---------------  S Y S T E M  ---------------
+
+OS:Red Hat Enterprise Linux Server release 6.10 (Santiago)
+
+uname:Linux 2.6.32-754.35.1.el6.x86_64 #1 SMP Wed Sep 16 06:48:01 EDT 2020 x86_64
+libc:glibc 2.12 NPTL 2.12 
+rlimit: STACK 10240k, CORE 0k, NPROC 1024, NOFILE 800000, AS infinity
+load average:0.62 0.46 0.71
+
+/proc/meminfo:
+MemTotal:        8160864 kB
+MemFree:          619956 kB
+Buffers:           85524 kB
+Cached:          4450336 kB
+SwapCached:         1252 kB
+Active:          4090496 kB
+Inactive:        2960176 kB
+Active(anon):    1695692 kB
+Inactive(anon):   819516 kB
+Active(file):    2394804 kB
+Inactive(file):  2140660 kB
+Unevictable:           0 kB
+Mlocked:               0 kB
+SwapTotal:       4194300 kB
+SwapFree:        4180912 kB
+Dirty:               236 kB
+Writeback:             4 kB
+AnonPages:       2513916 kB
+Mapped:            68068 kB
+Shmem:               284 kB
+Slab:             363468 kB
+SReclaimable:     322580 kB
+SUnreclaim:        40888 kB
+KernelStack:       20128 kB
+PageTables:        21860 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     8274732 kB
+Committed_AS:    4560248 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:       90588 kB
+VmallocChunk:   34359641076 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:   1677312 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+DirectMap4k:        5988 kB
+DirectMap2M:     2091008 kB
+DirectMap1G:     6291456 kB
+
+
+CPU:total 2 (initial active 2) (1 cores per cpu, 1 threads per core) family 15 model 6 stepping 1, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, rtm, 3dnowpref, lzcnt, tsc, bmi1, bmi2, adx
+
+/proc/cpuinfo:
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 15
+model		: 6
+model name	: Intel(R) Xeon(R) Gold 5218R CPU @ 2.10GHz
+stepping	: 1
+microcode	: 1
+cpu MHz		: 2099.998
+cache size	: 16384 KB
+physical id	: 0
+siblings	: 1
+core id		: 0
+cpu cores	: 1
+apicid		: 0
+initial apicid	: 0
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss syscall nx pdpe1gb rdtscp lm constant_tsc xtopology unfair_spinlock eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch arat xsaveopt invpcid_single ssbd pti retpoline ibrs ibpb stibp fsgsbase bmi1 hle avx2 smep bmi2 erms invpcid rtm avx512f rdseed adx avx512cd md_clear
+bogomips	: 4199.99
+clflush size	: 64
+cache_alignment	: 128
+address sizes	: 46 bits physical, 48 bits virtual
+power management:
+
+processor	: 1
+vendor_id	: GenuineIntel
+cpu family	: 15
+model		: 6
+model name	: Intel(R) Xeon(R) Gold 5218R CPU @ 2.10GHz
+stepping	: 1
+microcode	: 1
+cpu MHz		: 2099.998
+cache size	: 16384 KB
+physical id	: 1
+siblings	: 1
+core id		: 0
+cpu cores	: 1
+apicid		: 1
+initial apicid	: 1
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss syscall nx pdpe1gb rdtscp lm constant_tsc xtopology unfair_spinlock eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch arat xsaveopt invpcid_single ssbd pti retpoline ibrs ibpb stibp fsgsbase bmi1 hle avx2 smep bmi2 erms invpcid rtm avx512f rdseed adx avx512cd md_clear
+bogomips	: 4199.99
+clflush size	: 64
+cache_alignment	: 128
+address sizes	: 46 bits physical, 48 bits virtual
+power management:
+
+
+
+Memory: 4k page, physical 8160864k(619956k free), swap 4194300k(4180912k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (25.321-b25) for linux-amd64 JRE (1.8.0_321-b25), built on Dec 16 2021 13:54:02 by "java_re" with gcc 7.3.0
+
+time: Tue Jan 25 16:08:15 2022
+timezone: PST
+elapsed time: 0.142972 seconds (0d 0h 0m 0s)
+

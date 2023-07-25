@@ -1,0 +1,2110 @@
+<html> <body><FONT FACE='arial'> <table width='100%' border='2' cellpadding='4' cellspacing='3'><tr bgcolor='yellow'> <th width='10%'>Event</th> <th width='14%'>Short Description</th> <th width='42%'>Long Description</th><th width='21%'>TimeStamp</th><tr bgcolor='lime'><td>EVENT_START</td><td></td><td></td><td>Thu Aug 09 08:00:27 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>killTIBCOHost</td><td><pre></pre></td><td>Thu Aug 09 08:00:28 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>killTIBCOHost</td><td><pre></pre></td><td>Thu Aug 09 08:00:28 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/util/KillProcessByName.tst</pre></td><td>Thu Aug 09 08:00:28 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>killTIBCOHost-Log</td><td><pre></pre></td><td>Thu Aug 09 08:00:28 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>killTIBCOHost-Log</td><td><pre></pre></td><td>Thu Aug 09 08:00:28 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>killTIBCOHost-Log</td><td><pre>Attempting to kill process "tibcohost"...</pre></td><td>Thu Aug 09 08:00:29 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>killTIBCOHost-validate</td><td><pre></pre></td><td>Thu Aug 09 08:00:29 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>killTIBCOHost-validate</td><td><pre></pre></td><td>Thu Aug 09 08:00:29 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>String baseErrorMsg = "Kill process validation error";
+String baseSuccessMsg = "Kill process validation success";
+
+if (processName.equals("") || processName.equals("&lt;&lt;null&gt;&gt;"))
+ return baseErrorMsg + ": processName is required";
+
+return baseSuccessMsg;</pre></td><td>Thu Aug 09 08:00:29 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>killTIBCOHost-validate</td><td><pre>Kill process validation success</pre></td><td>Thu Aug 09 08:00:32 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>killTIBCOHost-OSSelection</td><td><pre></pre></td><td>Thu Aug 09 08:00:32 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>killTIBCOHost-OSSelection</td><td><pre></pre></td><td>Thu Aug 09 08:00:32 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>if (com.itko.util.Utilities.isWindows())
+ return "windows";
+else
+ return "unix";</pre></td><td>Thu Aug 09 08:00:32 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>killTIBCOHost-OSSelection</td><td><pre>unix</pre></td><td>Thu Aug 09 08:00:32 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>killTIBCOHost-UnixProcessModifier</td><td><pre></pre></td><td>Thu Aug 09 08:00:32 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>killTIBCOHost-UnixProcessModifier</td><td><pre></pre></td><td>Thu Aug 09 08:00:32 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>// ps -e command used to get the PID has some restriction on some Unix platforms:
+// The process name might truncated.
+
+processName2 = processName;
+
+// Linux ps -e command returns 15 characters max
+if (os_name.equals("Linux")) {
+ if (testExec.parseInState(processName).length() &gt; 15)
+  processName2 = testExec.parseInState(processName).substring(0,15);
+}
+// HP-UX ps -e command returns 14 characters max
+else if (os_name.equals("HP-UX")) {
+ if (testExec.parseInState(processName).length() &gt; 14)
+  processName2 = testExec.parseInState(processName).substring(0,14);
+}
+// Solaris ps -e command returns 8 characters max
+else if (os_name.equals("SunOS")) {
+ if (testExec.parseInState(processName).length() &gt; 8)
+  processName2 = testExec.parseInState(processName).substring(0,8);
+}
+// AIX does not have limitation.
+return processName2;</pre></td><td>Thu Aug 09 08:00:32 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>killTIBCOHost-UnixProcessModifier</td><td><pre>tibcohost</pre></td><td>Thu Aug 09 08:00:33 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>killTIBCOHost-killOnUnix</td><td><pre></pre></td><td>Thu Aug 09 08:00:33 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>killTIBCOHost-killOnUnix</td><td><pre></pre></td><td>Thu Aug 09 08:00:33 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>sh KillProcessByName.sh tibcohost</pre></td><td>Thu Aug 09 08:00:33 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>killTIBCOHost-killOnUnix</td><td><pre>ERROR: The process "tibcohost" not found.
+</pre></td><td>Thu Aug 09 08:00:33 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>killSystemNode</td><td><pre></pre></td><td>Thu Aug 09 08:00:35 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>killSystemNode</td><td><pre></pre></td><td>Thu Aug 09 08:00:35 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/util/KillProcessByName.tst</pre></td><td>Thu Aug 09 08:00:36 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>killSystemNode-Log</td><td><pre></pre></td><td>Thu Aug 09 08:00:36 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>killSystemNode-Log</td><td><pre></pre></td><td>Thu Aug 09 08:00:36 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>killSystemNode-Log</td><td><pre>Attempting to kill process "tibamx_SystemNode"...</pre></td><td>Thu Aug 09 08:00:36 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>killSystemNode-validate</td><td><pre></pre></td><td>Thu Aug 09 08:00:36 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>killSystemNode-validate</td><td><pre></pre></td><td>Thu Aug 09 08:00:36 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>String baseErrorMsg = "Kill process validation error";
+String baseSuccessMsg = "Kill process validation success";
+
+if (processName.equals("") || processName.equals("&lt;&lt;null&gt;&gt;"))
+ return baseErrorMsg + ": processName is required";
+
+return baseSuccessMsg;</pre></td><td>Thu Aug 09 08:00:36 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>killSystemNode-validate</td><td><pre>Kill process validation success</pre></td><td>Thu Aug 09 08:00:37 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>killSystemNode-OSSelection</td><td><pre></pre></td><td>Thu Aug 09 08:00:37 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>killSystemNode-OSSelection</td><td><pre></pre></td><td>Thu Aug 09 08:00:37 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>if (com.itko.util.Utilities.isWindows())
+ return "windows";
+else
+ return "unix";</pre></td><td>Thu Aug 09 08:00:37 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>killSystemNode-OSSelection</td><td><pre>unix</pre></td><td>Thu Aug 09 08:00:39 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>killSystemNode-UnixProcessModifier</td><td><pre></pre></td><td>Thu Aug 09 08:00:39 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>killSystemNode-UnixProcessModifier</td><td><pre></pre></td><td>Thu Aug 09 08:00:39 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>// ps -e command used to get the PID has some restriction on some Unix platforms:
+// The process name might truncated.
+
+processName2 = processName;
+
+// Linux ps -e command returns 15 characters max
+if (os_name.equals("Linux")) {
+ if (testExec.parseInState(processName).length() &gt; 15)
+  processName2 = testExec.parseInState(processName).substring(0,15);
+}
+// HP-UX ps -e command returns 14 characters max
+else if (os_name.equals("HP-UX")) {
+ if (testExec.parseInState(processName).length() &gt; 14)
+  processName2 = testExec.parseInState(processName).substring(0,14);
+}
+// Solaris ps -e command returns 8 characters max
+else if (os_name.equals("SunOS")) {
+ if (testExec.parseInState(processName).length() &gt; 8)
+  processName2 = testExec.parseInState(processName).substring(0,8);
+}
+// AIX does not have limitation.
+return processName2;</pre></td><td>Thu Aug 09 08:00:39 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>killSystemNode-UnixProcessModifier</td><td><pre>tibamx_SystemN</pre></td><td>Thu Aug 09 08:00:39 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>killSystemNode-killOnUnix</td><td><pre></pre></td><td>Thu Aug 09 08:00:39 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>killSystemNode-killOnUnix</td><td><pre></pre></td><td>Thu Aug 09 08:00:39 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>sh KillProcessByName.sh tibamx_SystemN</pre></td><td>Thu Aug 09 08:00:39 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>killSystemNode-killOnUnix</td><td><pre>ERROR: The process "tibamx_SystemN" not found.
+</pre></td><td>Thu Aug 09 08:00:40 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>killNode1</td><td><pre></pre></td><td>Thu Aug 09 08:00:40 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>killNode1</td><td><pre></pre></td><td>Thu Aug 09 08:00:40 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/util/KillProcessByName.tst</pre></td><td>Thu Aug 09 08:00:41 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>killNode1-Log</td><td><pre></pre></td><td>Thu Aug 09 08:00:41 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>killNode1-Log</td><td><pre></pre></td><td>Thu Aug 09 08:00:41 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>killNode1-Log</td><td><pre>Attempting to kill process "tibamx_QANode1"...</pre></td><td>Thu Aug 09 08:00:41 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>killNode1-validate</td><td><pre></pre></td><td>Thu Aug 09 08:00:41 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>killNode1-validate</td><td><pre></pre></td><td>Thu Aug 09 08:00:41 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>String baseErrorMsg = "Kill process validation error";
+String baseSuccessMsg = "Kill process validation success";
+
+if (processName.equals("") || processName.equals("&lt;&lt;null&gt;&gt;"))
+ return baseErrorMsg + ": processName is required";
+
+return baseSuccessMsg;</pre></td><td>Thu Aug 09 08:00:41 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>killNode1-validate</td><td><pre>Kill process validation success</pre></td><td>Thu Aug 09 08:00:42 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>killNode1-OSSelection</td><td><pre></pre></td><td>Thu Aug 09 08:00:42 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>killNode1-OSSelection</td><td><pre></pre></td><td>Thu Aug 09 08:00:42 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>if (com.itko.util.Utilities.isWindows())
+ return "windows";
+else
+ return "unix";</pre></td><td>Thu Aug 09 08:00:42 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>killNode1-OSSelection</td><td><pre>unix</pre></td><td>Thu Aug 09 08:00:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>killNode1-UnixProcessModifier</td><td><pre></pre></td><td>Thu Aug 09 08:00:43 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>killNode1-UnixProcessModifier</td><td><pre></pre></td><td>Thu Aug 09 08:00:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>// ps -e command used to get the PID has some restriction on some Unix platforms:
+// The process name might truncated.
+
+processName2 = processName;
+
+// Linux ps -e command returns 15 characters max
+if (os_name.equals("Linux")) {
+ if (testExec.parseInState(processName).length() &gt; 15)
+  processName2 = testExec.parseInState(processName).substring(0,15);
+}
+// HP-UX ps -e command returns 14 characters max
+else if (os_name.equals("HP-UX")) {
+ if (testExec.parseInState(processName).length() &gt; 14)
+  processName2 = testExec.parseInState(processName).substring(0,14);
+}
+// Solaris ps -e command returns 8 characters max
+else if (os_name.equals("SunOS")) {
+ if (testExec.parseInState(processName).length() &gt; 8)
+  processName2 = testExec.parseInState(processName).substring(0,8);
+}
+// AIX does not have limitation.
+return processName2;</pre></td><td>Thu Aug 09 08:00:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>killNode1-UnixProcessModifier</td><td><pre>tibamx_QANode1</pre></td><td>Thu Aug 09 08:00:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>killNode1-killOnUnix</td><td><pre></pre></td><td>Thu Aug 09 08:00:43 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>killNode1-killOnUnix</td><td><pre></pre></td><td>Thu Aug 09 08:00:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>sh KillProcessByName.sh tibamx_QANode1</pre></td><td>Thu Aug 09 08:00:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>killNode1-killOnUnix</td><td><pre>ERROR: The process "tibamx_QANode1" not found.
+</pre></td><td>Thu Aug 09 08:00:44 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>killNode2</td><td><pre></pre></td><td>Thu Aug 09 08:00:44 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>killNode2</td><td><pre></pre></td><td>Thu Aug 09 08:00:44 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/util/KillProcessByName.tst</pre></td><td>Thu Aug 09 08:00:44 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>killNode2-Log</td><td><pre></pre></td><td>Thu Aug 09 08:00:44 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>killNode2-Log</td><td><pre></pre></td><td>Thu Aug 09 08:00:44 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>killNode2-Log</td><td><pre>Attempting to kill process "tibamx_QANode2"...</pre></td><td>Thu Aug 09 08:00:44 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>killNode2-validate</td><td><pre></pre></td><td>Thu Aug 09 08:00:44 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>killNode2-validate</td><td><pre></pre></td><td>Thu Aug 09 08:00:44 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>String baseErrorMsg = "Kill process validation error";
+String baseSuccessMsg = "Kill process validation success";
+
+if (processName.equals("") || processName.equals("&lt;&lt;null&gt;&gt;"))
+ return baseErrorMsg + ": processName is required";
+
+return baseSuccessMsg;</pre></td><td>Thu Aug 09 08:00:44 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>killNode2-validate</td><td><pre>Kill process validation success</pre></td><td>Thu Aug 09 08:00:46 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>killNode2-OSSelection</td><td><pre></pre></td><td>Thu Aug 09 08:00:46 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>killNode2-OSSelection</td><td><pre></pre></td><td>Thu Aug 09 08:00:46 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>if (com.itko.util.Utilities.isWindows())
+ return "windows";
+else
+ return "unix";</pre></td><td>Thu Aug 09 08:00:46 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>killNode2-OSSelection</td><td><pre>unix</pre></td><td>Thu Aug 09 08:00:48 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>killNode2-UnixProcessModifier</td><td><pre></pre></td><td>Thu Aug 09 08:00:48 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>killNode2-UnixProcessModifier</td><td><pre></pre></td><td>Thu Aug 09 08:00:48 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>// ps -e command used to get the PID has some restriction on some Unix platforms:
+// The process name might truncated.
+
+processName2 = processName;
+
+// Linux ps -e command returns 15 characters max
+if (os_name.equals("Linux")) {
+ if (testExec.parseInState(processName).length() &gt; 15)
+  processName2 = testExec.parseInState(processName).substring(0,15);
+}
+// HP-UX ps -e command returns 14 characters max
+else if (os_name.equals("HP-UX")) {
+ if (testExec.parseInState(processName).length() &gt; 14)
+  processName2 = testExec.parseInState(processName).substring(0,14);
+}
+// Solaris ps -e command returns 8 characters max
+else if (os_name.equals("SunOS")) {
+ if (testExec.parseInState(processName).length() &gt; 8)
+  processName2 = testExec.parseInState(processName).substring(0,8);
+}
+// AIX does not have limitation.
+return processName2;</pre></td><td>Thu Aug 09 08:00:48 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>killNode2-UnixProcessModifier</td><td><pre>tibamx_QANode2</pre></td><td>Thu Aug 09 08:00:48 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>killNode2-killOnUnix</td><td><pre></pre></td><td>Thu Aug 09 08:00:48 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>killNode2-killOnUnix</td><td><pre></pre></td><td>Thu Aug 09 08:00:48 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>sh KillProcessByName.sh tibamx_QANode2</pre></td><td>Thu Aug 09 08:00:48 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>killNode2-killOnUnix</td><td><pre>ERROR: The process "tibamx_QANode2" not found.
+</pre></td><td>Thu Aug 09 08:00:48 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>getInstallShieldRegistry</td><td><pre></pre></td><td>Thu Aug 09 08:00:48 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>getInstallShieldRegistry</td><td><pre></pre></td><td>Thu Aug 09 08:00:48 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.io.File;
+
+if (com.itko.util.Utilities.isWindows()) {
+    File pf = new File(installShieldRegistryOnWindows64);
+    if (pf.exists())
+        return installShieldRegistryOnWindows64;
+    else
+        return installShieldRegistryOnWindows;
+}
+else 
+    return installShieldRegistryOnUnix;
+</pre></td><td>Thu Aug 09 08:00:48 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>getInstallShieldRegistry</td><td><pre>/home2/corp/admuser/InstallShield/Universal</pre></td><td>Thu Aug 09 08:00:49 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deleteInstallShieldRegistry</td><td><pre></pre></td><td>Thu Aug 09 08:00:49 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deleteInstallShieldRegistry</td><td><pre></pre></td><td>Thu Aug 09 08:00:49 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/file/DeleteFile.tst</pre></td><td>Thu Aug 09 08:00:49 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deleteInstallShieldRegistry-Log</td><td><pre></pre></td><td>Thu Aug 09 08:00:49 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deleteInstallShieldRegistry-Log</td><td><pre></pre></td><td>Thu Aug 09 08:00:49 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>deleteInstallShieldRegistry-Log</td><td><pre>Deleting /home2/corp/admuser/InstallShield/Universal/TIBCO ...</pre></td><td>Thu Aug 09 08:00:49 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deleteInstallShieldRegistry-deleteFile</td><td><pre></pre></td><td>Thu Aug 09 08:00:49 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deleteInstallShieldRegistry-deleteFile</td><td><pre></pre></td><td>Thu Aug 09 08:00:49 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.io.File;
+
+// This function delete a file or directory recursively
+deleteFile(String strFile) {
+
+ File f = new File(strFile);
+ String[] strChildren = null;
+ boolean deletionOk = false;
+ 
+ if(!f.exists())
+  return true;
+              
+ if (f.isDirectory()) {
+  // Get children
+  strChildren = f.list();            
+  // Go through each child
+  for (int i = 0; i &lt; strChildren.length; i++) {
+   deletionOk = deleteFile(new File(f, strChildren[i]).getAbsolutePath());
+   if (!deletionOk) {
+    return false;
+   }
+  }
+ }
+ // The directory is now empty so delete it
+ return f.delete();
+}
+
+// Main
+String baseSuccessMsg = "Delete File Success"; // Do not modify. Assertions might exist on this string.
+String baseErrorMsg = "Delete File Error"; // Do not modify. Assertions might exist on this string.
+fileS = testExec.parseInState(file).replace('\\','/');
+try {
+ File fileF = new File(fileS);
+ String file = fileF.getCanonicalPath();
+ if(deleteFile(file))
+  return baseSuccessMsg + ": " + file;
+ else
+  return baseErrorMsg;
+}
+catch(Exception e) {
+ return baseErrorMsg + ": " + e.getMessage();
+}</pre></td><td>Thu Aug 09 08:00:49 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>deleteInstallShieldRegistry-deleteFile</td><td><pre>Delete File Success: /home2/corp/admuser/InstallShield/Universal/TIBCO</pre></td><td>Thu Aug 09 08:00:49 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>cleanUpTIBCOEnvRegistry</td><td><pre></pre></td><td>Thu Aug 09 08:00:49 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>cleanUpTIBCOEnvRegistry</td><td><pre></pre></td><td>Thu Aug 09 08:00:49 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/util/RemoveNodeInXmlFile.tst</pre></td><td>Thu Aug 09 08:00:50 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>cleanUpTIBCOEnvRegistry-log</td><td><pre></pre></td><td>Thu Aug 09 08:00:50 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>cleanUpTIBCOEnvRegistry-log</td><td><pre></pre></td><td>Thu Aug 09 08:00:50 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>cleanUpTIBCOEnvRegistry-log</td><td><pre>Removing Node(s): /TIBCOEnvironment//environment[@location='/local/amx320-V61' or @name='AMX3-QA-BAT'] in file /home2/corp/admuser/.TIBCOEnvInfo/_envInfo.xml ...</pre></td><td>Thu Aug 09 08:00:50 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>cleanUpTIBCOEnvRegistry-validate</td><td><pre></pre></td><td>Thu Aug 09 08:00:50 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>cleanUpTIBCOEnvRegistry-validate</td><td><pre></pre></td><td>Thu Aug 09 08:00:50 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/file/CheckFileExists.tst</pre></td><td>Thu Aug 09 08:00:50 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>cleanUpTIBCOEnvRegistry-validate-Log</td><td><pre>Checking existence of file "/home2/corp/admuser/.TIBCOEnvInfo/_envInfo.xml" ...</pre></td><td>Thu Aug 09 08:00:50 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>cleanUpTIBCOEnvRegistry-removeNode</td><td><pre></pre></td><td>Thu Aug 09 08:00:50 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>cleanUpTIBCOEnvRegistry-removeNode</td><td><pre></pre></td><td>Thu Aug 09 08:00:50 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+
+import org.xml.sax.InputSource; 
+
+import org.w3c.dom.DOMImplementation;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.w3c.dom.Element;
+import org.w3c.dom.bootstrap.DOMImplementationRegistry; 
+
+import org.w3c.dom.ls.DOMImplementationLS;
+import org.w3c.dom.ls.LSSerializer;
+import org.w3c.dom.ls.LSOutput;
+import org.w3c.dom.ls.LSParser;
+
+import javax.xml.XMLConstants;
+import javax.xml.namespace.NamespaceContext;
+import javax.xml.xpath.XPathFactory;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathExpression;
+import javax.xml.xpath.XPathConstants;
+
+// Main
+String baseErrorMsg = "Removing node error"; // Do not modify. Assertion might exist on these strings.
+String baseSuccessMsg = "Removed node successfully";
+
+try {
+// Use DOM Level 3
+System.setProperty(DOMImplementationRegistry.PROPERTY, "org.apache.xerces.dom.DOMImplementationSourceImpl");
+DOMImplementationRegistry registry = DOMImplementationRegistry.newInstance();
+DOMImplementation domImpl = registry.getDOMImplementation("LS 3.0");
+DOMImplementationLS implLS = (DOMImplementationLS)domImpl;
+LSParser parser = implLS.createLSParser(DOMImplementationLS.MODE_SYNCHRONOUS, null);
+Document document = parser.parseURI(file);
+
+// Build the namespace context. Will be used by the xPath object.
+NamespaceContext MyNamespaceContext = new NamespaceContext() {
+ String getNamespaceURI(String prefix) {
+  return document.lookupNamespaceURI(prefix);
+ } 
+ String getPrefix(String namespace) {
+  return document.lookupPrefix(namespace);
+ }
+ Iterator getPrefixes(String namespace) {
+  return null;
+ }
+};
+
+// Get the Nodes and remove them
+InputStream inputStream = new FileInputStream(new File(file));
+InputSource inputSource = new InputSource(inputStream);
+XPath xPath = XPathFactory.newInstance().newXPath();
+xPath.setNamespaceContext(MyNamespaceContext);
+String expression = xpath;
+NodeList nodes = (NodeList)xPath.evaluate(expression, inputSource, XPathConstants.NODESET);
+if (nodes.getLength() == 0)
+ return baseErrorMsg + ": Node not found. XPath expression is probably wrong.";
+for (int i=0; i&lt;nodes.getLength(); i++) {
+ Node node = nodes.item(i);
+ if (node.getNodeType() == Node.ELEMENT_NODE) {
+  Node parentNode = node.getParentNode();
+  parentNode.removeChild(node);
+ }
+ else if (node.getNodeType() == Node.ATTRIBUTE_NODE) {
+  Element parentEl = node.getOwnerElement();
+  parentEl.removeAttribute(node.getNodeName());
+ }
+}
+Document document2 = nodes.item(0).getOwnerDocument();
+inputStream.close();
+
+// Write file
+LSSerializer domWriter = implLS.createLSSerializer();
+LSOutput output = implLS.createLSOutput();
+OutputStream outputStream = new FileOutputStream(new File(file));
+output.setByteStream(outputStream);
+domWriter.write(document2, output);
+outputStream.close();
+
+String successMsg = baseSuccessMsg + ": " + nodes.getLength() + " node(s): ";
+for (int j=0; j&lt;nodes.getLength(); j++) {
+ Node node = nodes.item(j);
+ successMsg = successMsg + node.getNodeName() + " - ";
+}
+return successMsg;
+}
+catch (Exception e) {
+ return baseErrorMsg + ": " + e.getMessage();
+}
+</pre></td><td>Thu Aug 09 08:00:50 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>cleanUpTIBCOEnvRegistry-removeNode</td><td><pre>Removing node error: Node not found. XPath expression is probably wrong.</pre></td><td>Thu Aug 09 08:00:51 PDT 2012</td> </tr><tr bgcolor='#CC9933'><td>EVENT_ASSERT</td><td>cleanUpTIBCOEnvRegistry-removeNode [Assert54] </td><td><pre>Removing node error: Node not found. XPath expression is probably wrong.</pre></td><td>Thu Aug 09 08:00:51 PDT 2012</td> </tr><tr bgcolor='#FFA500'><td>EVENT_TRANSFAILED</td><td>cleanUpTIBCOEnvRegistry</td><td><pre>Sub test case had failure</pre></td><td>Thu Aug 09 08:00:51 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deleteTibcoConfigHome</td><td><pre></pre></td><td>Thu Aug 09 08:00:51 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deleteTibcoConfigHome</td><td><pre></pre></td><td>Thu Aug 09 08:00:51 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/file/DeleteFile.tst</pre></td><td>Thu Aug 09 08:00:51 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deleteTibcoConfigHome-Log</td><td><pre></pre></td><td>Thu Aug 09 08:00:51 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deleteTibcoConfigHome-Log</td><td><pre></pre></td><td>Thu Aug 09 08:00:51 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>deleteTibcoConfigHome-Log</td><td><pre>Deleting /local/amx320-V61/conf ...</pre></td><td>Thu Aug 09 08:00:51 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deleteTibcoConfigHome-deleteFile</td><td><pre></pre></td><td>Thu Aug 09 08:00:51 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deleteTibcoConfigHome-deleteFile</td><td><pre></pre></td><td>Thu Aug 09 08:00:51 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.io.File;
+
+// This function delete a file or directory recursively
+deleteFile(String strFile) {
+
+ File f = new File(strFile);
+ String[] strChildren = null;
+ boolean deletionOk = false;
+ 
+ if(!f.exists())
+  return true;
+              
+ if (f.isDirectory()) {
+  // Get children
+  strChildren = f.list();            
+  // Go through each child
+  for (int i = 0; i &lt; strChildren.length; i++) {
+   deletionOk = deleteFile(new File(f, strChildren[i]).getAbsolutePath());
+   if (!deletionOk) {
+    return false;
+   }
+  }
+ }
+ // The directory is now empty so delete it
+ return f.delete();
+}
+
+// Main
+String baseSuccessMsg = "Delete File Success"; // Do not modify. Assertions might exist on this string.
+String baseErrorMsg = "Delete File Error"; // Do not modify. Assertions might exist on this string.
+fileS = testExec.parseInState(file).replace('\\','/');
+try {
+ File fileF = new File(fileS);
+ String file = fileF.getCanonicalPath();
+ if(deleteFile(file))
+  return baseSuccessMsg + ": " + file;
+ else
+  return baseErrorMsg;
+}
+catch(Exception e) {
+ return baseErrorMsg + ": " + e.getMessage();
+}</pre></td><td>Thu Aug 09 08:00:51 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>deleteTibcoConfigHome-deleteFile</td><td><pre>Delete File Success: /local/amx320-V61/conf</pre></td><td>Thu Aug 09 08:00:52 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deleteTibcoHome</td><td><pre></pre></td><td>Thu Aug 09 08:00:52 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deleteTibcoHome</td><td><pre></pre></td><td>Thu Aug 09 08:00:52 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/file/DeleteFile.tst</pre></td><td>Thu Aug 09 08:00:52 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deleteTibcoHome-Log</td><td><pre></pre></td><td>Thu Aug 09 08:00:52 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deleteTibcoHome-Log</td><td><pre></pre></td><td>Thu Aug 09 08:00:52 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>deleteTibcoHome-Log</td><td><pre>Deleting /local/amx320-V61 ...</pre></td><td>Thu Aug 09 08:00:52 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deleteTibcoHome-deleteFile</td><td><pre></pre></td><td>Thu Aug 09 08:00:52 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deleteTibcoHome-deleteFile</td><td><pre></pre></td><td>Thu Aug 09 08:00:52 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.io.File;
+
+// This function delete a file or directory recursively
+deleteFile(String strFile) {
+
+ File f = new File(strFile);
+ String[] strChildren = null;
+ boolean deletionOk = false;
+ 
+ if(!f.exists())
+  return true;
+              
+ if (f.isDirectory()) {
+  // Get children
+  strChildren = f.list();            
+  // Go through each child
+  for (int i = 0; i &lt; strChildren.length; i++) {
+   deletionOk = deleteFile(new File(f, strChildren[i]).getAbsolutePath());
+   if (!deletionOk) {
+    return false;
+   }
+  }
+ }
+ // The directory is now empty so delete it
+ return f.delete();
+}
+
+// Main
+String baseSuccessMsg = "Delete File Success"; // Do not modify. Assertions might exist on this string.
+String baseErrorMsg = "Delete File Error"; // Do not modify. Assertions might exist on this string.
+fileS = testExec.parseInState(file).replace('\\','/');
+try {
+ File fileF = new File(fileS);
+ String file = fileF.getCanonicalPath();
+ if(deleteFile(file))
+  return baseSuccessMsg + ": " + file;
+ else
+  return baseErrorMsg;
+}
+catch(Exception e) {
+ return baseErrorMsg + ": " + e.getMessage();
+}</pre></td><td>Thu Aug 09 08:00:52 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>deleteTibcoHome-deleteFile</td><td><pre>Delete File Success: /local/amx320-V61</pre></td><td>Thu Aug 09 08:00:52 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deleteAmxInstaller</td><td><pre></pre></td><td>Thu Aug 09 08:00:52 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deleteAmxInstaller</td><td><pre></pre></td><td>Thu Aug 09 08:00:52 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/file/DeleteFile.tst</pre></td><td>Thu Aug 09 08:00:52 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deleteAmxInstaller-Log</td><td><pre></pre></td><td>Thu Aug 09 08:00:52 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deleteAmxInstaller-Log</td><td><pre></pre></td><td>Thu Aug 09 08:00:52 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>deleteAmxInstaller-Log</td><td><pre>Deleting /var/tmp//amxinstaller ...</pre></td><td>Thu Aug 09 08:00:52 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deleteAmxInstaller-deleteFile</td><td><pre></pre></td><td>Thu Aug 09 08:00:52 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deleteAmxInstaller-deleteFile</td><td><pre></pre></td><td>Thu Aug 09 08:00:52 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.io.File;
+
+// This function delete a file or directory recursively
+deleteFile(String strFile) {
+
+ File f = new File(strFile);
+ String[] strChildren = null;
+ boolean deletionOk = false;
+ 
+ if(!f.exists())
+  return true;
+              
+ if (f.isDirectory()) {
+  // Get children
+  strChildren = f.list();            
+  // Go through each child
+  for (int i = 0; i &lt; strChildren.length; i++) {
+   deletionOk = deleteFile(new File(f, strChildren[i]).getAbsolutePath());
+   if (!deletionOk) {
+    return false;
+   }
+  }
+ }
+ // The directory is now empty so delete it
+ return f.delete();
+}
+
+// Main
+String baseSuccessMsg = "Delete File Success"; // Do not modify. Assertions might exist on this string.
+String baseErrorMsg = "Delete File Error"; // Do not modify. Assertions might exist on this string.
+fileS = testExec.parseInState(file).replace('\\','/');
+try {
+ File fileF = new File(fileS);
+ String file = fileF.getCanonicalPath();
+ if(deleteFile(file))
+  return baseSuccessMsg + ": " + file;
+ else
+  return baseErrorMsg;
+}
+catch(Exception e) {
+ return baseErrorMsg + ": " + e.getMessage();
+}</pre></td><td>Thu Aug 09 08:00:52 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>deleteAmxInstaller-deleteFile</td><td><pre>Delete File Success: /var/tmp/amxinstaller</pre></td><td>Thu Aug 09 08:00:53 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>copyAmxZip</td><td><pre></pre></td><td>Thu Aug 09 08:00:54 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>copyAmxZip</td><td><pre></pre></td><td>Thu Aug 09 08:00:54 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/file/CopyFile.tst</pre></td><td>Thu Aug 09 08:00:54 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>copyAmxZip-Log</td><td><pre></pre></td><td>Thu Aug 09 08:00:54 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>copyAmxZip-Log</td><td><pre></pre></td><td>Thu Aug 09 08:00:54 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>copyAmxZip-Log</td><td><pre>Copying file 
+"/tsi/pkg/activematrix/3.2.0/V61/TIB_amsg3x_3.2.0_hpux112_ia64.zip" to 
+"/var/tmp//amxinstaller/amx.zip"</pre></td><td>Thu Aug 09 08:00:55 PDT 2012</td> </tr><tr bgcolor='#CC9933'><td>EVENT_ASSERT</td><td>copyAmxZip-Log [Assert106] </td><td><pre>Destination directory will be created...</pre></td><td>Thu Aug 09 08:00:55 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>copyAmxZip-getDirectory</td><td><pre></pre></td><td>Thu Aug 09 08:00:55 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>copyAmxZip-getDirectory</td><td><pre></pre></td><td>Thu Aug 09 08:00:55 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>String file = testExec.parseInState(fileOut).replace('\\','/');
+File f = new File(file);
+
+if (f.isDirectory())
+ return file;
+else 
+ return f.getParent();</pre></td><td>Thu Aug 09 08:00:55 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>copyAmxZip-getDirectory</td><td><pre>/var/tmp/amxinstaller</pre></td><td>Thu Aug 09 08:00:55 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>copyAmxZip-createDirectory</td><td><pre></pre></td><td>Thu Aug 09 08:00:55 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>copyAmxZip-createDirectory</td><td><pre></pre></td><td>Thu Aug 09 08:00:55 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/file/CreateDirectory.tst</pre></td><td>Thu Aug 09 08:00:55 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>copyAmxZip-createDirectory-Log</td><td><pre></pre></td><td>Thu Aug 09 08:00:55 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>copyAmxZip-createDirectory-Log</td><td><pre></pre></td><td>Thu Aug 09 08:00:55 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>copyAmxZip-createDirectory-Log</td><td><pre>Creating directory "/var/tmp/amxinstaller" ...</pre></td><td>Thu Aug 09 08:00:55 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>copyAmxZip-createDirectory-createDirectory</td><td><pre></pre></td><td>Thu Aug 09 08:00:55 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>copyAmxZip-createDirectory-createDirectory</td><td><pre></pre></td><td>Thu Aug 09 08:00:55 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.io.File;
+
+// This function create a directory
+createDirectory(String strFile) {
+ File f = new File(strFile);
+ 
+ if(f.exists())
+  return true;  
+ else
+  return f.mkdirs();           
+}
+
+// Main
+//String baseSuccessMsg = "Directory Creation Success"; // Do not modify. Test engineers might assert on this string. 
+String baseErrorMsg = "Directory Creation Error"; // Do not modify. Test engineers might assert on this string.
+String dir = testExec.getStateString("directory", "&lt;&lt;null&gt;&gt;").replace('\\', '/');
+dir = testExec.parseInState(dir).replace('\\', '/');
+try {
+ if(createDirectory(dir))
+  return dir;
+ else
+  return baseErrorMsg;
+}
+catch(Exception e) {
+ return baseErrorMsg + ": " + e.getMessage();
+}</pre></td><td>Thu Aug 09 08:00:55 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>copyAmxZip-createDirectory-createDirectory</td><td><pre>/var/tmp/amxinstaller</pre></td><td>Thu Aug 09 08:00:56 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>copyAmxZip-copyFile</td><td><pre></pre></td><td>Thu Aug 09 08:00:56 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>copyAmxZip-copyFile</td><td><pre></pre></td><td>Thu Aug 09 08:00:56 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.io.*;
+
+copyFile(String fileIn, String fileOut) {
+ // Do not modify next 2 variables. 
+ // Test engineers might have assertion on these strings.
+ String baseSuccessMsg = "File Copy Success";
+ String baseErrorMsg = "File Copy Error";
+
+ try {
+  File fi = new File(fileIn);
+  File fo = new File(fileOut);
+
+  // We don't copy directory!
+  if (fi.isDirectory())
+   return baseErrorMsg + ": Source cannot be a directory !"; 
+  
+  // If destination is a directory, we'll copy the source file in there
+  if (fo.exists() && fo.isDirectory())
+   fo = new File(fo, fi.getName());
+
+  FileInputStream fis  = new FileInputStream(fi);
+  FileOutputStream fos = new FileOutputStream(fo);
+  
+  byte[] buf = new byte[1024];
+  int i = 0;
+  while((i = fis.read(buf))!= -1) {
+   fos.write(buf, 0, i);
+  }
+  fis.close();
+  fos.close();
+  return fileOut;
+ }
+ catch (Exception e) {
+  return baseErrorMsg + ": " + e.getMessage();
+ }
+}
+
+// Main
+fileIn = testExec.parseInState(fileIn).replace('\\','/');
+fileOut = testExec.parseInState(fileOut).replace('\\','/');
+return copyFile(fileIn, fileOut);</pre></td><td>Thu Aug 09 08:00:56 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>copyAmxZip-copyFile</td><td><pre>/var/tmp//amxinstaller/amx.zip</pre></td><td>Thu Aug 09 08:04:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>unzipAmx</td><td><pre></pre></td><td>Thu Aug 09 08:04:43 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>unzipAmx</td><td><pre></pre></td><td>Thu Aug 09 08:04:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/util/ExtractZipArchive.tst</pre></td><td>Thu Aug 09 08:04:44 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>unzipAmx-log</td><td><pre>Extracting /var/tmp//amxinstaller/amx.zip into /var/tmp//amxinstaller/unzip ...</pre></td><td>Thu Aug 09 08:04:44 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>unzipAmx-generateCommandToUnzip</td><td><pre></pre></td><td>Thu Aug 09 08:04:44 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>unzipAmx-generateCommandToUnzip</td><td><pre></pre></td><td>Thu Aug 09 08:04:44 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>String baseErrorMsg = "Zip extraction validation error";
+
+// Verify that zip file exists
+String zipArchivePath = testExec.parseInState(zipArchivePath).replace('\\','/');
+String destinationFolder = testExec.parseInState(destinationFolder).replace('\\','/');
+f = new File(zipArchivePath);
+if (!f.exists())
+return baseErrorMsg + ": Zip archive (" + zipArchivePath + ") does not exist.";
+
+// Replace "\" with "/" in the output folder path
+/*String destinationFolder = testExec.parseInState(destinationFolder).replace('\\','/'); 
+f = new File(destinationFolder);
+if (!f.exists())
+return baseErrorMsg + ": Destination folder (" + destinationFolder + ") does not exist.";
+
+// Destination folder must be a directory.
+if (!f.isDirectory())
+{
+ return baseErrorMsg + ": Destination folder (" + destinationFolder + ") must be a directory.";
+}
+*/
+// determine the executable extension (G11n team had issue without this).
+if (com.itko.util.Utilities.isWindows())
+ exe = ".exe";
+else 
+ exe = "";
+
+// Use TIBCO_JAVA_HOME if exists
+f2 = new File(TIBCO_JAVA_HOME);
+if (f2.exists()) {
+ java = TIBCO_JAVA_HOME.replace('\\','/') + "/bin/java" + exe;
+ // this takes care of blank space in path.
+// if (com.itko.util.Utilities.isWindows()) {
+  //java = java.replaceAll(". [a-zA-Z0-9-_ )(.]*","~1"); // return DOS-like folder name
+//  java = "\"" + java.replace('/','\\') + "\"";
+// }
+}
+else {
+ java = java_home.replace('\\','/') + "/bin/java" + exe;
+}
+/*
+else {
+ java = "java" + exe; // just java, hopefully it will work!
+}
+*/
+//Construct command to issue for unzipping the archive
+String command = "";
+if (com.itko.util.Utilities.isWindows()) { // handle blank space in path
+  command = java + " -Xms64m -Xmx512m -jar util.zip \""+zipArchivePath+"\" \""+destinationFolder+"\"";
+}
+else {
+ command = java + " -Xms64m -Xmx512m -jar util.zip " + zipArchivePath + " " + destinationFolder;
+}
+return command;</pre></td><td>Thu Aug 09 08:04:44 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>unzipAmx-generateCommandToUnzip</td><td><pre>/tsi/root/external/jdk/1.6.0_29/hpux112/ia64/jre/bin/java -Xms64m -Xmx512m -jar util.zip /var/tmp//amxinstaller/amx.zip /var/tmp//amxinstaller/unzip</pre></td><td>Thu Aug 09 08:04:45 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>unzipAmx-unzipArchive</td><td><pre></pre></td><td>Thu Aug 09 08:04:45 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>unzipAmx-unzipArchive</td><td><pre></pre></td><td>Thu Aug 09 08:04:45 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/tsi/root/external/jdk/1.6.0_29/hpux112/ia64/jre/bin/java -Xms64m -Xmx512m -jar util.zip /var/tmp//amxinstaller/amx.zip /var/tmp//amxinstaller/unzip</pre></td><td>Thu Aug 09 08:04:45 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>unzipAmx-unzipArchive</td><td><pre>Extracting directory: assemblies/
+Extracting directory: licenses/
+Extracting file: TIBCOUniversalInstaller-amsg3x_3.2.0.silent
+Extracting file: TIB_amsg_3.2.0_installation.pdf
+Extracting file: TIB_amsg_3.2.0_license.pdf
+Extracting file: TIB_amsg_3.2.0_readme.txt
+Extracting file: TIB_amsg_3.2.0_relnotes.pdf
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_admin_api_axis2_feature_1.4.0.064.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_admin_api_feature_1.4.0.085.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_admin_base_feature_1.4.0.184.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_admin_cli_feature_1.4.0.079.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_admin_common_feature_1.4.0.083.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_admin_ddl_generator_feature_1.0.0.016.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_admin_services_feature_1.5.0.076.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_admin_ui_feature_1.2.0.119.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_binding_common_design_feature_p2_1.0.0.028.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_binding_common_model_feature_1.0.0.007.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_binding_common_model_feature_eclipse_1.0.0.007.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_binding_common_runtime_feature_1.0.0.005.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_binding_model_tcp_feature_1.1.0.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_binding_soap_admin_api_feature_1.4.1.010.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_binding_soap_admin_base_feature_1.4.1.008.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_binding_soap_admin_cli_feature_1.4.1.006.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_binding_soap_admin_web_feature_1.0.0.008.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_binding_soap_common_feature_1.4.0.012.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_binding_soap_common_feature_eclipse_1.4.0.012.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_binding_soap_runtime_feature_1.4.0.036.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_binding_tcp_runtime_feature_1.1.0.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_bindingtype_jms_admin_backend_feature_1.2.0.029.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_bindingtype_jms_admin_cli_feature_1.2.0.013.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_bindingtype_jms_admin_web_feature_1.2.0.024.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_bindingtype_jms_common_feature_1.0.0.013.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_bindingtype_jms_common_feature_eclipse_1.0.0.012.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_bindingtype_jms_design_feature_p2_1.2.0.062.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_bindingtype_jms_model_feature_1.2.0.020.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_bindingtype_jms_model_feature_eclipse_1.2.0.020.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_bindingtype_jms_runtime_feature_1.2.0.064.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_common_model_feature_1.4.0.018.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_common_model_feature_eclipse_1.4.0.017.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_debugger_daa_feature_1.2.0.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_debugger_design_client_feature_p2_1.1.0.009.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_debugger_runtime_core_feature_1.2.0.003.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_design_core_feature_p2_3.4.0.094.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_design_sca_ui_feature_p2_3.4.0.089.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_hpa_client_ant_feature_1.1.0.010.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_hpa_client_api_feature_1.1.0.023.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_hpa_client_cli_feature_1.1.0.024.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_hpa_core_client_feature_1.1.0.013.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_hpa_core_common_feature_1.5.0.028.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_hpa_core_runtime_api_feature_1.4.0.012.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_hpa_core_runtime_common_feature_1.5.0.009.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_hpa_core_runtime_host_feature_1.5.0.035.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_hpa_core_runtime_node_feature_1.5.0.008.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_hpa_core_runtime_osgi_feature_1.2.0.010.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_hpa_core_runtime_services_feature_1.5.0.003.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_hpa_tibcohost_client_feature_1.1.0.030.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_hpa_tibcohost_common_feature_1.3.0.016.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_hpa_tibcohost_common_jmx_core_feature_1.4.0.006.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_hpa_tibcohost_common_jmx_j2ee_feature_1.2.0.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_hpa_tibcohost_common_jmx_jvm_feature_1.2.0.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_hpa_tibcohost_common_jmx_osgi_feature_1.2.0.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_hpa_tibcohost_mgmt_client_api_feature_1.0.0.006.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_hpa_tibcohost_mgmt_client_feature_1.0.0.005.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_hpa_tibcohost_node_feature_1.4.0.028.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_hpa_tibcohost_node_kernel_feature_1.4.0.017.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_hpa_tibcohost_node_launch_feature_1.0.0.010.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_hpa_tibcohost_runtime_ant_feature_1.1.0.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_hpa_tibcohost_runtime_api_feature_1.5.0.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_hpa_tibcohost_runtime_cli_feature_1.1.0.014.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_hpa_tibcohost_runtime_client_feature_1.1.0.014.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_hpa_tibcohost_runtime_feature_1.4.0.038.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_implementation_common_feature_1.2.0.004.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_implementation_common_websecuritypolicy_design_feature_p2_1.0.0.024.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_implementation_common_websecuritypolicy_model_feature_1.0.0.004.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_implementation_common_websecuritypolicy_model_feature_eclipse_1.0.0.004.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_implementation_common_websecuritypolicy_runtime_feature_1.0.0.003.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_implementation_java_design_feature_p2_3.4.0.073.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_implementationtype_spring_cheatsheet_feature_p2_1.2.0.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_implementationtype_spring_design_feature_eclipse_1.2.0.038.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_implementationtype_spring_model_feature_1.4.0.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_implementationtype_spring_model_feature_eclipse_1.4.0.003.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_implementationtype_spring_runtime_feature_1.5.0.006.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_implementationtype_webapp_common_feature_1.0.0.008.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_implementationtype_webapp_common_feature_eclipse_1.0.0.008.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_implementationtype_webapp_design_feature_p2_1.4.0.040.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_implementationtype_webapp_model_feature_1.6.0.007.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_implementationtype_webapp_model_feature_eclipse_1.6.0.007.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_implementationtype_webapp_runtime_feature_1.5.0.022.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_jms_admin_api_feature_1.3.0.004.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_jms_admin_base_feature_1.3.0.019.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_jms_admin_cli_feature_1.3.0.010.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_jms_admin_web_feature_1.3.0.031.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_model_design_feature_1.4.0.008.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_model_design_feature_eclipse_1.4.0.008.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_model_runtime_feature_1.4.0.014.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_platform_common_feature_1.3.0.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_platform_runtime_api_feature_1.4.0.024.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_platform_runtime_feature_1.4.0.060.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_sca_binding_design_soap_feature_p2_1.4.0.044.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_sca_binding_design_soap_jms_feature_p2_1.2.0.013.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_sca_binding_model_soap_feature_1.4.0.004.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_sca_binding_model_soap_feature_eclipse_1.4.0.004.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_sharedresource_admin_feature_1.3.0.026.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_sharedresource_design_feature_p2_3.4.0.044.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_sharedresource_hibernate_runtime_core_feature_1.3.0.009.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_sharedresource_hibernate_runtime_tibcohost_feature_1.2.0.004.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_sharedresource_jms_common_feature_1.0.0.009.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_sharedresource_jms_common_feature_p2_1.0.0.009.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_sharedresource_jms_design_feature_p2_1.3.0.029.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_sharedresource_jms_model_feature_1.3.0.007.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_sharedresource_jms_model_feature_eclipse_1.3.0.007.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_sharedresource_jms_runtime_core_feature_1.3.0.044.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_sharedresource_jms_runtime_tibcohost_feature_1.3.0.006.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_sharedresource_model_feature_3.4.0.007.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_sharedresource_model_feature_eclipse_3.4.0.007.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_sharedresource_runtime_core_feature_1.4.0.016.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_sharedresource_runtime_tibcohost_feature_1.4.0.014.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_sharedresource_support_api_feature_1.0.0.013.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_sharedresource_support_core_feature_1.0.0.026.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_sharedresource_support_extensions_jms_feature_1.0.0.012.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_sharedresource_teneo_runtime_core_feature_1.4.0.009.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_sharedresource_teneo_runtime_tibcohost_feature_1.4.0.005.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amf_tools_antbuild_feature_p2_1.0.0.021.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amx_bt_management_runtime_feature_1.0.0.013.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amx_bt_mbean_runtime_feature_1.0.0.006.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amx_bt_platform_model_feature_1.0.0.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amx_bt_platform_model_feature_eclipse_1.0.0.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amx_dashboard_client_feature_1.0.0.005.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amx_ext_cxf_design_feature_p2_1.0.200.003.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amx_ext_cxf_model_feature_1.0.200.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amx_ext_cxf_model_feature_eclipse_1.0.200.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amx_ext_cxf_runtime_feature_1.0.100.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amx_gxml_databinding_feature_1.0.200.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amx_it_mediation_cheatsheet_feature_p2_3.4.0.004.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amx_it_mediation_daa_feature_3.4.0.009.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amx_it_mediation_design_feature_p2_3.4.0.029.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amx_it_mediation_feature_3.4.0.003.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amx_it_mediation_model_feature_3.4.0.026.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amx_it_mediation_model_feature_eclipse_3.4.0.026.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amx_it_mediation_runtime_feature_3.4.0.022.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amx_it_mediation_tools_feature_p2_3.4.0.006.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amx_it_mediation_util_feature_3.4.0.030.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amx_it_mediation_util_feature_eclipse_3.4.0.030.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amx_tools_nodeutil_feature_1.4.0.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_amx_tools_patchmgr_feature_2.0.0.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_commonlogging_logclient_feature_2.3.0.017.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_commonlogging_logservice_base_feature_1.2.0.007.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_commonlogging_logservice_cmdline_feature_1.1.100.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_commonlogging_logservice_daa_feature_2.3.0.024.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_commonlogging_logservice_feature_2.2.0.041.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_commonlogging_logservice_model_feature_2.0.200.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_commonlogging_logservice_services_feature_1.2.0.052.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_commonlogging_payload_daa_feature_1.2.0.004.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_commonlogging_payload_feature_1.2.0.016.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_corona_eventformat_model_feature_2.3.0.004.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_customwizard_feature_1.2.0.029.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_devtools_install_support_feature_1.3.100.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_governance_agent_api_feature_1.0.0.022.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_governance_agent_ext_api_feature_1.0.0.013.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_governance_agent_migrator_feature_1.0.0.005.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_governance_amx3_monitoring_service_feature_1.1.0.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_governance_amxgovagent_feature_1.2.0.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_governance_amxserviceprobe_feature_2.2.0.005.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_governance_common_cli_feature_1.2.0.004.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_governance_common_govcontrol_base_feature_1.1.0.067.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_governance_common_govobj_api_feature_1.2.0.027.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_governance_common_govobj_base_feature_1.2.0.079.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_governance_common_monitoring_service_feature_1.1.0.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_governance_common_util_feature_1.2.0.015.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_governance_common_util_minimum_feature_1.2.0.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_governance_common_web_feature_1.2.0.034.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_governance_commonlogging_extension_feature_1.1.0.004.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_governance_mcr_aggregator_application_feature_2.2.0.004.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_governance_mcr_aggregator_data_migration_feature_2.1.100.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_governance_mcr_aggregator_feature_2.2.0.021.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_governance_mcr_aggregator_statsapi_feature_2.2.0.009.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_governance_mcr_cli_feature_2.2.0.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_governance_mcr_config_api_feature_2.1.0.004.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_governance_mcr_config_base_feature_2.2.0.010.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_governance_mcr_stats_api_feature_2.1.0.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_governance_mcr_stats_base_feature_2.2.0.008.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_governance_mcr_web_feature_2.2.0.008.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_governance_pa_actions_feature_1.3.0.043.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_governance_pa_amxcomponents_feature_1.3.0.036.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_governance_pa_components_feature_2.0.0.041.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_governance_pa_resources_feature_2.0.0.024.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_governance_pm_platform_backend_feature_1.3.0.024.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_governance_pm_platform_web_feature_1.3.0.005.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_governance_serviceprobe_feature_2.2.0.003.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_governance_sharedresource_application_feature_1.2.0.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_gxml_sa_feature_1.0.500.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_gxml_sa_feature_eclipse_1.0.500.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_gxml_sa_xdm_dom_feature_1.0.300.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_gxml_sa_xdm_dom_feature_eclipse_1.0.300.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_gxml_sa_xdm_xi_feature_1.0.500.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_java_cheatsheet_feature_p2_1.3.0.007.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_neo_common_2.4.400.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_neo_common_eclipse_2.4.400.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_neo_common_util_feature_2.5.100.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_neo_common_util_feature_2.5.100.011.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_neo_common_util_feature_eclipse_2.5.0.011.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_neo_eclipse_support_feature_1.0.400.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_neo_eclipse_support_osgi_feature_1.1.200.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_neo_gms_feature_1.1.100.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_neo_machine_feature_1.5.100.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_neo_machine_feature_1.5.200.008.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_neo_machine_feature_eclipse_1.5.0.018.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_neo_machine_launch_feature_2.0.0.017.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_neo_machine_launch_feature_2.0.200.005.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_neo_machine_osgi_feature_1.2.100.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_neo_model_core_feature_1.0.500.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_neo_model_core_feature_eclipse_1.0.500.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_neo_monitor_feature_2.5.0.004.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_neo_monitor_feature_eclipse_2.5.0.003.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_neo_svar_support_feature_1.1.0.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_registry_uddi_amxintg_base_feature_1.4.0.003.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_registry_uddi_amxintg_cli_feature_1.3.1.003.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_registry_uddi_amxintg_services_feature_1.5.0.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_registry_uddi_cmdline_feature_3.1.0.014.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_registry_uddi_governance_feature_1.2.100.006.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_security_tibcrypt_feature_2.15.0.010.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_security_tibcrypt_feature_eclipse_2.15.0.009.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_security_tibcrypt_password_feature_2.12.200.003.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_soa_cheatsheet_feature_1.1.0.003.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tct_admin_editor_feature_1.3.0.033.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tct_admin_feature_1.3.0.065.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tct_admin_replicate_feature_1.3.0.011.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tct_amx_feature_1.2.0.034.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tct_ede_admin_feature_1.3.0.006.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tct_framework_feature_1.2.0.033.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tct_tibcohost_feature_1.3.0.022.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tct_tpclshells_feature_1.3.0.014.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tibcoxml_util_5.51.600.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tibcoxml_util_eclipse_5.51.600.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tibcoxml_webservices_5.51.600.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tibcoxml_webservices_eclipse_5.51.600.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tibcoxml_xml_5.51.600.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tibcoxml_xml_eclipse_5.51.600.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tibcoxml_xml_extras_5.51.600.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tibcoxml_xml_extras_eclipse_5.51.600.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tibems_qin_feature_1.0.3.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_antlr_feature_2.7.200.003.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_com_ctc_wstx_feature_3.2.300.003.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_com_ctc_wstx_feature_eclipse_3.2.300.003.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_com_ibm_icu_feature_3.8.100.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_com_oreilly_servlet_feature_2.1.100.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_com_sun_jmx_remote_optional_feature_1.0.200.005.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_com_sun_jmx_remote_optional_feature_eclipse_1.0.200.005.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_dk_itst_uddi_client_feature_1.4.0.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_emf_2.4.100.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_javax_activation_feature_1.1.200.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_javax_annotation_feature_1.0.100.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_javax_ejb_feature_3.1.0.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_javax_jms_feature_1.1.100.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_javax_jws_feature_1.1.2.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_javax_mail_feature_1.4.200.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_javax_portlet_feature_1.0.100.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_javax_resource_feature_1.5.100.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_javax_servlet_feature_2.5.200.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_javax_servlet_jsp_feature_2.1.200.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_javax_servlet_jsp_jstl_feature_1.1.2.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_javax_system_exports_feature_5.0.300.005.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_javax_system_exports_ibm_feature_5.1.0.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_javax_system_exports_sun_feature_5.0.300.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_javax_transaction_feature_1.1.0.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_javax_wsdl4j_feature_1.6.200.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_javax_xml_bind_feature_2.1.100.004.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_javax_xml_bind_feature_eclipse_2.1.100.004.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_javax_xml_bind_tools_feature_eclipse_2.1.100.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_javax_xml_rpc_feature_1.1.200.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_javax_xml_soap_feature_1.2.100.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_net_sf_cglib_nodep_feature_2.1.100.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_net_sf_ehcache_feature_1.2.300.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_net_sf_saxon_feature_9.1.100.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_aopalliance_feature_1.0.100.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_apache_axiom_v12_feature_1.2.7.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_apache_axis2_runtime_feature_1.4.300.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_apache_commons_beanutils_feature_1.7.100.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_apache_commons_codec_feature_1.3.100.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_apache_commons_codec_feature_1.3.200.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_apache_commons_collections_feature_3.2.100.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_apache_commons_dbcp_feature_1.2.100.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_apache_commons_digester_feature_1.7.100.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_apache_commons_fileupload_feature_1.2.100.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_apache_commons_httpclient_feature_3.1.200.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_apache_commons_httpclient_feature_eclipse_3.1.200.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_apache_commons_io_feature_1.2.100.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_apache_commons_jxpath_feature_1.2.0.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_apache_commons_lang_feature_2.4.100.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_apache_commons_logging_over_slf4j_feature_1.5.200.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_apache_commons_logging_over_slf4j_feature_eclipse_1.5.100.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_apache_commons_math_feature_2.0.0.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_apache_commons_modeler_feature_1.1.200.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_apache_commons_pool_feature_1.3.100.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_apache_commons_ssl_feature_0.3.9.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_apache_harmony_asn1_feature_5.0.0.006.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_apache_httpclient_feature_4.0.1.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_apache_httpcore_feature_4.0.1.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_apache_jasper_feature_6.0.100.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_apache_log4j_feature_1.2.400.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_apache_neethi_feature_2.0.4.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_apache_regexp_feature_1.4.200.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_apache_sandesha2_feature_1.3.100.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_apache_tools_ant_feature_1.8.2.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_apache_woden_feature_1.0.0.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_apache_ws_commons_schema_v13_feature_1.4.2.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_apache_ws_wss4j_feature_1.6.100.012.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_apache_xalan_feature_2.7.200.003.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_apache_xerces_feature_2.9.200.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_apache_xml_resolver_feature_1.2.300.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_apache_xml_security_feature_1.5.100.005.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_apache_xml_serializer_feature_2.7.200.007.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_apache_xmlbeans_feature_2.5.0.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_apache_xmlbeans_feature_eclipse_2.4.200.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_aspectj_feature_1.5.200.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_codehaus_annogen_feature_0.1.100.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_dom4j_feature_1.6.300.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_dwr_feature_2.0.5.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_eclipse_bpel_feature_1.4.100.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_eclipse_bpel_feature_rt_1.4.100.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_eclipse_emf_validation_feature_3.4.2.005.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_eclipse_equinox_common_feature_3.6.0.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_eclipse_equinox_feature_3.7.1.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_eclipse_wst_feature_1.1.400.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_eclipse_xsd_feature_2.4.200.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_hsqldb_feature_1.8.400.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_jaxen_feature_1.1.200.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_jdom_feature_1.0.200.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_joda_time_feature_1.6.2.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_jvnet_annox_feature_0.4.100.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_mortbay_jetty_feature_6.1.200.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_mortbay_jetty_plus_feature_6.1.220.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_mozilla_javascript_feature_1.6.200.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_objectweb_asm_feature_2.2.100.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_objectweb_howl_log_feature_1.1.0.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_opensaml_feature_2.5.2.006.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_quartz_feature_1.8.3.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_slf4j_log4j12_feature_1.6.100.003.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_slf4j_log4j12_feature_1.6.200.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_slf4j_log4j12_feature_eclipse_1.6.100.003.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_springframework_context_feature_2.5.6.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_springframework_minimum_feature_2.5.6.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_springframework_orm_feature_2.5.6.003.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_springframework_web_feature_2.5.6.005.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_org_tmatesoft_svn_feature_1.3.0.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpcl_orm_2.0.300.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpshell_db2_jdbc_feature_4.13.0.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpshell_oracle_jdbc_feature_11.2.100.003.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpshell_siteminder_feature_1.0.0.006.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpshell_sonic_jms_feature_6.2.0.003.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpshell_sqlserver_jdbc_feature_3.0.0.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_tpshell_websphere_jms_feature_7.0.0.004.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_trinity_cmdline_feature_1.2.0.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_trinity_design_feature_p2_3.4.0.022.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_trinity_models_3.5.0.016.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_trinity_models_eclipse_3.5.0.016.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_trinity_realm_api_feature_2.3.0.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_trinity_realm_core_feature_1.3.0.020.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_trinity_realm_tibcohost_feature_1.3.0.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_trinity_runtime_base_feature_1.4.0.034.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_trinity_runtime_core_feature_1.4.0.091.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_trinity_runtime_tibcohost_feature_1.3.0.006.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_trinity_server_credentialserver_base_feature_1.3.0.010.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_trinity_server_credentialserver_common_feature_1.3.0.020.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_trinity_server_credentialserver_services_feature_1.3.0.007.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_webapp_cheatsheet_feature_p2_1.2.0.005.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_xml_cxf_common_feature_1.0.200.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_xml_cxf_common_feature_eclipse_1.0.200.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_xml_cxf_design_feature_1.0.200.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_xml_cxf_runtime_feature_1.0.400.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_xml_mapper_feature_p2_1.3.400.001.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_xml_mapper_schema_emfapi_feature_p2_1.3.300.002.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_xpd_core_feature_p2_3.6.0.013.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_xpd_deploy_feature_p2_3.6.0.007.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_xpd_scf_feature_p2_3.6.0.003.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_xpd_service_feature_p2_3.6.0.008.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_xpd_tpcl_oaw_lib_feature_4.3.1.003.zip
+Extracting file: assemblies/assembly_tibco_com_tibco_xpd_tpcl_org_apache_derby_feature_10.5.100.001.zip
+Extracting file: assemblies/assembly_tibco_eclipse_birt_report_framework_3.7.2.001.zip
+Extracting file: assemblies/assembly_tibco_eclipse_dtp_1.9.2.001.zip
+Extracting file: assemblies/assembly_tibco_eclipse_emf_2.7.2.001.zip
+Extracting file: assemblies/assembly_tibco_eclipse_emf_query_1.5.0.003.zip
+Extracting file: assemblies/assembly_tibco_eclipse_emf_transaction_1.5.1.001.zip
+Extracting file: assemblies/assembly_tibco_eclipse_emf_validation_1.5.0.003.zip
+Extracting file: assemblies/assembly_tibco_eclipse_ftp_webdav_3.2.2.005.zip
+Extracting file: assemblies/assembly_tibco_eclipse_gef_3.7.2.001.zip
+Extracting file: assemblies/assembly_tibco_eclipse_gmf_1.5.0.003.zip
+Extracting file: assemblies/assembly_tibco_eclipse_mdt_ocl_3.1.2.001.zip
+Extracting file: assemblies/assembly_tibco_eclipse_mdt_uml_3.2.1.001.zip
+Extracting file: assemblies/assembly_tibco_eclipse_mdt_xsd_2.7.2.001.zip
+Extracting file: assemblies/assembly_tibco_eclipse_oaw_4.3.1.002.zip
+Extracting file: assemblies/assembly_tibco_eclipse_rcp_3.7.2.001_hpux112_ia64.zip
+Extracting file: assemblies/assembly_tibco_eclipse_spring_ide_2.2.104.001.zip
+Extracting file: assemblies/assembly_tibco_eclipse_subclipse_1.6.5.003.zip
+Extracting file: assemblies/assembly_tibco_eclipse_svnkit_1.3.0.003.zip
+Extracting file: assemblies/assembly_tibco_eclipse_wtp_3.3.2.001.zip
+Extracting file: assemblies/assembly_tibco_org_gxml_feature_1.0.400.001.zip
+Extracting file: assemblies/assembly_tibco_org_gxml_feature_eclipse_1.0.400.001.zip
+Extracting file: assemblies/product_tibco_amsg3x_doc_3.2.0.016.zip
+Extracting file: assemblies/product_tibco_amx3java_samples_3.2.0.007.zip
+Extracting file: assemblies/product_tibco_amx3policy_samples_3.2.0.002.zip
+Extracting file: assemblies/product_tibco_amx3spring_samples_3.2.0.002.zip
+Extracting file: assemblies/product_tibco_amx3webapp_samples_3.2.0.001.zip
+Extracting file: assemblies/product_tibco_com_tibco_amf_hpa_tibcohost_3.2.0.251.zip
+Extracting file: assemblies/product_tibco_com_tibco_amx3_3.2.0.251.zip
+Extracting file: assemblies/product_tibco_com_tibco_amx_administrator_3.2.0.251.zip
+Extracting file: assemblies/product_tibco_com_tibco_amx_it_mediation_samples_3.4.0.003.zip
+Extracting file: assemblies/product_tibco_com_tibco_amx_it_mediation_tools_3.4.0.003.zip
+Extracting file: assemblies/product_tibco_com_tibco_amx_metadata_3.2.0.251.zip
+Extracting file: assemblies/product_tibco_com_tibco_amx_patchmgr200_metadata_2.0.0.004.zip
+Extracting file: assemblies/product_tibco_com_tibco_amx_patchmgr200_scripts_2.0.0.004.zip
+Extracting file: assemblies/product_tibco_com_tibco_amx_rpf_launcher101_1.0.1.007.zip
+Extracting file: assemblies/product_tibco_com_tibco_jms_jmsclient_feature_6.3.0.005.zip
+Extracting file: assemblies/product_tibco_configuration_tool_1.2.0.006.zip
+Extracting file: assemblies/product_tibco_tibcojava64_1.6.0.029_hpux112_ia64.zip
+Extracting file: assemblies/product_tibco_wrapper_2.2.2.001_hpux112_ia64.zip
+Extracting file: contrib_amsg-its_3.2.0.000_FeatureConfig.xml
+Extracting file: contrib_amx-admin_3.2.0.000_FeatureConfig.xml
+Extracting file: contrib_amx-design_3.2.0.000_FeatureConfig.xml
+Extracting file: contrib_amx-installer_3.0.0.000_FeatureConfig.xml
+Extracting file: contrib_amx-plat-installer_3.2.0.000_FeatureConfig.xml
+Extracting file: contrib_amx-runtime_3.2.0.000_FeatureConfig.xml
+Extracting file: contrib_bstudio_3.6.0_FeatureConfig_data_hpux112_ia64.xml
+Extracting file: contrib_contrib-tct_1.2.0.000_FeatureConfig.xml
+Extracting file: contrib_eclipse-mapper_1.3.4.000_FeatureConfig.xml
+Extracting file: contrib_gxml_1.0.4.000_FeatureConfig.xml
+Extracting file: contrib_mediation_3.4.0.000_FeatureConfig.xml
+Extracting file: contrib_spring-it_3.3.0.000_FeatureConfig.xml
+Extracting file: contrib_tibcoxml_5.51.6.000_FeatureConfig.xml
+Extracting file: licenses/license_amsg3x_3.2.0.txt
+Extracting file: product_amsg_3.2.0_FeatureConfig_data_hpux112_ia64.xml
+Extracting file: TIBCOUniversalInstaller-hpux-ia64.bin
+Extracted the zip archive
+</pre></td><td>Thu Aug 09 08:05:24 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>copyAmxSilentFile</td><td><pre></pre></td><td>Thu Aug 09 08:05:24 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>copyAmxSilentFile</td><td><pre></pre></td><td>Thu Aug 09 08:05:24 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/file/CopyFile.tst</pre></td><td>Thu Aug 09 08:05:24 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>copyAmxSilentFile-Log</td><td><pre></pre></td><td>Thu Aug 09 08:05:24 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>copyAmxSilentFile-Log</td><td><pre></pre></td><td>Thu Aug 09 08:05:24 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>copyAmxSilentFile-Log</td><td><pre>Copying file 
+"/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/install/TIBCOUniversalInstallerAmx.silent.template" to 
+"/groupfiler/tests/tests/amsg/3.0/reports/HP-UX_B.11.31_IA64N/amsg-320-V61/func/admin/lifecycle/lifecycle_4node_hsql/install/TIBCOUniversalInstallerAmx.silent"</pre></td><td>Thu Aug 09 08:05:24 PDT 2012</td> </tr><tr bgcolor='#CC9933'><td>EVENT_ASSERT</td><td>copyAmxSilentFile-Log [Assert106] </td><td><pre>Destination directory will be created...</pre></td><td>Thu Aug 09 08:05:24 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>copyAmxSilentFile-getDirectory</td><td><pre></pre></td><td>Thu Aug 09 08:05:24 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>copyAmxSilentFile-getDirectory</td><td><pre></pre></td><td>Thu Aug 09 08:05:24 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>String file = testExec.parseInState(fileOut).replace('\\','/');
+File f = new File(file);
+
+if (f.isDirectory())
+ return file;
+else 
+ return f.getParent();</pre></td><td>Thu Aug 09 08:05:24 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>copyAmxSilentFile-getDirectory</td><td><pre>/groupfiler/tests/tests/amsg/3.0/reports/HP-UX_B.11.31_IA64N/amsg-320-V61/func/admin/lifecycle/lifecycle_4node_hsql/install</pre></td><td>Thu Aug 09 08:05:24 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>copyAmxSilentFile-createDirectory</td><td><pre></pre></td><td>Thu Aug 09 08:05:24 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>copyAmxSilentFile-createDirectory</td><td><pre></pre></td><td>Thu Aug 09 08:05:24 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/file/CreateDirectory.tst</pre></td><td>Thu Aug 09 08:05:24 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>copyAmxSilentFile-createDirectory-Log</td><td><pre></pre></td><td>Thu Aug 09 08:05:24 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>copyAmxSilentFile-createDirectory-Log</td><td><pre></pre></td><td>Thu Aug 09 08:05:24 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>copyAmxSilentFile-createDirectory-Log</td><td><pre>Creating directory "/groupfiler/tests/tests/amsg/3.0/reports/HP-UX_B.11.31_IA64N/amsg-320-V61/func/admin/lifecycle/lifecycle_4node_hsql/install" ...</pre></td><td>Thu Aug 09 08:05:24 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>copyAmxSilentFile-createDirectory-createDirectory</td><td><pre></pre></td><td>Thu Aug 09 08:05:24 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>copyAmxSilentFile-createDirectory-createDirectory</td><td><pre></pre></td><td>Thu Aug 09 08:05:24 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.io.File;
+
+// This function create a directory
+createDirectory(String strFile) {
+ File f = new File(strFile);
+ 
+ if(f.exists())
+  return true;  
+ else
+  return f.mkdirs();           
+}
+
+// Main
+//String baseSuccessMsg = "Directory Creation Success"; // Do not modify. Test engineers might assert on this string. 
+String baseErrorMsg = "Directory Creation Error"; // Do not modify. Test engineers might assert on this string.
+String dir = testExec.getStateString("directory", "&lt;&lt;null&gt;&gt;").replace('\\', '/');
+dir = testExec.parseInState(dir).replace('\\', '/');
+try {
+ if(createDirectory(dir))
+  return dir;
+ else
+  return baseErrorMsg;
+}
+catch(Exception e) {
+ return baseErrorMsg + ": " + e.getMessage();
+}</pre></td><td>Thu Aug 09 08:05:24 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>copyAmxSilentFile-createDirectory-createDirectory</td><td><pre>/groupfiler/tests/tests/amsg/3.0/reports/HP-UX_B.11.31_IA64N/amsg-320-V61/func/admin/lifecycle/lifecycle_4node_hsql/install</pre></td><td>Thu Aug 09 08:05:25 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>copyAmxSilentFile-copyFile</td><td><pre></pre></td><td>Thu Aug 09 08:05:25 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>copyAmxSilentFile-copyFile</td><td><pre></pre></td><td>Thu Aug 09 08:05:25 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.io.*;
+
+copyFile(String fileIn, String fileOut) {
+ // Do not modify next 2 variables. 
+ // Test engineers might have assertion on these strings.
+ String baseSuccessMsg = "File Copy Success";
+ String baseErrorMsg = "File Copy Error";
+
+ try {
+  File fi = new File(fileIn);
+  File fo = new File(fileOut);
+
+  // We don't copy directory!
+  if (fi.isDirectory())
+   return baseErrorMsg + ": Source cannot be a directory !"; 
+  
+  // If destination is a directory, we'll copy the source file in there
+  if (fo.exists() && fo.isDirectory())
+   fo = new File(fo, fi.getName());
+
+  FileInputStream fis  = new FileInputStream(fi);
+  FileOutputStream fos = new FileOutputStream(fo);
+  
+  byte[] buf = new byte[1024];
+  int i = 0;
+  while((i = fis.read(buf))!= -1) {
+   fos.write(buf, 0, i);
+  }
+  fis.close();
+  fos.close();
+  return fileOut;
+ }
+ catch (Exception e) {
+  return baseErrorMsg + ": " + e.getMessage();
+ }
+}
+
+// Main
+fileIn = testExec.parseInState(fileIn).replace('\\','/');
+fileOut = testExec.parseInState(fileOut).replace('\\','/');
+return copyFile(fileIn, fileOut);</pre></td><td>Thu Aug 09 08:05:25 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>copyAmxSilentFile-copyFile</td><td><pre>/groupfiler/tests/tests/amsg/3.0/reports/HP-UX_B.11.31_IA64N/amsg-320-V61/func/admin/lifecycle/lifecycle_4node_hsql/install/TIBCOUniversalInstallerAmx.silent</pre></td><td>Thu Aug 09 08:05:25 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>setEnvInAmxSilentFile</td><td><pre></pre></td><td>Thu Aug 09 08:05:25 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>setEnvInAmxSilentFile</td><td><pre></pre></td><td>Thu Aug 09 08:05:25 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/file/ReplaceInFile.tst</pre></td><td>Thu Aug 09 08:05:25 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>setEnvInAmxSilentFile-Log</td><td><pre></pre></td><td>Thu Aug 09 08:05:25 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>setEnvInAmxSilentFile-Log</td><td><pre></pre></td><td>Thu Aug 09 08:05:25 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>setEnvInAmxSilentFile-Log</td><td><pre>Replacing the following Strings in file "/groupfiler/tests/tests/amsg/3.0/reports/HP-UX_B.11.31_IA64N/amsg-320-V61/func/admin/lifecycle/lifecycle_4node_hsql/install/TIBCOUniversalInstallerAmx.silent":
+newEnv
+
+ </pre></td><td>Thu Aug 09 08:05:25 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>setEnvInAmxSilentFile-validate</td><td><pre></pre></td><td>Thu Aug 09 08:05:25 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>setEnvInAmxSilentFile-validate</td><td><pre></pre></td><td>Thu Aug 09 08:05:25 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>baseSuccessMsg = "Replace Validation Success";
+baseErrorMsg = "Replace Validation Error"; // there is an assertion on this string
+String file = testExec.parseInState(file).replace('\\','/');
+File f = new File(file);
+
+// Check if file exists
+if (!f.exists())
+ return baseErrorMsg + ": File ('" + file + "') does not exist";
+
+// If fileName is a directory, we fail.
+if(f.isDirectory())
+ return baseErrorMsg + ": File passed is a directory! It must be a file.";
+
+// If cannot write
+if (!f.canWrite())
+  return baseErrorMsg + ": Cannot write in file '" + file + "'.";
+
+//This can now be optional as users can use propertyFile/List.
+// Old string cannot be empty
+if((oldString.equals("")) && (propertyFileName.equals("")) && (propertyList.equals("")))
+ return baseErrorMsg + ": User should specify either oldString or propertyFileName or propertyList";
+
+File propertyFile = null;
+if ((propertyFileName != null) && (!propertyFileName.equals(""))) {
+	propertyFile = new File(testExec.parseInState(propertyFileName).replace('\\', '/'));
+	if (!propertyFile.canRead()) {
+		return baseErrorMsg + ": Property file not found/cannot read it. "+propertyFileName;
+	}
+	if (!propertyFile.isFile()) {
+		return baseErrorMsg + ": property file is not a normal file. "+propertyFileName;
+	}		
+}
+
+return baseSuccessMsg;</pre></td><td>Thu Aug 09 08:05:25 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>setEnvInAmxSilentFile-validate</td><td><pre>Replace Validation Success</pre></td><td>Thu Aug 09 08:05:25 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.io.File;
+import java.io.FileInputStream;
+import java.util.Properties;
+
+	Properties getPropList() {
+		Properties props = new Properties();
+		File propertyFile = null;
+		FileInputStream fis = null;
+		
+		oldStr = testExec.parseInState(oldString.toString());
+		newStr = testExec.parseInState(newString.toString());
+		
+		try {
+			if ((propertyFileName != null) && (!propertyFileName.equals(""))) {
+				propertyFile = new File(testExec.parseInState(propertyFileName).replace('\\', '/'));
+				fis = new FileInputStream(propertyFile);
+				props.load(fis);
+				
+			}
+			
+			if ((propertyList != null) && (!propertyList.equals(""))) {
+				String [] propArray = propertyList.split(",");
+				for (int i =0; i &lt; propArray.length; i++) {
+					String [] keyPair = propArray[i].split("=");
+					if (keyPair.length == 1) continue;
+					props.setProperty(keyPair[0],keyPair[1]);
+				}
+			}
+			
+            if (!oldStr.equals("")) {
+                props.setProperty(oldStr,newStr);
+            }
+		
+		}catch(Exception e) {
+			response = "Fail: Failed to compute property list."+e.getLocalizedMessage();			
+		}
+		finally {
+			try {				
+				if (fis != null) fis.close();				
+			}catch(Exception ioe) {
+				//ignore.
+			}
+		}
+		return props;
+	}
+return getPropList();</pre></td><td>Thu Aug 09 08:05:25 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>setEnvInAmxSilentFile-getFullPropertyList</td><td><pre>{newEnv=true}</pre></td><td>Thu Aug 09 08:05:25 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>setEnvInAmxSilentFile-readFile</td><td><pre></pre></td><td>Thu Aug 09 08:05:25 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>setEnvInAmxSilentFile-readFile</td><td><pre></pre></td><td>Thu Aug 09 08:05:25 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/file/ReadFile.tst</pre></td><td>Thu Aug 09 08:05:26 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>setEnvInAmxSilentFile-readFile-Log</td><td><pre></pre></td><td>Thu Aug 09 08:05:26 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>setEnvInAmxSilentFile-readFile-Log</td><td><pre></pre></td><td>Thu Aug 09 08:05:26 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>setEnvInAmxSilentFile-readFile-Log</td><td><pre>Reading file "/groupfiler/tests/tests/amsg/3.0/reports/HP-UX_B.11.31_IA64N/amsg-320-V61/func/admin/lifecycle/lifecycle_4node_hsql/install/TIBCOUniversalInstallerAmx.silent" ...</pre></td><td>Thu Aug 09 08:05:26 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>setEnvInAmxSilentFile-readFile-readFile</td><td><pre></pre></td><td>Thu Aug 09 08:05:26 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>setEnvInAmxSilentFile-readFile-readFile</td><td><pre></pre></td><td>Thu Aug 09 08:05:26 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.io.*;
+
+String baseErrorMsg = "File Read Error"; // Do not modify. Test engineers might assert on this string.
+String strFile = testExec.parseInState(file).replace('\\', '/');
+
+File file = new File(strFile);
+if (!file.exists())
+  return baseErrorMsg + ": File '" + file + "' does not exist.";
+if (!file.canRead())
+  return baseErrorMsg + ": Cannot be read file '" + file + "'.";
+if (!file.isFile())
+  return baseErrorMsg + ": '" + file + "' is not a file.";
+
+BufferedReader input=null;
+
+try {
+    if (encoding.equals("")) 
+        input = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+    else 	
+        input = new BufferedReader(new InputStreamReader  
+				  (new FileInputStream(file),encoding));
+
+    //BufferedReader input = new BufferedReader(new FileReader(file));
+    StringBuffer content = new StringBuffer();
+    String line = null;
+    /*
+    * readLine is a bit quirky :
+    * it returns the content of a line MINUS the newline.
+    * it returns null only for the END of the stream.
+    * it returns an empty String if two newlines appear in a row.
+    */
+    while ((line = input.readLine()) != null) {
+        content.append(line);
+        content.append(System.getProperty("line.separator"));
+    }
+    //flush and close both "input" and its underlying FileReader
+    input.close();
+    return content.toString();
+}
+catch(Exception e) {
+    return baseErrorMsg + ": " + e.getMessage();
+}
+</pre></td><td>Thu Aug 09 08:05:26 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>setEnvInAmxSilentFile-readFile-readFile</td><td><pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd"&gt;
+&lt;properties&gt;
+&lt;comment&gt;---Universal Installer Silent Installation Properties---&lt;/comment&gt;
+
+&lt;!--accept the license agreement--&gt;
+&lt;entry key="acceptLicense"&gt;true&lt;/entry&gt;
+
+&lt;!--If multiple environments are supported, create a new one or use an existing one. Set createNewEnvironment to false if using an existing environment --&gt;
+&lt;!--If the product does not support multiple environments, then the values below are ignored--&gt;
+&lt;entry key="createNewEnvironment"&gt;[[newEnv]]&lt;/entry&gt;
+
+&lt;!--the root installation directory--&gt;
+&lt;!--if the product does not support multiple instances and TIBCO_HOME has already been set then--&gt;
+&lt;!--this value is ignored and the existing TIBCO_HOME is used as the installation root--&gt;
+&lt;entry key="installationRoot"&gt;[[tibcoHome]]&lt;/entry&gt;
+
+&lt;!--If using an existing environment then the installationRoot AND environmentName MUST match a pre-existing environment--&gt;
+&lt;!--If creating a new environment then the installationRoot AND environmentName MUST BE UNIQUE and not match a pre-existing environment--&gt;
+&lt;entry key="environmentName"&gt;AMX3-QA-BAT&lt;/entry&gt;
+
+&lt;!-- configDirectoryRoot - location of configuration files if it is not already defined for the TIBCO HOME instance. Configuration files will be added to configDirectoryRoot/tibco/cfgmgmt --&gt;
+&lt;entry key="configDirectoryRoot"&gt;[[tibcoConfigHome]]&lt;/entry&gt;
+
+&lt;entry key="reinstallFeatures"&gt;true&lt;/entry&gt;
+
+&lt;!-- A prerequistite is to install hibernate. This can be done by downloading hibernate or specifying the absolute path to the hibernate location on the system. To download hibernate, please specify downloadHibernate to true. To specify the absolute path of hibernate on the system instead, set downloadHibernate to false and hibernatePath value should be set to &lt;absolute directory path&gt;/hibernate_zip_assembly_3.2.300.001.zip --&gt;
+&lt;entry key="downloadHibernate"&gt;true&lt;/entry&gt;
+&lt;entry key="hibernatePath"&gt;&lt;/entry&gt;
+
+&lt;!-- LGPL License download --&gt;
+&lt;entry key="LGPLAssemblyLicenseAccepted"&gt;true&lt;/entry&gt;
+&lt;entry key="LGPLAssemblyDownload"&gt;true&lt;/entry&gt;
+&lt;entry key="LGPLAssemblyPath"&gt;&lt;/entry&gt;
+
+&lt;!--Profiles Selection--&gt;
+&lt;!-- The 'selectedProfiles' value is a comma separated list of profiles to install. If a profile is listed which does not exist, then it is ignored. At least one profile must be listed if useInstallProfile is set to true --&gt;
+&lt;entry key="useInstallProfile"&gt;true&lt;/entry&gt;
+&lt;entry key="selectedProfiles"&gt;Administration,Runtime Host,SOA Development&lt;/entry&gt;
+
+&lt;/properties&gt;
+</pre></td><td>Thu Aug 09 08:05:26 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.util.Properties;
+import java.util.Set;
+
+// convert to String because it can comes as Boolean or Integer!
+// Replace
+// return fileContent.replace(oldStr.subSequence(0,oldStr.length()), newStr.subSequence(0, newStr.length()));
+//return fileContent.substring(0, fileContent.indexOf(oldString)) + newString + fileContent.substring((fileContent.indexOf(oldString) + oldString.length()), fileContent.length());
+
+	String replace() {
+		String response = fileContent;
+        Properties props = propList;
+		try {	
+            if (prefix == null) prefix = "";
+			if (suffix == null) suffix = "";
+
+			if (!props.isEmpty()) {
+				
+				Set keySet = props.keySet();
+				for (Object key: keySet) {
+					String name = prefix+(String)key+suffix;
+					String  value = testExec.parseInState((String)props.get(key));					
+					response = response.replace(name.subSequence(0,name.length()), value.subSequence(0, value.length()));
+				}
+			}
+		}
+        catch(Exception e) {
+			response = "Fail: Failed to replace."+e.getLocalizedMessage();			
+		}
+		return response;
+	}
+return replace();</pre></td><td>Thu Aug 09 08:05:26 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>setEnvInAmxSilentFile-replaceContent</td><td><pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd"&gt;
+&lt;properties&gt;
+&lt;comment&gt;---Universal Installer Silent Installation Properties---&lt;/comment&gt;
+
+&lt;!--accept the license agreement--&gt;
+&lt;entry key="acceptLicense"&gt;true&lt;/entry&gt;
+
+&lt;!--If multiple environments are supported, create a new one or use an existing one. Set createNewEnvironment to false if using an existing environment --&gt;
+&lt;!--If the product does not support multiple environments, then the values below are ignored--&gt;
+&lt;entry key="createNewEnvironment"&gt;true&lt;/entry&gt;
+
+&lt;!--the root installation directory--&gt;
+&lt;!--if the product does not support multiple instances and TIBCO_HOME has already been set then--&gt;
+&lt;!--this value is ignored and the existing TIBCO_HOME is used as the installation root--&gt;
+&lt;entry key="installationRoot"&gt;[[tibcoHome]]&lt;/entry&gt;
+
+&lt;!--If using an existing environment then the installationRoot AND environmentName MUST match a pre-existing environment--&gt;
+&lt;!--If creating a new environment then the installationRoot AND environmentName MUST BE UNIQUE and not match a pre-existing environment--&gt;
+&lt;entry key="environmentName"&gt;AMX3-QA-BAT&lt;/entry&gt;
+
+&lt;!-- configDirectoryRoot - location of configuration files if it is not already defined for the TIBCO HOME instance. Configuration files will be added to configDirectoryRoot/tibco/cfgmgmt --&gt;
+&lt;entry key="configDirectoryRoot"&gt;[[tibcoConfigHome]]&lt;/entry&gt;
+
+&lt;entry key="reinstallFeatures"&gt;true&lt;/entry&gt;
+
+&lt;!-- A prerequistite is to install hibernate. This can be done by downloading hibernate or specifying the absolute path to the hibernate location on the system. To download hibernate, please specify downloadHibernate to true. To specify the absolute path of hibernate on the system instead, set downloadHibernate to false and hibernatePath value should be set to &lt;absolute directory path&gt;/hibernate_zip_assembly_3.2.300.001.zip --&gt;
+&lt;entry key="downloadHibernate"&gt;true&lt;/entry&gt;
+&lt;entry key="hibernatePath"&gt;&lt;/entry&gt;
+
+&lt;!-- LGPL License download --&gt;
+&lt;entry key="LGPLAssemblyLicenseAccepted"&gt;true&lt;/entry&gt;
+&lt;entry key="LGPLAssemblyDownload"&gt;true&lt;/entry&gt;
+&lt;entry key="LGPLAssemblyPath"&gt;&lt;/entry&gt;
+
+&lt;!--Profiles Selection--&gt;
+&lt;!-- The 'selectedProfiles' value is a comma separated list of profiles to install. If a profile is listed which does not exist, then it is ignored. At least one profile must be listed if useInstallProfile is set to true --&gt;
+&lt;entry key="useInstallProfile"&gt;true&lt;/entry&gt;
+&lt;entry key="selectedProfiles"&gt;Administration,Runtime Host,SOA Development&lt;/entry&gt;
+
+&lt;/properties&gt;
+</pre></td><td>Thu Aug 09 08:05:26 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>setEnvInAmxSilentFile-writeFile</td><td><pre></pre></td><td>Thu Aug 09 08:05:26 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>setEnvInAmxSilentFile-writeFile</td><td><pre></pre></td><td>Thu Aug 09 08:05:26 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/file/WriteFile.tst</pre></td><td>Thu Aug 09 08:05:26 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>setEnvInAmxSilentFile-writeFile-Log</td><td><pre></pre></td><td>Thu Aug 09 08:05:26 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>setEnvInAmxSilentFile-writeFile-Log</td><td><pre></pre></td><td>Thu Aug 09 08:05:26 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>setEnvInAmxSilentFile-writeFile-Log</td><td><pre>Writing in file "/groupfiler/tests/tests/amsg/3.0/reports/HP-UX_B.11.31_IA64N/amsg-320-V61/func/admin/lifecycle/lifecycle_4node_hsql/install/TIBCOUniversalInstallerAmx.silent" ...
+</pre></td><td>Thu Aug 09 08:05:26 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>setEnvInAmxSilentFile-writeFile-checkCreateFile</td><td><pre></pre></td><td>Thu Aug 09 08:05:26 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>setEnvInAmxSilentFile-writeFile-checkCreateFile</td><td><pre></pre></td><td>Thu Aug 09 08:05:26 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>setEnvInAmxSilentFile-writeFile-writeFile</td><td><pre></pre></td><td>Thu Aug 09 08:05:26 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>setEnvInAmxSilentFile-writeFile-writeFile</td><td><pre></pre></td><td>Thu Aug 09 08:05:26 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.io.*;
+
+String baseErrorMsg = "File Write Error"; // Do not modify. Test engineers might assert on this string.
+String baseSuccessMsg = "File Write Success"; // Do not modify. Test engineers might assert on this string.
+String strFile = testExec.parseInState(file).replace('\\', '/');
+
+File fileHandle = new File(strFile);
+if (!fileHandle.exists())
+  return baseErrorMsg + ": File '" + fileHandle + "' does not exist.";
+if (!fileHandle.isFile())
+  return baseErrorMsg + ": '" + fileHandle + "' is not a file.";
+if (!fileHandle.canWrite())
+  return baseErrorMsg + ": Cannot write in file '" + fileHandle + "'.";
+
+if (encoding.equals("")) {
+        BufferedWriter output = new BufferedWriter(new OutputStreamWriter
+                                 (new FileOutputStream(fileHandle)));
+	output.write(content);
+	output.close();
+	return baseSuccessMsg + ": File '" + fileHandle + "' now contains: \n" + content;
+} else {
+	BufferedWriter output = new BufferedWriter(new OutputStreamWriter
+                                 (new FileOutputStream(fileHandle),encoding));
+	output.write(content);
+	output.close();
+	return baseSuccessMsg + ": File '" + fileHandle + "' now contains: \n" + content;
+}</pre></td><td>Thu Aug 09 08:05:26 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>setEnvInAmxSilentFile-writeFile-writeFile</td><td><pre>File Write Success: File '/groupfiler/tests/tests/amsg/3.0/reports/HP-UX_B.11.31_IA64N/amsg-320-V61/func/admin/lifecycle/lifecycle_4node_hsql/install/TIBCOUniversalInstallerAmx.silent' now contains: 
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd"&gt;
+&lt;properties&gt;
+&lt;comment&gt;---Universal Installer Silent Installation Properties---&lt;/comment&gt;
+
+&lt;!--accept the license agreement--&gt;
+&lt;entry key="acceptLicense"&gt;true&lt;/entry&gt;
+
+&lt;!--If multiple environments are supported, create a new one or use an existing one. Set createNewEnvironment to false if using an existing environment --&gt;
+&lt;!--If the product does not support multiple environments, then the values below are ignored--&gt;
+&lt;entry key="createNewEnvironment"&gt;true&lt;/entry&gt;
+
+&lt;!--the root installation directory--&gt;
+&lt;!--if the product does not support multiple instances and TIBCO_HOME has already been set then--&gt;
+&lt;!--this value is ignored and the existing TIBCO_HOME is used as the installation root--&gt;
+&lt;entry key="installationRoot"&gt;[[tibcoHome]]&lt;/entry&gt;
+
+&lt;!--If using an existing environment then the installationRoot AND environmentName MUST match a pre-existing environment--&gt;
+&lt;!--If creating a new environment then the installationRoot AND environmentName MUST BE UNIQUE and not match a pre-existing environment--&gt;
+&lt;entry key="environmentName"&gt;AMX3-QA-BAT&lt;/entry&gt;
+
+&lt;!-- configDirectoryRoot - location of configuration files if it is not already defined for the TIBCO HOME instance. Configuration files will be added to configDirectoryRoot/tibco/cfgmgmt --&gt;
+&lt;entry key="configDirectoryRoot"&gt;[[tibcoConfigHome]]&lt;/entry&gt;
+
+&lt;entry key="reinstallFeatures"&gt;true&lt;/entry&gt;
+
+&lt;!-- A prerequistite is to install hibernate. This can be done by downloading hibernate or specifying the absolute path to the hibernate location on the system. To download hibernate, please specify downloadHibernate to true. To specify the absolute path of hibernate on the system instead, set downloadHibernate to false and hibernatePath value should be set to &lt;absolute directory path&gt;/hibernate_zip_assembly_3.2.300.001.zip --&gt;
+&lt;entry key="downloadHibernate"&gt;true&lt;/entry&gt;
+&lt;entry key="hibernatePath"&gt;&lt;/entry&gt;
+
+&lt;!-- LGPL License download --&gt;
+&lt;entry key="LGPLAssemblyLicenseAccepted"&gt;true&lt;/entry&gt;
+&lt;entry key="LGPLAssemblyDownload"&gt;true&lt;/entry&gt;
+&lt;entry key="LGPLAssemblyPath"&gt;&lt;/entry&gt;
+
+&lt;!--Profiles Selection--&gt;
+&lt;!-- The 'selectedProfiles' value is a comma separated list of profiles to install. If a profile is listed which does not exist, then it is ignored. At least one profile must be listed if useInstallProfile is set to true --&gt;
+&lt;entry key="useInstallProfile"&gt;true&lt;/entry&gt;
+&lt;entry key="selectedProfiles"&gt;Administration,Runtime Host,SOA Development&lt;/entry&gt;
+
+&lt;/properties&gt;
+</pre></td><td>Thu Aug 09 08:05:27 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>setEnvInAmxSilentFile-writeFile-success</td><td><pre></pre></td><td>Thu Aug 09 08:05:27 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>setEnvInAmxSilentFile-writeFile-success</td><td><pre></pre></td><td>Thu Aug 09 08:05:27 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>return testExec.parseInState(file).replace('\\','/');</pre></td><td>Thu Aug 09 08:05:27 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>setEnvInAmxSilentFile-writeFile-success</td><td><pre>/groupfiler/tests/tests/amsg/3.0/reports/HP-UX_B.11.31_IA64N/amsg-320-V61/func/admin/lifecycle/lifecycle_4node_hsql/install/TIBCOUniversalInstallerAmx.silent</pre></td><td>Thu Aug 09 08:05:27 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>setEnvInAmxSilentFile-success</td><td><pre></pre></td><td>Thu Aug 09 08:05:27 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>setEnvInAmxSilentFile-success</td><td><pre></pre></td><td>Thu Aug 09 08:05:27 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>return "Successfully replaced '" + propList.toString() + "' in file '" + testExec.parseInState(file.toString()) + "'";</pre></td><td>Thu Aug 09 08:05:27 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>setEnvInAmxSilentFile-success</td><td><pre>Successfully replaced '{newEnv=true}' in file '/groupfiler/tests/tests/amsg/3.0/reports/HP-UX_B.11.31_IA64N/amsg-320-V61/func/admin/lifecycle/lifecycle_4node_hsql/install/TIBCOUniversalInstallerAmx.silent'</pre></td><td>Thu Aug 09 08:05:27 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>setTibcoHomeInAmxSilentFile</td><td><pre></pre></td><td>Thu Aug 09 08:05:27 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>setTibcoHomeInAmxSilentFile</td><td><pre></pre></td><td>Thu Aug 09 08:05:27 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/file/ReplaceInFile.tst</pre></td><td>Thu Aug 09 08:05:27 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>setTibcoHomeInAmxSilentFile-Log</td><td><pre></pre></td><td>Thu Aug 09 08:05:27 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>setTibcoHomeInAmxSilentFile-Log</td><td><pre></pre></td><td>Thu Aug 09 08:05:27 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>setTibcoHomeInAmxSilentFile-Log</td><td><pre>Replacing the following Strings in file "/groupfiler/tests/tests/amsg/3.0/reports/HP-UX_B.11.31_IA64N/amsg-320-V61/func/admin/lifecycle/lifecycle_4node_hsql/install/TIBCOUniversalInstallerAmx.silent":
+tibcoHome
+
+ </pre></td><td>Thu Aug 09 08:05:27 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>setTibcoHomeInAmxSilentFile-validate</td><td><pre></pre></td><td>Thu Aug 09 08:05:27 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>setTibcoHomeInAmxSilentFile-validate</td><td><pre></pre></td><td>Thu Aug 09 08:05:27 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>baseSuccessMsg = "Replace Validation Success";
+baseErrorMsg = "Replace Validation Error"; // there is an assertion on this string
+String file = testExec.parseInState(file).replace('\\','/');
+File f = new File(file);
+
+// Check if file exists
+if (!f.exists())
+ return baseErrorMsg + ": File ('" + file + "') does not exist";
+
+// If fileName is a directory, we fail.
+if(f.isDirectory())
+ return baseErrorMsg + ": File passed is a directory! It must be a file.";
+
+// If cannot write
+if (!f.canWrite())
+  return baseErrorMsg + ": Cannot write in file '" + file + "'.";
+
+//This can now be optional as users can use propertyFile/List.
+// Old string cannot be empty
+if((oldString.equals("")) && (propertyFileName.equals("")) && (propertyList.equals("")))
+ return baseErrorMsg + ": User should specify either oldString or propertyFileName or propertyList";
+
+File propertyFile = null;
+if ((propertyFileName != null) && (!propertyFileName.equals(""))) {
+	propertyFile = new File(testExec.parseInState(propertyFileName).replace('\\', '/'));
+	if (!propertyFile.canRead()) {
+		return baseErrorMsg + ": Property file not found/cannot read it. "+propertyFileName;
+	}
+	if (!propertyFile.isFile()) {
+		return baseErrorMsg + ": property file is not a normal file. "+propertyFileName;
+	}		
+}
+
+return baseSuccessMsg;</pre></td><td>Thu Aug 09 08:05:27 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>setTibcoHomeInAmxSilentFile-validate</td><td><pre>Replace Validation Success</pre></td><td>Thu Aug 09 08:05:27 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.io.File;
+import java.io.FileInputStream;
+import java.util.Properties;
+
+	Properties getPropList() {
+		Properties props = new Properties();
+		File propertyFile = null;
+		FileInputStream fis = null;
+		
+		oldStr = testExec.parseInState(oldString.toString());
+		newStr = testExec.parseInState(newString.toString());
+		
+		try {
+			if ((propertyFileName != null) && (!propertyFileName.equals(""))) {
+				propertyFile = new File(testExec.parseInState(propertyFileName).replace('\\', '/'));
+				fis = new FileInputStream(propertyFile);
+				props.load(fis);
+				
+			}
+			
+			if ((propertyList != null) && (!propertyList.equals(""))) {
+				String [] propArray = propertyList.split(",");
+				for (int i =0; i &lt; propArray.length; i++) {
+					String [] keyPair = propArray[i].split("=");
+					if (keyPair.length == 1) continue;
+					props.setProperty(keyPair[0],keyPair[1]);
+				}
+			}
+			
+            if (!oldStr.equals("")) {
+                props.setProperty(oldStr,newStr);
+            }
+		
+		}catch(Exception e) {
+			response = "Fail: Failed to compute property list."+e.getLocalizedMessage();			
+		}
+		finally {
+			try {				
+				if (fis != null) fis.close();				
+			}catch(Exception ioe) {
+				//ignore.
+			}
+		}
+		return props;
+	}
+return getPropList();</pre></td><td>Thu Aug 09 08:05:27 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>setTibcoHomeInAmxSilentFile-getFullPropertyList</td><td><pre>{tibcoHome=/local/amx320-V61}</pre></td><td>Thu Aug 09 08:05:27 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>setTibcoHomeInAmxSilentFile-readFile</td><td><pre></pre></td><td>Thu Aug 09 08:05:27 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>setTibcoHomeInAmxSilentFile-readFile</td><td><pre></pre></td><td>Thu Aug 09 08:05:27 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/file/ReadFile.tst</pre></td><td>Thu Aug 09 08:05:27 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>setTibcoHomeInAmxSilentFile-readFile-Log</td><td><pre></pre></td><td>Thu Aug 09 08:05:27 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>setTibcoHomeInAmxSilentFile-readFile-Log</td><td><pre></pre></td><td>Thu Aug 09 08:05:27 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>setTibcoHomeInAmxSilentFile-readFile-Log</td><td><pre>Reading file "/groupfiler/tests/tests/amsg/3.0/reports/HP-UX_B.11.31_IA64N/amsg-320-V61/func/admin/lifecycle/lifecycle_4node_hsql/install/TIBCOUniversalInstallerAmx.silent" ...</pre></td><td>Thu Aug 09 08:05:27 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>setTibcoHomeInAmxSilentFile-readFile-readFile</td><td><pre></pre></td><td>Thu Aug 09 08:05:27 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>setTibcoHomeInAmxSilentFile-readFile-readFile</td><td><pre></pre></td><td>Thu Aug 09 08:05:27 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.io.*;
+
+String baseErrorMsg = "File Read Error"; // Do not modify. Test engineers might assert on this string.
+String strFile = testExec.parseInState(file).replace('\\', '/');
+
+File file = new File(strFile);
+if (!file.exists())
+  return baseErrorMsg + ": File '" + file + "' does not exist.";
+if (!file.canRead())
+  return baseErrorMsg + ": Cannot be read file '" + file + "'.";
+if (!file.isFile())
+  return baseErrorMsg + ": '" + file + "' is not a file.";
+
+BufferedReader input=null;
+
+try {
+    if (encoding.equals("")) 
+        input = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+    else 	
+        input = new BufferedReader(new InputStreamReader  
+				  (new FileInputStream(file),encoding));
+
+    //BufferedReader input = new BufferedReader(new FileReader(file));
+    StringBuffer content = new StringBuffer();
+    String line = null;
+    /*
+    * readLine is a bit quirky :
+    * it returns the content of a line MINUS the newline.
+    * it returns null only for the END of the stream.
+    * it returns an empty String if two newlines appear in a row.
+    */
+    while ((line = input.readLine()) != null) {
+        content.append(line);
+        content.append(System.getProperty("line.separator"));
+    }
+    //flush and close both "input" and its underlying FileReader
+    input.close();
+    return content.toString();
+}
+catch(Exception e) {
+    return baseErrorMsg + ": " + e.getMessage();
+}
+</pre></td><td>Thu Aug 09 08:05:27 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>setTibcoHomeInAmxSilentFile-readFile-readFile</td><td><pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd"&gt;
+&lt;properties&gt;
+&lt;comment&gt;---Universal Installer Silent Installation Properties---&lt;/comment&gt;
+
+&lt;!--accept the license agreement--&gt;
+&lt;entry key="acceptLicense"&gt;true&lt;/entry&gt;
+
+&lt;!--If multiple environments are supported, create a new one or use an existing one. Set createNewEnvironment to false if using an existing environment --&gt;
+&lt;!--If the product does not support multiple environments, then the values below are ignored--&gt;
+&lt;entry key="createNewEnvironment"&gt;true&lt;/entry&gt;
+
+&lt;!--the root installation directory--&gt;
+&lt;!--if the product does not support multiple instances and TIBCO_HOME has already been set then--&gt;
+&lt;!--this value is ignored and the existing TIBCO_HOME is used as the installation root--&gt;
+&lt;entry key="installationRoot"&gt;[[tibcoHome]]&lt;/entry&gt;
+
+&lt;!--If using an existing environment then the installationRoot AND environmentName MUST match a pre-existing environment--&gt;
+&lt;!--If creating a new environment then the installationRoot AND environmentName MUST BE UNIQUE and not match a pre-existing environment--&gt;
+&lt;entry key="environmentName"&gt;AMX3-QA-BAT&lt;/entry&gt;
+
+&lt;!-- configDirectoryRoot - location of configuration files if it is not already defined for the TIBCO HOME instance. Configuration files will be added to configDirectoryRoot/tibco/cfgmgmt --&gt;
+&lt;entry key="configDirectoryRoot"&gt;[[tibcoConfigHome]]&lt;/entry&gt;
+
+&lt;entry key="reinstallFeatures"&gt;true&lt;/entry&gt;
+
+&lt;!-- A prerequistite is to install hibernate. This can be done by downloading hibernate or specifying the absolute path to the hibernate location on the system. To download hibernate, please specify downloadHibernate to true. To specify the absolute path of hibernate on the system instead, set downloadHibernate to false and hibernatePath value should be set to &lt;absolute directory path&gt;/hibernate_zip_assembly_3.2.300.001.zip --&gt;
+&lt;entry key="downloadHibernate"&gt;true&lt;/entry&gt;
+&lt;entry key="hibernatePath"&gt;&lt;/entry&gt;
+
+&lt;!-- LGPL License download --&gt;
+&lt;entry key="LGPLAssemblyLicenseAccepted"&gt;true&lt;/entry&gt;
+&lt;entry key="LGPLAssemblyDownload"&gt;true&lt;/entry&gt;
+&lt;entry key="LGPLAssemblyPath"&gt;&lt;/entry&gt;
+
+&lt;!--Profiles Selection--&gt;
+&lt;!-- The 'selectedProfiles' value is a comma separated list of profiles to install. If a profile is listed which does not exist, then it is ignored. At least one profile must be listed if useInstallProfile is set to true --&gt;
+&lt;entry key="useInstallProfile"&gt;true&lt;/entry&gt;
+&lt;entry key="selectedProfiles"&gt;Administration,Runtime Host,SOA Development&lt;/entry&gt;
+
+&lt;/properties&gt;
+</pre></td><td>Thu Aug 09 08:05:28 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.util.Properties;
+import java.util.Set;
+
+// convert to String because it can comes as Boolean or Integer!
+// Replace
+// return fileContent.replace(oldStr.subSequence(0,oldStr.length()), newStr.subSequence(0, newStr.length()));
+//return fileContent.substring(0, fileContent.indexOf(oldString)) + newString + fileContent.substring((fileContent.indexOf(oldString) + oldString.length()), fileContent.length());
+
+	String replace() {
+		String response = fileContent;
+        Properties props = propList;
+		try {	
+            if (prefix == null) prefix = "";
+			if (suffix == null) suffix = "";
+
+			if (!props.isEmpty()) {
+				
+				Set keySet = props.keySet();
+				for (Object key: keySet) {
+					String name = prefix+(String)key+suffix;
+					String  value = testExec.parseInState((String)props.get(key));					
+					response = response.replace(name.subSequence(0,name.length()), value.subSequence(0, value.length()));
+				}
+			}
+		}
+        catch(Exception e) {
+			response = "Fail: Failed to replace."+e.getLocalizedMessage();			
+		}
+		return response;
+	}
+return replace();</pre></td><td>Thu Aug 09 08:05:28 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>setTibcoHomeInAmxSilentFile-replaceContent</td><td><pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd"&gt;
+&lt;properties&gt;
+&lt;comment&gt;---Universal Installer Silent Installation Properties---&lt;/comment&gt;
+
+&lt;!--accept the license agreement--&gt;
+&lt;entry key="acceptLicense"&gt;true&lt;/entry&gt;
+
+&lt;!--If multiple environments are supported, create a new one or use an existing one. Set createNewEnvironment to false if using an existing environment --&gt;
+&lt;!--If the product does not support multiple environments, then the values below are ignored--&gt;
+&lt;entry key="createNewEnvironment"&gt;true&lt;/entry&gt;
+
+&lt;!--the root installation directory--&gt;
+&lt;!--if the product does not support multiple instances and TIBCO_HOME has already been set then--&gt;
+&lt;!--this value is ignored and the existing TIBCO_HOME is used as the installation root--&gt;
+&lt;entry key="installationRoot"&gt;/local/amx320-V61&lt;/entry&gt;
+
+&lt;!--If using an existing environment then the installationRoot AND environmentName MUST match a pre-existing environment--&gt;
+&lt;!--If creating a new environment then the installationRoot AND environmentName MUST BE UNIQUE and not match a pre-existing environment--&gt;
+&lt;entry key="environmentName"&gt;AMX3-QA-BAT&lt;/entry&gt;
+
+&lt;!-- configDirectoryRoot - location of configuration files if it is not already defined for the TIBCO HOME instance. Configuration files will be added to configDirectoryRoot/tibco/cfgmgmt --&gt;
+&lt;entry key="configDirectoryRoot"&gt;[[tibcoConfigHome]]&lt;/entry&gt;
+
+&lt;entry key="reinstallFeatures"&gt;true&lt;/entry&gt;
+
+&lt;!-- A prerequistite is to install hibernate. This can be done by downloading hibernate or specifying the absolute path to the hibernate location on the system. To download hibernate, please specify downloadHibernate to true. To specify the absolute path of hibernate on the system instead, set downloadHibernate to false and hibernatePath value should be set to &lt;absolute directory path&gt;/hibernate_zip_assembly_3.2.300.001.zip --&gt;
+&lt;entry key="downloadHibernate"&gt;true&lt;/entry&gt;
+&lt;entry key="hibernatePath"&gt;&lt;/entry&gt;
+
+&lt;!-- LGPL License download --&gt;
+&lt;entry key="LGPLAssemblyLicenseAccepted"&gt;true&lt;/entry&gt;
+&lt;entry key="LGPLAssemblyDownload"&gt;true&lt;/entry&gt;
+&lt;entry key="LGPLAssemblyPath"&gt;&lt;/entry&gt;
+
+&lt;!--Profiles Selection--&gt;
+&lt;!-- The 'selectedProfiles' value is a comma separated list of profiles to install. If a profile is listed which does not exist, then it is ignored. At least one profile must be listed if useInstallProfile is set to true --&gt;
+&lt;entry key="useInstallProfile"&gt;true&lt;/entry&gt;
+&lt;entry key="selectedProfiles"&gt;Administration,Runtime Host,SOA Development&lt;/entry&gt;
+
+&lt;/properties&gt;
+</pre></td><td>Thu Aug 09 08:05:28 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>setTibcoHomeInAmxSilentFile-writeFile</td><td><pre></pre></td><td>Thu Aug 09 08:05:28 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>setTibcoHomeInAmxSilentFile-writeFile</td><td><pre></pre></td><td>Thu Aug 09 08:05:28 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/file/WriteFile.tst</pre></td><td>Thu Aug 09 08:05:28 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>setTibcoHomeInAmxSilentFile-writeFile-Log</td><td><pre></pre></td><td>Thu Aug 09 08:05:28 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>setTibcoHomeInAmxSilentFile-writeFile-Log</td><td><pre></pre></td><td>Thu Aug 09 08:05:28 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>setTibcoHomeInAmxSilentFile-writeFile-Log</td><td><pre>Writing in file "/groupfiler/tests/tests/amsg/3.0/reports/HP-UX_B.11.31_IA64N/amsg-320-V61/func/admin/lifecycle/lifecycle_4node_hsql/install/TIBCOUniversalInstallerAmx.silent" ...
+</pre></td><td>Thu Aug 09 08:05:28 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>setTibcoHomeInAmxSilentFile-writeFile-checkCreateFile</td><td><pre></pre></td><td>Thu Aug 09 08:05:28 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>setTibcoHomeInAmxSilentFile-writeFile-checkCreateFile</td><td><pre></pre></td><td>Thu Aug 09 08:05:28 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>setTibcoHomeInAmxSilentFile-writeFile-writeFile</td><td><pre></pre></td><td>Thu Aug 09 08:05:28 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>setTibcoHomeInAmxSilentFile-writeFile-writeFile</td><td><pre></pre></td><td>Thu Aug 09 08:05:28 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.io.*;
+
+String baseErrorMsg = "File Write Error"; // Do not modify. Test engineers might assert on this string.
+String baseSuccessMsg = "File Write Success"; // Do not modify. Test engineers might assert on this string.
+String strFile = testExec.parseInState(file).replace('\\', '/');
+
+File fileHandle = new File(strFile);
+if (!fileHandle.exists())
+  return baseErrorMsg + ": File '" + fileHandle + "' does not exist.";
+if (!fileHandle.isFile())
+  return baseErrorMsg + ": '" + fileHandle + "' is not a file.";
+if (!fileHandle.canWrite())
+  return baseErrorMsg + ": Cannot write in file '" + fileHandle + "'.";
+
+if (encoding.equals("")) {
+        BufferedWriter output = new BufferedWriter(new OutputStreamWriter
+                                 (new FileOutputStream(fileHandle)));
+	output.write(content);
+	output.close();
+	return baseSuccessMsg + ": File '" + fileHandle + "' now contains: \n" + content;
+} else {
+	BufferedWriter output = new BufferedWriter(new OutputStreamWriter
+                                 (new FileOutputStream(fileHandle),encoding));
+	output.write(content);
+	output.close();
+	return baseSuccessMsg + ": File '" + fileHandle + "' now contains: \n" + content;
+}</pre></td><td>Thu Aug 09 08:05:28 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>setTibcoHomeInAmxSilentFile-writeFile-writeFile</td><td><pre>File Write Success: File '/groupfiler/tests/tests/amsg/3.0/reports/HP-UX_B.11.31_IA64N/amsg-320-V61/func/admin/lifecycle/lifecycle_4node_hsql/install/TIBCOUniversalInstallerAmx.silent' now contains: 
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd"&gt;
+&lt;properties&gt;
+&lt;comment&gt;---Universal Installer Silent Installation Properties---&lt;/comment&gt;
+
+&lt;!--accept the license agreement--&gt;
+&lt;entry key="acceptLicense"&gt;true&lt;/entry&gt;
+
+&lt;!--If multiple environments are supported, create a new one or use an existing one. Set createNewEnvironment to false if using an existing environment --&gt;
+&lt;!--If the product does not support multiple environments, then the values below are ignored--&gt;
+&lt;entry key="createNewEnvironment"&gt;true&lt;/entry&gt;
+
+&lt;!--the root installation directory--&gt;
+&lt;!--if the product does not support multiple instances and TIBCO_HOME has already been set then--&gt;
+&lt;!--this value is ignored and the existing TIBCO_HOME is used as the installation root--&gt;
+&lt;entry key="installationRoot"&gt;/local/amx320-V61&lt;/entry&gt;
+
+&lt;!--If using an existing environment then the installationRoot AND environmentName MUST match a pre-existing environment--&gt;
+&lt;!--If creating a new environment then the installationRoot AND environmentName MUST BE UNIQUE and not match a pre-existing environment--&gt;
+&lt;entry key="environmentName"&gt;AMX3-QA-BAT&lt;/entry&gt;
+
+&lt;!-- configDirectoryRoot - location of configuration files if it is not already defined for the TIBCO HOME instance. Configuration files will be added to configDirectoryRoot/tibco/cfgmgmt --&gt;
+&lt;entry key="configDirectoryRoot"&gt;[[tibcoConfigHome]]&lt;/entry&gt;
+
+&lt;entry key="reinstallFeatures"&gt;true&lt;/entry&gt;
+
+&lt;!-- A prerequistite is to install hibernate. This can be done by downloading hibernate or specifying the absolute path to the hibernate location on the system. To download hibernate, please specify downloadHibernate to true. To specify the absolute path of hibernate on the system instead, set downloadHibernate to false and hibernatePath value should be set to &lt;absolute directory path&gt;/hibernate_zip_assembly_3.2.300.001.zip --&gt;
+&lt;entry key="downloadHibernate"&gt;true&lt;/entry&gt;
+&lt;entry key="hibernatePath"&gt;&lt;/entry&gt;
+
+&lt;!-- LGPL License download --&gt;
+&lt;entry key="LGPLAssemblyLicenseAccepted"&gt;true&lt;/entry&gt;
+&lt;entry key="LGPLAssemblyDownload"&gt;true&lt;/entry&gt;
+&lt;entry key="LGPLAssemblyPath"&gt;&lt;/entry&gt;
+
+&lt;!--Profiles Selection--&gt;
+&lt;!-- The 'selectedProfiles' value is a comma separated list of profiles to install. If a profile is listed which does not exist, then it is ignored. At least one profile must be listed if useInstallProfile is set to true --&gt;
+&lt;entry key="useInstallProfile"&gt;true&lt;/entry&gt;
+&lt;entry key="selectedProfiles"&gt;Administration,Runtime Host,SOA Development&lt;/entry&gt;
+
+&lt;/properties&gt;
+</pre></td><td>Thu Aug 09 08:05:28 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>setTibcoHomeInAmxSilentFile-writeFile-success</td><td><pre></pre></td><td>Thu Aug 09 08:05:28 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>setTibcoHomeInAmxSilentFile-writeFile-success</td><td><pre></pre></td><td>Thu Aug 09 08:05:28 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>return testExec.parseInState(file).replace('\\','/');</pre></td><td>Thu Aug 09 08:05:28 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>setTibcoHomeInAmxSilentFile-writeFile-success</td><td><pre>/groupfiler/tests/tests/amsg/3.0/reports/HP-UX_B.11.31_IA64N/amsg-320-V61/func/admin/lifecycle/lifecycle_4node_hsql/install/TIBCOUniversalInstallerAmx.silent</pre></td><td>Thu Aug 09 08:05:28 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>setTibcoHomeInAmxSilentFile-success</td><td><pre></pre></td><td>Thu Aug 09 08:05:28 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>setTibcoHomeInAmxSilentFile-success</td><td><pre></pre></td><td>Thu Aug 09 08:05:28 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>return "Successfully replaced '" + propList.toString() + "' in file '" + testExec.parseInState(file.toString()) + "'";</pre></td><td>Thu Aug 09 08:05:28 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>setTibcoHomeInAmxSilentFile-success</td><td><pre>Successfully replaced '{tibcoHome=/local/amx320-V61}' in file '/groupfiler/tests/tests/amsg/3.0/reports/HP-UX_B.11.31_IA64N/amsg-320-V61/func/admin/lifecycle/lifecycle_4node_hsql/install/TIBCOUniversalInstallerAmx.silent'</pre></td><td>Thu Aug 09 08:05:28 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>setTibcoConfigHomeInAmxSilentFile</td><td><pre></pre></td><td>Thu Aug 09 08:05:28 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>setTibcoConfigHomeInAmxSilentFile</td><td><pre></pre></td><td>Thu Aug 09 08:05:28 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/file/ReplaceInFile.tst</pre></td><td>Thu Aug 09 08:05:28 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>setTibcoConfigHomeInAmxSilentFile-Log</td><td><pre></pre></td><td>Thu Aug 09 08:05:28 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>setTibcoConfigHomeInAmxSilentFile-Log</td><td><pre></pre></td><td>Thu Aug 09 08:05:28 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>setTibcoConfigHomeInAmxSilentFile-Log</td><td><pre>Replacing the following Strings in file "/groupfiler/tests/tests/amsg/3.0/reports/HP-UX_B.11.31_IA64N/amsg-320-V61/func/admin/lifecycle/lifecycle_4node_hsql/install/TIBCOUniversalInstallerAmx.silent":
+tibcoConfigHome
+
+ </pre></td><td>Thu Aug 09 08:05:28 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>setTibcoConfigHomeInAmxSilentFile-validate</td><td><pre></pre></td><td>Thu Aug 09 08:05:28 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>setTibcoConfigHomeInAmxSilentFile-validate</td><td><pre></pre></td><td>Thu Aug 09 08:05:28 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>baseSuccessMsg = "Replace Validation Success";
+baseErrorMsg = "Replace Validation Error"; // there is an assertion on this string
+String file = testExec.parseInState(file).replace('\\','/');
+File f = new File(file);
+
+// Check if file exists
+if (!f.exists())
+ return baseErrorMsg + ": File ('" + file + "') does not exist";
+
+// If fileName is a directory, we fail.
+if(f.isDirectory())
+ return baseErrorMsg + ": File passed is a directory! It must be a file.";
+
+// If cannot write
+if (!f.canWrite())
+  return baseErrorMsg + ": Cannot write in file '" + file + "'.";
+
+//This can now be optional as users can use propertyFile/List.
+// Old string cannot be empty
+if((oldString.equals("")) && (propertyFileName.equals("")) && (propertyList.equals("")))
+ return baseErrorMsg + ": User should specify either oldString or propertyFileName or propertyList";
+
+File propertyFile = null;
+if ((propertyFileName != null) && (!propertyFileName.equals(""))) {
+	propertyFile = new File(testExec.parseInState(propertyFileName).replace('\\', '/'));
+	if (!propertyFile.canRead()) {
+		return baseErrorMsg + ": Property file not found/cannot read it. "+propertyFileName;
+	}
+	if (!propertyFile.isFile()) {
+		return baseErrorMsg + ": property file is not a normal file. "+propertyFileName;
+	}		
+}
+
+return baseSuccessMsg;</pre></td><td>Thu Aug 09 08:05:28 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>setTibcoConfigHomeInAmxSilentFile-validate</td><td><pre>Replace Validation Success</pre></td><td>Thu Aug 09 08:05:29 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.io.File;
+import java.io.FileInputStream;
+import java.util.Properties;
+
+	Properties getPropList() {
+		Properties props = new Properties();
+		File propertyFile = null;
+		FileInputStream fis = null;
+		
+		oldStr = testExec.parseInState(oldString.toString());
+		newStr = testExec.parseInState(newString.toString());
+		
+		try {
+			if ((propertyFileName != null) && (!propertyFileName.equals(""))) {
+				propertyFile = new File(testExec.parseInState(propertyFileName).replace('\\', '/'));
+				fis = new FileInputStream(propertyFile);
+				props.load(fis);
+				
+			}
+			
+			if ((propertyList != null) && (!propertyList.equals(""))) {
+				String [] propArray = propertyList.split(",");
+				for (int i =0; i &lt; propArray.length; i++) {
+					String [] keyPair = propArray[i].split("=");
+					if (keyPair.length == 1) continue;
+					props.setProperty(keyPair[0],keyPair[1]);
+				}
+			}
+			
+            if (!oldStr.equals("")) {
+                props.setProperty(oldStr,newStr);
+            }
+		
+		}catch(Exception e) {
+			response = "Fail: Failed to compute property list."+e.getLocalizedMessage();			
+		}
+		finally {
+			try {				
+				if (fis != null) fis.close();				
+			}catch(Exception ioe) {
+				//ignore.
+			}
+		}
+		return props;
+	}
+return getPropList();</pre></td><td>Thu Aug 09 08:05:29 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>setTibcoConfigHomeInAmxSilentFile-getFullPropertyList</td><td><pre>{tibcoConfigHome=/local/amx320-V61/conf}</pre></td><td>Thu Aug 09 08:05:29 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>setTibcoConfigHomeInAmxSilentFile-readFile</td><td><pre></pre></td><td>Thu Aug 09 08:05:29 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>setTibcoConfigHomeInAmxSilentFile-readFile</td><td><pre></pre></td><td>Thu Aug 09 08:05:29 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/file/ReadFile.tst</pre></td><td>Thu Aug 09 08:05:29 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>setTibcoConfigHomeInAmxSilentFile-readFile-Log</td><td><pre></pre></td><td>Thu Aug 09 08:05:29 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>setTibcoConfigHomeInAmxSilentFile-readFile-Log</td><td><pre></pre></td><td>Thu Aug 09 08:05:29 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>setTibcoConfigHomeInAmxSilentFile-readFile-Log</td><td><pre>Reading file "/groupfiler/tests/tests/amsg/3.0/reports/HP-UX_B.11.31_IA64N/amsg-320-V61/func/admin/lifecycle/lifecycle_4node_hsql/install/TIBCOUniversalInstallerAmx.silent" ...</pre></td><td>Thu Aug 09 08:05:29 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>setTibcoConfigHomeInAmxSilentFile-readFile-readFile</td><td><pre></pre></td><td>Thu Aug 09 08:05:29 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>setTibcoConfigHomeInAmxSilentFile-readFile-readFile</td><td><pre></pre></td><td>Thu Aug 09 08:05:29 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.io.*;
+
+String baseErrorMsg = "File Read Error"; // Do not modify. Test engineers might assert on this string.
+String strFile = testExec.parseInState(file).replace('\\', '/');
+
+File file = new File(strFile);
+if (!file.exists())
+  return baseErrorMsg + ": File '" + file + "' does not exist.";
+if (!file.canRead())
+  return baseErrorMsg + ": Cannot be read file '" + file + "'.";
+if (!file.isFile())
+  return baseErrorMsg + ": '" + file + "' is not a file.";
+
+BufferedReader input=null;
+
+try {
+    if (encoding.equals("")) 
+        input = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+    else 	
+        input = new BufferedReader(new InputStreamReader  
+				  (new FileInputStream(file),encoding));
+
+    //BufferedReader input = new BufferedReader(new FileReader(file));
+    StringBuffer content = new StringBuffer();
+    String line = null;
+    /*
+    * readLine is a bit quirky :
+    * it returns the content of a line MINUS the newline.
+    * it returns null only for the END of the stream.
+    * it returns an empty String if two newlines appear in a row.
+    */
+    while ((line = input.readLine()) != null) {
+        content.append(line);
+        content.append(System.getProperty("line.separator"));
+    }
+    //flush and close both "input" and its underlying FileReader
+    input.close();
+    return content.toString();
+}
+catch(Exception e) {
+    return baseErrorMsg + ": " + e.getMessage();
+}
+</pre></td><td>Thu Aug 09 08:05:29 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>setTibcoConfigHomeInAmxSilentFile-readFile-readFile</td><td><pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd"&gt;
+&lt;properties&gt;
+&lt;comment&gt;---Universal Installer Silent Installation Properties---&lt;/comment&gt;
+
+&lt;!--accept the license agreement--&gt;
+&lt;entry key="acceptLicense"&gt;true&lt;/entry&gt;
+
+&lt;!--If multiple environments are supported, create a new one or use an existing one. Set createNewEnvironment to false if using an existing environment --&gt;
+&lt;!--If the product does not support multiple environments, then the values below are ignored--&gt;
+&lt;entry key="createNewEnvironment"&gt;true&lt;/entry&gt;
+
+&lt;!--the root installation directory--&gt;
+&lt;!--if the product does not support multiple instances and TIBCO_HOME has already been set then--&gt;
+&lt;!--this value is ignored and the existing TIBCO_HOME is used as the installation root--&gt;
+&lt;entry key="installationRoot"&gt;/local/amx320-V61&lt;/entry&gt;
+
+&lt;!--If using an existing environment then the installationRoot AND environmentName MUST match a pre-existing environment--&gt;
+&lt;!--If creating a new environment then the installationRoot AND environmentName MUST BE UNIQUE and not match a pre-existing environment--&gt;
+&lt;entry key="environmentName"&gt;AMX3-QA-BAT&lt;/entry&gt;
+
+&lt;!-- configDirectoryRoot - location of configuration files if it is not already defined for the TIBCO HOME instance. Configuration files will be added to configDirectoryRoot/tibco/cfgmgmt --&gt;
+&lt;entry key="configDirectoryRoot"&gt;[[tibcoConfigHome]]&lt;/entry&gt;
+
+&lt;entry key="reinstallFeatures"&gt;true&lt;/entry&gt;
+
+&lt;!-- A prerequistite is to install hibernate. This can be done by downloading hibernate or specifying the absolute path to the hibernate location on the system. To download hibernate, please specify downloadHibernate to true. To specify the absolute path of hibernate on the system instead, set downloadHibernate to false and hibernatePath value should be set to &lt;absolute directory path&gt;/hibernate_zip_assembly_3.2.300.001.zip --&gt;
+&lt;entry key="downloadHibernate"&gt;true&lt;/entry&gt;
+&lt;entry key="hibernatePath"&gt;&lt;/entry&gt;
+
+&lt;!-- LGPL License download --&gt;
+&lt;entry key="LGPLAssemblyLicenseAccepted"&gt;true&lt;/entry&gt;
+&lt;entry key="LGPLAssemblyDownload"&gt;true&lt;/entry&gt;
+&lt;entry key="LGPLAssemblyPath"&gt;&lt;/entry&gt;
+
+&lt;!--Profiles Selection--&gt;
+&lt;!-- The 'selectedProfiles' value is a comma separated list of profiles to install. If a profile is listed which does not exist, then it is ignored. At least one profile must be listed if useInstallProfile is set to true --&gt;
+&lt;entry key="useInstallProfile"&gt;true&lt;/entry&gt;
+&lt;entry key="selectedProfiles"&gt;Administration,Runtime Host,SOA Development&lt;/entry&gt;
+
+&lt;/properties&gt;
+</pre></td><td>Thu Aug 09 08:05:29 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.util.Properties;
+import java.util.Set;
+
+// convert to String because it can comes as Boolean or Integer!
+// Replace
+// return fileContent.replace(oldStr.subSequence(0,oldStr.length()), newStr.subSequence(0, newStr.length()));
+//return fileContent.substring(0, fileContent.indexOf(oldString)) + newString + fileContent.substring((fileContent.indexOf(oldString) + oldString.length()), fileContent.length());
+
+	String replace() {
+		String response = fileContent;
+        Properties props = propList;
+		try {	
+            if (prefix == null) prefix = "";
+			if (suffix == null) suffix = "";
+
+			if (!props.isEmpty()) {
+				
+				Set keySet = props.keySet();
+				for (Object key: keySet) {
+					String name = prefix+(String)key+suffix;
+					String  value = testExec.parseInState((String)props.get(key));					
+					response = response.replace(name.subSequence(0,name.length()), value.subSequence(0, value.length()));
+				}
+			}
+		}
+        catch(Exception e) {
+			response = "Fail: Failed to replace."+e.getLocalizedMessage();			
+		}
+		return response;
+	}
+return replace();</pre></td><td>Thu Aug 09 08:05:29 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>setTibcoConfigHomeInAmxSilentFile-replaceContent</td><td><pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd"&gt;
+&lt;properties&gt;
+&lt;comment&gt;---Universal Installer Silent Installation Properties---&lt;/comment&gt;
+
+&lt;!--accept the license agreement--&gt;
+&lt;entry key="acceptLicense"&gt;true&lt;/entry&gt;
+
+&lt;!--If multiple environments are supported, create a new one or use an existing one. Set createNewEnvironment to false if using an existing environment --&gt;
+&lt;!--If the product does not support multiple environments, then the values below are ignored--&gt;
+&lt;entry key="createNewEnvironment"&gt;true&lt;/entry&gt;
+
+&lt;!--the root installation directory--&gt;
+&lt;!--if the product does not support multiple instances and TIBCO_HOME has already been set then--&gt;
+&lt;!--this value is ignored and the existing TIBCO_HOME is used as the installation root--&gt;
+&lt;entry key="installationRoot"&gt;/local/amx320-V61&lt;/entry&gt;
+
+&lt;!--If using an existing environment then the installationRoot AND environmentName MUST match a pre-existing environment--&gt;
+&lt;!--If creating a new environment then the installationRoot AND environmentName MUST BE UNIQUE and not match a pre-existing environment--&gt;
+&lt;entry key="environmentName"&gt;AMX3-QA-BAT&lt;/entry&gt;
+
+&lt;!-- configDirectoryRoot - location of configuration files if it is not already defined for the TIBCO HOME instance. Configuration files will be added to configDirectoryRoot/tibco/cfgmgmt --&gt;
+&lt;entry key="configDirectoryRoot"&gt;/local/amx320-V61/conf&lt;/entry&gt;
+
+&lt;entry key="reinstallFeatures"&gt;true&lt;/entry&gt;
+
+&lt;!-- A prerequistite is to install hibernate. This can be done by downloading hibernate or specifying the absolute path to the hibernate location on the system. To download hibernate, please specify downloadHibernate to true. To specify the absolute path of hibernate on the system instead, set downloadHibernate to false and hibernatePath value should be set to &lt;absolute directory path&gt;/hibernate_zip_assembly_3.2.300.001.zip --&gt;
+&lt;entry key="downloadHibernate"&gt;true&lt;/entry&gt;
+&lt;entry key="hibernatePath"&gt;&lt;/entry&gt;
+
+&lt;!-- LGPL License download --&gt;
+&lt;entry key="LGPLAssemblyLicenseAccepted"&gt;true&lt;/entry&gt;
+&lt;entry key="LGPLAssemblyDownload"&gt;true&lt;/entry&gt;
+&lt;entry key="LGPLAssemblyPath"&gt;&lt;/entry&gt;
+
+&lt;!--Profiles Selection--&gt;
+&lt;!-- The 'selectedProfiles' value is a comma separated list of profiles to install. If a profile is listed which does not exist, then it is ignored. At least one profile must be listed if useInstallProfile is set to true --&gt;
+&lt;entry key="useInstallProfile"&gt;true&lt;/entry&gt;
+&lt;entry key="selectedProfiles"&gt;Administration,Runtime Host,SOA Development&lt;/entry&gt;
+
+&lt;/properties&gt;
+</pre></td><td>Thu Aug 09 08:05:29 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>setTibcoConfigHomeInAmxSilentFile-writeFile</td><td><pre></pre></td><td>Thu Aug 09 08:05:29 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>setTibcoConfigHomeInAmxSilentFile-writeFile</td><td><pre></pre></td><td>Thu Aug 09 08:05:29 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/file/WriteFile.tst</pre></td><td>Thu Aug 09 08:05:29 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>setTibcoConfigHomeInAmxSilentFile-writeFile-Log</td><td><pre></pre></td><td>Thu Aug 09 08:05:29 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>setTibcoConfigHomeInAmxSilentFile-writeFile-Log</td><td><pre></pre></td><td>Thu Aug 09 08:05:29 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>setTibcoConfigHomeInAmxSilentFile-writeFile-Log</td><td><pre>Writing in file "/groupfiler/tests/tests/amsg/3.0/reports/HP-UX_B.11.31_IA64N/amsg-320-V61/func/admin/lifecycle/lifecycle_4node_hsql/install/TIBCOUniversalInstallerAmx.silent" ...
+</pre></td><td>Thu Aug 09 08:05:29 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>setTibcoConfigHomeInAmxSilentFile-writeFile-checkCreateFile</td><td><pre></pre></td><td>Thu Aug 09 08:05:29 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>setTibcoConfigHomeInAmxSilentFile-writeFile-checkCreateFile</td><td><pre></pre></td><td>Thu Aug 09 08:05:29 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>setTibcoConfigHomeInAmxSilentFile-writeFile-writeFile</td><td><pre></pre></td><td>Thu Aug 09 08:05:29 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>setTibcoConfigHomeInAmxSilentFile-writeFile-writeFile</td><td><pre></pre></td><td>Thu Aug 09 08:05:29 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.io.*;
+
+String baseErrorMsg = "File Write Error"; // Do not modify. Test engineers might assert on this string.
+String baseSuccessMsg = "File Write Success"; // Do not modify. Test engineers might assert on this string.
+String strFile = testExec.parseInState(file).replace('\\', '/');
+
+File fileHandle = new File(strFile);
+if (!fileHandle.exists())
+  return baseErrorMsg + ": File '" + fileHandle + "' does not exist.";
+if (!fileHandle.isFile())
+  return baseErrorMsg + ": '" + fileHandle + "' is not a file.";
+if (!fileHandle.canWrite())
+  return baseErrorMsg + ": Cannot write in file '" + fileHandle + "'.";
+
+if (encoding.equals("")) {
+        BufferedWriter output = new BufferedWriter(new OutputStreamWriter
+                                 (new FileOutputStream(fileHandle)));
+	output.write(content);
+	output.close();
+	return baseSuccessMsg + ": File '" + fileHandle + "' now contains: \n" + content;
+} else {
+	BufferedWriter output = new BufferedWriter(new OutputStreamWriter
+                                 (new FileOutputStream(fileHandle),encoding));
+	output.write(content);
+	output.close();
+	return baseSuccessMsg + ": File '" + fileHandle + "' now contains: \n" + content;
+}</pre></td><td>Thu Aug 09 08:05:29 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>setTibcoConfigHomeInAmxSilentFile-writeFile-writeFile</td><td><pre>File Write Success: File '/groupfiler/tests/tests/amsg/3.0/reports/HP-UX_B.11.31_IA64N/amsg-320-V61/func/admin/lifecycle/lifecycle_4node_hsql/install/TIBCOUniversalInstallerAmx.silent' now contains: 
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd"&gt;
+&lt;properties&gt;
+&lt;comment&gt;---Universal Installer Silent Installation Properties---&lt;/comment&gt;
+
+&lt;!--accept the license agreement--&gt;
+&lt;entry key="acceptLicense"&gt;true&lt;/entry&gt;
+
+&lt;!--If multiple environments are supported, create a new one or use an existing one. Set createNewEnvironment to false if using an existing environment --&gt;
+&lt;!--If the product does not support multiple environments, then the values below are ignored--&gt;
+&lt;entry key="createNewEnvironment"&gt;true&lt;/entry&gt;
+
+&lt;!--the root installation directory--&gt;
+&lt;!--if the product does not support multiple instances and TIBCO_HOME has already been set then--&gt;
+&lt;!--this value is ignored and the existing TIBCO_HOME is used as the installation root--&gt;
+&lt;entry key="installationRoot"&gt;/local/amx320-V61&lt;/entry&gt;
+
+&lt;!--If using an existing environment then the installationRoot AND environmentName MUST match a pre-existing environment--&gt;
+&lt;!--If creating a new environment then the installationRoot AND environmentName MUST BE UNIQUE and not match a pre-existing environment--&gt;
+&lt;entry key="environmentName"&gt;AMX3-QA-BAT&lt;/entry&gt;
+
+&lt;!-- configDirectoryRoot - location of configuration files if it is not already defined for the TIBCO HOME instance. Configuration files will be added to configDirectoryRoot/tibco/cfgmgmt --&gt;
+&lt;entry key="configDirectoryRoot"&gt;/local/amx320-V61/conf&lt;/entry&gt;
+
+&lt;entry key="reinstallFeatures"&gt;true&lt;/entry&gt;
+
+&lt;!-- A prerequistite is to install hibernate. This can be done by downloading hibernate or specifying the absolute path to the hibernate location on the system. To download hibernate, please specify downloadHibernate to true. To specify the absolute path of hibernate on the system instead, set downloadHibernate to false and hibernatePath value should be set to &lt;absolute directory path&gt;/hibernate_zip_assembly_3.2.300.001.zip --&gt;
+&lt;entry key="downloadHibernate"&gt;true&lt;/entry&gt;
+&lt;entry key="hibernatePath"&gt;&lt;/entry&gt;
+
+&lt;!-- LGPL License download --&gt;
+&lt;entry key="LGPLAssemblyLicenseAccepted"&gt;true&lt;/entry&gt;
+&lt;entry key="LGPLAssemblyDownload"&gt;true&lt;/entry&gt;
+&lt;entry key="LGPLAssemblyPath"&gt;&lt;/entry&gt;
+
+&lt;!--Profiles Selection--&gt;
+&lt;!-- The 'selectedProfiles' value is a comma separated list of profiles to install. If a profile is listed which does not exist, then it is ignored. At least one profile must be listed if useInstallProfile is set to true --&gt;
+&lt;entry key="useInstallProfile"&gt;true&lt;/entry&gt;
+&lt;entry key="selectedProfiles"&gt;Administration,Runtime Host,SOA Development&lt;/entry&gt;
+
+&lt;/properties&gt;
+</pre></td><td>Thu Aug 09 08:05:30 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>setTibcoConfigHomeInAmxSilentFile-writeFile-success</td><td><pre></pre></td><td>Thu Aug 09 08:05:30 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>setTibcoConfigHomeInAmxSilentFile-writeFile-success</td><td><pre></pre></td><td>Thu Aug 09 08:05:30 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>return testExec.parseInState(file).replace('\\','/');</pre></td><td>Thu Aug 09 08:05:30 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>setTibcoConfigHomeInAmxSilentFile-writeFile-success</td><td><pre>/groupfiler/tests/tests/amsg/3.0/reports/HP-UX_B.11.31_IA64N/amsg-320-V61/func/admin/lifecycle/lifecycle_4node_hsql/install/TIBCOUniversalInstallerAmx.silent</pre></td><td>Thu Aug 09 08:05:30 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>setTibcoConfigHomeInAmxSilentFile-success</td><td><pre></pre></td><td>Thu Aug 09 08:05:30 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>setTibcoConfigHomeInAmxSilentFile-success</td><td><pre></pre></td><td>Thu Aug 09 08:05:30 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>return "Successfully replaced '" + propList.toString() + "' in file '" + testExec.parseInState(file.toString()) + "'";</pre></td><td>Thu Aug 09 08:05:30 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>setTibcoConfigHomeInAmxSilentFile-success</td><td><pre>Successfully replaced '{tibcoConfigHome=/local/amx320-V61/conf}' in file '/groupfiler/tests/tests/amsg/3.0/reports/HP-UX_B.11.31_IA64N/amsg-320-V61/func/admin/lifecycle/lifecycle_4node_hsql/install/TIBCOUniversalInstallerAmx.silent'</pre></td><td>Thu Aug 09 08:05:30 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>installAmx</td><td><pre></pre></td><td>Thu Aug 09 08:05:30 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>installAmx</td><td><pre></pre></td><td>Thu Aug 09 08:05:30 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/install/Install.tst</pre></td><td>Thu Aug 09 08:05:30 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>installAmx-log</td><td><pre></pre></td><td>Thu Aug 09 08:05:30 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>installAmx-log</td><td><pre></pre></td><td>Thu Aug 09 08:05:30 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>installAmx-log</td><td><pre>Installing from /var/tmp//amxinstaller/unzip ...</pre></td><td>Thu Aug 09 08:05:30 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>installAmx-validateInstallationInputs</td><td><pre>Validating inputs for the installation process...</pre></td><td>Thu Aug 09 08:05:30 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>installAmx-validateInstallationInputs</td><td><pre>Validating inputs for the installation process...</pre></td><td>Thu Aug 09 08:05:30 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>String baseErrorMsg = "Installation inputs validation error";
+String baseSuccessMsg = "Installation inputs verified";
+
+if (!acceptLicense) {
+  return baseErrorMsg + ": You need to accept license agreement to proceed with installation.";
+}
+
+//Verify that installer folder exists
+String installHome = testExec.parseInState(installerHome).replace('\\','/');
+f = new File(installHome);
+if (!f.exists())
+{
+return baseErrorMsg + ": Installer Home (" + installHome + ") does not exist.";
+}
+
+if (!f.isDirectory())
+{
+ return baseErrorMsg + ": Installer Home (" + installHome + ") must be a directory.";
+}
+
+// validate binaryPath if supplied
+if ((installerBinaryPath != null) && (!installerBinaryPath.equals(""))) {
+
+    File installerFile = null;
+    installerFile = new File(testExec.parseInState(installerBinaryPath).replace('\\', '/'));
+    
+    if (!installerFile.canRead()) {
+        return baseErrorMsg + ": Installer executable file (" + installerBinaryPath + ") not found/cannot be read.";
+    }
+
+    if (!installerFile.isFile()) {
+        return baseErrorMsg + ": Installer executable file (" + installerBinaryPath + ") is not a normal file.";
+    }
+}
+
+return baseSuccessMsg;
+</pre></td><td>Thu Aug 09 08:05:30 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>installAmx-validateInstallationInputs</td><td><pre>Installation inputs verified</pre></td><td>Thu Aug 09 08:05:30 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>installAmx-copyUniversalInstallerForHFs</td><td><pre>This step copies the universal installer...Ignore failure of this step if user is installing non-HF version...</pre></td><td>Thu Aug 09 08:05:30 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>installAmx-copyUniversalInstallerForHFs</td><td><pre>This step copies the universal installer...Ignore failure of this step if user is installing non-HF version...</pre></td><td>Thu Aug 09 08:05:30 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/file/CopyFile.tst</pre></td><td>Thu Aug 09 08:05:30 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>installAmx-copyUniversalInstallerForHFs-Log</td><td><pre></pre></td><td>Thu Aug 09 08:05:30 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>installAmx-copyUniversalInstallerForHFs-Log</td><td><pre></pre></td><td>Thu Aug 09 08:05:30 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>installAmx-copyUniversalInstallerForHFs-Log</td><td><pre>Copying file 
+"" to 
+"/var/tmp//amxinstaller/unzip"</pre></td><td>Thu Aug 09 08:05:30 PDT 2012</td> </tr><tr bgcolor='#CC9933'><td>EVENT_ASSERT</td><td>installAmx-copyUniversalInstallerForHFs-Log [Assert106] </td><td><pre>Destination directory will be created...</pre></td><td>Thu Aug 09 08:05:30 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>installAmx-copyUniversalInstallerForHFs-getDirectory</td><td><pre></pre></td><td>Thu Aug 09 08:05:30 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>installAmx-copyUniversalInstallerForHFs-getDirectory</td><td><pre></pre></td><td>Thu Aug 09 08:05:30 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>String file = testExec.parseInState(fileOut).replace('\\','/');
+File f = new File(file);
+
+if (f.isDirectory())
+ return file;
+else 
+ return f.getParent();</pre></td><td>Thu Aug 09 08:05:30 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>installAmx-copyUniversalInstallerForHFs-getDirectory</td><td><pre>/var/tmp//amxinstaller/unzip</pre></td><td>Thu Aug 09 08:05:30 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>installAmx-copyUniversalInstallerForHFs-createDirectory</td><td><pre></pre></td><td>Thu Aug 09 08:05:30 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>installAmx-copyUniversalInstallerForHFs-createDirectory</td><td><pre></pre></td><td>Thu Aug 09 08:05:30 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/file/CreateDirectory.tst</pre></td><td>Thu Aug 09 08:05:31 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>installAmx-copyUniversalInstallerForHFs-createDirectory-Log</td><td><pre></pre></td><td>Thu Aug 09 08:05:31 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>installAmx-copyUniversalInstallerForHFs-createDirectory-Log</td><td><pre></pre></td><td>Thu Aug 09 08:05:31 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>installAmx-copyUniversalInstallerForHFs-createDirectory-Log</td><td><pre>Creating directory "/var/tmp//amxinstaller/unzip" ...</pre></td><td>Thu Aug 09 08:05:31 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>installAmx-copyUniversalInstallerForHFs-createDirectory-createDirectory</td><td><pre></pre></td><td>Thu Aug 09 08:05:31 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>installAmx-copyUniversalInstallerForHFs-createDirectory-createDirectory</td><td><pre></pre></td><td>Thu Aug 09 08:05:31 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.io.File;
+
+// This function create a directory
+createDirectory(String strFile) {
+ File f = new File(strFile);
+ 
+ if(f.exists())
+  return true;  
+ else
+  return f.mkdirs();           
+}
+
+// Main
+//String baseSuccessMsg = "Directory Creation Success"; // Do not modify. Test engineers might assert on this string. 
+String baseErrorMsg = "Directory Creation Error"; // Do not modify. Test engineers might assert on this string.
+String dir = testExec.getStateString("directory", "&lt;&lt;null&gt;&gt;").replace('\\', '/');
+dir = testExec.parseInState(dir).replace('\\', '/');
+try {
+ if(createDirectory(dir))
+  return dir;
+ else
+  return baseErrorMsg;
+}
+catch(Exception e) {
+ return baseErrorMsg + ": " + e.getMessage();
+}</pre></td><td>Thu Aug 09 08:05:31 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>installAmx-copyUniversalInstallerForHFs-createDirectory-createDirectory</td><td><pre>/var/tmp//amxinstaller/unzip</pre></td><td>Thu Aug 09 08:05:31 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>installAmx-copyUniversalInstallerForHFs-copyFile</td><td><pre></pre></td><td>Thu Aug 09 08:05:31 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>installAmx-copyUniversalInstallerForHFs-copyFile</td><td><pre></pre></td><td>Thu Aug 09 08:05:31 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.io.*;
+
+copyFile(String fileIn, String fileOut) {
+ // Do not modify next 2 variables. 
+ // Test engineers might have assertion on these strings.
+ String baseSuccessMsg = "File Copy Success";
+ String baseErrorMsg = "File Copy Error";
+
+ try {
+  File fi = new File(fileIn);
+  File fo = new File(fileOut);
+
+  // We don't copy directory!
+  if (fi.isDirectory())
+   return baseErrorMsg + ": Source cannot be a directory !"; 
+  
+  // If destination is a directory, we'll copy the source file in there
+  if (fo.exists() && fo.isDirectory())
+   fo = new File(fo, fi.getName());
+
+  FileInputStream fis  = new FileInputStream(fi);
+  FileOutputStream fos = new FileOutputStream(fo);
+  
+  byte[] buf = new byte[1024];
+  int i = 0;
+  while((i = fis.read(buf))!= -1) {
+   fos.write(buf, 0, i);
+  }
+  fis.close();
+  fos.close();
+  return fileOut;
+ }
+ catch (Exception e) {
+  return baseErrorMsg + ": " + e.getMessage();
+ }
+}
+
+// Main
+fileIn = testExec.parseInState(fileIn).replace('\\','/');
+fileOut = testExec.parseInState(fileOut).replace('\\','/');
+return copyFile(fileIn, fileOut);</pre></td><td>Thu Aug 09 08:05:31 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>installAmx-copyUniversalInstallerForHFs-copyFile</td><td><pre>File Copy Error:  (No such file or directory (errno:2))</pre></td><td>Thu Aug 09 08:05:31 PDT 2012</td> </tr><tr bgcolor='#CC9933'><td>EVENT_ASSERT</td><td>installAmx-copyUniversalInstallerForHFs-copyFile [Assert52] </td><td><pre>File Copy Error:  (No such file or directory (errno:2))</pre></td><td>Thu Aug 09 08:05:31 PDT 2012</td> </tr><tr bgcolor='#FFA500'><td>EVENT_TRANSFAILED</td><td>installAmx-copyUniversalInstallerForHFs</td><td><pre>Sub test case had failure</pre></td><td>Thu Aug 09 08:05:31 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>installAmx-determineInstallerFileName</td><td><pre>Determining name of the installer executable...</pre></td><td>Thu Aug 09 08:05:31 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>installAmx-determineInstallerFileName</td><td><pre>Determining name of the installer executable...</pre></td><td>Thu Aug 09 08:05:31 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.io.File;
+
+String baseErrorMessage="Error finding the installer executable: "; // Do not modify. Assertion on this string exists.
+
+//We are only searching the current folder. No subfolder searches are performed
+//There is NO match performed to check if for ex.: if the host OS is Windows and an .exe is present.
+//A blind match is done for .exe or .bin. On the first match, the file name is returned.
+
+//Get the list of files in the directory
+File f = new File(testExec.parseInState(installerHome).replace('\\','/'));
+String[] listOfFiles = f.list();
+		
+//Run over the list of files in the directory
+for (String installerFileName : listOfFiles) {
+	//Match 64-bit install .exe or .bin first
+	if (installerFileName.endsWith("64.exe") || installerFileName.endsWith("64.bin")) {
+	    if (installerFileName.endsWith("64.exe")) {
+            return installerFileName;
+        } 
+        else {
+            //If a match is found, return the file name
+            return testExec.parseInState(installerHome).replace('\\','/') +
+			"/" + installerFileName;
+        }
+	}
+    // Then match 32-bit install .exe or .bin
+    else if (installerFileName.endsWith(".exe") || installerFileName.endsWith(".bin")) {
+        if (installerFileName.endsWith(".exe")) {
+            return installerFileName;
+        } 
+        else {
+            //If a match is found, return the file name
+            return testExec.parseInState(installerHome).replace('\\','/') +
+			"/" + installerFileName;
+        }
+    }
+}
+	
+//No match is found
+baseErrorMessage+="No Installer executable found";
+return baseErrorMessage;</pre></td><td>Thu Aug 09 08:05:31 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>installAmx-determineInstallerFileName</td><td><pre>/var/tmp//amxinstaller/unzip/TIBCOUniversalInstaller-hpux-ia64.bin</pre></td><td>Thu Aug 09 08:05:31 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>installAmx-logInstallInfo</td><td><pre></pre></td><td>Thu Aug 09 08:05:31 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>installAmx-logInstallInfo</td><td><pre></pre></td><td>Thu Aug 09 08:05:31 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>installAmx-logInstallInfo</td><td><pre>Installing:
+/var/tmp//amxinstaller/unzip/TIBCOUniversalInstaller-hpux-ia64.bin   -silent -V responseFile="/groupfiler/tests/tests/amsg/3.0/reports/HP-UX_B.11.31_IA64N/amsg-320-V61/func/admin/lifecycle/lifecycle_4node_hsql/install/TIBCOUniversalInstallerAmx.silent" -V logFile="/groupfiler/tests/tests/amsg/3.0/reports/HP-UX_B.11.31_IA64N/amsg-320-V61/func/admin/lifecycle/lifecycle_4node_hsql/install/amxinstall.log"
+</pre></td><td>Thu Aug 09 08:05:31 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>installAmx-checkIfUnix</td><td><pre></pre></td><td>Thu Aug 09 08:05:31 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>installAmx-checkIfUnix</td><td><pre></pre></td><td>Thu Aug 09 08:05:31 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>if (com.itko.util.Utilities.isWindows())
+ return "windows";
+else
+ return "unix";
+</pre></td><td>Thu Aug 09 08:05:31 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>installAmx-checkIfUnix</td><td><pre>unix</pre></td><td>Thu Aug 09 08:05:32 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>installAmx-chmodOnUnix</td><td><pre></pre></td><td>Thu Aug 09 08:05:32 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>installAmx-chmodOnUnix</td><td><pre></pre></td><td>Thu Aug 09 08:05:32 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/bin/chmod u+x /var/tmp//amxinstaller/unzip/TIBCOUniversalInstaller-hpux-ia64.bin</pre></td><td>Thu Aug 09 08:05:32 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>installAmx-chmodOnUnix</td><td><pre></pre></td><td>Thu Aug 09 08:05:32 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>installAmx-runInstaller</td><td><pre>Running the installer...</pre></td><td>Thu Aug 09 08:05:32 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>installAmx-runInstaller</td><td><pre>Running the installer...</pre></td><td>Thu Aug 09 08:05:32 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/var/tmp//amxinstaller/unzip/TIBCOUniversalInstaller-hpux-ia64.bin   -silent -V responseFile="/groupfiler/tests/tests/amsg/3.0/reports/HP-UX_B.11.31_IA64N/amsg-320-V61/func/admin/lifecycle/lifecycle_4node_hsql/install/TIBCOUniversalInstallerAmx.silent" -V logFile="/groupfiler/tests/tests/amsg/3.0/reports/HP-UX_B.11.31_IA64N/amsg-320-V61/func/admin/lifecycle/lifecycle_4node_hsql/install/amxinstall.log"</pre></td><td>Thu Aug 09 08:05:32 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>installAmx-runInstaller</td><td><pre></pre></td><td>Thu Aug 09 08:13:29 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>installAmx-logCompletion</td><td><pre></pre></td><td>Thu Aug 09 08:13:29 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>installAmx-logCompletion</td><td><pre></pre></td><td>Thu Aug 09 08:13:29 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>installAmx-logCompletion</td><td><pre>Installation completed.
+Exit code: 0
+</pre></td><td>Thu Aug 09 08:13:29 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>verifyTibcoHomeExists</td><td><pre></pre></td><td>Thu Aug 09 08:13:29 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>verifyTibcoHomeExists</td><td><pre></pre></td><td>Thu Aug 09 08:13:29 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/file/CheckFileExists.tst</pre></td><td>Thu Aug 09 08:13:29 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>verifyTibcoHomeExists-Log</td><td><pre></pre></td><td>Thu Aug 09 08:13:29 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>verifyTibcoHomeExists-Log</td><td><pre></pre></td><td>Thu Aug 09 08:13:29 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>verifyTibcoHomeExists-Log</td><td><pre>Checking existence of file "/local/amx320-V61" ...</pre></td><td>Thu Aug 09 08:13:29 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>verifyTibcoHomeExists-checkFileExists</td><td><pre></pre></td><td>Thu Aug 09 08:13:29 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>verifyTibcoHomeExists-checkFileExists</td><td><pre></pre></td><td>Thu Aug 09 08:13:29 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.io.File;
+
+// This function checks for file existence
+checkFileExists(String strFile) {
+ File f = new File(strFile);
+ return f.exists();         
+}
+
+// Main 
+String baseErrorMsg = "File Check Error"; // Do not modify. Test engineers might assert on this string.
+file = testExec.parseInState(file).replace('\\','/');
+
+try {
+ return checkFileExists(file);
+}
+catch(Exception e) {
+ return baseErrorMsg + ": " + e.getMessage();
+}</pre></td><td>Thu Aug 09 08:13:29 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>verifyTibcoHomeExists-checkFileExists</td><td><pre>false</pre></td><td>Thu Aug 09 08:13:30 PDT 2012</td> </tr><tr bgcolor='#CC9933'><td>EVENT_ASSERT</td><td>verifyTibcoHomeExists [Assert94] </td><td><pre>Could not find /local/amx320-V61 after install</pre></td><td>Thu Aug 09 08:13:30 PDT 2012</td> </tr><tr bgcolor='red'><td>EVENT_TESTFAILED</td><td></td><td></td><td>Thu Aug 09 08:13:30 PDT 2012</td> </tr>

@@ -1,0 +1,600 @@
+<hr><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>TIBCO Product Engineering Test Report</title>
+</head>
+<body>
+<center>
+<h1>
+<font color="0000ff">TIBCO ActiveMatrix Service Grid</font>
+</h1>
+<h1>
+<font color="0000ff">Automation Tests Report</font>
+</h1>
+<table cellspacing="1" cellpadding="5" border="1">
+<tr>
+<th>Report Time</th><th>Product Version</th><th>Platform</th><th>Test Machine</th><th>User Name</th>
+</tr>
+<tr>
+<td>2012/08/08 Wed 12:52:33</td><td>Version 3.2.0 build V61</td><td>HP-UX_B.11.31_IA64N</td><td><a target="_blank" href="http://qa.na.tibco.com/php/tsi_tests_host.php?oracle_sid=bwqadb&amp;hostname=hpita17">hpita17</a></td><td>superuser</td>
+</tr>
+</table>
+</center>
+<hr>
+<h2>
+<font color="0000ff">Test Set Summary</font>
+</h2>
+<table cellspacing="1" cellpadding="5" border="1">
+<tr>
+<th>Test Set Name</th><th>PASSED</th><th>FAILED</th><th>ERROR</th><th>TOTAL</th><th>Product Quality</th>
+</tr>
+<tr>
+<td>bat_2node_hsql</td><td align="right">2</td><td align="right">30</td><td align="right">0</td><td align="right">32</td><td><applet height="68" width="250" code="barchart.class"><param value="3" name="columns"><param value="horizontal" name="orientation"><param value="2" name="scale"><param value="%" name="unit_string"><param value="6" name="c1"><param value="green" name="c1_color"><param value="solid" name="c1_style"><param value="94" name="c2"><param value="red" name="c2_color"><param value="solid" name="c2_style"><param value="0" name="c3"><param value="gray" name="c3_color"><param value="solid" name="c3_style"></applet></td>
+</tr>
+</table>
+<hr>
+<h3>
+<a name="#testSet-bat_2node_hsql"></a><font color="0000ff">bat_2node_hsql Detailed Test Case Report</font>
+</h3>
+<table cellspacing="1" cellpadding="5" border="1">
+<tr>
+<th>Case ID</th><th>Description</th><th>Test Result</th><th>Diagnostic Files</th><th>Test Directories</th>
+</tr>
+<tr>
+<td><a name="#bat_2node_hsql-install2"><font color="red">install2</font></a></td><td><font color="red">
+<pre>suite installation in silent mode of:
+- ActiveMatrix Service Grid
+- CPP IT
+- Adapter BT
+- EJB BT
+- CLR IT (on Windows only)</pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/runtime/bat/install">Source</a>&nbsp;
+				<a href="install2">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#bat_2node_hsql-setup"><font color="red">setup</font></a></td><td><font color="red">
+<pre>Create TPShell and Provision DB driver if Oracle/SQLServer/DB2
+Bootstrap TIBCOHost 
+Bootstrap Admin SystemNode
+Setup Nodes (osgi console port 1129 and 1139)
+Set Node Loggers
+Install Resources Instances
+Deploy Dashboard
+Deploy MCR (optional) 
+Deploy Log Service (optional)
+Deploy Payload Service (optional)
+Deploy Mediation</pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/runtime/bat/setup">Source</a>&nbsp;
+				<a href="setup">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#bat_2node_hsql-5.1"><font color="red">5.1</font></a></td><td><font color="red">
+<pre>Description : Test Declared / Undeclared fault with AMX and BW Provider
+Scenario: 	Composite 1: 
+			SOAP BT(HTTP) &lt;-&gt; JAVA &lt;-&gt; JAVA &lt;-&gt; SOAP BT(HTTP) (Configured for AMX Provider)
+									   SOAP BT(HTTP) (Configured for BW Provider)
+			Composite 2:	
+			SOAP BT(HTTP) &lt;-&gt; JAVA
+
+MEP: In-Out 
+SOAP Version: 1.1 
+SOAP Style/Encoding: Document/Literal 
+</pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/runtime/bat/5.1">Source</a>&nbsp;
+				<a href="5.1">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#bat_2node_hsql-5.2"><font color="red">5.2</font></a></td><td><font color="red">
+<pre>JMS BT Service and Reference.
+JMS RT (not imported from design-time) with inline credentials.
+
+Composite1: 
+JMS BT (Topic - Serv1) &lt;-&gt; SPRING &lt;-&gt; JMS BT (Queue - Ref1)
+                       &lt;-&gt; JMS BT (Queue - Ref1)
+Composite2:
+JMS BT (Queue - Serv2) &lt;-&gt; JAVA
+                                     
+JMS Service1 and JMS Ref1 bindings are created in Admin through CLI.
+JMS Service2 and Ref2 are created at design-time.
+
+Project1 is configured for BW Provider for following cases:
+       </pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/runtime/bat/5.2">Source</a>&nbsp;
+				<a href="5.2">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#bat_2node_hsql-5.3"><font color="red">5.3</font></a></td><td><font color="red">
+<pre>Description :   Test File-based Logging.
+                Create 3 loggers: logger1 for Nodes (done in setup), logger2 for Java Component, logger3 for Application
+Scenario:       SOAP BT(HTTP) -&gt; Java -&gt; Spring
+
+MEP: In-Only 
+SOAP Version: 1.1 
+SOAP Style/Encoding: Document/Literal</pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/runtime/bat/5.3">Source</a>&nbsp;
+				<a href="5.3">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#bat_2node_hsql-5.4"><font color="red">5.4</font></a></td><td><font color="red">
+<pre>Description : Test WS Addressing (Anonymous &amp; Non Anonymous) with Declared and Undeclared fault
+Scenario: 	Composite 1: 
+			SOAP BT(HTTP) (Anonymous ws addressing) &lt;-&gt; JAVA &lt;-&gt; SOAP BT(HTTP) (Non Anonymous ws addressing) 
+			Composite 2:	
+			SOAP BT(HTTP) (Non Anonymous ws addressing) &lt;-&gt; JAVA 
+MEP: In-Out 
+SOAP Version: 1.1 
+SOAP Style/Encoding: RPC/Literal</pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/runtime/bat/5.4">Source</a>&nbsp;
+				<a href="5.4">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#bat_2node_hsql-5.5"><font color="red">5.5</font></a></td><td><font color="red">
+<pre>SCA Wire
+Service Virtualization is created in CLI (does not exist at design-time)
+Reference Virtualization is wired in CLI
+Deploy App and invoke
+Restart App and invoke
+Redeploy App and invoke
+
+Scenario: SOAP BT (HTTP) &lt;-&gt; Spring &lt;-&gt; SCA | SCA &lt;-&gt; Java
+MEP: In-Out
+RPC/Literal</pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/runtime/bat/5.5">Source</a>&nbsp;
+				<a href="5.5">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#bat_2node_hsql-5.6"><font color="red">5.6</font></a></td><td><font color="red">
+<pre>SOAP over JMS with Nested composite.
+Pass properties through nested composites.
+JMS RT with inline credentials imported from design-time.
+
+Scenario: SOAP(JMS) &lt;-&gt; Composite1 &lt;-&gt; Composite2 &lt;-&gt; SOAP(JMS) | SOAP(JMS) &lt;-&gt; Java
+          Nested Composite: SOAP &lt;-&gt; Java
+MEP: In-Out</pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/runtime/bat/5.6">Source</a>&nbsp;
+				<a href="5.6">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#bat_2node_hsql-5.7"><font color="red">5.7</font></a></td><td><font color="red">
+<pre>Description: Test SOAP over HTTPS
+Scenario: SOAP BT(HTTPS without MutualAuthentication) &lt;-&gt; JAVA &lt;-&gt; SOAP BT(HTTPS with MutualAuthentication) 
+
+MEP: In-Out 
+SOAP Version: 1.1 
+SOAP Style/Encoding: Doc/Literal/Type - RPC/Literal/Type 
+</pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/runtime/bat/5.7">Source</a>&nbsp;
+				<a href="5.7">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#bat_2node_hsql-5.8"><font color="red">5.8</font></a></td><td><font color="red">
+<pre>Description : Test Prepare-to-Undeploy intent.
+              Node-level Substitution Variables are used for http Connector and Node name.
+              
+Scenario: Composite: SOAP BT(HTTP) &lt;-&gt; Mock
+
+MEP: In-Out</pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/runtime/bat/5.8">Source</a>&nbsp;
+				<a href="5.8">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#bat_2node_hsql-5.9"><font color="red">5.9</font></a></td><td><font color="red">
+<pre>Graceful Start intent.
+Use Node Svars, Binding properties, Reference wiring.
+
+Scenario: 
+App1: SOAP BT(HTTP) &lt;-&gt; Java &lt;-&gt; Java &lt;-&gt; SCA (wired to App2)
+App2: SCA &lt;-&gt; Java
+
+Starting App1 also starts App2.
+Stopping App2 also stops App1.
+Clean up Apps at the end.</pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/runtime/bat/5.9">Source</a>&nbsp;
+				<a href="5.9">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#bat_2node_hsql-5.10"><font color="red">5.10</font></a></td><td><font color="red">
+<pre>Description : Test Resources Templates in Java component: JMS, SMTP, LDAP, Teneo (-&gt; Hibernate -&gt; JDBC).
+              Import RT from DAA is false. All RT are create and installed via CLI.
+              
+Scenario: Composite: 
+            SOAP BT(HTTP) &lt;-&gt; Java1(Teneo RT) &lt;-&gt; Java2(JMS RT)
+            JMS BT &lt;-&gt; Java3(SMTP RT) &lt;-&gt; Java4(LDAPConn RT)
+
+MEP: In-Out
+
+JMS RT with inline credential
+JDBC RT with keystore credential
+SMTP RT with keystore credential
+LDAP RT with keystore cred</pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/runtime/bat/5.10">Source</a>&nbsp;
+				<a href="5.10">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#bat_2node_hsql-5.11"><font color="red">5.11</font></a></td><td><font color="red">
+<pre>Scenario: WebApp - Java with Hibernate Shared Resource
+Import the RTs from DAA
+Overwrite RTs by merging with previously imported RTs
+MEP: In-Out</pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/runtime/bat/5.11">Source</a>&nbsp;
+				<a href="5.11">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#bat_2node_hsql-5.12"><font color="red">5.12</font></a></td><td><font color="red">
+<pre>Global Transaction with Oracle 11g.
+Provision and remove Oracle JDBC feature.
+Use App SVars.
+Stop/Start App
+
+Scenario: SOAP(HTTP) &lt;-&gt; Java &lt;-&gt; Java 
+
+MEP: In-Out 
+SOAP Version: 1.1 
+SOAP Style/Encoding: Doc/Literal/Type
+</pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/runtime/bat/5.12">Source</a>&nbsp;
+				<a href="5.12">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#bat_2node_hsql-5.13"><font color="red">5.13</font></a></td><td><font color="red">
+<pre>One way Transaction intent with Oracle 11g.
+Provision and remove Oracle JDBC feature.
+Validate database rollback and message redelivery both for 
+Java and Spring components
+
+Scenario: SOAP(HTTP) &lt;-&gt; Java &lt;-&gt; Spring &lt;-&gt; Java 
+
+MEP: In-Only 
+SOAP Version: 1.1 
+SOAP Style/Encoding: Doc/Literal/Type
+</pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/runtime/bat/5.13">Source</a>&nbsp;
+				<a href="5.13">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#bat_2node_hsql-5.18"><font color="red">5.18</font></a></td><td><font color="red">
+<pre>Description : Restart TIBCO Host, make sure application is still running upon restart.
+              Check runtime wsdl url.
+Scenario 	: SOAP BT(HTTP) &lt;-&gt; JAVA 
+
+</pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/runtime/bat/5.18">Source</a>&nbsp;
+				<a href="5.18">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#bat_2node_hsql-5.19"><font color="black">5.19</font></a></td><td><font color="black">
+<pre>Design Time CLI:
+Import SOA project (SOAP-Java-SOAP) and Java project into new Workspace
+Create new Composite
+Add Java Component to Composite
+Promote Service and Reference 
+Create DAA
+
+Admin CLI:
+Add SOAP/HTTP binding to Service and Reference
+Deploy App
+Invoke Service
+Undeploy App</pre>
+</font></td><td><font color="black">PASSED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/runtime/bat/5.19">Source</a>&nbsp;
+				<a href="5.19">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#bat_2node_hsql-5.20"><font color="red">5.20</font></a></td><td><font color="red">
+<pre>Test AtLeastOnce
+Scenario: SOAP BT(HTTP)&lt;-&gt;JAVA1&lt;-&gt;JAVA2&lt;-&gt;JAVA3
+
+OFF case1: Throw valid business fault from Java2 - No atleastOnce functionality should kick in. User should get the valid fault back.
+ON case2: Throw Undeclared fault from Java1 - after 5 tries - message should be moved to queue - Java1_atLeastOnce
+OFF case3: After say 2 retries, throw an exception specified to stop the delivery from Java1 - Redelivery should be stopped and message should be immediately moved to the Java1_atLeast</pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/runtime/bat/5.20">Source</a>&nbsp;
+				<a href="5.20">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#bat_2node_hsql-5.21"><font color="red">5.21</font></a></td><td><font color="red">
+<pre>SOAPException with SOAP/JMS
+Comp1:SOAP(JMS)&lt;-&gt;JAVA1&lt;-&gt;JAVA2&lt;-&gt;SOAP(JMS)
+Comp2:SOAP(JMS)&lt;-&gt;JAVA3
+
+1. Java3 throws undeclared. 
+Caught by Java2 that throws a SOAPException with custom faultcode/faultrole
+Caught by Java1 that throws SOAPException with new faultcode/faultrole
+2. Same but use SOAPException constructor to have faultcode as string
+3. Java3 throws declared with null details
+Java2 receives it as SOAPException
+Caught by Java1 that throws the same
+4. Java1 throws SOAPException</pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/runtime/bat/5.21">Source</a>&nbsp;
+				<a href="5.21">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#bat_2node_hsql-5.22"><font color="red">5.22</font></a></td><td><font color="red">
+<pre>Application Upgrade Test:
+
+- V1 App: SOAP(HTTP)&lt;-&gt;Java1&lt;-&gt;Java2
+- Upload V1 DAA and Map the application to the node.
+- Deploy V1 and invoke the service.
+- V2 App: Changed wsdl interface on the component Reference of java1 and component Service of java2 (-&gt; Java2 impl changes)
+- Upload V2 DAA , upgrade and Provision the new feature.
+- Deploy V2 and invoke the service.
+- Undeploy the application and delete the apptemplate
+
+</pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/runtime/bat/5.22">Source</a>&nbsp;
+				<a href="5.22">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#bat_2node_hsql-6.1"><font color="red">6.1</font></a></td><td><font color="red">
+<pre>Exercise Custom Mediation Task
+Exercise Mediation Faults: Declared Fault, Undeclared Fault, MediationTask Fault, MediationTaskRuntime Fault, Timeout Fault (triggered by by Socket Timeout in HTTP Client).
+
+Scenario: SOAP BT (HTTP) &lt;-&gt; Mediation (with CMT) &lt;-&gt; SOAP BT (HTTP) &lt;-&gt; BW
+
+Set enterprise-level Sub Vars
+Deploy, Invoke, Undeploy, Redeploy, Invoke again.
+Clean up everyhing at the end</pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/runtime/bat/6.1">Source</a>&nbsp;
+				<a href="6.1">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#bat_2node_hsql-6.2"><font color="red">6.2</font></a></td><td><font color="red">
+<pre>Reliable message intent with Mediation.
+Mediation with Log task, Route task, Transform task, End task, 
+In-Only MEP Mediation Interface, In-Only MEP and In-Out MEP Target Interfaces.
+
+Composite: SOAP BT(HTTP) -&gt; Mediation -&gt; Spring
+
+MEP: In-Only and In-Out 
+SOAP Version: 1.1 
+SOAP Style/Encoding: Document/Literal</pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/runtime/bat/6.2">Source</a>&nbsp;
+				<a href="6.2">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#bat_2node_hsql-6.3"><font color="red">6.3</font></a></td><td><font color="red">
+<pre>Scenario: SOAP BT (HTTP) &lt;-&gt; Java &lt;-&gt; Mediation &lt;-&gt; SOAP BT (HTTP)
+MEP: In-Out
+
+Java sets context.
+Mediation consumes context set by Java.
+Java consumes context set by Mediation output.
+Med Input Path: SetContext Task, Log task.
+Med Output path: ParseXML task, RenderXML, Validate XML, SetContext Task, Log task.
+Clean up App, RI, RT at the end.</pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/runtime/bat/6.3">Source</a>&nbsp;
+				<a href="6.3">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#bat_2node_hsql-6.4"><font color="red">6.4</font></a></td><td><font color="red">
+<pre>Mediation with SCA wire.
+Exercise GenerateReply Task in Mediation.
+JMS RT with inline credentials are created (not imported) and deleted in CLI with no namespace declaration.
+Clean up everything at the end.
+
+C1 on Node1 : SOAP BT (HTTP) &lt;-&gt; Mediation &lt;-&gt; SCA
+C2 on Node2 : SCA &lt;-&gt; Mediation (with GenerateReplyTask)
+C3 on Node1 : SCA &lt;-&gt; Mediation &lt;-&gt; SOAP BT (JMS) &lt;-&gt; BW
+   
+C1 &lt;-&gt; C2
+   &lt;-&gt; C3</pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/runtime/bat/6.4">Source</a>&nbsp;
+				<a href="6.4">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#bat_2node_hsql-6.5"><font color="red">6.5</font></a></td><td><font color="red">
+<pre>Mediation with DynamicRoute and QueryDB Tasks.
+Clean up App, RI, RT at the end.
+
+Scenario: 	
+    Composite 1: SOAP BT(HTTP) &lt;-&gt; Mediation-SCA (wired by implementation)
+    Composite 2: SCA &lt;-&gt; Mediation (with GenerateReply Task)
+
+MEP: In-Out 
+SOAP Version: 1.1 
+SOAP Style/Encoding: Document/Literal 
+</pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/runtime/bat/6.5">Source</a>&nbsp;
+				<a href="6.5">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#bat_2node_hsql-6.6"><font color="red">6.6</font></a></td><td><font color="red">
+<pre>Mediation IT with Custom XPath Function.
+JMS RT with keystore credentials.
+
+Scenario: JMS BT &lt;-&gt; Mediation
+MEP: In-Out</pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/runtime/bat/6.6">Source</a>&nbsp;
+				<a href="6.6">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#bat_2node_hsql-6.7"><font color="red">6.7</font></a></td><td><font color="red">
+<pre>Adapter BT with RV transport (Reliable Message)
+Set RV parameter in CLI for Adapter Reference
+
+Scenario: AdapterBT (RV) &lt;-&gt; Mediation &lt;-&gt; AdapterBT (RV) &lt;-&gt; BW GAC
+MEP: In-Out
+
+Deploy Adapter BT
+Deploy user App
+Invoke twice
+Undeploy-Redeploy User App
+Invoke again</pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/runtime/bat/6.7">Source</a>&nbsp;
+				<a href="6.7">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#bat_2node_hsql-6.8"><font color="red">6.8</font></a></td><td><font color="red">
+<pre>Test EJB BT for EJB 3.0 with JBOSS 5.0.1
+Scenario: SOAP BT(HTTP) &lt;-&gt; Mediation &lt;-&gt; EJB BT &lt;-&gt; JBOSS Server 
+MEP: In-Out 
+- Deploy EJB BT
+- Deploy vendor Jar
+- Deploy User App
+- Invoke service
+- Undeploy User App
+</pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/runtime/bat/6.8">Source</a>&nbsp;
+				<a href="6.8">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#bat_2node_hsql-6.9"><font color="red">6.9</font></a></td><td><font color="red">
+<pre>Scenario: WebApp &lt;-&gt; Mediation &lt;-&gt; Java 
+MEP: In-Out
+
+- Deploy - Invoke
+- Undeploy/Redeploy - Invoke again
+- Undeploy</pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/runtime/bat/6.9">Source</a>&nbsp;
+				<a href="6.9">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#bat_2node_hsql-6.10"><font color="red">6.10</font></a></td><td><font color="red">
+<pre>Adapter BT with JMS transport
+
+Scenario: SOAPBT (HTTP) &lt;-&gt; Mediation &lt;-&gt; AdapterBT (JMS) &lt;-&gt; BW GAC
+MEP: In-Out
+
+Deploy Adapter BT
+Import JMS resources from design-time
+Set Sub Var for JNDI connection
+Set rpcTimeout in CLI for Adapter Reference
+Deploy user App
+Invoke Service
+Invoke Service for declared fault
+Invoke Service for undeclared fault
+Invoke Service for timeout
+Undeploy App and Adapter BT
+Clean up RT, SubVar</pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/runtime/bat/6.10">Source</a>&nbsp;
+				<a href="6.10">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#bat_2node_hsql-7.1"><font color="red">7.1</font></a></td><td><font color="red">
+<pre>JMS transport over SSL.
+CPP Component.
+Bindings are added to the service and reference at design time.
+
+&bull;	Composite: SOAP BT(JMS SSL)&lt;&ndash;&gt; Spring &lt;&ndash;&gt; CPP &lt;&ndash;&gt; JMS BT (SSL)
+&bull;	Use InOut MEP for Service/Reference.
+&bull;	WSDL Type: Doc Literal 
+&bull;	Singlepart operation, where WSDL part refers to an element which in turn refers to complex types and attributes.
+</pre>
+</font></td><td><font color="red">FAILED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/runtime/bat/7.1">Source</a>&nbsp;
+				<a href="7.1">Log</a>&nbsp;
+			</td>
+</tr>
+<tr>
+<td><a name="#bat_2node_hsql-7.3"><font color="black">7.3</font></a></td><td><font color="black">
+<pre>CLR IT test on Windows (test is passthrough on Unix)
+              
+Scenario1: Composite: SOAP BT(HTTP) &lt;-&gt; CLR IT &lt;-&gt; SOAP BT(HTTP)
+Scenario2: Composite: SOAP BT(HTTP) &lt;-&gt; CLR IT
+MEP: In-Out and In-Out with Faults
+
+</pre>
+</font></td><td><font color="black">PASSED</font></td><td>
+						No Files
+					</td><td><a href="../../../../../../../tests/func/runtime/bat/7.3">Source</a>&nbsp;
+				<a href="7.3">Log</a>&nbsp;
+			</td>
+</tr>
+</table>
+<hr>
+<center>
+<h2>
+<font color="0000ff">End of Test Set Detailed Report</font>
+</h2>
+</center>
+</body>
+</html>

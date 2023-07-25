@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+	<Environment xsi:type="amxdata:Environment" 
+	    name="QAEnvironment_pkaur-z600" 
+	    description="my environment" 
+	    contact="TIBCO">
+		<Node xsi:type="amxdata:Node" 
+            name="QANode1" 
+            hostName="SystemHost_pkaur-z600" 
+            description="My first node" 
+            contact="TIBCO"> 
+			<ResourceInstance 
+				xsi:type="amxdata:ResourceInstance" 
+				name="httpConnector65" 
+				resourceTemplateName="httpConnector65RT"/>		
+			<ResourceInstance 
+				xsi:type="amxdata:ResourceInstance" 
+				name="BAT65HSQLJDBCResourceTemplate" 
+				resourceTemplateName="BAT65HSQLJDBCResourceTemplate"/>
+		</Node> 
+		<!-- deploy the BAT65C2 on Node2 -->
+		<Application
+			xsi:type="amxdata:Application"
+			name="bat65_c2"
+			contact="TIBCO Software Inc."
+			importBindings="true"  
+			createServiceVirtualizationBinding="true"  
+			description="BAT65C2">
+			<Node 
+				name="QANode2" 
+				environmentName="QAEnvironment_pkaur-z600"/>
+			<PromotedService 
+				xsi:type="amxdata_base:Service_base" 
+				name="SDRImplSerivePS" />
+			<ApplicationTemplate 
+				xsi:type="amxdata_reference:ApplicationTemplate_reference" 
+				name="BAT65C2"/>
+		</Application>
+		<!-- Deploy the BAT65C1 on Node1-->
+		<Application
+			xsi:type="amxdata:Application"
+			name="bat65_c1"
+			contact="TIBCO Software Inc."
+			description="BAT65C1">
+			<Node name="QANode1" environmentName="QAEnvironment_pkaur-z600"/>			
+			<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="BAT65C1"/>
+		</Application> 
+	</Environment>
+	
+	<!-- Resource Template for HttpConnector -->
+	<ResourceTemplate 
+		xsi:type="amxdata:HttpConnectorResourceTemplate" 
+		name="httpConnector65RT" 
+		host="pkaur-z600" 
+		port="9965" 
+		headerBufferSize="512" 
+		requestBufferSize="512"	
+		responseBufferSize="512" 
+		maxIdleTime="200000" 
+		lowResourceMaxIdleTime="512" 
+		description="This is HttpConnector65 RT for BAT65"/>
+		
+	<!-- JDBC Resource Template define-->
+	<ResourceTemplate 
+		xsi:type="amxdata:JdbcResourceTemplate" 
+		name="BAT65HSQLJDBCResourceTemplate"  
+		description="jdbc non xa no tx" 
+		maxConnections="8888">
+		<Direct
+			xsi:type="amxdata:Direct"
+			dbUrl="jdbc:hsqldb:hsql://AMX-BACKEND.na.tibco.com:1234/amx"
+			jdbcDriver="org.hsqldb.jdbcDriver"
+			isTransactional="false"
+			loginTimeOut="2"/>
+        <connection-property 
+			xsi:type="amxdata:Property" 
+			name="Property1" 
+			value="propertyValue1"/>      
+        <InlineCredentials 
+			username="sa" 
+			password=""/>
+	</ResourceTemplate>
+	
+	<DAA
+		xsi:type="amxdata:DAA"
+		description="DAA AppNameSDR"
+		location="./BAT65_SOA/Deployment Artifacts/BAT65C2.daa"
+	    importResourceTemplates="true">
+	</DAA>
+	<DAA
+		xsi:type="amxdata:DAA"
+		description="DAA AppNameSDR"
+		location="./BAT65_SOA/Deployment Artifacts/BAT65C1.daa"
+	    importResourceTemplates="true">
+	</DAA>
+</amxdata_base:Enterprise>

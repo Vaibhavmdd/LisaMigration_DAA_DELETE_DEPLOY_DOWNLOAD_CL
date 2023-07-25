@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+
+	<Environment xsi:type="amxdata:Environment" 
+		name="[[env.name]]" 
+		description="QA Environment" 
+		contact="TIBCO">
+		
+		<Node xsi:type="amxdata:Node" name="[[env.node1.name]]" >
+  			<Feature xsi:type="amxdata_base:FeatureID" componentID="com.tibco.qa.oracle11g.driver.customfeature" version="1.0.0" />
+		 
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="BAT8.7_oracle11gJDBC1_Direct" 	resourceTemplateName="BAT8.7_oracle11gJDBC1_Direct"/>
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="BAT8.7_oracle11gJDBC2_XA" 		resourceTemplateName="BAT8.7_oracle11gJDBC2_XA"/>
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="BAT8.7_oracle11gJDBC3_XA" 		resourceTemplateName="BAT8.7_oracle11gJDBC3_XA"/>
+		</Node>	
+
+    </Environment>
+	
+	
+	<ResourceTemplate 
+		xsi:type="amxdata:JdbcResourceTemplate"
+		name="BAT8.7_oracle11gJDBC1_Direct" 
+		description="JDBC Resource Template Direct" 		
+		disableValidateConnectionOnInit="true" 
+		maxConnections="10">
+		
+        <Direct dbUrl="jdbc:oracle:thin:@10.69.76.108:1521:ORCL" 
+			isTransactional="false" 
+			jdbcDriver="oracle.jdbc.OracleDriver" 
+			loginTimeOut="2"/>
+        <InlineCredentials username="amxuser1" 
+		password="amxuser1"/>
+	</ResourceTemplate>
+
+	<ResourceTemplate
+        xsi:type="amxdata:JdbcResourceTemplate"
+        name="BAT8.7_oracle11gJDBC2_XA"
+        description="jdbc1 xa"
+		disableValidateConnectionOnInit="true" 
+        maxConnections="10">
+        <XAConnection
+            xsi:type="amxdata:XAConnection"
+            dataSourceClass="oracle.jdbc.xa.client.OracleXADataSource"/>
+        <connection-property xsi:type="amxdata:Property" name="URL" value="jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=10.69.76.108)(PORT=1521)))(CONNECT_DATA=(SID=ORCL)(SERVER=dedicated)))"/>
+        <InlineCredentials
+            username="amxuser1"
+            password="amxuser1"/>
+    </ResourceTemplate>
+	
+	<ResourceTemplate
+        xsi:type="amxdata:JdbcResourceTemplate"
+        name="BAT8.7_oracle11gJDBC3_XA"
+        description="jdbc2 xa"
+		disableValidateConnectionOnInit="true" 
+        maxConnections="10">
+        <XAConnection
+            xsi:type="amxdata:XAConnection"
+            dataSourceClass="oracle.jdbc.xa.client.OracleXADataSource"/>
+        <connection-property xsi:type="amxdata:Property" name="URL" value="jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=10.69.76.108)(PORT=1521)))(CONNECT_DATA=(SID=ORCL)(SERVER=dedicated)))"/>
+        <InlineCredentials
+            username="amxuser2"
+            password="wrong"/>
+    </ResourceTemplate>
+	<DAA xsi:type="amxdata:DAA" 
+		description="Oracle 11g Driver Feature" 
+		location="com.tibco.qa.oracle11g.driver.daa" 
+		importResourceTemplates="false"/>
+	
+	  
+</amxdata_base:Enterprise>
+
+
+

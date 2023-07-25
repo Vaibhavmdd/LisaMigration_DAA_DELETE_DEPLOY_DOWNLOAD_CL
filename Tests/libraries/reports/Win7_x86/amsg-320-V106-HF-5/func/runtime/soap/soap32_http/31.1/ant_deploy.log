@@ -1,0 +1,294 @@
+     [echo] 
+     [echo] ########################################################################################
+     [echo] ########################################################################################
+     [echo] ########################################################################################
+     [echo] 
+     [echo] DEPRECATED
+     [echo] 
+     [echo] Usage of administrator/3.2/bin/taskdef.xml should be replaced by
+     [echo]          administrator/3.2/scripts/basic_cli.xml.
+     [echo] 
+     [echo] ########################################################################################
+     [echo] ########################################################################################
+     [echo] ########################################################################################
+     [echo]     
+     [echo] Script base is: "C:/matrix/320-HF5-v106/administrator/3.2/scripts/basic_cli.xml"
+
+setup.app:
+     [echo] 
+     [echo] 
+     [echo] Upload DAA using:
+     [echo] dataFile: Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/31.1/amxdata.xml
+     [echo] remotePropsFile: Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/admin.properties
+     [echo] objectSelector: DAA
+     [echo] action: add
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+[AMXAdminTask]  INFO - Processing 1 objects
+[AMXAdminTask]  INFO - Uploading DAA...
+[AMXAdminTask]  INFO - DAA location: ./SOAProject/SOA/Deployment Artifacts/SOA.daa
+[AMXAdminTask]  WARN - importResourceTemplates option is deprecated
+[AMXAdminTask]  INFO - Successfully added Application Template 'SOA' (version: '1.0.0.201109232319') to the Administrator Staging Area
+[AMXAdminTask]  INFO - Action finished at 6/25/13 8:52 PM in 1.248 seconds
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Create an Application using:
+     [echo] envName: 
+     [echo] appName: 
+     [echo] dataFile: Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/31.1/amxdata.xml
+     [echo] remotePropsFile: Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/admin.properties
+     [echo] objectSelector: 
+     [echo] action: add
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] Invoking Admin task using the objectselector: Environment//Application
+[AMXAdminTask]  INFO - Processing 1 objects
+[AMXAdminTask]  INFO - Adding application...
+[AMXAdminTask]  INFO - Successfully added Application '31.1 - Multiple Bindings': Successfully created application '31.1 - Multiple Bindings' from Application Template 'SOA' (version: 1.0.0.201109232319)
+[AMXAdminTask]  INFO - 	TIBCO-AMX-ADMIN-012438: Application Property 'MEDIATION_VALIDATE_MESSAGE_DATA' added.
+[AMXAdminTask]  INFO - 	TIBCO-AMX-ADMIN-012406: Component 'Mediation1' (version: 1.0.0.201109232319) added.
+[AMXAdminTask]  INFO - 	TIBCO-AMX-ADMIN-012426: Application Service 'HelloWorldPT' added.
+[AMXAdminTask]  INFO - Action finished at 6/25/13 8:52 PM in 0.749 seconds
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Create the resource template using:
+     [echo] resourceTemplateName: 
+     [echo] dataFile: Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/31.1/amxdata.xml
+     [echo] remotePropsFile: Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/admin.properties
+     [echo] objectSelector: declare namespace amxdata_jmsssr='http://tibco.com/amxadministrator/command/line/types_jmssr'; amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate | amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate | amxdata_jmsssr:JNDIDestinationResourceTemplate | amxdata_jmsssr:JNDIConnectionFactoryConfigurationResourceTemplate | amxdata_jmsssr:JNDIDestinationConfigurationResourceTemplate
+     [echo] action: add
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] Invoking Admin task using the objectselector: declare namespace amxdata_jmsssr='http://tibco.com/amxadministrator/command/line/types_jmssr'; amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate | amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate | amxdata_jmsssr:JNDIDestinationResourceTemplate | amxdata_jmsssr:JNDIConnectionFactoryConfigurationResourceTemplate | amxdata_jmsssr:JNDIDestinationConfigurationResourceTemplate
+[AMXAdminTask]  INFO - Processing 4 objects
+[AMXAdminTask]  INFO - Adding JNDIConnectionConfiguration...
+[AMXAdminTask]  INFO - Successfully added jms JNDIConnectionConfiguration 'JmsJNDI'
+[AMXAdminTask]  INFO - Action finished at 6/25/13 8:52 PM in 0.156 seconds
+[AMXAdminTask]  INFO - Adding jms JNDIConnectionFactory...
+[AMXAdminTask]  INFO - Successfully added jms JNDIConnectionFactory 'JmsConFact'
+[AMXAdminTask]  INFO - Action finished at 6/25/13 8:52 PM in 0.14 seconds
+[AMXAdminTask]  INFO - Adding jms JNDIConnectionFactoryConfiguration...
+[AMXAdminTask]  INFO - Successfully added jms JNDIConnectionFactoryConfiguration 'JmsConFactConf'
+[AMXAdminTask]  INFO - Action finished at 6/25/13 8:52 PM in 0.156 seconds
+[AMXAdminTask]  INFO - JNDIDestinationConfigurationResourceTemplate exists, overwriting by merging with existing JNDIDestinationConfigurationResourceTemplate
+[AMXAdminTask]  INFO - Editing jms JNDIDestinationConfiguration...
+[AMXAdminTask]  INFO - Successfully edited jms JNDIDestinationConfiguration 'JmsDestConf'
+[AMXAdminTask]  INFO - Action finished at 6/25/13 8:52 PM in 0.093 seconds
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Create the resource template using:
+     [echo] resourceTemplateName: 
+     [echo] dataFile: Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/31.1/amxdata.xml
+     [echo] remotePropsFile: Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/admin.properties
+     [echo] objectSelector: 
+     [echo] action: add
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] Invoking Admin task using the objectselector: ResourceTemplate
+[AMXAdminTask]  INFO - Processing 0 objects
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Create the resource instance using:
+     [echo] resourceInstanceName: 
+     [echo] envName: 
+     [echo] nodeName: 
+     [echo] hostName: 
+     [echo] dataFile: Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/31.1/amxdata.xml
+     [echo] remotePropsFile: Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/admin.properties
+     [echo] objectSelector: 
+     [echo] action: add
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] Invoking Admin task using the objectselector: Environment/Node/ResourceInstance | Host/ResourceInstance
+[AMXAdminTask]  INFO - Processing 4 objects
+[AMXAdminTask]  INFO - Adding Resource Instances...
+[AMXAdminTask]  INFO - TIBCO-AMX-ADMIN-030052: Resource Instance JmsConFactConf created on Node QANode1.
+[AMXAdminTask]  INFO - Action finished at 6/25/13 8:52 PM in 0.234 seconds
+[AMXAdminTask]  INFO - ResourceInstance exists, cannot overwrite by merging because ResourceInstance does not support an edit action
+[AMXAdminTask]  INFO - Adding Resource Instances...
+[AMXAdminTask]  INFO - TIBCO-AMX-ADMIN-030052: Resource Instance JmsConFact created on Node QANode1.
+[AMXAdminTask]  INFO - Action finished at 6/25/13 8:52 PM in 0.141 seconds
+[AMXAdminTask]  INFO - Adding Resource Instances...
+[AMXAdminTask]  INFO - TIBCO-AMX-ADMIN-030052: Resource Instance JmsJNDI created on Node QANode1.
+[AMXAdminTask]  INFO - Action finished at 6/25/13 8:52 PM in 0.124 seconds
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Install the resource instance using:
+     [echo] resourceInstanceName: 
+     [echo] envName: 
+     [echo] nodeName: 
+     [echo] hostName: 
+     [echo] dataFile: Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/31.1/amxdata.xml
+     [echo] remotePropsFile: Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/admin.properties
+     [echo] objectSelector: 
+     [echo] action: install
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] options: auto-resolve
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] timeout: 20000
+     [echo] Invoking Admin task using the objectselector: Environment/Node/ResourceInstance | Host/ResourceInstance
+[AMXAdminTask]  INFO - Processing 4 objects
+[AMXAdminTask]  INFO - Options set for resource instance are : auto-resolve
+[AMXAdminTask]  INFO - Start to install Resource Instance 'JmsJNDI'
+[AMXAdminTask]  INFO - Start to install Resource Instance 'JmsDestConf'
+[AMXAdminTask]  INFO - Start to install Resource Instance 'JmsConFactConf'
+[AMXAdminTask]  INFO - Start to install Resource Instance 'JmsConFact'
+[AMXAdminTask]  INFO - Action finished in Admin at 6/25/13 8:52 PM in 2.449 seconds. Waiting for runtime tasks to be finished.
+[AMXAdminTask]  INFO - .
+[AMXAdminTask]  INFO - Resource Instance Install finished successfully
+[AMXAdminTask]  INFO - Action finished at 6/25/13 8:52 PM in 5.897 seconds
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Map an application service to a node explicitly:
+     [echo] envName: 
+     [echo] appName: 
+     [echo] serviceName: 
+     [echo] bindingName: 
+     [echo] nodeName: 
+     [echo] dataFile: Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/31.1/amxdata.xml
+     [echo] remotePropsFile: Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/admin.properties
+     [echo] objectSelector: 
+     [echo] overwrite: true
+     [echo] action: add
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] Invoking Admin task using the objectselector: Environment//Application/PromotedService/Binding/Node
+[AMXAdminTask]  INFO - Processing 2 objects
+[AMXAdminTask]  INFO - Adding binding to nodes...
+[AMXAdminTask]  INFO - Successfully added binding 'SOAPService_Http' to node 'QANode1'
+[AMXAdminTask]  INFO - Action finished at 6/25/13 8:52 PM in 0.125 seconds
+[AMXAdminTask]  INFO - Adding binding to nodes...
+[AMXAdminTask]  INFO - Successfully added binding 'SOAPService_Binding1' to node 'QANode1'
+[AMXAdminTask]  INFO - Action finished at 6/25/13 8:52 PM in 0.11 seconds
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Map an application reference to a node explicitly:
+     [echo] envName: 
+     [echo] appName: 
+     [echo] referenceName: 
+     [echo] bindingName: 
+     [echo] nodeName: 
+     [echo] dataFile: Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/31.1/amxdata.xml
+     [echo] remotePropsFile: Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/admin.properties
+     [echo] objectSelector: 
+     [echo] overwrite: true
+     [echo] action: add
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] Invoking Admin task using the objectselector: Environment//Application/PromotedReference/Binding/Node
+[AMXAdminTask]  INFO - Processing 0 objects
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Map an application component to a node explicitly:
+     [echo] envName: 
+     [echo] componentName: 
+     [echo] nodeName: 
+     [echo] appName: 
+     [echo] dataFile: Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/31.1/amxdata.xml
+     [echo] remotePropsFile: Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/admin.properties
+     [echo] objectSelector: 
+     [echo] overwrite: true
+     [echo] action: add
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] Invoking Admin task using the objectselector: Environment//Application/Component/Node
+[AMXAdminTask]  INFO - Processing 1 objects
+[AMXAdminTask]  INFO - Adding component to nodes...
+[AMXAdminTask]  INFO - Successfully added component 'Mediation1' to node 'QANode2'
+[AMXAdminTask]  INFO - Action finished at 6/25/13 8:52 PM in 0.124 seconds
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Setting the Http Connector property for Service binding using:
+     [echo] envName: 
+     [echo] appName: 
+     [echo] promotedServiceName: 
+     [echo] bindingName: 
+     [echo] propertyName: 
+     [echo] dataFile: Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/31.1/amxdata.xml
+     [echo] remotePropsFile: Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/admin.properties
+     [echo] objectSelector: 
+     [echo] action: edit
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] Invoking Admin task using the objectselector: Environment//Application/PromotedService/Binding/Property
+[AMXAdminTask]  INFO - Processing 1 objects
+[AMXAdminTask]  INFO - Editing properties..
+[AMXAdminTask]  INFO - Successfully edited property 'HttpInboundConnectionConfig' : Successfully updated property 'HttpInboundConnectionConfig' to 'http_1'
+[AMXAdminTask]  INFO - Action finished at 6/25/13 8:52 PM in 0.062 seconds
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Deploy an application using:
+     [echo] envName: 
+     [echo] appName: 
+     [echo] dataFile: Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/31.1/amxdata.xml
+     [echo] remotePropsFile: Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/admin.properties
+     [echo] objectSelector: 
+     [echo] action: deploy
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] options: 
+     [echo] startAfterDeploy: true
+     [echo] timeout: 20000
+     [echo] Invoking Admin task using the objectselector: Environment//Application
+[AMXAdminTask]  INFO - Processing 1 objects
+[AMXAdminTask]  INFO - Deploying application...
+[AMXAdminTask]  INFO - Deploying Application '31.1 - Multiple Bindings' in background : TIBCO-AMX-ADMIN-012015: Deployment succeeded for application '31.1 - Multiple Bindings' at 6/25/13 8:52 PM on node(s): 'QANode1, QANode2'.
+[AMXAdminTask]  INFO - Action finished in Admin at 6/25/13 8:52 PM in 1.498 seconds. Waiting for runtime tasks to be finished.
+[AMXAdminTask]  INFO - .
+[AMXAdminTask]  INFO - Application Deploy with Start finished successfully
+[AMXAdminTask]  INFO - Action finished at 6/25/13 8:52 PM in 9.127 seconds
+     [echo] 
+     [echo] 
+
+BUILD SUCCESSFUL
+Total time: 38 seconds

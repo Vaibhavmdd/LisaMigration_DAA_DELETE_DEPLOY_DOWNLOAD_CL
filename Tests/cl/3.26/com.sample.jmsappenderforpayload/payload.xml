@@ -1,0 +1,29 @@
+<?xml  version="1.0"?>
+<!-- if component type is common, then this means that all files will be staged in a common directory and that the port will be assumed to be of value "common". Although, the value of plat should be ALL, it will be assumed that it will be for all platforms and therefore, the platform attribute will be ignored -->
+<!-- component type can be common or left blank -->
+<components>
+    <component name="commonlogging_payload_service" type="common" >
+        <!-- This include file includes aliases that can be used with the file element to provide information regarding platforms. In the future, other aliases can be added if needed and used for other purposes. If a an alias specific to the component is needed, an alias element can be added within the component element -->
+        <include file="aliases_commonlogging_admin.xml"/>
+        <!-- The value for PORT will be set by the build. The PORT value would be depending for which platform/arch the staging is for -->
+        <!-- The destination files will be staged in ${destdir}/${PORT}/<component name>/*.xml -->
+            <!-- For each file to be installed, the following attributes need to be added: src, dest, perm, plat -->
+            <!-- src - location of where source file is located -->
+            <!-- dest - relative location of where source file should be installed on the machine under PRODUCT_HOME-->
+            <!-- perm - permission of file to set and preserve when installed on machine -->
+            <!-- plat - platform(s) that this file should be part of. Platform values must match one of the aliases, or must be the value of one of the EMS_PORT values -->
+            <!-- README FILE WHEN AVAILABLE -->
+            <!--  EXAMPLE 
+            <file src="${bldsrcdir}/payload.product/samples/amsb/Util/bin/setup_default.bat" dest="samples/amsb/Util/bin/setup_default.bat" perm="644" plat="${ALL}" />
+                  END EXAMPLE -->
+        <!-- These scripts will be shipped into samples folder for testing purpose -->
+        <file src="${bldsrcdir}/payload.product/plugins/com.tibco.commonlogging.payload.product.assembly/assembly/administrator/3.0/samples/cl_integration_payloadservice_build.xml" dest="cl_integration_payloadservice_build.xml" perm="644" plat="${ALL}" />
+        <file src="${bldsrcdir}/payload.product/plugins/com.tibco.commonlogging.payload.product.assembly/assembly/administrator/3.0/samples/cl_integration_payloadservice_data.xml" dest="cl_integration_payloadservice_data.xml" perm="644" plat="${ALL}" />
+        <file src="${bldsrcdir}/payload.product/plugins/com.tibco.commonlogging.payload.product.assembly/assembly/administrator/3.0/samples/cl_payloadservice_build.xml" dest="cl_payloadservice_build.xml" perm="644" plat="${ALL}" />
+        <file src="${bldsrcdir}/payload.product/plugins/com.tibco.commonlogging.payload.product.assembly/assembly/administrator/3.0/samples/cl_payloadservice_data.xml" dest="cl_payloadservice_data.xml" perm="644" plat="${ALL}" />   
+        
+        <!-- These scripts will be shipped into scripts folder for installer -->
+        <file src="${bldsrcdir}/payload.product/plugins/com.tibco.commonlogging.payload.product.assembly/assembly/administrator/3.0/scripts/cl_payloadservice_build.xml" dest="cl_payloadservice_build.xml" perm="644" plat="${ALL}" />
+
+        </component>
+</components>

@@ -1,0 +1,56 @@
+<project default="deploy.app">
+	<import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+	
+	<target name="createAppender">
+		<create.log.appender dataFile="${amxConfigFile}" />
+	</target>
+	
+	<target name="addappendertoLogger">
+        <AMXAdminTask
+            remote="true"
+            propsFile="${basedir}/remote_props.properties"
+            action="add"
+            dataFile="${amxConfigFile}"
+            objectSelector="Environment/Node/Logger[@name='com.tibco']"
+            overwrite="true"
+            merge="true"
+            createIfNotExists="true"
+            force="true"
+            failOnError="false"/>
+    </target>
+	
+	<target name="addappendertoLogger315">
+        <AMXAdminTask
+            remote="true"
+            propsFile="${basedir}/remote_props.properties"
+            action="set"
+            dataFile="${amxConfigFile}"
+            objectSelector="Environment/Node/Logger[@name='com.tibco']"
+            overwrite="true"
+            merge="true"
+            createIfNotExists="true"
+            force="true"
+            failOnError="false"/>
+    </target>
+	
+	
+	 <target name="conf.logging">
+		<deploy.action objector="Environment/Node" description="Apply Node Logger" dataFile="${amxConfigFile}" />
+	</target>
+	
+	<target name="deleteAppender">
+    <AMXAdminTask
+        remote="true"
+        propsFile="${basedir}/remote_props.properties"
+        action="delete"
+        dataFile="${amxConfigFile}"
+        objectSelector="Environment//Node/Logger[@name='com.tibco']"/>
+	    <delete.log.appender objectSelector="LogAppender[@name='layout_CLI_0211']" dataFile="${amxConfigFile}" />
+		<deploy.action objector="Environment/Node" description="Apply Node Logger" dataFile="${amxConfigFile}" />
+	</target>
+	
+	
+
+	
+	
+</project>

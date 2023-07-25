@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:compositenotation="http://www.tibco.com/models/compositenotation" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmlns:soapbt="http://xsd.tns.tibco.com/amf/models/sca/binding/soap" xmlns:spring="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/spring" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmi:id="_am9vYWTPEd-6O-vn378P-g" targetNamespace="http://www.example.com/spring.helloworld.soa" name="spring.helloworld.soa" compositeext:version="1.0.0.qualifier" compositeext:formatVersion="2">
+  <sca:service xmi:id="_aov4EGTPEd-6O-vn378P-g" name="HelloWorldPT" promote="SpringHelloWorldComponent/HelloWorldPT">
+    <sca:interface.wsdl xmi:id="_dg8nMJMfEeKQ0Ic8NV4yBA" interface="http://ns.tibco.com/Hello/#wsdl.interface(HelloWorldPT)" scaext:wsdlLocation="../Service%20Descriptors/HelloWorld1.wsdl"/>
+    <sca:binding.sca xmi:id="_aov4EmTPEd-6O-vn378P-g" name="Virtualization"/>
+    <soapbt:binding.soap.service xmi:id="_apCzAGTPEd-6O-vn378P-g" name="HelloWorldSOAP" transportBindingType="HTTP" attachmentStyle="DOCUMENT" portType="../Service%20Descriptors/HelloWorld1.wsdl#//@ePortTypes.0">
+      <operationConfiguration xmi:id="_appP8GTPEd-6O-vn378P-g" operation="../Service%20Descriptors/HelloWorld1.wsdl#//@ePortTypes.0/@eOperations.0" action="sayHello">
+        <messageConfiguration xmi:id="_appP8WTPEd-6O-vn378P-g" message="../Service%20Descriptors/HelloWorld1.wsdl#//@eMessages.0">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_appP8mTPEd-6O-vn378P-g" messagePart="../Service%20Descriptors/HelloWorld1.wsdl#//@eMessages.0/@eParts.0"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_appP82TPEd-6O-vn378P-g" message="../Service%20Descriptors/HelloWorld1.wsdl#//@eMessages.1" messageDirection="OUTPUT">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_appP9GTPEd-6O-vn378P-g" messagePart="../Service%20Descriptors/HelloWorld1.wsdl#//@eMessages.1/@eParts.0"/>
+        </messageConfiguration>
+        <bindingType xmi:id="_appP9WTPEd-6O-vn378P-g"/>
+      </operationConfiguration>
+      <inboundConfiguration xsi:type="soapbt:HttpTransportConfiguration" xmi:id="_appP9mTPEd-6O-vn378P-g" endpointURI="/helloWorldPT/"/>
+      <defaultBindingType xmi:id="_apfe8GTPEd-6O-vn378P-g"/>
+    </soapbt:binding.soap.service>
+    <scact:bindingAdjunct xmi:id="_aov4E2TPEd-6O-vn378P-g" bindingName="Virtualization"/>
+    <scact:bindingAdjunct xmi:id="_apyZ4GTPEd-6O-vn378P-g" bindingName="HelloWorldSOAP">
+      <sca:property xmi:id="_apyZ4WTPEd-6O-vn378P-g" mustSupply="true" name="HttpInboundConnectionConfig" type="xsd:string" scaext:simpleValue="httpConnector"/>
+    </scact:bindingAdjunct>
+  </sca:service>
+  <sca:component xmi:id="_aomHEGTPEd-6O-vn378P-g" name="SpringHelloWorldComponent" compositeext:version="1.0.0.qualifier">
+    <spring:implementation.spring xmi:id="_aomHEWTPEd-6O-vn378P-g" location="config-spring-helloworld-soa-SpringHelloWorldComponent/spring-helloworld-soa_SpringHelloWorldComponent_beans.xml" pluginName="spring.helloworld.spring">
+      <spring:featureDependency xmi:id="_e-DrcGTPEd-6O-vn378P-g" name="spring.helloworld.soa.spring.helloworld.soa.customfeature.id">
+        <range xmi:id="_e-DrcWTPEd-6O-vn378P-g" lower="1.0.0" upper="2.0.0"/>
+      </spring:featureDependency>
+    </spring:implementation.spring>
+    <sca:service xmi:id="_aomHEmTPEd-6O-vn378P-g" name="HelloWorldPT">
+      <sca:interface.wsdl xmi:id="_aomHE2TPEd-6O-vn378P-g" interface="http://ns.tibco.com/Hello/#wsdl.interface(HelloWorldPT)" scaext:wsdlLocation="../Service%20Descriptors/HelloWorld1.wsdl"/>
+    </sca:service>
+    <sca:property xmi:id="_imOE8GTPEd-6O-vn378P-g" name="SpringGreeting" type="xsd:string" scaext:simpleValue="Hi" source="$"/>
+  </sca:component>
+  <notation:diagram xsi:type="notation:Diagram" xmi:id="_aoTMIGTPEd-6O-vn378P-g" type="Composite" element="#/" name="SCA Composite" measurementUnit="Pixel">
+    <children xmi:id="_cEF0sGTPEd-6O-vn378P-g" type="2001" element="#_am9vYWTPEd-6O-vn378P-g">
+      <children xmi:id="_cEF0s2TPEd-6O-vn378P-g" type="5004"/>
+      <children xmi:id="_cEF0tGTPEd-6O-vn378P-g" type="7001">
+        <styles xsi:type="notation:SortingStyle" xmi:id="_cEF0tWTPEd-6O-vn378P-g"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_cEF0tmTPEd-6O-vn378P-g"/>
+      </children>
+      <children xmi:id="_cEPlsGTPEd-6O-vn378P-g" type="7002">
+        <styles xsi:type="notation:SortingStyle" xmi:id="_cEPlsWTPEd-6O-vn378P-g"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_cEPlsmTPEd-6O-vn378P-g"/>
+      </children>
+      <children xmi:id="_cEPls2TPEd-6O-vn378P-g" type="7003">
+        <children xmi:id="_cGoLUGTPEd-6O-vn378P-g" type="3003" element="#_aomHEGTPEd-6O-vn378P-g">
+          <children xmi:id="_cGoLVmTPEd-6O-vn378P-g" type="5001"/>
+          <children xmi:id="_cGoLV2TPEd-6O-vn378P-g" type="7004">
+            <styles xsi:type="notation:SortingStyle" xmi:id="_cGoLWGTPEd-6O-vn378P-g"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_cGoLWWTPEd-6O-vn378P-g"/>
+          </children>
+          <children xmi:id="_cGoLWmTPEd-6O-vn378P-g" type="7005">
+            <styles xsi:type="notation:SortingStyle" xmi:id="_cGoLW2TPEd-6O-vn378P-g"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_cGoLXGTPEd-6O-vn378P-g"/>
+          </children>
+          <children xmi:id="_cGoLXWTPEd-6O-vn378P-g" type="7006">
+            <children xmi:id="_cGoLYWTPEd-6O-vn378P-g" visible="false" type="7600">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_cGoLYmTPEd-6O-vn378P-g" fontHeight="10"/>
+              <element xsi:nil="true"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_cGoLY2TPEd-6O-vn378P-g"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_cGoLXmTPEd-6O-vn378P-g"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_cGoLX2TPEd-6O-vn378P-g"/>
+            <styles xsi:type="compositenotation:CollapseStyle" xmi:id="_cGoLYGTPEd-6O-vn378P-g"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_cGoLUWTPEd-6O-vn378P-g" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_cGoLUmTPEd-6O-vn378P-g" gradStartColor="16642791" gradEndColor="14072216"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_cGoLU2TPEd-6O-vn378P-g"/>
+          <styles xsi:type="compositenotation:CustomComponentIconStyle" xmi:id="_cGoLVGTPEd-6O-vn378P-g"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_cGoLVWTPEd-6O-vn378P-g"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_cEPltGTPEd-6O-vn378P-g"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_cEPltWTPEd-6O-vn378P-g"/>
+      </children>
+      <children xmi:id="_cEPltmTPEd-6O-vn378P-g" type="7007">
+        <children xmi:id="_cEPluWTPEd-6O-vn378P-g" visible="false" type="7600">
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_cEPlumTPEd-6O-vn378P-g" fontHeight="10"/>
+          <element xsi:nil="true"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_cEPlu2TPEd-6O-vn378P-g"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_cEPlt2TPEd-6O-vn378P-g"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_cEPluGTPEd-6O-vn378P-g"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" xmi:id="_cEF0sWTPEd-6O-vn378P-g" fontHeight="10"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_cEF0smTPEd-6O-vn378P-g" x="10" y="10" width="0" height="0"/>
+    </children>
+    <styles xsi:type="notation:DiagramStyle" xmi:id="_aoTMIWTPEd-6O-vn378P-g"/>
+    <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_aoTMImTPEd-6O-vn378P-g"/>
+    <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_aoTMI2TPEd-6O-vn378P-g"/>
+  </notation:diagram>
+</sca:composite>

@@ -1,0 +1,44 @@
+<project default="deploy.app">
+	<import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+	
+        <target name="UndeployThenDeploy.Payloadservice">
+		 <set.app.property dataFile="${amxConfigFile}" objectSelector="Environment[1]/Application/Property"/>
+         <undeploy.action dataFile="${amxConfigFile}" objector="Environment[1]/Application" description="undeploy Payload Service Application" />
+	     <deploy.action objector="Environment[1]/Application" description="Deploy payload Service Application After Undeploy" dataFile="${amxConfigFile}" />
+        </target>
+	
+	
+	<target name="createRT">
+		<create.rt dataFile="${amxConfigFile}" objectSelector="ResourceTemplate | JNDIConnectionConfigurationResourceTemplate | JNDIConnectionFactoryResourceTemplate | JNDIDestinationResourceTemplate" />
+	</target>
+	
+        <target name="createAppender">
+		<create.log.appender dataFile="${amxConfigFile}"/>
+	</target>
+	
+	<target name="deploy.app">
+	        <setup.ri dataFile="${amxConfigFile}" />
+	        <upload.daa dataFile="${amxConfigFile}" force="true" />
+		<create.app objectSelector="Environment[2]/Application" dataFile="${amxConfigFile}" />
+		<map.app.to.node dataFile="${amxConfigFile}" />
+		<deploy.app dataFile="${amxConfigFile}" objectSelector="Environment[2]/Application" timeout="${timeout}" />
+	</target>
+	
+        <target name="conf.logging">
+		<set.logger.to.app dataFile="${amxConfigFile}" />
+		<deploy.action objector="Environment[2]/Application[@name='cl3_28']" description="Apply Application Logger" dataFile="${amxConfigFile}" />
+	</target>
+	
+	<target name="undeploy.app">
+        <undeploy.app dataFile="${amxConfigFile}" objectSelector="Environment[2]/Application[@name='cl3_28']" timeout="${timeout}" />
+		<delete.app dataFile="${amxConfigFile}" objectSelector="Environment[2]/Application[@name='cl3_28']"/>
+		<uninstall.ri dataFile="${amxConfigFile}" />
+		<delete.ri dataFile="${amxConfigFile}" />     
+	</target>
+
+   <target name="delete.appender">
+        <delete.log.appender objectSelector="LogAppender[@name='QA_JMSAppender328']" dataFile="${amxConfigFile}" />
+	    <delete.rt dataFile="${amxConfigFile}" objectSelector="ResourceTemplate | JNDIConnectionConfigurationResourceTemplate | JNDIConnectionFactoryResourceTemplate | JNDIDestinationResourceTemplate"/>
+    </target>
+	
+</project>

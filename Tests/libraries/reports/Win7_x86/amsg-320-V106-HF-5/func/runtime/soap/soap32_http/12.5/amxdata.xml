@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise 
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types" 
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base" 
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference" 
+	xmlns:amxdata_jmsssr="http://tibco.com/amxadministrator/command/line/types_jmssr" 
+	xmlns:amxdata_jmssr_base="http://tibco.com/amxadministrator/command/line/types_jmssr_base"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd
+	http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd 
+	http://tibco.com/amxadministrator/command/line/types_reference ../schemas/amxdata_reference.xsd 
+	http://tibco.com/amxadministrator/command/line/types_jmssr ../schemas/jmssr.xsd 
+	http://tibco.com/amxadministrator/command/line/types_jmssr_base ../schemas/jmssr_base.xsd">
+
+    <Environment xsi:type="amxdata:Environment" 
+		name="QAEnvironment_jpandya-dt" 
+		description="test environment" 
+		contact="TIBCO">
+		
+		<Node xsi:type="amxdata:Node"
+			name="QANode1">
+		<ResourceInstance xsi:type="amxdata:ResourceInstance" name="EPRConsumerJmsConnFactory" resourceTemplateName="EPRConsumerJmsConnFactory"/>
+		<ResourceInstance xsi:type="amxdata:ResourceInstance" name="EPRConsumerJmsConnFactoryConf" resourceTemplateName="EPRConsumerJmsConnFactoryConf"/>
+        <ResourceInstance xsi:type="amxdata:ResourceInstance" name="EPRConsumerInboundJmsDest" resourceTemplateName="EPRConsumerInboundJmsDest"/>	        
+		<ResourceInstance xsi:type="amxdata:ResourceInstance" name="EPRConsumerOutboundJmsDest" resourceTemplateName="EPRConsumerOutboundJmsDest"/>	
+		<ResourceInstance xsi:type="amxdata:ResourceInstance" name="EPRConsumerJmsDestConf" resourceTemplateName="EPRConsumerJmsDestConf"/>	
+		<ResourceInstance xsi:type="amxdata:ResourceInstance" name="EPRProviderJmsDestConf" resourceTemplateName="EPRProviderJmsDestConf"/>
+		<ResourceInstance xsi:type="amxdata:ResourceInstance" name="EPRConsumerJndiConn" resourceTemplateName="EPRConsumerJndiConn"/>
+		</Node>						
+		
+		<Application xsi:type="amxdata:Application" 
+			name="Provider" 
+			contact="TIBCO Inc." 
+			description="SOAP~JMS --> Java" importResourceTemplates="false">
+				<Component xsi:type="amxdata:Component" name="Java1">
+	    			<Node name="QANode1" environmentName="QAEnvironment_jpandya-dt" />	    	              
+	            </Component>
+        		<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference"			
+				name="Provider"/>					
+        </Application>	
+
+		<Application xsi:type="amxdata:Application" 
+			name="Consumer" 
+			contact="TIBCO Inc." 
+			description="SOAP~JMS --> Java-->SOAP~JMS-Ref" importResourceTemplates="false">
+				<Component xsi:type="amxdata:Component" name="Java1">
+	    			<Node name="QANode1" environmentName="QAEnvironment_jpandya-dt" />	    	              
+	            </Component>
+        		<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference"			
+				name="Consumer"/>					
+        </Application>	
+		
+    </Environment>
+		
+	<DAA xsi:type="amxdata:DAA" 
+		description="SOAP~JMS --> Java" 
+		location="EPR1/Deployment Artifacts/Provider.daa" 
+		importResourceTemplates="false"/>
+	<DAA xsi:type="amxdata:DAA" 
+		description="SOAP~JMS --> Java-->SOAP~JMS-Ref" 
+		location="EPR1/Deployment Artifacts/Consumer.daa" 
+		importResourceTemplates="false"/>
+	<amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate
+		xsi:type="amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate"
+		name="EPRConsumerJndiConn"
+		initialContextFactory="com.tibco.tibjms.naming.TibjmsInitialContextFactory"
+		providerUrl="tibjmsnaming://AMX-BACKEND.na.tibco.com:7622"
+		description="JndiConnectionConfiguration">
+		<InlineCredentials 
+			username="amxjndipwd" 
+			password="amxjndipwd"/>
+	</amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate>
+	<amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate
+		xsi:type="amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate"
+		name="EPRConsumerJmsConnFactory"
+		jndiName="GenericConnectionFactory"
+		jndiConnectionConfigurationName="EPRConsumerJndiConn"
+		description="Outbound JMS Connection Factory">
+		<InlineCredentials 
+			username="amxemspwd"
+			password="amxemspwd"/>
+	</amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate>
+	<amxdata_jmsssr:JNDIConnectionFactoryConfigurationResourceTemplate
+		xsi:type="amxdata_jmsssr:JNDIConnectionFactoryConfigurationResourceTemplate"
+		name="EPRConsumerJmsConnFactoryConf"
+		jndiName="GenericConnectionFactory"
+		jndiConnectionConfigurationName="EPRConsumerJndiConn"
+		description="Inbound JMS Connection Factory Configuration">
+		<InlineCredentials 
+			username="amxemspwd"
+			password="amxemspwd"/>
+	</amxdata_jmsssr:JNDIConnectionFactoryConfigurationResourceTemplate>
+	<amxdata_jmsssr:JNDIDestinationResourceTemplate 
+		xsi:type="amxdata_jmsssr:JNDIDestinationResourceTemplate" 
+		name="EPRConsumerOutboundJmsDest" 
+		jndiName="EPRProviderQueue" 
+		jndiConnectionConfigurationName="EPRConsumerJndiConn"
+		description="JndiDestination"/>
+	<amxdata_jmsssr:JNDIDestinationResourceTemplate 
+		xsi:type="amxdata_jmsssr:JNDIDestinationResourceTemplate" 
+		name="EPRConsumerInboundJmsDest" 
+		jndiName="EPRInboundQueue" 
+		jndiConnectionConfigurationName="EPRConsumerJndiConn"
+		description="JndiDestination"/> 
+	<amxdata_jmsssr:JNDIDestinationConfigurationResourceTemplate 
+		xsi:type="amxdata_jmsssr:JNDIDestinationConfigurationResourceTemplate" 
+		name="EPRConsumerJmsDestConf" 
+		jndiName="EPRConsumerQueue" 
+		jndiConnectionConfigurationName="EPRConsumerJndiConn"
+		description="JMS Destination Configuration"/>
+	<amxdata_jmsssr:JNDIDestinationConfigurationResourceTemplate 
+		xsi:type="amxdata_jmsssr:JNDIDestinationConfigurationResourceTemplate" 
+		name="EPRProviderJmsDestConf" 
+		jndiName="EPRProviderQueue"
+		jndiConnectionConfigurationName="EPRConsumerJndiConn"
+		description="JMS Destination Configuration"/>	
+</amxdata_base:Enterprise>

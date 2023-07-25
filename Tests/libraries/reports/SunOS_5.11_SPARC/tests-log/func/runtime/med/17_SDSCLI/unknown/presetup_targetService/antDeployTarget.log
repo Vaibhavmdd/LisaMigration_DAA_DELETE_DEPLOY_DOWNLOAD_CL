@@ -1,0 +1,257 @@
+     [echo] Script base is: "/opt/tibco/amx330v39b32/administrator/3.3/scripts/basic_cli.xml"
+
+create.all.rt:
+     [echo] 
+     [echo] 
+     [echo] Upload DAA using:
+     [echo] dataFile: /groupfiler/tests/tests/amsg/3.0/reports/SunOS_5.11_SPARC/tests-log/func/runtime/med/17_SDSCLI/unknown/presetup_targetService/amxconfig.xml
+     [echo] remotePropsFile: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/med/2node.config
+     [echo] objectSelector: DAA
+     [echo] action: add
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+[AMXAdminTask] 06 Aug 2013 12:08:57  INFO - Connecting to AMX Admin server at 'http://localhost:8120' as user 'root'.
+[AMXAdminTask] 06 Aug 2013 12:08:58  INFO - Processing 1 objects
+[AMXAdminTask] 06 Aug 2013 12:08:59  INFO - Uploading DAA...
+[AMXAdminTask] 06 Aug 2013 12:08:59  INFO - DAA location: TargetService/targetservice.soa/Deployment Artifacts/targetservice.mediationsamples.daa
+[AMXAdminTask] 06 Aug 2013 12:08:59  WARN - importResourceTemplates option is deprecated
+[AMXAdminTask] 06 Aug 2013 12:09:00  INFO - Successfully added Application Template 'targetservice.mediationsamples' (version: '1.0.0.201005201223') to the Administrator Staging Area
+[AMXAdminTask] 06 Aug 2013 12:09:00  INFO - Action finished at 8/6/13 12:09 PM in 1.096 seconds
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Create the resource template using:
+     [echo] resourceTemplateName: 
+     [echo] dataFile: /groupfiler/tests/tests/amsg/3.0/reports/SunOS_5.11_SPARC/tests-log/func/runtime/med/17_SDSCLI/unknown/presetup_targetService/amxconfig.xml
+     [echo] remotePropsFile: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/med/2node.config
+     [echo] objectSelector: 
+     [echo] action: add
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] Invoking Admin task using the objectselector: ResourceTemplate
+[AMXAdminTask] 06 Aug 2013 12:09:00  INFO - Processing 1 objects
+[AMXAdminTask] 06 Aug 2013 12:09:00  INFO - Creating HttpConnectorResourceTemplate : 'httpConnectorTargetService'
+[AMXAdminTask] 06 Aug 2013 12:09:00  INFO - 'httpConnectorTargetService' resource template created in 'Global' scope.
+[AMXAdminTask] 06 Aug 2013 12:09:00  INFO - Action finished at 8/6/13 12:09 PM in 0.095 seconds
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Create the resource instance using:
+     [echo] resourceInstanceName: 
+     [echo] envName: 
+     [echo] nodeName: 
+     [echo] hostName: 
+     [echo] dataFile: /groupfiler/tests/tests/amsg/3.0/reports/SunOS_5.11_SPARC/tests-log/func/runtime/med/17_SDSCLI/unknown/presetup_targetService/amxconfig.xml
+     [echo] remotePropsFile: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/med/2node.config
+     [echo] objectSelector: 
+     [echo] action: add
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] Invoking Admin task using the objectselector: Environment/Node/ResourceInstance | Host/ResourceInstance
+[AMXAdminTask] 06 Aug 2013 12:09:01  INFO - Processing 1 objects
+[AMXAdminTask] 06 Aug 2013 12:09:01  INFO - Adding Resource Instances...
+[AMXAdminTask] 06 Aug 2013 12:09:01  INFO - TIBCO-AMX-ADMIN-030052: Resource Instance httpConnectorTargetService created on Node QANode1.
+[AMXAdminTask] 06 Aug 2013 12:09:01  INFO - Action finished at 8/6/13 12:09 PM in 0.279 seconds
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Install the resource instance using:
+     [echo] resourceInstanceName: 
+     [echo] envName: 
+     [echo] nodeName: 
+     [echo] hostName: 
+     [echo] dataFile: /groupfiler/tests/tests/amsg/3.0/reports/SunOS_5.11_SPARC/tests-log/func/runtime/med/17_SDSCLI/unknown/presetup_targetService/amxconfig.xml
+     [echo] remotePropsFile: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/med/2node.config
+     [echo] objectSelector: 
+     [echo] action: install
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] options: auto-resolve
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] timeout: 120
+     [echo] Invoking Admin task using the objectselector: Environment/Node/ResourceInstance | Host/ResourceInstance
+[AMXAdminTask] 06 Aug 2013 12:09:01  INFO - Processing 1 objects
+[AMXAdminTask] 06 Aug 2013 12:09:02  INFO - Options set for resource instance are : auto-resolve
+[AMXAdminTask] 06 Aug 2013 12:09:02  INFO - Start to install Resource Instance 'httpConnectorTargetService'
+[AMXAdminTask] 06 Aug 2013 12:09:02  INFO - Action finished in Admin at 8/6/13 12:09 PM in 0.356 seconds. Waiting for runtime tasks to be finished.
+[AMXAdminTask] 06 Aug 2013 12:09:03  INFO - Resource Instance Install finished successfully
+[AMXAdminTask] 06 Aug 2013 12:09:03  INFO - Action finished at 8/6/13 12:09 PM in 1.534 seconds
+     [echo] 
+     [echo] 
+
+deploy.app:
+     [echo] 
+     [echo] 
+     [echo] Create an Application using:
+     [echo] envName: 
+     [echo] appName: 
+     [echo] dataFile: /groupfiler/tests/tests/amsg/3.0/reports/SunOS_5.11_SPARC/tests-log/func/runtime/med/17_SDSCLI/unknown/presetup_targetService/amxconfig.xml
+     [echo] remotePropsFile: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/med/2node.config
+     [echo] objectSelector: 
+     [echo] action: add
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] Invoking Admin task using the objectselector: Environment//Application
+[AMXAdminTask] 06 Aug 2013 12:09:03  INFO - Processing 1 objects
+[AMXAdminTask] 06 Aug 2013 12:09:03  INFO - Adding application...
+[AMXAdminTask] 06 Aug 2013 12:09:04  INFO - Successfully added Application 'Sample_TargetService': Successfully created application 'Sample_TargetService' from Application Template 'targetservice.mediationsamples' (version: 1.0.0.201005201223)
+[AMXAdminTask] 06 Aug 2013 12:09:04  INFO - 	TIBCO-AMX-ADMIN-012406: Component 'querygds.targetservice' (version: 1.0.0.201005201223) added.
+[AMXAdminTask] 06 Aug 2013 12:09:04  INFO - 	TIBCO-AMX-ADMIN-012406: Component 'helloworld.targetservice' (version: 1.0.0.201005201223) added.
+[AMXAdminTask] 06 Aug 2013 12:09:04  INFO - 	TIBCO-AMX-ADMIN-012426: Application Service 'QueryGDS' added.
+[AMXAdminTask] 06 Aug 2013 12:09:04  INFO - 	TIBCO-AMX-ADMIN-012426: Application Service 'QueryGDS_Asia' added.
+[AMXAdminTask] 06 Aug 2013 12:09:04  INFO - 	TIBCO-AMX-ADMIN-012426: Application Service 'QueryGDS_Europe' added.
+[AMXAdminTask] 06 Aug 2013 12:09:04  INFO - 	TIBCO-AMX-ADMIN-012426: Application Service 'QueryGDS_US' added.
+[AMXAdminTask] 06 Aug 2013 12:09:04  INFO - 	TIBCO-AMX-ADMIN-012426: Application Service 'HelloWorld' added.
+[AMXAdminTask] 06 Aug 2013 12:09:04  INFO - Action finished at 8/6/13 12:09 PM in 0.488 seconds
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Mapping Application to specified nodes using:
+     [echo] envName: 
+     [echo] appName: 
+     [echo] nodeName: 
+     [echo] dataFile: /groupfiler/tests/tests/amsg/3.0/reports/SunOS_5.11_SPARC/tests-log/func/runtime/med/17_SDSCLI/unknown/presetup_targetService/amxconfig.xml
+     [echo] remotePropsFile: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/med/2node.config
+     [echo] objectSelector: 
+     [echo] action: set
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] Invoking Admin task using the objectselector: Environment//Application/Node
+[AMXAdminTask] 06 Aug 2013 12:09:04  INFO - Processing 0 objects
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Map an application component to a node explicitly:
+     [echo] envName: 
+     [echo] componentName: 
+     [echo] nodeName: 
+     [echo] appName: 
+     [echo] dataFile: /groupfiler/tests/tests/amsg/3.0/reports/SunOS_5.11_SPARC/tests-log/func/runtime/med/17_SDSCLI/unknown/presetup_targetService/amxconfig.xml
+     [echo] remotePropsFile: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/med/2node.config
+     [echo] objectSelector: 
+     [echo] overwrite: true
+     [echo] action: add
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] Invoking Admin task using the objectselector: Environment//Application/Component/Node
+[AMXAdminTask] 06 Aug 2013 12:09:04  INFO - Processing 2 objects
+[AMXAdminTask] 06 Aug 2013 12:09:04  INFO - Adding component to nodes...
+[AMXAdminTask] 06 Aug 2013 12:09:04  INFO - Successfully added component 'querygds.targetservice' to node 'QANode2'
+[AMXAdminTask] 06 Aug 2013 12:09:04  INFO - Action finished at 8/6/13 12:09 PM in 0.279 seconds
+[AMXAdminTask] 06 Aug 2013 12:09:05  INFO - Adding component to nodes...
+[AMXAdminTask] 06 Aug 2013 12:09:05  INFO - Successfully added component 'helloworld.targetservice' to node 'QANode2'
+[AMXAdminTask] 06 Aug 2013 12:09:05  INFO - Action finished at 8/6/13 12:09 PM in 0.26 seconds
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Map an application service to a node explicitly:
+     [echo] envName: 
+     [echo] appName: 
+     [echo] serviceName: 
+     [echo] bindingName: 
+     [echo] nodeName: 
+     [echo] dataFile: /groupfiler/tests/tests/amsg/3.0/reports/SunOS_5.11_SPARC/tests-log/func/runtime/med/17_SDSCLI/unknown/presetup_targetService/amxconfig.xml
+     [echo] remotePropsFile: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/med/2node.config
+     [echo] objectSelector: 
+     [echo] overwrite: true
+     [echo] action: add
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] Invoking Admin task using the objectselector: Environment//Application/PromotedService/Binding/Node
+[AMXAdminTask] 06 Aug 2013 12:09:05  INFO - Processing 5 objects
+[AMXAdminTask] 06 Aug 2013 12:09:05  INFO - Adding binding to nodes...
+[AMXAdminTask] 06 Aug 2013 12:09:05  INFO - Successfully added binding 'SOAPService_Binding1' to node 'QANode1'
+[AMXAdminTask] 06 Aug 2013 12:09:05  INFO - Action finished at 8/6/13 12:09 PM in 0.229 seconds
+[AMXAdminTask] 06 Aug 2013 12:09:06  INFO - Adding binding to nodes...
+[AMXAdminTask] 06 Aug 2013 12:09:06  INFO - Successfully added binding 'SOAPService_Binding1' to node 'QANode1'
+[AMXAdminTask] 06 Aug 2013 12:09:06  INFO - Action finished at 8/6/13 12:09 PM in 0.223 seconds
+[AMXAdminTask] 06 Aug 2013 12:09:06  INFO - Adding binding to nodes...
+[AMXAdminTask] 06 Aug 2013 12:09:06  INFO - Successfully added binding 'SOAPService_Binding1' to node 'QANode1'
+[AMXAdminTask] 06 Aug 2013 12:09:06  INFO - Action finished at 8/6/13 12:09 PM in 0.254 seconds
+[AMXAdminTask] 06 Aug 2013 12:09:06  INFO - Adding binding to nodes...
+[AMXAdminTask] 06 Aug 2013 12:09:06  INFO - Successfully added binding 'SOAPService_Binding1' to node 'QANode1'
+[AMXAdminTask] 06 Aug 2013 12:09:06  INFO - Action finished at 8/6/13 12:09 PM in 0.222 seconds
+[AMXAdminTask] 06 Aug 2013 12:09:07  INFO - Adding binding to nodes...
+[AMXAdminTask] 06 Aug 2013 12:09:07  INFO - Successfully added binding 'SOAPService_Binding1' to node 'QANode1'
+[AMXAdminTask] 06 Aug 2013 12:09:07  INFO - Action finished at 8/6/13 12:09 PM in 0.259 seconds
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Map an application reference to a node explicitly:
+     [echo] envName: 
+     [echo] appName: 
+     [echo] referenceName: 
+     [echo] bindingName: 
+     [echo] nodeName: 
+     [echo] dataFile: /groupfiler/tests/tests/amsg/3.0/reports/SunOS_5.11_SPARC/tests-log/func/runtime/med/17_SDSCLI/unknown/presetup_targetService/amxconfig.xml
+     [echo] remotePropsFile: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/med/2node.config
+     [echo] objectSelector: 
+     [echo] overwrite: true
+     [echo] action: add
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] Invoking Admin task using the objectselector: Environment//Application/PromotedReference/Binding/Node
+[AMXAdminTask] 06 Aug 2013 12:09:07  INFO - Processing 0 objects
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Deploy an application using:
+     [echo] envName: 
+     [echo] appName: 
+     [echo] dataFile: /groupfiler/tests/tests/amsg/3.0/reports/SunOS_5.11_SPARC/tests-log/func/runtime/med/17_SDSCLI/unknown/presetup_targetService/amxconfig.xml
+     [echo] remotePropsFile: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/med/2node.config
+     [echo] objectSelector: 
+     [echo] action: deploy
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] options: 
+     [echo] startAfterDeploy: true
+     [echo] timeout: 300
+     [echo] Invoking Admin task using the objectselector: Environment//Application
+[AMXAdminTask] 06 Aug 2013 12:09:07  INFO - Processing 1 objects
+[AMXAdminTask] 06 Aug 2013 12:09:07  INFO - Deploying application...
+[AMXAdminTask] 06 Aug 2013 12:09:09  INFO - Deploying Application 'Sample_TargetService' in background : TIBCO-AMX-ADMIN-012015: Deployment succeeded for application 'Sample_TargetService' at 8/6/13 12:09 PM on node(s): 'QANode2, QANode1'.
+[AMXAdminTask] 06 Aug 2013 12:09:09  INFO - Action finished in Admin at 8/6/13 12:09 PM in 1.971 seconds. Waiting for runtime tasks to be finished.
+[AMXAdminTask] 06 Aug 2013 12:09:10  INFO - .
+[AMXAdminTask] 06 Aug 2013 12:09:14  INFO - .
+[AMXAdminTask] 06 Aug 2013 12:09:16  INFO - Application Deploy with Start finished successfully
+[AMXAdminTask] 06 Aug 2013 12:09:16  INFO - Action finished at 8/6/13 12:09 PM in 9.306 seconds
+     [echo] 
+     [echo] 
+
+BUILD SUCCESSFUL
+Total time: 24 seconds

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<amxdata_base:Enterprise
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+	xmlns:amxdata_binding="http://tibco.com/amxadministrator/command/line/types_binding"
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd http://tibco.com/amxadministrator/command/line/types_binding ../schemas/bindingdata.xsd">
+	
+	<Environment xsi:type="amxdata:Environment" 
+		name="QAEnvironment_jpandya-z400"
+		description="integration environment" 
+		contact="TIBCO">
+		
+		<Node xsi:type="amxdata:Node" 
+			name="QANode1">	
+			<SVar xsi:type="amxdata_base:SubstitutionVariable" 
+				name="NodeName"
+				type="String" 
+				value="QANode1" 
+				description="" />
+		</Node>
+
+		<Node xsi:type="amxdata:Node" 
+			name="QANode2">
+			<SVar xsi:type="amxdata_base:SubstitutionVariable" 
+				name="NodeName"
+				type="String" 
+				value="QANode2" 
+				description="" />
+		</Node>
+
+		<Application xsi:type="amxdata:Application" 
+			name="bat5.8.it"
+			contact="AMX30 TAP QA" 
+			description="v1" 
+			importBindings="true">
+
+			<Component xsi:type="amxdata:Component" 
+				name="implementation.upgrade">
+				<Node 
+					name="QANode1" 
+					environmentName="QAEnvironment_jpandya-z400" />
+			</Component>
+
+			<ApplicationTemplate
+				xsi:type="amxdata_reference:ApplicationTemplate_reference" 
+				name="it.upgrade.daa" />
+		</Application>
+
+		<Application xsi:type="amxdata:Application" 
+			name="bat5.8.user"
+			contact="AMX30 TAP QA" 
+			description="v1" 
+			importBindings="true"
+			distributionPolicy="PRODUCT_APP">
+
+			<Component xsi:type="amxdata:Component" 
+				name="UpgradeITProxy">
+				<Node 	
+					name="QANode1" 
+					environmentName="QAEnvironment_jpandya-z400" />
+			</Component>
+
+			<Property xsi:type="amxdata:Property" name="ProcessTime" value="10" />
+			<Property xsi:type="amxdata:Property" name="NodeName" value="%%NodeName%%" />
+			<Property xsi:type="amxdata:Property" name="VersionNumber" value="1.0.0" />
+			<Property xsi:type="amxdata:Property" name="JMSConnFactory" value="com.tibco.admin.jms.queue.connection.factory" />
+
+			<PromotedService xsi:type="amxdata_base:Service_base"
+				name="upgrade.mock.it.case11">
+				<Binding xsi:type="amxdata_base:Binding_base" 
+					name="SOAPService_Binding1">
+					<Property xsi:type="amxdata:Property" 
+						name="HttpInboundConnectionConfig"
+						value="httpConnector1" />
+				</Binding>
+			</PromotedService>
+
+			<ApplicationTemplate
+				xsi:type="amxdata_reference:ApplicationTemplate_reference" 
+				name="upgrade.sample" />
+
+			<TargetApplication xsi:type="amxdata_reference:Application_reference"
+				name="bat5.8.it">
+			</TargetApplication>
+		</Application>
+	</Environment>
+
+	<DAA xsi:type="amxdata:DAA" 
+		description="appupgrade case DAA"
+		location="project/upgrade/sds_project/upgrade-it-daa/Deployment Artifacts/implementation-upgrade.daa" 
+		importResourceTemplates="false"
+		importFeatures="true" />
+
+	<DAA xsi:type="amxdata:DAA" 
+		description="appupgrade case DAA"
+		location="project/upgrade/sds_project/upgrade-it-daa/Deployment Artifacts/upgrade.example.daa" 
+		importResourceTemplates="false"
+		importFeatures="true" />
+
+</amxdata_base:Enterprise>

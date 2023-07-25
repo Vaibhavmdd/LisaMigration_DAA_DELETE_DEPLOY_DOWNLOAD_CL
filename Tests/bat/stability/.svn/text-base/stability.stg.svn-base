@@ -1,0 +1,101 @@
+<?xml version="1.0" ?>
+
+<Run name="amsg" think="0" >
+<Documentation></Documentation>
+<paceTime>0</paceTime>
+<paceTrans>0</paceTrans>
+<EventConsumer type="com.tibco.lisa.TibcoReportGenerator" filter="0,1,2,3,10,14,15,18,19,21,22,27,28,34,35,36,37,38,39,40" >
+<params>
+    <runAsSuperUser>true</runAsSuperUser>
+    <manual>false</manual>
+    <storeResultsToDB>false</storeResultsToDB>
+    <runSqlAtEnd>false</runSqlAtEnd>
+    <useRunLabel>true</useRunLabel>
+    <reportingLogDir>C:/temp/reports</reportingLogDir>
+    <labelProduct>amsg</labelProduct>
+    <tibco.test.product.long.name>TIBCO ActiveMatrix Service Grid</tibco.test.product.long.name>
+    <labelVersion>310</labelVersion>
+    <labelBuild>V13</labelBuild>
+    <labelExtra></labelExtra>
+    <reportingPlatform></reportingPlatform>
+    <labelArea>func</labelArea>
+    <labelCategory>runtime</labelCategory>
+</params>
+</EventConsumer>
+<LoadPattern>
+<type>com.itko.lisa.coordinator.runpatterns.RunNTimesPattern</type>
+<cycles>1</cycles>
+<runfor>0</runfor>
+<ssinstances>1</ssinstances>
+</LoadPattern>
+<Distribution>
+<type>com.itko.lisa.coordinator.runpatterns.PercentDistribution</type>
+<Simulator>
+<name>auto</name>
+<percent>100</percent>
+</Simulator>
+</Distribution>
+<Metrics >
+<SampleRate>1</SampleRate>
+<IntervalRate>10</IntervalRate>
+<Metric type="com.itko.lisa.stats.TestEventCollector">
+<scale>0.0</scale>
+<valueType>1</valueType>
+<eventid>11</eventid>
+<keyexpr>*</keyexpr>
+<counter>true</counter>
+</Metric>
+<Metric type="com.itko.lisa.stats.TestEventCollector">
+<scale>0.0</scale>
+<valueType>1</valueType>
+<eventid>12</eventid>
+<keyexpr>*</keyexpr>
+<counter>true</counter>
+</Metric>
+<Metric type="com.itko.lisa.stats.TestEventCollector">
+<scale>0.0</scale>
+<valueType>1</valueType>
+<eventid>13</eventid>
+<keyexpr>*</keyexpr>
+<counter>true</counter>
+</Metric>
+<Metric type="com.itko.lisa.stats.TestEventCollector">
+<scale>0.0</scale>
+<valueType>1</valueType>
+<eventid>20</eventid>
+<keyexpr>*</keyexpr>
+<counter>true</counter>
+</Metric>
+<Metric type="com.itko.lisa.stats.TestEventCollector">
+<scale>0.0</scale>
+<valueType>1</valueType>
+<eventid>15</eventid>
+<keyexpr>*</keyexpr>
+<counter>true</counter>
+</Metric>
+<Metric type="com.itko.lisa.stats.TestEventCollector">
+<scale>0.0</scale>
+<valueType>1</valueType>
+<eventid>25</eventid>
+<keyexpr>*</keyexpr>
+<counter>true</counter>
+</Metric>
+<Metric type="com.itko.lisa.stats.TestEventCollector">
+<scale>0.0</scale>
+<valueType>1</valueType>
+<eventid>23</eventid>
+<keyexpr>*</keyexpr>
+<counter>true</counter>
+</Metric>
+<Metric type="com.itko.lisa.stats.TRIMetricCollector">
+<scale>0.0</scale>
+<valueType>2</valueType>
+<metric>0</metric>
+</Metric>
+<Metric type="com.itko.lisa.stats.TRIMetricCollector">
+<scale>0.0</scale>
+<valueType>2</valueType>
+<metric>1</metric>
+</Metric>
+</Metrics>
+</Run>

@@ -1,0 +1,136 @@
+     [echo] Script base is: "C:/matrix/320-HF5-v106/administrator/3.2/scripts/basic_cli.xml"
+
+setupRI:
+     [echo] 
+     [echo] 
+     [echo] Create the resource template using:
+     [echo] resourceTemplateName: 
+     [echo] dataFile: Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/amxdata_2node.xml
+     [echo] remotePropsFile: Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/admin.properties
+     [echo] objectSelector: ResourceTemplate[@name != 'cl_logservice_jdbc' and @name != 'cl_logservice_teneo' and @name != 'TIBCO_ActiveMatrix_LogService_SSLClient_Resource' and @name != 'TIBCO_ActiveMatrix_LogService_Keystore_Resource' and @name != 'cl_logservice_jndiConnectionConfig' and @name != 'cl_logservice_jmsConnectionFactory' and @name != 'cl_logservice_jmsDestination' and @name !='payloadJdbcSharedResource' and @name !='payloadTeneoSharedResource' and @name !='TIBCO_ActiveMatrix_PayloadService_SSLClient_Resource' and @name !='TIBCO_ActiveMatrix_PayloadService_Keystore_Resource' and @name !='cl_payloadservice_jndiConnectionConfig' and @name !='cl_payloadservice_jmsConnectionFactory' and @name !='cl_payloadservice_jmsDestination' and @name !='cl_payloadService_httpClient' and @name!='GovernanceJDBCSharedResource' and @name!='GovernanceHibernateSharedResource' and @name!='GovernanceTeneoSharedResource' and @name!='GovernanceSslClientSharedResourceForEMS' and @name!='GovernanceKeystoreCspSharedResourceForEMS']
+     [echo] action: add
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] Invoking Admin task using the objectselector: ResourceTemplate[@name != 'cl_logservice_jdbc' and @name != 'cl_logservice_teneo' and @name != 'TIBCO_ActiveMatrix_LogService_SSLClient_Resource' and @name != 'TIBCO_ActiveMatrix_LogService_Keystore_Resource' and @name != 'cl_logservice_jndiConnectionConfig' and @name != 'cl_logservice_jmsConnectionFactory' and @name != 'cl_logservice_jmsDestination' and @name !='payloadJdbcSharedResource' and @name !='payloadTeneoSharedResource' and @name !='TIBCO_ActiveMatrix_PayloadService_SSLClient_Resource' and @name !='TIBCO_ActiveMatrix_PayloadService_Keystore_Resource' and @name !='cl_payloadservice_jndiConnectionConfig' and @name !='cl_payloadservice_jmsConnectionFactory' and @name !='cl_payloadservice_jmsDestination' and @name !='cl_payloadService_httpClient' and @name!='GovernanceJDBCSharedResource' and @name!='GovernanceHibernateSharedResource' and @name!='GovernanceTeneoSharedResource' and @name!='GovernanceSslClientSharedResourceForEMS' and @name!='GovernanceKeystoreCspSharedResourceForEMS']
+[AMXAdminTask]  INFO - Processing 11 objects
+[AMXAdminTask]  INFO - KeystoreCsp Resource template created with name httpsKeystore
+[AMXAdminTask]  INFO - Action finished at 6/25/13 6:14 PM in 0.047 seconds
+[AMXAdminTask]  INFO - SSL server Resource template created with name sslServer
+[AMXAdminTask]  INFO - Action finished at 6/25/13 6:14 PM in 0.062 seconds
+[AMXAdminTask]  INFO - SSL client Resource template created with name sslClient
+[AMXAdminTask]  INFO - Action finished at 6/25/13 6:14 PM in 0.047 seconds
+[AMXAdminTask]  INFO - HttpConnector Resource template created with name http_1
+[AMXAdminTask]  INFO - Action finished at 6/25/13 6:14 PM in 0.031 seconds
+[AMXAdminTask]  INFO - HttpConnector Resource template created with name http_2
+[AMXAdminTask]  INFO - Action finished at 6/25/13 6:14 PM in 0.031 seconds
+[AMXAdminTask]  INFO - HttpConnector Resource template created with name httpsConnector1
+[AMXAdminTask]  INFO - Action finished at 6/25/13 6:14 PM in 0.032 seconds
+[AMXAdminTask]  INFO - HttpConnector Resource template created with name http_3
+[AMXAdminTask]  INFO - Action finished at 6/25/13 6:14 PM in 0.031 seconds
+[AMXAdminTask]  INFO - HttpConnectorResourceTemplate exists, overwriting by merging with existing HttpConnectorResourceTemplate
+[AMXAdminTask]  INFO - HttpConnector Resource template updated with name tibco.admin.http.connector.internal
+[AMXAdminTask]  INFO - Action finished at 6/25/13 6:14 PM in 0.031 seconds
+[AMXAdminTask]  INFO - HttpClient Resource template created with name http_client_1
+[AMXAdminTask]  INFO - Action finished at 6/25/13 6:14 PM in 0.047 seconds
+[AMXAdminTask]  INFO - HttpClient Resource template created with name http_client_2
+[AMXAdminTask]  INFO - Action finished at 6/25/13 6:14 PM in 0.031 seconds
+[AMXAdminTask]  INFO - HttpClient Resource template created with name httpsClient1
+[AMXAdminTask]  INFO - Action finished at 6/25/13 6:14 PM in 0.047 seconds
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Create the resource instance using:
+     [echo] resourceInstanceName: 
+     [echo] envName: 
+     [echo] nodeName: 
+     [echo] hostName: 
+     [echo] dataFile: Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/amxdata_2node.xml
+     [echo] remotePropsFile: Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/admin.properties
+     [echo] objectSelector: Environment[2]/Node/ResourceInstance
+     [echo] action: add
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] Invoking Admin task using the objectselector: Environment[2]/Node/ResourceInstance
+[AMXAdminTask]  INFO - Processing 10 objects
+[AMXAdminTask]  INFO - Adding Resource Instances...
+[AMXAdminTask]  INFO - TIBCO-AMX-ADMIN-030052: Resource Instance httpsKeystore created on Node QANode1.
+[AMXAdminTask]  INFO - Action finished at 6/25/13 6:14 PM in 0.078 seconds
+[AMXAdminTask]  INFO - Adding Resource Instances...
+[AMXAdminTask]  INFO - TIBCO-AMX-ADMIN-030052: Resource Instance sslServer created on Node QANode1.
+[AMXAdminTask]  INFO - Action finished at 6/25/13 6:14 PM in 0.078 seconds
+[AMXAdminTask]  INFO - Adding Resource Instances...
+[AMXAdminTask]  INFO - TIBCO-AMX-ADMIN-030052: Resource Instance sslClient created on Node QANode1.
+[AMXAdminTask]  INFO - Action finished at 6/25/13 6:14 PM in 0.063 seconds
+[AMXAdminTask]  INFO - Adding Resource Instances...
+[AMXAdminTask]  INFO - TIBCO-AMX-ADMIN-030052: Resource Instance http_1 created on Node QANode1.
+[AMXAdminTask]  INFO - Action finished at 6/25/13 6:14 PM in 0.093 seconds
+[AMXAdminTask]  INFO - Adding Resource Instances...
+[AMXAdminTask]  INFO - TIBCO-AMX-ADMIN-030052: Resource Instance http_2 created on Node QANode1.
+[AMXAdminTask]  INFO - Action finished at 6/25/13 6:14 PM in 0.094 seconds
+[AMXAdminTask]  INFO - Adding Resource Instances...
+[AMXAdminTask]  INFO - TIBCO-AMX-ADMIN-030052: Resource Instance httpsConnector1 created on Node QANode1.
+[AMXAdminTask]  INFO - Action finished at 6/25/13 6:14 PM in 0.078 seconds
+[AMXAdminTask]  INFO - Adding Resource Instances...
+[AMXAdminTask]  INFO - TIBCO-AMX-ADMIN-030052: Resource Instance http_client_1 created on Node QANode1.
+[AMXAdminTask]  INFO - Action finished at 6/25/13 6:14 PM in 0.078 seconds
+[AMXAdminTask]  INFO - Adding Resource Instances...
+[AMXAdminTask]  INFO - TIBCO-AMX-ADMIN-030052: Resource Instance http_client_2 created on Node QANode1.
+[AMXAdminTask]  INFO - Action finished at 6/25/13 6:14 PM in 0.078 seconds
+[AMXAdminTask]  INFO - Adding Resource Instances...
+[AMXAdminTask]  INFO - TIBCO-AMX-ADMIN-030052: Resource Instance httpsClient1 created on Node QANode1.
+[AMXAdminTask]  INFO - Action finished at 6/25/13 6:14 PM in 0.078 seconds
+[AMXAdminTask]  INFO - Adding Resource Instances...
+[AMXAdminTask]  INFO - TIBCO-AMX-ADMIN-030052: Resource Instance http_3 created on Node QANode1.
+[AMXAdminTask]  INFO - Action finished at 6/25/13 6:14 PM in 0.094 seconds
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Install the resource instance using:
+     [echo] resourceInstanceName: 
+     [echo] envName: 
+     [echo] nodeName: 
+     [echo] hostName: 
+     [echo] dataFile: Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/amxdata_2node.xml
+     [echo] remotePropsFile: Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/admin.properties
+     [echo] objectSelector: Environment[2]/Node/ResourceInstance
+     [echo] action: install
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] options: auto-resolve
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] timeout: 600
+     [echo] Invoking Admin task using the objectselector: Environment[2]/Node/ResourceInstance
+[AMXAdminTask]  INFO - Processing 10 objects
+[AMXAdminTask]  INFO - Options set for resource instance are : auto-resolve
+[AMXAdminTask]  INFO - Start to install Resource Instance 'http_2'
+[AMXAdminTask]  INFO - Start to install Resource Instance 'httpsClient1'
+[AMXAdminTask]  INFO - Start to install Resource Instance 'sslClient'
+[AMXAdminTask]  INFO - Start to install Resource Instance 'httpsKeystore'
+[AMXAdminTask]  INFO - Start to install Resource Instance 'sslServer'
+[AMXAdminTask]  INFO - Start to install Resource Instance 'http_3'
+[AMXAdminTask]  INFO - Start to install Resource Instance 'httpsKeystore'
+[AMXAdminTask]  INFO - Start to install Resource Instance 'http_client_1'
+[AMXAdminTask]  INFO - Start to install Resource Instance 'http_client_2'
+[AMXAdminTask]  INFO - Start to install Resource Instance 'sslClient'
+[AMXAdminTask]  INFO - Start to install Resource Instance 'httpsConnector1'
+[AMXAdminTask]  INFO - Start to install Resource Instance 'http_1'
+[AMXAdminTask]  INFO - Action finished in Admin at 6/25/13 6:14 PM in 2.324 seconds. Waiting for runtime tasks to be finished.
+[AMXAdminTask]  INFO - .
+[AMXAdminTask]  INFO - .
+[AMXAdminTask]  INFO - Resource Instance Install finished successfully
+[AMXAdminTask]  INFO - Action finished at 6/25/13 6:14 PM in 9.11 seconds
+     [echo] 
+     [echo] 
+
+BUILD SUCCESSFUL
+Total time: 16 seconds

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created by TIBCO WSDL-->
+<wsdl:definitions xmlns:tns="http://tibco.com/matrix/qa/wsdl/lotteryservice" xmlns:ns0="http://tibco.com/matrix/qa/xsd/lottery" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://tibco.com/matrix/qa/wsdl/lotteryservice">
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://tibco.com/matrix/qa/xsd/lottery" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://tibco.com/matrix/qa/xsd/lottery">
+            <xsd:simpleType name="OneToNinetyNine">
+                <xsd:restriction base="xsd:positiveInteger">
+                    <xsd:maxInclusive value="99"/>
+                </xsd:restriction>
+            </xsd:simpleType>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:portType name="LotteryPort">
+        <wsdl:operation name="GetNumber">
+            <wsdl:input message="tns:GetLuckyNumber"/>
+            <wsdl:output message="tns:GiveLuckyNumbers"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:message name="GetLuckyNumber">
+        <wsdl:part name="part1" type="ns0:OneToNinetyNine"/>
+    </wsdl:message>
+    <wsdl:message name="GiveLuckyNumbers">
+        <wsdl:part name="part1" type="ns0:OneToNinetyNine"/>
+    </wsdl:message>
+</wsdl:definitions>

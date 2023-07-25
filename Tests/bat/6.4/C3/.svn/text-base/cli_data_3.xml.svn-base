@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:amxdata_jmsssr="http://tibco.com/amxadministrator/command/line/types_jmssr"	
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd http://tibco.com/amxadministrator/command/line/types_jmssr ../schemas/jmssr.xsd">
+
+	<Environment xsi:type="amxdata:Environment" 
+	       name="[[env.name]]" 
+	       description="QA environment" 
+	       contact="TIBCO">
+			<Node 
+				xsi:type="amxdata:Node" 
+                name="[[env.node1.name]]" 
+                hostName="[[host.name]]" 
+                description="" 
+                contact="TIBCO"> 
+				<ResourceInstance name="BAT64_JndiConnConf" resourceTemplateName="BAT64_JndiConnConf" xsi:type="amxdata:ResourceInstance"/>
+				<ResourceInstance name="BAT64_JmsConnFactory" resourceTemplateName="BAT64_JmsConnFactory" xsi:type="amxdata:ResourceInstance"/>
+				<ResourceInstance name="BAT64_JmsDest" resourceTemplateName="BAT64_JmsDest" xsi:type="amxdata:ResourceInstance"/>
+				<ResourceInstance name="BAT64_JmsDestReply" resourceTemplateName="BAT64_JmsDestReply" xsi:type="amxdata:ResourceInstance"/>
+			</Node> 
+
+		<Application
+			xsi:type="amxdata:Application"
+			name="bat64_c3"
+			contact="Patrick Pei"
+			description="This is a applicaton calls service by Soap-JMS binding,also it be invoked thru SCA binding"
+			importResourceTemplates="false" >
+			<Node 
+				name="[[env.node1.name]]" 
+				environmentName="[[env.name]]"/>	
+			<ApplicationTemplate 
+				xsi:type="amxdata_reference:ApplicationTemplate_reference" 
+				name="Flow_3"/>
+		</Application> 
+	</Environment>
+	
+	<DAA
+		xsi:type="amxdata:DAA"
+		description="DAA AppNameSDR"
+		location="./BAT_64/Deployment Artifacts/Flow_3.daa">
+	</DAA>
+	
+	<amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate
+		xsi:type="amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate"
+		name="BAT64_JndiConnConf"
+		initialContextFactory="com.tibco.tibjms.naming.TibjmsInitialContextFactory"
+		providerUrl="[[jndicontexturl]]"
+		description="JndiConnectionConfiguration">
+		<InlineCredentials
+            username="[[jndiuser]]"
+            password="[[jndipwd]]"/>
+	</amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate>
+  	<amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate
+		xsi:type="amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate"
+		name="BAT64_JmsConnFactory"
+		jndiName="QueueConnectionFactory"
+		jndiConnectionConfigurationName="BAT64_JndiConnConf"
+		description="JndiConnectionFactory">	
+        <InlineCredentials
+            username="[[jmsuser]]"
+            password="[[jmspwd]]"/>
+	</amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate>
+	<amxdata_jmsssr:JNDIDestinationResourceTemplate 
+		xsi:type="amxdata_jmsssr:JNDIDestinationResourceTemplate" 
+		name="BAT64_JmsDest" 
+		jndiName="[[destinationName]]" 
+		jndiConnectionConfigurationName="BAT64_JndiConnConf"
+		description="JndiDestination"/>	
+	<amxdata_jmsssr:JNDIDestinationResourceTemplate 
+		xsi:type="amxdata_jmsssr:JNDIDestinationResourceTemplate" 
+		name="BAT64_JmsDestReply" 
+		jndiName="[[replyDestinationName]]" 
+		jndiConnectionConfigurationName="BAT64_JndiConnConf"
+		description="JndiDestination"/>
+</amxdata_base:Enterprise>

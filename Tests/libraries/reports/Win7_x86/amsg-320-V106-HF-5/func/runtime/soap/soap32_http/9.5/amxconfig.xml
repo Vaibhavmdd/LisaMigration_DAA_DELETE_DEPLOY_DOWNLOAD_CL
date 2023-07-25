@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise xmlns:amxdata_jmsssr="http://tibco.com/amxadministrator/command/line/types_jmssr" 
+xmlns:amxdata_jmssr_base="http://tibco.com/amxadministrator/command/line/types_jmssr_base" xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types" xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base" xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+
+    <Environment xsi:type="amxdata:Environment" name="QAEnvironment_jpandya-dt" description="environment" contact="TIBCO">
+
+	<Node xsi:type="amxdata:Node" name="QANode1">
+		<ResourceInstance xsi:type="amxdata:ResourceInstance" name="NewThreadPoolResource" resourceTemplateName="NewThreadPoolResource"/>
+	 </Node>
+	<Node xsi:type="amxdata:Node" name="QANode2">
+		<ResourceInstance xsi:type="amxdata:ResourceInstance" name="NewThreadPoolResource" resourceTemplateName="NewThreadPoolResource"/>
+	 </Node>
+
+        <Application xsi:type="amxdata:Application" name="soapVirtRefTimeoutScaComp" contact="TIBCO Inc." description="soapVirtRefTimeoutScaComp">
+		<Component xsi:type="amxdata:Component" name="Composite2">
+			<Node name="QANode2" environmentName="QAEnvironment_jpandya-dt"/>
+		</Component>
+		<Component xsi:type="amxdata:Component" name="Composite1">
+			<Node name="QANode1" environmentName="QAEnvironment_jpandya-dt"/>
+		</Component>
+		<PromotedService xsi:type="amxdata_base:Service_base" name="Service">
+		</PromotedService>
+		<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="soapVirtRefTimeoutScaComp"/>
+        </Application>
+
+    </Environment>
+
+<DAA xsi:type="amxdata:DAA" description="soapRefTimeoutBackend" location="soapVirtRefTimeoutSca/Deployment Artifacts/soapVirtRefTimeoutScaComp.daa" importResourceTemplates="true"/>	
+<DAA xsi:type="amxdata:DAA" description="soapRefTimeoutBackend" location="soapVirtRefTimeoutSca/Deployment Artifacts/soapVirtRefTimeoutScaBackend.daa" importResourceTemplates="true"/>
+<DAA xsi:type="amxdata:DAA" description="soapRefTimeout" location="soapVirtRefTimeoutSca/Deployment Artifacts/soapVirtRefTimeoutSca.daa" importResourceTemplates="true"/>
+<Feature xsi:type="amxdata_base:FeatureID" componentID="soapVirtRefTimeoutSca.soapVirtRefTimeoutScaBackend.customfeature.id" version="1.0.0.000"/>
+<Feature xsi:type="amxdata_base:FeatureID" componentID="soapVirtRefTimeoutSca.soapVirtRefTimeoutSca.customfeature.id" version="1.0.0.000"/>
+<AppTemplate xsi:type="amxdata_base:AppTemplateID" name="soapVirtRefTimeoutScaBackend" version="1.0.0.000"/>
+<AppTemplate xsi:type="amxdata_base:AppTemplateID" name="soapVirtRefTimeoutSca" version="1.0.0.000"/>
+<AppTemplate xsi:type="amxdata_base:AppTemplateID" name="soapVirtRefTimeoutScaComp" version="1.0.0.000"/>
+
+	
+</amxdata_base:Enterprise>

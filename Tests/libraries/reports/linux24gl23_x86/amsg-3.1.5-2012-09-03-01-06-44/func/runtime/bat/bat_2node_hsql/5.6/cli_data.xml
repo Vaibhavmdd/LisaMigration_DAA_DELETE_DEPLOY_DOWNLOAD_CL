@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise xmlns:amxdata_jmsssr="http://tibco.com/amxadministrator/command/line/types_jmssr" 
+			 xmlns:amxdata_jmssr_base="http://tibco.com/amxadministrator/command/line/types_jmssr_base"
+			 xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+			 xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+			 xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+			 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			 xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+
+	<SVar xsi:type="amxdata_base:SubstitutionVariable" name="bat56_providerURL" type="String" value="tibjmsnaming://AMX-BACKEND.na.tibco.com:7622" description="svar" />		 
+			 
+	<Environment xsi:type="amxdata:Environment" name="QAEnvironment_amxrel2qa1.na.tibco.com" description="environment" contact="TIBCO">
+		<Node xsi:type="amxdata:Node" name="QANode1">
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="BAT56_s_in_jcfc" resourceTemplateName="BAT56_s_in_jcfc"/>
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="BAT56_s_in_jdc" resourceTemplateName="BAT56_s_in_jdc"/>
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="BAT56_s_out_jcf" resourceTemplateName="BAT56_s_out_jcf"/>
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="BAT56_s1_in_jcfc" resourceTemplateName="BAT56_s1_in_jcfc"/>
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="BAT56_s1_in_jdc" resourceTemplateName="BAT56_s1_in_jdc"/>
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="BAT56_s1_out_jcf" resourceTemplateName="BAT56_s1_out_jcf"/>
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="BAT56_r1_in_jd" resourceTemplateName="BAT56_r1_in_jd"/>
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="BAT56_r1_out_jd" resourceTemplateName="BAT56_r1_out_jd"/>
+		 </Node>
+		<Application xsi:type="amxdata:Application" name="mock" contact="TIBCO Inc." description="mock" importResourceTemplates="true">
+			<Node name="QANode1" environmentName="QAEnvironment_amxrel2qa1.na.tibco.com"/>
+			<SVar xsi:type="amxdata_base:SubstitutionVariable" name="bat56_providerURL" type="String" value="tibjmsnaming://AMX-BACKEND.na.tibco.com:7622" description="svar" />
+			<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="mock"/>
+		</Application>
+		<Application xsi:type="amxdata:Application" name="test56" contact="TIBCO Inc." description="test56" importResourceTemplates="true">
+			<Node name="QANode1" environmentName="QAEnvironment_amxrel2qa1.na.tibco.com"/>
+			<SVar xsi:type="amxdata_base:SubstitutionVariable" name="bat56_providerURL" type="String" value="tibjmsnaming://AMX-BACKEND.na.tibco.com:7622" description="svar" />
+			<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="test56"/>
+		</Application>
+	</Environment>
+
+	<DAA xsi:type="amxdata:DAA" description="mock" location="mock/Deployment Artifacts/mock.daa" />
+	<DAA xsi:type="amxdata:DAA" description="test56" location="test56/Deployment Artifacts/test56.daa" />
+
+	
+</amxdata_base:Enterprise>

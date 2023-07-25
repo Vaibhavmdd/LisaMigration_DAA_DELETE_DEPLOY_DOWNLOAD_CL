@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+
+<Suite>
+<Name>bat</Name>
+<Documentation>AMSG Basic Acceptance Test</Documentation>
+<setup></setup>
+<teardown></teardown>
+<DefAudit>com.itko.lisa.files.DefaultAudit.aud</DefAudit>
+<DefStaging>{{USER_PROFILE_HOME}}/amsg.stg</DefStaging>
+<DefCS></DefCS>
+<BasePath></BasePath>
+<RunType>serial</RunType>
+<AllowDupes>true</AllowDupes>
+<Run name="Staging Description" think="100" >
+<paceTime>0</paceTime>
+<paceTrans>0</paceTrans>
+<LoadPattern>
+<type>com.itko.lisa.coordinator.runpatterns.RunNTimesPattern</type>
+<cycles>1</cycles>
+<runfor>0</runfor>
+<ssinstances>0</ssinstances>
+</LoadPattern>
+<Distribution>
+<type>com.itko.lisa.coordinator.runpatterns.PercentDistribution</type>
+</Distribution>
+<Metrics >
+<SampleRate>1</SampleRate>
+<IntervalRate>10</IntervalRate>
+</Metrics>
+</Run>
+<SuiteEntry>
+<type>test</type>
+<spec>{{TIBCO_AMX_TEST_FUNC_RT}}/bat/6.7/6.7.tst</spec>
+</SuiteEntry>
+</Suite>

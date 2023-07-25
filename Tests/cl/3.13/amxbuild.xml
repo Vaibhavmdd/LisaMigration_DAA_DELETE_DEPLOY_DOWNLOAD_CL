@@ -1,0 +1,22 @@
+<project default="deploy.app">
+	<import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+	
+	<target name="createRT">
+		<create.rt dataFile="${amxConfigFile}" objectSelector="ResourceTemplate | JNDIConnectionConfigurationResourceTemplate | JNDIConnectionFactoryResourceTemplate | JNDIDestinationResourceTemplate" />
+	</target>
+	
+	
+        <target name="createAppender">
+		<create.log.appender dataFile="${amxConfigFile}"/>
+	</target>
+	
+	<target name="deleteRT">
+		<delete.rt dataFile="${amxConfigFile}" objectSelector="ResourceTemplate | JNDIConnectionConfigurationResourceTemplate | JNDIConnectionFactoryResourceTemplate | JNDIDestinationResourceTemplate"/>
+	</target>
+
+    <target name="deleteAppender">
+		<delete.log.appender dataFile="${amxConfigFile}"/>
+	</target>
+
+
+</project>

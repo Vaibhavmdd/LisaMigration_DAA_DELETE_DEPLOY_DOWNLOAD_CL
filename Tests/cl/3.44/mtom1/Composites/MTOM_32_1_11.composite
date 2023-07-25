@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:TEST="http://www.example.com/TEST" xmlns:componentmodel="http://xsd.tns.tibco.com/amsb/core/models/componentmodel" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:compositenotation="http://www.tibco.com/models/compositenotation" xmlns:http="http://xsd.tns.tibco.com/amf/models/sharedresource/httpclient" xmlns:mtom="http://xsd.tns.tibco.com/amf/models/sca/binding/soap/mtom" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmlns:soapbt="http://xsd.tns.tibco.com/amf/models/sca/binding/soap" xmlns:template_2010="http://xsd.tns.tibco.com/governance/rule/template/2010" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmi:id="_gkQYcUB8EeOv3YgAZrrk8A" targetNamespace="http://www.example.com/TEST" name="MTOM_32_1_11" compositeext:version="1.0.0.qualifier" compositeext:formatVersion="2">
+  <sca:service xmi:id="_qeAEwEB8EeOv3YgAZrrk8A" name="DownloadFile" promote="Component1/DownloadFile">
+    <sca:interface.wsdl xmi:id="_qeAEwUB8EeOv3YgAZrrk8A" interface="http://service.server.mtom.cxf/#wsdl.interface(DownloadFile)" scaext:wsdlLocation="../Service%20Descriptors/Sample.wsdl"/>
+    <sca:binding.sca xmi:id="_qeAEwkB8EeOv3YgAZrrk8A" name="Virtualization"/>
+    <soapbt:binding.soap.service xmi:id="_2TuVkEB8EeOv3YgAZrrk8A" name="SOAPService_Binding1" soapVersion="1.2" transportBindingType="HTTP" attachmentStyle="DOCUMENT" portType="../Service%20Descriptors/Sample.wsdl#//@ePortTypes.0" targetNamespace="http://service.server.mtom.cxf/DownloadFile">
+      <operationConfiguration xmi:id="_2T4GkUB8EeOv3YgAZrrk8A" operation="../Service%20Descriptors/Sample.wsdl#//@ePortTypes.0/@eOperations.0" action="getFile" actionNeeded="true">
+        <messageConfiguration xmi:id="_2T4GkkB8EeOv3YgAZrrk8A" message="../Service%20Descriptors/Sample.wsdl#//@eMessages.1">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_2T4Gk0B8EeOv3YgAZrrk8A" messagePart="../Service%20Descriptors/Sample.wsdl#//@eMessages.1/@eParts.0"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_2T4GlEB8EeOv3YgAZrrk8A" message="../Service%20Descriptors/Sample.wsdl#//@eMessages.0" messageDirection="OUTPUT">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_2T4GlUB8EeOv3YgAZrrk8A" messagePart="../Service%20Descriptors/Sample.wsdl#//@eMessages.0/@eParts.0"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_2T4GlkB8EeOv3YgAZrrk8A" message="../Service%20Descriptors/Sample.wsdl#//@eMessages.5" messageDirection="FAULT">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_2T4Gl0B8EeOv3YgAZrrk8A" messagePart="../Service%20Descriptors/Sample.wsdl#//@eMessages.5/@eParts.0"/>
+        </messageConfiguration>
+        <bindingType xmi:id="_2T4GmEB8EeOv3YgAZrrk8A"/>
+      </operationConfiguration>
+      <inboundConfiguration xsi:type="soapbt:HttpTransportConfiguration" xmi:id="_2T4GmUB8EeOv3YgAZrrk8A" endpointURI="/downloadFile/"/>
+      <defaultBindingType xmi:id="_2T4GkEB8EeOv3YgAZrrk8A"/>
+    </soapbt:binding.soap.service>
+    <scact:bindingAdjunct xmi:id="_qeAEw0B8EeOv3YgAZrrk8A" bindingName="Virtualization"/>
+    <scact:bindingAdjunct xmi:id="_2T4GmkB8EeOv3YgAZrrk8A" bindingName="SOAPService_Binding1">
+      <sca:property xmi:id="_2T4Gm0B8EeOv3YgAZrrk8A" mustSupply="true" name="HttpInboundConnectionConfig" type="xsd:string" scaext:simpleValue="MTOM_32_1_11_Consumer_httpConnector"/>
+    </scact:bindingAdjunct>
+  </sca:service>
+  <sca:service xmi:id="_q3MA0EB8EeOv3YgAZrrk8A" name="DownloadFile1" promote="Component2/DownloadFile">
+    <sca:interface.wsdl xmi:id="_q3MA0UB8EeOv3YgAZrrk8A" interface="http://service.server.mtom.cxf/#wsdl.interface(DownloadFile)" scaext:wsdlLocation="../Service%20Descriptors/Sample.wsdl"/>
+    <sca:binding.sca xmi:id="_q3MA0kB8EeOv3YgAZrrk8A" name="Virtualization"/>
+    <soapbt:binding.soap.service xmi:id="_sBZKIEB8EeOv3YgAZrrk8A" name="SOAPService_Binding1" soapVersion="1.2" transportBindingType="HTTP" attachmentStyle="DOCUMENT" portType="../Service%20Descriptors/Sample.wsdl#//@ePortTypes.0" targetNamespace="http://service.server.mtom.cxf/DownloadFile1">
+      <operationConfiguration xmi:id="_sBZKIkB8EeOv3YgAZrrk8A" operation="../Service%20Descriptors/Sample.wsdl#//@ePortTypes.0/@eOperations.0" action="getFile" actionNeeded="true">
+        <messageConfiguration xmi:id="_sBZKI0B8EeOv3YgAZrrk8A" message="../Service%20Descriptors/Sample.wsdl#//@eMessages.1">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_sBZKJEB8EeOv3YgAZrrk8A" messagePart="../Service%20Descriptors/Sample.wsdl#//@eMessages.1/@eParts.0"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_sBZKJUB8EeOv3YgAZrrk8A" message="../Service%20Descriptors/Sample.wsdl#//@eMessages.0" messageDirection="OUTPUT">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_sBZKJkB8EeOv3YgAZrrk8A" messagePart="../Service%20Descriptors/Sample.wsdl#//@eMessages.0/@eParts.0"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_sBZKJ0B8EeOv3YgAZrrk8A" message="../Service%20Descriptors/Sample.wsdl#//@eMessages.5" messageDirection="FAULT">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_sBZKKEB8EeOv3YgAZrrk8A" messagePart="../Service%20Descriptors/Sample.wsdl#//@eMessages.5/@eParts.0"/>
+        </messageConfiguration>
+        <bindingType xmi:id="_sBZKKUB8EeOv3YgAZrrk8A"/>
+      </operationConfiguration>
+      <inboundConfiguration xsi:type="soapbt:HttpTransportConfiguration" xmi:id="_sBZKKkB8EeOv3YgAZrrk8A" endpointURI="/downloadFile/"/>
+      <defaultBindingType xmi:id="_sBZKIUB8EeOv3YgAZrrk8A"/>
+    </soapbt:binding.soap.service>
+    <scact:bindingAdjunct xmi:id="_q3MA00B8EeOv3YgAZrrk8A" bindingName="Virtualization"/>
+    <scact:bindingAdjunct xmi:id="_sBZKK0B8EeOv3YgAZrrk8A" bindingName="SOAPService_Binding1">
+      <sca:property xmi:id="_sBZKLEB8EeOv3YgAZrrk8A" mustSupply="true" name="HttpInboundConnectionConfig" type="xsd:string" scaext:simpleValue="MTOM_32_1_11_Provider_httpConnector"/>
+    </scact:bindingAdjunct>
+  </sca:service>
+  <sca:reference xmi:id="_qeJ1wEB8EeOv3YgAZrrk8A" multiplicity="0..1" name="DownloadFile1" wiredByImpl="false" promote="Component1/DownloadFile">
+    <sca:interface.wsdl xmi:id="_qeJ1wUB8EeOv3YgAZrrk8A" interface="http://service.server.mtom.cxf/#wsdl.interface(DownloadFile)" scaext:wsdlLocation="../Service%20Descriptors/Sample.wsdl"/>
+    <soapbt:binding.soap.reference xmi:id="_t29koEB8EeOv3YgAZrrk8A" name="SOAPReference_Binding1" soapVersion="1.2" transportBindingType="HTTP" portType="../Service%20Descriptors/Sample.wsdl#//@ePortTypes.0" port="../Service%20Descriptors/Sample.wsdl#//@eServices.0/@ePorts.0">
+      <operationConfiguration xmi:id="_t29kokB8EeOv3YgAZrrk8A" operation="../Service%20Descriptors/Sample.wsdl#//@ePortTypes.0/@eOperations.0" action="getFile">
+        <messageConfiguration xmi:id="_t29ko0B8EeOv3YgAZrrk8A" description="getFile" message="../Service%20Descriptors/Sample.wsdl#//@eMessages.1">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_t29kpEB8EeOv3YgAZrrk8A" messagePart="../Service%20Descriptors/Sample.wsdl#//@eMessages.1/@eParts.0" encoding="literal"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_t29kpUB8EeOv3YgAZrrk8A" description="getFileResponse" message="../Service%20Descriptors/Sample.wsdl#//@eMessages.0" messageDirection="OUTPUT">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_t29kpkB8EeOv3YgAZrrk8A" messagePart="../Service%20Descriptors/Sample.wsdl#//@eMessages.0/@eParts.0" encoding="literal"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_t29kp0B8EeOv3YgAZrrk8A" message="../Service%20Descriptors/Sample.wsdl#//@eMessages.5" messageDirection="FAULT"/>
+        <bindingType xmi:id="_t29kqEB8EeOv3YgAZrrk8A"/>
+      </operationConfiguration>
+      <defaultBindingType xmi:id="_t29koUB8EeOv3YgAZrrk8A"/>
+      <outboundConfiguration xsi:type="soapbt:HttpTransportConfiguration" xmi:id="_t3HVokB8EeOv3YgAZrrk8A" endpointURI="/downloadFile/"/>
+    </soapbt:binding.soap.reference>
+    <scact:bindingAdjunct xmi:id="_t3HVoEB8EeOv3YgAZrrk8A" bindingName="SOAPReference_Binding1">
+      <sca:property xmi:id="_t3HVoUB8EeOv3YgAZrrk8A" mustSupply="true" name="HttpOutboundConnectionConfig" type="http:HttpClientConfiguration" scaext:simpleValue="MTOM_32_1_11_HTTPClient"/>
+    </scact:bindingAdjunct>
+  </sca:reference>
+  <sca:property xmi:id="_pUiiVEB8EeOv3YgAZrrk8A" name="MEDIATION_VALIDATE_MESSAGE_DATA" type="xsd:boolean" scaext:simpleValue="false"/>
+  <sca:component xmi:id="_pUPnYEB8EeOv3YgAZrrk8A" name="Component1" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="componentmodel:MediationImplementation" xmi:id="_pUPnYUB8EeOv3YgAZrrk8A" mediationService="../Mediation%20Flows/med1.mediation#_oNLBgEBDEeOYnvDynTyS7g"/>
+    <sca:service xmi:id="_pUYxUEB8EeOv3YgAZrrk8A" name="DownloadFile" policySets="TEST:MTOMPolicy_Component1_DownloadFile" scaext:policySetLocations="#embedded">
+      <sca:interface.wsdl xmi:id="_pUYxUUB8EeOv3YgAZrrk8A" interface="http://service.server.mtom.cxf/#wsdl.interface(DownloadFile)" scaext:wsdlLocation="../Service%20Descriptors/Sample.wsdl"/>
+    </sca:service>
+    <sca:reference xmi:id="_pUiiUEB8EeOv3YgAZrrk8A" name="DownloadFile" wiredByImpl="false" policySets="TEST:MTOMPolicy_Component1_DownloadFile1" scaext:policySetLocations="#embedded">
+      <sca:interface.wsdl xmi:id="_pUiiUUB8EeOv3YgAZrrk8A" interface="http://service.server.mtom.cxf/#wsdl.interface(DownloadFile)" scaext:wsdlLocation="../Service%20Descriptors/Sample.wsdl"/>
+    </sca:reference>
+    <sca:property xmi:id="_pUiiU0B8EeOv3YgAZrrk8A" name="VALIDATE_MESSAGE_DATA" type="xsd:boolean" scaext:simpleValue="" source="$MEDIATION_VALIDATE_MESSAGE_DATA"/>
+  </sca:component>
+  <sca:component xmi:id="_pzFfgEB8EeOv3YgAZrrk8A" name="Component2" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="componentmodel:MediationImplementation" xmi:id="_pzFfgUB8EeOv3YgAZrrk8A" mediationService="../Mediation%20Flows/med2.mediation#_A8rtwEB8EeOv3YgAZrrk8A"/>
+    <sca:service xmi:id="_pzFfgkB8EeOv3YgAZrrk8A" name="DownloadFile" policySets="TEST:MTOMPolicy_Component2_DownloadFile" scaext:policySetLocations="#embedded">
+      <sca:interface.wsdl xmi:id="_pzFfg0B8EeOv3YgAZrrk8A" interface="http://service.server.mtom.cxf/#wsdl.interface(DownloadFile)" scaext:wsdlLocation="../Service%20Descriptors/Sample.wsdl"/>
+    </sca:service>
+    <sca:property xmi:id="_pzFfhUB8EeOv3YgAZrrk8A" name="VALIDATE_MESSAGE_DATA" type="xsd:boolean" scaext:simpleValue="" source="$MEDIATION_VALIDATE_MESSAGE_DATA"/>
+  </sca:component>
+  <notation:diagram xsi:type="notation:Diagram" xmi:id="_gkQYckB8EeOv3YgAZrrk8A" type="Composite" element="#/" name="SCA Composite" measurementUnit="Pixel">
+    <children xmi:id="_gl5XMEB8EeOv3YgAZrrk8A" type="2001" element="#_gkQYcUB8EeOv3YgAZrrk8A">
+      <children xmi:id="_gl5XM0B8EeOv3YgAZrrk8A" type="5004"/>
+      <children xmi:id="_gl5XNEB8EeOv3YgAZrrk8A" type="7001">
+        <children xmi:id="_qeJ1wkB8EeOv3YgAZrrk8A" type="3001" element="#_qeAEwEB8EeOv3YgAZrrk8A">
+          <children xmi:id="_qeJ1x0B8EeOv3YgAZrrk8A" type="5002"/>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_qeJ1w0B8EeOv3YgAZrrk8A" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_qeJ1xEB8EeOv3YgAZrrk8A" gradStartColor="14150097" gradEndColor="7844710"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_qeJ1xUB8EeOv3YgAZrrk8A"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_qeJ1xkB8EeOv3YgAZrrk8A"/>
+        </children>
+        <children xmi:id="_q3MA1EB8EeOv3YgAZrrk8A" type="3001" element="#_q3MA0EB8EeOv3YgAZrrk8A">
+          <children xmi:id="_q3MA2UB8EeOv3YgAZrrk8A" type="5002"/>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_q3MA1UB8EeOv3YgAZrrk8A" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_q3MA1kB8EeOv3YgAZrrk8A" gradStartColor="14150097" gradEndColor="7844710"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_q3MA10B8EeOv3YgAZrrk8A"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_q3MA2EB8EeOv3YgAZrrk8A"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_gl5XNUB8EeOv3YgAZrrk8A"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_gl5XNkB8EeOv3YgAZrrk8A"/>
+      </children>
+      <children xmi:id="_gl5XN0B8EeOv3YgAZrrk8A" type="7002">
+        <children xmi:id="_qeS_tEB8EeOv3YgAZrrk8A" type="3002" element="#_qeJ1wEB8EeOv3YgAZrrk8A">
+          <children xmi:id="_qecwsEB8EeOv3YgAZrrk8A" type="5003"/>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_qeS_tUB8EeOv3YgAZrrk8A" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_qeS_tkB8EeOv3YgAZrrk8A" gradStartColor="15457762" gradEndColor="11302063"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_qeS_t0B8EeOv3YgAZrrk8A"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_qeS_uEB8EeOv3YgAZrrk8A"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_gl5XOEB8EeOv3YgAZrrk8A"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_gl5XOUB8EeOv3YgAZrrk8A"/>
+      </children>
+      <children xmi:id="_gl5XOkB8EeOv3YgAZrrk8A" type="7003">
+        <children xmi:id="_pUiiVUB8EeOv3YgAZrrk8A" type="3003" element="#_pUPnYEB8EeOv3YgAZrrk8A">
+          <children xmi:id="_pUiiW0B8EeOv3YgAZrrk8A" type="5001"/>
+          <children xmi:id="_pUiiXEB8EeOv3YgAZrrk8A" type="7004">
+            <children xmi:id="_pUsTUEB8EeOv3YgAZrrk8A" type="3004" element="#_pUYxUEB8EeOv3YgAZrrk8A">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_pUsTUUB8EeOv3YgAZrrk8A" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_pUsTUkB8EeOv3YgAZrrk8A"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_pUiiXUB8EeOv3YgAZrrk8A"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_pUiiXkB8EeOv3YgAZrrk8A"/>
+          </children>
+          <children xmi:id="_pUiiX0B8EeOv3YgAZrrk8A" type="7005">
+            <children xmi:id="_pUsTU0B8EeOv3YgAZrrk8A" type="3005" element="#_pUiiUEB8EeOv3YgAZrrk8A">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_pUsTVEB8EeOv3YgAZrrk8A" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_pUsTVUB8EeOv3YgAZrrk8A"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_pUiiYEB8EeOv3YgAZrrk8A"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_pUiiYUB8EeOv3YgAZrrk8A"/>
+          </children>
+          <children xmi:id="_pUiiYkB8EeOv3YgAZrrk8A" type="7006">
+            <children xmi:id="_pUiiZkB8EeOv3YgAZrrk8A" visible="false" type="7600">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_pUiiZ0B8EeOv3YgAZrrk8A" fontHeight="10"/>
+              <element xsi:nil="true"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_pUiiaEB8EeOv3YgAZrrk8A"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_pUiiY0B8EeOv3YgAZrrk8A"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_pUiiZEB8EeOv3YgAZrrk8A"/>
+            <styles xsi:type="compositenotation:CollapseStyle" xmi:id="_pUiiZUB8EeOv3YgAZrrk8A"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_pUiiVkB8EeOv3YgAZrrk8A" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_pUiiV0B8EeOv3YgAZrrk8A" gradStartColor="16642791" gradEndColor="14072216"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_pUiiWEB8EeOv3YgAZrrk8A"/>
+          <styles xsi:type="compositenotation:CustomComponentIconStyle" xmi:id="_pUiiWUB8EeOv3YgAZrrk8A"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_pUiiWkB8EeOv3YgAZrrk8A" x="244" y="60"/>
+        </children>
+        <children xmi:id="_pzPQgEB8EeOv3YgAZrrk8A" type="3003" element="#_pzFfgEB8EeOv3YgAZrrk8A">
+          <children xmi:id="_pzPQhkB8EeOv3YgAZrrk8A" type="5001"/>
+          <children xmi:id="_pzPQh0B8EeOv3YgAZrrk8A" type="7004">
+            <children xmi:id="_pzPQlEB8EeOv3YgAZrrk8A" type="3004" element="#_pzFfgkB8EeOv3YgAZrrk8A">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_pzPQlUB8EeOv3YgAZrrk8A" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_pzPQlkB8EeOv3YgAZrrk8A"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_pzPQiEB8EeOv3YgAZrrk8A"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_pzPQiUB8EeOv3YgAZrrk8A"/>
+          </children>
+          <children xmi:id="_pzPQikB8EeOv3YgAZrrk8A" type="7005">
+            <styles xsi:type="notation:SortingStyle" xmi:id="_pzPQi0B8EeOv3YgAZrrk8A"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_pzPQjEB8EeOv3YgAZrrk8A"/>
+          </children>
+          <children xmi:id="_pzPQjUB8EeOv3YgAZrrk8A" type="7006">
+            <children xmi:id="_pzPQkUB8EeOv3YgAZrrk8A" visible="false" type="7600">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_pzPQkkB8EeOv3YgAZrrk8A" fontHeight="10"/>
+              <element xsi:nil="true"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_pzPQk0B8EeOv3YgAZrrk8A"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_pzPQjkB8EeOv3YgAZrrk8A"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_pzPQj0B8EeOv3YgAZrrk8A"/>
+            <styles xsi:type="compositenotation:CollapseStyle" xmi:id="_pzPQkEB8EeOv3YgAZrrk8A"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_pzPQgUB8EeOv3YgAZrrk8A" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_pzPQgkB8EeOv3YgAZrrk8A" gradStartColor="16642791" gradEndColor="14072216"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_pzPQg0B8EeOv3YgAZrrk8A"/>
+          <styles xsi:type="compositenotation:CustomComponentIconStyle" xmi:id="_pzPQhEB8EeOv3YgAZrrk8A"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_pzPQhUB8EeOv3YgAZrrk8A" x="244" y="180"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_gl5XO0B8EeOv3YgAZrrk8A"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_gl5XPEB8EeOv3YgAZrrk8A"/>
+      </children>
+      <children xmi:id="_gmDIMEB8EeOv3YgAZrrk8A" type="7007">
+        <children xmi:id="_gmDIM0B8EeOv3YgAZrrk8A" visible="false" type="7600">
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_gmDINEB8EeOv3YgAZrrk8A" fontHeight="10"/>
+          <element xsi:nil="true"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_gmDINUB8EeOv3YgAZrrk8A"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_gmDIMUB8EeOv3YgAZrrk8A"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_gmDIMkB8EeOv3YgAZrrk8A"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" xmi:id="_gl5XMUB8EeOv3YgAZrrk8A" fontHeight="10"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_gl5XMkB8EeOv3YgAZrrk8A" x="10" y="10" width="853" height="352"/>
+    </children>
+    <styles xsi:type="notation:DiagramStyle" xmi:id="_gkQYc0B8EeOv3YgAZrrk8A"/>
+    <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_gkQYdEB8EeOv3YgAZrrk8A"/>
+    <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_gkQYdUB8EeOv3YgAZrrk8A"/>
+    <edges xmi:id="_qeS_sEB8EeOv3YgAZrrk8A" type="4002" source="#_qeJ1wkB8EeOv3YgAZrrk8A" target="#_pUsTUEB8EeOv3YgAZrrk8A">
+      <styles xsi:type="notation:ConnectorStyle" xmi:id="_qeS_sUB8EeOv3YgAZrrk8A" routing="Rectilinear"/>
+      <styles xsi:type="notation:FontStyle" xmi:id="_qeS_skB8EeOv3YgAZrrk8A" fontHeight="10"/>
+      <element xsi:nil="true"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_qeS_s0B8EeOv3YgAZrrk8A" points="[-3, 30, -342, -98]$[333, 131, -6, 3]"/>
+    </edges>
+    <edges xmi:id="_qecwsUB8EeOv3YgAZrrk8A" type="4003" source="#_qeS_tEB8EeOv3YgAZrrk8A" target="#_pUsTU0B8EeOv3YgAZrrk8A">
+      <styles xsi:type="notation:ConnectorStyle" xmi:id="_qecwskB8EeOv3YgAZrrk8A" routing="Rectilinear"/>
+      <styles xsi:type="notation:FontStyle" xmi:id="_qecws0B8EeOv3YgAZrrk8A" fontHeight="10"/>
+      <element xsi:nil="true"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_qecwtEB8EeOv3YgAZrrk8A" points="[17, 35, -431, -93]$[460, 131, 12, 3]"/>
+    </edges>
+    <edges xmi:id="_q3MA2kB8EeOv3YgAZrrk8A" type="4002" source="#_q3MA1EB8EeOv3YgAZrrk8A" target="#_pzPQlEB8EeOv3YgAZrrk8A">
+      <styles xsi:type="notation:ConnectorStyle" xmi:id="_q3MA20B8EeOv3YgAZrrk8A" routing="Rectilinear"/>
+      <styles xsi:type="notation:FontStyle" xmi:id="_q3MA3EB8EeOv3YgAZrrk8A" fontHeight="10"/>
+      <element xsi:nil="true"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_q3MA3UB8EeOv3YgAZrrk8A" points="[-3, 30, -342, -218]$[333, 251, -6, 3]"/>
+    </edges>
+  </notation:diagram>
+  <scaext:EmbeddedPolicySet xmi:id="_g7WjAEhBEeOGEtmjvqGLlg" name="MTOMPolicy_Component1_DownloadFile" appliesTo="soapbt:binding.soap.reference | soapbt:binding.soap.service" policyTemplateName="template_2010:MTOMPolicy" policyTemplateVersion="1.0.0">
+    <mtom:MTOMPolicy xmi:id="_g7WjAUhBEeOGEtmjvqGLlg" scaext:label="MTOM Policy"/>
+  </scaext:EmbeddedPolicySet>
+  <scaext:EmbeddedPolicySet xmi:id="_iA8SEEhBEeOGEtmjvqGLlg" name="MTOMPolicy_Component1_DownloadFile1" appliesTo="soapbt:binding.soap.reference | soapbt:binding.soap.service" policyTemplateName="template_2010:MTOMPolicy" policyTemplateVersion="1.0.0">
+    <mtom:MTOMPolicy xmi:id="_iA8SEUhBEeOGEtmjvqGLlg" scaext:label="MTOM Policy"/>
+  </scaext:EmbeddedPolicySet>
+  <scaext:EmbeddedPolicySet xmi:id="_i6UKEEhBEeOGEtmjvqGLlg" name="MTOMPolicy_Component2_DownloadFile" appliesTo="soapbt:binding.soap.reference | soapbt:binding.soap.service" policyTemplateName="template_2010:MTOMPolicy" policyTemplateVersion="1.0.0">
+    <mtom:MTOMPolicy xmi:id="_i6UKEUhBEeOGEtmjvqGLlg" scaext:label="MTOM Policy"/>
+  </scaext:EmbeddedPolicySet>
+</sca:composite>

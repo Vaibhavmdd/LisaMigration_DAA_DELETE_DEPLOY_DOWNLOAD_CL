@@ -1,0 +1,365 @@
+<?xml version="1.0" ?>
+
+
+<!-- TestCase created by LISA Test Editor -->
+<!-- On: Wed Jan 07 15:00:16 CST 2009 -->
+
+
+<TestCase name="WriteFile" version="2">
+<id>1717ffb4</id>
+<Documentation>Change the contents of text file in its entirety, overwriting any existing text.&#10;Returns the file path.</Documentation>
+<sig>ZWQ9NSZ0Y3Y9MiZsaXNhdj00LjUuNSAoNC41LjUuMjcpJm5vZGVzPS0xNzc1MTIyNTcy</sig>
+<rootNode>Log</rootNode>
+<subprocess>true</subprocess>
+
+<initState>
+    <Parameter>
+    <key>file</key>
+    <value></value>
+    <name>File to write into</name>
+    </Parameter>
+    <Parameter>
+    <key>content</key>
+    <value></value>
+    <name>Text content to write in the file</name>
+    </Parameter>
+    <Parameter>
+    <key>createIfNotExist</key>
+    <value>false</value>
+    <name>If set to true, file is created if it does not exist.</name>
+    </Parameter>
+    <Parameter>
+    <key>encoding</key>
+    <value></value>
+    <name>encoding to use for a file, if blank, the encoding is system default encoding</name>
+    </Parameter>
+    <Parameter>
+    <key>native2ascii</key>
+    <value>false</value>
+    <name>If set to true, converts the content from native encoding to ASCII with escaped Unicode</name>
+    </Parameter>
+</initState>
+
+<resultState>
+    <Parameter>
+    <key>lisa.Log.rsp</key>
+    <value>Set in Step Log</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.Log.rsp.time</key>
+    <value>Set in Step Log</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.end.rsp</key>
+    <value>Set in Step end</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.end.rsp.time</key>
+    <value>Set in Step end</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.writeFile.rsp</key>
+    <value>Set in Step writeFile</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.writeFile.rsp.time</key>
+    <value>Set in Step writeFile</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.fail.rsp</key>
+    <value>Set in Step fail</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.fail.rsp.time</key>
+    <value>Set in Step fail</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.checkCreateFile.rsp</key>
+    <value>Set in Step checkCreateFile</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.checkCreateFile.rsp.time</key>
+    <value>Set in Step checkCreateFile</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.checkFileExists.rsp</key>
+    <value>Set in Step checkFileExists</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.checkFileExists.rsp.time</key>
+    <value>Set in Step checkFileExists</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.createFile.rsp</key>
+    <value>Set in Step createFile</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.createFile.rsp.time</key>
+    <value>Set in Step createFile</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.success.rsp</key>
+    <value>Set in Step success</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.success.rsp.time</key>
+    <value>Set in Step success</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.native2Ascii.rsp</key>
+    <value>Set in Step native2Ascii</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.native2Ascii.rsp.time</key>
+    <value>Set in Step native2Ascii</value>
+    </Parameter>
+</resultState>
+
+<Configurations>
+<Configuration>
+<name>default</name>
+<external>false</external>
+<props>
+</props>
+</Configuration>
+</Configurations>
+    <Node name="Log" log=""
+          type="com.itko.lisa.test.TestNodeLogger" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="checkCreateFile" > 
+
+<graphx>71</graphx>
+<graphy>416</graphy>
+      <log>Writing in file &quot;{{file}}&quot; ...&#10;</log>
+    </Node>
+
+
+    <Node name="checkCreateFile" log=""
+          type="com.itko.lisa.test.NoTransNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="writeFile" > 
+
+<graphx>0</graphx>
+<graphy>243</graphy>
+<Documentation></Documentation>
+<remoteServer>local</remoteServer>
+
+      <!-- Result Elements -->
+<CheckResult assertTrue="true" name="Assert109" type="com.itko.lisa.test.CheckResultPropRegEx" >
+<log>createIfNotExist parameter is set to true</log>
+<then>checkFileExists</then>
+<valueToAssertKey></valueToAssertKey>
+        <prop>createIfNotExist</prop>
+        <param>true</param>
+</CheckResult>
+
+    </Node>
+
+
+    <Node name="checkFileExists" log=""
+          type="com.itko.lisa.utils.ExecSubProcessNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="createFile" > 
+
+<graphx>71</graphx>
+<graphy>71</graphy>
+<Subprocess>{{TIBCO_COMMON_LIBRARY}}/com/tibco/lisa/file/CheckFileExists.tst</Subprocess>
+<getEvents>0</getEvents>
+<sendConfig>false</sendConfig>
+<fullyParseProps>true</fullyParseProps>
+<sendCommonState>false</sendCommonState>
+<getCommonState>false</getCommonState>
+<onFail>fail</onFail>
+<Parameters>
+    <Parameter>
+    <key>file</key>
+    <value>{{file}}</value>
+    <name>File or directory to be checked for existence</name>
+    </Parameter>
+</Parameters>
+<SaveProps>
+</SaveProps>
+
+      <!-- Result Elements -->
+<CheckResult assertTrue="true" name="Assert161" type="com.itko.lisa.test.CheckResultContains" >
+<log>File {{file}} already exists</log>
+<then>writeFile</then>
+<valueToAssertKey></valueToAssertKey>
+        <param>true</param>
+</CheckResult>
+
+    </Node>
+
+
+    <Node name="createFile" log=""
+          type="com.itko.lisa.utils.ExecSubProcessNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="writeFile" > 
+
+<graphx>244</graphx>
+<graphy>0</graphy>
+<Subprocess>{{TIBCO_COMMON_LIBRARY}}/com/tibco/lisa/file/CreateFile.tst</Subprocess>
+<getEvents>0</getEvents>
+<sendConfig>false</sendConfig>
+<fullyParseProps>true</fullyParseProps>
+<sendCommonState>false</sendCommonState>
+<getCommonState>false</getCommonState>
+<onFail>fail</onFail>
+<Parameters>
+    <Parameter>
+    <key>file</key>
+    <value>{{file}}</value>
+    <name>File to be created</name>
+    </Parameter>
+</Parameters>
+<SaveProps>
+</SaveProps>
+    </Node>
+
+
+    <Node name="writeFile" log=""
+          type="com.itko.lisa.test.ScriptNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="success" > 
+
+<graphx>416</graphx>
+<graphy>71</graphy>
+<onerror>fail</onerror>
+<script>import java.io.*;&#10;&#10;String baseErrorMsg = &quot;File Write Error&quot;; // Do not modify. Test engineers might assert on this string.&#10;String baseSuccessMsg = &quot;File Write Success&quot;; // Do not modify. Test engineers might assert on this string.&#10;String strFile = testExec.parseInState(file).replace(&apos;\\&apos;, &apos;/&apos;);&#10;&#10;File fileHandle = new File(strFile);&#10;if (!fileHandle.exists())&#10;  return baseErrorMsg + &quot;: File &apos;&quot; + fileHandle + &quot;&apos; does not exist.&quot;;&#10;if (!fileHandle.isFile())&#10;  return baseErrorMsg + &quot;: &apos;&quot; + fileHandle + &quot;&apos; is not a file.&quot;;&#10;if (!fileHandle.canWrite())&#10;  return baseErrorMsg + &quot;: Cannot write in file &apos;&quot; + fileHandle + &quot;&apos;.&quot;;&#10;&#10;if (encoding.equals(&quot;&quot;)) {&#10;        BufferedWriter output = new BufferedWriter(new OutputStreamWriter&#10;                                 (new FileOutputStream(fileHandle)));&#10;&#9;output.write(content);&#10;&#9;output.close();&#10;&#9;return baseSuccessMsg + &quot;: File &apos;&quot; + fileHandle + &quot;&apos; now contains: \n&quot; + content;&#10;} else {&#10;&#9;BufferedWriter output = new BufferedWriter(new OutputStreamWriter&#10;                                 (new FileOutputStream(fileHandle),encoding));&#10;&#9;output.write(content);&#10;&#9;output.close();&#10;&#9;return baseSuccessMsg + &quot;: File &apos;&quot; + fileHandle + &quot;&apos; now contains: \n&quot; + content;&#10;}</script>
+
+      <!-- Result Elements -->
+<CheckResult assertTrue="true" name="Assert170" type="com.itko.lisa.dynexec.CheckInvocationEx" >
+<log>writeFile step has thrown uncaught exception</log>
+<then>fail</then>
+<valueToAssertKey></valueToAssertKey>
+        <param>.*</param>
+</CheckResult>
+
+<CheckResult assertTrue="true" name="Assert169" type="com.itko.lisa.test.CheckResultContains" >
+<log>{{lisa.writeFile.rsp}}</log>
+<then>fail</then>
+<valueToAssertKey></valueToAssertKey>
+        <param>File Write Error</param>
+</CheckResult>
+
+<CheckResult assertTrue="true" name="Assert207" type="com.itko.lisa.test.CheckResultPropRegEx" >
+<log>Native to Ascii option selected</log>
+<then>native2Ascii</then>
+<valueToAssertKey></valueToAssertKey>
+        <prop>native2ascii</prop>
+        <param>true</param>
+</CheckResult>
+
+    </Node>
+
+
+    <Node name="native2Ascii" log=""
+          type="com.itko.lisa.utils.ExecSubProcessNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="success" > 
+
+<graphx>-1</graphx>
+<graphy>-1</graphy>
+<Subprocess>{{TIBCO_COMMON_LIBRARY}}/com/tibco/lisa/util/Native2Ascii.tst</Subprocess>
+<getEvents>0</getEvents>
+<sendConfig>false</sendConfig>
+<fullyParseProps>false</fullyParseProps>
+<sendCommonState>false</sendCommonState>
+<getCommonState>false</getCommonState>
+<onFail>fail</onFail>
+<Parameters>
+    <Parameter>
+    <key>inputFile</key>
+    <value>{{file}}</value>
+    <name>The full path of the file to convert</name>
+    </Parameter>
+    <Parameter>
+    <key>outputFile</key>
+    <value>{{file}}</value>
+    <name>The full path of the output file</name>
+    </Parameter>
+    <Parameter>
+    <key>encoding</key>
+    <value>{{encoding}}</value>
+    <name>The native encoding the input file is in (default is the default encoding for the JVM)</name>
+    </Parameter>
+    <Parameter>
+    <key>reverse</key>
+    <value>false</value>
+    <name>Reverse the sense of the conversion, i.e. convert from ASCII to native</name>
+    </Parameter>
+</Parameters>
+<SaveProps>
+</SaveProps>
+    </Node>
+
+
+    <Node name="success" log=""
+          type="com.itko.lisa.test.ScriptNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="end" > 
+
+<graphx>488</graphx>
+<graphy>244</graphy>
+<onerror>fail</onerror>
+<script>return testExec.parseInState(file).replace(&apos;\\&apos;,&apos;/&apos;);</script>
+
+      <!-- Result Elements -->
+<CheckResult assertTrue="true" name="Any Exception Then Fail" type="com.itko.lisa.dynexec.CheckInvocationEx" >
+<log>Assert [Any Exception Then Fail] fired true of type Assert on Invocation Exception</log>
+<then>fail</then>
+<valueToAssertKey></valueToAssertKey>
+        <param>.*</param>
+</CheckResult>
+
+    </Node>
+
+
+    <Node name="end" log=""
+          type="com.itko.lisa.test.NormalEnd" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="true" 
+          next="fail" > 
+
+<graphx>416</graphx>
+<graphy>416</graphy>
+    </Node>
+
+
+    <Node name="fail" log=""
+          type="com.itko.lisa.test.Abend" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="true" 
+          next="unknown" > 
+
+<graphx>244</graphx>
+<graphy>488</graphy>
+    </Node>
+
+
+</TestCase>

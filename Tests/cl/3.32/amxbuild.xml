@@ -1,0 +1,9 @@
+<project default="deploy.app">
+	<import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+	
+        <target name="stopstart.logservice">
+           <stop.app description="stopLog Service Application" dataFile="${amxConfigFile}" objectSelector="Environment[1]/Application"  timeout="${timeout}"/>
+           <start.app description="startLog Service Application"  dataFile="${amxConfigFile}" objectSelector="Environment[1]/Application" timeout="${timeout}"/>    
+        </target>
+
+</project>

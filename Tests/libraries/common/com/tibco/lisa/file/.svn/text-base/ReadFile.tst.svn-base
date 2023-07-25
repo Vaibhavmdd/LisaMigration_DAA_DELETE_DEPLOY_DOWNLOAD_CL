@@ -1,0 +1,147 @@
+<?xml version="1.0" ?>
+
+
+<!-- Test Case created by LISA Test Editor -->
+<!-- On: Wed Nov 10 14:09:18 PST 2010 -->
+
+
+<TestCase name="ReadFile" version="2">
+<id>e6035e48</id>
+<Documentation>Fetch the entire content of a text file.</Documentation>
+<sig>ZWQ9MiZ0Y3Y9MiZsaXNhdj00LjYuNyAoNC42LjcuMTYpJm5vZGVzPTEyNjA3NzAzMzA=</sig>
+<rootNode>Log</rootNode>
+<subprocess>true</subprocess>
+
+<initState>
+    <Parameter>
+    <key>file</key>
+    <value></value>
+    <name>File to read</name>
+    </Parameter>
+    <Parameter>
+    <key>encoding</key>
+    <value></value>
+    <name>encoding to use for a file, if blank, the encoding is system default encoding</name>
+    </Parameter>
+</initState>
+
+<resultState>
+    <Parameter>
+    <key>lisa.continue.rsp</key>
+    <value>Set in Step continue</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.continue.rsp.time</key>
+    <value>Set in Step continue</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.Log.rsp</key>
+    <value>Set in Step Log</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.Log.rsp.time</key>
+    <value>Set in Step Log</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.end.rsp</key>
+    <value>Set in Step end</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.end.rsp.time</key>
+    <value>Set in Step end</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.readFile.rsp</key>
+    <value>Set in Step readFile</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.readFile.rsp.time</key>
+    <value>Set in Step readFile</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.fail.rsp</key>
+    <value>Set in Step fail</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.fail.rsp.time</key>
+    <value>Set in Step fail</value>
+    </Parameter>
+</resultState>
+
+<Configurations>
+<Configuration>
+<name>default</name>
+<external>false</external>
+<props>
+</props>
+</Configuration>
+</Configurations>
+    <Node name="Log" log=""
+          type="com.itko.lisa.test.TestNodeLogger" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="readFile" > 
+
+<graphx>-1</graphx>
+<graphy>-1</graphy>
+<Documentation></Documentation>
+<remoteServer>local</remoteServer>
+      <log>Reading file &quot;{{file}}&quot; ...</log>
+    </Node>
+
+
+    <Node name="readFile" log=""
+          type="com.itko.lisa.test.ScriptNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="end" > 
+
+<graphx>-1</graphx>
+<graphy>-1</graphy>
+<Documentation></Documentation>
+<remoteServer>local</remoteServer>
+<onerror>fail</onerror>
+<script>import java.io.*;&#13;&#10;&#13;&#10;String baseErrorMsg = &quot;File Read Error&quot;; // Do not modify. Test engineers might assert on this string.&#13;&#10;String strFile = testExec.parseInState(file).replace(&apos;\\&apos;, &apos;/&apos;);&#13;&#10;&#13;&#10;File file = new File(strFile);&#13;&#10;if (!file.exists())&#13;&#10;  return baseErrorMsg + &quot;: File &apos;&quot; + file + &quot;&apos; does not exist.&quot;;&#13;&#10;if (!file.canRead())&#13;&#10;  return baseErrorMsg + &quot;: Cannot be read file &apos;&quot; + file + &quot;&apos;.&quot;;&#13;&#10;if (!file.isFile())&#13;&#10;  return baseErrorMsg + &quot;: &apos;&quot; + file + &quot;&apos; is not a file.&quot;;&#13;&#10;&#13;&#10;BufferedReader input=null;&#13;&#10;&#13;&#10;try {&#13;&#10;    if (encoding.equals(&quot;&quot;)) &#13;&#10;        input = new BufferedReader(new InputStreamReader(new FileInputStream(file)));&#13;&#10;    else &#9;&#13;&#10;        input = new BufferedReader(new InputStreamReader  &#13;&#10;&#9;&#9;&#9;&#9;  (new FileInputStream(file),encoding));&#13;&#10;&#13;&#10;    //BufferedReader input = new BufferedReader(new FileReader(file));&#13;&#10;    StringBuffer content = new StringBuffer();&#13;&#10;    String line = null;&#13;&#10;    /*&#13;&#10;    * readLine is a bit quirky :&#13;&#10;    * it returns the content of a line MINUS the newline.&#13;&#10;    * it returns null only for the END of the stream.&#13;&#10;    * it returns an empty String if two newlines appear in a row.&#13;&#10;    */&#13;&#10;    while ((line = input.readLine()) != null) {&#13;&#10;        content.append(line);&#13;&#10;        content.append(System.getProperty(&quot;line.separator&quot;));&#13;&#10;    }&#13;&#10;    //flush and close both &quot;input&quot; and its underlying FileReader&#13;&#10;    input.close();&#13;&#10;    return content.toString();&#13;&#10;}&#13;&#10;catch(Exception e) {&#13;&#10;    return baseErrorMsg + &quot;: &quot; + e.getMessage();&#13;&#10;}&#13;&#10;</script>
+
+      <!-- Result Elements -->
+<CheckResult assertTrue="true" name="Assert114" type="com.itko.lisa.test.CheckResultContains">
+<log>{{LASTRESPONSE}}</log>
+<then>fail</then>
+<valueToAssertKey></valueToAssertKey>
+        <param>File Read Error</param>
+</CheckResult>
+
+    </Node>
+
+
+    <Node name="end" log=""
+          type="com.itko.lisa.test.NormalEnd" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="true" 
+          next="fail" > 
+
+<graphx>-1</graphx>
+<graphy>-1</graphy>
+    </Node>
+
+
+    <Node name="fail" log=""
+          type="com.itko.lisa.test.Abend" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="true" 
+          next="unknown" > 
+
+<graphx>-1</graphx>
+<graphy>-1</graphy>
+    </Node>
+
+
+</TestCase>

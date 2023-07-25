@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+
+	<Environment 
+		xsi:type="amxdata:Environment" 
+	    name="QAEnvironment_bigqasol11" 
+	    description="integration environment" 
+	    contact="TIBCO">
+		<Node xsi:type="amxdata:Node" name="QANode1" hostName="SystemHost_bigqasol11" description="My first node" contact="TIBCO" >
+		    <ResourceInstance xsi:type="amxdata:ResourceInstance" name="httpConnector11701" resourceTemplateName="httpConnector11701"/>
+		    <ResourceInstance xsi:type="amxdata:ResourceInstance" name="HttpClientResource11701" resourceTemplateName="HttpClientResource11701"/>		
+		</Node>
+		
+		<Application
+			xsi:type="amxdata:Application"
+			name="med1701"
+			contact="TIBCO Software Inc."
+			description="Sample project mediation.helloworld.context.soa">
+
+      <Component xsi:type="amxdata:Component" name="mediation.helloworld.context">
+		    <Node name="QANode2" environmentName="QAEnvironment_bigqasol11"/>				
+      </Component>
+        	
+			<PromotedService xsi:type="amxdata_base:Service_base" name="HelloWorld">
+				<Binding xsi:type="amxdata:Binding" name="SOAPService_Binding1">
+					<Node name="QANode1" environmentName="QAEnvironment_bigqasol11" />	
+					<Property  xsi:type="amxdata:Property" name="HttpInboundConnectionConfig"  value="httpConnector11701"/>			
+				</Binding>
+			</PromotedService>		
+			    
+			<PromotedReference xsi:type="amxdata_base:Reference_base" name="HelloWorld1">
+				<Binding xsi:type="amxdata:Binding" name="SOAPReference_Binding1">
+        	<Node name="QANode1" environmentName="QAEnvironment_bigqasol11" />  
+        	<Property  xsi:type="amxdata:Property" name="HttpOutboundConnectionConfig"  value="HttpClientResource11701"/>	              
+				</Binding>
+			</PromotedReference> 	
+			<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="mediation.helloworld.context"/>
+      <!--Configure Logging-->
+			<Logger xsi:type="amxdata:Logger" name ="com.tibco.amx.it.mediation.logTask" additivity="false">
+				<AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="INFO">
+					<Appender xsi:type="amxdata_reference:LogAppender_reference" name="qaINFOFileLogAppender1701"/>
+				</AppenderRef>
+			</Logger>			
+		</Application>		
+	</Environment>
+	
+	<ResourceTemplate xsi:type="amxdata:HttpConnectorResourceTemplate"
+		name="httpConnector11701" 
+		host="bigqasol11"
+		port="17111"
+		headerBufferSize="4096"
+		requestBufferSize="8192"
+		responseBufferSize="24576"
+		maxIdleTime="200000" 
+		lowResourceMaxIdleTime="-1"
+		description="This is Http Connector Resource Template"/>
+	<ResourceTemplate xsi:type="amxdata:HttpClientResourceTemplate"
+		name="HttpClientResource11701" 
+		isAcceptRedirect="true"
+		connectionTimeout="8888"
+		host="localhost"
+		port="8666" 
+		description="This is Http Client Resource Template"/>		
+		
+	<DAA
+		xsi:type="amxdata:DAA"
+		description="DAA CMT Test"
+		location="target/mediation.helloworld.context.soa/Deployment Artifacts/mediation.helloworld.context.soa.daa"
+	  importResourceTemplates="false">
+	</DAA>
+
+  <!--Define Log Appender-->
+	<LogAppender
+		xsi:type="amxdata:FileLogAppender"
+		name="qaINFOFileLogAppender1701"
+		description="QA INFO File LogAppender1701"
+		filePath="/groupfiler/tests/tests/amsg/3.0/reports/SunOS_5.11_SPARC/tests-log/func/runtime/med/17_SDSCLI/unknown/17.1/SDSCLI01_INFO.log"
+		maxSize="10240"
+		maxBackupNum="5"/>	
+
+</amxdata_base:Enterprise>

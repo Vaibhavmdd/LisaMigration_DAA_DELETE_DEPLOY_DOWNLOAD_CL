@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+	xmlns:amxdata_jmsssr="http://tibco.com/amxadministrator/command/line/types_jmssr"
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+
+		 
+	<Environment 
+		xsi:type="amxdata:Environment" 
+		description="System Environment" 
+		name="[[admin.env.name]]"> 
+		<Node xsi:type="amxdata:Node" name="SystemNode" hostName="[[host.name]]">
+		    <ResourceInstance xsi:type="amxdata:ResourceInstance" name="httpConnectorCL3_6" resourceTemplateName="httpConnectorCL3_6"/>
+		</Node>
+		<Node xsi:type="amxdata:Node" name="SystemNode" hostName="[[host.name]]">
+		   <Logger xsi:type="amxdata:Logger" name ="root" additivity="false">
+		                <AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="INFO">
+					<Appender xsi:type="amxdata_reference:LogAppender_reference" name="SystemNode_ROOT"/>
+				</AppenderRef>
+				<AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="INFO">
+					<Appender xsi:type="amxdata_reference:LogAppender_reference" name="qaFileLogAppender0"/>
+				</AppenderRef>
+				<AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="INFO">
+					<Appender xsi:type="amxdata_reference:LogAppender_reference" name="QA_JMSAppender36"/>
+				</AppenderRef>
+		    </Logger>
+		   		    
+		    
+		</Node>
+		
+		<Application
+			xsi:type="amxdata:Application"
+			name="cl3_6"
+			contact="Leveon Zhao"
+			description="cl3_6 application">
+      
+      <Component xsi:type="amxdata:Component" name="JavaComponent">
+		      <Node name="SystemNode" environmentName="[[admin.env.name]]"/>	     		
+      </Component>     	
+			<PromotedService xsi:type="amxdata_base:Service_base" name="LotteryPortService">
+				<Binding xsi:type="amxdata:Binding" name="SOAPService_Binding">
+					<Node name="SystemNode" environmentName="[[admin.env.name]]" />				
+				</Binding>
+			</PromotedService>	    
+			<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="cl3_6"/>
+		</Application>			
+	</Environment>	 
+	
+<ResourceTemplate xsi:type="amxdata:HttpConnectorResourceTemplate" name="httpConnectorCL3_6" host="[[host1]]" port="[[servicePort3_6]]" headerBufferSize="512" requestBufferSize="512"	responseBufferSize="512" maxIdleTime="200000" lowResourceMaxIdleTime="512" description="This is HttpConnector RT"/> 
+
+	<DAA
+		xsi:type="amxdata:DAA"
+		description="DAA For cl0306"
+		location="SoaProject/Deployment Artifacts/cl3_6.daa"
+	  importResourceTemplates="false">
+	</DAA>	 
+		 
+	
+	<!--Define Log Appender-->
+				
+	
+	 <LogAppender
+      xsi:type="amxdata:JmsLogAppender"
+      name="QA_JMSAppender36"
+      description="[[JMSappenderDescription]]"
+      jmsConnectionFactoryName="cl36_QA_logservice_jmsConnectionFactory"
+      jmsConnectionName="cl36_QA_logservice_jndiConnectionConfig"
+      jmsDestination="cl36_QA_logservice_jmsDestination"
+      expireTimeInDB="10"
+		payload = "true"		
+		payloadConnectionFactoryName ="cl36_QA_payloadservice_jmsConnectionFactory" 
+		payloadConnectionName="cl36_QA_payloadservice_jndiConnectionConfig"
+		payloadDestination="cl36_QA_payloadservice_jmsDestination"/>
+  	
+  	
+  	<!--RT for Logservice part configuration of JMS appender/-->
+         
+         
+         <!--
+      		type="jndi"
+		sync="false"
+		sharedDiskURL="C:\temp"
+		-->
+      
+  <amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate 
+  description="[[LogserviceRT_JndiConnectionConfiguration]]" 
+  initialContextFactory="com.tibco.tibjms.naming.TibjmsInitialContextFactory" 
+  name="cl36_QA_logservice_jndiConnectionConfig" 
+  xsi:type="amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate" providerUrl="tibjmsnaming://[[emshost]]:[[emsport]]">
+  <InlineCredentials username="[[emsuser]]" password="[[emspwd]]"/>
+  </amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate>
+    
+  <amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate 
+  description="[[LogserviceRT_JndiConnectionFactory]]" 
+  jndiConnectionConfigurationName="cl36_QA_logservice_jndiConnectionConfig" 
+  jndiName="GenericConnectionFactory" 
+  name="cl36_QA_logservice_jmsConnectionFactory" 
+  xsi:type="amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate">
+  <InlineCredentials username="[[emsuser]]" password="[[emspwd]]"/>
+  </amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate>
+  
+  
+  <amxdata_jmsssr:JNDIDestinationResourceTemplate 
+  description="[[LogserviceRT_JndiDestination]]" 
+  jndiConnectionConfigurationName="cl36_QA_logservice_jndiConnectionConfig" 
+  jndiName="cl_logservice_queue" 
+  name="cl36_QA_logservice_jmsDestination" 
+  xsi:type="amxdata_jmsssr:JNDIDestinationResourceTemplate"/>
+
+
+     	<!--RT for payload part configuration of JMS appender/-->
+     	
+     
+ <amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate description="[[PayloadserviceRT_JndiConnectionConfiguration]]" 
+     initialContextFactory="com.tibco.tibjms.naming.TibjmsInitialContextFactory" 
+     name="cl36_QA_payloadservice_jndiConnectionConfig" 
+     xsi:type="amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate" providerUrl="tibjmsnaming://[[emshost]]:[[emsport]]">
+    <InlineCredentials username="[[emsuser]]" password="[[emspwd]]"/>
+  </amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate>
+  
+  <amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate description="[[PayloadserviceRT_JndiConnectionFactory]]" 
+    jndiConnectionConfigurationName="cl36_QA_payloadservice_jndiConnectionConfig" 
+    jndiName="GenericConnectionFactory" 
+    name="cl36_QA_payloadservice_jmsConnectionFactory" 
+    xsi:type="amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate">
+    <InlineCredentials username="[[emsuser]]" password="[[emspwd]]"/>
+  </amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate>
+  
+  
+  <amxdata_jmsssr:JNDIDestinationResourceTemplate 
+  description="[[PayloadserviceRT_JndiDestination]]" 
+  jndiConnectionConfigurationName="cl36_QA_payloadservice_jndiConnectionConfig" 
+  jndiName="cl_payload_queue" 
+  name="cl36_QA_payloadservice_jmsDestination" 
+  xsi:type="amxdata_jmsssr:JNDIDestinationResourceTemplate"/>	
+		
+		
+			
+
+</amxdata_base:Enterprise>

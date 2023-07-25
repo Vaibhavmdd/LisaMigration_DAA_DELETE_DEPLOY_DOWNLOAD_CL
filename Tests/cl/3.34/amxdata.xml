@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+	xmlns:amxdata_jmsssr="http://tibco.com/amxadministrator/command/line/types_jmssr"
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+
+	
+	<Environment 
+		xsi:type="amxdata:Environment" 
+		name="SystemEnvironment_na2devasgora03">
+		<Application xsi:type="amxdata:Application" 
+			name="cl_logservice_queue" 
+			contact="TIBCO Software Inc." 
+			description="Log Service">
+		</Application>
+	</Environment>	
+	
+     <TopLevelPermission xsi:type="amxdata_base:TopLevelPermission">
+        <Permissions>
+            <Permission group="groupQA" allow="log_viewer"/>
+        </Permissions>
+     </TopLevelPermission>
+    		
+    <User
+        xsi:type="amxdata:User"
+        username="clqa"
+        password="clqa">
+    </User>
+    
+     <Group
+        xsi:type="amxdata:Group"
+        name="groupQA"
+        description="group of QA">
+    </Group>
+    	
+</amxdata_base:Enterprise>

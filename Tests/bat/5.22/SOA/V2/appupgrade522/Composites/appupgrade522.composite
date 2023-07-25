@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:compositenotation="http://www.tibco.com/models/compositenotation" xmlns:java="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/java" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.1/notation" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmlns:soapbt="http://xsd.tns.tibco.com/amf/models/sca/binding/soap" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmi:id="_lghJkajZEeCtoOCPFT5Xag" targetNamespace="http://www.example.com/appupgrade522" name="appupgrade522" compositeext:version="1.0.0.qualifier" compositeext:formatVersion="2">
+  <sca:service xmi:id="_yFPjgKjbEeCUiIdkj7DRDQ" name="AddSubtractService" promote="Java1/AddSubtractService">
+    <sca:interface.wsdl xmi:id="_yFPjgajbEeCUiIdkj7DRDQ" interface="http://www.tibco.com/ws/spline/wsdl/elements/mathservice#wsdl.interface(AddSubtractService)" scaext:wsdlLocation="../Service%20Descriptors/MathService.wsdl"/>
+    <sca:binding.sca xmi:id="_yFPjgqjbEeCUiIdkj7DRDQ" name="Virtualization"/>
+    <soapbt:binding.soap.service xmi:id="_e7ya0KjlEeCUiIdkj7DRDQ" name="SOAPService_Binding1" transportBindingType="HTTP" attachmentStyle="DOCUMENT" portType="../Service%20Descriptors/MathService.wsdl#//@ePortTypes.0">
+      <operationConfiguration xmi:id="_e77kwajlEeCUiIdkj7DRDQ" operation="../Service%20Descriptors/MathService.wsdl#//@ePortTypes.0/@eOperations.0" action="Add">
+        <messageConfiguration xmi:id="_e77kwqjlEeCUiIdkj7DRDQ" message="../Service%20Descriptors/MathService.wsdl#//@eMessages.0">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_e77kw6jlEeCUiIdkj7DRDQ" messagePart="../Service%20Descriptors/MathService.wsdl#//@eMessages.0/@eParts.0"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_e77kxKjlEeCUiIdkj7DRDQ" message="../Service%20Descriptors/MathService.wsdl#//@eMessages.1" messageDirection="OUTPUT">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_e77kxajlEeCUiIdkj7DRDQ" messagePart="../Service%20Descriptors/MathService.wsdl#//@eMessages.1/@eParts.0"/>
+        </messageConfiguration>
+        <bindingType xmi:id="_e77kxqjlEeCUiIdkj7DRDQ"/>
+      </operationConfiguration>
+      <operationConfiguration xmi:id="_e77kx6jlEeCUiIdkj7DRDQ" operation="../Service%20Descriptors/MathService.wsdl#//@ePortTypes.0/@eOperations.1" action="Subtract">
+        <messageConfiguration xmi:id="_e77kyKjlEeCUiIdkj7DRDQ" message="../Service%20Descriptors/MathService.wsdl#//@eMessages.2">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_e77kyajlEeCUiIdkj7DRDQ" messagePart="../Service%20Descriptors/MathService.wsdl#//@eMessages.2/@eParts.0"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_e77kyqjlEeCUiIdkj7DRDQ" message="../Service%20Descriptors/MathService.wsdl#//@eMessages.3" messageDirection="OUTPUT">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_e77ky6jlEeCUiIdkj7DRDQ" messagePart="../Service%20Descriptors/MathService.wsdl#//@eMessages.3/@eParts.0"/>
+        </messageConfiguration>
+        <bindingType xmi:id="_e77kzKjlEeCUiIdkj7DRDQ"/>
+      </operationConfiguration>
+      <inboundConfiguration xsi:type="soapbt:HttpTransportConfiguration" xmi:id="_e77kzajlEeCUiIdkj7DRDQ" endpointURI="/addSubtractService/"/>
+      <defaultBindingType xmi:id="_e77kwKjlEeCUiIdkj7DRDQ"/>
+    </soapbt:binding.soap.service>
+    <scact:bindingAdjunct xmi:id="_yFPjg6jbEeCUiIdkj7DRDQ" bindingName="Virtualization"/>
+    <scact:bindingAdjunct xmi:id="_e77kzqjlEeCUiIdkj7DRDQ" bindingName="SOAPService_Binding1">
+      <sca:property xmi:id="_e8FVwKjlEeCUiIdkj7DRDQ" mustSupply="true" name="HttpInboundConnectionConfig" type="xsd:string" scaext:simpleValue="httpConnectorappupgrade522"/>
+    </scact:bindingAdjunct>
+  </sca:service>
+  <sca:component xmi:id="_yiTS8KjbEeCUiIdkj7DRDQ" name="Java1" compositeext:version="1.0.0.qualifier">
+    <sca:implementation.java xmi:id="_yiTS8ajbEeCUiIdkj7DRDQ" class="com.tibco.qa.appupgrade522.java.component1.Java1">
+      <scaext:packageVersionRange xmi:id="_yiTS8qjbEeCUiIdkj7DRDQ" lower="1.0.0" upper="2.0.0"/>
+      <java:featureDependency xmi:id="_Ceb_gKjcEeCUiIdkj7DRDQ" name="appupgrade522.appupgrade522.customfeature.id">
+        <range xmi:id="_Ceb_gajcEeCUiIdkj7DRDQ" lower="1.0.0" upper="2.0.0"/>
+      </java:featureDependency>
+    </sca:implementation.java>
+    <sca:service xmi:id="_z1mG0KjbEeCUiIdkj7DRDQ" name="AddSubtractService">
+      <sca:interface.wsdl xmi:id="_z1mG0ajbEeCUiIdkj7DRDQ" interface="http://www.tibco.com/ws/spline/wsdl/elements/mathservice#wsdl.interface(AddSubtractService)" scaext:wsdlLocation="../Service%20Descriptors/MathService.wsdl"/>
+    </sca:service>
+    <sca:reference xmi:id="_2bl4sKjbEeCUiIdkj7DRDQ" name="HelloWorldPT">
+      <sca:interface.wsdl xmi:id="_2bl4sajbEeCUiIdkj7DRDQ" interface="http://ns.tibco.com/Hello/#wsdl.interface(HelloWorldPT)" scaext:wsdlLocation="../Service%20Descriptors/HelloWorld1.wsdl"/>
+    </sca:reference>
+  </sca:component>
+  <sca:component xmi:id="_1nlo4KjbEeCUiIdkj7DRDQ" name="Java2" compositeext:version="1.0.0.qualifier">
+    <sca:implementation.java xmi:id="_1nlo4ajbEeCUiIdkj7DRDQ" class="com.tibco.qa.appupgrade522.java.component2.Java2">
+      <scaext:packageVersionRange xmi:id="_1nlo4qjbEeCUiIdkj7DRDQ" lower="1.0.0" upper="2.0.0"/>
+      <java:featureDependency xmi:id="_GwnmYKjcEeCUiIdkj7DRDQ" name="appupgrade522.appupgrade522.customfeature.id">
+        <range xmi:id="_GwnmYajcEeCUiIdkj7DRDQ" lower="1.0.0" upper="2.0.0"/>
+      </java:featureDependency>
+    </sca:implementation.java>
+    <sca:service xmi:id="_2BOQ4KjbEeCUiIdkj7DRDQ" name="HelloWorldPT">
+      <sca:interface.wsdl xmi:id="_2BOQ4ajbEeCUiIdkj7DRDQ" interface="http://ns.tibco.com/Hello/#wsdl.interface(HelloWorldPT)" scaext:wsdlLocation="../Service%20Descriptors/HelloWorld1.wsdl"/>
+    </sca:service>
+  </sca:component>
+  <sca:wire xmi:id="_3Ai_4KjbEeCUiIdkj7DRDQ" source="Java1/HelloWorldPT" target="Java2/HelloWorldPT"/>
+  <notation:diagram xsi:type="notation:Diagram" xmi:id="_lh3NYKjZEeCtoOCPFT5Xag" type="Composite" element="#/" name="SCA Composite" measurementUnit="Pixel">
+    <children xmi:id="_liv-MKjZEeCtoOCPFT5Xag" type="2001" element="#_lghJkajZEeCtoOCPFT5Xag">
+      <children xmi:id="_li5vMKjZEeCtoOCPFT5Xag" type="5004"/>
+      <children xmi:id="_li5vMajZEeCtoOCPFT5Xag" type="7001">
+        <children xmi:id="_yFZUgKjbEeCUiIdkj7DRDQ" type="3001" element="#_yFPjgKjbEeCUiIdkj7DRDQ">
+          <children xmi:id="_yFZUhajbEeCUiIdkj7DRDQ" type="5002"/>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_yFZUgajbEeCUiIdkj7DRDQ" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_yFZUgqjbEeCUiIdkj7DRDQ" gradStartColor="14150097" gradEndColor="7844710"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_yFZUg6jbEeCUiIdkj7DRDQ"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_yFZUhKjbEeCUiIdkj7DRDQ"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_li5vMqjZEeCtoOCPFT5Xag"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_li5vM6jZEeCtoOCPFT5Xag"/>
+      </children>
+      <children xmi:id="_li5vNKjZEeCtoOCPFT5Xag" type="7002">
+        <styles xsi:type="notation:SortingStyle" xmi:id="_li5vNajZEeCtoOCPFT5Xag"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_li5vNqjZEeCtoOCPFT5Xag"/>
+      </children>
+      <children xmi:id="_li5vN6jZEeCtoOCPFT5Xag" type="7003">
+        <children xmi:id="_yicc4KjbEeCUiIdkj7DRDQ" type="3003" element="#_yiTS8KjbEeCUiIdkj7DRDQ">
+          <children xmi:id="_yicc5qjbEeCUiIdkj7DRDQ" type="5001"/>
+          <children xmi:id="_yicc56jbEeCUiIdkj7DRDQ" type="7004">
+            <children xmi:id="_z1mG0qjbEeCUiIdkj7DRDQ" type="3004" element="#_z1mG0KjbEeCUiIdkj7DRDQ">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_z1mG06jbEeCUiIdkj7DRDQ" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_z1mG1KjbEeCUiIdkj7DRDQ"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_yicc6KjbEeCUiIdkj7DRDQ"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_yicc6ajbEeCUiIdkj7DRDQ"/>
+          </children>
+          <children xmi:id="_yicc6qjbEeCUiIdkj7DRDQ" type="7005">
+            <children xmi:id="_2bvpsqjbEeCUiIdkj7DRDQ" type="3005" element="#_2bl4sKjbEeCUiIdkj7DRDQ">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_2bvps6jbEeCUiIdkj7DRDQ" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_2bvptKjbEeCUiIdkj7DRDQ"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_yicc66jbEeCUiIdkj7DRDQ"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_yicc7KjbEeCUiIdkj7DRDQ"/>
+          </children>
+          <children xmi:id="_yicc7ajbEeCUiIdkj7DRDQ" type="7006">
+            <children xmi:id="_yicc8ajbEeCUiIdkj7DRDQ" visible="false" type="7600">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_yicc8qjbEeCUiIdkj7DRDQ" fontHeight="10"/>
+              <element xsi:nil="true"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_yicc86jbEeCUiIdkj7DRDQ"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_yicc7qjbEeCUiIdkj7DRDQ"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_yicc76jbEeCUiIdkj7DRDQ"/>
+            <styles xsi:type="compositenotation:CollapseStyle" xmi:id="_yicc8KjbEeCUiIdkj7DRDQ"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_yicc4ajbEeCUiIdkj7DRDQ" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_yicc4qjbEeCUiIdkj7DRDQ" gradStartColor="16642791" gradEndColor="14072216"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_yicc46jbEeCUiIdkj7DRDQ"/>
+          <styles xsi:type="compositenotation:CustomComponentIconStyle" xmi:id="_yicc5KjbEeCUiIdkj7DRDQ"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_yicc5ajbEeCUiIdkj7DRDQ" x="172" y="123"/>
+        </children>
+        <children xmi:id="_1nlo46jbEeCUiIdkj7DRDQ" type="3003" element="#_1nlo4KjbEeCUiIdkj7DRDQ">
+          <children xmi:id="_1nlo6ajbEeCUiIdkj7DRDQ" type="5001"/>
+          <children xmi:id="_1nlo6qjbEeCUiIdkj7DRDQ" type="7004">
+            <children xmi:id="_2BXa0qjbEeCUiIdkj7DRDQ" type="3004" element="#_2BOQ4KjbEeCUiIdkj7DRDQ">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_2BXa06jbEeCUiIdkj7DRDQ" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_2BXa1KjbEeCUiIdkj7DRDQ"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_1nlo66jbEeCUiIdkj7DRDQ"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_1nlo7KjbEeCUiIdkj7DRDQ"/>
+          </children>
+          <children xmi:id="_1nlo7ajbEeCUiIdkj7DRDQ" type="7005">
+            <styles xsi:type="notation:SortingStyle" xmi:id="_1nlo7qjbEeCUiIdkj7DRDQ"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_1nlo76jbEeCUiIdkj7DRDQ"/>
+          </children>
+          <children xmi:id="_1nlo8KjbEeCUiIdkj7DRDQ" type="7006">
+            <children xmi:id="_1nlo9KjbEeCUiIdkj7DRDQ" visible="false" type="7600">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_1nlo9ajbEeCUiIdkj7DRDQ" fontHeight="10"/>
+              <element xsi:nil="true"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_1nlo9qjbEeCUiIdkj7DRDQ"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_1nlo8ajbEeCUiIdkj7DRDQ"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_1nlo8qjbEeCUiIdkj7DRDQ"/>
+            <styles xsi:type="compositenotation:CollapseStyle" xmi:id="_1nlo86jbEeCUiIdkj7DRDQ"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_1nlo5KjbEeCUiIdkj7DRDQ" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_1nlo5ajbEeCUiIdkj7DRDQ" gradStartColor="16642791" gradEndColor="14072216"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_1nlo5qjbEeCUiIdkj7DRDQ"/>
+          <styles xsi:type="compositenotation:CustomComponentIconStyle" xmi:id="_1nlo56jbEeCUiIdkj7DRDQ"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_1nlo6KjbEeCUiIdkj7DRDQ" x="449" y="198"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_li5vOKjZEeCtoOCPFT5Xag"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_li5vOajZEeCtoOCPFT5Xag"/>
+      </children>
+      <children xmi:id="_li5vOqjZEeCtoOCPFT5Xag" type="7007">
+        <children xmi:id="_li5vPajZEeCtoOCPFT5Xag" visible="false" type="7600">
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_li5vPqjZEeCtoOCPFT5Xag" fontHeight="10"/>
+          <element xsi:nil="true"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_li5vP6jZEeCtoOCPFT5Xag"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_li5vO6jZEeCtoOCPFT5Xag"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_li5vPKjZEeCtoOCPFT5Xag"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" xmi:id="_liv-MajZEeCtoOCPFT5Xag" fontHeight="10"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_liv-MqjZEeCtoOCPFT5Xag" x="10" y="10" width="1111" height="475"/>
+    </children>
+    <styles xsi:type="notation:DiagramStyle" xmi:id="_lh3NYajZEeCtoOCPFT5Xag"/>
+    <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_lh3NYqjZEeCtoOCPFT5Xag"/>
+    <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_lh3NY6jZEeCtoOCPFT5Xag"/>
+    <edges xmi:id="_3Ai_4ajbEeCUiIdkj7DRDQ" type="4001" element="#_3Ai_4KjbEeCUiIdkj7DRDQ" source="#_2bvpsqjbEeCUiIdkj7DRDQ" target="#_2BXa0qjbEeCUiIdkj7DRDQ">
+      <styles xsi:type="notation:ConnectorStyle" xmi:id="_3Ai_4qjbEeCUiIdkj7DRDQ" routing="Rectilinear"/>
+      <styles xsi:type="notation:FontStyle" xmi:id="_3Ai_46jbEeCUiIdkj7DRDQ" fontHeight="10"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_3Ai_5KjbEeCUiIdkj7DRDQ" points="[12, 3, -157, -72]$[163, 78, -6, 3]"/>
+    </edges>
+    <edges xmi:id="_43nPMKjbEeCUiIdkj7DRDQ" type="4002" source="#_yFZUgKjbEeCUiIdkj7DRDQ" target="#_z1mG0qjbEeCUiIdkj7DRDQ">
+      <styles xsi:type="notation:ConnectorStyle" xmi:id="_43nPMajbEeCUiIdkj7DRDQ" routing="Rectilinear"/>
+      <styles xsi:type="notation:FontStyle" xmi:id="_43nPMqjbEeCUiIdkj7DRDQ" fontHeight="10"/>
+      <element xsi:nil="true"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_43nPM6jbEeCUiIdkj7DRDQ" points="[33, -5, -192, -125]$[219, 123, -6, 3]"/>
+    </edges>
+  </notation:diagram>
+</sca:composite>

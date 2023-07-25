@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+
+	<Environment 
+		xsi:type="amxdata:Environment" 
+		description="QA Environment" 
+		name="QAEnvironment_na2devasgora03">	
+		<Node xsi:type="amxdata:Node" name="QANode1" hostName="SystemHost_na2devasgora03">
+		    <ResourceInstance xsi:type="amxdata:ResourceInstance" name="httpConnectorCL1_5" resourceTemplateName="httpConnectorCL1_5"/>
+		</Node>
+		
+		<Application
+			xsi:type="amxdata:Application"
+			name="cl1_5"
+			contact="Leveon Zhao"
+			description="cl1_5 application">
+                <Component xsi:type="amxdata:Component" name="JavaComp">
+		      <Node name="QANode2" environmentName="QAEnvironment_na2devasgora03"/>	
+                </Component>      	
+			<PromotedService xsi:type="amxdata_base:Service_base" name="LotteryPortService">
+				<Binding xsi:type="amxdata:Binding" name="SOAPService_Binding">
+					<Node name="QANode1" environmentName="QAEnvironment_na2devasgora03" />				
+				</Binding>
+			</PromotedService>	    
+			<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="cl1_5"/>
+			<!--Configure Logging-->
+			<Logger xsi:type="amxdata:Logger" name ="root" additivity="false">
+				<AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="DEBUG">
+					<Appender xsi:type="amxdata_reference:LogAppender_reference" name="qaAPP15_root"/>
+				</AppenderRef>
+				
+			</Logger>		
+			
+			<Logger xsi:type="amxdata:Logger" name ="com.tibco" additivity="false">
+				<AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="DEBUG">
+					<Appender xsi:type="amxdata_reference:LogAppender_reference" name="qaFileLogAppender1_5"/>
+				</AppenderRef>
+				
+			</Logger>		
+		</Application>		
+	</Environment>	
+	
+	<ResourceTemplate xsi:type="amxdata:HttpConnectorResourceTemplate" name="httpConnectorCL1_5" host="na2devasgora03" port="22005" headerBufferSize="512" requestBufferSize="512"	responseBufferSize="512" maxIdleTime="200000" lowResourceMaxIdleTime="512" description="This is HttpConnector RT"/> 
+	
+	<DAA
+		xsi:type="amxdata:DAA"
+		description="DAA For cl1.5"
+		location="C:/Lisa1072/Projects/AMX/Tests/cl/1.5/SoaProject/Deployment Artifacts/cl1_5.daa"
+	  importResourceTemplates="false">
+	</DAA>
+	
+	<!--Define Log Appender-->
+	<LogAppender
+		xsi:type="amxdata:FileLogAppender"
+		name="qaAPP15_root"
+		type="cbe"
+		description="QA File LogAppender for root logger"
+		filePath="C:/Lisa1072/reports/CL1_5_root.log"
+		maxSize="10240"
+		maxBackupNum="5"/>		
+	<LogAppender
+		xsi:type="amxdata:FileLogAppender"
+		name="qaFileLogAppender1_5"
+		type="cbe"
+		description="QA File LogAppender qaFileLogAppender1-5"
+		filePath="C:/Lisa1072/reports/CL1_5_DEBUG.log"
+		maxSize="10240"
+		maxBackupNum="5"/>
+			
+</amxdata_base:Enterprise>

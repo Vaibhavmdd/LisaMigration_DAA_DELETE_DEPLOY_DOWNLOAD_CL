@@ -1,0 +1,229 @@
+     [echo] Script base is: "F:/AMX330V39/administrator/3.3/scripts/basic_cli.xml"
+
+deploy-payloadservice:
+     [echo] ------ Deploying Payload Service to Administrator ------
+     [echo] 
+     [echo] 
+     [echo] Create the resource template using:
+     [echo] resourceTemplateName: 
+     [echo] dataFile: Z:/tests/amsg/3.0/reports/WinXP_x86/amsg-330-V39/func/runtime/bat/bat_2node_hsql/amxdata_2node_hsql.xml
+     [echo] remotePropsFile: Z:/tests/amsg/3.0/reports/WinXP_x86/amsg-330-V39/func/runtime/bat/bat_2node_hsql/admin.properties
+     [echo] objectSelector: ResourceTemplate[@name='TIBCO_ActiveMatrix_PayloadService_JDBC_Resource' or @name='TIBCO_ActiveMatrix_PayloadService_Teneo_Resource' or @name='TIBCO_ActiveMatrix_PayloadService_SSLClient_Resource' or @name='TIBCO_ActiveMatrix_PayloadService_Keystore_Resource'] | JNDIConnectionFactoryResourceTemplate[@name='TIBCO_ActiveMatrix_PayloadService_JMSConnectionFactory_Resource'] | JNDIConnectionConfigurationResourceTemplate[@name='TIBCO_ActiveMatrix_PayloadService_JNDIConnectionConfiguration_Resource'] | JNDIDestinationResourceTemplate[@name='TIBCO_ActiveMatrix_PayloadService_JMSDestination_Resource']
+     [echo] action: add
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] Invoking Admin task using the objectselector: ResourceTemplate[@name='TIBCO_ActiveMatrix_PayloadService_JDBC_Resource' or @name='TIBCO_ActiveMatrix_PayloadService_Teneo_Resource' or @name='TIBCO_ActiveMatrix_PayloadService_SSLClient_Resource' or @name='TIBCO_ActiveMatrix_PayloadService_Keystore_Resource'] | JNDIConnectionFactoryResourceTemplate[@name='TIBCO_ActiveMatrix_PayloadService_JMSConnectionFactory_Resource'] | JNDIConnectionConfigurationResourceTemplate[@name='TIBCO_ActiveMatrix_PayloadService_JNDIConnectionConfiguration_Resource'] | JNDIDestinationResourceTemplate[@name='TIBCO_ActiveMatrix_PayloadService_JMSDestination_Resource']
+[AMXAdminTask] 08 Aug 2013 14:34:23  INFO - Connecting to AMX Admin server at 'http://localhost:8120' as user 'root'.
+[AMXAdminTask] 08 Aug 2013 14:34:25  INFO - Processing 5 objects
+[AMXAdminTask] 08 Aug 2013 14:34:26  INFO - Creating JdbcResourceTemplate : 'TIBCO_ActiveMatrix_PayloadService_JDBC_Resource'
+[AMXAdminTask] 08 Aug 2013 14:34:26  INFO - 'TIBCO_ActiveMatrix_PayloadService_JDBC_Resource' resource template created in 'Global' scope.
+[AMXAdminTask] 08 Aug 2013 14:34:26  INFO - Action finished at 8/8/13 2:34 PM in 0.125 seconds
+[AMXAdminTask] 08 Aug 2013 14:34:26  INFO - Creating TeneoResourceTemplate : 'TIBCO_ActiveMatrix_PayloadService_Teneo_Resource'
+[AMXAdminTask] 08 Aug 2013 14:34:26  INFO - 'TIBCO_ActiveMatrix_PayloadService_Teneo_Resource' resource template created in 'Global' scope.
+[AMXAdminTask] 08 Aug 2013 14:34:26  INFO - Action finished at 8/8/13 2:34 PM in 0.078 seconds
+[AMXAdminTask] 08 Aug 2013 14:34:26  INFO - Adding JNDIConnectionConfiguration...
+[AMXAdminTask] 08 Aug 2013 14:34:26  INFO - Successfully added jms JNDIConnectionConfiguration 'TIBCO_ActiveMatrix_PayloadService_JNDIConnectionConfiguration_Resource' in 'Global' scope
+[AMXAdminTask] 08 Aug 2013 14:34:26  INFO - Action finished at 8/8/13 2:34 PM in 0.125 seconds
+[AMXAdminTask] 08 Aug 2013 14:34:26  INFO - Adding jms JNDIConnectionFactory...
+[AMXAdminTask] 08 Aug 2013 14:34:26  INFO - Successfully added jms JNDIConnectionFactory 'TIBCO_ActiveMatrix_PayloadService_JMSConnectionFactory_Resource' in 'Global' scope
+[AMXAdminTask] 08 Aug 2013 14:34:26  INFO - Action finished at 8/8/13 2:34 PM in 0.125 seconds
+[AMXAdminTask] 08 Aug 2013 14:34:26  INFO - Adding JNDIDestination...
+[AMXAdminTask] 08 Aug 2013 14:34:26  INFO - Successfully added jms JNDIDestination 'TIBCO_ActiveMatrix_PayloadService_JMSDestination_Resource' in 'Global' scope
+[AMXAdminTask] 08 Aug 2013 14:34:26  INFO - Action finished at 8/8/13 2:34 PM in 0.063 seconds
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Create the resource instance using:
+     [echo] resourceInstanceName: 
+     [echo] envName: 
+     [echo] nodeName: 
+     [echo] hostName: 
+     [echo] dataFile: Z:/tests/amsg/3.0/reports/WinXP_x86/amsg-330-V39/func/runtime/bat/bat_2node_hsql/amxdata_2node_hsql.xml
+     [echo] remotePropsFile: Z:/tests/amsg/3.0/reports/WinXP_x86/amsg-330-V39/func/runtime/bat/bat_2node_hsql/admin.properties
+     [echo] objectSelector: Environment[1]/Node/ResourceInstance[@name='TIBCO_ActiveMatrix_PayloadService_JDBC_Resource' or @name='TIBCO_ActiveMatrix_PayloadService_Teneo_Resource' or @name='TIBCO_ActiveMatrix_PayloadService_SSLClient_Resource' or @name='TIBCO_ActiveMatrix_PayloadService_Keystore_Resource' or @name='TIBCO_ActiveMatrix_PayloadService_JMSConnectionFactory_Resource' or @name='TIBCO_ActiveMatrix_PayloadService_JNDIConnectionConfiguration_Resource' or @name='TIBCO_ActiveMatrix_PayloadService_JMSDestination_Resource' ]
+     [echo] action: add
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] Invoking Admin task using the objectselector: Environment[1]/Node/ResourceInstance[@name='TIBCO_ActiveMatrix_PayloadService_JDBC_Resource' or @name='TIBCO_ActiveMatrix_PayloadService_Teneo_Resource' or @name='TIBCO_ActiveMatrix_PayloadService_SSLClient_Resource' or @name='TIBCO_ActiveMatrix_PayloadService_Keystore_Resource' or @name='TIBCO_ActiveMatrix_PayloadService_JMSConnectionFactory_Resource' or @name='TIBCO_ActiveMatrix_PayloadService_JNDIConnectionConfiguration_Resource' or @name='TIBCO_ActiveMatrix_PayloadService_JMSDestination_Resource' ]
+[AMXAdminTask] 08 Aug 2013 14:34:27  INFO - Processing 5 objects
+[AMXAdminTask] 08 Aug 2013 14:34:27  INFO - Adding Resource Instances...
+[AMXAdminTask] 08 Aug 2013 14:34:27  INFO - TIBCO-AMX-ADMIN-030052: Resource Instance TIBCO_ActiveMatrix_PayloadService_JDBC_Resource created on Node SystemNode.
+[AMXAdminTask] 08 Aug 2013 14:34:27  INFO - Action finished at 8/8/13 2:34 PM in 0.266 seconds
+[AMXAdminTask] 08 Aug 2013 14:34:27  INFO - Adding Resource Instances...
+[AMXAdminTask] 08 Aug 2013 14:34:27  INFO - TIBCO-AMX-ADMIN-030052: Resource Instance TIBCO_ActiveMatrix_PayloadService_Teneo_Resource created on Node SystemNode.
+[AMXAdminTask] 08 Aug 2013 14:34:27  INFO - Action finished at 8/8/13 2:34 PM in 0.172 seconds
+[AMXAdminTask] 08 Aug 2013 14:34:27  INFO - Adding Resource Instances...
+[AMXAdminTask] 08 Aug 2013 14:34:28  INFO - TIBCO-AMX-ADMIN-030052: Resource Instance TIBCO_ActiveMatrix_PayloadService_JNDIConnectionConfiguration_Resource created on Node SystemNode.
+[AMXAdminTask] 08 Aug 2013 14:34:28  INFO - Action finished at 8/8/13 2:34 PM in 0.203 seconds
+[AMXAdminTask] 08 Aug 2013 14:34:28  INFO - Adding Resource Instances...
+[AMXAdminTask] 08 Aug 2013 14:34:28  INFO - TIBCO-AMX-ADMIN-030052: Resource Instance TIBCO_ActiveMatrix_PayloadService_JMSConnectionFactory_Resource created on Node SystemNode.
+[AMXAdminTask] 08 Aug 2013 14:34:28  INFO - Action finished at 8/8/13 2:34 PM in 0.187 seconds
+[AMXAdminTask] 08 Aug 2013 14:34:28  INFO - Adding Resource Instances...
+[AMXAdminTask] 08 Aug 2013 14:34:28  INFO - TIBCO-AMX-ADMIN-030052: Resource Instance TIBCO_ActiveMatrix_PayloadService_JMSDestination_Resource created on Node SystemNode.
+[AMXAdminTask] 08 Aug 2013 14:34:28  INFO - Action finished at 8/8/13 2:34 PM in 0.188 seconds
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Install the resource instance using:
+     [echo] resourceInstanceName: 
+     [echo] envName: 
+     [echo] nodeName: 
+     [echo] hostName: 
+     [echo] dataFile: Z:/tests/amsg/3.0/reports/WinXP_x86/amsg-330-V39/func/runtime/bat/bat_2node_hsql/amxdata_2node_hsql.xml
+     [echo] remotePropsFile: Z:/tests/amsg/3.0/reports/WinXP_x86/amsg-330-V39/func/runtime/bat/bat_2node_hsql/admin.properties
+     [echo] objectSelector: Environment[1]/Node/ResourceInstance[@name='TIBCO_ActiveMatrix_PayloadService_JDBC_Resource' or @name='TIBCO_ActiveMatrix_PayloadService_Teneo_Resource' or @name='TIBCO_ActiveMatrix_PayloadService_SSLClient_Resource' or @name='TIBCO_ActiveMatrix_PayloadService_Keystore_Resource' or @name='TIBCO_ActiveMatrix_PayloadService_JMSConnectionFactory_Resource' or @name='TIBCO_ActiveMatrix_PayloadService_JNDIConnectionConfiguration_Resource' or @name='TIBCO_ActiveMatrix_PayloadService_JMSDestination_Resource' ]
+     [echo] action: install
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] options: auto-resolve
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] timeout: 600
+     [echo] Invoking Admin task using the objectselector: Environment[1]/Node/ResourceInstance[@name='TIBCO_ActiveMatrix_PayloadService_JDBC_Resource' or @name='TIBCO_ActiveMatrix_PayloadService_Teneo_Resource' or @name='TIBCO_ActiveMatrix_PayloadService_SSLClient_Resource' or @name='TIBCO_ActiveMatrix_PayloadService_Keystore_Resource' or @name='TIBCO_ActiveMatrix_PayloadService_JMSConnectionFactory_Resource' or @name='TIBCO_ActiveMatrix_PayloadService_JNDIConnectionConfiguration_Resource' or @name='TIBCO_ActiveMatrix_PayloadService_JMSDestination_Resource' ]
+[AMXAdminTask] 08 Aug 2013 14:34:28  INFO - Processing 5 objects
+[AMXAdminTask] 08 Aug 2013 14:34:29  INFO - Options set for resource instance are : auto-resolve
+[AMXAdminTask] 08 Aug 2013 14:34:31  INFO - Start to install Resource Instance 'TIBCO_ActiveMatrix_PayloadService_Teneo_Resource'
+[AMXAdminTask] 08 Aug 2013 14:34:31  INFO - Start to install Resource Instance 'TIBCO_ActiveMatrix_PayloadService_JDBC_Resource'
+[AMXAdminTask] 08 Aug 2013 14:34:31  INFO - Start to install Resource Instance 'TIBCO_ActiveMatrix_PayloadService_JMSDestination_Resource'
+[AMXAdminTask] 08 Aug 2013 14:34:31  INFO - Start to install Resource Instance 'TIBCO_ActiveMatrix_PayloadService_JNDIConnectionConfiguration_Resource'
+[AMXAdminTask] 08 Aug 2013 14:34:31  INFO - Start to install Resource Instance 'TIBCO_ActiveMatrix_PayloadService_JMSConnectionFactory_Resource'
+[AMXAdminTask] 08 Aug 2013 14:34:31  INFO - Start to install Resource Instance 'TIBCO_ActiveMatrix_PayloadService_JDBC_Resource'
+[AMXAdminTask] 08 Aug 2013 14:34:31  INFO - Start to install Resource Instance 'TIBCO_ActiveMatrix_PayloadService_JNDIConnectionConfiguration_Resource'
+[AMXAdminTask] 08 Aug 2013 14:34:31  INFO - Action finished in Admin at 8/8/13 2:34 PM in 2.938 seconds. Waiting for runtime tasks to be finished.
+[AMXAdminTask] 08 Aug 2013 14:34:32  INFO - .
+[AMXAdminTask] 08 Aug 2013 14:34:35  INFO - Resource Instance Install finished successfully
+[AMXAdminTask] 08 Aug 2013 14:34:35  INFO - Action finished at 8/8/13 2:34 PM in 6.156 seconds
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Create an Application using:
+     [echo] envName: 
+     [echo] appName: 
+     [echo] dataFile: Z:/tests/amsg/3.0/reports/WinXP_x86/amsg-330-V39/func/runtime/bat/bat_2node_hsql/amxdata_2node_hsql.xml
+     [echo] remotePropsFile: Z:/tests/amsg/3.0/reports/WinXP_x86/amsg-330-V39/func/runtime/bat/bat_2node_hsql/admin.properties
+     [echo] objectSelector: Environment[1]/Application[@name='com.tibco.amx.commonlogging.payloadservice.app']
+     [echo] action: add
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] Invoking Admin task using the objectselector: Environment[1]/Application[@name='com.tibco.amx.commonlogging.payloadservice.app']
+[AMXAdminTask] 08 Aug 2013 14:34:35  INFO - Processing 1 objects
+[AMXAdminTask] 08 Aug 2013 14:34:35  INFO - Adding application...
+[AMXAdminTask] 08 Aug 2013 14:34:35  INFO - Successfully added Application 'com.tibco.amx.commonlogging.payloadservice.app': Successfully created application 'com.tibco.amx.commonlogging.payloadservice.app' from Application Template 'com.tibco.commonlogging.payload.daa' (version: 1.2.0.004)
+[AMXAdminTask] 08 Aug 2013 14:34:35  INFO - 8/8/13 2:34 PM - 	  detail = TIBCO-AMX-ADMIN-012438: Application Property 'serverType' added.
+[AMXAdminTask] 
+[AMXAdminTask] 08 Aug 2013 14:34:35  INFO - 8/8/13 2:34 PM - 	  detail = TIBCO-AMX-ADMIN-012438: Application Property 'teneoSessionFactory' added.
+[AMXAdminTask] 
+[AMXAdminTask] 08 Aug 2013 14:34:35  INFO - 8/8/13 2:34 PM - 	  detail = TIBCO-AMX-ADMIN-012438: Application Property 'fileRootDir' added.
+[AMXAdminTask] 
+[AMXAdminTask] 08 Aug 2013 14:34:35  INFO - 8/8/13 2:34 PM - 	  detail = TIBCO-AMX-ADMIN-012438: Application Property 'contextRoot' added.
+[AMXAdminTask] 
+[AMXAdminTask] 08 Aug 2013 14:34:35  INFO - 8/8/13 2:34 PM - 	  detail = TIBCO-AMX-ADMIN-012438: Application Property 'defaultConnector' added.
+[AMXAdminTask] 
+[AMXAdminTask] 08 Aug 2013 14:34:35  INFO - 8/8/13 2:34 PM - 	  detail = TIBCO-AMX-ADMIN-012438: Application Property 'jmsConnFactory' added.
+[AMXAdminTask] 
+[AMXAdminTask] 08 Aug 2013 14:34:35  INFO - 8/8/13 2:34 PM - 	  detail = TIBCO-AMX-ADMIN-012438: Application Property 'jmsDest' added.
+[AMXAdminTask] 
+[AMXAdminTask] 08 Aug 2013 14:34:35  INFO - 8/8/13 2:34 PM - 	  detail = TIBCO-AMX-ADMIN-012406: Component 'PayloadComp' (version: 1.2.0.qualifier) added.
+[AMXAdminTask] 
+[AMXAdminTask] 08 Aug 2013 14:34:35  INFO - 8/8/13 2:34 PM - 	  detail = TIBCO-AMX-ADMIN-012406: Component 'PayloadServlet' (version: 1.2.0.qualifier) added.
+[AMXAdminTask] 
+[AMXAdminTask] 08 Aug 2013 14:34:35  INFO - 8/8/13 2:34 PM - 	  detail = TIBCO-AMX-ADMIN-012426: Application Service 'PayloadService' added.
+[AMXAdminTask] 
+[AMXAdminTask] 08 Aug 2013 14:34:35  INFO - Action finished at 8/8/13 2:34 PM in 0.515 seconds
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Mapping Application to specified nodes using:
+     [echo] envName: 
+     [echo] appName: 
+     [echo] nodeName: 
+     [echo] dataFile: Z:/tests/amsg/3.0/reports/WinXP_x86/amsg-330-V39/func/runtime/bat/bat_2node_hsql/amxdata_2node_hsql.xml
+     [echo] remotePropsFile: Z:/tests/amsg/3.0/reports/WinXP_x86/amsg-330-V39/func/runtime/bat/bat_2node_hsql/admin.properties
+     [echo] objectSelector: Environment[1]/Application[@name='com.tibco.amx.commonlogging.payloadservice.app']/Node
+     [echo] action: set
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] Invoking Admin task using the objectselector: Environment[1]/Application[@name='com.tibco.amx.commonlogging.payloadservice.app']/Node
+[AMXAdminTask] 08 Aug 2013 14:34:35  INFO - Processing 1 objects
+[AMXAdminTask] 08 Aug 2013 14:34:36  INFO - Mapping application to nodes...  
+[AMXAdminTask] 08 Aug 2013 14:34:36  INFO - Successfully mapped application 'com.tibco.amx.commonlogging.payloadservice.app' to node 'SystemNode'
+[AMXAdminTask] 08 Aug 2013 14:34:36  INFO - Action finished at 8/8/13 2:34 PM in 0.25 seconds
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Setting Application Properties using:
+     [echo] envName: 
+     [echo] appName: 
+     [echo] propertyName: 
+     [echo] dataFile: Z:/tests/amsg/3.0/reports/WinXP_x86/amsg-330-V39/func/runtime/bat/bat_2node_hsql/amxdata_2node_hsql.xml
+     [echo] remotePropsFile: Z:/tests/amsg/3.0/reports/WinXP_x86/amsg-330-V39/func/runtime/bat/bat_2node_hsql/admin.properties
+     [echo] objectSelector: Environment[1]/Application[@name='com.tibco.amx.commonlogging.payloadservice.app']/Property
+     [echo] action: edit
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] Invoking Admin task using the objectselector: Environment[1]/Application[@name='com.tibco.amx.commonlogging.payloadservice.app']/Property
+[AMXAdminTask] 08 Aug 2013 14:34:36  INFO - Processing 3 objects
+[AMXAdminTask] 08 Aug 2013 14:34:36  INFO - Editing properties..
+[AMXAdminTask] 08 Aug 2013 14:34:36  INFO - Successfully edited property 'teneoSessionFactory' : TIBCO-AMX-ADMIN-012292: Successfully updated property 'teneoSessionFactory' to 'TIBCO_ActiveMatrix_PayloadService_Teneo_Resource'.
+[AMXAdminTask] 08 Aug 2013 14:34:36  INFO - Successfully edited property 'jmsConnFactory' : TIBCO-AMX-ADMIN-012292: Successfully updated property 'jmsConnFactory' to 'TIBCO_ActiveMatrix_PayloadService_JMSConnectionFactory_Resource'.
+[AMXAdminTask] 08 Aug 2013 14:34:36  INFO - Successfully edited property 'jmsDest' : TIBCO-AMX-ADMIN-012292: Successfully updated property 'jmsDest' to 'TIBCO_ActiveMatrix_PayloadService_JMSDestination_Resource'.
+[AMXAdminTask] 08 Aug 2013 14:34:36  INFO - Action finished at 8/8/13 2:34 PM in 0.063 seconds
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Deploy an application using:
+     [echo] envName: 
+     [echo] appName: 
+     [echo] dataFile: Z:/tests/amsg/3.0/reports/WinXP_x86/amsg-330-V39/func/runtime/bat/bat_2node_hsql/amxdata_2node_hsql.xml
+     [echo] remotePropsFile: Z:/tests/amsg/3.0/reports/WinXP_x86/amsg-330-V39/func/runtime/bat/bat_2node_hsql/admin.properties
+     [echo] objectSelector: Environment[1]/Application[@name='com.tibco.amx.commonlogging.payloadservice.app']
+     [echo] action: deploy
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: true
+     [echo] failOnError: true
+     [echo] options: 
+     [echo] startAfterDeploy: true
+     [echo] timeout: 600
+     [echo] Invoking Admin task using the objectselector: Environment[1]/Application[@name='com.tibco.amx.commonlogging.payloadservice.app']
+[AMXAdminTask] 08 Aug 2013 14:34:36  INFO - Processing 1 objects
+[AMXAdminTask] 08 Aug 2013 14:34:36  INFO - Deploying application...
+[AMXAdminTask] 08 Aug 2013 14:34:37  WARN - TIBCO-AMX-ADMIN-012015: Deployment succeeded for application 'com.tibco.amx.commonlogging.payloadservice.app' at 8/8/13 2:34 PM on node(s): 'SystemNode'.
+[AMXAdminTask] 08 Aug 2013 14:34:37  WARN - 8/8/13 2:34 PM - 	  detail = TIBCO-AMX-ADMIN-012033: Substitution variable 'fileRootDir' could not be resolved for node 'SystemNode' on host 'SystemHost_hparmar-t410'. It is required by property 'fileRootDir' on component 'PayloadComp' and has been sourced to property 'fileRootDir' on composite 'rootComposite'. 
+[AMXAdminTask] 
+[AMXAdminTask] 08 Aug 2013 14:34:37  INFO - 8/8/13 2:34 PM - 	  detail = TIBCO-AMX-ADMIN-012146: Feature 'com.tibco.commonlogging.payloadservice.product.feature.1.3.0.000' was auto-enabled in node 'SystemNode'
+[AMXAdminTask] 
+[AMXAdminTask] 08 Aug 2013 14:34:37  INFO - Action finished in Admin at 8/8/13 2:34 PM in 1.234 seconds. Waiting for runtime tasks to be finished.
+[AMXAdminTask] 08 Aug 2013 14:34:38  INFO - .
+[AMXAdminTask] 08 Aug 2013 14:34:43  INFO - .
+[AMXAdminTask] 08 Aug 2013 14:34:45  INFO - Application Deploy with Start finished successfully
+[AMXAdminTask] 08 Aug 2013 14:34:45  INFO - Action finished at 8/8/13 2:34 PM in 8.469 seconds
+     [echo] 
+     [echo] 
+     [echo] ------ Finished Deploying Payload Service to Administrator ------
+
+BUILD SUCCESSFUL
+Total time: 23 seconds

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created by TIBCO WSDL-->
+<wsdl:definitions xmlns:tns="http://xmlns.example.com/1235597799193/AddressOperationImpl/Server/AddressOperationImpl/Server_gen" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns0="http://tibco.com/matrix/qa/xsd/address" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="AddressPort" targetNamespace="http://xmlns.example.com/1235597799193/AddressOperationImpl/Server/AddressOperationImpl/Server_gen">
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://tibco.com/matrix/qa/xsd/address" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:complexType name="Address_Type">
+                <xs:sequence>
+                    <xs:element ref="ns0:Name"/>
+                    <xs:element ref="ns0:Address"/>
+                    <xs:element ref="ns0:City"/>
+                    <xs:element ref="ns0:State"/>
+                    <xs:element ref="ns0:Zip"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="Address" type="xs:string"/>
+            <xs:element name="Address_Element">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element ref="ns0:Name"/>
+                        <xs:element ref="ns0:Address"/>
+                        <xs:element ref="ns0:City"/>
+                        <xs:element ref="ns0:State"/>
+                        <xs:element ref="ns0:Zip"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="City" type="xs:string"/>
+            <xs:element name="Name" type="xs:string"/>
+            <xs:element name="State" type="xs:string"/>
+            <xs:element name="Zip" type="xs:int"/>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="Address_Request">
+        <wsdl:part name="InPart" element="ns0:Address_Element"/>
+    </wsdl:message>
+    <wsdl:message name="AddressOperationResponse">
+        <wsdl:part name="OutPart" element="ns0:Address"/>
+    </wsdl:message>
+    <wsdl:portType name="AddressPort">
+        <wsdl:operation name="AddressOperation">
+            <wsdl:input message="tns:Address_Request"/>
+            <wsdl:output message="tns:AddressOperationResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="SOAPService_Binding1" type="tns:AddressPort">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="AddressOperation">
+            <wsdl:documentation/>
+            <soap:operation style="document" soapAction="AddressOperation"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="InPart"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="OutPart"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="AddressPort">
+        <wsdl:port name="SOAPService_Binding1" binding="tns:SOAPService_Binding1">
+            <soap:address location="http://localhost:8877/addressPort/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

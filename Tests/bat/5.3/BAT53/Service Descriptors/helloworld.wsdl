@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://www.example.org/helloworld/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="helloworld"
+	targetNamespace="http://www.example.org/helloworld/">
+	<wsdl:types>
+		<xsd:schema
+			targetNamespace="http://www.example.org/helloworld/">
+			<xsd:element name="sayHello">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="in" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="sayHelloRequest">
+		<wsdl:part element="tns:sayHello" name="parameters" />
+	</wsdl:message>
+	<wsdl:portType name="helloworld">
+		<wsdl:operation name="sayHello">
+			<wsdl:input message="tns:sayHelloRequest" />
+		</wsdl:operation>
+	</wsdl:portType>
+</wsdl:definitions>

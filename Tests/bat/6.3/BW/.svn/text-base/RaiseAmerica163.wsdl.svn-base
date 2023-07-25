@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created by TIBCO WSDL-->
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://xmlns.example.com/1201081326343/raisesImpl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns0="http://www.example.org/raiseamerica/" name="Untitled" targetNamespace="http://xmlns.example.com/1201081326343/raisesImpl">
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/raiseamerica/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:element name="raises">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="ID" form="unqualified" type="xs:int"/>
+                        <xs:element name="Name" form="unqualified" type="xs:string"/>
+                        <xs:element name="Performance" form="unqualified" type="xs:int"/>
+                        <xs:element name="Sex" form="unqualified" type="xs:string"/>
+                        <xs:element name="Country" form="unqualified" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="raisesResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Result" form="unqualified" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:service name="RaisesAmerica">
+        <wsdl:port name="SOAPEventSource" binding="tns:SOAPEventSourceBinding">
+            <soap:address location="http://luxiaofang-dt2:9038/RaisesAmerica"/>
+        </wsdl:port>
+    </wsdl:service>
+    <wsdl:portType name="raiseamerica">
+        <wsdl:operation name="raises">
+            <wsdl:input message="tns:raisesRequest"/>
+            <wsdl:output message="tns:raisesResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="SOAPEventSourceBinding" type="tns:raiseamerica">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="raises">
+            <soap:operation style="document" soapAction="/RaisesAmerica-WEBService"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:message name="raisesRequest">
+        <wsdl:part name="parameters" element="ns0:raises"/>
+    </wsdl:message>
+    <wsdl:message name="raisesResponse">
+        <wsdl:part name="parameters" element="ns0:raisesResponse"/>
+    </wsdl:message>
+</wsdl:definitions>

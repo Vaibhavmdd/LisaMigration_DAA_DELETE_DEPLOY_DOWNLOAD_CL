@@ -1,0 +1,34 @@
+<project default="deploy.app">
+	<import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+	
+	<target name="deploy.app">
+		<upload.daa dataFile="${amxConfigFile}"/>
+		<create.app dataFile="${amxConfigFile}"/>
+		<add.all.svars dataFile="${amxConfigFile}" />
+		<set.all.svars dataFile="${amxConfigFile}" />
+		<setup.ri dataFile="${amxConfigFile}" timeout="${deployTimeout}" />
+		<map.app.to.node dataFile="${amxConfigFile}" />
+		<map.component.to.node dataFile="${amxConfigFile}" />
+		<map.service.binding.to.node dataFile="${amxConfigFile}" />
+		<map.reference.binding.to.node dataFile="${amxConfigFile}" />
+		<deploy.app dataFile="${amxConfigFile}" appName="bat61_plugin" timeout="${deployTimeout}" />
+		<deploy.app dataFile="${amxConfigFile}" appName="bat61_app" timeout="${deployTimeout}" />
+	</target>
+	
+	<target name="conf.logging">
+		<create.log.appender dataFile="${amxConfigFile}" />
+		<set.logger.to.app appName="bat61_app" dataFile="${amxConfigFile}" />
+		<deploy.action objector="Environment/Application[@name='bat61_app']" description="Apply Application Logger" dataFile="${amxConfigFile}" />
+	</target>
+	
+	<target name="undeploy.app">
+		<undeploy.app dataFile="${amxConfigFile}" appName="bat61_app" timeout="${deployTimeout}" />
+		<delete.app dataFile="${amxConfigFile}" appName="bat61_app"/>
+		<undeploy.app dataFile="${amxConfigFile}" appName="bat61_plugin" timeout="${deployTimeout}" />
+		<delete.app dataFile="${amxConfigFile}" appName="bat61_plugin"/>
+		<cleanup.ri dataFile="${amxConfigFile}" />
+		<delete.all.svars dataFile="${amxConfigFile}" />
+	</target>
+	
+</project>
+

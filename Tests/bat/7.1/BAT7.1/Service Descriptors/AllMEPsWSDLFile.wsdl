@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tibex="http://www.tibco.com/bs3.2/extensions"
+	xmlns:tns="http://www.example.org/AllMEPsWSDLFile/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	name="AllMEPsWSDLFile" targetNamespace="http://www.example.org/AllMEPsWSDLFile/"
+	tibex:src="file:/home/ptolani/Desktop/AllMEPsWSDLFile.wsdl">
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://www.example.org/AllMEPsWSDLFile/"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<xsd:element name="NewOperation_data">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="in" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="NewOperation_data_binary" type="xsd:base64Binary"/>
+			<xsd:element name="NewOperation_data_text" type="xsd:string"/>
+			<xsd:element name="NewOperationResponse_data">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="out" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="NewOperationResponse_data_binary" type="xsd:base64Binary"/>
+			<xsd:element name="NewOperationResponse_data_text" type="xsd:string"/>
+			<xsd:element name="NewOperationFault_data">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="fault" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="NewOperationRequest">
+		<wsdl:part element="tns:NewOperation_data" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="NewOperationRequest_binary">
+		<wsdl:part element="tns:NewOperation_data_binary" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="NewOperationRequest_text">
+		<wsdl:part element="tns:NewOperation_data_text" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="NewOperationResponse">
+		<wsdl:part element="tns:NewOperationResponse_data" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="NewOperationResponse_binary">
+		<wsdl:part element="tns:NewOperationResponse_data_binary"
+			name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="NewOperationResponse_text">
+		<wsdl:part element="tns:NewOperationResponse_data_text"
+			name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="NewOperationFault">
+		<wsdl:part element="tns:NewOperationFault_data" name="parameters" />
+	</wsdl:message>
+	<wsdl:portType name="AllMEPsWSDLFile">
+		<wsdl:operation name="In">
+			<wsdl:input message="tns:NewOperationRequest" />
+		</wsdl:operation>
+		<wsdl:operation name="InOut">
+			<wsdl:input message="tns:NewOperationRequest" />
+			<wsdl:output message="tns:NewOperationResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="InOutFault">
+			<wsdl:input message="tns:NewOperationRequest_binary" />
+			<wsdl:output message="tns:NewOperationResponse_text" />
+			<wsdl:fault message="tns:NewOperationFault" name="fault" />
+		</wsdl:operation>
+	</wsdl:portType>
+</wsdl:definitions>

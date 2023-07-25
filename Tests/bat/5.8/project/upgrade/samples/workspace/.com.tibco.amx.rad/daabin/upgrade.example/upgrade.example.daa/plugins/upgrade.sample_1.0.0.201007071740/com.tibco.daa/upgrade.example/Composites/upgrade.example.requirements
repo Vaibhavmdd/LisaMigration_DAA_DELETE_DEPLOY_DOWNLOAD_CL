@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ASCII"?>
+<reqs:ApplicationRequirements xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:reqs="http://xsd.tns.tibco.com/amf/models/sca/requirements" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType">
+  <requirements xsi:type="reqs:ServiceRequirements" service="sca:PromotedService upgrade.example.composite#_1VRFwF3DEd-vVoiXx-_HAA">
+    <scact:includedResource>../Service%20Descriptors/upgrade.mock.it.case1.wsdl</scact:includedResource>
+  </requirements>
+  <requirements xsi:type="reqs:BindingRequirements" bindingAdjunct="upgrade.example.composite#_1VRFw13DEd-vVoiXx-_HAA">
+    <scact:includedResource>../Service%20Descriptors/upgrade.mock.it.case1.wsdl</scact:includedResource>
+  </requirements>
+  <requirements xsi:type="reqs:BindingRequirements" bindingAdjunct="upgrade.example.composite#_QGAkaV3EEd-vVoiXx-_HAA">
+    <scact:requiresCapability id="com.tibco.amx.capability.binding.soap" version="1.0.0" type="factory"/>
+    <scact:includedResource>../Service%20Descriptors/upgrade.mock.it.case1.wsdl</scact:includedResource>
+    <scact:importPackage name="com.tibco.corona.binding.bindingsoapmodel">
+      <range lower="2.0.0" upper="3.0.0"/>
+    </scact:importPackage>
+  </requirements>
+  <requirements xsi:type="reqs:ComponentRequirements" component="upgrade.example.composite#_3osYAL6xEd6UgoohZd9XrQ">
+    <scact:requiresCapability id="com.tibco.amx.capability.implementation.upgrade" version="1.0.0" type="factory"/>
+    <scact:includedResource>../proxy.upgrade</scact:includedResource>
+    <scact:includedResource>../Service%20Descriptors/upgrade.mock.it.case1.wsdl</scact:includedResource>
+    <scact:importPackage name="com.tibco.amx.it.upgrade.model">
+      <range lower="1.0.0" upper="2.0.0"/>
+    </scact:importPackage>
+  </requirements>
+  <requirements xsi:type="reqs:ServiceRequirements" service="sca:ComponentService upgrade.example.composite#_4wz2oL6xEd6UgoohZd9XrQ">
+    <scact:includedResource>../Service%20Descriptors/upgrade.mock.it.case1.wsdl</scact:includedResource>
+  </requirements>
+</reqs:ApplicationRequirements>

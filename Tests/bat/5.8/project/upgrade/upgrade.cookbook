@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cookbook:ItExtension xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cbf="http://xsd.tns.tibco.com/amxext/model/cookbook/framework" xmlns:cookbook="http:///com/tibco/amxext/model/cookbook.ecore" hasLeaf="true" sequence="163" rootTemplatePath="com.tibco.amxext.cookbook.wizard" productName="TIBCO ActiveMatrix Implementation Type for UPGRADE" developmentmode="Buttom-up only" hasReference="true">
+  <artifacts xsi:type="cbf:releaseUnit" hasLeaf="true" sequence="10" type="Model ReleaseUnit">
+    <artifacts xsi:type="cbf:ModelPlugin" sequence="1" ecoreFileName="implementation.upgrade" epackagePrefix="ImplementationModel">
+      <ecoreDenpendency>com.tibco.amf.sca.model.eclipse/model/extensions.genmodel</ecoreDenpendency>
+      <ecoreDenpendency>org.eclipse.wst.wsdl/model/WSDL.genmodel</ecoreDenpendency>
+      <ecoreDenpendency>org.eclipse.xsd/model/XSD.genmodel</ecoreDenpendency>
+      <ecoreDenpendency>org.eclipse.emf.ecore/model/Ecore.genmodel</ecoreDenpendency>
+      <cbf:uid>model.plugin</cbf:uid>
+      <cbf:name>com.tibco.amx.it.upgrade.model</cbf:name>
+      <cbf:version>1.0.0.qualifier</cbf:version>
+      <cbf:templatePath>templates/ImplementationType/1.0.0/java/model/plugins/default/</cbf:templatePath>
+      <cbf:output>com.tibco.amx.it.upgrade.model</cbf:output>
+      <cbf:id>com.tibco.amx.it.upgrade.model</cbf:id>
+      <cbf:provider>Tibco software inc.</cbf:provider>
+      <cbf:sourceFolder>src</cbf:sourceFolder>
+    </artifacts>
+    <artifacts xsi:type="cbf:feature" sequence="198">
+      <cbf:uid>com.tibco.amx.it.model.feature.uid</cbf:uid>
+      <cbf:name>com.tibco.amx.it.upgrade.model.feature</cbf:name>
+      <cbf:version>1.0.0.qualifier</cbf:version>
+      <cbf:templatePath>templates/ImplementationType/1.0.0/java/model/features/default/</cbf:templatePath>
+      <cbf:output>com.tibco.amx.it.upgrade.model.feature</cbf:output>
+      <cbf:id>com.tibco.amx.it.upgrade.model.feature</cbf:id>
+      <cbf:provider>Tibco software inc.</cbf:provider>
+      <cbf:requires feature="com.tibco.amf.common.model.feature" version="1.2.0"/>
+      <cbf:requires feature="com.tibco.neo.model.core.feature" version="1.0.0"/>
+      <cbf:requires feature="org.eclipse.emf" version="2.4.2"/>
+      <cbf:requires feature="org.eclipse.xsd" version="2.4.0"/>
+      <cbf:requires feature="org.eclipse.wst.ws_core.feature" version="3.0.0"/>
+      <cbf:plugin id="com.tibco.amx.it.upgrade.model" version="1.0.0.qualifier"/>
+    </artifacts>
+    <cbf:uid>templates/ImplementationType/1.0.0/java/model/</cbf:uid>
+    <cbf:name>model</cbf:name>
+    <cbf:version>1.0.0.qualifier</cbf:version>
+    <cbf:templatePath>templates/ImplementationType/1.0.0/java/model/</cbf:templatePath>
+    <cbf:output>model</cbf:output>
+  </artifacts>
+  <artifacts xsi:type="cbf:releaseUnit" hasLeaf="true" sequence="11" type="Design ReleaseUnit">
+    <artifacts xsi:type="cbf:HelpDocPlugin" sequence="108">
+      <cbf:uid>com.tibco.amx.it.help.doc.uid</cbf:uid>
+      <cbf:name>com.tibco.amx.it.upgrade.help.doc</cbf:name>
+      <cbf:version>1.0.0.qualifier</cbf:version>
+      <cbf:templatePath>templates/ImplementationType/1.0.0/java/design/plugins/help.doc/</cbf:templatePath>
+      <cbf:output>com.tibco.amx.it.upgrade.help.doc</cbf:output>
+      <cbf:id>com.tibco.amx.it.upgrade.help.doc</cbf:id>
+      <cbf:provider>Tibco software inc.</cbf:provider>
+      <cbf:importPackage id="org.osgi.framework"/>
+    </artifacts>
+    <artifacts xsi:type="cbf:feature" sequence="116">
+      <crossDependencies>com.tibco.amx.it.model.feature.uid</crossDependencies>
+      <cbf:uid>test.feature</cbf:uid>
+      <cbf:name>com.tibco.amx.it.upgrade.design.feature.test</cbf:name>
+      <cbf:version>1.0.0.qualifier</cbf:version>
+      <cbf:templatePath>templates/ImplementationType/1.0.0/java/design/features/tests/</cbf:templatePath>
+      <cbf:output>com.tibco.amx.it.upgrade.design.feature.test</cbf:output>
+      <cbf:id>com.tibco.amx.it.upgrade.design.feature.test</cbf:id>
+      <cbf:provider>Tibco software inc.</cbf:provider>
+      <cbf:requires feature="org.eclipse.platform" version="3.4.0"/>
+      <cbf:requires feature="com.tibco.xpd.core.feature" version="3.2.0"/>
+      <cbf:requires feature="com.tibco.amf.common.model.feature.eclipse" version="1.0.0"/>
+      <cbf:requires feature="com.tibco.amf.design.core.feature" version="3.0.0"/>
+      <cbf:requires feature="com.tibco.amf.design.sca.ui.feature" version="3.0.0 "/>
+      <cbf:requires feature="com.tibco.amx.it.upgrade.model.feature" version="1.0.0"/>
+      <cbf:plugin id="tests.com.tibco.amx.it.upgrade.design" version="1.0.0.qualifier"/>
+    </artifacts>
+    <artifacts xsi:type="cbf:plugin" sequence="128">
+      <crossDependencies>model.plugin</crossDependencies>
+      <cbf:uid>tests.com.tibco.amx.it.design.uid</cbf:uid>
+      <cbf:name>tests.com.tibco.amx.it.upgrade.design</cbf:name>
+      <cbf:version>1.0.0.qualifier</cbf:version>
+      <cbf:templatePath>templates/ImplementationType/1.0.0/java/design/plugins/tests/</cbf:templatePath>
+      <cbf:output>tests.com.tibco.amx.it.upgrade.design</cbf:output>
+      <cbf:id>tests.com.tibco.amx.it.upgrade.design</cbf:id>
+      <cbf:provider>Tibco software inc.</cbf:provider>
+      <cbf:sourceFolder>src</cbf:sourceFolder>
+      <cbf:activatorClassName>upgradeActivator</cbf:activatorClassName>
+      <cbf:pluginRequire id="com.tibco.amx.it.upgrade.model" versionRange="[1.0.0,2.0.0)"/>
+    </artifacts>
+    <artifacts xsi:type="cbf:plugin" sequence="183">
+      <crossDependencies>model.plugin</crossDependencies>
+      <cbf:uid>com.tibco.amx.it.model.edit.uid</cbf:uid>
+      <cbf:name>com.tibco.amx.it.upgrade.model.edit</cbf:name>
+      <cbf:version>1.0.0.qualifier</cbf:version>
+      <cbf:templatePath>templates/ImplementationType/1.0.0/java/design/plugins/edit/</cbf:templatePath>
+      <cbf:output>com.tibco.amx.it.upgrade.model.edit</cbf:output>
+      <cbf:id>com.tibco.amx.it.upgrade.model.edit</cbf:id>
+      <cbf:provider>Tibco software inc.</cbf:provider>
+      <cbf:sourceFolder>src</cbf:sourceFolder>
+      <cbf:pluginRequire id="com.tibco.amx.it.upgrade.model" versionRange="[1.0.0,2.0.0)"/>
+    </artifacts>
+    <artifacts xsi:type="cbf:feature" sequence="192">
+      <crossDependencies>com.tibco.amx.it.model.feature.uid</crossDependencies>
+      <cbf:uid>design.feature</cbf:uid>
+      <cbf:name>com.tibco.amx.it.upgrade.design.feature</cbf:name>
+      <cbf:version>1.0.0.qualifier</cbf:version>
+      <cbf:templatePath>templates/ImplementationType/1.0.0/java/design/features/default/</cbf:templatePath>
+      <cbf:output>com.tibco.amx.it.upgrade.design.feature</cbf:output>
+      <cbf:id>com.tibco.amx.it.upgrade.design.feature</cbf:id>
+      <cbf:provider>Tibco software inc.</cbf:provider>
+      <cbf:requires feature="org.eclipse.platform" version="3.4.0"/>
+      <cbf:requires feature="com.tibco.xpd.core.feature" version="3.2.0"/>
+      <cbf:requires feature="com.tibco.amf.common.model.feature.eclipse" version="1.0.0"/>
+      <cbf:requires feature="com.tibco.amf.design.core.feature" version="3.0.0"/>
+      <cbf:requires feature="com.tibco.amf.design.sca.ui.feature" version="3.0.0 "/>
+      <cbf:requires feature="com.tibco.amx.it.upgrade.model.feature" version="1.0.0"/>
+      <cbf:plugin id="com.tibco.amx.it.upgrade.design" version="1.0.0.qualifier"/>
+      <cbf:plugin id="com.tibco.amx.it.upgrade.model.edit" version="1.0.0.qualifier"/>
+      <cbf:plugin id="com.tibco.amx.it.upgrade.help.doc" version="1.0.0.qualifier"/>
+    </artifacts>
+    <artifacts xsi:type="cbf:plugin" sequence="196">
+      <crossDependencies>model.plugin</crossDependencies>
+      <cbf:uid>com.tibco.amx.it.design.uid</cbf:uid>
+      <cbf:name>com.tibco.amx.it.upgrade.design</cbf:name>
+      <cbf:version>1.0.0.qualifier</cbf:version>
+      <cbf:templatePath>templates/ImplementationType/1.0.0/java/design/plugins/default/</cbf:templatePath>
+      <cbf:output>com.tibco.amx.it.upgrade.design</cbf:output>
+      <cbf:id>com.tibco.amx.it.upgrade.design</cbf:id>
+      <cbf:provider>Tibco software inc.</cbf:provider>
+      <cbf:sourceFolder>src</cbf:sourceFolder>
+      <cbf:activatorClassName>upgradeDesignPlugin</cbf:activatorClassName>
+      <cbf:pluginRequire id="com.tibco.amf.tools.componenttype" versionRange="[3.0.0,4.0.0)"/>
+      <cbf:pluginRequire id="com.tibco.amf.tools.composite.editor" versionRange="[3.0.0,4.0.0)"/>
+      <cbf:pluginRequire id="com.tibco.amf.tools.composite.resources" versionRange="[3.0.0,4.0.0)"/>
+      <cbf:pluginRequire id="com.tibco.amf.tools.composite.resources.ui" versionRange="[3.0.0,4.0.0)"/>
+      <cbf:pluginRequire id="com.tibco.xpd.ui.properties" versionRange="[3.2.0,4.0.0)"/>
+      <cbf:pluginRequire id="com.tibco.xpd.validation" versionRange="[3.2.0,4.0.0)"/>
+      <cbf:pluginRequire id="org.eclipse.emf" versionRange="[2.4.0,3.0.0)"/>
+      <cbf:pluginRequire id="org.eclipse.emf.common.ui" versionRange="[2.4.0,3.0.0)"/>
+      <cbf:pluginRequire id="org.eclipse.emf.ecore" versionRange="[2.4.2,3.0.0)"/>
+      <cbf:pluginRequire id="org.eclipse.gmf.runtime.common.core" versionRange="[1.1.0,2.0.0)"/>
+      <cbf:pluginRequire id="org.eclipse.gmf.runtime.common.ui" versionRange="[1.1.3,2.0.0)"/>
+      <cbf:pluginRequire id="org.eclipse.gmf.runtime.common.ui.services" versionRange="[1.1.1,2.0.0)"/>
+      <cbf:pluginRequire id="org.eclipse.gmf.runtime.common.ui.services.action" versionRange="[1.1.0,2.0.0)"/>
+      <cbf:pluginRequire id="org.eclipse.gmf.runtime.common.ui.services.dnd" versionRange="[1.1.0,2.0.0)"/>
+      <cbf:pluginRequire id="org.eclipse.gmf.runtime.diagram.ui" versionRange="[1.1.3,2.0.0)"/>
+      <cbf:pluginRequire id="org.eclipse.gmf.runtime.diagram.ui.resources.editor" versionRange="[1.1.1,2.0.0)"/>
+      <cbf:pluginRequire id="org.eclipse.ui" versionRange="[3.4.2,4.0.0)"/>
+      <cbf:pluginRequire id="org.eclipse.ui.ide" versionRange="[3.4.2,4.0.0)"/>
+      <cbf:pluginRequire id="org.eclipse.wst.wsdl" versionRange="[1.1.202,2.0.0)"/>
+      <cbf:pluginRequire id="com.tibco.amx.it.upgrade.model" versionRange="[1.0.0,2.0.0)"/>
+    </artifacts>
+    <cbf:uid>templates/ImplementationType/1.0.0/java/design/</cbf:uid>
+    <cbf:name>design</cbf:name>
+    <cbf:version>1.0.0.qualifier</cbf:version>
+    <cbf:templatePath>templates/ImplementationType/1.0.0/java/design/</cbf:templatePath>
+    <cbf:output>design</cbf:output>
+  </artifacts>
+  <artifacts xsi:type="cbf:releaseUnit" hasLeaf="true" sequence="12" type="Runtime ReleaseUnit">
+    <artifacts xsi:type="cbf:plugin" sequence="165">
+      <crossDependencies>model.plugin</crossDependencies>
+      <cbf:uid>com.tibco.amx.it.runtime.uid</cbf:uid>
+      <cbf:name>com.tibco.amx.it.upgrade.runtime</cbf:name>
+      <cbf:version>1.0.0.qualifier</cbf:version>
+      <cbf:templatePath>templates/ImplementationType/1.0.0/java/runtime/plugins/default/</cbf:templatePath>
+      <cbf:output>com.tibco.amx.it.upgrade.runtime</cbf:output>
+      <cbf:id>com.tibco.amx.it.upgrade.runtime</cbf:id>
+      <cbf:provider>Tibco software inc.</cbf:provider>
+      <cbf:sourceFolder>src</cbf:sourceFolder>
+      <cbf:pluginRequire id="com.tibco.amx.it.upgrade.model" versionRange="[1.0.0,2.0.0)"/>
+      <cbf:importPackage id="com.tibco.amf.platform.runtime.extension" versionRange="[1.0.0,2.0.0)"/>
+      <cbf:importPackage id="com.tibco.amf.platform.runtime.extension.context" versionRange="[1.0.0,2.0.0)"/>
+      <cbf:importPackage id="com.tibco.amf.platform.runtime.extension.implementation" versionRange="[1.0.0,2.0.0)"/>
+      <cbf:importPackage id="com.tibco.amf.platform.runtime.extension.support" versionRange="[1.0.0,2.0.0)"/>
+      <cbf:importPackage id="com.tibco.amf.sca.model.componenttype" versionRange="[1.0.0,2.0.0)"/>
+      <cbf:importPackage id="com.tibco.amf.sca.model.extensionpoints" versionRange="[1.0.0,2.0.0)"/>
+      <cbf:importPackage id="com.tibco.neo.component" versionRange="[2.2.2,3.0.0)"/>
+      <cbf:importPackage id="com.tibco.neo.localized" versionRange="[2.4.0,3.0.0)"/>
+      <cbf:importPackage id="com.tibco.neo.serialization" versionRange="[2.2.2,3.0.0)"/>
+      <cbf:importPackage id="javax.resource.spi" versionRange="[1.5.0,2.0.0)"/>
+      <cbf:importPackage id="javax.wsdl" versionRange="[1.1.0,2.0.0)"/>
+      <cbf:importPackage id="javax.xml.namespace" versionRange="[1.1.0,2.0.0)"/>
+      <cbf:importPackage id="javax.xml.parsers" versionRange="[1.3.0,2.0.0)"/>
+      <cbf:importPackage id="org.apache.xml.serialize" versionRange="[2.9.0,3.0.0)"/>
+      <cbf:importPackage id="org.apache.xmlbeans" versionRange="[2.3.0,3.0.0)"/>
+      <cbf:importPackage id="org.apache.xmlbeans.impl.util" versionRange="[2.3.0,3.0.0)"/>
+      <cbf:importPackage id="org.apache.xmlbeans.impl.xb.substwsdl" versionRange="[2.3.0,3.0.0)"/>
+      <cbf:importPackage id="org.apache.xmlbeans.impl.xb.xsdschema" versionRange="[2.3.0,3.0.0)"/>
+      <cbf:importPackage id="org.apache.xmlbeans.impl.xsd2inst" versionRange="[2.3.0,3.0.0)"/>
+      <cbf:importPackage id="org.apache.xmlbeans.soap" versionRange="[2.3.0,3.0.0)"/>
+      <cbf:importPackage id="org.eclipse.emf.common.util" versionRange="[0.0.0,3.0.0)"/>
+      <cbf:importPackage id="org.eclipse.emf.ecore" versionRange="[0.0.0,3.0.0)"/>
+      <cbf:importPackage id="org.eclipse.emf.ecore.resource" versionRange="[0.0.0,3.0.0)"/>
+      <cbf:importPackage id="org.eclipse.emf.ecore.resource.impl" versionRange="[0.0.0,3.0.0)"/>
+      <cbf:importPackage id="org.eclipse.wst.wsdl" versionRange="[0.0.0,2.0.0)"/>
+      <cbf:importPackage id="org.eclipse.wst.wsdl.util" versionRange="[0.0.0,2.0.0)"/>
+      <cbf:importPackage id="org.osoa.sca" versionRange="[1.0.0,2.0.0)"/>
+      <cbf:importPackage id="org.slf4j" versionRange="[1.5.2,2.0.0)"/>
+      <cbf:importPackage id="org.w3c.dom" versionRange="[3.0.0,4.0.0)"/>
+      <cbf:importPackage id="org.xml.sax" versionRange="[2.0.2,3.0.0)"/>
+    </artifacts>
+    <artifacts xsi:type="cbf:feature" sequence="195">
+      <crossDependencies>com.tibco.amx.it.model.feature.uid</crossDependencies>
+      <cbf:uid>runtime.feature</cbf:uid>
+      <cbf:name>com.tibco.amx.it.upgrade.runtime.feature</cbf:name>
+      <cbf:version>1.0.0.qualifier</cbf:version>
+      <cbf:templatePath>templates/ImplementationType/1.0.0/java/runtime/features/default/</cbf:templatePath>
+      <cbf:output>com.tibco.amx.it.upgrade.runtime.feature</cbf:output>
+      <cbf:id>com.tibco.amx.it.upgrade.runtime.feature</cbf:id>
+      <cbf:provider>Tibco software inc.</cbf:provider>
+      <cbf:requires feature="com.tibco.amf.common.model.feature" version="1.0.0"/>
+      <cbf:requires feature="com.tibco.tpcl.org.slf4j.log4j12.feature" version="1.5.2"/>
+      <cbf:requires feature="com.tibco.neo.common" version="2.4.0"/>
+      <cbf:requires feature="com.tibco.neo.eclipse.support.feature" version="1.0.0"/>
+      <cbf:requires feature="com.tibco.tpcl.javax.wsdl4j.feature" version="1.6.2"/>
+      <cbf:requires feature="com.tibco.tpcl.org.apache.xerces.feature" version="2.9.0"/>
+      <cbf:requires feature="com.tibco.tpcl.org.apache.xmlbeans.feature" version="2.3.0"/>
+      <cbf:requires feature="com.tibco.tpcl.javax.system.exports.feature" version="5.0.0"/>
+      <cbf:requires feature="com.tibco.tpcl.emf" version="2.4.2"/>
+      <cbf:requires feature="com.tibco.tpcl.wstxsd" version="2.0.0"/>
+      <cbf:requires feature="com.tibco.amf.platform.runtime.api.feature" version="1.2.0"/>
+      <cbf:requires feature="com.tibco.tpcl.javax.resource.feature" version="1.5.0"/>
+      <cbf:requires feature="com.tibco.amx.it.upgrade.model.feature" version="1.0.0"/>
+      <cbf:plugin id="com.tibco.amx.it.upgrade.runtime" version="1.0.0.qualifier"/>
+    </artifacts>
+    <cbf:uid>templates/ImplementationType/1.0.0/java/runtime/</cbf:uid>
+    <cbf:name>runtime</cbf:name>
+    <cbf:version>1.0.0.qualifier</cbf:version>
+    <cbf:templatePath>templates/ImplementationType/1.0.0/java/runtime/</cbf:templatePath>
+    <cbf:output>runtime</cbf:output>
+  </artifacts>
+  <artifacts xsi:type="cbf:releaseUnit" hasLeaf="true" sequence="138">
+    <artifacts xsi:type="cbf:feature" sequence="116">
+      <crossDependencies>doc.cheatsheet.plugin</crossDependencies>
+      <cbf:uid>doc.cheatsheet.feature</cbf:uid>
+      <cbf:name>com.tibco.amx.it.upgrade.cheatsheet.feature</cbf:name>
+      <cbf:version>1.0.0.qualifier</cbf:version>
+      <cbf:templatePath>templates/ImplementationType/1.0.0/doc/cheatsheet/features/default/</cbf:templatePath>
+      <cbf:output>com.tibco.amx.it.upgrade.cheatsheet.feature</cbf:output>
+      <cbf:id>com.tibco.amx.it.upgrade.cheatsheet.feature</cbf:id>
+      <cbf:provider>Tibco software inc.</cbf:provider>
+      <cbf:requires feature="com.tibco.amf.design.sca.ui.feature" version="3.1.0"/>
+      <cbf:plugin id="com.tibco.amx.it.upgrade.cheatsheet" version="1.0.0.qualifier"/>
+    </artifacts>
+    <artifacts xsi:type="cbf:plugin" sequence="191">
+      <cbf:uid>doc.cheatsheet.plugin</cbf:uid>
+      <cbf:name>com.tibco.amx.it.upgrade.cheatsheet</cbf:name>
+      <cbf:version>1.0.0.qualifier</cbf:version>
+      <cbf:templatePath>templates/ImplementationType/1.0.0/doc/cheatsheet/plugins/default/</cbf:templatePath>
+      <cbf:output>com.tibco.amx.it.upgrade.cheatsheet</cbf:output>
+      <cbf:id>com.tibco.amx.it.upgrade.cheatsheet</cbf:id>
+      <cbf:provider>Tibco software inc.</cbf:provider>
+      <cbf:sourceFolder>src</cbf:sourceFolder>
+      <cbf:importPackage id="com.tibco.amf.tools.composite.resources.ui" versionRange="[3.1.0,4.0.0)"/>
+      <cbf:importPackage id="org.eclipse.ui.cheatsheets" versionRange="[3.3.1,4.0.0)"/>
+    </artifacts>
+    <cbf:uid>templates/ImplementationType/1.0.0/doc/cheatsheet/</cbf:uid>
+    <cbf:name>cheatsheet</cbf:name>
+    <cbf:version>1.0.0.qualifier</cbf:version>
+    <cbf:templatePath>templates/ImplementationType/1.0.0/doc/cheatsheet/</cbf:templatePath>
+    <cbf:output>cheatsheet</cbf:output>
+  </artifacts>
+  <artifacts xsi:type="cbf:releaseUnit" hasLeaf="true" sequence="141">
+    <artifacts xsi:type="cbf:plugin" sequence="109">
+      <cbf:uid>common.plugin</cbf:uid>
+      <cbf:name>com.tibco.amx.it.upgrade.common</cbf:name>
+      <cbf:version>1.0.0.qualifier</cbf:version>
+      <cbf:templatePath>templates/ImplementationType/1.0.0/java/common/plugins/default/</cbf:templatePath>
+      <cbf:output>com.tibco.amx.it.upgrade.common</cbf:output>
+      <cbf:id>com.tibco.amx.it.upgrade.common</cbf:id>
+      <cbf:provider>Tibco software inc.</cbf:provider>
+      <cbf:sourceFolder>src</cbf:sourceFolder>
+    </artifacts>
+    <artifacts xsi:type="cbf:feature" sequence="157">
+      <cbf:uid>common.feature</cbf:uid>
+      <cbf:name>com.tibco.amx.it.upgrade.common.feature</cbf:name>
+      <cbf:version>1.0.0.qualifier</cbf:version>
+      <cbf:templatePath>templates/ImplementationType/1.0.0/java/common/features/default/</cbf:templatePath>
+      <cbf:output>com.tibco.amx.it.upgrade.common.feature</cbf:output>
+      <cbf:id>com.tibco.amx.it.upgrade.common.feature</cbf:id>
+      <cbf:provider>Tibco software inc.</cbf:provider>
+      <cbf:plugin id="com.tibco.amx.it.upgrade.common" version="1.0.0.qualifier"/>
+    </artifacts>
+    <cbf:uid>templates/ImplementationType/1.0.0/java/common/</cbf:uid>
+    <cbf:name>common</cbf:name>
+    <cbf:version>1.0.0.qualifier</cbf:version>
+    <cbf:templatePath>templates/ImplementationType/1.0.0/java/common/</cbf:templatePath>
+    <cbf:output>common</cbf:output>
+  </artifacts>
+  <cbf:uid>templates/ImplementationType/1.0.0/</cbf:uid>
+  <cbf:name>upgrade</cbf:name>
+  <cbf:version>1.0.0.qualifier</cbf:version>
+  <cbf:templatePath>templates/ImplementationType/1.0.0</cbf:templatePath>
+  <cbf:output>D:/Junk/AMXPlatform/CaseBAT/upgrade</cbf:output>
+  <cbf:baseLocation>D:/Junk/AMXPlatform/CaseBAT/upgrade</cbf:baseLocation>
+  <cbf:organizationName>Tibco software inc.</cbf:organizationName>
+</cookbook:ItExtension>

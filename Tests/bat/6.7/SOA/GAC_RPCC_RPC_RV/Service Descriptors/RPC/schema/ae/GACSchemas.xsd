@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ae="http://www.tibco.com/xmlns/ae2xsd/2002/05" xmlns:ns0="http://www.tibco.com/xmlns/ae2xsd/2002/05/ae/GACSchemas" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://www.tibco.com/xmlns/ae2xsd/2002/05/ae/GACSchemas">
+    <import namespace="http://www.tibco.com/xmlns/ae2xsd/2002/05" schemaLocation="../ae2xsd.xsd"/>
+    <complexType ae:directory="/AESchemas/ae/GACSchemas.aeschema#class.Address" ae:type="class" ae:typename="/tibco/public/class/ae/GACSchemas/Address" name="Address">
+        <sequence>
+            <element ae:default="" ae:key="false" ae:readable="true" ae:writeable="true" form="unqualified" minOccurs="0" name="street" nillable="true" type="ae:string"/>
+            <element ae:default="" ae:key="false" ae:readable="true" ae:writeable="true" form="unqualified" minOccurs="0" name="city" nillable="true" type="ae:string"/>
+            <element ae:default="" ae:key="false" ae:readable="true" ae:writeable="true" form="unqualified" minOccurs="0" name="state" nillable="true" type="ae:string"/>
+            <element ae:default="" ae:key="false" ae:readable="true" ae:writeable="true" form="unqualified" minOccurs="0" name="zip" nillable="true" type="ae:string"/>
+        </sequence>
+    </complexType>
+    <complexType ae:directory="/AESchemas/ae/GACSchemas.aeschema#class.Customer" ae:type="class" ae:typename="/tibco/public/class/ae/GACSchemas/Customer" name="Customer">
+        <sequence>
+            <element ae:default="" ae:key="false" ae:readable="true" ae:writeable="true" form="unqualified" minOccurs="0" name="firstName" nillable="true" type="ae:string"/>
+            <element ae:default="" ae:key="false" ae:readable="true" ae:writeable="true" form="unqualified" minOccurs="0" name="lastName" nillable="true" type="ae:string"/>
+        </sequence>
+    </complexType>
+    <complexType ae:directory="/AESchemas/ae/GACSchemas.aeschema#class.CustomerNotFound" ae:type="class" ae:typename="/tibco/public/class/ae/GACSchemas/CustomerNotFound" name="CustomerNotFound">
+        <sequence>
+            <element ae:default="" ae:key="false" ae:readable="true" ae:writeable="true" form="unqualified" minOccurs="0" name="Code" nillable="true" type="ae:string"/>
+            <element ae:default="" ae:key="false" ae:readable="true" ae:writeable="true" form="unqualified" minOccurs="0" name="Message" nillable="true" type="ae:string"/>
+        </sequence>
+    </complexType>
+    <complexType ae:directory="/AESchemas/ae/GACSchemas.aeschema#class.GetSalesOrderById" ae:type="class" ae:typename="/tibco/public/class/ae/GACSchemas/GetSalesOrderById" name="GetSalesOrderById"/>
+    <complexType ae:directory="/AESchemas/ae/GACSchemas.aeschema#class.Order" ae:type="class" ae:typename="/tibco/public/class/ae/GACSchemas/Order" name="Order">
+        <sequence>
+            <element ae:default="" ae:key="false" ae:readable="true" ae:writeable="true" form="unqualified" minOccurs="0" name="orderID" nillable="true" type="ae:string"/>
+            <element ae:default="" ae:key="false" ae:readable="true" ae:writeable="true" form="unqualified" minOccurs="0" name="item" nillable="true" type="ae:string"/>
+        </sequence>
+    </complexType>
+    <complexType ae:directory="/AESchemas/ae/GACSchemas.aeschema#class.OrderNotFoundException" ae:type="class" ae:typename="/tibco/public/class/ae/GACSchemas/OrderNotFoundException" name="OrderNotFoundException">
+        <sequence>
+            <element ae:default="" ae:key="false" ae:readable="true" ae:writeable="true" form="unqualified" minOccurs="0" name="code" nillable="true" type="ae:string"/>
+            <element ae:default="" ae:key="false" ae:readable="true" ae:writeable="true" form="unqualified" minOccurs="0" name="message" nillable="true" type="ae:string"/>
+        </sequence>
+    </complexType>
+    <complexType ae:directory="/AESchemas/ae/GACSchemas.aeschema#class.QueryExternalCustomer" ae:type="class" ae:typename="/tibco/public/class/ae/GACSchemas/QueryExternalCustomer" name="QueryExternalCustomer"/>
+    <complexType ae:typename="/tibco/public/class/ae/GACSchemas/^fault^GetSalesOrderById^GetSalesOrderById" name="__caret_fault_caret_GetSalesOrderById_caret_GetSalesOrderById">
+        <complexContent>
+            <extension base="ae:operationExceptionType">
+                <choice>
+                    <element form="unqualified" name="OrderNotFound" type="ns0:OrderNotFoundException"/>
+                </choice>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType ae:typename="/tibco/public/class/ae/GACSchemas/^fault^QueryExternalCustomer^QueryExternalCustomer" name="__caret_fault_caret_QueryExternalCustomer_caret_QueryExternalCustomer">
+        <complexContent>
+            <extension base="ae:operationExceptionType">
+                <choice>
+                    <element form="unqualified" name="CustomerNotFound" type="ns0:CustomerNotFound"/>
+                </choice>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType ae:typename="/tibco/public/class/ae/GACSchemas/^reply^GetSalesOrderById^GetSalesOrderById" name="__caret_reply_caret_GetSalesOrderById_caret_GetSalesOrderById">
+        <complexContent>
+            <extension base="ae:new-operationReplyType">
+                <sequence>
+                    <element form="unqualified" minOccurs="0" name="__caret_hasException_caret_" nillable="true" type="ae:boolean"/>
+                    <element form="unqualified" minOccurs="0" name="__caret_exceptionName_caret_" nillable="true" type="ae:string"/>
+                    <element form="unqualified" minOccurs="0" name="__caret_exceptionData_caret_" nillable="true" type="anyType"/>
+                    <element form="unqualified" minOccurs="0" name="__caret_returnValue_caret_" nillable="true" type="ae:string"/>
+                    <element form="unqualified" minOccurs="0" name="__caret_closure_caret_" nillable="true" type="anyType"/>
+                    <element form="unqualified" minOccurs="0" name="__caret_userClosure_caret_" nillable="true" type="anyType"/>
+                    <element form="unqualified" minOccurs="0" name="order" type="ns0:Order"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType ae:typename="/tibco/public/class/ae/GACSchemas/^reply^QueryExternalCustomer^QueryExternalCustomer" name="__caret_reply_caret_QueryExternalCustomer_caret_QueryExternalCustomer">
+        <complexContent>
+            <extension base="ae:new-operationReplyType">
+                <sequence>
+                    <element form="unqualified" minOccurs="0" name="__caret_hasException_caret_" nillable="true" type="ae:boolean"/>
+                    <element form="unqualified" minOccurs="0" name="__caret_exceptionName_caret_" nillable="true" type="ae:string"/>
+                    <element form="unqualified" minOccurs="0" name="__caret_exceptionData_caret_" nillable="true" type="anyType"/>
+                    <element form="unqualified" minOccurs="0" name="__caret_returnValue_caret_" nillable="true" type="ae:string"/>
+                    <element form="unqualified" minOccurs="0" name="__caret_closure_caret_" nillable="true" type="anyType"/>
+                    <element form="unqualified" minOccurs="0" name="__caret_userClosure_caret_" nillable="true" type="anyType"/>
+                    <element form="unqualified" minOccurs="0" name="Customer" type="ns0:Customer"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType ae:typename="/tibco/public/class/ae/GACSchemas/^request^GetSalesOrderById^GetSalesOrderById" name="__caret_request_caret_GetSalesOrderById_caret_GetSalesOrderById">
+        <complexContent>
+            <extension base="ae:new-operationRequestType">
+                <sequence>
+                    <element form="unqualified" minOccurs="0" name="orderID" nillable="true" type="ae:string"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType ae:typename="/tibco/public/class/ae/GACSchemas/^request^QueryExternalCustomer^QueryExternalCustomer" name="__caret_request_caret_QueryExternalCustomer_caret_QueryExternalCustomer">
+        <complexContent>
+            <extension base="ae:new-operationRequestType">
+                <sequence>
+                    <element form="unqualified" minOccurs="0" name="CustomerNumber" nillable="true" type="ae:string"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <element name="Address" type="ns0:Address"/>
+    <element name="Customer" type="ns0:Customer"/>
+    <element name="CustomerNotFound" type="ns0:CustomerNotFound"/>
+    <element name="Order" type="ns0:Order"/>
+    <element name="OrderNotFoundException" type="ns0:OrderNotFoundException"/>
+    <element name="__caret_fault_caret_GetSalesOrderById_caret_GetSalesOrderById" type="ns0:__caret_fault_caret_GetSalesOrderById_caret_GetSalesOrderById"/>
+    <element name="__caret_fault_caret_QueryExternalCustomer_caret_QueryExternalCustomer" type="ns0:__caret_fault_caret_QueryExternalCustomer_caret_QueryExternalCustomer"/>
+    <element name="__caret_reply_caret_GetSalesOrderById_caret_GetSalesOrderById" type="ns0:__caret_reply_caret_GetSalesOrderById_caret_GetSalesOrderById"/>
+    <element name="__caret_reply_caret_QueryExternalCustomer_caret_QueryExternalCustomer" type="ns0:__caret_reply_caret_QueryExternalCustomer_caret_QueryExternalCustomer"/>
+    <element name="__caret_request_caret_GetSalesOrderById_caret_GetSalesOrderById" type="ns0:__caret_request_caret_GetSalesOrderById_caret_GetSalesOrderById"/>
+    <element name="__caret_request_caret_QueryExternalCustomer_caret_QueryExternalCustomer" type="ns0:__caret_request_caret_QueryExternalCustomer_caret_QueryExternalCustomer"/>
+</schema>

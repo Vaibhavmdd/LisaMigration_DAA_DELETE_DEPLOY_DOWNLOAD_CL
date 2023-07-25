@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise 
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types" 
+	xmlns:amxdata_binding="http://tibco.com/amxadministrator/command/line/types_binding" 
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base" 
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd http://tibco.com/amxadministrator/command/line/types_binding ../schemas/bindingdata.xsd" >
+
+<Environment 
+	xsi:type="amxdata:Environment" 
+	name="QAEnvironment_na2devasgora03" 
+	description="QA BAT Environment" 
+	contact="TIBCO">
+	<Node xsi:type="amxdata:Node" name="QANode2">
+	<ResourceInstance xsi:type="amxdata:ResourceInstance"
+				name="httpConnector4" resourceTemplateName="httpConnector4" />
+				</Node>
+		<Node xsi:type="amxdata:Node" name="QANode1">
+			<SVar xsi:type="amxdata_base:SubstitutionVariable" name="connector"
+				type="String" value="httpConnector2" description="RI test" />
+		</Node>
+
+		<Node xsi:type="amxdata:Node" name="QANode2">
+			<SVar xsi:type="amxdata_base:SubstitutionVariable" name="connector"
+				type="String" value="httpConnector4" description="RI test" />
+		</Node>
+    
+	<Application 
+		xsi:type="amxdata:Application" 
+		name="AMXTestCase1.14" 
+		contact="TIBCO Inc." 
+		description="AMXTestCase1.14 - SOAP -> JAVA">
+		<Component 
+			xsi:type="amxdata:Component" 
+			name="JavaComponent4">
+		    <Node 
+				name="QANode1" 
+				environmentName="QAEnvironment_na2devasgora03"/>
+ 
+		</Component>
+			<PromotedService 
+			xsi:type="amxdata_base:Service_base" 
+			name="AMXService">
+			<Binding 
+				xsi:type="amxdata:Binding" 
+				name="AMXServiceBinding" >
+                <Node 
+					name="QANode1" 
+					environmentName="QAEnvironment_na2devasgora03" />
+					<Property xsi:type="amxdata:Property" name="HttpInboundConnectionConfig"
+						value="%%connector%%" /></Binding>	
+</PromotedService>
+
+
+<ApplicationTemplate 
+				xsi:type="amxdata_reference:ApplicationTemplate_reference" 
+				name="AMXTestCase1.4"/>
+    </Application>
+
+
+
+<Application 
+		xsi:type="amxdata:Application" 
+		name="AMXTestCase1.14.1" 
+		contact="TIBCO Inc." 
+		description="AMXTestCase1.14.1 - SOAP -> JAVA->SOAP/HTTp Binding">
+
+
+<Component 
+			xsi:type="amxdata:Component" 
+			name="JavaComponentref4">
+		    <Node 
+				name="QANode1" 
+				environmentName="QAEnvironment_na2devasgora03"/>
+				<Node 
+				name="QANode2" 
+				environmentName="QAEnvironment_na2devasgora03"/>
+		</Component>
+
+<PromotedService 
+			xsi:type="amxdata_base:Service_base" 
+			name="AMXService4">
+			<Binding 
+				xsi:type="amxdata:Binding" 
+				name="AMXServiceBinding4" >
+                <Node 
+					name="QANode1" 
+					environmentName="QAEnvironment_na2devasgora03" />
+<Property  
+					xsi:type="amxdata:Property" 
+					name="HttpInboundConnectionConfig"  
+					value="httpConnector2"/>
+</Binding>
+</PromotedService>
+
+
+<PromotedReference 
+			xsi:type="amxdata_base:Reference_base" 
+			name="AMXReference4" >
+<Binding 
+					xsi:type="amxdata:ServiceVirtualizationBinding"	
+					name="virtualization.reference.binding">
+				</Binding>
+
+			<Wire xsi:type="amxdata:Wire">
+					<ServiceBinding 
+						xsi:type="amxdata_reference:Binding_reference"
+						bindingName="Virtualization" 
+						serviceName="AMXService"
+					ownerName="AMXTestCase1.14" 
+						ownerType="Application">
+					</ServiceBinding>
+				</Wire>
+
+
+
+
+</PromotedReference>
+
+ <ApplicationTemplate 
+			xsi:type="amxdata_reference:ApplicationTemplate_reference" 
+			name="AMXTestCase1.4.1"/>
+    </Application>
+
+
+
+		           </Environment>
+
+	<DAA 
+		xsi:type="amxdata:DAA" 
+		description="SOAP - JAVA" 
+		location="C:/Lisa1072/Projects/AMX/Tests/deployments/1.14/AMXTestCase1.14/Deployment Artifacts/AMXTestCase1.4.daa"/> 
+<DAA 
+		xsi:type="amxdata:DAA" 
+		description="SOAP - JAVA - SOAP" 
+		location="C:/Lisa1072/Projects/AMX/Tests/deployments/1.14/AMXTestCase1.14.1/Deployment Artifacts/AMXTestCase1.4.1.daa"/> 
+	</amxdata_base:Enterprise>

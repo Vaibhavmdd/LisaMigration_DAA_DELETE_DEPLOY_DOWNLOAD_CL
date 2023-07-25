@@ -1,0 +1,62 @@
+<html>
+<body>
+<h4 align="right">
+<i><a href="../../../../index.html" target="_top">TIBCO Common Library for LISA</a></i>
+</h4>
+<h4>com.tibco.lisa.rv</h4>
+<hr>
+<table border="0">
+<tr>
+<td style="font-size=20;"><b>RVStreamListen</b></td>
+</tr>
+<tr valign="top">
+<td>Listens for TIBCO Rendezvous message on specified subject with RVStream.<br>When the message is received the sub-process returns.<br>
+<br>Note1: RVStream supports listening on several subjects but this sub-process can listen to one subject at a time.<br>Note2: Supported on Windows only.<br>
+<br>RVStream Version: 1.21<br>
+<br>Listen Options<br>--------------<br> -srv                : suppress Rendezvous system messages<br> -srvall             : suppress all Rendezvous system &amp; service messages<br> -shawk              : suppress Hawk implant messages<br> -slocal             : suppress local messages<br> -suppress &lt;subject&gt; : suppress messages from 'subject'<br>
+<br> -rv                 : subscribe to standard Rendezvous system messages<br> -rvall              : subscribe to all Rendezvous system messages<br> -hawk               : subscribe to Hawk implant messages<br> -local              : subscribe to local messages<br>
+<br> -verbose            : show session, subscription and suppression options<br> -count              : show the current message number<br> -scount             : show the current message number per subscription<br> -time               : display a timestamp with each message<br> -showreply          : show reply subject if present<br>
+<br> -file   &lt;name&gt;      : write messages to truncated file<br> -append &lt;name&gt;      : append messages to file<br> -echo               : with -file or -append, also display to standard output<br>
+<br> -remote  &lt;id&gt;       : enables remote access (see -usage)<br> -command &lt;command&gt;  : NOT SUPPORTED BY THIS SUB-PROCESS. <br>		       THIS OPTION IS USED INTERNALLY TO EXIT THE SUB_PROCESS WHEN MESSAGE ARRIVES.<br>
+<br> -notypes            : hide types<br> -nosizes            : hide sizes<br> -nonames            : hide names<br> -novalues           : hide values<br> -nocontents         : hide types, sizes, names and values<br> -deep               : display nested messages using deep indents<br>
+<br> -subject &lt;option&gt;   : esc, display any 'illegal' control characters within subject.names as escape sequences<br>
+<br> -precision &lt;int&gt;    : set floating point precision<br> -spacing   &lt;int&gt;    : set column spacing<br> -quotes             : display "subject.names" and "field names" in quotes<br> -record             : set suitable format options for playback<br> -interval           : provide sleep command intervals for timed playback<br>
+<br> -string &lt;int&gt;       : limits the (pre-null) length of any displayed strings<br> -string &lt;option&gt;    : esc, display control characters as escape sequences<br>
+<br> -opaque &lt;option&gt;    : default, as rvlisten style e.g. [10 opaque bytes]<br>                     : char,    as printable characters<br>                     : esc,     as escape sequences<br>                     : binary,  as binary (suitable for redirecting to file)<br>                     : int,     as integer values<br>                     : hex,     as hexadecimal values<br>                     : oct,     as octal values<br>                     : dump,    as hex dump<br>                     : debug,   as both hex and printable characters<br>
+<br> -asopaque &lt;option&gt;  : display all values as opaques: unsuitable for resending options as for -opaque (use -opaque OR -asopaque)<br>
+<br> -rvtype &lt;option&gt;    : RVMSG_TYPE,    e.g. RVMSG_INT<br>                     : rvtype, type,  e.g. INT<br>                     : singlechar, t, e.g. i</td>
+</tr>
+<tr></tr>
+<tr></tr>
+<tr>
+<td>
+<table border="0.5" width="550">
+<tr bgcolor="#CCCCFF" valign="top">
+<th width="25%" align="left">
+										Parameter
+									</th><th width="75%" align="left">
+										Description
+									</th>
+</tr>
+<tr valign="top">
+<td>service</td><td>Service</td>
+</tr>
+<tr valign="top">
+<td>network</td><td>Network</td>
+</tr>
+<tr valign="top">
+<td>daemon</td><td>Daemon</td>
+</tr>
+<tr valign="top">
+<td>listenOptions</td><td>Listen options</td>
+</tr>
+<tr valign="top">
+<td>subject</td><td>Listen for inbound messages on specified subject. One subject only can be specified</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<hr>
+</body>
+</html>

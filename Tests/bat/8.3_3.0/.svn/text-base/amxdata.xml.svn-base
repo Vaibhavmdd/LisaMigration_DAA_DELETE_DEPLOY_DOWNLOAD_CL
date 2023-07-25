@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+	<!--
+	 "assignToEnvs" could be "ALL" or "NONE", the default value is "ALL" it is not specified. If there are environments associated with the Host, then it will be ignored.  
+	 If no environment are associated with the host then it takes effect.
+	-->
+	
+	<Environment xsi:type="amxdata:Environment" 
+		       name="[[env.name]]" 
+		       description="This is a QA environment" 
+	       contact="TIBCO">	
+	<Node xsi:type="amxdata:Node"
+		name="Node8_3" 
+		hostName="Host8_3" 
+		description="This is Node8_3"
+		contact="rashmi"
+		enableDebug="true"
+		portNumber="5883"
+		debugPortNumber="5884"
+		startupMode="Automatic">
+				
+	</Node>	
+	<Host name="Host8_3" />
+	
+	</Environment>
+	
+		<Host
+		xsi:type="amxdata:Host"
+		name="Host8_3"
+		description="This is Host8_3"
+		hostType="TibcoHost"
+		username="root"
+		password="t"
+		contact="rashmi"
+		sourceHost="[[host.name]]"
+		managementUrl="service:jmx:jmxmp://[[LISA_HOST]]:3019" assignToEnvs="ALL" secure="true">
+								
+	</Host>	
+	
+	
+</amxdata_base:Enterprise>
+
+

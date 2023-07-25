@@ -1,0 +1,25 @@
+<project default="deploy.app">
+  <import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+	
+	<target name="deploy.bt" >
+		<create.app dataFile="${amxConfigFile}" appName="com.tibco.amx.bt.adapter.app" />
+		<!-- <map.app.to.node dataFile="${amxConfigFile}" appName="com.tibco.amx.bt.adapter.app" /> -->
+		<map.app.to.node dataFile="${amxConfigFile}" objectSelector="Environment/Application[@name='com.tibco.amx.bt.adapter.app']/Node[1]" />
+		<add.app.to.node dataFile="${amxConfigFile}" objectSelector="Environment/Application[@name='com.tibco.amx.bt.adapter.app']/Node[2]" />
+		<deploy.app dataFile="${amxConfigFile}" appName="com.tibco.amx.bt.adapter.app" timeout="${deployTimeout}" />
+	</target>
+	<target name="deploy.app" >
+		<upload.daa dataFile="${amxConfigFile}" />
+		<create.app dataFile="${amxConfigFile}" appName="bat67"/>
+		<map.component.to.node dataFile="${amxConfigFile}" />
+		<map.service.binding.to.node dataFile="${amxConfigFile}" />
+		<map.reference.binding.to.node dataFile="${amxConfigFile}" />
+		<set.reference.binding.property dataFile="${amxConfigFile}" />		
+		<deploy.app dataFile="${amxConfigFile}" appName="bat67" timeout="${deployTimeout}" />
+	</target>
+	<target name="undeploy.app">
+		<undeploy.app dataFile="${amxConfigFile}" appName="bat67" timeout="${deployTimeout}" />
+		<!--undeploy.app dataFile="${amxConfigFile}" appName="com.tibco.amx.bt.adapter" timeout="${deployTimeout}" /-->
+		<delete.app dataFile="${amxConfigFile}" appName="bat67" timeout="${deployTimeout}" />
+	</target>
+</project>

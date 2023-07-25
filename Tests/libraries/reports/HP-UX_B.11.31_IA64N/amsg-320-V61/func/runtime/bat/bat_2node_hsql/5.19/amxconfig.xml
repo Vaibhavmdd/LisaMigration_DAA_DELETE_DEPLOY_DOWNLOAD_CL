@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise 
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types" 
+	xmlns:amxdata_binding="http://tibco.com/amxadministrator/command/line/types_binding" 
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base" 
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd http://tibco.com/amxadministrator/command/line/types_binding ../schemas/bindingdata.xsd" >
+
+<Environment 
+	xsi:type="amxdata:Environment" 
+	name="QAEnvironment_hpita17" 
+	description="QA BAT Environment" 
+	contact="TIBCO">
+    <Node xsi:type="amxdata:Node" name="QANode1" hostName="SystemHost_hpita17" description="My first node" contact="TIBCO" >
+		    <ResourceInstance xsi:type="amxdata:ResourceInstance" name="httpConnector519" resourceTemplateName="httpConnector519"/>		   
+		</Node>
+		<Node xsi:type="amxdata:Node" name="QANode1" hostName="SystemHost_hpita17" description="My first node" contact="TIBCO" >		    
+		    <ResourceInstance xsi:type="amxdata:ResourceInstance" name="HttpClient_SOAPEventSource_5_19" resourceTemplateName="HttpClient_SOAPEventSource_5_19"/>			    
+		</Node>
+	<Application 
+		xsi:type="amxdata:Application" 
+		name="BAT5_19" 
+		contact="TIBCO Inc." 
+		description="SOAP -> JAVA -> SOAP">
+		<Component 
+			xsi:type="amxdata:Component" 
+			name="Java1">
+		    <Node 
+				name="QANode1" 
+				environmentName="QAEnvironment_hpita17"/>
+		</Component>	
+		<PromotedService 
+			xsi:type="amxdata_base:Service_base" 
+			name="HelloWorldPT">
+			<Binding 
+				xsi:type="amxdata_binding:SoapHttpServiceBinding" 
+				name="soap.consumer.Binding1" description="desc" style="document" encoding="literal" endpointURI="/helloWorldPT/BAT5.19/" httpInboundConnectionJNDIName="httpConnector519">                
+				
+				<Node 
+					name="QANode1" 
+					environmentName="QAEnvironment_hpita17" />					
+				<Property  
+					xsi:type="amxdata:Property" 
+					name="HttpInboundConnectionConfig"  
+					value="httpConnector519"/>						
+					
+			</Binding>
+			
+		</PromotedService>
+
+		<PromotedReference 
+			xsi:type="amxdata_base:Reference_base" 
+			name="HelloWorldPT1">
+			<Binding 
+				xsi:type="amxdata_binding:SoapHttpRefBinding" 
+				name="soap.provider.Binding1" description="desc" style="document" encoding="literal" httpOutboundConnectionJNDIName="HttpClient_SOAPEventSource_5_19">
+                <Node 
+					name="QANode1" 
+					environmentName="QAEnvironment_hpita17" />               
+				<Property  
+					xsi:type="amxdata:Property" 
+					name="HttpOutboundConnectionConfig"  
+					value="HttpClient_SOAPEventSource_5_19"/>						
+			</Binding>	
+			
+		</PromotedReference>
+		
+        <ApplicationTemplate 
+			xsi:type="amxdata_reference:ApplicationTemplate_reference" 
+			name="BAT5_19"/>
+    </Application>		
+	
+</Environment>
+<ResourceTemplate
+        xsi:type="amxdata:HttpClientResourceTemplate"
+        name="HttpClient_SOAPEventSource_5_19"
+        isAcceptRedirect="true"
+        connectionTimeout="8888"
+        host="AMX-BACKEND-2.na.tibco.com"
+        port="8045"
+        description="This is HttpClient RT">
+    </ResourceTemplate>
+<ResourceTemplate xsi:type="amxdata:HttpConnectorResourceTemplate" name="httpConnector519" host="hpita17" port="8889" headerBufferSize="512" requestBufferSize="512"	responseBufferSize="512" maxIdleTime="200000" lowResourceMaxIdleTime="512" description="This is HttpConnector RT for BAT5_19"/>
+	<DAA 
+		xsi:type="amxdata:DAA" 
+		description="SOAP - JAVA - Addressing Enabled" 
+		location="/groupfiler/tests/tests/amsg/3.0/reports/HP-UX_B.11.31_IA64N/amsg-320-V61/func/runtime/bat/bat_2node_hsql/5.19/WS1/BAT5_19/BAT5_19.daa" 
+		importResourceTemplates="false"/>
+	
+</amxdata_base:Enterprise>

@@ -1,0 +1,162 @@
+     [echo] 
+     [echo] ########################################################################################
+     [echo] ########################################################################################
+     [echo] ########################################################################################
+     [echo] 
+     [echo] DEPRECATED
+     [echo] 
+     [echo] Usage of administrator/3.2/bin/taskdef.xml should be replaced by
+     [echo]          administrator/3.2/scripts/basic_cli.xml.
+     [echo] 
+     [echo] ########################################################################################
+     [echo] ########################################################################################
+     [echo] ########################################################################################
+     [echo]     
+     [echo] Script base is: "C:/matrix/320-HF5-v106/administrator/3.2/scripts/basic_cli.xml"
+
+deploy.app:
+     [echo] 
+     [echo] 
+     [echo] Upload DAA using:
+     [echo] dataFile: Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/4.1/amxconfig.xml
+     [echo] remotePropsFile: Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/admin.properties
+     [echo] objectSelector: DAA
+     [echo] action: add
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+[AMXAdminTask]  INFO - Processing 1 objects
+[AMXAdminTask]  INFO - Uploading DAA...
+[AMXAdminTask]  INFO - DAA location: ./ContextParameters/Deployment Artifacts/ContextParameters.daa
+[AMXAdminTask]  WARN - importResourceTemplates option is deprecated
+[AMXAdminTask]  INFO - Successfully added Application Template 'ContextParameters' (version: '1.0.0.201008072203') to the Administrator Staging Area
+[AMXAdminTask]  INFO - Successfully added Feature 'ContextParameters.customfeature.id' (version: '1.0.0.201008072203') to the Administrator Staging Area
+[AMXAdminTask]  INFO - Action finished at 6/25/13 7:48 PM in 1.358 seconds
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Create an Application using:
+     [echo] envName: 
+     [echo] appName: 
+     [echo] dataFile: Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/4.1/amxconfig.xml
+     [echo] remotePropsFile: Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/admin.properties
+     [echo] objectSelector: 
+     [echo] action: add
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] Invoking Admin task using the objectselector: Environment//Application
+[AMXAdminTask]  INFO - Processing 1 objects
+[AMXAdminTask]  INFO - Adding application...
+[AMXAdminTask]  INFO - Successfully added Application 'Context-1': Successfully created application 'Context-1' from Application Template 'ContextParameters' (version: 1.0.0.201008072203)
+[AMXAdminTask]  INFO - 	TIBCO-AMX-ADMIN-012406: Component 'Java1' (version: 1.0.0.201008072203) added.
+[AMXAdminTask]  INFO - 	TIBCO-AMX-ADMIN-012426: Application Service 'HelloPT' added.
+[AMXAdminTask]  INFO - Action finished at 6/25/13 7:48 PM in 0.234 seconds
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Map an application component to a node explicitly:
+     [echo] envName: 
+     [echo] componentName: 
+     [echo] nodeName: 
+     [echo] appName: 
+     [echo] dataFile: Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/4.1/amxconfig.xml
+     [echo] remotePropsFile: Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/admin.properties
+     [echo] objectSelector: 
+     [echo] overwrite: true
+     [echo] action: add
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] Invoking Admin task using the objectselector: Environment//Application/Component/Node
+[AMXAdminTask]  INFO - Processing 1 objects
+[AMXAdminTask]  INFO - Adding component to nodes...
+[AMXAdminTask]  INFO - Successfully added component 'Java1' to node 'QANode2'
+[AMXAdminTask]  INFO - Action finished at 6/25/13 7:48 PM in 0.109 seconds
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Map an application service to a node explicitly:
+     [echo] envName: 
+     [echo] appName: 
+     [echo] serviceName: 
+     [echo] bindingName: 
+     [echo] nodeName: 
+     [echo] dataFile: Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/4.1/amxconfig.xml
+     [echo] remotePropsFile: Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/admin.properties
+     [echo] objectSelector: 
+     [echo] overwrite: true
+     [echo] action: add
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] Invoking Admin task using the objectselector: Environment//Application/PromotedService/Binding/Node
+[AMXAdminTask]  INFO - Processing 1 objects
+[AMXAdminTask]  INFO - Adding binding to nodes...
+[AMXAdminTask]  INFO - Successfully added binding 'SOAPService_Binding1' to node 'QANode1'
+[AMXAdminTask]  INFO - Action finished at 6/25/13 7:48 PM in 0.125 seconds
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Setting the Http Connector property for Service binding using:
+     [echo] envName: 
+     [echo] appName: 
+     [echo] promotedServiceName: 
+     [echo] bindingName: 
+     [echo] propertyName: 
+     [echo] dataFile: Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/4.1/amxconfig.xml
+     [echo] remotePropsFile: Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/admin.properties
+     [echo] objectSelector: 
+     [echo] action: edit
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] Invoking Admin task using the objectselector: Environment//Application/PromotedService/Binding/Property
+[AMXAdminTask]  INFO - Processing 1 objects
+[AMXAdminTask]  INFO - Editing properties..
+[AMXAdminTask]  INFO - Action finished at 6/25/13 7:48 PM in 0.047 seconds
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Deploy an application using:
+     [echo] envName: 
+     [echo] appName: 
+     [echo] dataFile: Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/4.1/amxconfig.xml
+     [echo] remotePropsFile: Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/admin.properties
+     [echo] objectSelector: 
+     [echo] action: deploy
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] options: 
+     [echo] startAfterDeploy: true
+     [echo] timeout: 120
+     [echo] Invoking Admin task using the objectselector: Environment//Application
+[AMXAdminTask]  INFO - Processing 1 objects
+[AMXAdminTask]  INFO - Deploying application...
+[AMXAdminTask]  INFO - Deploying Application 'Context-1' in background : TIBCO-AMX-ADMIN-012015: Deployment succeeded for application 'Context-1' at 6/25/13 7:48 PM on node(s): 'QANode2, QANode1'.
+[AMXAdminTask]  INFO - 	TIBCO-AMX-ADMIN-012146: Feature 'ContextParameters.customfeature.id.1.0.0.201008072203' was auto-enabled in node 'QANode2'
+[AMXAdminTask]  INFO - Action finished in Admin at 6/25/13 7:48 PM in 0.936 seconds. Waiting for runtime tasks to be finished.
+[AMXAdminTask]  INFO - .
+[AMXAdminTask]  INFO - Application Deploy with Start finished successfully
+[AMXAdminTask]  INFO - Action finished at 6/25/13 7:49 PM in 7.082 seconds
+     [echo] 
+     [echo] 
+
+BUILD SUCCESSFUL
+Total time: 29 seconds

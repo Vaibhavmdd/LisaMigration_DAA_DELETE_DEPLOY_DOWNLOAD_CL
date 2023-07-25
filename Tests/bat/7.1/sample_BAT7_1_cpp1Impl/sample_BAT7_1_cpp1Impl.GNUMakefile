@@ -1,0 +1,201 @@
+##################################################
+#
+# Makefile for examples
+#
+##################################################
+#
+#  Environment:
+#
+#      We assume that the following environment variables are set
+#
+#          TIBCOAMX_CPP_CONTAINER_HOME    <-- where TIBCO AMX  is installed
+#          CCC        <-- CC compiler with path
+#          PORT       <-- w32 | w64 | solx86_32 | linux32 | linux64 | hpuxia64  the platform used
+#
+#
+#
+#Set up the library paths, and include file paths
+# Note: For 64-bit Linux build change "-march=i486" to "-march=x86-64" 
+
+PLATFORM=other
+ifeq ($(PORT),w64)
+	PLATFORM=windows
+	WINDOWS_FLAGS=/MACHINE:X64
+endif
+ifeq ($(PORT),w32)
+	PLATFORM=windows
+	WINDOWS_FLAGS=/MACHINE:X86
+endif
+
+ifneq ($(PLATFORM),windows)
+    CPP_CONTAINER_LIB_PATH=-L$(TIBCOAMX_CPP_CONTAINER_HOME)/lib
+    CPP_CONTAINER_INC_PATH=-I. -I$(TIBCOAMX_CPP_CONTAINER_HOME)/include -I./src
+    CPP_CONTAINER_LIBS=-lxerces-c -ltibcoamx-native -ltibcoamx-cppit -licuuc
+
+    ifeq ($(PORT),sol32)
+        SYSTEM_LIBS=-lsocket -ldl -lCstd -lrt
+        CCC_OPS=-g -mt -m32 -KPIC -xildoff -pta -instances=global -features=extensions -c -DHAVE_CONFIG_H -DPIC
+        LD_OPS=-g -m32 -Qoption ld -zmuldefs -G
+        CCC_LD=$(CCC) $(LD_OPS)
+        CLEAN_CACHE=rm -rf SunWS_cache
+	EXE=.so
+    endif
+
+    ifeq ($(PORT),sol64)
+        SYSTEM_LIBS=-lsocket -ldl -lCstd -lgen -lnsl -lposix4 -lrt
+        CCC_OPS=-g -xs -m64 -KPIC -xildoff -pta -instances=global -features=extensions -c -mt -DHAVE_CONFIG_H -DPIC -DSOL64
+        LD_OPS=-g -mt -m64 -KPIC -xs -Qoption ld -zmuldefs -G
+        CCC_LD=$(CCC) $(LD_OPS)
+        CLEAN_CACHE=rm -rf SunWS_cache
+	EXE=.so
+    endif
+
+    ifeq ($(PORT),solx86_32)
+         SYSTEM_LIBS=-lsocket -lc -lnsl -ldl -lm -lrt
+         CCC_OPS=-g -mt -KPIC -c -DSOLARIS -features=extensions -D_REENTRANT
+         LD_OPS=-g -G 
+         CCC_LD=$(CCC) $(LD_OPS)
+         CLEAN_CACHE=rm -rf SunWS_cache
+	EXE=.so
+    endif
+
+    ifeq ($(PORT),solx86_64)
+        SYSTEM_LIBS=-lsocket -lc -lgen -lpthread -lrt
+        CCC_OPS=-g -pic -mt -m64 -KPIC -c -DSOLARIS -features=extensions -D_REENTRANT
+        LD_OPS=-g -mt -pic -G -m64
+        CCC_LD=$(CCC) $(LD_OPS)
+        CLEAN_CACHE=rm -rf SunWS_cache
+	EXE=.so
+    endif
+
+    ifeq ($(PORT),linux32)
+        SYSTEM_LIBS=-ldl -lpthread -lstdc++ -lnsl
+        CCC_OPS=-g3 -Wall -O2 -m32 -c -fPIC -DHAVE_CONFIG_H -DPIC
+        LD_OPS=-g -m32 -m elf_i386 -Wl,-export-dynamic -shared
+        CCC_LD=$(CCC) $(LD_OPS)
+        CLEAN_CACHE=
+	EXE=.so
+    endif
+
+    ifeq ($(PORT),linux64)
+        SYSTEM_LIBS=-lnsl -ldl -lpthread -shared -lstdc++
+        CCC_OPS=-g3 -Wall -O2 -m64 -DHAVE_CONFIG_H -DPIC -fPIC
+        LD_OPS=-g -m64 -m elf_x86_64 -Wl,-export-dynamic
+        CCC_LD=$(CCC) $(LD_OPS)
+        CLEAN_CACHE=
+	EXE=.so
+    endif
+
+    ifeq ($(PORT),aix32)
+        SYSTEM_LIBS=-lpthread -lC -brtl -lm
+        CCC_OPS=-+ -V -g -q32 -qthreaded -qcpluscmt -qchars=signed -qlongdouble -qroconst -qproto -w -DNDEBUG -DTIBOS_AIX -DSDK -DNOMINMAX -D_REENTRANT -DOS_AIX51 -D_AIX51
+        AIX_SDK_LIBS=-lssl -lcrypto -lbsd
+        LD_OPS=-G -g -b noentry -q32 -qthreaded -lm -lc -qmkshrobj
+        CCC_LD=$(CCC) $(LD_OPS)
+        CLEAN_CACHE=
+	EXE=.a
+    endif
+
+    ifeq ($(PORT),aix64)
+        SYSTEM_LIBS=-lpthread -lC -brtl -lm
+        CCC_OPS=-+ -g -V -q64 -qthreaded -qcpluscmt -qchars=signed -qlongdouble -qroconst -qproto -w -DNDEBUG -DTIBOS_AIX -DSDK -DNOMINMAX -D_REENTRANT -DOS_AIX51 -D_AIX51
+        AIX_SDK_LIBS=-lssl -lcrypto -lbsd
+        LD_OPS=-G -g -b noentry -q64 -qthreaded -lm -lc -qmkshrobj
+        CCC_LD=$(CCC) $(LD_OPS)
+        CLEAN_CACHE=
+	EXE=.a
+    endif
+
+    ifeq ($(PORT),hpux)
+        SYSTEM_LIBS=-lpthread -lrt -lstream -lCsup
+        CCC_OPS=-D_REENTRANT +DAportable -DHP_UX -D_RWSTD_MULTI_THREAD -AA  -mt  +abi_3_33_compat
+        LD_OPS=-Wl,+s
+        CCC_LD=$(CCC) $(CCC_OPS) $(LD_OPS)
+        CLEAN_CACHE=
+	EXE=.sl
+    endif
+
+    ifeq ($(PORT),hpuxia64)
+        SYSTEM_LIBS=-lpthread -lrt -lstd_v2
+        CCC_OPS=-mt -AA -DHPUX11 -O +Onolimit +Z +W2815 +W1039 -DHPUX -D_REENTRANT -DHP_UX -D_THREAD_SAFE +DD64 -D_RWSTD_MULTI_THREAD
+        LD_OPS=-b +DD64
+        CCC_LD=$(CCC) $(LD_OPS)
+        CLEAN_CACHE=
+	EXE=.sl
+    endif
+
+    	CCFLAGS =$(CCC_OPS) $(CPP_CONTAINER_INC_PATH)
+
+    	CLEAN=rm -f
+    	OUT=-o 
+    	LIB_PREFIX=lib
+	OBJ=.o
+	OUTFILE= -o 
+else
+	ifeq ($(DEBUG),true)
+		DEBUG_FLAGS=/MDd
+		DEBUG_SUFFIX=D
+	else
+		DEBUG_FLAGS=/MD
+		DEBUG_SUFFIX=
+	endif
+    	
+	WINDOWS_LIBPATH=$(subst \",",$(subst  /libpath:"",,$(subst ;," /libpath:",/libpath:"$(LIB))"))
+	CPP_CONTAINER_LIBS_WINDOWS=xerces-c_3$(DEBUG_SUFFIX).lib tibcoamx-cppit$(DEBUG_SUFFIX).lib tibcoamx-native$(DEBUG_SUFFIX).lib icuuc$(DEBUG_SUFFIX).lib
+	CPP_CONTAINER_LIB_PATH=/libpath:"$(TIBCOAMX_CPP_CONTAINER_HOME)/lib" $(WINDOWS_LIBPATH)
+	CPP_CONTAINER_INC_PATH=/I. /I$(TIBCOAMX_CPP_CONTAINER_HOME)/include /I./src
+        CPP_CONTAINER_LIBS=$(CPP_CONTAINER_LIBS_WINDOWS)
+    
+        CCC_OPS=/Od /Gm /DWIN32 /DNDEBUG /D_WINDOWS /D_USRDLL /D_WINDLL /D_UNICODE /DUNICODE /EHsc $(DEBUG_FLAGS) /W3 /nologo /c /Wp64 /Zi /TP
+        CCC_LD=LINK $(WINDOWS_FLAGS) /nodefaultlib:libcmt /INCREMENTAL:NO /NOLOGO /DLL /DEBUG /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /IMPLIB:"sample_BAT7_1_cpp1Impl"
+        CCFLAGS=$(CCC_OPS) $(CPP_CONTAINER_INC_PATH)
+    
+        OUT=/OUT:
+        CLEAN=del
+        EXE=.dll
+        OBJ=.obj
+        LIB_PREFIX=
+        OUTFILE=/Fo
+
+endif
+
+SOURCES=src/application/ApplicationSerializerFactory.cpp src/SampleNamespace/SampleImpl_Wrapper.cpp src/xsd_org_example_www_allmepswsdlfile/NewOperation_dataElement.cpp src/application/SampleImpl.cpp src/xsd_org_example_www_allmepswsdlfile/NewOperationFault_dataFault.cpp src/xsd_org_example_www_allmepswsdlfile/NewOperationResponse_dataElement.cpp src/SampleNamespace/SampleImpl_ApplicationFactory.cpp src/wsdl_org_example_www_allmepswsdlfile/AllMEPsWSDLFileAllMEPsWSDLFileProxy.cpp src/xsd_org_example_www_allmepswsdlfile/NewOperationFault_dataElement.cpp 
+
+ifeq ($(PLATFORM),windows)
+	CPP_CONTAINER_CCFLAGS=/DUSING_AMX_CPP_DLL /DUSING_AMX_CORE_DLL
+	WINDOWS_SOURCES=$(subst /,\,$(SOURCES))
+	OBJECTS=$(WINDOWS_SOURCES:.cpp=.obj)
+	MT1=mt -nologo -manifest $(LIB_PREFIX)sample_BAT7_1_cpp1Impl$(EXE).manifest -out:"$(LIB_PREFIX)sample_BAT7_1_cpp1Impl$(EXE).embed.manifest"
+	MT2=mt -manifest $(LIB_PREFIX)sample_BAT7_1_cpp1Impl$(EXE).embed.manifest -outputresource:$(LIB_PREFIX)sample_BAT7_1_cpp1Impl$(EXE);2
+else
+	CPP_CONTAINER_CCFLAGS=
+	OBJECTS=$(SOURCES:.cpp=.o)
+endif
+
+LDFLAGS=$(CCC_LD) $(CPP_CONTAINER_LIB_PATH)
+default: all
+
+.SUFFIXES: .obj
+
+EXECUTABLE=$(LIB_PREFIX)sample_BAT7_1_cpp1Impl$(EXE)
+
+all: $(SOURCES) $(EXECUTABLE) MT
+
+MT:
+	$(MT1)
+	$(MT2)
+
+$(EXECUTABLE): $(OBJECTS)
+	$(LDFLAGS) $(OBJECTS) $(SYSTEM_LIBS) $(CPP_CONTAINER_LIBS) $(OUT)$@
+
+.cpp.o:
+	$(CCC) $(CCFLAGS) $(CPP_CONTAINER_CCFLAGS) -c $(OUT)$@ $<
+
+.cpp.obj:
+	$(CCC) $(CCFLAGS) $(CPP_CONTAINER_CCFLAGS) -c $(OUTFILE)$@ $<
+
+clean:
+	$(CLEAN) $(OBJECTS)
+	$(CLEAN) $(EXECUTABLE)
+	$(CLEAN) sink.log
+	$(CLEAN_CACHE)

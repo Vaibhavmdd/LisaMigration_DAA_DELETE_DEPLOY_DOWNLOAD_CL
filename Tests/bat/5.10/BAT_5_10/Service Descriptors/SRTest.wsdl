@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://www.tibco.com/SRTest/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SRTest"
+	targetNamespace="http://www.tibco.com/SRTest/">
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://www.tibco.com/SRTest/">
+			<xsd:element name="SRTestRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="toAddress" type="xsd:string" />
+						<xsd:element name="fromAddress" type="xsd:string" />
+						<xsd:element name="ldapQuery" type="xsd:string" />
+						<xsd:element name="message" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="SRTestResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="result" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="SRTestOperationRequest">
+		<wsdl:part element="tns:SRTestRequest" name="inParam" />
+	</wsdl:message>
+	<wsdl:message name="SRTestOperationResponse">
+		<wsdl:part element="tns:SRTestResponse" name="outParam" />
+	</wsdl:message>
+	<wsdl:portType name="SRTest">
+		<wsdl:operation name="SRTestOperation">
+			<wsdl:input message="tns:SRTestOperationRequest" />
+			<wsdl:output message="tns:SRTestOperationResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="SRTestSOAP" type="tns:SRTest">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="SRTestOperation">
+			<soap:operation soapAction="http://www.tibco.com/SRTest/SRTestOperation" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="SRTest">
+		<wsdl:port binding="tns:SRTestSOAP" name="SRTestSOAP">
+			<soap:address location="localhost" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

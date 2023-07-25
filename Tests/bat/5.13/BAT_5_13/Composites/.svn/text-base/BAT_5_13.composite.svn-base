@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:BAT_5_13="http://www.example.com/BAT_5_13" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:compositenotation="http://www.tibco.com/models/compositenotation" xmlns:java="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/java" xmlns:jdbc="http://xsd.tns.tibco.com/amf/models/sharedresource/jdbc" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.1/notation" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmlns:soapbt="http://xsd.tns.tibco.com/amf/models/sca/binding/soap" xmlns:spring="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/spring" xmlns:systempolicy="http://xsd.tns.tibco.com/amf/models/sca/policy/system" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmi:id="_IBk_0V4EEd-Aq-usWGCf9A" targetNamespace="http://www.example.com/BAT_5_13" name="BAT_5_13" compositeext:version="1.0.0.qualifier" compositeext:formatVersion="2">
+  <sca:service xmi:id="_Ni3eIF4EEd-Aq-usWGCf9A" name="HelloPT1" promote="Java1/HelloPT">
+    <sca:interface.wsdl xmi:id="_Njw2AF4EEd-Aq-usWGCf9A" interface="http://ns.tibco.com/Hello/#wsdl.interface(HelloPT)" scaext:wsdlLocation="../Service%20Descriptors/InOut.wsdl"/>
+    <sca:binding.sca xmi:id="_NkWr4F4EEd-Aq-usWGCf9A" name="virtualization"/>
+    <soapbt:binding.soap.service xmi:id="_p73UAF4EEd-Aq-usWGCf9A" name="SOAPService_Binding1" transportBindingType="HTTP" attachmentStyle="DOCUMENT" portType="../Service%20Descriptors/InOut.wsdl#//@ePortTypes.0">
+      <operationConfiguration xmi:id="_p8dJ4V4EEd-Aq-usWGCf9A" operation="../Service%20Descriptors/InOut.wsdl#//@ePortTypes.0/@eOperations.0" action="sayHello">
+        <messageConfiguration xmi:id="_p8dJ414EEd-Aq-usWGCf9A" message="../Service%20Descriptors/InOut.wsdl#//@eMessages.0">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_p8dJ5F4EEd-Aq-usWGCf9A" messagePart="../Service%20Descriptors/InOut.wsdl#//@eMessages.0/@eParts.0"/>
+        </messageConfiguration>
+        <bindingType xmi:id="_p8dJ4l4EEd-Aq-usWGCf9A"/>
+      </operationConfiguration>
+      <inboundConfiguration xsi:type="soapbt:HttpTransportConfiguration" xmi:id="_p8wr4F4EEd-Aq-usWGCf9A" endpointURI="/oneWayTransaction/"/>
+      <defaultBindingType xmi:id="_p8dJ4F4EEd-Aq-usWGCf9A"/>
+    </soapbt:binding.soap.service>
+    <scact:bindingAdjunct xmi:id="_NkWr4V4EEd-Aq-usWGCf9A" bindingName="virtualization"/>
+    <scact:bindingAdjunct xmi:id="_p8wr4V4EEd-Aq-usWGCf9A" bindingName="SOAPService_Binding1">
+      <sca:property xmi:id="_p8wr4l4EEd-Aq-usWGCf9A" mustSupply="true" name="HttpInboundConnectionConfig" type="xsd:string" scaext:simpleValue="httpConnector_oneway"/>
+    </scact:bindingAdjunct>
+  </sca:service>
+  <sca:component xmi:id="_PDLaUF4EEd-Aq-usWGCf9A" name="Java1" compositeext:version="1.0.0.qualifier" policySets="BAT_5_13:ManagedTransaction_Java1" scaext:policySetLocations="#embedded">
+    <sca:implementation.java xmi:id="_PDx3QF4EEd-Aq-usWGCf9A" class="com.sample.bat_5_13.Java1">
+      <scaext:packageVersionRange xmi:id="_PDx3QV4EEd-Aq-usWGCf9A" lower="1.0.0" upper="2.0.0"/>
+      <java:featureDependency xmi:id="_91JAQCgSEeCSrMCFfFWmHw" name="BAT_5_13.BAT_5_13.customfeature.id">
+        <range xmi:id="_91JAQSgSEeCSrMCFfFWmHw" lower="1.0.0" upper="2.0.0"/>
+      </java:featureDependency>
+    </sca:implementation.java>
+    <sca:service xmi:id="_QpTDkF4EEd-Aq-usWGCf9A" name="HelloPT" policySets="BAT_5_13:TransactedOneWay_Java1_HelloPT" requires="sca:transactedOneWay" scaext:policySetLocations="#embedded">
+      <sca:interface.wsdl xmi:id="_QpTDkV4EEd-Aq-usWGCf9A" interface="http://ns.tibco.com/Hello/#wsdl.interface(HelloPT)" scaext:wsdlLocation="../Service%20Descriptors/InOut.wsdl"/>
+    </sca:service>
+    <sca:reference xmi:id="_mPxcwF4EEd-Aq-usWGCf9A" name="HelloPT" policySets="BAT_5_13:TransactedOneWay_Java1_HelloPT1" requires="sca:transactedOneWay" scaext:policySetLocations="#embedded">
+      <sca:interface.wsdl xmi:id="_mPxcwV4EEd-Aq-usWGCf9A" interface="http://ns.tibco.com/Hello/#wsdl.interface(HelloPT)" scaext:wsdlLocation="../Service%20Descriptors/InOut.wsdl"/>
+    </sca:reference>
+    <sca:property xmi:id="_Ucz8AF4FEd-Aq-usWGCf9A" mustSupply="true" name="BAT_5_13_jdbc_1" type="jdbc:JdbcDataSource" scaext:simpleValue="BAT_5_13_jdbc_1" source="$"/>
+    <sca:property xmi:id="_pCLYMGSBEd-1msMiMgmBTA" mustSupply="true" name="BAT_5_13_jdbc_3" type="jdbc:JdbcDataSource" scaext:simpleValue="BAT_5_13_jdbc_3" source="$"/>
+  </sca:component>
+  <sca:component xmi:id="_PnzKUF4EEd-Aq-usWGCf9A" name="Spring1" compositeext:version="1.0.0.qualifier" policySets="BAT_5_13:ManagedTransaction_Spring1" scaext:policySetLocations="#embedded">
+    <spring:implementation.spring xmi:id="_PpcJEF4EEd-Aq-usWGCf9A" location="config-BAT_5_13-Spring1/BAT_5_13_Spring1_beans.xml" pluginName="com.sample.bat_513.spring">
+      <spring:featureDependency xmi:id="_LtBG8GR_Ed-1msMiMgmBTA" name="BAT_5_13.BAT_5_13.customfeature.id">
+        <range xmi:id="_LtBG8WR_Ed-1msMiMgmBTA" lower="1.0.0" upper="2.0.0"/>
+      </spring:featureDependency>
+    </spring:implementation.spring>
+    <sca:service xmi:id="_neOM4F4EEd-Aq-usWGCf9A" name="HelloPT" policySets="BAT_5_13:TransactedOneWay_Spring1_HelloPT" requires="sca:transactedOneWay" scaext:policySetLocations="#embedded">
+      <sca:interface.wsdl xmi:id="_neOM4V4EEd-Aq-usWGCf9A" interface="http://ns.tibco.com/Hello/#wsdl.interface(HelloPT)" scaext:wsdlLocation="../Service%20Descriptors/InOut.wsdl"/>
+    </sca:service>
+    <sca:reference xmi:id="_htlvQGSMEd-1msMiMgmBTA" name="HelloPT2" wiredByImpl="false" policySets="BAT_5_13:TransactedOneWay_Spring1_HelloPT1" requires="sca:transactedOneWay" scaext:policySetLocations="#embedded">
+      <sca:interface.wsdl xmi:id="_ECr2sMtEEd-PZtY1a9Sahg" interface="http://ns.tibco.com/Hello/#wsdl.interface(HelloPT)" scaext:wsdlLocation="../Service%20Descriptors/InOut.wsdl"/>
+    </sca:reference>
+    <sca:property xmi:id="_1Cnw0ctDEd-PZtY1a9Sahg" mustSupply="true" name="BAT_5_13_jbdc_2" type="jdbc:JdbcDataSource" scaext:simpleValue="BAT_5_13_jdbc_2"/>
+  </sca:component>
+  <sca:component xmi:id="_kUe5AGSMEd-1msMiMgmBTA" name="Java2" compositeext:version="1.0.0.qualifier" policySets="BAT_5_13:ManagedTransaction_Java2" scaext:policySetLocations="#embedded">
+    <sca:implementation.java xmi:id="_kUe5AWSMEd-1msMiMgmBTA" class="com.sample.bat_5_13_pojo2.Java2">
+      <scaext:packageVersionRange xmi:id="_kUe5AmSMEd-1msMiMgmBTA" lower="1.0.0" upper="2.0.0"/>
+      <java:featureDependency xmi:id="_udc3oGSNEd-1msMiMgmBTA" name="BAT_5_13.BAT_5_13.customfeature.id">
+        <range xmi:id="_udc3oWSNEd-1msMiMgmBTA" lower="1.0.0" upper="2.0.0"/>
+      </java:featureDependency>
+    </sca:implementation.java>
+    <sca:service xmi:id="_lsZHIGSMEd-1msMiMgmBTA" name="HelloPT" policySets="BAT_5_13:TransactedOneWay_Java2_HelloPT" requires="sca:transactedOneWay" scaext:policySetLocations="#embedded">
+      <sca:interface.wsdl xmi:id="_lsZHIWSMEd-1msMiMgmBTA" interface="http://ns.tibco.com/Hello/#wsdl.interface(HelloPT)" scaext:wsdlLocation="../Service%20Descriptors/InOut.wsdl"/>
+    </sca:service>
+  </sca:component>
+  <sca:wire xmi:id="_wwnlUF4EEd-Aq-usWGCf9A" source="Java1/HelloPT" target="Spring1/HelloPT"/>
+  <sca:wire xmi:id="_oDfhYGSMEd-1msMiMgmBTA" source="Spring1/HelloPT2" target="Java2/HelloPT"/>
+  <notation:diagram xsi:type="notation:Diagram" xmi:id="_IE2WQF4EEd-Aq-usWGCf9A" type="Composite" element="#/" name="SCA Composite" measurementUnit="Pixel">
+    <children xmi:id="_Ix2mMF4EEd-Aq-usWGCf9A" type="2001" element="#_IBk_0V4EEd-Aq-usWGCf9A">
+      <children xmi:id="_Ix2mM14EEd-Aq-usWGCf9A" type="5004"/>
+      <children xmi:id="_Ix2mNF4EEd-Aq-usWGCf9A" type="7001">
+        <children xmi:id="_NoEuQF4EEd-Aq-usWGCf9A" type="3001" element="#_Ni3eIF4EEd-Aq-usWGCf9A">
+          <children xmi:id="_NoEuRV4EEd-Aq-usWGCf9A" type="5002"/>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_NoEuQV4EEd-Aq-usWGCf9A" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_NoEuQl4EEd-Aq-usWGCf9A" gradStartColor="14150097" gradEndColor="7844710"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_NoEuQ14EEd-Aq-usWGCf9A"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_NoEuRF4EEd-Aq-usWGCf9A"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_Ix2mNV4EEd-Aq-usWGCf9A"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_Ix2mNl4EEd-Aq-usWGCf9A"/>
+      </children>
+      <children xmi:id="_Ix2mN14EEd-Aq-usWGCf9A" type="7002">
+        <styles xsi:type="notation:SortingStyle" xmi:id="_Ix2mOF4EEd-Aq-usWGCf9A"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_Ix2mOV4EEd-Aq-usWGCf9A"/>
+      </children>
+      <children xmi:id="_Ix2mOl4EEd-Aq-usWGCf9A" type="7003">
+        <children xmi:id="_PD7BMF4EEd-Aq-usWGCf9A" type="3003" element="#_PDLaUF4EEd-Aq-usWGCf9A">
+          <children xmi:id="_PD7BNl4EEd-Aq-usWGCf9A" type="5001"/>
+          <children xmi:id="_PD7BN14EEd-Aq-usWGCf9A" type="7004">
+            <children xmi:id="_Qpl-gF4EEd-Aq-usWGCf9A" type="3004" element="#_QpTDkF4EEd-Aq-usWGCf9A">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_Qpl-gV4EEd-Aq-usWGCf9A" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_Qpl-gl4EEd-Aq-usWGCf9A"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_PD7BOF4EEd-Aq-usWGCf9A"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_PD7BOV4EEd-Aq-usWGCf9A"/>
+          </children>
+          <children xmi:id="_PEOjMF4EEd-Aq-usWGCf9A" type="7005">
+            <children xmi:id="_mQXSoF4EEd-Aq-usWGCf9A" type="3005" element="#_mPxcwF4EEd-Aq-usWGCf9A">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_mQXSoV4EEd-Aq-usWGCf9A" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_mQXSol4EEd-Aq-usWGCf9A"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_PEOjMV4EEd-Aq-usWGCf9A"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_PEOjMl4EEd-Aq-usWGCf9A"/>
+          </children>
+          <children xmi:id="_PEOjM14EEd-Aq-usWGCf9A" type="7006">
+            <children xmi:id="_PEOjN14EEd-Aq-usWGCf9A" visible="false" type="7600">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_PEOjOF4EEd-Aq-usWGCf9A" fontHeight="10"/>
+              <element xsi:nil="true"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_PEOjOV4EEd-Aq-usWGCf9A"/>
+            </children>
+            <children xmi:id="_Udji4F4FEd-Aq-usWGCf9A" type="3006" element="#_Ucz8AF4FEd-Aq-usWGCf9A">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_Udji4V4FEd-Aq-usWGCf9A" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_Udji4l4FEd-Aq-usWGCf9A"/>
+            </children>
+            <children xmi:id="_pCe6MGSBEd-1msMiMgmBTA" type="3006" element="#_pCLYMGSBEd-1msMiMgmBTA">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_pCe6MWSBEd-1msMiMgmBTA" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_pCe6MmSBEd-1msMiMgmBTA"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_PEOjNF4EEd-Aq-usWGCf9A"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_PEOjNV4EEd-Aq-usWGCf9A"/>
+            <styles xsi:type="compositenotation:CollapseStyle" xmi:id="_PEOjNl4EEd-Aq-usWGCf9A"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_PD7BMV4EEd-Aq-usWGCf9A" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_PD7BMl4EEd-Aq-usWGCf9A" gradStartColor="16642791" gradEndColor="14072216"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_PD7BM14EEd-Aq-usWGCf9A"/>
+          <styles xsi:type="compositenotation:CustomComponentIconStyle" xmi:id="_PD7BNF4EEd-Aq-usWGCf9A"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_PD7BNV4EEd-Aq-usWGCf9A" x="148" y="99"/>
+        </children>
+        <children xmi:id="_Pq7W0F4EEd-Aq-usWGCf9A" type="3003" element="#_PnzKUF4EEd-Aq-usWGCf9A">
+          <children xmi:id="_Pq7W1l4EEd-Aq-usWGCf9A" type="5001"/>
+          <children xmi:id="_Pq7W114EEd-Aq-usWGCf9A" type="7004">
+            <children xmi:id="_nehH0F4EEd-Aq-usWGCf9A" type="3004" element="#_neOM4F4EEd-Aq-usWGCf9A">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_nehH0V4EEd-Aq-usWGCf9A" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_nehH0l4EEd-Aq-usWGCf9A"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_Pq7W2F4EEd-Aq-usWGCf9A"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_Pq7W2V4EEd-Aq-usWGCf9A"/>
+          </children>
+          <children xmi:id="_Pq7W2l4EEd-Aq-usWGCf9A" type="7005">
+            <children xmi:id="_ht4qMGSMEd-1msMiMgmBTA" type="3005" element="#_htlvQGSMEd-1msMiMgmBTA">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_ht4qMWSMEd-1msMiMgmBTA" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_ht4qMmSMEd-1msMiMgmBTA"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_Pq7W214EEd-Aq-usWGCf9A"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_Pq7W3F4EEd-Aq-usWGCf9A"/>
+          </children>
+          <children xmi:id="_Pq7W3V4EEd-Aq-usWGCf9A" type="7006">
+            <children xmi:id="_Pq7W4V4EEd-Aq-usWGCf9A" visible="false" type="7600">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_Pq7W4l4EEd-Aq-usWGCf9A" fontHeight="10"/>
+              <element xsi:nil="true"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_Pq7W414EEd-Aq-usWGCf9A"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_Pq7W3l4EEd-Aq-usWGCf9A"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_Pq7W314EEd-Aq-usWGCf9A"/>
+            <styles xsi:type="compositenotation:CollapseStyle" xmi:id="_Pq7W4F4EEd-Aq-usWGCf9A"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_Pq7W0V4EEd-Aq-usWGCf9A" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_Pq7W0l4EEd-Aq-usWGCf9A" gradStartColor="16642791" gradEndColor="14072216"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_Pq7W014EEd-Aq-usWGCf9A"/>
+          <styles xsi:type="compositenotation:CustomComponentIconStyle" xmi:id="_Pq7W1F4EEd-Aq-usWGCf9A"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_Pq7W1V4EEd-Aq-usWGCf9A" x="364" y="87"/>
+        </children>
+        <children xmi:id="_kUoC8GSMEd-1msMiMgmBTA" type="3003" element="#_kUe5AGSMEd-1msMiMgmBTA">
+          <children xmi:id="_kUoC9mSMEd-1msMiMgmBTA" type="5001"/>
+          <children xmi:id="_kUoC92SMEd-1msMiMgmBTA" type="7004">
+            <children xmi:id="_ls_kEGSMEd-1msMiMgmBTA" type="3004" element="#_lsZHIGSMEd-1msMiMgmBTA">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_ls_kEWSMEd-1msMiMgmBTA" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_ls_kEmSMEd-1msMiMgmBTA"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_kUoC-GSMEd-1msMiMgmBTA"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_kUoC-WSMEd-1msMiMgmBTA"/>
+          </children>
+          <children xmi:id="_kUoC-mSMEd-1msMiMgmBTA" type="7005">
+            <styles xsi:type="notation:SortingStyle" xmi:id="_kUoC-2SMEd-1msMiMgmBTA"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_kUoC_GSMEd-1msMiMgmBTA"/>
+          </children>
+          <children xmi:id="_kUoC_WSMEd-1msMiMgmBTA" type="7006">
+            <children xmi:id="_kUoDAWSMEd-1msMiMgmBTA" visible="false" type="7600">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_kUoDAmSMEd-1msMiMgmBTA" fontHeight="10"/>
+              <element xsi:nil="true"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_kUoDA2SMEd-1msMiMgmBTA"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_kUoC_mSMEd-1msMiMgmBTA"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_kUoC_2SMEd-1msMiMgmBTA"/>
+            <styles xsi:type="compositenotation:CollapseStyle" xmi:id="_kUoDAGSMEd-1msMiMgmBTA"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_kUoC8WSMEd-1msMiMgmBTA" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_kUoC8mSMEd-1msMiMgmBTA" gradStartColor="16642791" gradEndColor="14072216"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_kUoC82SMEd-1msMiMgmBTA"/>
+          <styles xsi:type="compositenotation:CustomComponentIconStyle" xmi:id="_kUoC9GSMEd-1msMiMgmBTA"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_kUoC9WSMEd-1msMiMgmBTA" x="604" y="99"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_Ix2mO14EEd-Aq-usWGCf9A"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_Ix2mPF4EEd-Aq-usWGCf9A"/>
+      </children>
+      <children xmi:id="_Ix2mPV4EEd-Aq-usWGCf9A" type="7007">
+        <children xmi:id="_Ix2mQF4EEd-Aq-usWGCf9A" visible="false" type="7600">
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_Ix2mQV4EEd-Aq-usWGCf9A" fontHeight="10"/>
+          <element xsi:nil="true"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_Ix2mQl4EEd-Aq-usWGCf9A"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_Ix2mPl4EEd-Aq-usWGCf9A"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_Ix2mP14EEd-Aq-usWGCf9A"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" xmi:id="_Ix2mMV4EEd-Aq-usWGCf9A" fontHeight="10"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_Ix2mMl4EEd-Aq-usWGCf9A" x="10" y="10" width="1016" height="350"/>
+    </children>
+    <styles xsi:type="notation:DiagramStyle" xmi:id="_IE2WQV4EEd-Aq-usWGCf9A"/>
+    <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_IE2WQl4EEd-Aq-usWGCf9A"/>
+    <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_IE2WQ14EEd-Aq-usWGCf9A"/>
+    <edges xmi:id="_vrskoF4EEd-Aq-usWGCf9A" type="4002" source="#_NoEuQF4EEd-Aq-usWGCf9A" target="#_Qpl-gF4EEd-Aq-usWGCf9A">
+      <styles xsi:type="notation:ConnectorStyle" xmi:id="_vrskoV4EEd-Aq-usWGCf9A" routing="Rectilinear"/>
+      <styles xsi:type="notation:FontStyle" xmi:id="_vrskol4EEd-Aq-usWGCf9A" fontHeight="10"/>
+      <element xsi:nil="true"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_vrsko14EEd-Aq-usWGCf9A" points="[33, -5, -264, -101]$[291, 99, -6, 3]"/>
+    </edges>
+    <edges xmi:id="_wxERQF4EEd-Aq-usWGCf9A" type="4001" element="#_wwnlUF4EEd-Aq-usWGCf9A" source="#_mQXSoF4EEd-Aq-usWGCf9A" target="#_nehH0F4EEd-Aq-usWGCf9A">
+      <styles xsi:type="notation:ConnectorStyle" xmi:id="_wxERQV4EEd-Aq-usWGCf9A" routing="Rectilinear"/>
+      <styles xsi:type="notation:FontStyle" xmi:id="_wxERQl4EEd-Aq-usWGCf9A" fontHeight="10"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_wxERQ14EEd-Aq-usWGCf9A" points="[12, 3, -168, -9]$[174, 15, -6, 3]"/>
+    </edges>
+    <edges xmi:id="_oDfhYWSMEd-1msMiMgmBTA" type="4001" element="#_oDfhYGSMEd-1msMiMgmBTA" source="#_ht4qMGSMEd-1msMiMgmBTA" target="#_ls_kEGSMEd-1msMiMgmBTA">
+      <styles xsi:type="notation:ConnectorStyle" xmi:id="_oDfhYmSMEd-1msMiMgmBTA" routing="Rectilinear"/>
+      <styles xsi:type="notation:FontStyle" xmi:id="_oDfhY2SMEd-1msMiMgmBTA" fontHeight="10"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_oDfhZGSMEd-1msMiMgmBTA" points="[12, 3, -120, -4]$[126, 10, -6, 3]"/>
+    </edges>
+  </notation:diagram>
+  <scaext:EmbeddedPolicySet xmi:id="_S7EWIGSMEd-1msMiMgmBTA" name="TransactedOneWay_Java1_HelloPT" appliesTo="sca:binding.sca.reference | sca:binding.sca.service | soapbt:binding.soap.reference | soapbt:binding.soap.service" provides="sca:transactedOneWay">
+    <systempolicy:transactedOneWay xmi:id="_rTQOwPatEeCHdYkBgxW8dA" scaext:label="Transacted One-Way"><messageRedeliveryConfig xmi:id="_rTQOwfatEeCHdYkBgxW8dA" maxRedeliveryCount="3" errorQueueName="Java1_queue_5_13" enableErrorQueue="true" transactionalErrorQueue="true">
+        <stopRedeliveryExceptions>java.lang.NullPointerException</stopRedeliveryExceptions>
+      </messageRedeliveryConfig><scaext:description>When a reference is marked as transactedOneWay, any OneWay invocation messages MUST be transacted as part of a client global transaction. If the client component is not configured to run under a global transaction or if the binding does not support transactional message sending, then a reference MUST NOT be marked as transactedOneWay. If a service is marked as transactedOneWay, any OneWay invocation message MUST be received from the transport binding in a transacted fashion,under the target service global transaction.The receipt of the message from the binding is not committed until the service transaction commits; if the service transaction is rolled back the the message remains available for receipt under a different service transaction. If the component is not configured to run under a global transaction or if the binding does not support transactional message receipt, then a service MUST NOT be marked as transactedOneWay.</scaext:description></systempolicy:transactedOneWay>
+  </scaext:EmbeddedPolicySet>
+  <scaext:EmbeddedPolicySet xmi:id="_ZmlL4GSMEd-1msMiMgmBTA" name="TransactedOneWay_Java1_HelloPT1" appliesTo="sca:binding.sca.reference | sca:binding.sca.service | soapbt:binding.soap.reference | soapbt:binding.soap.service" provides="sca:transactedOneWay">
+    <systempolicy:transactedOneWay xmi:id="_9REE4Pa9EeCHdYkBgxW8dA" scaext:label="Transacted One-Way"><messageRedeliveryConfig xmi:id="_9REE4fa9EeCHdYkBgxW8dA" redeliveryInterval="20" maxRedeliveryCount="3" transactionalErrorQueue="true"/><scaext:description>When a reference is marked as transactedOneWay, any OneWay invocation messages MUST be transacted as part of a client global transaction. If the client component is not configured to run under a global transaction or if the binding does not support transactional message sending, then a reference MUST NOT be marked as transactedOneWay. If a service is marked as transactedOneWay, any OneWay invocation message MUST be received from the transport binding in a transacted fashion,under the target service global transaction.The receipt of the message from the binding is not committed until the service transaction commits; if the service transaction is rolled back the the message remains available for receipt under a different service transaction. If the component is not configured to run under a global transaction or if the binding does not support transactional message receipt, then a service MUST NOT be marked as transactedOneWay.</scaext:description></systempolicy:transactedOneWay>
+  </scaext:EmbeddedPolicySet>
+  <scaext:EmbeddedPolicySet xmi:id="_e5uggGSMEd-1msMiMgmBTA" name="TransactedOneWay_Spring1_HelloPT" appliesTo="sca:binding.sca.reference | sca:binding.sca.service | soapbt:binding.soap.reference | soapbt:binding.soap.service" provides="sca:transactedOneWay">
+    <systempolicy:transactedOneWay xmi:id="_-kOV4Pa9EeCHdYkBgxW8dA" scaext:label="Transacted One-Way"><messageRedeliveryConfig xmi:id="_-kOV4fa9EeCHdYkBgxW8dA" maxRedeliveryCount="2" errorQueueName="Spring_queue_5_13" enableErrorQueue="true" transactionalErrorQueue="true"/><scaext:description>When a reference is marked as transactedOneWay, any OneWay invocation messages MUST be transacted as part of a client global transaction. If the client component is not configured to run under a global transaction or if the binding does not support transactional message sending, then a reference MUST NOT be marked as transactedOneWay. If a service is marked as transactedOneWay, any OneWay invocation message MUST be received from the transport binding in a transacted fashion,under the target service global transaction.The receipt of the message from the binding is not committed until the service transaction commits; if the service transaction is rolled back the the message remains available for receipt under a different service transaction. If the component is not configured to run under a global transaction or if the binding does not support transactional message receipt, then a service MUST NOT be marked as transactedOneWay.</scaext:description></systempolicy:transactedOneWay>
+  </scaext:EmbeddedPolicySet>
+  <scaext:EmbeddedPolicySet xmi:id="_q8RFUGSMEd-1msMiMgmBTA" name="TransactedOneWay_Spring1_HelloPT1" appliesTo="sca:binding.sca.reference | sca:binding.sca.service | soapbt:binding.soap.reference | soapbt:binding.soap.service" provides="sca:transactedOneWay">
+    <systempolicy:transactedOneWay xmi:id="_CUmQMPa-EeCHdYkBgxW8dA" scaext:label="Transacted One-Way"><messageRedeliveryConfig xmi:id="_CUmQMfa-EeCHdYkBgxW8dA" maxRedeliveryCount="2" transactionalErrorQueue="true"/><scaext:description>When a reference is marked as transactedOneWay, any OneWay invocation messages MUST be transacted as part of a client global transaction. If the client component is not configured to run under a global transaction or if the binding does not support transactional message sending, then a reference MUST NOT be marked as transactedOneWay. If a service is marked as transactedOneWay, any OneWay invocation message MUST be received from the transport binding in a transacted fashion,under the target service global transaction.The receipt of the message from the binding is not committed until the service transaction commits; if the service transaction is rolled back the the message remains available for receipt under a different service transaction. If the component is not configured to run under a global transaction or if the binding does not support transactional message receipt, then a service MUST NOT be marked as transactedOneWay.</scaext:description></systempolicy:transactedOneWay>
+  </scaext:EmbeddedPolicySet>
+  <scaext:EmbeddedPolicySet xmi:id="_067t4GSMEd-1msMiMgmBTA" name="TransactedOneWay_Java2_HelloPT" appliesTo="sca:binding.sca.reference | sca:binding.sca.service | soapbt:binding.soap.reference | soapbt:binding.soap.service" provides="sca:transactedOneWay">
+    <systempolicy:transactedOneWay xmi:id="_Awdj8Pa-EeCHdYkBgxW8dA" scaext:label="Transacted One-Way"><messageRedeliveryConfig xmi:id="_Awdj8fa-EeCHdYkBgxW8dA" maxRedeliveryCount="2" transactionalErrorQueue="true"/><scaext:description>When a reference is marked as transactedOneWay, any OneWay invocation messages MUST be transacted as part of a client global transaction. If the client component is not configured to run under a global transaction or if the binding does not support transactional message sending, then a reference MUST NOT be marked as transactedOneWay. If a service is marked as transactedOneWay, any OneWay invocation message MUST be received from the transport binding in a transacted fashion,under the target service global transaction.The receipt of the message from the binding is not committed until the service transaction commits; if the service transaction is rolled back the the message remains available for receipt under a different service transaction. If the component is not configured to run under a global transaction or if the binding does not support transactional message receipt, then a service MUST NOT be marked as transactedOneWay.</scaext:description></systempolicy:transactedOneWay>
+  </scaext:EmbeddedPolicySet>
+  <scaext:EmbeddedPolicySet xmi:id="_dPfEECgPEeCSrMCFfFWmHw" name="ManagedTransaction_Java1" appliesTo="sca:implementation" provides="sca:managedTransaction.global">
+    <systempolicy:managedTransaction xmi:id="_dPfEESgPEeCSrMCFfFWmHw" scaext:label="Managed Transaction">
+      <scaext:description>A managed transaction environment is necessary in order to run the component. The specific type of managed transaction needed is not constrained.</scaext:description>
+    </systempolicy:managedTransaction>
+  </scaext:EmbeddedPolicySet>
+  <scaext:EmbeddedPolicySet xmi:id="_fscOsCgPEeCSrMCFfFWmHw" name="ManagedTransaction_Spring1" appliesTo="sca:implementation" provides="sca:managedTransaction.global">
+    <systempolicy:managedTransaction xmi:id="_fscOsSgPEeCSrMCFfFWmHw" scaext:label="Managed Transaction">
+      <scaext:description>A managed transaction environment is necessary in order to run the component. The specific type of managed transaction needed is not constrained.</scaext:description>
+    </systempolicy:managedTransaction>
+  </scaext:EmbeddedPolicySet>
+  <scaext:EmbeddedPolicySet xmi:id="_hQPjwCgPEeCSrMCFfFWmHw" name="ManagedTransaction_Java2" appliesTo="sca:implementation" provides="sca:managedTransaction.global">
+    <systempolicy:managedTransaction xmi:id="_hQPjwSgPEeCSrMCFfFWmHw" scaext:label="Managed Transaction">
+      <scaext:description>A managed transaction environment is necessary in order to run the component. The specific type of managed transaction needed is not constrained.</scaext:description>
+    </systempolicy:managedTransaction>
+  </scaext:EmbeddedPolicySet>
+</sca:composite>

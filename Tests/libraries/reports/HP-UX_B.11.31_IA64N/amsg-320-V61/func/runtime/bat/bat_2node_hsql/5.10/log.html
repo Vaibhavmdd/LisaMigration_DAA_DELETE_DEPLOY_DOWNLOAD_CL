@@ -1,0 +1,494 @@
+<html> <body><FONT FACE='arial'> <table width='100%' border='2' cellpadding='4' cellspacing='3'><tr bgcolor='yellow'> <th width='10%'>Event</th> <th width='14%'>Short Description</th> <th width='42%'>Long Description</th><th width='21%'>TimeStamp</th><tr bgcolor='lime'><td>EVENT_START</td><td></td><td></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deleteJMSQueue1</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deleteJMSQueue1</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/ems/DeleteQueue.tst</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deleteJMSQueue1-getEMSAdminObject</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deleteJMSQueue1-getEMSAdminObject</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/ems/GetEMSAdminObject.tst</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deleteJMSQueue1-getEMSAdminObject-log</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deleteJMSQueue1-getEMSAdminObject-log</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>deleteJMSQueue1-getEMSAdminObject-log</td><td><pre>Connecting to EMS Admin with following parameters:
+url: tcp://AMX-BACKEND.na.tibco.com:7522
+user: amxemspwd
+password: amxemspwd
+trustedCertificate: /local/ems515/ems/5.1/samples/certs/server_root.cert.pem</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deleteJMSQueue1-getEMSAdminObject-validate</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deleteJMSQueue1-getEMSAdminObject-validate</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>String successMsg = "EMS Validation Success"; // Do not modify, assertions on these strings might exist.
+String errorMsg = "EMS Validation Error";
+
+// Check EMS Admin is loadable
+try {
+    Class.forName("com.tibco.tibjms.admin.TibjmsAdmin");
+    return successMsg;
+}
+catch (Exception e) {
+    return errorMsg + ": " + e.getClass().getName() + " " + e.getMessage();
+}</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>deleteJMSQueue1-getEMSAdminObject-validate</td><td><pre>EMS Validation Success</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deleteJMSQueue1-getEMSAdminObject-connect</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deleteJMSQueue1-getEMSAdminObject-connect</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>
+import java.util.Hashtable;
+import com.tibco.tibjms.admin.TibjmsAdmin;
+import com.tibco.tibjms.TibjmsSSL;
+
+String errorMsg = "EMS Error"; // Do not modify, assertions on this string might exist.
+
+String url = testExec.parseInState(url);
+String username = testExec.parseInState(username);
+String password = testExec.parseInState(password);
+String trustedCertificate = testExec.parseInState(trustedCertificate).replace("\\","/");
+TibjmsAdmin admin;
+
+try {
+    // initialize SSL environment if needed
+    if (url.startsWith("ssl")) {
+        Hashtable sslEnvironment = new Hashtable();
+        sslEnvironment.put(com.tibco.tibjms.TibjmsSSL.TRUSTED_CERTIFICATES, trustedCertificate);
+        //sslEnvironment.put(com.tibco.tibjms.TibjmsSSL.IDENTITY, "C:/tibcoems610/ems/6.1/samples/certs/client_identity.p12");
+        //sslEnvironment.put(com.tibco.tibjms.TibjmsSSL.PASSWORD, "password");
+        //sslEnvironment.put(com.tibco.tibjms.TibjmsSSL.EXPECTED_HOST_NAME, "sbagi-mbp");
+        sslEnvironment.put(com.tibco.tibjms.TibjmsSSL.ENABLE_VERIFY_HOST_NAME, new Boolean(false));
+        admin = new TibjmsAdmin(url, username, password, sslEnvironment);
+    }
+    else
+        admin = new TibjmsAdmin(url, username, password);
+    return admin;
+}
+catch (Exception e) {
+    return errorMsg + ": " + e.getClass().getName() + " " + e.getMessage();
+}</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>deleteJMSQueue1-getEMSAdminObject-connect</td><td><pre>com.tibco.tibjms.admin.TibjmsAdmin@a5ba31</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deleteJMSQueue1-log</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deleteJMSQueue1-log</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>deleteJMSQueue1-log</td><td><pre>Deleting Queue "bat510_queue1" ...</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deleteJMSQueue1-deleteQueue</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deleteJMSQueue1-deleteQueue</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import com.tibco.tibjms.admin.*;
+
+String errorMsg = "EMS Error"; // Do not modify, assertions on this string might exist.
+String successMsg = "EMS Queue deletion success";
+String msg = "";
+String queueName = testExec.parseInState(queueName);
+
+try {
+    EMSAdmin.destroyQueue(queueName);
+    msg = successMsg;
+}
+catch (Exception e) {
+    msg = errorMsg + ": " + e.getClass().getName() + ". " + e.getMessage();
+}
+finally {
+    EMSAdmin.close();
+    return msg;
+}
+</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>deleteJMSQueue1-deleteQueue</td><td><pre>EMS Queue deletion success</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deleteJMSQueue2</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deleteJMSQueue2</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/ems/DeleteQueue.tst</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deleteJMSQueue2-getEMSAdminObject</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deleteJMSQueue2-getEMSAdminObject</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/ems/GetEMSAdminObject.tst</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deleteJMSQueue2-getEMSAdminObject-log</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deleteJMSQueue2-getEMSAdminObject-log</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>deleteJMSQueue2-getEMSAdminObject-log</td><td><pre>Connecting to EMS Admin with following parameters:
+url: tcp://AMX-BACKEND.na.tibco.com:7522
+user: amxemspwd
+password: amxemspwd
+trustedCertificate: /local/ems515/ems/5.1/samples/certs/server_root.cert.pem</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deleteJMSQueue2-getEMSAdminObject-validate</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deleteJMSQueue2-getEMSAdminObject-validate</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>String successMsg = "EMS Validation Success"; // Do not modify, assertions on these strings might exist.
+String errorMsg = "EMS Validation Error";
+
+// Check EMS Admin is loadable
+try {
+    Class.forName("com.tibco.tibjms.admin.TibjmsAdmin");
+    return successMsg;
+}
+catch (Exception e) {
+    return errorMsg + ": " + e.getClass().getName() + " " + e.getMessage();
+}</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>deleteJMSQueue2-getEMSAdminObject-validate</td><td><pre>EMS Validation Success</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deleteJMSQueue2-getEMSAdminObject-connect</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deleteJMSQueue2-getEMSAdminObject-connect</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>
+import java.util.Hashtable;
+import com.tibco.tibjms.admin.TibjmsAdmin;
+import com.tibco.tibjms.TibjmsSSL;
+
+String errorMsg = "EMS Error"; // Do not modify, assertions on this string might exist.
+
+String url = testExec.parseInState(url);
+String username = testExec.parseInState(username);
+String password = testExec.parseInState(password);
+String trustedCertificate = testExec.parseInState(trustedCertificate).replace("\\","/");
+TibjmsAdmin admin;
+
+try {
+    // initialize SSL environment if needed
+    if (url.startsWith("ssl")) {
+        Hashtable sslEnvironment = new Hashtable();
+        sslEnvironment.put(com.tibco.tibjms.TibjmsSSL.TRUSTED_CERTIFICATES, trustedCertificate);
+        //sslEnvironment.put(com.tibco.tibjms.TibjmsSSL.IDENTITY, "C:/tibcoems610/ems/6.1/samples/certs/client_identity.p12");
+        //sslEnvironment.put(com.tibco.tibjms.TibjmsSSL.PASSWORD, "password");
+        //sslEnvironment.put(com.tibco.tibjms.TibjmsSSL.EXPECTED_HOST_NAME, "sbagi-mbp");
+        sslEnvironment.put(com.tibco.tibjms.TibjmsSSL.ENABLE_VERIFY_HOST_NAME, new Boolean(false));
+        admin = new TibjmsAdmin(url, username, password, sslEnvironment);
+    }
+    else
+        admin = new TibjmsAdmin(url, username, password);
+    return admin;
+}
+catch (Exception e) {
+    return errorMsg + ": " + e.getClass().getName() + " " + e.getMessage();
+}</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>deleteJMSQueue2-getEMSAdminObject-connect</td><td><pre>com.tibco.tibjms.admin.TibjmsAdmin@1a79071</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deleteJMSQueue2-log</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deleteJMSQueue2-log</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>deleteJMSQueue2-log</td><td><pre>Deleting Queue "bat510_queue2" ...</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deleteJMSQueue2-deleteQueue</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deleteJMSQueue2-deleteQueue</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import com.tibco.tibjms.admin.*;
+
+String errorMsg = "EMS Error"; // Do not modify, assertions on this string might exist.
+String successMsg = "EMS Queue deletion success";
+String msg = "";
+String queueName = testExec.parseInState(queueName);
+
+try {
+    EMSAdmin.destroyQueue(queueName);
+    msg = successMsg;
+}
+catch (Exception e) {
+    msg = errorMsg + ": " + e.getClass().getName() + ". " + e.getMessage();
+}
+finally {
+    EMSAdmin.close();
+    return msg;
+}
+</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>deleteJMSQueue2-deleteQueue</td><td><pre>EMS Queue deletion success</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createJndiName1</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createJndiName1</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/ems/CreateQueue.tst</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createJndiName1-getEMSAdminObject</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createJndiName1-getEMSAdminObject</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/ems/GetEMSAdminObject.tst</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createJndiName1-getEMSAdminObject-log</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createJndiName1-getEMSAdminObject-log</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>createJndiName1-getEMSAdminObject-log</td><td><pre>Connecting to EMS Admin with following parameters:
+url: tcp://AMX-BACKEND.na.tibco.com:7622
+user: amxjndipwd
+password: amxjndipwd
+trustedCertificate: /local/ems515/ems/5.1/samples/certs/server_root.cert.pem</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createJndiName1-getEMSAdminObject-validate</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createJndiName1-getEMSAdminObject-validate</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>String successMsg = "EMS Validation Success"; // Do not modify, assertions on these strings might exist.
+String errorMsg = "EMS Validation Error";
+
+// Check EMS Admin is loadable
+try {
+    Class.forName("com.tibco.tibjms.admin.TibjmsAdmin");
+    return successMsg;
+}
+catch (Exception e) {
+    return errorMsg + ": " + e.getClass().getName() + " " + e.getMessage();
+}</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>createJndiName1-getEMSAdminObject-validate</td><td><pre>EMS Validation Success</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createJndiName1-getEMSAdminObject-connect</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createJndiName1-getEMSAdminObject-connect</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>
+import java.util.Hashtable;
+import com.tibco.tibjms.admin.TibjmsAdmin;
+import com.tibco.tibjms.TibjmsSSL;
+
+String errorMsg = "EMS Error"; // Do not modify, assertions on this string might exist.
+
+String url = testExec.parseInState(url);
+String username = testExec.parseInState(username);
+String password = testExec.parseInState(password);
+String trustedCertificate = testExec.parseInState(trustedCertificate).replace("\\","/");
+TibjmsAdmin admin;
+
+try {
+    // initialize SSL environment if needed
+    if (url.startsWith("ssl")) {
+        Hashtable sslEnvironment = new Hashtable();
+        sslEnvironment.put(com.tibco.tibjms.TibjmsSSL.TRUSTED_CERTIFICATES, trustedCertificate);
+        //sslEnvironment.put(com.tibco.tibjms.TibjmsSSL.IDENTITY, "C:/tibcoems610/ems/6.1/samples/certs/client_identity.p12");
+        //sslEnvironment.put(com.tibco.tibjms.TibjmsSSL.PASSWORD, "password");
+        //sslEnvironment.put(com.tibco.tibjms.TibjmsSSL.EXPECTED_HOST_NAME, "sbagi-mbp");
+        sslEnvironment.put(com.tibco.tibjms.TibjmsSSL.ENABLE_VERIFY_HOST_NAME, new Boolean(false));
+        admin = new TibjmsAdmin(url, username, password, sslEnvironment);
+    }
+    else
+        admin = new TibjmsAdmin(url, username, password);
+    return admin;
+}
+catch (Exception e) {
+    return errorMsg + ": " + e.getClass().getName() + " " + e.getMessage();
+}</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>createJndiName1-getEMSAdminObject-connect</td><td><pre>com.tibco.tibjms.admin.TibjmsAdmin@cf2c09</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createJndiName1-log</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createJndiName1-log</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>createJndiName1-log</td><td><pre>Creating Queue "bat510_queue1" bound to JNDI name "BAT510_Destination"
+on tcp://AMX-BACKEND.na.tibco.com:7622</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createJndiName1-createQueue</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createJndiName1-createQueue</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import com.tibco.tibjms.admin.*;
+
+String errorMsg = "EMS Error"; // Do not modify, assertions on this string might exist.
+String successMsg = "EMS Queue creation success";
+String msg = "";
+String queueName = testExec.parseInState(queueName);
+String jndiName = testExec.parseInState(jndiName);
+
+try {
+    QueueInfo destInfo = new QueueInfo(queueName);
+    EMSAdmin.destroyQueue(queueName);
+    EMSAdmin.createQueue(destInfo);
+
+    if (!jndiName.equals("") && !jndiName.equals("&lt;&lt;null&gt;&gt;"))
+        EMSAdmin.bindQueue(jndiName, queueName);
+
+    msg = successMsg;
+}
+catch (Exception e) {
+    msg = errorMsg + ": " + e.getClass().getName() + " " + e.getMessage();
+}
+finally {
+    EMSAdmin.close();
+    return msg;
+}</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>createJndiName1-createQueue</td><td><pre>EMS Queue creation success</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createJndiName2</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createJndiName2</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/ems/CreateQueue.tst</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createJndiName2-getEMSAdminObject</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createJndiName2-getEMSAdminObject</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/ems/GetEMSAdminObject.tst</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createJndiName2-getEMSAdminObject-log</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createJndiName2-getEMSAdminObject-log</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>createJndiName2-getEMSAdminObject-log</td><td><pre>Connecting to EMS Admin with following parameters:
+url: tcp://AMX-BACKEND.na.tibco.com:7622
+user: amxjndipwd
+password: amxjndipwd
+trustedCertificate: /local/ems515/ems/5.1/samples/certs/server_root.cert.pem</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createJndiName2-getEMSAdminObject-validate</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createJndiName2-getEMSAdminObject-validate</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>String successMsg = "EMS Validation Success"; // Do not modify, assertions on these strings might exist.
+String errorMsg = "EMS Validation Error";
+
+// Check EMS Admin is loadable
+try {
+    Class.forName("com.tibco.tibjms.admin.TibjmsAdmin");
+    return successMsg;
+}
+catch (Exception e) {
+    return errorMsg + ": " + e.getClass().getName() + " " + e.getMessage();
+}</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>createJndiName2-getEMSAdminObject-validate</td><td><pre>EMS Validation Success</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createJndiName2-getEMSAdminObject-connect</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createJndiName2-getEMSAdminObject-connect</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>
+import java.util.Hashtable;
+import com.tibco.tibjms.admin.TibjmsAdmin;
+import com.tibco.tibjms.TibjmsSSL;
+
+String errorMsg = "EMS Error"; // Do not modify, assertions on this string might exist.
+
+String url = testExec.parseInState(url);
+String username = testExec.parseInState(username);
+String password = testExec.parseInState(password);
+String trustedCertificate = testExec.parseInState(trustedCertificate).replace("\\","/");
+TibjmsAdmin admin;
+
+try {
+    // initialize SSL environment if needed
+    if (url.startsWith("ssl")) {
+        Hashtable sslEnvironment = new Hashtable();
+        sslEnvironment.put(com.tibco.tibjms.TibjmsSSL.TRUSTED_CERTIFICATES, trustedCertificate);
+        //sslEnvironment.put(com.tibco.tibjms.TibjmsSSL.IDENTITY, "C:/tibcoems610/ems/6.1/samples/certs/client_identity.p12");
+        //sslEnvironment.put(com.tibco.tibjms.TibjmsSSL.PASSWORD, "password");
+        //sslEnvironment.put(com.tibco.tibjms.TibjmsSSL.EXPECTED_HOST_NAME, "sbagi-mbp");
+        sslEnvironment.put(com.tibco.tibjms.TibjmsSSL.ENABLE_VERIFY_HOST_NAME, new Boolean(false));
+        admin = new TibjmsAdmin(url, username, password, sslEnvironment);
+    }
+    else
+        admin = new TibjmsAdmin(url, username, password);
+    return admin;
+}
+catch (Exception e) {
+    return errorMsg + ": " + e.getClass().getName() + " " + e.getMessage();
+}</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>createJndiName2-getEMSAdminObject-connect</td><td><pre>com.tibco.tibjms.admin.TibjmsAdmin@e964fe</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createJndiName2-log</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createJndiName2-log</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>createJndiName2-log</td><td><pre>Creating Queue "bat510_queue2" bound to JNDI name "BAT510_Destination2"
+on tcp://AMX-BACKEND.na.tibco.com:7622</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>createJndiName2-createQueue</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>createJndiName2-createQueue</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import com.tibco.tibjms.admin.*;
+
+String errorMsg = "EMS Error"; // Do not modify, assertions on this string might exist.
+String successMsg = "EMS Queue creation success";
+String msg = "";
+String queueName = testExec.parseInState(queueName);
+String jndiName = testExec.parseInState(jndiName);
+
+try {
+    QueueInfo destInfo = new QueueInfo(queueName);
+    EMSAdmin.destroyQueue(queueName);
+    EMSAdmin.createQueue(destInfo);
+
+    if (!jndiName.equals("") && !jndiName.equals("&lt;&lt;null&gt;&gt;"))
+        EMSAdmin.bindQueue(jndiName, queueName);
+
+    msg = successMsg;
+}
+catch (Exception e) {
+    msg = errorMsg + ": " + e.getClass().getName() + " " + e.getMessage();
+}
+finally {
+    EMSAdmin.close();
+    return msg;
+}</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>createJndiName2-createQueue</td><td><pre>EMS Queue creation success</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deployApp</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deployApp</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/util/InvokeAnt.tst</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deployApp-log</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deployApp-log</td><td><pre></pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>deployApp-log</td><td><pre>Invoking ant with following variables:
+buildFileName=/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.10/amxbuild.xml
+logFileName=/groupfiler/tests/tests/amsg/3.0/reports/HP-UX_B.11.31_IA64N/amsg-320-V61/func/runtime/bat/bat_2node_hsql/5.10/ant_deploy.log
+propertyFileName=
+propertyList=deployTimeout=600,TIBCO_HOME=/local/amx320-V61,TIBCO_AMXADMIN_HOME=/local/amx320-V61/administrator/3.2,TIBCO_AMX_LIBRARY=/groupfiler/tests/tests/amsg/3.0/libraries/amx,amxConfigFile=/groupfiler/tests/tests/amsg/3.0/reports/HP-UX_B.11.31_IA64N/amsg-320-V61/func/runtime/bat/bat_2node_hsql/5.10/amxdata.xml,remotePropsFile=/groupfiler/tests/tests/amsg/3.0/reports/HP-UX_B.11.31_IA64N/amsg-320-V61/func/runtime/bat/bat_2node_hsql/admin.properties
+targetName=setup.app
+projectBaseDirName=
+antOpts=-Djava.classes.dir=//local/amx320-V61/tibcojre64/1.6.0/jre/lib
+additionalAntCmdLineArgs=
+waitforCompletion=true</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deployApp-verifyAntInClasspath</td><td><pre>This step verifies the input variables for the invokeAnt subprocess.</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deployApp-verifyAntInClasspath</td><td><pre>This step verifies the input variables for the invokeAnt subprocess.</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.net.URL;
+import java.lang.ClassLoader;
+import java.net.URLClassLoader;
+/*	
+String verifyAntInClasspath1() {
+		String response = "Fail: ant is not found in classpath.";
+		try {
+			ClassLoader classLoader = ClassLoader.getSystemClassLoader();
+			URL url = classLoader.getResource("org/apache/tools/ant/Project.class"); 
+			if (url == null) {
+				return response+" null url";
+			}			
+		} catch(Exception e) {			  
+				return response+" Exception is: "+e.getMessage();
+		}
+		response ="pass: ant is found in classpath.";
+		return response;
+	}
+
+	
+
+	String verifyAntInClasspath3() {
+		String response = "Fail: ant is not found in classpath.";
+		try {
+			ClassLoader classLoader = com.itko.util.cpdlg.JavaUtils.getClassLoader();
+			URL[] urls = ((URLClassLoader)classLoader).getURLs();
+			
+			for(int i = 0; i &lt; urls.length; i++) {
+				response="\n"+urls[i].getPath();
+			}
+					
+		} catch(Exception e) {			  
+				return response;
+		}
+		// response ="pass: ant is found in classpath.";
+		return response;
+	}
+
+	String verifyAntInClasspath4() {
+		String response = "Fail: ant is not found in classpath.";
+		try {
+			String[] rl = com.itko.util.cpdlg.JavaUtils.getClasspath();
+			for(int i = 0; i &lt; rl.length; i++) {
+				response=response+"\n"+rl[i];
+			}		
+		} catch(Exception e) {			  
+				return response;
+		}
+		// response ="pass: ant is found in classpath.";
+		return response;
+	}
+
+
+	String verifyAntInClasspath2() {
+		String response = "Fail: ant is not found in classpath.";
+		try {
+			ClassLoader classLoader = com.itko.lisa.test.Environment.getClassLoader();
+			URL url = classLoader.getResource("org/apache/tools/ant/Project.class"); 
+			if (url == null) {
+				return response;
+			}			
+		} catch(Exception e) {			  
+				return response+" Exception is: "+e.getMessage();
+		}
+		response ="Pass: ant is found in classpath.";
+		return response;
+	}
+
+	static String verifyAntInClasspath() {
+		String response = "Fail: ant is not found in classpath.";
+		try {
+			com.itko.lisa.test.TestExec.class.forName("org.apache.tools.ant.Project");	
+		}catch(Exception e) {
+			return response+e.getMessage();
+		}
+		response ="pass: ant is found in classpath.";
+		return response;
+	
+	}
+
+*/
+
+	String verifyAntInClasspath() {
+		String response = "Fail: ant is not found in classpath.";
+		try {
+			// com.itko.util.cpdlg.JavaUtils.getClassLoader();
+			ClassLoader classLoader = com.itko.lisa.test.Environment.getClassLoader();
+			URL url = classLoader.getResource("org/apache/tools/ant/Project.class"); 
+			if (url == null) {
+				return response;
+			}			
+		} catch(Exception e) {			  
+				return response;
+		}
+		response ="Pass: ant is found in classpath.";
+		return response;
+	}
+	
+
+return verifyAntInClasspath();</pre></td><td>Wed Aug 08 13:05:43 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>deployApp-verifyAntInClasspath</td><td><pre>Pass: ant is found in classpath.</pre></td><td>Wed Aug 08 13:05:44 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deployApp-verifyAntVersion</td><td><pre>This step verifies the input variables for the invokeAnt subprocess.</pre></td><td>Wed Aug 08 13:05:44 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deployApp-verifyAntVersion</td><td><pre>This step verifies the input variables for the invokeAnt subprocess.</pre></td><td>Wed Aug 08 13:05:44 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
+import java.util.Enumeration;
+import java.util.Properties;
+import java.util.Set;
+
+
+String verifyAnt() {
+		String response = "Fail:";
+		String version = null;
+		try {
+			version = org.apache.tools.ant.Main.getAntVersion();
+			// version = "Apache Ant version 1.7.1 compiled on June 27";
+		}catch(Exception e) {
+			if ( e instanceof ClassNotFoundException) {
+				response = response+" Did not find ant in classpath!";
+				return response;
+			}
+			response = response+" Could not get the version of ant";
+			return response;
+		}
+		
+		String [] versionArray = version.split(" ");
+		if (versionArray.length != 9) {
+			try {
+				Properties props = new Properties();
+				  InputStream in = org.apache.tools.ant.Main.class.getResourceAsStream("/org/apache/tools/ant/version.txt");
+				  props.load(in);
+				  in.close();
+				  version = props.getProperty("VERSION");
+			}catch(Exception e) {
+				response = response+" Could not verify the version of ant. the version returned is: "+version;
+				return response;
+			}			
+			
+		}else {
+			version = versionArray[3];
+		}
+		
+		versionArray = version.split("\\.");
+		if (versionArray.length != 3) {
+			response = response+" Could not verify the version of ant. the version returned is: "+version;
+			// response = response+"\n"+" Expected version format is: x.y.z";
+			return response;
+		}
+		
+		version = versionArray[0]+"."+versionArray[1];
+		
+		if (Double.parseDouble(version) &lt; 1.7) {
+			response = response+"The version of ant should be at least 1.7.x. Current Version is: "+versionArray[0]+"."+versionArray[1];
+			return response;
+		}
+		response = "Pass: ant verified successfully.";
+		return response;
+	}
+
+return verifyAnt();</pre></td><td>Wed Aug 08 13:05:44 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>deployApp-verifyAntVersion</td><td><pre>Pass: ant verified successfully.</pre></td><td>Wed Aug 08 13:05:44 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>deployApp-verifyInputVariables</td><td><pre>This step verifies the input variables for the invokeAnt subprocess.</pre></td><td>Wed Aug 08 13:05:44 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>deployApp-verifyInputVariables</td><td><pre>This step verifies the input variables for the invokeAnt subprocess.</pre></td><td>Wed Aug 08 13:05:44 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
+import java.util.Enumeration;
+import java.util.Properties;
+import java.util.Set;
+
+String checkInputVariables() {
+		String response = "Fail:";
+		try {
+			if ((buildFileName == null) || (buildFileName.equals("")) ) {
+				throw new Exception("buildFileName cannot be null.");
+			}
+           
+			File buildFile = new File(testExec.parseInState(buildFileName).replace('\\', '/'));
+			if (!buildFile.canRead()) {
+				throw new Exception("Build file not found/cannot read it. "+buildFileName);
+			}
+			if (!buildFile.isFile()) {				
+				throw new Exception("build file is not a normal file. "+buildFileName);
+			}
+						
+			File propertyFile = null;
+			if ((propertyFileName != null) && (!propertyFileName.equals(""))) {
+				propertyFile = new File(testExec.parseInState(propertyFileName).replace('\\', '/'));
+				if (!propertyFile.canRead()) {
+					throw new Exception("Property file not found/cannot read it. "+propertyFileName);
+				}
+				if (!propertyFile.isFile()) {
+					throw new Exception("property file is not a normal file. "+propertyFileName);
+				}
+				
+			}
+
+			File projectBaseDir = null;
+			if ((projectBaseDirName != null) && (!projectBaseDirName.equals(""))) {
+				projectBaseDir = new File(testExec.parseInState(projectBaseDirName).replace('\\', '/'));
+				if((!projectBaseDir.exists()) || (!projectBaseDir.isDirectory())) {
+					throw new Exception("The project base directory is not valid. "+projectBaseDirName);
+				}
+			}
+
+            // Let's also verify if TIBCO_JAVA_HOME exists since we use that to launch Ant
+            File javaHome = new File(testExec.parseInState(TIBCO_JAVA_HOME).replace('\\', '/'));
+            if (!javaHome.exists()) {
+                throw new Exception("Java home directory is not valid: " + TIBCO_JAVA_HOME);
+            }
+
+			response = "Pass: Input variables are valid.";
+
+		}catch(Exception e) {
+			response = "Fail: "+e.getLocalizedMessage();
+		}
+		return response;
+	}
+
+return checkInputVariables();</pre></td><td>Wed Aug 08 13:05:44 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>deployApp-verifyInputVariables</td><td><pre>Fail: Java home directory is not valid: /local/amx320-V61/tibcojre64/1.6.0</pre></td><td>Wed Aug 08 13:05:44 PDT 2012</td> </tr><tr bgcolor='#CC9933'><td>EVENT_ASSERT</td><td>deployApp-verifyInputVariables [Assert147] </td><td><pre>Input parameters incorrect
+Expression, Fail:.*
+was found in the result, Fail: Java home directory is not valid: /local/amx320-V61/tibcojre64/1.6.0</pre></td><td>Wed Aug 08 13:05:44 PDT 2012</td> </tr><tr bgcolor='#FFA500'><td>EVENT_TRANSFAILED</td><td>deployApp</td><td><pre>Sub test case had failure</pre></td><td>Wed Aug 08 13:05:44 PDT 2012</td> </tr><tr bgcolor='red'><td>EVENT_TESTFAILED</td><td></td><td></td><td>Wed Aug 08 13:05:44 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TESTEND</td><td></td><td></td><td>Wed Aug 08 13:05:44 PDT 2012</td> </tr></table></body></html>

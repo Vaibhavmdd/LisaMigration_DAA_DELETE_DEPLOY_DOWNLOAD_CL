@@ -1,0 +1,61 @@
+<project default="deploy.app">
+	<import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+	
+	<target name="deploy.app">
+		<upload.daa dataFile="${amxConfigFile}" createIfNotExists="true" force="true"/>
+		<add.all.svars dataFile="${amxConfigFile}" />
+		<set.all.svars dataFile="${amxConfigFile}" />
+		<setup.ri dataFile="${amxConfigFile}" timeout="${deployTimeout}" />
+		<create.app dataFile="${amxConfigFile}" createIfNotExists="true" force="true"/>
+		<!--
+		<map.app.to.node dataFile="${amxConfigFile}" />
+		-->
+		<map.component.to.node dataFile="${amxConfigFile}" />
+		<map.service.binding.to.node dataFile="${amxConfigFile}" />
+		<!--
+		<map.reference.binding.to.node dataFile="${amxConfigFile}" />
+		-->
+		<deploy.app dataFile="${amxConfigFile}" />
+	</target>
+	
+	<target name="undeploy.app">
+	  
+		<undeploy.app dataFile="${amxConfigFile}"  timeout="${deployTimeout}" />
+		
+		<delete.app dataFile="${amxConfigFile}"/>		
+		<remove.apptemplate dataFile="${amxConfigFile}"/>
+		<remove.feature dataFile="${amxConfigFile}" />
+		<remove.apptemplate dataFile="${amxConfigFile1}"/>
+		<remove.feature dataFile="${amxConfigFile1}" />
+		<cleanup.ri dataFile="${amxConfigFile}" />
+		<delete.all.svars dataFile="${amxConfigFile}" />
+		<!--
+		 <delete.log.appender objectSelector="LogAppender[@name='qaFileLogAppenderAppUpgrade']" dataFile="${amxConfigFile}" />
+		 -->
+	</target>
+	
+	<target name="upgrade.app">
+	   <disable.feature dataFile="${amxConfigFile1}" />
+	   <upload.daa dataFile="${amxConfigFile}" createIfNotExists="true" force="true"/>
+	   <upgrade.app appName="appupgrade522" dataFile="${amxConfigFile}" />
+		<!--
+		 <map.component.to.node dataFile="${amxConfigFile}" />
+		 -->
+		 <map.service.binding.to.node dataFile="${amxConfigFile}" />
+		 <enable.feature dataFile="${amxConfigFile}" createIfNotExists="true" force="true"/>		 	 
+		 <reprovision.Node dataFile="${amxConfigFile}" force="true" options="resolve"/> 		 
+		 <!--
+		 <sleep seconds="30"/>	
+		-->
+		 <deploy.app dataFile="${amxConfigFile}" options="refresh" />
+	</target>
+	
+	
+	<target name="conf.logging">
+		<create.log.appender dataFile="${amxConfigFile}" />
+		<set.logger.to.node dataFile="${amxConfigFile}" />
+		<deploy.action objector="Environment/Node" description="Apply Application Logging Configuration" dataFile="${amxConfigFile}" />
+	</target>
+	
+</project>
+

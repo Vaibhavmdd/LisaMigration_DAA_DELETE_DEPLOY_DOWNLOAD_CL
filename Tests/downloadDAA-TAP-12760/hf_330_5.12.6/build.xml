@@ -1,0 +1,314 @@
+<project default="test">
+	<import file="G:/AMX330GA_HF4_HF5_V89/administrator/3.3/scripts/basic_cli.xml"/>
+
+	<target name="test" depends="upload.daa,create.ri, install.ri,create.app, map.app.to.node, deploy.app "/>
+<!--create.rt, create.ri, install.ri, create.app, map.app.to.node,-->
+
+<!--upgrade.app, disable.features , enable.features , provision.features,-->
+<!--, start.app-->
+	<target name="upload.daa">
+	
+			<AMXAdminTask
+	
+				remote="true"
+	
+				propsFile="G:/amxtak/tests/func/HF-6/1.1/remote_props.properties"
+	
+				action="add"
+	
+				dataFile="G:/amxtak/tests/func/HF-6/1.1/cli_data.xml"
+	
+				objectSelector="DAA"
+	
+				overwrite="true"
+	
+				merge="true"
+	
+				createIfNotExists="true"
+	
+				force="true"
+	
+				failOnError="true"/>		
+	
+		</target>
+		
+	<target name="upgrade.app" description="Upgrade Existing Application">
+		<AMXAdminTask remote="true" propsFile="G:/amxtak/tests/func/HF-6/1.1/remote_props.properties" 
+			action="upgrade" dataFile="G:/amxtak/tests/func/HF-6/1.1/cli_data.xml" 
+			objectSelector="Environment//Application" 
+			overwrite="false" merge="true" 
+			createIfNotExists="true" force="false" failOnError="true" options="skipWsdlValidation"/>
+	</target>
+
+	
+	<!-- removes feature(s) from the specified node -->
+	<target name="disable.features" description="Removes features from the specified node">
+	     <AMXAdminTask remote="true" propsFile="G:/amxtak/tests/func/HF-6/1.1/remote_props.properties"
+			action="delete" objectSelector="Environment//Node//Feature[@version='1.0.0.v2013-02-07-1036']"			
+			dataFile="G:/amxtak/tests/func/HF-6/1.1/cli_data.xml" overwrite="false"
+			merge="true" createIfNotExists="true" force="false"
+			failOnError="false"/>
+	  </target>
+
+	<!-- Add specific feature version to the node -->
+	<target name="enable.features" description="Add features to a specific node">
+	    <AMXAdminTask remote="true" propsFile="G:/amxtak/tests/func/HF-6/1.1/remote_props.properties"
+		  action="add" objectSelector="Environment//Node//Feature[@version='1.0.0.v2014-06-27-1649']"			
+		  dataFile="G:/amxtak/tests/func/HF-6/1.1/cli_data.xml" overwrite="false"	
+		  merge="true" createIfNotExists="true" force="false" failOnError="false"/>
+	</target>
+
+	<!-- Applies feature changes (add/remove) to specific node -->
+	<target name="provision.features" description="Add feature changes (add/remove) to a specific node">
+		  <AMXAdminTask remote="true" propsFile="G:/amxtak/tests/func/HF-6/1.1/remote_props.properties"
+			action="reprovision" objectSelector="Environment//Node"			
+			dataFile="G:/amxtak/tests/func/HF-6/1.1/cli_data.xml" overwrite="false"
+			merge="true" createIfNotExists="true"
+			force="false" failOnError="false" options="resolve"/>
+		</target>
+
+
+	
+	
+	
+		<target name="create.app">
+	
+			<AMXAdminTask
+	
+				remote="true"
+	
+				propsFile="G:/amxtak/tests/func/HF-6/1.1/remote_props.properties"
+	
+				action="add"
+	
+				dataFile="G:/amxtak/tests/func/HF-6/1.1/cli_data.xml"
+	
+				objectSelector="Environment//Application"
+	
+				overwrite="true"
+	
+				merge="true"
+	
+				createIfNotExists="true"
+	
+				force="true"
+	
+				failOnError="true"/>
+	
+	</target>
+	<target name="map.app.to.node">
+	
+			<AMXAdminTask
+	
+				remote="true"
+	
+				propsFile="G:/amxtak/tests/func/HF-6/1.1/remote_props.properties"
+	
+				action="set"
+	
+				dataFile="G:/amxtak/tests/func/HF-6/1.1/cli_data.xml"
+	
+				objectSelector="Environment//Application/Node"
+	
+				overwrite="true"
+	
+				merge="true"
+	
+				createIfNotExists="true"
+	
+				force="true"
+	
+				failOnError="true"/>
+	
+		</target>
+	
+	
+	
+		<target name="deploy.app">
+	
+			<AMXAdminTask
+	
+				remote="true"
+	
+				propsFile="G:/amxtak/tests/func/HF-6/1.1/remote_props.properties"
+	
+				action="deploy"
+	
+				dataFile="G:/amxtak/tests/func/HF-6/1.1/cli_data.xml"
+	
+				objectSelector="Environment//Application"
+	
+				overwrite="true"
+	
+				merge="true"
+	
+				createIfNotExists="true"
+	
+				force="true"
+	
+				failOnError="true"/>
+	
+	</target>
+	
+	<target name="add.ref.binding">
+			<AMXAdminTask
+				action="add"
+				objectSelector="Environment//Application/PromotedReference/Binding"
+				dataFile="G:/amxtak/tests/func/HF-6/1.1/cli_data.xml"
+				remote="true"
+				propsFile="G:/amxtak/tests/func/HF-6/1.1/remote_props.properties"
+				overwrite="true"
+				
+				merge="true"
+				createIfNotExists="true"
+				failOnError="true"/>
+	</target>
+	
+	<target name="create.rt">
+		<AMXAdminTask
+			remote="true"
+			propsFile="G:/amxtak/tests/func/HF-6/1.1/remote_props.properties"
+			action="add"
+			dataFile="G:/amxtak/tests/func/HF-6/1.1/cli_data.xml"
+			objectSelector="ResourceTemplate"
+			overwrite="true"
+			
+			merge="true"
+			createIfNotExists="true"
+			force="true"
+			failOnError="true"/>
+	</target>
+	<target name="create.ri">
+		<AMXAdminTask
+			remote="true"
+			propsFile="G:/amxtak/tests/func/HF-6/1.1/remote_props.properties"
+			action="add"
+			dataFile="G:/amxtak/tests/func/HF-6/1.1/cli_data.xml"
+			objectSelector="Host/ResourceInstance | Environment/Node/ResourceInstance"
+			overwrite="true"
+			
+			merge="true"
+			createIfNotExists="true"
+			force="true"
+			failOnError="false"/>
+	</target>
+
+	<target name="install.ri">
+		<AMXAdminTask
+			remote="true"
+			propsFile="G:/amxtak/tests/func/HF-6/1.1/remote_props.properties"
+			action="install"
+			dataFile="G:/amxtak/tests/func/HF-6/1.1/cli_data.xml"
+			objectSelector="Host/ResourceInstance | Environment/Node/ResourceInstance"
+			overwrite="true"
+			options="handle-dependencies"
+			merge="true"
+			createIfNotExists="true"
+			force="true"
+			failOnError="false"/>
+	</target>
+	
+	
+	<target name="download-daa">
+        <AMXAdminTask 
+            action="download" 
+            objectSelector="AppTemplate" 
+            remote="true" 
+            propsFile="G:/amxtak/tests/func/HF-6/1.1/remote_props.properties"
+            dataFile="G:/amxtak/tests/func/HF-6/1.1/cli_data.xml" 
+            overwrite="true" failOnError="false" /> 
+    </target>
+	
+	
+    <target name="delete.rt">
+        <AMXAdminTask
+            remote="true"
+            propsFile="G:/amxtak/tests/func/HF-6/1.1/remote_props.properties"
+            action="delete"
+            dataFile="G:/amxtak/tests/func/HF-6/1.1/cli_data.xml"
+            objectSelector="ResourceTemplate"
+            overwrite="true"
+            merge="true"
+            createIfNotExists="true"
+            force="true"
+            failOnError="false"/>
+    </target>
+	<target name="delete.ri">
+		<AMXAdminTask
+			remote="true"
+			propsFile="G:/amxtak/tests/func/HF-6/1.1/remote_props.properties"
+			action="delete"
+			dataFile="G:/amxtak/tests/func/HF-6/1.1/cli_data.xml"
+			objectSelector="Host/ResourceInstance | Environment/Node/ResourceInstance"
+			overwrite="true"
+			merge="true"
+			createIfNotExists="true"
+			force="true"
+			failOnError="false"/>
+	</target>
+
+	<target name="uninstall.ri">
+		<AMXAdminTask
+			remote="true"
+			propsFile="G:/amxtak/tests/func/HF-6/1.1/remote_props.properties"
+			action="uninstall"
+			dataFile="G:/amxtak/tests/func/HF-6/1.1/cli_data.xml"
+			objectSelector="Host/ResourceInstance | Environment/Node/ResourceInstance"
+			overwrite="true"
+			merge="true"
+			createIfNotExists="true"
+			force="true"
+			failOnError="false"/>
+	</target>
+
+	
+	<target name="start.app" description="Starting Application">
+		<AMXAdminTask remote="true" propsFile="G:/amxtak/tests/func/HF-6/1.1/remote_props.properties"
+			action="start" dataFile="G:/amxtak/tests/func/HF-6/1.1/cli_data.xml" 
+			objectSelector="Environment//Application" 
+			overwrite="false" merge="true" 
+			createIfNotExists="true" force="false" failOnError="true" />
+	</target>
+
+	<target name="all" depends="add-daa"/>
+ 	<target name="add-daa">
+  		<AMXAdminTask 
+			action="add" 
+			objectSelector="DAA" 
+			remote="true" 
+			propsFile="G:/amxtak/tests/func/HF-6/1.1/remote_props.properties" 
+			dataFile="G:/amxtak/tests/func/HF-6/1.1/cli_data.xml" 
+			overwrite="true" merge="true" createIfNotExists="true" force="false" failOnError="true" /> 
+  	</target>
+	
+	<target name="delete-daa">
+                 <AMXAdminTask 
+                       action="delete" 
+                       objectSelector="DAA" 
+                       remote="true" 
+                       propsFile="G:/amxtak/tests/func/HF-6/1.1/remote_props.properties" 
+                       dataFile="G:/amxtak/tests/func/HF-6/1.1/cli_data.xml" 
+                       overwrite="true" merge="true" createIfNotExists="true" force="false" failOnError="true" /> 
+         </target>
+	
+	<target name="remove.feature">
+        <AMXAdminTask 
+            remote="true" 
+            propsFile="G:/amxtak/tests/func/HF-6/1.1/remote_props.properties" 
+            dataFile="G:/amxtak/tests/func/HF-6/1.1/cli_data.xml" 
+            action="delete" 
+            objectSelector="Feature" overwrite="true" merge="true"
+            createIfNotExists="true" force="false" failOnError="true" />
+    </target>
+	
+	 <target name="remove.apptemplate">
+        <AMXAdminTask 
+            remote="true" 
+            propsFile="G:/amxtak/tests/func/HF-6/1.1/remote_props.properties" 
+            dataFile="G:/amxtak/tests/func/HF-6/1.1/cli_data.xml" 
+            action="delete"
+            objectSelector="AppTemplate" overwrite="true" merge="true"
+            createIfNotExists="true" force="true" failOnError="true" />
+    </target>
+       
+</project>

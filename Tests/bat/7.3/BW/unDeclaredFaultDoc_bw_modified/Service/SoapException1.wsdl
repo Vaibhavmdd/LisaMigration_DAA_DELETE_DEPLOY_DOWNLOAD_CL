@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:tns="http://www.example.org/SoapException1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="NewWSDLFile" targetNamespace="http://www.example.org/SoapException1">
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/SoapException1">
+            <xsd:element name="SoapException1Request" type="tns:SoapException1RequestType"/>
+            <xsd:element name="SoapException1Response" type="xsd:string"/>
+            <xsd:element name="SoapException1Fault1" type="tns:FaultDetail"/>
+            <xsd:element name="SoapException1Fault2" type="xsd:string"/>
+            <xsd:element name="SoapException1Fault3">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element ref="tns:FaultReason"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:complexType name="SoapException1RequestType">
+                <xsd:sequence>
+                    <xsd:element name="InputString" type="xsd:string"/>
+                    <xsd:element name="POJO1" type="tns:POJO1Values"/>
+                    <xsd:element name="POJO2" type="tns:POJO2Values"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="POJO1Values">
+                <xsd:complexContent>
+                    <xsd:extension base="tns:SoapExceptionDetails"/>
+                </xsd:complexContent>
+            </xsd:complexType>
+            <xsd:complexType name="POJO2Values">
+                <xsd:complexContent>
+                    <xsd:extension base="tns:SoapExceptionDetails"/>
+                </xsd:complexContent>
+            </xsd:complexType>
+            <xsd:complexType name="SoapExceptionDetails">
+                <xsd:sequence>
+                    <xsd:element name="faultCode" type="xsd:string"/>
+                    <xsd:element name="faultString" type="xsd:string"/>
+                    <xsd:element name="faultNode" type="xsd:string"/>
+                    <xsd:element name="faultRoleOrActor" type="xsd:string"/>
+                    <xsd:element name="detail" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="FaultDetail">
+                <xsd:sequence>
+                    <xsd:element name="faultDetailReason" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="FaultReason" type="xsd:string"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="SoapException1Request">
+        <wsdl:part element="tns:SoapException1Request" name="SoapException1RequestDetails"/>
+    </wsdl:message>
+    <wsdl:message name="SoapException1Response">
+        <wsdl:part element="tns:SoapException1Response" name="SoapException1ResponseDetails"/>
+    </wsdl:message>
+    <wsdl:message name="SoapException1Fault1">
+        <wsdl:part element="tns:SoapException1Fault1" name="SoapException1FaultCompType"/>
+    </wsdl:message>
+    <wsdl:message name="SoapException1Fault2">
+        <wsdl:part element="tns:SoapException1Fault2" name="SoapException1FaultPrimString"/>
+    </wsdl:message>
+    <wsdl:message name="SoapException1Fault3">
+        <wsdl:part element="tns:SoapException1Fault3" name="SoapException1FaultCompTypeRef"/>
+    </wsdl:message>
+    <wsdl:portType name="SoapException1PT">
+        <wsdl:operation name="submitSoapException1">
+            <wsdl:input message="tns:SoapException1Request"/>
+            <wsdl:output message="tns:SoapException1Response"/>
+            <wsdl:fault message="tns:SoapException1Fault1" name="SoapException1Fault1"/>
+            <wsdl:fault message="tns:SoapException1Fault2" name="SoapException1Fault2"/>
+            <wsdl:fault message="tns:SoapException1Fault3" name="SoapException1Fault3"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

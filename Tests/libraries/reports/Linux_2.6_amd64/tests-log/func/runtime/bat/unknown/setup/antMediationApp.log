@@ -1,0 +1,86 @@
+     [echo] Script base is: "/opt/tibco/amx3x/administrator/3.3/scripts/basic_cli.xml"
+
+deploy-mediation:
+     [echo] 
+     [echo] 
+     [echo] Create an Application using:
+     [echo] envName: 
+     [echo] appName: 
+     [echo] dataFile: /groupfiler/tests/tests/amsg/3.0/reports/Linux_2.6_amd64/tests-log/func/runtime/bat/unknown/amxdata_2node_hsql.xml
+     [echo] remotePropsFile: /groupfiler/tests/tests/amsg/3.0/reports/Linux_2.6_amd64/tests-log/func/runtime/bat/unknown/admin.properties
+     [echo] objectSelector: Environment[2]/Application[@name='com.tibco.amx.it.mediation.app']
+     [echo] action: add
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] Invoking Admin task using the objectselector: Environment[2]/Application[@name='com.tibco.amx.it.mediation.app']
+[AMXAdminTask] 05-14@14:27:45  INFO - Processing 1 objects
+[AMXAdminTask] 05-14@14:27:47  INFO - Adding application...
+[AMXAdminTask] 05-14@14:27:47  INFO - Successfully added Application 'com.tibco.amx.it.mediation.app': Successfully created application 'com.tibco.amx.it.mediation.app' from Application Template 'com.tibco.amx.it.mediation.apt' (version: 3.4.0.007)
+[AMXAdminTask] 05-14@14:27:47  INFO - 	TIBCO-AMX-ADMIN-012438: Application Property 'VALIDATE_MESSAGE_DATA' added.
+[AMXAdminTask] 05-14@14:27:47  INFO - 	TIBCO-AMX-ADMIN-012406: Component 'implementation.mediation' (version: 3.4.0) added.
+[AMXAdminTask] 05-14@14:27:47  INFO - 	TIBCO-AMX-ADMIN-012406: Component 'extension.cmt' (version: 3.4.0) added.
+[AMXAdminTask] 05-14@14:27:47  INFO - 	TIBCO-AMX-ADMIN-012406: Component 'extension.cxf' (version: 1.1.0) added.
+[AMXAdminTask] 05-14@14:27:47  INFO - 	TIBCO-AMX-ADMIN-012406: Component 'TibcoXPathFunctions' (version: 1.1.0.qualifier) added.
+[AMXAdminTask] 05-14@14:27:47  INFO - Action finished at 5/14/13 2:27 PM in 0.831 seconds
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Mapping Application to specified nodes using:
+     [echo] envName: 
+     [echo] appName: 
+     [echo] nodeName: 
+     [echo] dataFile: /groupfiler/tests/tests/amsg/3.0/reports/Linux_2.6_amd64/tests-log/func/runtime/bat/unknown/amxdata_2node_hsql.xml
+     [echo] remotePropsFile: /groupfiler/tests/tests/amsg/3.0/reports/Linux_2.6_amd64/tests-log/func/runtime/bat/unknown/admin.properties
+     [echo] objectSelector: Environment[2]/Application[@name='com.tibco.amx.it.mediation.app']/Node
+     [echo] action: set
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] Invoking Admin task using the objectselector: Environment[2]/Application[@name='com.tibco.amx.it.mediation.app']/Node
+[AMXAdminTask] 05-14@14:27:48  INFO - Processing 2 objects
+[AMXAdminTask] 05-14@14:27:48  INFO - Mapping application to nodes...  
+[AMXAdminTask] 05-14@14:27:48  INFO - Successfully mapped application 'com.tibco.amx.it.mediation.app' to node 'QANode1'
+[AMXAdminTask] 05-14@14:27:48  INFO - Successfully mapped application 'com.tibco.amx.it.mediation.app' to node 'QANode2'
+[AMXAdminTask] 05-14@14:27:48  INFO - Action finished at 5/14/13 2:27 PM in 0.386 seconds
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] 
+     [echo] Deploy an application using:
+     [echo] envName: 
+     [echo] appName: 
+     [echo] dataFile: /groupfiler/tests/tests/amsg/3.0/reports/Linux_2.6_amd64/tests-log/func/runtime/bat/unknown/amxdata_2node_hsql.xml
+     [echo] remotePropsFile: /groupfiler/tests/tests/amsg/3.0/reports/Linux_2.6_amd64/tests-log/func/runtime/bat/unknown/admin.properties
+     [echo] objectSelector: Environment[2]/Application[@name='com.tibco.amx.it.mediation.app']
+     [echo] action: deploy
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+     [echo] options: 
+     [echo] startAfterDeploy: true
+     [echo] timeout: 600
+     [echo] Invoking Admin task using the objectselector: Environment[2]/Application[@name='com.tibco.amx.it.mediation.app']
+[AMXAdminTask] 05-14@14:27:48  INFO - Processing 1 objects
+[AMXAdminTask] 05-14@14:27:48  INFO - Deploying application...
+[AMXAdminTask] 05-14@14:27:50  INFO - Deploying Application 'com.tibco.amx.it.mediation.app' in background : TIBCO-AMX-ADMIN-012015: Deployment succeeded for application 'com.tibco.amx.it.mediation.app' at 5/14/13 2:27 PM on node(s): 'QANode1, QANode2'.
+[AMXAdminTask] 05-14@14:27:50  INFO - 	TIBCO-AMX-ADMIN-012146: Feature 'com.tibco.amx.it.mediation.product.feature.3.5.0.000' was auto-enabled in node 'QANode2'
+[AMXAdminTask] 05-14@14:27:50  INFO - 	TIBCO-AMX-ADMIN-012146: Feature 'com.tibco.amx.it.mediation.product.feature.3.5.0.000' was auto-enabled in node 'QANode1'
+[AMXAdminTask] 05-14@14:27:50  INFO - Action finished in Admin at 5/14/13 2:27 PM in 1.385 seconds. Waiting for runtime tasks to be finished.
+[AMXAdminTask] 05-14@14:27:51  INFO - .
+[AMXAdminTask] 05-14@14:27:55  INFO - .
+[AMXAdminTask] 05-14@14:28:00  INFO - .
+[AMXAdminTask] 05-14@14:28:04  INFO - Application Deploy with Start finished successfully
+[AMXAdminTask] 05-14@14:28:04  INFO - Action finished at 5/14/13 2:28 PM in 15.865 seconds
+     [echo] 
+     [echo] 
+
+BUILD SUCCESSFUL
+Total time: 24 seconds

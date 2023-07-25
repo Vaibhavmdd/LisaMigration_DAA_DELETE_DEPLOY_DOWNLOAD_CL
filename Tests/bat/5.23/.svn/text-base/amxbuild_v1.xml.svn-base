@@ -1,0 +1,34 @@
+<project default="deploy.app">
+	<import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+	
+	<target name="deploy.app">
+		<upload.daa dataFile="${amxConfigFile}" createIfNotExists="true" force="true"/>
+		<add.all.svars dataFile="${amxConfigFile}" />
+		<set.all.svars dataFile="${amxConfigFile}" />
+		<setup.ri dataFile="${amxConfigFile}" timeout="${deployTimeout}" />
+		<create.app dataFile="${amxConfigFile}" createIfNotExists="true" force="true"/>
+		<map.app.to.node dataFile="${amxConfigFile}" />
+	
+		<deploy.app dataFile="${amxConfigFile}" />
+	</target>
+	
+	<target name="undeploy.app">
+			<undeploy.app dataFile="${amxConfigFile}"  timeout="${deployTimeout}" />
+		<delete.app dataFile="${amxConfigFile}"/>
+		<remove.apptemplate dataFile="${amxConfigFile}" />
+		<remove.feature dataFile="${amxConfigFile}" />
+		<cleanup.ri dataFile="${amxConfigFile}" />
+		<delete.all.svars dataFile="${amxConfigFile}" />
+		<!--
+		 <delete.log.appender objectSelector="LogAppender[@name='qaFileLogAppenderAppUpgrade']" dataFile="${amxConfigFile}" />
+		 -->
+	</target>
+
+  <target name="conf.logging">
+		<create.log.appender dataFile="${amxConfigFile}" />
+		<set.logger.to.node dataFile="${amxConfigFile}" />
+		<deploy.action objector="Environment/Node" description="Apply Application Logging Configuration" dataFile="${amxConfigFile}" />
+	</target>
+
+</project>
+

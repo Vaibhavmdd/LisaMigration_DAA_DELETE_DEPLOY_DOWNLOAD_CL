@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns="www.tibco.com/plugin/Sleep" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:pfx="http://www.example.org/SoapException1">
+    <wsdl:import namespace="http://www.example.org/SoapException1" location="/Service/SoapException1.wsdl"/>
+    <pd:name>Service/Service_unDeclaredFaultDoc.process</pd:name>
+    <pd:startName>SOAPEventSource</pd:startName>
+    <pd:startX>0</pd:startX>
+    <pd:startY>0</pd:startY>
+    <pd:returnBindings/>
+    <pd:starter name="SOAPEventSource">
+        <pd:type>com.tibco.plugin.soap.SOAPEventSource</pd:type>
+        <pd:resourceType>ae.activities.SOAPEventSourceUI</pd:resourceType>
+        <pd:x>142</pd:x>
+        <pd:y>116</pd:y>
+        <config>
+            <service>pfx:SoapException1PT</service>
+            <wsdlNamespaceRoot>http://www.example.org/SoapException1/submitSoapException1Impl</wsdlNamespaceRoot>
+            <operation>submitSoapException1</operation>
+            <portAddressPrefix/>
+            <operationStyle>document</operationStyle>
+            <soapUse>literal</soapUse>
+            <embedWsdlComponents>true</embedWsdlComponents>
+            <embedSchemaComponents>true</embedSchemaComponents>
+            <soapAction>/Service/Service_unDeclaredFaultDoc</soapAction>
+            <sharedChannel>/SharedResources/HTTP_7008.sharedhttp</sharedChannel>
+            <soapAttachmentStyle>SwA</soapAttachmentStyle>
+        </config>
+        <pd:inputBindings/>
+    </pd:starter>
+    <pd:endName>End</pd:endName>
+    <pd:endX>564</pd:endX>
+    <pd:endY>119</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1292357379845</pd:targetNamespace>
+    <pd:activity name="SOAPSendReply">
+        <pd:type>com.tibco.plugin.soap.SOAPSendReplyActivity</pd:type>
+        <pd:resourceType>ae.activities.SOAPSendReplyUI</pd:resourceType>
+        <pd:x>343</pd:x>
+        <pd:y>86</pd:y>
+        <config>
+            <eventSource>SOAPEventSource</eventSource>
+        </config>
+        <pd:inputBindings>
+            <outputMessage>
+                <pfx:SoapException1Response>
+                    <xsl:value-of select="concat(&quot;Response from BW for inputString = &quot;, $SOAPEventSource/inputMessage/pfx:SoapException1Request/InputString)"/>
+                </pfx:SoapException1Response>
+            </outputMessage>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="SOAPSendFault">
+        <pd:type>com.tibco.plugin.soap.SOAPSendFaultActivity</pd:type>
+        <pd:resourceType>ae.activities.SOAPSendFaultUI</pd:resourceType>
+        <pd:x>366</pd:x>
+        <pd:y>223</pd:y>
+        <config>
+            <faultMessage>&lt;Default&gt;</faultMessage>
+            <eventSource>SOAPEventSource</eventSource>
+        </config>
+        <pd:inputBindings>
+            <defaultFaultElement>
+                <faultcode>
+                    <xsl:value-of select="$SOAPEventSource/inputMessage/pfx:SoapException1Request/POJO2/faultCode"/>
+                </faultcode>
+                <faultstring>
+                    <xsl:value-of select="$SOAPEventSource/inputMessage/pfx:SoapException1Request/POJO2/faultString"/>
+                </faultstring>
+                <faultactor>
+                    <xsl:value-of select="$SOAPEventSource/inputMessage/pfx:SoapException1Request/POJO2/faultRoleOrActor"/>
+                </faultactor>
+            </defaultFaultElement>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Sleep">
+        <pd:type>com.tibco.plugin.timer.SleepActivity</pd:type>
+        <pd:resourceType>ae.activities.sleep</pd:resourceType>
+        <pd:x>366</pd:x>
+        <pd:y>311</pd:y>
+        <config/>
+        <pd:inputBindings>
+            <ns:SleepInputSchema>
+                <IntervalInMillisec>
+                    <xsl:value-of select="15000"/>
+                </IntervalInMillisec>
+            </ns:SleepInputSchema>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>SOAPEventSource</pd:from>
+        <pd:to>SOAPSendReply</pd:to>
+        <pd:xpathDescription>Success</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>($SOAPEventSource/inputMessage/pfx:SoapException1Request/InputString !="BW_unDeclaredFault") and $SOAPEventSource/inputMessage/pfx:SoapException1Request/InputString !="BW_unDeclaredFault_Timeout"</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>SOAPSendReply</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>SOAPEventSource</pd:from>
+        <pd:to>SOAPSendFault</pd:to>
+        <pd:xpathDescription>BW_unDeclaredFault</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$SOAPEventSource/inputMessage/pfx:SoapException1Request/InputString = "BW_unDeclaredFault"</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>SOAPSendFault</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>SOAPEventSource</pd:from>
+        <pd:to>Sleep</pd:to>
+        <pd:xpathDescription> BW_unDeclaredFault_Timeout</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>$SOAPEventSource/inputMessage/pfx:SoapException1Request/InputString="BW_unDeclaredFault_Timeout"</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Sleep</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>

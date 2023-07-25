@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise 
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types" 
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base" 
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference" 
+	xmlns:amxdata_jmsssr="http://tibco.com/amxadministrator/command/line/types_jmssr" 
+	xmlns:amxdata_jmssr_base="http://tibco.com/amxadministrator/command/line/types_jmssr_base"
+	xmlns:amxdata_binding_jms="http://tibco.com/amxadministrator/command/line/types_binding_jms"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd
+	http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd 
+	http://tibco.com/amxadministrator/command/line/types_reference ../schemas/amxdata_reference.xsd 
+	http://tibco.com/amxadministrator/command/line/types_jmssr ../schemas/jmssr.xsd 
+	http://tibco.com/amxadministrator/command/line/types_jmssr_base ../schemas/jmssr_base.xsd">
+	
+	
+	
+	
+	<Environment xsi:type="amxdata:Environment" name="QAEnvironment_na2devasgora03"
+		description="QA Environment" contact="TIBCO">
+
+			<Node xsi:type="amxdata:Node" name="QANode1">
+	
+				
+			  <ResourceInstance xsi:type="amxdata:ResourceInstance" name="httpConnector" resourceTemplateName="httpConnector" /> 
+									
+			</Node>
+			
+			
+		                              <Application xsi:type="amxdata:Application" name="spring.helloworld.soa"
+						contact="TIBCO Inc." description="spring.helloworld.soa" importBindings="true" importResourceTemplates="true">
+						<Component xsi:type="amxdata:Component" name="SpringHelloWorldComponent">
+						                        	     <Node name="QANode2" environmentName="QAEnvironment_na2devasgora03"/>
+						
+						                        	     
+						                        	     
+                    	                        </Component>
+						
+						<Node name="QANode1" environmentName="QAEnvironment_na2devasgora03" />
+						<PromotedService xsi:type="amxdata_base:Service_base" name="HelloWorldPT">
+												<Binding xsi:type="amxdata:Binding" name="HelloWorldSOAP">
+													<Node name="QANode1" environmentName="QAEnvironment_na2devasgora03"/>
+												
+												
+												<Property  
+													xsi:type="amxdata:Property" 
+													name="HttpInboundConnectionConfig"  
+							    					     value="httpConnector"/>
+							    					</Binding>
+	                                      </PromotedService>
+	                                      
+	                            
+						
+						<ApplicationTemplate
+							xsi:type="amxdata_reference:ApplicationTemplate_reference" name="spring.helloworld.soa" />
+							
+							
+				</Application>
+			                     
+			
+		
+	</Environment>
+	
+	
+		
+	                
+	                <ResourceTemplate
+			        xsi:type="amxdata:HttpConnectorResourceTemplate"
+			        name="httpConnector"
+			        host="localhost"
+			        port="9880"
+			        description="This is HttpConnector RT">
+			        
+                         </ResourceTemplate>
+						 
+
+	        
+	 	      <DAA xsi:type="amxdata:DAA" description="helloworld application"
+						location="C:/Lisa1072/Projects/AMX/Tests/deleteDAA-TAP-13024/hf_330_5.11.7/spring.helloworld.soa/Deployment Artifacts/spring.helloworld.soa.daa" importResourceTemplates="false" /> 
+						 
+		
+	
+			<Feature xsi:type="amxdata_base:FeatureID" componentID="spring.helloworld.soa.spring.helloworld.soa.customfeature.id" version="1.0.0.v2013-03-22-1137"/>
+	
+	 	   <AppTemplate xsi:type="amxdata_base:AppTemplateID" name="spring.helloworld.soa" version="1.0.0.v2013-03-22-1137" downloadLocation="C:/temp2"/>
+		
+		
+	</amxdata_base:Enterprise>

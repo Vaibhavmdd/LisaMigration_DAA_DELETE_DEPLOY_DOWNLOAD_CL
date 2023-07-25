@@ -1,0 +1,24 @@
+<project name="appupgrade" default="deploy.app">
+	<import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+	
+	<target name="deploy.app">
+		<upload.daa dataFile="${amxConfigFile}" />
+		<add.node.svars dataFile="${amxConfigFile}" />
+		<create.app dataFile="${amxConfigFile}" appName="bat5.8.it" />
+		<map.component.to.node dataFile="${amxConfigFile}" appName="bat5.8.it" />
+		<deploy.app dataFile="${amxConfigFile}" appName="bat5.8.it" timeout="${timeout}" />
+		<create.app dataFile="${amxConfigFile}" appName="bat5.8.user" />
+		<set.service.binding.property dataFile="${amxConfigFile}" appName="bat5.8.user" />
+		<deploy.app dataFile="${amxConfigFile}" appName="bat5.8.user" timeout="${timeout}" />
+	</target>
+	
+	<target name="prepare.undeploy">
+		<undeploy.app force='false' dataFile="${amxConfigFile}" appName="bat5.8.user" timeout="${timeout}" />
+	</target>
+
+	<target name="cleanup">
+		<undeploy.app dataFile="${amxConfigFile}" appName="bat5.8.user" timeout="${timeout}" />
+		<undeploy.app dataFile="${amxConfigFile}" appName="bat5.8.it" timeout="${timeout}" />
+		<delete.node.svars dataFile="${amxConfigFile}" />
+	</target>
+</project>

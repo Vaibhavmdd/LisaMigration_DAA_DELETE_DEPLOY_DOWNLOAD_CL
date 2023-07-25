@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created by TIBCO WSDL-->
+<wsdl:definitions xmlns:tns="http://tibco.com/matrix/qa/wsdl/addressservice" xmlns:ns0="http://tibco.com/matrix/qa/xsd/address" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://tibco.com/matrix/qa/wsdl/addressservice" >
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://tibco.com/matrix/qa/xsd/address" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://tibco.com/matrix/qa/xsd/address">
+            <xsd:simpleType name="Address">
+            	<xsd:restriction base="xsd:string">
+            		<xsd:minLength value="1"></xsd:minLength>
+            		<xsd:maxLength value="500"></xsd:maxLength>
+            	</xsd:restriction>
+            </xsd:simpleType>
+             <xsd:element name="addressInfo">
+                <xsd:complexType>
+                    <xsd:sequence>
+                    	<xsd:element name="City" type="xsd:string"/>
+                    	<xsd:element name="State" type="xsd:string"/>
+                    	<xsd:element name="Zip" type="xsd:int"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:portType name="AddressPort">
+        <wsdl:operation name="GetAddress">
+            <wsdl:input message="tns:GetAddress"/>
+            <wsdl:output message="tns:ReturnAddress"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:message name="GetAddress">
+        <wsdl:part name="request" element="ns0:addressInfo" />
+    </wsdl:message>
+    <wsdl:message name="ReturnAddress">
+        <wsdl:part name="response" type="ns0:Address"/>
+    </wsdl:message>
+</wsdl:definitions>

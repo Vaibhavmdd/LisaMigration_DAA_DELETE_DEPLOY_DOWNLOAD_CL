@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise 
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types" 
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base" 
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference" 
+	xmlns:amxdata_jmsssr="http://tibco.com/amxadministrator/command/line/types_jmssr" 
+	xmlns:amxdata_jmssr_base="http://tibco.com/amxadministrator/command/line/types_jmssr_base"
+	xmlns:amxdata_binding_jms="http://tibco.com/amxadministrator/command/line/types_binding_jms"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd
+	http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd 
+	http://tibco.com/amxadministrator/command/line/types_reference ../schemas/amxdata_reference.xsd 
+	http://tibco.com/amxadministrator/command/line/types_jmssr ../schemas/jmssr.xsd 
+	http://tibco.com/amxadministrator/command/line/types_jmssr_base ../schemas/jmssr_base.xsd">
+	
+	
+	
+	
+	<Environment xsi:type="amxdata:Environment" name="[[env.name]]" description="QA environment" contact="TIBCO">
+		<Node xsi:type="amxdata:Node" name="[[env.node2.name]]">
+			<ResourceInstance
+					xsi:type="amxdata:ResourceInstance"
+					name="httpConnector1BAT91"
+					resourceTemplateName="httpConnector1BAT91"
+					/>
+					
+			<ResourceInstance
+					xsi:type="amxdata:ResourceInstance"
+					name="httpConnector2BAT91"
+					resourceTemplateName="httpConnector2BAT91"
+					/>
+					
+			<ResourceInstance
+					xsi:type="amxdata:ResourceInstance"
+					name="httpClient1BAT91"
+					resourceTemplateName="httpClient1BAT91"
+					/>
+			
+		</Node>
+			 
+			 
+		<Application xsi:type="amxdata:Application" name="BAT91"
+					contact="Rashmi Singh" 
+					description="BAT91 application">
+
+			<Component xsi:type="amxdata:Component" name="Java2">
+				<Node name="[[env.node2.name]]" environmentName="[[env.name]]"/>
+			</Component>
+			
+			<Component xsi:type="amxdata:Component" name="Java1">
+				<Node name="[[env.node2.name]]" environmentName="[[env.name]]"/>
+			</Component>
+
+			<PromotedService xsi:type="amxdata_base:Service_base" name="GreetWsdl1">
+				<Binding xsi:type="amxdata:Binding" name="RESTService_Binding1" >
+					<Node name="[[env.node2.name]]" environmentName="[[env.name]]" />
+					<Property  xsi:type="amxdata:Property" name="HttpInboundConnectionConfig"  value="http_2"/>
+				</Binding>
+			</PromotedService>	
+			
+			<PromotedService xsi:type="amxdata_base:Service_base" name="GreetWsdl_RJR">
+				<Binding xsi:type="amxdata:Binding" name="RESTService_Binding1" >
+					 <Node name="[[env.node2.name]]" environmentName="[[env.name]]" />
+					 <Property  xsi:type="amxdata:Property" name="HttpInboundConnectionConfig"  value="http_1"/>
+				</Binding>
+			</PromotedService>
+			
+			<PromotedReference xsi:type="amxdata_base:Reference_base" name="PATH_QUERY_RrcResource1">
+				<Binding xsi:type="amxdata:Binding" name="RESTReference_Binding1">
+					<Node name="[[env.node2.name]]" environmentName="[[env.name]]" />
+					<Property  xsi:type="amxdata:Property" name="HttpOutboundConnectionConfig"  value="http_client_1"/>	
+				</Binding>
+			</PromotedReference>
+			
+					
+	       <ApplicationTemplate
+			xsi:type="amxdata_reference:ApplicationTemplate_reference" name="BAT91" />
+		</Application>
+		
+	</Environment>
+	
+	<ResourceTemplate xsi:type="amxdata:HttpConnectorResourceTemplate" name="httpConnector1BAT91" host="0.0.0.0" port="30091" headerBufferSize="512" requestBufferSize="512" responseBufferSize="512" maxIdleTime="200000" lowResourceMaxIdleTime="512" description="This is HttpConnector RT for BAT91 test case"/>
+	
+	<ResourceTemplate xsi:type="amxdata:HttpConnectorResourceTemplate" name="httpConnector2BAT91" host="0.0.0.0" port="30093" headerBufferSize="512" requestBufferSize="512" responseBufferSize="512" maxIdleTime="200000" lowResourceMaxIdleTime="512" description="This is HttpConnector RT for BAT91 test case"/>
+	
+	<ResourceTemplate xsi:type="amxdata:HttpClientResourceTemplate" name="httpClient1BAT91" isAcceptRedirect="true" connectionTimeout="8888" host="[[host1]]" port="30093" description="This is HttpClient RT for BAT91 test case"/>
+	
+					
+		<DAA xsi:type="amxdata:DAA" description="BAT91 application"
+			       location="C:/Lisa1072/Projects/BATAutomation/Tests/bat/9.1/SOA/BAT91/Deployment Artifacts/BAT91.daa"
+			       importResourceTemplates="false" />
+				   
+				   
+	       <Feature xsi:type="amxdata_base:FeatureID" componentID="PATH_PARAM_XML_INOUT.customfeature.id" version="1.0.0.v2019-06-24-1506"/>
+	       <AppTemplate xsi:type="amxdata_base:AppTemplateID" name="BAT91" version="1.0.0.v2019-06-24-1506"/>
+			       
+			
+</amxdata_base:Enterprise>

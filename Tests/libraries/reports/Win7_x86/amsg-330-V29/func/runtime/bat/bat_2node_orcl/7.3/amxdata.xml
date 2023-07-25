@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<amxdata_base:Enterprise xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types" xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base" xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference" xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types platform:/plugin/com.tibco.amf.tools.admincligen/model/cli_data.ecore#//types http://tibco.com/amxadministrator/command/line/types_base platform:/plugin/com.tibco.amf.tools.admincligen/model/cli_data.ecore http://tibco.com/amxadministrator/command/line/types_reference platform:/plugin/com.tibco.amf.tools.admincligen/model/cli_data.ecore#//types/types_reference">
+  <Environment xsi:type="amxdata:Environment" name="QAEnvironment_jpandya-z400">
+    <Node xsi:type="amxdata:Node" name="QANode2">
+      <ResourceInstance xsi:type="amxdata:ResourceInstance" name="BAT73HttpClient_DeclaredDoc" resourceTemplateName="BAT73HttpClient_DeclaredDoc"/>
+      <ResourceInstance xsi:type="amxdata:ResourceInstance" name="BAT73ClientResource_UndeclaredDoc" resourceTemplateName="BAT73ClientResource_UndeclaredDoc"/>
+	  <ResourceInstance xsi:type="amxdata:ResourceInstance" name="BAT73ThreadPoolResource" resourceTemplateName="BAT73ThreadPoolResource"/>
+    </Node>
+	<Application  xsi:type="amxdata:Application" 
+			name="com.tibco.amxext.it.clr.app" 
+			contact="TIBCO Software Inc." 
+			description="TIBCO ActiveMatrix Implementation Type for Microsoft CLR">
+		<Node 
+			name="QANode2" 
+			environmentName="QAEnvironment_jpandya-z400"/>
+		<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" 
+			name="com.tibco.amxext.msft.application"/>
+	</Application>
+    <Application xsi:type="amxdata:Application" 
+			name="BAT73" 
+			contact="clr-it-qa" 
+			description="BAT73, this app tests declared, undeclared, timeout faults in both BW reference and AMX reference">
+	  <Component xsi:type="amxdata_base:Component_base" name="UnDeclaredDOc">
+        <Node xsi:type="amxdata_reference:Node_reference" name="QANode2" environmentName="QAEnvironment_jpandya-z400"/>
+      </Component>
+      <Component xsi:type="amxdata_base:Component_base" name="CalculatorProxy">
+        <Node xsi:type="amxdata_reference:Node_reference" name="QANode2" environmentName="QAEnvironment_jpandya-z400"/>
+      </Component>
+      <Component xsi:type="amxdata_base:Component_base" name="CalculatorPartner">
+        <Node xsi:type="amxdata_reference:Node_reference" name="QANode2" environmentName="QAEnvironment_jpandya-z400"/>
+      </Component>
+      <Component xsi:type="amxdata_base:Component_base" name="DeclaredDoc">
+        <Node xsi:type="amxdata_reference:Node_reference" name="QANode2" environmentName="QAEnvironment_jpandya-z400"/>
+      </Component>
+    <PromotedService xsi:type="amxdata_base:Service_base" name="SoapException1PT">
+        <Binding xsi:type="amxdata_base:Binding_base" name="SOAPService_UndeclaredDoc">
+          <Node xsi:type="amxdata_reference:Node_reference" name="QANode1" environmentName="QAEnvironment_jpandya-z400"/>
+          <Property xsi:type="amxdata:Property" name="HttpInboundConnectionConfig" value="httpConnector1"/>
+        </Binding>
+      </PromotedService>
+      <PromotedService xsi:type="amxdata_base:Service_base" name="NS_CalculatorProxyContract.ICalculatorProxy">
+        <Binding xsi:type="amxdata_base:Binding_base" name="SOAPService_CLRIT">
+          <Node xsi:type="amxdata_reference:Node_reference" name="QANode1" environmentName="QAEnvironment_jpandya-z400"/>
+          <Property xsi:type="amxdata:Property" name="HttpInboundConnectionConfig" value="httpConnector2"/>
+        </Binding>
+      </PromotedService>
+      <PromotedService xsi:type="amxdata_base:Service_base" name="SoapException1PT1">
+        <Binding xsi:type="amxdata_base:Binding_base" name="SOAPService_DeclaredDoc">
+          <Node xsi:type="amxdata_reference:Node_reference" name="QANode1" environmentName="QAEnvironment_jpandya-z400"/>
+          <Property xsi:type="amxdata:Property" name="HttpInboundConnectionConfig" value="httpConnector3"/>
+        </Binding>
+      </PromotedService>
+      <PromotedReference xsi:type="amxdata_base:Reference_base" name="SOAPEventSource1">
+        <Binding xsi:type="amxdata_base:Binding_base" name="SOAPReference_UndeclaredDoc">
+          <Node xsi:type="amxdata_reference:Node_reference" name="QANode2" environmentName="QAEnvironment_jpandya-z400"/>
+          <Property xsi:type="amxdata:Property" name="HttpOutboundConnectionConfig" value="BAT73HttpClient_DeclaredDoc"/>
+        </Binding>
+      </PromotedReference>
+      <PromotedReference xsi:type="amxdata_base:Reference_base" name="SOAPEventSource2">
+        <Binding xsi:type="amxdata_base:Binding_base" name="SOAPReference_DeclaredDoc">
+          <Node xsi:type="amxdata_reference:Node_reference" name="QANode2" environmentName="QAEnvironment_jpandya-z400"/>
+          <Property xsi:type="amxdata:Property" name="HttpOutboundConnectionConfig" value="BAT73ClientResource_UndeclaredDoc"/>
+        </Binding>
+      </PromotedReference>
+     <ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="BAT73" version="1.0.0.201107281127"/>
+     </Application>
+  </Environment>
+  <ResourceTemplate xsi:type="amxdata:HttpClientResourceTemplate"
+		name="BAT73HttpClient_DeclaredDoc" 
+		isAcceptRedirect="true"
+		connectionTimeout="8888"
+		host="AMX-BACKEND-2.na.tibco.com"
+		port="7007" 
+		description="BAT73 HttpClient DeclaredDoc"/>
+	<ResourceTemplate xsi:type="amxdata:HttpClientResourceTemplate"
+		name="BAT73ClientResource_UndeclaredDoc" 
+		isAcceptRedirect="true"
+		connectionTimeout="8888"
+		host="AMX-BACKEND-2.na.tibco.com"
+		port="7008" 
+		description="BAT73 ClientResource UndeclaredDoc"/>
+	<ResourceTemplate
+   		xsi:type="amxdata:ThreadPoolResourceTemplate"
+   		name="BAT73ThreadPoolResource"
+   		description="This is Thread Pool RT"
+   		corePoolSize="2"
+   		maxPoolSize="10"
+   		keepAliveTime="30"
+   		autoStartCoreThread="false"
+   		threadPoolNamePrefix="tp"
+   		daemon="false"
+   		rejectionPolicy="Blocking"
+		priority="5" />
+  <DAA xsi:type="amxdata:DAA" location="./BAT73/Deployment Artifacts/BAT73.daa" importResourceTemplates="false"/>
+</amxdata_base:Enterprise>

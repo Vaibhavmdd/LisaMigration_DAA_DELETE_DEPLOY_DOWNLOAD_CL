@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpel:process exitOnStandardFault="yes" name="querygds.invoke"
+    suppressJoinFailure="no"
+    targetNamespace="http://com.tibco.amsb/mediation/1342032573224"
+    variableAccessSerializable="no"
+    xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+    xmlns:medit="http://schemas.tibco.com/mediationIT/3.4.0/mediation"
+    xmlns:ns="http://com.tibco.amx.it.mediation.sample/QueryGDS/searchAll/definitions"
+    xmlns:ns0="http://www.tibco.com/mediation/QueryGDS"
+    xmlns:ns1="http:///com.tibco.amsb.core.common.exchange/mediationcontext" xmlns:ns2="http://schemas.tibco.com/amsb/rt/exceptions">
+    <plnk:partnerLinkType
+        name="ns0:QueryGDS-QueryGDSConsumer-partnerLinkType" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+        <plnk:role name="Consumer" portType="ns0:QueryGDS"/>
+    </plnk:partnerLinkType>
+    <plnk:partnerLinkType
+        name="ns:QueryGDS-QueryGDSProvider-partnerLinkType" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+        <plnk:role name="Provider" portType="ns:QueryGDS"/>
+    </plnk:partnerLinkType>
+    <mediationmodel:MediationService name="querygds.invoke"
+        targetNamespace="http://com.tibco.amsb/mediation/1342032573224"
+        version="3.4.0" xmi:id="_J4uKgMuJEeGiIq5TCMgOeA"
+        xmi:version="2.0"
+        xmlns:medct="http://xsd.tns.tibco.com/amsb/core/models/componentType"
+        xmlns:mediationmodel="http://xsd.tns.tibco.com/amsb/core/models/mediationmodel"
+        xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <interfaces name="QueryGDS" xmi:id="_LtHq4MuKEeGiIq5TCMgOeA">
+            <interface xsi:type="medct:Wsdl11Interface">
+                <portType href="platform:/resource/mediation.querygds.invoke.soa/Service%20Descriptors/QueryGDS_SearchAll.wsdl#//@ePortTypes.0"/>
+            </interface>
+        </interfaces>
+        <operationImplementations operationName="QueryGDS^searchAll">
+            <mediationContextConfig hideStaticSecurityContext="true" hideStaticTransportContext="true"/>
+        </operationImplementations>
+        <targetEndpoints xmi:id="_McFpsMuKEeGiIq5TCMgOeA">
+            <abstractTarget name="QueryGDS" xmi:id="_McFpscuKEeGiIq5TCMgOeA">
+                <interface xsi:type="medct:Wsdl11Interface">
+                    <portType href="platform:/resource/mediation.querygds.invoke.soa/Service%20Descriptors/QueryGDS.wsdl#//@ePortTypes.0"/>
+                </interface>
+            </abstractTarget>
+            <targetOperationConfig operationName="searchAirline">
+                <contextConfig hideStaticSecurityContext="true" hideStaticTransportContext="true"/>
+            </targetOperationConfig>
+            <targetOperationConfig operationName="searchCar">
+                <contextConfig hideStaticSecurityContext="true" hideStaticTransportContext="true"/>
+            </targetOperationConfig>
+            <targetOperationConfig operationName="searchHotel">
+                <contextConfig hideStaticSecurityContext="true" hideStaticTransportContext="true"/>
+            </targetOperationConfig>
+        </targetEndpoints>
+    </mediationmodel:MediationService>
+    <bpel:documentation>querygds.invoke</bpel:documentation>
+    <bpel:import importType="http://schemas.xmlsoap.org/wsdl/"
+        location="../Service%20Descriptors/QueryGDS_SearchAll.wsdl" namespace="http://com.tibco.amx.it.mediation.sample/QueryGDS/searchAll/definitions"/>
+    <bpel:import importType="http://schemas.xmlsoap.org/wsdl/"
+        location="../Service%20Descriptors/QueryGDS.wsdl" namespace="http://www.tibco.com/mediation/QueryGDS"/>
+    <bpel:import importType="http://www.w3.org/2001/XMLSchema"
+        location="../../com.tibco.mediation.it.common/schema/mediationcontext.xsd" namespace="http:///com.tibco.amsb.core.common.exchange/mediationcontext"/>
+    <bpel:import importType="http://www.w3.org/2001/XMLSchema"
+        location="../../com.tibco.mediation.it.common/schema/exceptions.xsd" namespace="http://schemas.tibco.com/amsb/rt/exceptions"/>
+    <bpel:import importType="http://www.w3.org/2001/XMLSchema"
+        location="../../com.tibco.mediation.it.common/schema/ws-bpel_serviceref.xsd" namespace="http://docs.oasis-open.org/wsbpel/2.0/serviceref"/>
+    <bpel:import importType="http://www.w3.org/2001/XMLSchema"
+        location="/resource/mediation.querygds.invoke.soa/Service%20Descriptors/QueryGDS/{http://www.tibco.com/mediation/QueryGDS}searchAirlineRequest.xsd" namespace="http://www.tibco.com/mediation/QueryGDS"/>
+    <bpel:import importType="http://www.w3.org/2001/XMLSchema"
+        location="/resource/mediation.querygds.invoke.soa/Service%20Descriptors/QueryGDS/{http://www.tibco.com/mediation/QueryGDS}searchAirlineResponse.xsd" namespace="http://www.tibco.com/mediation/QueryGDS"/>
+    <bpel:import importType="http://www.w3.org/2001/XMLSchema"
+        location="/resource/mediation.querygds.invoke.soa/Service%20Descriptors/QueryGDS/{http://www.tibco.com/mediation/QueryGDS}searchCarRequest.xsd" namespace="http://www.tibco.com/mediation/QueryGDS"/>
+    <bpel:import importType="http://www.w3.org/2001/XMLSchema"
+        location="/resource/mediation.querygds.invoke.soa/Service%20Descriptors/QueryGDS/{http://www.tibco.com/mediation/QueryGDS}searchCarResponse.xsd" namespace="http://www.tibco.com/mediation/QueryGDS"/>
+    <bpel:import importType="http://www.w3.org/2001/XMLSchema"
+        location="/resource/mediation.querygds.invoke.soa/Service%20Descriptors/QueryGDS/{http://www.tibco.com/mediation/QueryGDS}searchHotelRequest.xsd" namespace="http://www.tibco.com/mediation/QueryGDS"/>
+    <bpel:import importType="http://www.w3.org/2001/XMLSchema"
+        location="/resource/mediation.querygds.invoke.soa/Service%20Descriptors/QueryGDS/{http://www.tibco.com/mediation/QueryGDS}searchHotelResponse.xsd" namespace="http://www.tibco.com/mediation/QueryGDS"/>
+    <bpel:partnerLinks>
+        <bpel:partnerLink myRole="Provider" name="QueryGDSProvider" partnerLinkType="ns:QueryGDS-QueryGDSProvider-partnerLinkType">
+            <bpel:documentation>MyRole</bpel:documentation>
+        </bpel:partnerLink>
+        <bpel:partnerLink name="QueryGDSConsumer"
+            partnerLinkType="ns0:QueryGDS-QueryGDSConsumer-partnerLinkType" partnerRole="Consumer">
+            <bpel:documentation>PartnerRole</bpel:documentation>
+        </bpel:partnerLink>
+    </bpel:partnerLinks>
+    <bpel:variables>
+        <bpel:variable messageType="ns:searchAllRequest" name="searchAllRequestVar"/>
+        <bpel:variable messageType="ns:searchAllResponse" name="searchAllResponseVar"/>
+    </bpel:variables>
+    <bpel:extensions>
+        <bpel:extension mustUnderstand="no" namespace="http://xsd.tns.tibco.com/amsb/task/invokeop/models/invokeopmediationtaskmodel"/>
+        <bpel:extension mustUnderstand="no" namespace="http://xsd.tns.tibco.com/amsb/task/transform/models/transformmediationtaskmodel"/>
+    </bpel:extensions>
+    <bpel:pick>
+        <bpel:onMessage operation="searchAll"
+            partnerLink="QueryGDSProvider" portType="ns:QueryGDS" variable="searchAllRequestVar">
+            <bpel:scope name="searchAll">
+                <bpel:variables>
+                    <bpel:variable element="ns1:MessageContext" name="MessageContextVar"/>
+                    <bpel:variable element="ns2:MediationFault" name="MediationFaultVar"/>
+                    <bpel:variable element="ns2:MediationRuntimeFault" name="MediationRuntimeFaultVar"/>
+                    <bpel:variable element="ns2:MediationTaskFault" name="MediationTaskFaultVar"/>
+                    <bpel:variable
+                        element="ns2:MediationTaskRuntimeFault" name="MediationTaskRuntimeFaultVar"/>
+                    <bpel:variable element="ns2:UndeclaredFault" name="UndeclaredFaultVar"/>
+                    <bpel:variable element="ns2:DefaultMediationFault" name="DefaultMediationFaultVar"/>
+                    <bpel:variable element="ns0:searchAirlineRequest" name="invokeInput"/>
+                    <bpel:variable element="ns0:searchAirlineResponse" name="invoke"/>
+                    <bpel:variable element="ns0:searchCarRequest" name="invoke1Input"/>
+                    <bpel:variable element="ns0:searchCarResponse" name="invoke1"/>
+                    <bpel:variable element="ns0:searchHotelRequest" name="invoke2Input"/>
+                    <bpel:variable element="ns0:searchHotelResponse" name="invoke2"/>
+                </bpel:variables>
+                <bpel:faultHandlers>
+                    <bpel:catch faultName="ns2:MediationTaskFault">
+                        <bpel:flow>
+                            <bpel:links>
+                                <bpel:link name="transform-to-SendFault-MediationTaskFaultReplyWithFault"/>
+                            </bpel:links>
+                            <bpel:assign name="transform" validate="no">
+
+                                <transformmediationtaskmodel:MapperTransformationMediationTask
+                                    description="" name="transform"
+                                    xmi:id="_Ltuu5MuKEeGiIq5TCMgOeA"
+                                    xmi:version="2.0"
+                                    xmlns:transformmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/transform/models/transformmediationtaskmodel" xmlns:xmi="http://www.omg.org/XMI">
+                                    <transform queryLanguage="xslt" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:tns=&quot;http://schemas.tibco.com/amsb/rt/exceptions&quot; xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;MediationFlowProperties&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageContext&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageData&quot;/>&#xa;    &lt;xsl:template name=&quot;MessageData&quot; match=&quot;/&quot;>&#xa;        &lt;tns:UndeclaredFault>&#xa;            &lt;xsl:if test=&quot;$MessageData/tns:MediationTaskFault/message&quot;>&#xa;                &lt;message>&#xa;                    &lt;xsl:value-of select=&quot;$MessageData/tns:MediationTaskFault/message&quot;/>&#xa;                &lt;/message>&#xa;            &lt;/xsl:if>&#xa;        &lt;/tns:UndeclaredFault>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>&#xa;"/>
+                                </transformmediationtaskmodel:MapperTransformationMediationTask>
+                                <bpel:sources>
+                                    <bpel:source linkName="transform-to-SendFault-MediationTaskFaultReplyWithFault"/>
+                                </bpel:sources>
+                                <bpel:copy>
+                                    <bpel:from><![CDATA[bpel:doXslTransform("transform.xsl",$UndeclaredFaultVar,"MessageData",$MediationTaskFaultVar)]]></bpel:from>
+                                    <bpel:to variable="UndeclaredFaultVar"/>
+                                </bpel:copy>
+                            </bpel:assign>
+                            <bpel:reply faultName="ns2:UndeclaredFault"
+                                name="SendFault-MediationTaskFaultReplyWithFault"
+                                operation="searchAll"
+                                partnerLink="QueryGDSProvider"
+                                portType="ns:QueryGDS" variable="UndeclaredFaultVar">
+                                <bpel:targets>
+                                    <bpel:target linkName="transform-to-SendFault-MediationTaskFaultReplyWithFault"/>
+                                </bpel:targets>
+                            </bpel:reply>
+                        </bpel:flow>
+                    </bpel:catch>
+                    <bpel:catch faultName="ns2:MediationTaskRuntimeFault">
+                        <bpel:flow>
+                            <bpel:links>
+                                <bpel:link name="transform1-to-SendFault-MediationTaskRuntimeFaultReplyWithFault"/>
+                            </bpel:links>
+                            <bpel:assign name="transform1" validate="no">
+
+                                <transformmediationtaskmodel:MapperTransformationMediationTask
+                                    description="" name="transform1"
+                                    xmi:id="_Ltuu68uKEeGiIq5TCMgOeA"
+                                    xmi:version="2.0"
+                                    xmlns:transformmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/transform/models/transformmediationtaskmodel" xmlns:xmi="http://www.omg.org/XMI">
+                                    <transform queryLanguage="xslt" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:tns=&quot;http://schemas.tibco.com/amsb/rt/exceptions&quot; xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;MediationFlowProperties&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageContext&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageData&quot;/>&#xa;    &lt;xsl:template name=&quot;MessageData&quot; match=&quot;/&quot;>&#xa;        &lt;tns:UndeclaredFault>&#xa;            &lt;xsl:if test=&quot;$MessageData/tns:MediationTaskRuntimeFault/message&quot;>&#xa;                &lt;message>&#xa;                    &lt;xsl:value-of select=&quot;$MessageData/tns:MediationTaskRuntimeFault/message&quot;/>&#xa;                &lt;/message>&#xa;            &lt;/xsl:if>&#xa;        &lt;/tns:UndeclaredFault>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>&#xa;"/>
+                                </transformmediationtaskmodel:MapperTransformationMediationTask>
+                                <bpel:sources>
+                                    <bpel:source linkName="transform1-to-SendFault-MediationTaskRuntimeFaultReplyWithFault"/>
+                                </bpel:sources>
+                                <bpel:copy>
+                                    <bpel:from><![CDATA[bpel:doXslTransform("transform1.xsl",$UndeclaredFaultVar,"MessageData",$MediationTaskRuntimeFaultVar)]]></bpel:from>
+                                    <bpel:to variable="UndeclaredFaultVar"/>
+                                </bpel:copy>
+                            </bpel:assign>
+                            <bpel:reply faultName="ns2:UndeclaredFault"
+                                name="SendFault-MediationTaskRuntimeFaultReplyWithFault"
+                                operation="searchAll"
+                                partnerLink="QueryGDSProvider"
+                                portType="ns:QueryGDS" variable="UndeclaredFaultVar">
+                                <bpel:targets>
+                                    <bpel:target linkName="transform1-to-SendFault-MediationTaskRuntimeFaultReplyWithFault"/>
+                                </bpel:targets>
+                            </bpel:reply>
+                        </bpel:flow>
+                    </bpel:catch>
+                    <bpel:catchAll>
+                        <bpel:flow>
+                            <bpel:links/>
+                            <bpel:reply faultName="ns2:OriginalFault"
+                                name="SendFault-Mediation_CatchAllReplyWithFault"
+                                operation="searchAll"
+                                partnerLink="QueryGDSProvider" portType="ns:QueryGDS"/>
+                        </bpel:flow>
+                    </bpel:catchAll>
+                </bpel:faultHandlers>
+                <bpel:flow>
+                    <bpel:links>
+                        <bpel:link name="pre_invoke_assign_sequence-to-pre_invoke_assign_sequence(1)"/>
+                        <bpel:link name="pre_invoke_assign_sequence(1)-to-pre_invoke_assign_sequence(2)"/>
+                        <bpel:link name="pre_invoke_assign_sequence(2)-to-pre_generate_reply_assign_sequence"/>
+                        <bpel:link name="pre_generate_reply_assign_sequence-to-handle_reply"/>
+                        <bpel:link name="handle_reply-to-searchAllReply"/>
+                    </bpel:links>
+                    <bpel:sequence name="pre_invoke_assign_sequence">
+                        <bpel:sources>
+                            <bpel:source linkName="pre_invoke_assign_sequence-to-pre_invoke_assign_sequence(1)"/>
+                        </bpel:sources>
+                        <bpel:assign validate="no">
+                            <bpel:copy>
+                                <bpel:from><![CDATA[bpel:doXslTransform("invoke.xsl",$invokeInput,"MessageData",$searchAllRequestVar)]]></bpel:from>
+                                <bpel:to variable="invokeInput"/>
+                            </bpel:copy>
+                        </bpel:assign>
+                        <bpel:invoke inputVariable="invokeInput"
+                            name="invoke" operation="searchAirline"
+                            outputVariable="invoke"
+                            partnerLink="QueryGDSConsumer" portType="ns0:QueryGDS">
+
+                            <invokeopmediationtaskmodel:InvokeOperationMediationTask
+                                contributeData="true" description=""
+                                name="invoke"
+                                operationName="searchAirline"
+                                taskId="1342033725461"
+                                xmi:id="_1p29IMuLEeGiIq5TCMgOeA"
+                                xmi:version="2.0"
+                                xmlns:invokeopmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/invokeop/models/invokeopmediationtaskmodel" xmlns:xmi="http://www.omg.org/XMI">
+                                <inputDataBinding queryLanguage="xslt" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:ns=&quot;http://com.tibco.amx.it.mediation.sample/QueryGDS/searchAll/definitions&quot; xmlns:tns=&quot;http://com.tibco.amx.it.mediation.sample/QueryGDS/searchAll/schemas&quot; xmlns:tns1=&quot;http://www.tibco.com/mediation/QueryGDS&quot; xmlns:ns0=&quot;http://www.xyzcorp/procureservice/QueryGDS/&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;MediationFlowProperties&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageData&quot;/>&#xa;    &lt;xsl:template name=&quot;Task Input&quot; match=&quot;/&quot;>&#xa;        &lt;tns1:searchAirlineRequest>&#xa;            &lt;tns1:parameters>&#xa;                &lt;ns0:searchAirline>&#xa;                    &lt;ns0:roundTrip>&#xa;                        &lt;xsl:value-of select=&quot;$MessageData/ns:searchAllRequest/ns:parameters/tns:searchAll/tns:searchAirline/tns:roundTrip&quot;/>&#xa;                    &lt;/ns0:roundTrip>&#xa;                    &lt;ns0:origin>&#xa;                        &lt;xsl:value-of select=&quot;$MessageData/ns:searchAllRequest/ns:parameters/tns:searchAll/tns:searchAirline/tns:origin&quot;/>&#xa;                    &lt;/ns0:origin>&#xa;                    &lt;ns0:destination>&#xa;                        &lt;xsl:value-of select=&quot;$MessageData/ns:searchAllRequest/ns:parameters/tns:searchAll/tns:searchAirline/tns:destination&quot;/>&#xa;                    &lt;/ns0:destination>&#xa;                    &lt;ns0:departureDate>&#xa;                        &lt;xsl:value-of select=&quot;$MessageData/ns:searchAllRequest/ns:parameters/tns:searchAll/tns:searchAirline/tns:departureDate&quot;/>&#xa;                    &lt;/ns0:departureDate>&#xa;                    &lt;xsl:if test=&quot;$MessageData/ns:searchAllRequest/ns:parameters/tns:searchAll/tns:searchAirline/tns:returnDate&quot;>&#xa;                        &lt;ns0:returnDate>&#xa;                            &lt;xsl:value-of select=&quot;$MessageData/ns:searchAllRequest/ns:parameters/tns:searchAll/tns:searchAirline/tns:returnDate&quot;/>&#xa;                        &lt;/ns0:returnDate>&#xa;                    &lt;/xsl:if>&#xa;                    &lt;ns0:noOfPassengers>&#xa;                        &lt;xsl:value-of select=&quot;$MessageData/ns:searchAllRequest/ns:parameters/tns:searchAll/tns:searchAirline/tns:noOfPassengers&quot;/>&#xa;                    &lt;/ns0:noOfPassengers>&#xa;                    &lt;ns0:timePreference>&#xa;                        &lt;xsl:value-of select=&quot;$MessageData/ns:searchAllRequest/ns:parameters/tns:searchAll/tns:searchAirline/tns:timePreference&quot;/>&#xa;                    &lt;/ns0:timePreference>&#xa;                &lt;/ns0:searchAirline>&#xa;            &lt;/tns1:parameters>&#xa;        &lt;/tns1:searchAirlineRequest>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>"/>
+                                <targetInterface href="platform:/resource/mediation.querygds.invoke.soa/Mediation%20Flows/querygds.invoke.mediation#_McFpscuKEeGiIq5TCMgOeA"/>
+                            </invokeopmediationtaskmodel:InvokeOperationMediationTask>
+                        </bpel:invoke>
+                    </bpel:sequence>
+                    <bpel:sequence name="pre_invoke_assign_sequence(1)">
+                        <bpel:targets>
+                            <bpel:target linkName="pre_invoke_assign_sequence-to-pre_invoke_assign_sequence(1)"/>
+                        </bpel:targets>
+                        <bpel:sources>
+                            <bpel:source linkName="pre_invoke_assign_sequence(1)-to-pre_invoke_assign_sequence(2)"/>
+                        </bpel:sources>
+                        <bpel:assign validate="no">
+                            <bpel:copy>
+                                <bpel:from><![CDATA[bpel:doXslTransform("invoke1.xsl",$invoke1Input,"MessageData",$searchAllRequestVar)]]></bpel:from>
+                                <bpel:to variable="invoke1Input"/>
+                            </bpel:copy>
+                        </bpel:assign>
+                        <bpel:invoke inputVariable="invoke1Input"
+                            name="invoke1" operation="searchCar"
+                            outputVariable="invoke1"
+                            partnerLink="QueryGDSConsumer" portType="ns0:QueryGDS">
+
+                            <invokeopmediationtaskmodel:InvokeOperationMediationTask
+                                contributeData="true" description=""
+                                name="invoke1" operationName="searchCar"
+                                taskId="1342037267666"
+                                xmi:id="_FcywwMuUEeGiIq5TCMgOeA"
+                                xmi:version="2.0"
+                                xmlns:invokeopmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/invokeop/models/invokeopmediationtaskmodel" xmlns:xmi="http://www.omg.org/XMI">
+                                <inputDataBinding queryLanguage="xslt" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:ns=&quot;http://com.tibco.amx.it.mediation.sample/QueryGDS/searchAll/definitions&quot; xmlns:tns=&quot;http://com.tibco.amx.it.mediation.sample/QueryGDS/searchAll/schemas&quot; xmlns:tns1=&quot;http://www.tibco.com/mediation/QueryGDS&quot; xmlns:ns0=&quot;http://www.xyzcorp/procureservice/QueryGDS/&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;MediationFlowProperties&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageData&quot;/>&#xa;    &lt;xsl:param name=&quot;invoke&quot;/>&#xa;    &lt;xsl:template name=&quot;Task Input&quot; match=&quot;/&quot;>&#xa;        &lt;tns1:searchCarRequest>&#xa;            &lt;tns1:parameters>&#xa;                &lt;ns0:searchCar>&#xa;                    &lt;ns0:country>&#xa;                        &lt;xsl:value-of select=&quot;$MessageData/ns:searchAllRequest/ns:parameters/tns:searchAll/tns:searchCar/tns:country&quot;/>&#xa;                    &lt;/ns0:country>&#xa;                    &lt;ns0:state>&#xa;                        &lt;xsl:value-of select=&quot;$MessageData/ns:searchAllRequest/ns:parameters/tns:searchAll/tns:searchCar/tns:state&quot;/>&#xa;                    &lt;/ns0:state>&#xa;                    &lt;ns0:pickUpCity>&#xa;                        &lt;xsl:value-of select=&quot;$MessageData/ns:searchAllRequest/ns:parameters/tns:searchAll/tns:searchCar/tns:pickUpCity&quot;/>&#xa;                    &lt;/ns0:pickUpCity>&#xa;                    &lt;xsl:if test=&quot;$MessageData/ns:searchAllRequest/ns:parameters/tns:searchAll/tns:searchCar/tns:dropOffCity&quot;>&#xa;                        &lt;ns0:dropOffCity>&#xa;                            &lt;xsl:value-of select=&quot;$MessageData/ns:searchAllRequest/ns:parameters/tns:searchAll/tns:searchCar/tns:dropOffCity&quot;/>&#xa;                        &lt;/ns0:dropOffCity>&#xa;                    &lt;/xsl:if>&#xa;                    &lt;ns0:pickUpDate>&#xa;                        &lt;xsl:value-of select=&quot;$MessageData/ns:searchAllRequest/ns:parameters/tns:searchAll/tns:searchCar/tns:pickUpDate&quot;/>&#xa;                    &lt;/ns0:pickUpDate>&#xa;                    &lt;ns0:dropOffDate>&#xa;                        &lt;xsl:value-of select=&quot;$MessageData/ns:searchAllRequest/ns:parameters/tns:searchAll/tns:searchCar/tns:dropOffDate&quot;/>&#xa;                    &lt;/ns0:dropOffDate>&#xa;                    &lt;xsl:if test=&quot;$MessageData/ns:searchAllRequest/ns:parameters/tns:searchAll/tns:searchCar/tns:rentalAgency&quot;>&#xa;                        &lt;ns0:rentalAgency>&#xa;                            &lt;xsl:value-of select=&quot;$MessageData/ns:searchAllRequest/ns:parameters/tns:searchAll/tns:searchCar/tns:rentalAgency&quot;/>&#xa;                        &lt;/ns0:rentalAgency>&#xa;                    &lt;/xsl:if>&#xa;                    &lt;xsl:if test=&quot;$MessageData/ns:searchAllRequest/ns:parameters/tns:searchAll/tns:searchCar/tns:carType&quot;>&#xa;                        &lt;ns0:carType>&#xa;                            &lt;xsl:value-of select=&quot;$MessageData/ns:searchAllRequest/ns:parameters/tns:searchAll/tns:searchCar/tns:carType&quot;/>&#xa;                        &lt;/ns0:carType>&#xa;                    &lt;/xsl:if>&#xa;                    &lt;xsl:if test=&quot;$MessageData/ns:searchAllRequest/ns:parameters/tns:searchAll/tns:searchCar/tns:carMake&quot;>&#xa;                        &lt;ns0:carMake>&#xa;                            &lt;xsl:value-of select=&quot;$MessageData/ns:searchAllRequest/ns:parameters/tns:searchAll/tns:searchCar/tns:carMake&quot;/>&#xa;                        &lt;/ns0:carMake>&#xa;                    &lt;/xsl:if>&#xa;                    &lt;xsl:if test=&quot;$MessageData/ns:searchAllRequest/ns:parameters/tns:searchAll/tns:searchCar/tns:nonSmoking&quot;>&#xa;                        &lt;ns0:nonSmoking>&#xa;                            &lt;xsl:value-of select=&quot;$MessageData/ns:searchAllRequest/ns:parameters/tns:searchAll/tns:searchCar/tns:nonSmoking&quot;/>&#xa;                        &lt;/ns0:nonSmoking>&#xa;                    &lt;/xsl:if>&#xa;                &lt;/ns0:searchCar>&#xa;            &lt;/tns1:parameters>&#xa;        &lt;/tns1:searchCarRequest>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>"/>
+                                <targetInterface href="platform:/resource/mediation.querygds.invoke.soa/Mediation%20Flows/querygds.invoke.mediation#_McFpscuKEeGiIq5TCMgOeA"/>
+                            </invokeopmediationtaskmodel:InvokeOperationMediationTask>
+                        </bpel:invoke>
+                    </bpel:sequence>
+                    <bpel:sequence name="pre_invoke_assign_sequence(2)">
+                        <bpel:targets>
+                            <bpel:target linkName="pre_invoke_assign_sequence(1)-to-pre_invoke_assign_sequence(2)"/>
+                        </bpel:targets>
+                        <bpel:sources>
+                            <bpel:source linkName="pre_invoke_assign_sequence(2)-to-pre_generate_reply_assign_sequence"/>
+                        </bpel:sources>
+                        <bpel:assign validate="no">
+                            <bpel:copy>
+                                <bpel:from><![CDATA[bpel:doXslTransform("invoke2.xsl",$invoke2Input,"MessageData",$searchAllRequestVar)]]></bpel:from>
+                                <bpel:to variable="invoke2Input"/>
+                            </bpel:copy>
+                        </bpel:assign>
+                        <bpel:invoke inputVariable="invoke2Input"
+                            name="invoke2" operation="searchHotel"
+                            outputVariable="invoke2"
+                            partnerLink="QueryGDSConsumer" portType="ns0:QueryGDS">
+
+                            <invokeopmediationtaskmodel:InvokeOperationMediationTask
+                                contributeData="true" description=""
+                                name="invoke2"
+                                operationName="searchHotel"
+                                taskId="1342037270674"
+                                xmi:id="_F6ojUMuUEeGiIq5TCMgOeA"
+                                xmi:version="2.0"
+                                xmlns:invokeopmediationtaskmodel="http://xsd.tns.tibco.com/amsb/task/invokeop/models/invokeopmediationtaskmodel" xmlns:xmi="http://www.omg.org/XMI">
+                                <inputDataBinding queryLanguage="xslt" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:ns=&quot;http://com.tibco.amx.it.mediation.sample/QueryGDS/searchAll/definitions&quot; xmlns:tns=&quot;http://com.tibco.amx.it.mediation.sample/QueryGDS/searchAll/schemas&quot; xmlns:tns1=&quot;http://www.tibco.com/mediation/QueryGDS&quot; xmlns:ns0=&quot;http://www.xyzcorp/procureservice/QueryGDS/&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;MediationFlowProperties&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageData&quot;/>&#xa;    &lt;xsl:param name=&quot;invoke&quot;/>&#xa;    &lt;xsl:param name=&quot;invoke1&quot;/>&#xa;    &lt;xsl:template name=&quot;Task Input&quot; match=&quot;/&quot;>&#xa;        &lt;tns1:searchHotelRequest>&#xa;            &lt;tns1:parameters>&#xa;                &lt;ns0:searchHotel>&#xa;                    &lt;ns0:country>&#xa;                        &lt;xsl:value-of select=&quot;$MessageData/ns:searchAllRequest/ns:parameters/tns:searchAll/tns:searchHotel/tns:country&quot;/>&#xa;                    &lt;/ns0:country>&#xa;                    &lt;ns0:city>&#xa;                        &lt;xsl:value-of select=&quot;$MessageData/ns:searchAllRequest/ns:parameters/tns:searchAll/tns:searchHotel/tns:city&quot;/>&#xa;                    &lt;/ns0:city>&#xa;                    &lt;ns0:state>&#xa;                        &lt;xsl:value-of select=&quot;$MessageData/ns:searchAllRequest/ns:parameters/tns:searchAll/tns:searchHotel/tns:state&quot;/>&#xa;                    &lt;/ns0:state>&#xa;                    &lt;xsl:if test=&quot;$MessageData/ns:searchAllRequest/ns:parameters/tns:searchAll/tns:searchHotel/tns:nearAddress&quot;>&#xa;                        &lt;ns0:nearAddress>&#xa;                            &lt;xsl:value-of select=&quot;$MessageData/ns:searchAllRequest/ns:parameters/tns:searchAll/tns:searchHotel/tns:nearAddress&quot;/>&#xa;                        &lt;/ns0:nearAddress>&#xa;                    &lt;/xsl:if>&#xa;                    &lt;xsl:if test=&quot;$MessageData/ns:searchAllRequest/ns:parameters/tns:searchAll/tns:searchHotel/tns:hotelName&quot;>&#xa;                        &lt;ns0:hotelName>&#xa;                            &lt;xsl:value-of select=&quot;$MessageData/ns:searchAllRequest/ns:parameters/tns:searchAll/tns:searchHotel/tns:hotelName&quot;/>&#xa;                        &lt;/ns0:hotelName>&#xa;                    &lt;/xsl:if>&#xa;                    &lt;ns0:checkInDate>&#xa;                        &lt;xsl:value-of select=&quot;$MessageData/ns:searchAllRequest/ns:parameters/tns:searchAll/tns:searchHotel/tns:checkInDate&quot;/>&#xa;                    &lt;/ns0:checkInDate>&#xa;                    &lt;ns0:checkOutDate>&#xa;                        &lt;xsl:value-of select=&quot;$MessageData/ns:searchAllRequest/ns:parameters/tns:searchAll/tns:searchHotel/tns:checkOutDate&quot;/>&#xa;                    &lt;/ns0:checkOutDate>&#xa;                    &lt;ns0:rooms>&#xa;                        &lt;xsl:value-of select=&quot;$MessageData/ns:searchAllRequest/ns:parameters/tns:searchAll/tns:searchHotel/tns:rooms&quot;/>&#xa;                    &lt;/ns0:rooms>&#xa;                    &lt;xsl:if test=&quot;$MessageData/ns:searchAllRequest/ns:parameters/tns:searchAll/tns:searchHotel/tns:nonSmoking&quot;>&#xa;                        &lt;ns0:nonSmoking>&#xa;                            &lt;xsl:value-of select=&quot;$MessageData/ns:searchAllRequest/ns:parameters/tns:searchAll/tns:searchHotel/tns:nonSmoking&quot;/>&#xa;                        &lt;/ns0:nonSmoking>&#xa;                    &lt;/xsl:if>&#xa;                &lt;/ns0:searchHotel>&#xa;            &lt;/tns1:parameters>&#xa;        &lt;/tns1:searchHotelRequest>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>"/>
+                                <targetInterface href="platform:/resource/mediation.querygds.invoke.soa/Mediation%20Flows/querygds.invoke.mediation#_McFpscuKEeGiIq5TCMgOeA"/>
+                            </invokeopmediationtaskmodel:InvokeOperationMediationTask>
+                        </bpel:invoke>
+                    </bpel:sequence>
+                    <bpel:sequence name="pre_generate_reply_assign_sequence">
+                        <bpel:targets>
+                            <bpel:target linkName="pre_invoke_assign_sequence(2)-to-pre_generate_reply_assign_sequence"/>
+                        </bpel:targets>
+                        <bpel:sources>
+                            <bpel:source linkName="pre_generate_reply_assign_sequence-to-handle_reply"/>
+                        </bpel:sources>
+                        <bpel:assign validate="no">
+                            <bpel:documentation>pre_generate_reply_assign</bpel:documentation>
+                        </bpel:assign>
+                        <bpel:extensionActivity>
+
+                            <tibco-bpel-generatereply:tibcoGenerateReplyExtensionActivity
+                                name="generate_reply" xmlns:tibco-bpel-generatereply="http://xsd.tns.tibco.com/bpel/extension/activity/generatereply/models/generatereplytaskmodel">
+                                <bpel:sources/>
+                                <mediationmodel:GenerateReply
+                                    description="" name="generate_reply"
+                                    xmi:id="_g3A1wMuKEeGiIq5TCMgOeA"
+                                    xmi:version="2.0"
+                                    xmlns:mediationmodel="http://xsd.tns.tibco.com/amsb/core/models/mediationmodel" xmlns:xmi="http://www.omg.org/XMI">
+                                    <inputDataBinding
+                                    queryLanguage="xslt" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:ns0=&quot;http://www.xyzcorp/procureservice/QueryGDS/&quot; xmlns:tns=&quot;http://www.tibco.com/mediation/QueryGDS&quot; xmlns:tns1=&quot;http://com.tibco.amx.it.mediation.sample/QueryGDS/searchAll/definitions&quot; xmlns:tns2=&quot;http://com.tibco.amx.it.mediation.sample/QueryGDS/searchAll/schemas&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;MediationFlowProperties&quot;/>&#xa;    &lt;xsl:param name=&quot;MessageData&quot;/>&#xa;    &lt;xsl:param name=&quot;invoke&quot;/>&#xa;    &lt;xsl:param name=&quot;invoke1&quot;/>&#xa;    &lt;xsl:param name=&quot;invoke2&quot;/>&#xa;    &lt;xsl:template name=&quot;Task Input&quot; match=&quot;/&quot;>&#xa;        &lt;tns1:searchAllResponse>&#xa;            &lt;tns1:parameters>&#xa;                &lt;tns2:searchAllResponse>&#xa;                    &lt;tns2:searchAirlineResponse>&#xa;                        &lt;xsl:for-each select=&quot;$invoke/tns:searchAirlineResponse/tns:parameters/ns0:searchAirlineResponse/ns0:departingFlights&quot;>&#xa;                            &lt;tns2:departingFlights>&#xa;                                &lt;xsl:for-each select=&quot;ns0:flightPlan&quot;>&#xa;                                    &lt;tns2:flightPlan>&#xa;                                        &lt;tns2:airline>&#xa;                                            &lt;xsl:value-of select=&quot;ns0:airline&quot;/>&#xa;                                        &lt;/tns2:airline>&#xa;                                        &lt;tns2:flightNumber>&#xa;                                            &lt;xsl:value-of select=&quot;ns0:flightNumber&quot;/>&#xa;                                        &lt;/tns2:flightNumber>&#xa;                                        &lt;tns2:departureTime>&#xa;                                            &lt;xsl:value-of select=&quot;ns0:departureTime&quot;/>&#xa;                                        &lt;/tns2:departureTime>&#xa;                                        &lt;tns2:arrivalTime>&#xa;                                            &lt;xsl:value-of select=&quot;ns0:arrivalTime&quot;/>&#xa;                                        &lt;/tns2:arrivalTime>&#xa;                                        &lt;tns2:stops>&#xa;                                            &lt;xsl:value-of select=&quot;ns0:stops&quot;/>&#xa;                                        &lt;/tns2:stops>&#xa;                                        &lt;tns2:travelTimeMin>&#xa;                                            &lt;xsl:value-of select=&quot;ns0:travelTimeMin&quot;/>&#xa;                                        &lt;/tns2:travelTimeMin>&#xa;                                        &lt;tns2:fareFull>&#xa;                                            &lt;xsl:value-of select=&quot;ns0:fareFull&quot;/>&#xa;                                        &lt;/tns2:fareFull>&#xa;                                        &lt;tns2:fareRestricted>&#xa;                                            &lt;xsl:value-of select=&quot;ns0:fareRestricted&quot;/>&#xa;                                        &lt;/tns2:fareRestricted>&#xa;                                        &lt;tns2:fareSpecial>&#xa;                                            &lt;xsl:value-of select=&quot;ns0:fareSpecial&quot;/>&#xa;                                        &lt;/tns2:fareSpecial>&#xa;                                        &lt;tns2:farePromotion>&#xa;                                            &lt;xsl:value-of select=&quot;ns0:farePromotion&quot;/>&#xa;                                        &lt;/tns2:farePromotion>&#xa;                                    &lt;/tns2:flightPlan>&#xa;                                &lt;/xsl:for-each>&#xa;                                &lt;tns2:origin>&#xa;                                    &lt;xsl:value-of select=&quot;ns0:origin&quot;/>&#xa;                                &lt;/tns2:origin>&#xa;                                &lt;tns2:destination>&#xa;                                    &lt;xsl:value-of select=&quot;ns0:destination&quot;/>&#xa;                                &lt;/tns2:destination>&#xa;                                &lt;tns2:date>&#xa;                                    &lt;xsl:value-of select=&quot;ns0:date&quot;/>&#xa;                                &lt;/tns2:date>&#xa;                            &lt;/tns2:departingFlights>&#xa;                        &lt;/xsl:for-each>&#xa;                        &lt;xsl:for-each select=&quot;$invoke/tns:searchAirlineResponse/tns:parameters/ns0:searchAirlineResponse/ns0:returningFlights&quot;>&#xa;                            &lt;tns2:returningFlights>&#xa;                                &lt;xsl:for-each select=&quot;ns0:flightPlan&quot;>&#xa;                                    &lt;tns2:flightPlan>&#xa;                                        &lt;tns2:airline>&#xa;                                            &lt;xsl:value-of select=&quot;ns0:airline&quot;/>&#xa;                                        &lt;/tns2:airline>&#xa;                                        &lt;tns2:flightNumber>&#xa;                                            &lt;xsl:value-of select=&quot;ns0:flightNumber&quot;/>&#xa;                                        &lt;/tns2:flightNumber>&#xa;                                        &lt;tns2:departureTime>&#xa;                                            &lt;xsl:value-of select=&quot;ns0:departureTime&quot;/>&#xa;                                        &lt;/tns2:departureTime>&#xa;                                        &lt;tns2:arrivalTime>&#xa;                                            &lt;xsl:value-of select=&quot;ns0:arrivalTime&quot;/>&#xa;                                        &lt;/tns2:arrivalTime>&#xa;                                        &lt;tns2:stops>&#xa;                                            &lt;xsl:value-of select=&quot;ns0:stops&quot;/>&#xa;                                        &lt;/tns2:stops>&#xa;                                        &lt;tns2:travelTimeMin>&#xa;                                            &lt;xsl:value-of select=&quot;ns0:travelTimeMin&quot;/>&#xa;                                        &lt;/tns2:travelTimeMin>&#xa;                                        &lt;tns2:fareFull>&#xa;                                            &lt;xsl:value-of select=&quot;ns0:fareFull&quot;/>&#xa;                                        &lt;/tns2:fareFull>&#xa;                                        &lt;tns2:fareRestricted>&#xa;                                            &lt;xsl:value-of select=&quot;ns0:fareRestricted&quot;/>&#xa;                                        &lt;/tns2:fareRestricted>&#xa;                                        &lt;tns2:fareSpecial>&#xa;                                            &lt;xsl:value-of select=&quot;ns0:fareSpecial&quot;/>&#xa;                                        &lt;/tns2:fareSpecial>&#xa;                                        &lt;tns2:farePromotion>&#xa;                                            &lt;xsl:value-of select=&quot;ns0:farePromotion&quot;/>&#xa;                                        &lt;/tns2:farePromotion>&#xa;                                    &lt;/tns2:flightPlan>&#xa;                                &lt;/xsl:for-each>&#xa;                                &lt;tns2:origin>&#xa;                                    &lt;xsl:value-of select=&quot;ns0:origin&quot;/>&#xa;                                &lt;/tns2:origin>&#xa;                                &lt;tns2:destination>&#xa;                                    &lt;xsl:value-of select=&quot;ns0:destination&quot;/>&#xa;                                &lt;/tns2:destination>&#xa;                                &lt;tns2:date>&#xa;                                    &lt;xsl:value-of select=&quot;ns0:date&quot;/>&#xa;                                &lt;/tns2:date>&#xa;                            &lt;/tns2:returningFlights>&#xa;                        &lt;/xsl:for-each>&#xa;                    &lt;/tns2:searchAirlineResponse>&#xa;                    &lt;tns2:searchCarResponse>&#xa;                        &lt;tns2:pickUpCity>&#xa;                            &lt;xsl:value-of select=&quot;$invoke1/tns:searchCarResponse/tns:parameters/ns0:searchCarResponse/ns0:pickUpCity&quot;/>&#xa;                        &lt;/tns2:pickUpCity>&#xa;                        &lt;tns2:pickUpDate>&#xa;                            &lt;xsl:value-of select=&quot;$invoke1/tns:searchCarResponse/tns:parameters/ns0:searchCarResponse/ns0:pickUpDate&quot;/>&#xa;                        &lt;/tns2:pickUpDate>&#xa;                        &lt;tns2:dropOffDate>&#xa;                            &lt;xsl:value-of select=&quot;$invoke1/tns:searchCarResponse/tns:parameters/ns0:searchCarResponse/ns0:dropOffDate&quot;/>&#xa;                        &lt;/tns2:dropOffDate>&#xa;                        &lt;tns2:noOfDays>&#xa;                            &lt;xsl:value-of select=&quot;$invoke1/tns:searchCarResponse/tns:parameters/ns0:searchCarResponse/ns0:noOfDays&quot;/>&#xa;                        &lt;/tns2:noOfDays>&#xa;                        &lt;xsl:for-each select=&quot;$invoke1/tns:searchCarResponse/tns:parameters/ns0:searchCarResponse/ns0:rentalAgencies&quot;>&#xa;                            &lt;tns2:rentalAgencies>&#xa;                                &lt;xsl:for-each select=&quot;ns0:rentalAgency&quot;>&#xa;                                    &lt;tns2:rentalAgency>&#xa;                                        &lt;tns2:name>&#xa;                                            &lt;xsl:value-of select=&quot;ns0:name&quot;/>&#xa;                                        &lt;/tns2:name>&#xa;                                        &lt;xsl:for-each select=&quot;ns0:address&quot;>&#xa;                                            &lt;tns2:address>&#xa;                                                &lt;tns2:street>&#xa;                                                    &lt;xsl:value-of select=&quot;ns0:street&quot;/>&#xa;                                                &lt;/tns2:street>&#xa;                                                &lt;tns2:city>&#xa;                                                    &lt;xsl:value-of select=&quot;ns0:city&quot;/>&#xa;                                                &lt;/tns2:city>&#xa;                                                &lt;tns2:state>&#xa;                                                    &lt;xsl:value-of select=&quot;ns0:state&quot;/>&#xa;                                                &lt;/tns2:state>&#xa;                                                &lt;tns2:zip>&#xa;                                                    &lt;xsl:value-of select=&quot;ns0:zip&quot;/>&#xa;                                                &lt;/tns2:zip>&#xa;                                                &lt;tns2:country>&#xa;                                                    &lt;xsl:value-of select=&quot;ns0:country&quot;/>&#xa;                                                &lt;/tns2:country>&#xa;                                            &lt;/tns2:address>&#xa;                                        &lt;/xsl:for-each>&#xa;                                        &lt;tns2:comment>&#xa;                                            &lt;xsl:value-of select=&quot;ns0:comment&quot;/>&#xa;                                        &lt;/tns2:comment>&#xa;                                        &lt;xsl:for-each select=&quot;ns0:carOptions&quot;>&#xa;                                            &lt;tns2:carOptions>&#xa;                                                &lt;xsl:for-each select=&quot;ns0:car&quot;>&#xa;                                                    &lt;tns2:car>&#xa;                                                        &lt;tns2:carType>&#xa;                                                            &lt;xsl:value-of select=&quot;ns0:carType&quot;/>&#xa;                                                        &lt;/tns2:carType>&#xa;                                                        &lt;xsl:if test=&quot;ns0:carMake&quot;>&#xa;                                                            &lt;tns2:carMake>&#xa;                                                                &lt;xsl:value-of select=&quot;ns0:carMake&quot;/>&#xa;                                                            &lt;/tns2:carMake>&#xa;                                                        &lt;/xsl:if>&#xa;                                                        &lt;xsl:if test=&quot;ns0:navigation&quot;>&#xa;                                                            &lt;tns2:navigation>&#xa;                                                                &lt;xsl:value-of select=&quot;ns0:navigation&quot;/>&#xa;                                                            &lt;/tns2:navigation>&#xa;                                                        &lt;/xsl:if>&#xa;                                                        &lt;xsl:if test=&quot;ns0:otherFeatures&quot;>&#xa;                                                            &lt;tns2:otherFeatures>&#xa;                                                                &lt;xsl:value-of select=&quot;ns0:otherFeatures&quot;/>&#xa;                                                            &lt;/tns2:otherFeatures>&#xa;                                                        &lt;/xsl:if>&#xa;                                                        &lt;tns2:avgCostPerDay>&#xa;                                                            &lt;xsl:value-of select=&quot;ns0:avgCostPerDay&quot;/>&#xa;                                                        &lt;/tns2:avgCostPerDay>&#xa;                                                    &lt;/tns2:car>&#xa;                                                &lt;/xsl:for-each>&#xa;                                            &lt;/tns2:carOptions>&#xa;                                        &lt;/xsl:for-each>&#xa;                                    &lt;/tns2:rentalAgency>&#xa;                                &lt;/xsl:for-each>&#xa;                            &lt;/tns2:rentalAgencies>&#xa;                        &lt;/xsl:for-each>&#xa;                    &lt;/tns2:searchCarResponse>&#xa;                    &lt;tns2:searchHotelResponse>&#xa;                        &lt;tns2:city>&#xa;                            &lt;xsl:value-of select=&quot;$invoke2/tns:searchHotelResponse/tns:parameters/ns0:searchHotelResponse/ns0:city&quot;/>&#xa;                        &lt;/tns2:city>&#xa;                        &lt;tns2:checkInDate>&#xa;                            &lt;xsl:value-of select=&quot;$invoke2/tns:searchHotelResponse/tns:parameters/ns0:searchHotelResponse/ns0:checkInDate&quot;/>&#xa;                        &lt;/tns2:checkInDate>&#xa;                        &lt;tns2:checkOutDate>&#xa;                            &lt;xsl:value-of select=&quot;$invoke2/tns:searchHotelResponse/tns:parameters/ns0:searchHotelResponse/ns0:checkOutDate&quot;/>&#xa;                        &lt;/tns2:checkOutDate>&#xa;                        &lt;tns2:noOfNights>&#xa;                            &lt;xsl:value-of select=&quot;$invoke2/tns:searchHotelResponse/tns:parameters/ns0:searchHotelResponse/ns0:noOfNights&quot;/>&#xa;                        &lt;/tns2:noOfNights>&#xa;                        &lt;xsl:for-each select=&quot;$invoke2/tns:searchHotelResponse/tns:parameters/ns0:searchHotelResponse/ns0:hotels&quot;>&#xa;                            &lt;tns2:hotels>&#xa;                                &lt;xsl:for-each select=&quot;ns0:hotel&quot;>&#xa;                                    &lt;tns2:hotel>&#xa;                                        &lt;tns2:hotelName>&#xa;                                            &lt;xsl:value-of select=&quot;ns0:hotelName&quot;/>&#xa;                                        &lt;/tns2:hotelName>&#xa;                                        &lt;xsl:for-each select=&quot;ns0:address&quot;>&#xa;                                            &lt;tns2:address>&#xa;                                                &lt;tns2:street>&#xa;                                                    &lt;xsl:value-of select=&quot;ns0:street&quot;/>&#xa;                                                &lt;/tns2:street>&#xa;                                                &lt;tns2:city>&#xa;                                                    &lt;xsl:value-of select=&quot;ns0:city&quot;/>&#xa;                                                &lt;/tns2:city>&#xa;                                                &lt;tns2:state>&#xa;                                                    &lt;xsl:value-of select=&quot;ns0:state&quot;/>&#xa;                                                &lt;/tns2:state>&#xa;                                                &lt;tns2:zip>&#xa;                                                    &lt;xsl:value-of select=&quot;ns0:zip&quot;/>&#xa;                                                &lt;/tns2:zip>&#xa;                                                &lt;tns2:country>&#xa;                                                    &lt;xsl:value-of select=&quot;ns0:country&quot;/>&#xa;                                                &lt;/tns2:country>&#xa;                                            &lt;/tns2:address>&#xa;                                        &lt;/xsl:for-each>&#xa;                                        &lt;tns2:starRating>&#xa;                                            &lt;xsl:value-of select=&quot;ns0:starRating&quot;/>&#xa;                                        &lt;/tns2:starRating>&#xa;                                        &lt;tns2:amenities>&#xa;                                            &lt;xsl:value-of select=&quot;ns0:amenities&quot;/>&#xa;                                        &lt;/tns2:amenities>&#xa;                                        &lt;tns2:directions>&#xa;                                            &lt;xsl:value-of select=&quot;ns0:directions&quot;/>&#xa;                                        &lt;/tns2:directions>&#xa;                                        &lt;tns2:comments>&#xa;                                            &lt;xsl:value-of select=&quot;ns0:comments&quot;/>&#xa;                                        &lt;/tns2:comments>&#xa;                                        &lt;xsl:for-each select=&quot;ns0:roomOptions&quot;>&#xa;                                            &lt;tns2:roomOptions>&#xa;                                                &lt;xsl:for-each select=&quot;ns0:room&quot;>&#xa;                                                    &lt;tns2:room>&#xa;                                                        &lt;tns2:roomType>&#xa;                                                            &lt;xsl:value-of select=&quot;ns0:roomType&quot;/>&#xa;                                                        &lt;/tns2:roomType>&#xa;                                                        &lt;tns2:avgCostPerNight>&#xa;                                                            &lt;xsl:value-of select=&quot;ns0:avgCostPerNight&quot;/>&#xa;                                                        &lt;/tns2:avgCostPerNight>&#xa;                                                        &lt;tns2:roomAmenities>&#xa;                                                            &lt;xsl:value-of select=&quot;ns0:roomAmenities&quot;/>&#xa;                                                        &lt;/tns2:roomAmenities>&#xa;                                                    &lt;/tns2:room>&#xa;                                                &lt;/xsl:for-each>&#xa;                                            &lt;/tns2:roomOptions>&#xa;                                        &lt;/xsl:for-each>&#xa;                                    &lt;/tns2:hotel>&#xa;                                &lt;/xsl:for-each>&#xa;                            &lt;/tns2:hotels>&#xa;                        &lt;/xsl:for-each>&#xa;                    &lt;/tns2:searchHotelResponse>&#xa;                &lt;/tns2:searchAllResponse>&#xa;            &lt;/tns1:parameters>&#xa;        &lt;/tns1:searchAllResponse>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>"/>
+                                </mediationmodel:GenerateReply>
+                            </tibco-bpel-generatereply:tibcoGenerateReplyExtensionActivity>
+                        </bpel:extensionActivity>
+                    </bpel:sequence>
+                    <bpel:extensionActivity>
+
+                        <tibco-bpel-handlereply:tibcoHandleReplyExtensionActivity
+                            name="handle_reply" xmlns:tibco-bpel-handlereply="http://xsd.tns.tibco.com/bpel/extension/activity/handlereply/models/handlereplytaskmodel">
+                            <bpel:targets>
+                                <bpel:target linkName="pre_generate_reply_assign_sequence-to-handle_reply"/>
+                            </bpel:targets>
+                            <bpel:sources>
+                                <bpel:source linkName="handle_reply-to-searchAllReply"/>
+                            </bpel:sources>
+                            <mediationmodel:HandleReply description=""
+                                name="handle_reply" xmi:version="2.0"
+                                xmlns:mediationmodel="http://xsd.tns.tibco.com/amsb/core/models/mediationmodel" xmlns:xmi="http://www.omg.org/XMI"/>
+                        </tibco-bpel-handlereply:tibcoHandleReplyExtensionActivity>
+                    </bpel:extensionActivity>
+                    <bpel:reply name="searchAllReply"
+                        operation="searchAll"
+                        partnerLink="QueryGDSProvider"
+                        portType="ns:QueryGDS" variable="searchAllResponseVar">
+                        <bpel:targets>
+                            <bpel:target linkName="handle_reply-to-searchAllReply"/>
+                        </bpel:targets>
+                    </bpel:reply>
+                </bpel:flow>
+            </bpel:scope>
+        </bpel:onMessage>
+    </bpel:pick>
+</bpel:process>

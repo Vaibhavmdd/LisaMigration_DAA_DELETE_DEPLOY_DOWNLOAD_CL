@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+	<Environment xsi:type="amxdata:Environment" 
+	       name="[[env.name]]" 
+	       description="Dev environment" 
+	       contact="TIBCO">
+		<Node xsi:type="amxdata:Node" 
+                          name="[[env.node1.name]]" 
+                          hostName="[[host.name]]" 
+                          description="My first node" 
+                          contact="TIBCO"> 
+  	   <ResourceInstance xsi:type="amxdata:ResourceInstance" name="BAT64_httpConnector" resourceTemplateName="BAT64_httpConnector"/>	
+		</Node> 
+
+		<Application
+			xsi:type="amxdata:Application"
+			name="bat64_c1"
+			contact="Patrick Pei"
+			description="This applicaton call other applications on different nodes thru SCA binding"
+			importResourceTemplates="false">
+			<Node name="[[env.node1.name]]" environmentName="[[env.name]]"/>
+			
+				<PromotedReference xsi:type="amxdata_base:Reference_base" name="EchoStringPort1">
+					<Wire xsi:type="amxdata:Wire">
+						<ServiceBinding xsi:type="amxdata_reference:Binding_reference" 
+								bindingName="Virtualization"
+								serviceName="EchoStringPort"
+								ownerName="bat64_c2"
+							  ownerType="Application"/>	
+					</Wire>
+				</PromotedReference>		
+
+				<PromotedReference xsi:type="amxdata_base:Reference_base" name="PortType11">
+					<Wire xsi:type="amxdata:Wire">
+						<ServiceBinding xsi:type="amxdata_reference:Binding_reference" 
+								bindingName="Virtualization"
+								serviceName="PortType1"
+								ownerName="bat64_c3"
+							  ownerType="Application"/>				
+					</Wire>
+				</PromotedReference>			
+			<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="Flow_1"/>
+		</Application> 
+	</Environment>
+	<ResourceTemplate xsi:type="amxdata:HttpConnectorResourceTemplate" name="BAT64_httpConnector" host="[[host1]]" port="[[bat64_port]]" headerBufferSize="512" requestBufferSize="512"	responseBufferSize="512" maxIdleTime="200000" lowResourceMaxIdleTime="512" description="This is HttpConnector RT for BAT 6.4"/>
+	<DAA
+		xsi:type="amxdata:DAA"
+		description="DAA AppNameSDR"
+		location="./BAT_64/Deployment Artifacts/Flow_1.daa">
+	</DAA>
+
+
+</amxdata_base:Enterprise>

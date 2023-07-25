@@ -1,0 +1,117 @@
+<html> <body><FONT FACE='arial'> <table width='100%' border='2' cellpadding='4' cellspacing='3'><tr bgcolor='yellow'> <th width='10%'>Event</th> <th width='14%'>Short Description</th> <th width='42%'>Long Description</th><th width='21%'>TimeStamp</th><tr bgcolor='lime'><td>EVENT_START</td><td></td><td></td><td>Wed Aug 08 13:06:13 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>SetCustomLibraryPath</td><td><pre></pre></td><td>Wed Aug 08 13:06:13 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>SetCustomLibraryPath</td><td><pre></pre></td><td>Wed Aug 08 13:06:13 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/util/SetNameValuePairInFile.tst</pre></td><td>Wed Aug 08 13:06:13 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>SetCustomLibraryPath-Log</td><td><pre></pre></td><td>Wed Aug 08 13:06:13 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>SetCustomLibraryPath-Log</td><td><pre></pre></td><td>Wed Aug 08 13:06:13 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>SetCustomLibraryPath-Log</td><td><pre>Setting "CUSTOM_PATH={{customPath}}" in /local/amx320-V61/amx_it_cpp/3.2/bin/NativeTemplate.tra</pre></td><td>Wed Aug 08 13:06:13 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>SetCustomLibraryPath-setNameValuePairInFile</td><td><pre></pre></td><td>Wed Aug 08 13:06:13 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>SetCustomLibraryPath-setNameValuePairInFile</td><td><pre></pre></td><td>Wed Aug 08 13:06:13 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>import java.io.File;
+import java.io.RandomAccessFile;
+
+setNameValuePairInFile(String fileName, String name, String value, String assignChar){
+ try {
+  File file = new File(fileName);
+
+  // Check if file exists
+  if(!file.exists())
+   return errorMsg + ": File " + fileName + " does not exist";
+
+  // If fileName is a directory, we fail.
+  if(file.isDirectory())
+   return errorMsg + ": File passed is a directory! It must be a file.";
+
+  // Name cannot be empty
+  if(name.equals(""))
+   return errorMsg + ": Name cannot be empty";
+
+  // Assignment character cannot be empty
+  if(assignChar.equals(""))
+   return errorMsg + ": Assign character cannot be empty";
+
+  RandomAccessFile raf = new RandomAccessFile(file, "rw");
+  long curlinePointer = raf.getFilePointer(); // Pointer to the current line read
+  long prevlinePointer = curlinePointer; // Pointer to the previous line read
+  String lineData = "";
+  boolean nameFound = false;
+
+  // Read file line by line
+  while((lineData = raf.readLine()) != null) {
+   curlinePointer = raf.getFilePointer();
+   // If we find the Name
+   if (lineData.startsWith(name + assignChar)){
+    // Store the rest of the file in array of bytes
+    byte[] b = new byte[raf.length() - curlinePointer];
+    raf.readFully(b);
+    // If name was already found, we comment out all the other ones
+    if (nameFound) {
+     // Comment out the line
+     raf.seek(prevlinePointer);
+     raf.writeBytes("#" + lineData + "\r\n");
+     // Append the rest of the file after the new line
+     raf.write(b);
+    }
+    else {
+     // Write the new line: name=value 
+     raf.seek(prevlinePointer);
+     raf.writeBytes(name + assignChar + value + "\r\n");
+     // Append the rest of the file after the new line
+     raf.write(b);
+     // If new line shorter than the previous one, 
+     // pad with white space at the end of the file
+     if (lineData.length() &gt; (name + assignChar + value).length()) {
+      raf.writeBytes("\r\n");
+      int dif = lineData.length() - (name + assignChar + value).length() + 1;
+      for (int i=0; i&lt;dif; i++)
+       raf.writeBytes(" ");
+     }
+    }
+    nameFound = true;
+    raf.seek(curlinePointer);
+   }
+   prevlinePointer = curlinePointer;
+  }
+  // If Name not found append Name-Value pair to the end of the file
+  if(!nameFound) {
+   raf.seek(raf.length());
+   raf.writeBytes("\r\n");
+   raf.writeBytes(name + assignChar + value);
+  }
+  raf.close();
+  return "Set Name-Value Pair Success: " + name + assignChar + value;
+ }
+ catch(Exception e){
+  return errorMsg + ": " + e.getMessage();
+ }
+}
+
+// Main
+String errorMsg = "Error setting Name-Value pair";
+file = testExec.parseInState(file).replace('\\','/');
+name = testExec.parseInState(name.toString());
+value = testExec.parseInState(value.toString());
+return setNameValuePairInFile(file, name, value, assignChar);
+ </pre></td><td>Wed Aug 08 13:06:13 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>SetCustomLibraryPath-setNameValuePairInFile</td><td><pre>Error setting Name-Value pair: File /local/amx320-V61/amx_it_cpp/3.2/bin/NativeTemplate.tra does not exist</pre></td><td>Wed Aug 08 13:06:13 PDT 2012</td> </tr><tr bgcolor='#CC9933'><td>EVENT_ASSERT</td><td>SetCustomLibraryPath-setNameValuePairInFile [Assert74] </td><td><pre>Error setting Name-Value pair: File /local/amx320-V61/amx_it_cpp/3.2/bin/NativeTemplate.tra does not exist</pre></td><td>Wed Aug 08 13:06:13 PDT 2012</td> </tr><tr bgcolor='#FFA500'><td>EVENT_TRANSFAILED</td><td>SetCustomLibraryPath</td><td><pre>Sub test case had failure</pre></td><td>Wed Aug 08 13:06:13 PDT 2012</td> </tr><tr bgcolor='red'><td>EVENT_TESTFAILED</td><td></td><td></td><td>Wed Aug 08 13:06:13 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>killCPPProcess</td><td><pre></pre></td><td>Wed Aug 08 13:06:13 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>killCPPProcess</td><td><pre></pre></td><td>Wed Aug 08 13:06:13 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/groupfiler/tests/tests/amsg/3.0/libraries/common/com/tibco/lisa/util/KillProcessByName.tst</pre></td><td>Wed Aug 08 13:06:13 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>killCPPProcess-Log</td><td><pre></pre></td><td>Wed Aug 08 13:06:13 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>killCPPProcess-Log</td><td><pre></pre></td><td>Wed Aug 08 13:06:13 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODEMSG</td><td>killCPPProcess-Log</td><td><pre>Attempting to kill process "tibamx_qaenvironment_hpita17_qanode2_bat7.1_new_cpp1"...</pre></td><td>Wed Aug 08 13:06:13 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>killCPPProcess-validate</td><td><pre></pre></td><td>Wed Aug 08 13:06:13 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>killCPPProcess-validate</td><td><pre></pre></td><td>Wed Aug 08 13:06:13 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>String baseErrorMsg = "Kill process validation error";
+String baseSuccessMsg = "Kill process validation success";
+
+if (processName.equals("") || processName.equals("&lt;&lt;null&gt;&gt;"))
+ return baseErrorMsg + ": processName is required";
+
+return baseSuccessMsg;</pre></td><td>Wed Aug 08 13:06:13 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>killCPPProcess-validate</td><td><pre>Kill process validation success</pre></td><td>Wed Aug 08 13:06:13 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>killCPPProcess-OSSelection</td><td><pre></pre></td><td>Wed Aug 08 13:06:13 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>killCPPProcess-OSSelection</td><td><pre></pre></td><td>Wed Aug 08 13:06:13 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>if (com.itko.util.Utilities.isWindows())
+ return "windows";
+else
+ return "unix";</pre></td><td>Wed Aug 08 13:06:13 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>killCPPProcess-OSSelection</td><td><pre>unix</pre></td><td>Wed Aug 08 13:06:13 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>killCPPProcess-UnixProcessModifier</td><td><pre></pre></td><td>Wed Aug 08 13:06:13 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>killCPPProcess-UnixProcessModifier</td><td><pre></pre></td><td>Wed Aug 08 13:06:13 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>// ps -e command used to get the PID has some restriction on some Unix platforms:
+// The process name might truncated.
+
+processName2 = processName;
+
+// Linux ps -e command returns 15 characters max
+if (os_name.equals("Linux")) {
+ if (testExec.parseInState(processName).length() &gt; 15)
+  processName2 = testExec.parseInState(processName).substring(0,15);
+}
+// HP-UX ps -e command returns 14 characters max
+else if (os_name.equals("HP-UX")) {
+ if (testExec.parseInState(processName).length() &gt; 14)
+  processName2 = testExec.parseInState(processName).substring(0,14);
+}
+// Solaris ps -e command returns 8 characters max
+else if (os_name.equals("SunOS")) {
+ if (testExec.parseInState(processName).length() &gt; 8)
+  processName2 = testExec.parseInState(processName).substring(0,8);
+}
+// AIX does not have limitation.
+return processName2;</pre></td><td>Wed Aug 08 13:06:13 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>killCPPProcess-UnixProcessModifier</td><td><pre>tibamx_qaenvir</pre></td><td>Wed Aug 08 13:06:13 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>killCPPProcess-killOnUnix</td><td><pre></pre></td><td>Wed Aug 08 13:06:13 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>killCPPProcess-killOnUnix</td><td><pre></pre></td><td>Wed Aug 08 13:06:13 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>sh KillProcessByName.sh tibamx_qaenvir</pre></td><td>Wed Aug 08 13:06:13 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>killCPPProcess-killOnUnix</td><td><pre>ERROR: The process "tibamx_qaenvir" not found.
+</pre></td><td>Wed Aug 08 13:06:14 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TESTEND</td><td></td><td></td><td>Wed Aug 08 13:06:14 PDT 2012</td> </tr></table></body></html>

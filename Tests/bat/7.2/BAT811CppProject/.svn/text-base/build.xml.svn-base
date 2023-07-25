@@ -1,0 +1,610 @@
+<project name="TIBCO ActiveMatrix C++ Project" default="build" basedir="." xmlns:antcontrib="antlib:net.sf.antcontrib">
+	<!--
+		  Load definition of C/C++ Tasks and Types
+		  To allow the compilation and linking of C/C++ code
+		  -->
+		<taskdef resource="cpptasks.tasks"/>
+		<typedef resource="cpptasks.types"/>
+	
+		<!--
+		  Load definition of Additional Tasks and Types
+		  -->
+		<taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
+	
+		<!--
+		  These properties will be the same for all environments, so have not been
+		  included within the property files
+		  -->
+	
+		<property name="dir.src" value="${basedir}/src"/>
+		
+		<!-- platform specific stuff separated -->
+		<target name="pre-init">
+				        	 
+				        <condition property="solaris">
+				           <os name="SunOS" arch="sparc"/>
+				        </condition>
+				        
+				        <condition property="solaris10x86">
+					     <os name="SunOS" arch="x86"/>
+					 </condition>
+				
+				        <condition property="windows">
+				           <os family="windows"/>
+				        </condition>
+				        <condition property="aix">
+				           <os name="AIX"/>
+				        </condition>
+				        <condition property="linux">
+				           <os name="Linux"/>
+				        </condition>
+				        <condition property="os400">
+				           <os name="OS/400"/>
+				        </condition>
+				        <condition property="hp-ux">
+				           <os name="HP-UX"/>
+				        </condition>
+				
+				        <condition property="platform" value="SunOS">
+				           <isset property="solaris"/>
+				        </condition>
+				        
+				        <condition property="platform" value="SunOS">
+					    <isset property="solaris10x86"/>
+				        </condition>
+				        
+				        <condition property="platform" value="Win32">
+						       <and>
+						           <isset property="windows"/>
+						           <!--
+						           <not>
+						               <isset property="64bit"/>
+						           </not>
+						           -->
+						       </and>
+						  </condition>
+						  <!--
+						    <condition property="platform" value="Win64">
+						       <and>
+						           <isset property="windows"/>
+						           <isset property="64bit"/>
+						       </and>
+						  </condition>
+						  -->
+				        <condition property="platform" value="Linux">
+				           <isset property="linux"/>
+				        </condition>
+				        <condition property="platform" value="AIX">
+				           <and>
+				               <isset property="aix"/>
+				               <not>
+				                   <isset property="64bit"/>
+				               </not>
+				           </and>
+				        </condition>
+				        <condition property="platform" value="AIX64">
+				           <and>
+				               <isset property="aix"/>
+				               <isset property="64bit"/>
+				           </and>
+				        </condition>
+				        <condition property="platform" value="OS400">
+				           <isset property="os400"/>
+				        </condition>
+				        <condition property="platform" value="HP-UX">
+				            <isset property="hp-ux"/>
+				        </condition>
+				
+				        <!--
+				            Following is needed to distinguish unix variants from OS/400
+				            since in some cases it is not simply a if="windows" vs. unless="windows".
+				            Also note that <os family="unix"/> cannot be used since it considers
+				            OS/400 to be a unix variant. 
+				         -->
+				        <condition property="platformIsUnix">
+				           <or>
+				              <isset property="solaris"/>
+				              <isset property="aix"/>
+				              <isset property="linux"/>
+				              <isset property="hp-ux"/>
+				           </or>
+				        </condition>
+	    </target>
+	
+		<property environment="env"/>
+	
+	  	<!--condition property="msvc7">
+	        <and>
+	            <isset property="windows" />
+	            <not>
+	                <isset property="env.MSDevDir" />
+	            </not>
+	        </and>
+	  	</condition-->
+	
+		<!--
+		  Compiler Definitions
+		  -->
+			<!-- Definition of cc compile for Solaris -->
+			<compiler id="SolarisCC" name="CC" if="solaris">
+				<compilerarg value="-g" if="debug"/>
+				<compilerarg value="-KPIC"/>
+				<compilerarg value="-m64" if="64bit"/>
+				<compilerarg value="-m32" unless="64bit"/>
+				<compilerarg value="-xildoff"/>
+				<compilerarg value="-pta"/>
+				<compilerarg value="-instances=global"/>
+				<compilerarg value="-features=extensions"/>
+				<defineset>
+					<define name="HAVE_CONFIG_H"/>
+					<define name="PIC"/>
+				</defineset>
+				<includepath path="${dir.include}"/>
+			</compiler>
+			
+			<!-- Definition of cc compile for Solaris 10x86 -->
+			<compiler id="Solaris10x86CC" name="CC" if="solaris10x86">
+				<compilerarg value="-g" if="debug"/>
+				<compilerarg value="-m64" if="64bit"/>
+				<compilerarg value="-features=extensions"/>
+				<compilerarg value="-pic" if="64bit"/>
+				<compilerarg value="-mt"/>
+				<compilerarg value="-xO2" unless="64bit"/>
+				<compilerarg value="-KPIC" unless="64bit"/>
+				<defineset>
+					<define name="SOLARIS"/>
+					<define name="_REENTRANT"/>
+				</defineset>
+				<includepath path="${dir.include}"/>
+			</compiler>
+	
+	
+			<!--
+			  Definition of Visual C++ compiler
+			  -->
+			<compiler id="VisualC++" name="msvc" if="windows">
+
+					<!-- Display all warnings -->
+					<compilerarg value="/W3"/>
+					<compilerarg value="/w44290" if="msvc7" />
+					<compilerarg value="/Gm" if="debug"/>
+					<compilerarg value="/EHsc"/>
+		       			<compilerarg value="/RTC1" if="debug"/>
+		       			<compilerarg value="/ZI" if="debug"/>
+		       			<compilerarg value="/Zi" if="debug"/>
+					<compilerarg value="/TP" if="debug"/>
+					<compilerarg value="/Wp64" if="64bit"/>
+					<includepath path="${dir.include}"/>
+					<defineset>
+						<define name="WIN32"/>
+						<define name="_CONSOLE" if="debug"/>
+						<define name="AMX_DLL_EXPORTS"/>
+						<define name="_MBCS"/>
+						<define name="_WINDLL"/>
+						<define name="USING_AMX_CPP_DLL"/>
+ 			            <define name="USING_AMX_CORE_DLL"/>
+					</defineset>
+			</compiler>
+	
+			<!--
+			  Definition of gcc compile for Linux
+		      -->
+			<compiler id="Linuxgcc" name="g++" if="linux">
+				<compilerarg value="-g3" if="debug"/>
+				<compilerarg value="-Wall"/>
+				<compilerarg value="-O2"/>
+				<compilerarg value="-m32" unless="64bit"/>
+				<compilerarg value="-m64" if="64bit"/>
+				<defineset>
+					<define name="HAVE_CONFIG_H"/>
+					<define name="PIC"/>
+				</defineset>
+				<includepath path="${dir.include}"/>
+			</compiler>
+	
+			<!--
+			  Definition of xlc compile for AIX
+		      -->
+			<compiler id="AIXxlc" name="xlC" if="aix">
+				<compilerarg value="-g" if="debug"/>
+				<compilerarg value="-V"/>
+				<compilerarg value="-+"/>
+				<compilerarg value="-q32" unless="64bit"/>
+				<compilerarg value="-q64" if="64bit"/>      
+				<compilerarg value="-qproto"/>   
+				<compilerarg value="-qchars=signed"/>
+				<compilerarg value="-qlongdouble"/>
+				<compilerarg value="-qroconst"/>
+				<compilerarg value="-qthreaded"/>			
+                <compilerarg value="-qcpluscmt"/>
+				<defineset>
+					<define name="HAVE_CONFIG_H"/>
+					<define name="AIX"/>
+					<define name="AIX32" unless="64bit"/>
+				</defineset>
+				<includepath path="${dir.include}"/>
+			</compiler>
+	
+			<!--
+			  Definition of icc compile for OS400
+		      -->
+			<compiler id="OS400icc" name="icc" if="os400">
+				<compilerarg value="-g" if="debug"/>
+				<compilerarg value="-O" unless="debug"/>
+				<compilerarg value="-qLOCALETYPE=*LOCALEUCS2"/>
+				<compilerarg value="-qENUM=*INT"/>
+				<compilerarg value="-qTGTRLS=V5R1M0"/>
+				<compilerarg value="-qRTTICAST"/>
+				<compilerarg value="-qTEMPLATE=*TEMPINC"/>
+				<compilerarg value="-qTERASPACE=*YES *TSIFC"/>
+				<compilerarg value="-qSTGMDL=*INHERIT"/>
+				<defineset>
+					<define name="HAVE_CONFIG_H"/>
+					<define name="OS400"/>
+					<define name="AS400"/>
+					<define name="_XOPEN_SOURCE" value="510"/>
+					<define name="_MULTI_THREADED"/>
+				</defineset>
+				<includepath path="${dir.include}"/>
+			</compiler>
+	
+		    <!--
+		      Definition of aC++ compile for HP-UX
+		      -->
+		    <compiler id="HP-UXaC++" name="aCC" if="hp-ux">
+		        <compilerarg value="-g" if="debug"/>
+	            <compilerarg value="-AA"/>
+	            <compilerarg value="-mt"/>
+	            <compilerarg value="+DD64" if="64bit"/>
+	            <compilerarg value="+Z"/>
+	            <compilerarg value="+W2815"/>
+	            <compilerarg value="+Onolimit"/>
+	            <!--compilerarg value="+W829"/>
+		    <compilerarg value="-DAportable"/--> 
+		        <defineset>
+		            <define name="HAVE_CONFIG_H"/>
+		            <define name="HPUX"/>
+		            <define name="HP_UX"/>
+		        </defineset>
+		        <includepath path="${dir.include}"/>
+		    </compiler>
+	    
+		<!--
+		  Linker Definitions
+		  -->
+			<!-- Definition of Solaris linker -->
+			<linker id="SolarisLinker" name="CC" libtool="true" if="solaris">
+				<linkerarg value="-g" if="debug"/>
+				<linkerarg value="-Qoption"/>
+				<linkerarg value="ld"/>
+				<linkerarg value="-zmuldefs"/>
+				<linkerarg value="-m64" if="64bit"/>
+				<linkerarg value="-m32" unless="64bit"/>
+				<syslibset libs="rt"/>
+				<syslibset libs="Cstd"/>
+				<syslibset libs="socket"/>
+			</linker>
+			
+			
+			<!-- Definition of Solaris 10x86 linker -->
+			<linker id="Solaris10x86Linker" name="CC" libtool="true" if="solaris10x86">
+				<linkerarg value="-g" if="debug"/>
+				<linkerarg value="-m64" if="64bit"/>
+				<syslibset libs="c"/>
+				<syslibset libs="socket"/>
+				<syslibset libs="rt"/>
+				<syslibset libs="nsl" unless="64bit"/>
+				<syslibset libs="dl" unless="64bit"/>
+				<syslibset libs="m" unless="64bit"/>
+				<syslibset libs="gen" if="64bit"/>
+				<syslibset libs="pthread" if="64bit"/>
+			</linker>
+	
+	
+			<!--
+			  Definition of Visual C++ linker
+			  -->
+			<linker id="VisualC++Linker" name="msvc" if="windows">
+	<!--      		<linkerarg value="${basedir}/build/version.res"/>	-->
+	      		    <linkerarg value="/SUBSYSTEM:CONSOLE"/>
+					<linkerarg value="/MACHINE:X86" unless="64bit"/>
+					<linkerarg value="/MACHINE:X64" if="64bit"/>
+	      			<!--linkerarg value="/pdb:none" unless="msvc7" /-->
+			</linker>
+		
+			<!--
+		      		Definition of Linux linker
+		        -->
+			<linker id="LinuxLinker" name="g++" libtool="true" if="linux">
+				<linkerarg value="-g" if="debug"/>
+				<linkerarg value="-m32" unless="64bit"/>
+				<linkerarg value="-m64" if="64bit"/>
+				<linkerarg value="-m"/>
+				<linkerarg value="elf_i386" unless="64bit"/>
+	            <linkerarg value="elf_x86_64" if="64bit"/>
+	            <linkerarg value="-export-dynamic"/>
+				<libset libs="dl"/>
+				<syslibset libs="pthread"/>
+			</linker>
+			
+			<!--
+		      Definition of AIX linker
+		      -->
+			<linker id="AIXExecutableLinker" name="xlC" libtool="false" if="aix">
+							<linkerarg value="-g" if="debug"/>
+	            <linkerarg value="-q64" if="64bit"/>
+	            <linkerarg value="-q32" unless="64bit"/>      
+	            <syslibset libs="pthread"/>
+			</linker>
+	
+			<linker id="AIXLinker" extends="AIXExecutableLinker" name="xlC" libtool="false" if="aix">
+				<linkerarg value="-q64" if="64bit"/>
+				<linkerarg value="-q32" unless="64bit"/>
+				 <linkerarg value="-qmkshrobj"/>
+				<linkerarg value="-brtl"/>
+				<linkerarg value="-G"/>
+				<linkerarg value="-bnoentry"/>
+				<linkerarg value="-L/usr/lib/threads"/>
+				<linkerarg value="-g" if="debug"/>
+				<linkerarg value="-bM:SRE"/>
+				<linkerarg value="-qthreaded"/>
+				<linkerarg value="-lpthreads"/>
+				<linkerarg value="-lm"/>
+				<linkerarg value="-lc"/>			
+                <linkerarg value="-lC"/>
+			</linker>
+	
+			<!-- Definition of OS/400 linker -->
+			<linker id="OS400ExecutableLinker" name="icc" libtool="false" if="os400">
+			    <linkerarg value="-qTGTRLS=V5R1M0"/>
+			    <linkerarg value="-qDUPPROC=*YES"/>
+			</linker>
+			
+			<linker id="OS400Linker" name="ld" libtool="false" if="os400">
+			    <linkerarg value="-qTGTRLS=V5R1M0"/>
+				<linkerarg value="-qSTGMDL=*INHERIT"/>
+			</linker>
+	
+		    <!--
+		      Definition of HP-UX linker
+		      -->
+		    <linker id="HP-UXLinker" name="aCC" libtool="false" if="hp-ux">
+		        <linkerarg value="-g" if="debug"/>
+		        <linkerarg value="+DD64" if="64bit"/>
+		        <linkerarg value="-lrt"/>
+		        <syslibset libs="pthread, std_v2"/>
+		    </linker>		
+		
+		<!--
+		  Initialize properties
+	      -->
+	
+		<target name="initialize" depends="set-platform-specifics" />
+	
+		<target name="set-platform-specifics" depends="pre-init">
+	  		<!-- Load properties from file -->
+			<if>
+				<equals arg1="${platform}" arg2="AIX"/>
+			   	<then>
+			   		<property name="executableSuffix"  value=""/>
+					<property name="librarySuffix" value=".a"/>
+					<property name="libraryPrefix" value="lib"/>
+			   	</then>
+			   <elseif>
+			   	<equals arg1="${platform}" arg2="AIX64"/>
+			   	<then>
+			   		<property name="executableSuffix"  value=""/>
+					<property name="librarySuffix" value=".a"/>
+					<property name="libraryPrefix" value="lib"/>
+			   	</then>
+			   </elseif>
+			    <elseif>
+			    	<equals arg1="${platform}" arg2="HP-UX"/>
+			      	<then>
+			      		<property name="executableSuffix"  value=""/>
+					<property name="librarySuffix" value=".sl"/>
+					<property name="libraryPrefix" value="lib"/>
+			      	</then>
+			   </elseif>
+			    <elseif>
+			    	<equals arg1="${platform}" arg2="Linux"/>
+			      	<then>
+			      		<property name="executableSuffix"  value=""/>
+					<property name="librarySuffix" value=".so"/>
+					<property name="libraryPrefix" value="lib"/>
+			      	</then>
+			   </elseif>
+			    <elseif>
+			    	<equals arg1="${platform}" arg2="OS400"/>
+			      	<then>
+			      		<property name="executableSuffix"  value=""/>
+					<property name="librarySuffix" value=".so"/>
+					<property name="libraryPrefix" value="lib"/>
+			      	</then>
+			   </elseif>
+			    <elseif>
+			    	<equals arg1="${platform}" arg2="SunOS"/>
+			      	<then>
+			      		<property name="executableSuffix"  value=""/>
+					<property name="librarySuffix" value=".so"/>
+					<property name="libraryPrefix" value="lib"/>
+			      	</then>
+			   </elseif>
+			    <elseif>
+			    	<equals arg1="${platform}" arg2="Win32"/>
+			      	<then>
+			      		<property name="executableSuffix"  value=".exe"/>
+					<property name="librarySuffix" value=".dll"/>
+					<property name="libraryPrefix" value=""/>
+			      	</then>
+			   </elseif>
+			</if>
+	</target>		
+	<!--
+		  Compile the C++ Component Shared Library
+		  -->
+		  <property name="binfile" value="BAT811CppProject"/>
+		  <target name="buildProject">
+	<!--	  	<propertyregex override="yes" property="binfile"  input="${ant.file}" regexp="^.*\\([^\\]+)\\+build.xml$" replace="\1"/>	-->
+		  	
+			<mkdir dir="bin"/>
+			<if>
+				<isset property="windows"/>
+				<then>
+				 	<antcontrib:for param="file">
+					      	<path>
+					      		<fileset dir="${dir.src}" includes="**/*.cpp"/>
+					      	</path>
+						<sequential>
+						        <propertyregex override="yes" property="program"  input="@{file}" regexp="(^.*\b)(src)(\b.*)\\.*.cpp$" replace="\1Obj\3"/>
+						        <mkdir dir="${program}"/>
+						        <cc outtype="shared" objdir="${program}" exceptions="true" multithreaded="true" debug="${DEBUG_FLAG}">
+						        	<!-- Compilers -->
+								<compiler refid="VisualC++"/>
+								        	
+						        	<!-- Include Path and TPCL Library Settings -->
+										
+								<includepath path="${env.TIBCOAMX_CPP_CONTAINER_HOME}/include"/>
+								<includepath path="${dir.src}"/>
+								        	
+						        	<!-- Linkers -->
+								<linker refid="VisualC++Linker"/>
+									
+								<!-- Files to be compiled -->
+						        	<fileset file="@{file}"/>
+								        	
+						          	<libset libs="stdc++"/>
+						        </cc>
+						</sequential>
+					</antcontrib:for>		
+					<cc outtype="shared" objdir="Obj" outfile="bin/${binfile}" exceptions="true" multithreaded="true" debug="${DEBUG_FLAG}">							
+						<libset dir="${env.TIBCOAMX_CPP_CONTAINER_HOME}/lib" libs="xerces-c_3D" if="debug"/>			
+						<libset dir="${env.TIBCOAMX_CPP_CONTAINER_HOME}/lib" libs="tibcoamx-cppitD" if="debug"/>
+						<libset dir="${env.TIBCOAMX_CPP_CONTAINER_HOME}/lib" libs="tibcoamx-nativeD" if="debug"/>
+						<libset dir="${env.TIBCOAMX_CPP_CONTAINER_HOME}/lib" libs="icuucd" if ="debug"/>							
+						<libset dir="${env.TIBCOAMX_CPP_CONTAINER_HOME}/lib" libs="xerces-c_3" unless ="debug"/>
+						<libset dir="${env.TIBCOAMX_CPP_CONTAINER_HOME}/lib" libs="tibcoamx-cppit" unless ="debug"/>
+						<libset dir="${env.TIBCOAMX_CPP_CONTAINER_HOME}/lib" libs="tibcoamx-native" unless ="debug"/>
+						<libset dir="${env.TIBCOAMX_CPP_CONTAINER_HOME}/lib" libs="icuuc" unless ="debug"/>
+						<!-- Linkers -->
+						<linker refid="VisualC++Linker"/>
+						<fileset dir="Obj" includes="**/*.obj"/>
+						<libset libs="stdc++"/>
+					</cc>					
+ 					<exec executable="cmd">
+ 						<arg line="/C mt -nologo -manifest bin/${binfile}.dll.manifest -out:&quot;bin/${binfile}.dll.embed.manifest&quot; -notify_update"/>
+ 					</exec>
+ 					<exec executable="cmd">
+ 						<arg line="/C mt -manifest bin/${binfile}.dll.embed.manifest -outputresource:bin/${binfile}.dll;2"/>
+ 					</exec>						
+				</then>
+				
+				<else>
+					<!--
+					  Library name may have been change if windows debug build. Changed
+					  in buildInitialize.xml
+					  -->
+					<antcontrib:for param="file">
+						<path>
+							<fileset dir="${dir.src}" includes="**/*.cpp"/>
+						</path>
+						<sequential>
+							<propertyregex override="yes" property="program"  input="@{file}" regexp="(^.*\b)(src)(\b.*)/.*.cpp$" replace="\1Obj\3"/>
+							<mkdir dir="${program}"/>
+							<cc outtype="shared" objdir="${program}" exceptions="true" multithreaded="true" debug="${DEBUG_FLAG}">
+								<!-- Compilers -->
+								<compiler refid="AIXxlc"/>
+								<compiler refid="SolarisCC"/>
+								<compiler refid="Solaris10x86CC"/>					
+								<compiler refid="Linuxgcc"/>					
+								<compiler refid="HP-UXaC++"/>            
+								<compiler refid="OS400icc"/>
+								<!-- Linkers -->
+								<linker refid="AIXLinker"/>
+								<linker refid="SolarisLinker"/>
+								<linker refid="Solaris10x86Linker"/>
+								<linker refid="LinuxLinker"/>
+								<linker refid="HP-UXLinker"/>            
+								<linker refid="OS400Linker"/>
+								
+								<!-- Include Path and TPCL Library Settings -->
+								
+								<includepath path="${env.TIBCOAMX_CPP_CONTAINER_HOME}/include"/>
+								<includepath path="${dir.src}"/>
+																		
+								<!-- Files to be compiled -->
+								<fileset file="@{file}"/>
+																        	
+			<!--					<libset libs="stdc++"/>		-->
+							</cc>
+						</sequential>
+					</antcontrib:for>
+																
+					<cc outtype="shared" objdir="Obj" outfile="bin/${binfile}" exceptions="true" multithreaded="true" debug="${DEBUG_FLAG}">
+						<libset dir="${env.TIBCOAMX_CPP_CONTAINER_HOME}/lib/64" libs="xerces-c" if="64bit"/>
+						<libset dir="${env.TIBCOAMX_CPP_CONTAINER_HOME}/lib" libs="xerces-c"/>
+						<libset dir="${env.TIBCOAMX_CPP_CONTAINER_HOME}/lib" libs="tibcoamx-cppit"/>
+						<libset dir="${env.TIBCOAMX_CPP_CONTAINER_HOME}/lib" libs="tibcoamx-native"/>
+						<libset dir="${env.TIBCOAMX_CPP_CONTAINER_HOME}/lib" libs="icuuc"/>
+						<!-- Linkers -->
+						<linker refid="AIXLinker"/>
+						<linker refid="SolarisLinker"/>
+						<linker refid="Solaris10x86Linker"/>
+						<linker refid="LinuxLinker"/>
+						<linker refid="HP-UXLinker"/>            
+						<linker refid="OS400Linker"/>
+						
+						<fileset dir="Obj" includes="**/*.o"/> <!-- excludes="**/*.xml **/*.idb **/*.pdb"-->
+		<!--				<libset libs="stdc++"/>		-->
+					</cc>			
+				</else>
+			</if>
+	</target>
+	
+	<target name="compile">
+		<antcall target="buildProject" inheritall="true"/>		
+	</target>
+
+	<target name="buildAll" depends="compile"/> <!--, buildDocumentation"/-->
+
+
+	<target name="build" depends="initialize"
+	 description="Build C++ runtime libraries">
+		<property name="DEBUG_FLAG" value="false"/>
+		<property name="winSuffix" value=""/>
+		<antcall target="buildAll" inheritall="true"/>
+	</target>
+
+	<target name="buildWithDebug" depends="initialize"
+	 description="Build runtime libraries (with debug symbols)">
+		<property name="DEBUG_FLAG" value="true"/>
+		<property name="debug" value="true"/>
+		<property name="winSuffix" value="D"/>
+		<antcall target="buildAll" inheritall="true"/>
+	</target>
+
+	<target name="64bit" depends="initialize"
+		 description="Build 64-bit runtime libraries">
+		<property name="64bit" value="true"/>
+		<antcall target="build" inheritall="true"/>
+	</target>
+	
+	<target name="64bitDebug" depends="initialize"
+			 description="Build 64-bit runtime libraries (with debug symbols)">
+		<property name="64bit" value="true"/>
+		<property name="debug" value="true"/>
+		<property name="DEBUG_FLAG" value="true"/>
+		<property name="winSuffix" value="D"/>
+		<antcall target="buildAll" inheritall="true"/>
+	</target>
+	
+
+	<!--
+	  Remove all generated artifaces
+	  -->
+	<target name="clean" depends="initialize" description="Remove all generated artifacts">		
+		<delete dir="Obj"/>
+		<delete dir="bin"/>
+	</target>
+
+</project>

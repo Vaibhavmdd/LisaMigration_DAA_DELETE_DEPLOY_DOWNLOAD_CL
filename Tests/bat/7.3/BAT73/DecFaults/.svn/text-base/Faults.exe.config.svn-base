@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+    <system.serviceModel>
+     <extensions>
+          <bindingElementExtensions>
+            <add name="MSFTITTransport" type="com.tibco.matrix.clr.MSFTITChannel.MSFTITTransportElement, amx_msft_runtime" />
+          </bindingElementExtensions>
+          <bindingExtensions>
+            <add name="MSFTITBinding" type="com.tibco.matrix.clr.MSFTITChannel.MSFTITBindingCollectionElement, amx_msft_runtime" />
+          </bindingExtensions>
+        </extensions>
+        <behaviors>
+            <serviceBehaviors>
+                <behavior name="DecFaultServiceBehavior">
+                  <serviceMetadata httpGetEnabled="true" />
+                  <serviceDebug includeExceptionDetailInFaults="true" />
+                </behavior>
+            </serviceBehaviors>
+        </behaviors>
+        <services>
+            <service behaviorConfiguration="DecFaultServiceBehavior" name="Faults.SoapException1PTImpl">
+                <endpoint address="Faults" binding="customBinding" bindingConfiguration="AMX"
+                    contract="SoapException1PT" />
+                <host>
+                    <baseAddresses>
+                        <add baseAddress="http://localhost:9051" />
+                    </baseAddresses>
+                </host>
+            </service>
+        </services>
+        <bindings>
+            <basicHttpBinding>
+              <binding name="SOAPEventSourceBinding">
+              </binding>
+            </basicHttpBinding>
+             <customBinding>
+	       <binding name="AMX">
+	           <textMessageEncoding />
+	             <MSFTITTransport/>
+	       </binding>
+          </customBinding> 
+        </bindings>
+        <client>
+            <endpoint address="http://localhost:2428/Service/Service_declaredFaultDoc"
+                binding="customBinding" bindingConfiguration="AMX"
+                contract="SoapException1PT" name="SOAPEventSource" />
+        </client>
+    </system.serviceModel>
+</configuration>

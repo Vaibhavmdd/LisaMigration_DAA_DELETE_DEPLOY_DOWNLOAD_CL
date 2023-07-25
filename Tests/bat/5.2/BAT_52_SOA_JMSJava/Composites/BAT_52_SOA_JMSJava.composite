@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:compositenotation="http://www.tibco.com/models/compositenotation" xmlns:java="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/java" xmlns:jms="http://xsd.tns.tibco.com/amf/models/sharedresource/jms" xmlns:jmsbt="http://xsd.tns.tibco.com/amf/models/sca/bindingtype/jms" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.1/notation" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmi:id="_KgldURFWEd60YeZqiGSomQ" targetNamespace="http://www.example.com/BAT_52_SOA_JMSJava" name="BAT_52_SOA_JMSJava" compositeext:version="1.0.0.qualifier" compositeext:formatVersion="2">
+  <sca:service xmi:id="_oeCywBFaEd60YeZqiGSomQ" name="NewService" promote="NewComponent/AllMEPsWSDLFile">
+    <sca:interface.wsdl xmi:id="_oeL8sBFaEd60YeZqiGSomQ" interface="http://www.example.org/AllMEPsWSDLFile/#wsdl.interface(AllMEPsWSDLFile)" scaext:wsdlLocation="../Service%20Descriptors/AllMEPsWSDLFile.wsdl"/>
+    <jmsbt:binding.jms.service xmi:id="_EmPzkBFbEd60YeZqiGSomQ" name="JMSService_Binding1" interfaceName="{http://www.example.org/AllMEPsWSDLFile/}AllMEPsWSDLFile" wsdlLocation="../Service%20Descriptors/AllMEPsWSDLFile.wsdl">
+      <defaultInboundConfiguration xmi:id="_EmPzkRFbEd60YeZqiGSomQ"/>
+      <defaultOutboundConfiguration xmi:id="_EmPzkhFbEd60YeZqiGSomQ"/>
+      <operationConfigurations xmi:id="_EmPzkxFbEd60YeZqiGSomQ" operationName="InOut">
+        <messageConfigurations xsi:type="jmsbt:JMSInputMessageConfiguration" xmi:id="_EmPzlBFbEd60YeZqiGSomQ" messageName="{http://www.example.org/AllMEPsWSDLFile/}NewOperationRequest"/>
+        <messageConfigurations xsi:type="jmsbt:JMSOutputMessageConfiguration" xmi:id="_EmPzlRFbEd60YeZqiGSomQ" messageName="{http://www.example.org/AllMEPsWSDLFile/}NewOperationResponse" messageDirection="OUTPUT"/>
+      </operationConfigurations>
+    </jmsbt:binding.jms.service>
+    <scact:bindingAdjunct xmi:id="_EmPzlhFbEd60YeZqiGSomQ" bindingName="JMSService_Binding1">
+      <sca:property xmi:id="_FotWIBFbEd60YeZqiGSomQ" mustSupply="false" name="ConnectionFactoryConfiguration" type="jms:JMSConnectionFactoryConfiguration" scaext:simpleValue="BAT_52_JmsConnFactoryConf"/>
+      <sca:property xmi:id="_G3igwBFbEd60YeZqiGSomQ" mustSupply="false" name="InboundDestination" type="jms:JMSDestinationConfiguration" scaext:simpleValue="BAT_52_QueueSample1_JmsDestConf"/>
+      <sca:property xmi:id="_IEbKoBFbEd60YeZqiGSomQ" mustSupply="false" name="ConnectionFactory" type="jms:JMSConnectionFactory" scaext:simpleValue="BAT_52_JmsConnFactory"/>
+    </scact:bindingAdjunct>
+  </sca:service>
+  <sca:component xmi:id="_ouSOMBFaEd60YeZqiGSomQ" name="NewComponent" compositeext:version="1.0.0.qualifier">
+    <sca:implementation.java xmi:id="_ouSOMRFaEd60YeZqiGSomQ" class="com.sample.bat_52_soa_jmsjava.NewComponent">
+      <scaext:packageVersionRange xmi:id="_ouSOMhFaEd60YeZqiGSomQ" lower="1.0.0" upper="2.0.0"/>
+      <java:featureDependency xmi:id="_6EH4oBFaEd60YeZqiGSomQ" name="BAT_52_SOA_JMSJava.BAT_52_SOA_JMSJava.customfeature.id">
+        <range xmi:id="_6EH4oRFaEd60YeZqiGSomQ" lower="1.0.0" upper="2.0.0"/>
+      </java:featureDependency>
+    </sca:implementation.java>
+    <sca:service xmi:id="_pqewsBFaEd60YeZqiGSomQ" name="AllMEPsWSDLFile">
+      <sca:interface.wsdl xmi:id="_pq7coBFaEd60YeZqiGSomQ" interface="http://www.example.org/AllMEPsWSDLFile/#wsdl.interface(AllMEPsWSDLFile)" scaext:wsdlLocation="../Service%20Descriptors/AllMEPsWSDLFile.wsdl"/>
+    </sca:service>
+  </sca:component>
+  <notation:diagram xsi:type="notation:Diagram" xmi:id="_Kh66EBFWEd60YeZqiGSomQ" type="Composite" element="#/" name="SCA Composite" measurementUnit="Pixel">
+    <children xmi:id="_LLNHoBFWEd60YeZqiGSomQ" type="2001" element="#_KgldURFWEd60YeZqiGSomQ">
+      <children xmi:id="_LLNHoxFWEd60YeZqiGSomQ" type="5004"/>
+      <children xmi:id="_LLNHpBFWEd60YeZqiGSomQ" type="7001">
+        <children xmi:id="_ofFUkBFaEd60YeZqiGSomQ" type="3001" element="#_oeCywBFaEd60YeZqiGSomQ">
+          <children xmi:id="_ofFUlRFaEd60YeZqiGSomQ" type="5002"/>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_ofFUkRFaEd60YeZqiGSomQ" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_ofFUkhFaEd60YeZqiGSomQ" gradStartColor="14150097" gradEndColor="7844710"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_ofFUkxFaEd60YeZqiGSomQ"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_ofFUlBFaEd60YeZqiGSomQ"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_LLNHpRFWEd60YeZqiGSomQ"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_LLNHphFWEd60YeZqiGSomQ"/>
+      </children>
+      <children xmi:id="_LLNHpxFWEd60YeZqiGSomQ" type="7002">
+        <styles xsi:type="notation:SortingStyle" xmi:id="_LLNHqBFWEd60YeZqiGSomQ"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_LLNHqRFWEd60YeZqiGSomQ"/>
+      </children>
+      <children xmi:id="_LLWRkBFWEd60YeZqiGSomQ" type="7003">
+        <children xmi:id="_oubYIBFaEd60YeZqiGSomQ" type="3003" element="#_ouSOMBFaEd60YeZqiGSomQ">
+          <children xmi:id="_oubYJhFaEd60YeZqiGSomQ" type="5001"/>
+          <children xmi:id="_oulJIBFaEd60YeZqiGSomQ" type="7004">
+            <children xmi:id="_pqySsBFaEd60YeZqiGSomQ" type="3004" element="#_pqewsBFaEd60YeZqiGSomQ">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_pqySsRFaEd60YeZqiGSomQ" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_pqySshFaEd60YeZqiGSomQ"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_oulJIRFaEd60YeZqiGSomQ"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_oulJIhFaEd60YeZqiGSomQ"/>
+          </children>
+          <children xmi:id="_oulJIxFaEd60YeZqiGSomQ" type="7005">
+            <styles xsi:type="notation:SortingStyle" xmi:id="_oulJJBFaEd60YeZqiGSomQ"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_oulJJRFaEd60YeZqiGSomQ"/>
+          </children>
+          <children xmi:id="_oulJJhFaEd60YeZqiGSomQ" type="7006">
+            <children xmi:id="_oulJKhFaEd60YeZqiGSomQ" visible="false" type="7600">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_oulJKxFaEd60YeZqiGSomQ" fontHeight="10"/>
+              <element xsi:nil="true"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_oulJLBFaEd60YeZqiGSomQ"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_oulJJxFaEd60YeZqiGSomQ"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_oulJKBFaEd60YeZqiGSomQ"/>
+            <styles xsi:type="compositenotation:CollapseStyle" xmi:id="_oulJKRFaEd60YeZqiGSomQ"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_oubYIRFaEd60YeZqiGSomQ" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_oubYIhFaEd60YeZqiGSomQ" gradStartColor="16642791" gradEndColor="14072216"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_oubYIxFaEd60YeZqiGSomQ"/>
+          <styles xsi:type="compositenotation:CustomComponentIconStyle" xmi:id="_oubYJBFaEd60YeZqiGSomQ"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_oubYJRFaEd60YeZqiGSomQ" x="87" y="55"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_LLWRkRFWEd60YeZqiGSomQ"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_LLWRkhFWEd60YeZqiGSomQ"/>
+      </children>
+      <children xmi:id="_LLWRkxFWEd60YeZqiGSomQ" type="7007">
+        <children xmi:id="_LLWRlhFWEd60YeZqiGSomQ" visible="false" type="7600">
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_LLWRlxFWEd60YeZqiGSomQ" fontHeight="10"/>
+          <element xsi:nil="true"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_LLWRmBFWEd60YeZqiGSomQ"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_LLWRlBFWEd60YeZqiGSomQ"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_LLWRlRFWEd60YeZqiGSomQ"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" xmi:id="_LLNHoRFWEd60YeZqiGSomQ" fontHeight="10"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_LLNHohFWEd60YeZqiGSomQ" x="10" y="10" width="589" height="350"/>
+    </children>
+    <styles xsi:type="notation:DiagramStyle" xmi:id="_Kh66ERFWEd60YeZqiGSomQ"/>
+    <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_Kh66EhFWEd60YeZqiGSomQ"/>
+    <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_Kh66ExFWEd60YeZqiGSomQ"/>
+    <edges xmi:id="_prFNoBFaEd60YeZqiGSomQ" type="4002" source="#_ofFUkBFaEd60YeZqiGSomQ" target="#_pqySsBFaEd60YeZqiGSomQ">
+      <styles xsi:type="notation:ConnectorStyle" xmi:id="_prFNoRFaEd60YeZqiGSomQ" routing="Rectilinear"/>
+      <styles xsi:type="notation:FontStyle" xmi:id="_prFNohFaEd60YeZqiGSomQ" fontHeight="10"/>
+      <element xsi:nil="true"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_prFNoxFaEd60YeZqiGSomQ" points="[33, -5, -5, 25]$[44, -14, 6, 16]"/>
+    </edges>
+  </notation:diagram>
+</sca:composite>

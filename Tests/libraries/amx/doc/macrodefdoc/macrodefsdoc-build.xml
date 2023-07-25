@@ -1,0 +1,15 @@
+<project name="cli-tests" default="generate.macrodefdoc">
+
+	<property name="basedir" value="." />
+
+	<target name="generate.macrodefdoc">
+		<xslt in="${basedir}/../../bin/amx-macrodefs.xml" out="${basedir}/macrodefs.html" style="${basedir}/macroDefDocGenerator.xsl">
+		</xslt>
+		<xslt in="${basedir}/../../bin/amx-macrodefs.xml" out="${basedir}/macrodefslink.html" style="${basedir}/macroDefDocLinkGenerator.xsl">
+		</xslt>
+	</target>
+
+
+
+</project>
+

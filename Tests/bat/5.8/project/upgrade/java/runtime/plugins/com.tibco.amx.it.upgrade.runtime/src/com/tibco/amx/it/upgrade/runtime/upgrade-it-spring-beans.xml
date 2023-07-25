@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:tibco="http://xsd.tns.tibco.com/2008/amf/extension/spring"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:sca="http://www.springframework.org/schema/sca">
+
+
+ <bean id="upgradeAppExtensionBean" class="com.tibco.amx.it.upgrade.runtime.UpgradeImplementationAdapter" init-method="init" destroy-method="destroy">
+ 	<!-- enable this property to support http resource adapter-->
+ 	<!-- property name="httpResourceAdapter" ref="raRef" /--> 
+ </bean>
+
+ <tibco:extension name="upgrade-implementation-type" target="upgradeAppExtensionBean" />
+ <!-- enable following configuration to support http resource adapter-->
+ <!--tibco:resource-adapter name="raRef"
+         activationspec-type="com.tibco.amf.sharedresource.runtime.core.http.nativeinbound.HttpActivationSpec"
+         messagelistener-type="javax.servlet.http.HttpServlet" /-->
+</beans>

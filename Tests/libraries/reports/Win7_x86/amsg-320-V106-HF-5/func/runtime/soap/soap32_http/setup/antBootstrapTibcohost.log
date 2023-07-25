@@ -1,0 +1,80 @@
+
+start-th:
+
+-load-instance-properties:
+     [echo] loading instance configuration properties from Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/setup/tibcohost.properties
+
+-define-hpa-tibcohost-tasks:
+
+-define-hpa-client-tasks:
+
+-init:
+
+add:
+     [echo] 
+     [echo]         Creating new TIBCO Host instance with name 'QA-BAT-Host' in C:/matrix/320-HF5-v106/data/tibcohost/QA-BAT-Host.
+     [echo]         
+[hpa.client.CreateHost] Creating new host of type "TibcoHost"
+[hpa.client.CreateHost]     th.host.create.callbackurl.secure = false
+[hpa.client.CreateHost]     th.host.create.defaultNodeLog4JConfigFile = Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/setup/node-log4j.xml
+[hpa.client.CreateHost]     th.host.create.hostLogConfigFile = Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/setup/hpa-log4j.xml
+[hpa.client.CreateHost]     th.host.create.instanceName = QA-BAT-Host
+[hpa.client.CreateHost]     th.host.create.jmx.interface = jpandya-dt
+[hpa.client.CreateHost]     th.host.create.jmx.port = 6051
+[hpa.client.CreateHost]     th.host.create.jmx.secure = false
+[hpa.client.CreateHost]     th.host.create.keystore.file = C:/matrix/320-HF5-v106/tibcohost/3.2/templates/admin.default.ssl.trust.store.ts
+[hpa.client.CreateHost]     th.host.create.keystore.password = #!llDFtm1IZoO9hFkLI83SMqigDHIE/V/n
+[hpa.client.CreateHost]     th.host.create.keystore.type = JCEKS
+[hpa.client.CreateHost]     th.host.create.processPrefix = tibamx_
+[hpa.client.CreateHost]     th.host.create.qin.backoffInterval = 0
+[hpa.client.CreateHost]     th.host.create.qin.emsIdentityStorePassword = #!zIi9ux3C1uDzIZBJ2SjuWEKPpz4VMVLf3IEiSxdROOU=
+[hpa.client.CreateHost]     th.host.create.qin.enabled = true
+[hpa.client.CreateHost]     th.host.create.qin.groupName = AMXAdmin_jpandya-dt
+[hpa.client.CreateHost]     th.host.create.qin.password = 
+[hpa.client.CreateHost]     th.host.create.qin.recoveryAttemptDelay = 2000
+[hpa.client.CreateHost]     th.host.create.qin.recoveryTimerTimeout = 3000
+[hpa.client.CreateHost]     th.host.create.qin.secure = false
+[hpa.client.CreateHost]     th.host.create.qin.serverURL = tcp://jpandya-dt:7222
+[hpa.client.CreateHost]     th.host.create.qin.startupInterval = 3000
+[hpa.client.CreateHost]     th.host.create.qin.userName = admin
+[hpa.client.CreateHost]     th.host.create.rpfLauncherClasspathFile = C:/matrix/320-HF5-v106/amx/3.2/scripts/rpflauncher_classpath_1.0.1.tra
+[hpa.client.CreateHost]     th.host.create.runAsNTService = false
+[hpa.client.CreateHost]     th.host.create.tibcoConfigHome = C:/matrix/320-HF5-v106/data
+[hpa.client.CreateHost]     th.host.create.tibcoHome = C:/matrix/320-HF5-v106
+[hpa.client.CreateHost]     th.host.create.tibcoHostInstallation = C:/matrix/320-HF5-v106/tibcohost/3.2
+[hpa.client.CreateHost]     th.host.create.trinity.keyStoreLocation = Z:/tests/amsg/3.0/tests/func/runtime/bat/keystore/admin-emsconfig-tct.jks
+[hpa.client.CreateHost]     th.host.create.trinity.keyStorePassword = #!QInks0TXAJ7T8L2J1EyCwFrrp7lQ4aIYLyACrTmBLco=
+[hpa.client.CreateHost]     th.host.create.trinity.keyStoreType = JKS
+[hpa.client.CreateHost]     th.host.create.trinity.tcs.password = #!ebhOf5DT0a3G6g+x0McNKKslL/+xDZMULrekrfN1Zio=
+[hpa.client.CreateHost]     th.host.create.trinity.tcs.url = service:jmx:jmxmp://0.0.0.0:6041
+[hpa.client.CreateHost]     th.host.create.trinity.tcs.userName = user1
+[hpa.client.CreateHost] Created new host
+[hpa.client.CreateHost] Host description follows:
+[hpa.client.CreateHost]     Host name: [none]
+[hpa.client.CreateHost]     Enterprise name: [none]
+[hpa.client.CreateHost]     HPA instance name: QA-BAT-Host
+[hpa.client.CreateHost]     Bind status: unbound
+[hpa.client.CreateHost]     Internet host name: jpandya-dt
+[hpa.client.CreateHost]     HPA type: TibcoHost
+[hpa.client.CreateHost]     HPA specification version: 2.1.0
+[hpa.client.CreateHost]     Host platform version: 3.2.0.HF5
+[hpa.client.CreateHost]     Connect URL: service:jmx:jmxmp://jpandya-dt:6051
+[hpa.client.CreateHost]     O/S name: Windows 7
+[hpa.client.CreateHost]     O/S version: 6.1
+[hpa.client.CreateHost]     O/S process ID: -1
+[hpa.client.CreateHost]     System architecture: x86
+[hpa.client.CreateHost]     Secure connection: false
+[hpa.client.CreateHost]     Patch(es) associated with this version: 
+[hpa.client.CreateHost]     Upgrade history, current to oldest:
+[hpa.client.CreateHost]         Host platform version: 3.2.0.HF5, associated patch(es): amx.platform.patch:3.2.0.HF5
+[hpa.client.CreateHost]     Upgrade status: none
+
+start:
+[hpa.tibcohost.Start] Starting TIBCO Host.
+[hpa.tibcohost.Start] Started TIBCO Host.
+[hpa.tibcohost.Start] TIBCO Host status is RUNNING.
+
+create-and-start:
+
+BUILD SUCCESSFUL
+Total time: 17 seconds

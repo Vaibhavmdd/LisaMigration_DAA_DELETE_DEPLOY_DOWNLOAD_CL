@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:MSFT="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/MSFT" xmlns:UndeclaredDoc="http://www.example.com/UndeclaredDoc" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:compositenotation="http://www.tibco.com/models/compositenotation" xmlns:http="http://xsd.tns.tibco.com/amf/models/sharedresource/httpclient" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.1/notation" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmlns:soapbt="http://xsd.tns.tibco.com/amf/models/sca/binding/soap" xmlns:systempolicy="http://xsd.tns.tibco.com/amf/models/sca/policy/system" xmlns:tp="http://xsd.tns.tibco.com/amf/models/sharedresource/threadpool" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmi:id="_rzy4kUSLEeCFV_v9PWhjUw" targetNamespace="http://www.example.com/UndeclaredDoc" name="BAT73" compositeext:version="1.0.0.qualifier" compositeext:formatVersion="2">
+  <sca:service xmi:id="_ICaDYESMEeCFV_v9PWhjUw" name="SoapException1PT" promote="UnDeclaredDOc/SoapException1PT">
+    <sca:interface.wsdl xmi:id="_ICaDYUSMEeCFV_v9PWhjUw" interface="http://www.example.org/SoapException1/submitSoapException1Impl#wsdl.interface(SoapException1PT)" scaext:wsdlLocation="../Service%20Descriptors/SoapException1_UnDeclaredFaultDoc_BW_EP.wsdl"/>
+    <sca:binding.sca xmi:id="_ICaDYkSMEeCFV_v9PWhjUw" name="Virtualization"/>
+    <soapbt:binding.soap.service xmi:id="_NFKyoESMEeCFV_v9PWhjUw" name="SOAPService_UndeclaredDoc" transportBindingType="HTTP" attachmentStyle="DOCUMENT" portType="../Service%20Descriptors/SoapException1_UnDeclaredFaultDoc_BW_EP.wsdl#//@ePortTypes.0">
+      <operationConfiguration xmi:id="_NFKyokSMEeCFV_v9PWhjUw" operation="../Service%20Descriptors/SoapException1_UnDeclaredFaultDoc_BW_EP.wsdl#//@ePortTypes.0/@eOperations.0" action="submitSoapException1" description="">
+        <messageConfiguration xmi:id="_NFKyo0SMEeCFV_v9PWhjUw" message="../Service%20Descriptors/SoapException1_UnDeclaredFaultDoc_BW_EP.wsdl#//@eMessages.0">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_NFKypESMEeCFV_v9PWhjUw" messagePart="../Service%20Descriptors/SoapException1_UnDeclaredFaultDoc_BW_EP.wsdl#//@eMessages.0/@eParts.0"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_NFKypUSMEeCFV_v9PWhjUw" message="../Service%20Descriptors/SoapException1_UnDeclaredFaultDoc_BW_EP.wsdl#//@eMessages.1" messageDirection="OUTPUT">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_NFKypkSMEeCFV_v9PWhjUw" messagePart="../Service%20Descriptors/SoapException1_UnDeclaredFaultDoc_BW_EP.wsdl#//@eMessages.1/@eParts.0"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_NFKyp0SMEeCFV_v9PWhjUw" message="../Service%20Descriptors/SoapException1_UnDeclaredFaultDoc_BW_EP.wsdl#//@eMessages.2" messageDirection="FAULT">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_NFKyqESMEeCFV_v9PWhjUw" messagePart="../Service%20Descriptors/SoapException1_UnDeclaredFaultDoc_BW_EP.wsdl#//@eMessages.2/@eParts.0"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_NFKyqUSMEeCFV_v9PWhjUw" message="../Service%20Descriptors/SoapException1_UnDeclaredFaultDoc_BW_EP.wsdl#//@eMessages.3" messageDirection="FAULT">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_NFKyqkSMEeCFV_v9PWhjUw" messagePart="../Service%20Descriptors/SoapException1_UnDeclaredFaultDoc_BW_EP.wsdl#//@eMessages.3/@eParts.0"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_NFKyq0SMEeCFV_v9PWhjUw" message="../Service%20Descriptors/SoapException1_UnDeclaredFaultDoc_BW_EP.wsdl#//@eMessages.4" messageDirection="FAULT">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_NFKyrESMEeCFV_v9PWhjUw" messagePart="../Service%20Descriptors/SoapException1_UnDeclaredFaultDoc_BW_EP.wsdl#//@eMessages.4/@eParts.0"/>
+        </messageConfiguration>
+        <bindingType xmi:id="_NFKyrUSMEeCFV_v9PWhjUw"/>
+      </operationConfiguration>
+      <inboundConfiguration xsi:type="soapbt:HttpTransportConfiguration" xmi:id="_NFKyrkSMEeCFV_v9PWhjUw" endpointURI="/soapException1PTU/"/>
+      <defaultBindingType xmi:id="_NFKyoUSMEeCFV_v9PWhjUw"/>
+    </soapbt:binding.soap.service>
+    <scact:bindingAdjunct xmi:id="_ICaDY0SMEeCFV_v9PWhjUw" bindingName="Virtualization"/>
+    <scact:bindingAdjunct xmi:id="_NFKyr0SMEeCFV_v9PWhjUw" bindingName="SOAPService_UndeclaredDoc">
+      <sca:property xmi:id="_NFKysESMEeCFV_v9PWhjUw" mustSupply="true" name="HttpInboundConnectionConfig" type="xsd:string" scaext:simpleValue="httpConnector1"/>
+    </scact:bindingAdjunct>
+  </sca:service>
+  <sca:service xmi:id="_jLHucIW5EeCkeLyobpf2pQ" name="NS_CalculatorProxyContract.ICalculatorProxy" promote="CalculatorProxy/NS_CalculatorProxyContract.ICalculatorProxy">
+    <sca:interface.wsdl xmi:id="_jLHucYW5EeCkeLyobpf2pQ" interface="http://tempuri.org/#wsdl.interface(ICalculatorProxy)" scaext:wsdlLocation="../Service%20Descriptors/CalculatorProxy.wsdl"/>
+    <sca:binding.sca xmi:id="_jLHucoW5EeCkeLyobpf2pQ" name="Virtualization"/>
+    <soapbt:binding.soap.service xmi:id="_mg9B0IW5EeCkeLyobpf2pQ" name="SOAPService_CLRIT" transportBindingType="HTTP" attachmentStyle="DOCUMENT" portType="../Service%20Descriptors/CalculatorProxy.wsdl#//@ePortTypes.0">
+      <operationConfiguration xmi:id="_miSekYW5EeCkeLyobpf2pQ" operation="../Service%20Descriptors/CalculatorProxy.wsdl#//@ePortTypes.0/@eOperations.0" action="ProxyAdd" description="">
+        <messageConfiguration xmi:id="_miSekoW5EeCkeLyobpf2pQ" message="../Service%20Descriptors/CalculatorProxy.wsdl#//@eMessages.0">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_miSek4W5EeCkeLyobpf2pQ" messagePart="../Service%20Descriptors/CalculatorProxy.wsdl#//@eMessages.0/@eParts.0"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_miSelIW5EeCkeLyobpf2pQ" message="../Service%20Descriptors/CalculatorProxy.wsdl#//@eMessages.1" messageDirection="OUTPUT">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_miSelYW5EeCkeLyobpf2pQ" messagePart="../Service%20Descriptors/CalculatorProxy.wsdl#//@eMessages.1/@eParts.0"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_miSeloW5EeCkeLyobpf2pQ" message="../Service%20Descriptors/CalculatorProxy.wsdl#//@eMessages.2" messageDirection="FAULT">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_miSel4W5EeCkeLyobpf2pQ" messagePart="../Service%20Descriptors/CalculatorProxy.wsdl#//@eMessages.2/@eParts.0"/>
+        </messageConfiguration>
+        <bindingType xmi:id="_miSemIW5EeCkeLyobpf2pQ"/>
+      </operationConfiguration>
+      <operationConfiguration xmi:id="_miSemYW5EeCkeLyobpf2pQ" operation="../Service%20Descriptors/CalculatorProxy.wsdl#//@ePortTypes.0/@eOperations.1" action="ProxySubtract">
+        <messageConfiguration xmi:id="_miSemoW5EeCkeLyobpf2pQ" message="../Service%20Descriptors/CalculatorProxy.wsdl#//@eMessages.3">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_miSem4W5EeCkeLyobpf2pQ" messagePart="../Service%20Descriptors/CalculatorProxy.wsdl#//@eMessages.3/@eParts.0"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_micPkIW5EeCkeLyobpf2pQ" message="../Service%20Descriptors/CalculatorProxy.wsdl#//@eMessages.4" messageDirection="OUTPUT">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_micPkYW5EeCkeLyobpf2pQ" messagePart="../Service%20Descriptors/CalculatorProxy.wsdl#//@eMessages.4/@eParts.0"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_micPkoW5EeCkeLyobpf2pQ" message="../Service%20Descriptors/CalculatorProxy.wsdl#//@eMessages.5" messageDirection="FAULT">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_micPk4W5EeCkeLyobpf2pQ" messagePart="../Service%20Descriptors/CalculatorProxy.wsdl#//@eMessages.5/@eParts.0"/>
+        </messageConfiguration>
+        <bindingType xmi:id="_micPlIW5EeCkeLyobpf2pQ"/>
+      </operationConfiguration>
+      <inboundConfiguration xsi:type="soapbt:HttpTransportConfiguration" xmi:id="_nmiJ0IW5EeCkeLyobpf2pQ" endpointURI="/iCalculatorProxy/"/>
+      <defaultBindingType xmi:id="_miSekIW5EeCkeLyobpf2pQ"/>
+    </soapbt:binding.soap.service>
+    <scact:bindingAdjunct xmi:id="_jLHuc4W5EeCkeLyobpf2pQ" bindingName="Virtualization"/>
+    <scact:bindingAdjunct xmi:id="_micPlYW5EeCkeLyobpf2pQ" bindingName="SOAPService_CLRIT">
+      <sca:property xmi:id="_nmiJ0YW5EeCkeLyobpf2pQ" mustSupply="true" name="HttpInboundConnectionConfig" type="xsd:string" scaext:simpleValue="httpConnector2"/>
+    </scact:bindingAdjunct>
+  </sca:service>
+  <sca:service xmi:id="_5hxK4IW6EeCkeLyobpf2pQ" name="SoapException1PT1" promote="DeclaredDoc/SoapException1PT">
+    <sca:interface.wsdl xmi:id="_5hxK4YW6EeCkeLyobpf2pQ" interface="http://www.example.org/SoapException1/submitSoapException1Impl#wsdl.interface(SoapException1PT)" scaext:wsdlLocation="../Service%20Descriptors/SoapException1_BW_EP_Doc.wsdl"/>
+    <sca:binding.sca xmi:id="_5hxK4oW6EeCkeLyobpf2pQ" name="Virtualization"/>
+    <soapbt:binding.soap.service xmi:id="_6GFY4IW6EeCkeLyobpf2pQ" name="SOAPService_DeclaredDoc" transportBindingType="HTTP" attachmentStyle="DOCUMENT" portType="../Service%20Descriptors/SoapException1_BW_EP_Doc.wsdl#//@ePortTypes.0">
+      <operationConfiguration xmi:id="_6GFY4oW6EeCkeLyobpf2pQ" operation="../Service%20Descriptors/SoapException1_BW_EP_Doc.wsdl#//@ePortTypes.0/@eOperations.0" action="submitSoapException1" description="">
+        <messageConfiguration xmi:id="_6GFY44W6EeCkeLyobpf2pQ" message="../Service%20Descriptors/SoapException1_BW_EP_Doc.wsdl#//@eMessages.0">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_6GFY5IW6EeCkeLyobpf2pQ" messagePart="../Service%20Descriptors/SoapException1_BW_EP_Doc.wsdl#//@eMessages.0/@eParts.0"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_6GFY5YW6EeCkeLyobpf2pQ" message="../Service%20Descriptors/SoapException1_BW_EP_Doc.wsdl#//@eMessages.1" messageDirection="OUTPUT">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_6GFY5oW6EeCkeLyobpf2pQ" messagePart="../Service%20Descriptors/SoapException1_BW_EP_Doc.wsdl#//@eMessages.1/@eParts.0"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_6GFY54W6EeCkeLyobpf2pQ" message="../Service%20Descriptors/SoapException1_BW_EP_Doc.wsdl#//@eMessages.2" messageDirection="FAULT">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_6GFY6IW6EeCkeLyobpf2pQ" messagePart="../Service%20Descriptors/SoapException1_BW_EP_Doc.wsdl#//@eMessages.2/@eParts.0"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_6GFY6YW6EeCkeLyobpf2pQ" message="../Service%20Descriptors/SoapException1_BW_EP_Doc.wsdl#//@eMessages.3" messageDirection="FAULT">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_6GFY6oW6EeCkeLyobpf2pQ" messagePart="../Service%20Descriptors/SoapException1_BW_EP_Doc.wsdl#//@eMessages.3/@eParts.0"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_6GFY64W6EeCkeLyobpf2pQ" message="../Service%20Descriptors/SoapException1_BW_EP_Doc.wsdl#//@eMessages.4" messageDirection="FAULT">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_6GFY7IW6EeCkeLyobpf2pQ" messagePart="../Service%20Descriptors/SoapException1_BW_EP_Doc.wsdl#//@eMessages.4/@eParts.0"/>
+        </messageConfiguration>
+        <bindingType xmi:id="_6GFY7YW6EeCkeLyobpf2pQ"/>
+      </operationConfiguration>
+      <inboundConfiguration xsi:type="soapbt:HttpTransportConfiguration" xmi:id="_6GPJ4IW6EeCkeLyobpf2pQ" endpointURI="/soapException1PT/"/>
+      <defaultBindingType xmi:id="_6GFY4YW6EeCkeLyobpf2pQ"/>
+    </soapbt:binding.soap.service>
+    <scact:bindingAdjunct xmi:id="_5hxK44W6EeCkeLyobpf2pQ" bindingName="Virtualization"/>
+    <scact:bindingAdjunct xmi:id="_6GPJ4YW6EeCkeLyobpf2pQ" bindingName="SOAPService_DeclaredDoc">
+      <sca:property xmi:id="_6GPJ4oW6EeCkeLyobpf2pQ" mustSupply="true" name="HttpInboundConnectionConfig" type="xsd:string" scaext:simpleValue="httpConnector3"/>
+    </scact:bindingAdjunct>
+  </sca:service>
+  <sca:reference xmi:id="_IZ9AsESMEeCFV_v9PWhjUw" multiplicity="1..1" name="SOAPEventSource1" wiredByImpl="false" promote="UnDeclaredDOc/SOAPEventSource" policySets="UndeclaredDoc:ThreadingPolicy_SOAPEventSource1" scaext:policySetLocations="#embedded">
+    <sca:interface.wsdl xmi:id="_IZ9AsUSMEeCFV_v9PWhjUw" interface="http://www.example.org/SoapException1/submitSoapException1Impl#wsdl.interface(SoapException1PT)" scaext:wsdlLocation="../Service%20Descriptors/SoapException1_UnDeclaredFaultDoc_BW_EP.wsdl"/>
+    <soapbt:binding.soap.reference xmi:id="_QIh18ESMEeCFV_v9PWhjUw" name="SOAPReference_UndeclaredDoc" transportBindingType="HTTP" portType="../Service%20Descriptors/SoapException1_UnDeclaredFaultDoc_BW_EP.wsdl#//@ePortTypes.0" port="../Service%20Descriptors/SoapException1_UnDeclaredFaultDoc_BW_EP.wsdl#//@eServices.0/@ePorts.0">
+      <operationConfiguration xmi:id="_QIh18kSMEeCFV_v9PWhjUw" operation="../Service%20Descriptors/SoapException1_UnDeclaredFaultDoc_BW_EP.wsdl#//@ePortTypes.0/@eOperations.0" action="/Service/Service_unDeclaredFaultDoc" actionNeeded="true">
+        <messageConfiguration xmi:id="_QIh180SMEeCFV_v9PWhjUw" message="../Service%20Descriptors/SoapException1_UnDeclaredFaultDoc_BW_EP.wsdl#//@eMessages.0">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_QIh19ESMEeCFV_v9PWhjUw" messagePart="../Service%20Descriptors/SoapException1_UnDeclaredFaultDoc_BW_EP.wsdl#//@eMessages.0/@eParts.0" encoding="literal"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_QIh19USMEeCFV_v9PWhjUw" message="../Service%20Descriptors/SoapException1_UnDeclaredFaultDoc_BW_EP.wsdl#//@eMessages.1" messageDirection="OUTPUT">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_QIh19kSMEeCFV_v9PWhjUw" messagePart="../Service%20Descriptors/SoapException1_UnDeclaredFaultDoc_BW_EP.wsdl#//@eMessages.1/@eParts.0" encoding="literal"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_QIh190SMEeCFV_v9PWhjUw" message="../Service%20Descriptors/SoapException1_UnDeclaredFaultDoc_BW_EP.wsdl#//@eMessages.2" messageDirection="FAULT"/>
+        <messageConfiguration xmi:id="_QIh1-ESMEeCFV_v9PWhjUw" message="../Service%20Descriptors/SoapException1_UnDeclaredFaultDoc_BW_EP.wsdl#//@eMessages.3" messageDirection="FAULT"/>
+        <messageConfiguration xmi:id="_QIh1-USMEeCFV_v9PWhjUw" message="../Service%20Descriptors/SoapException1_UnDeclaredFaultDoc_BW_EP.wsdl#//@eMessages.4" messageDirection="FAULT"/>
+        <bindingType xmi:id="_QIh1-kSMEeCFV_v9PWhjUw"/>
+      </operationConfiguration>
+      <defaultBindingType xmi:id="_QIh18USMEeCFV_v9PWhjUw"/>
+      <outboundConfiguration xsi:type="soapbt:HttpTransportConfiguration" xmi:id="_QJuIwkSMEeCFV_v9PWhjUw"/>
+    </soapbt:binding.soap.reference>
+    <scact:bindingAdjunct xmi:id="_QJuIwESMEeCFV_v9PWhjUw" bindingName="SOAPReference_UndeclaredDoc">
+      <sca:property xmi:id="_QJuIwUSMEeCFV_v9PWhjUw" mustSupply="true" name="HttpOutboundConnectionConfig" type="http:HttpClientConfiguration" scaext:simpleValue="BAT73ClientResource_UndeclaredDoc"/>
+    </scact:bindingAdjunct>
+  </sca:reference>
+  <sca:reference xmi:id="_ZB8w8I0KEeCgQoe2axu9fg" multiplicity="1..1" name="SOAPEventSource2" wiredByImpl="false" promote="DeclaredDoc/SOAPEventSource">
+    <sca:interface.wsdl xmi:id="_ZB8w8Y0KEeCgQoe2axu9fg" interface="http://www.example.org/SoapException1/submitSoapException1Impl#wsdl.interface(SoapException1PT)" scaext:wsdlLocation="../Service%20Descriptors/SoapException1_BW_EP_Doc.wsdl"/>
+    <soapbt:binding.soap.reference xmi:id="_aAO-II0KEeCgQoe2axu9fg" name="SOAPReference_DeclaredDoc" transportBindingType="HTTP" portType="../Service%20Descriptors/SoapException1_BW_EP_Doc.wsdl#//@ePortTypes.0" port="../Service%20Descriptors/SoapException1_BW_EP_Doc.wsdl#//@eServices.0/@ePorts.0">
+      <operationConfiguration xmi:id="_AJTxgY0MEeCgQoe2axu9fg" operation="../Service%20Descriptors/SoapException1_BW_EP_Doc.wsdl#//@ePortTypes.0/@eOperations.0" action="/Service/Service_declaredFaultDoc" actionNeeded="true">
+        <messageConfiguration xmi:id="_AJTxgo0MEeCgQoe2axu9fg" message="../Service%20Descriptors/SoapException1_BW_EP_Doc.wsdl#//@eMessages.0">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_AJTxg40MEeCgQoe2axu9fg" messagePart="../Service%20Descriptors/SoapException1_BW_EP_Doc.wsdl#//@eMessages.0/@eParts.0" encoding="literal"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_AJTxhI0MEeCgQoe2axu9fg" message="../Service%20Descriptors/SoapException1_BW_EP_Doc.wsdl#//@eMessages.1" messageDirection="OUTPUT">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_AJTxhY0MEeCgQoe2axu9fg" messagePart="../Service%20Descriptors/SoapException1_BW_EP_Doc.wsdl#//@eMessages.1/@eParts.0" encoding="literal"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_AJTxho0MEeCgQoe2axu9fg" message="../Service%20Descriptors/SoapException1_BW_EP_Doc.wsdl#//@eMessages.2" messageDirection="FAULT"/>
+        <messageConfiguration xmi:id="_AJTxh40MEeCgQoe2axu9fg" message="../Service%20Descriptors/SoapException1_BW_EP_Doc.wsdl#//@eMessages.3" messageDirection="FAULT"/>
+        <messageConfiguration xmi:id="_AJTxiI0MEeCgQoe2axu9fg" message="../Service%20Descriptors/SoapException1_BW_EP_Doc.wsdl#//@eMessages.4" messageDirection="FAULT"/>
+        <bindingType xmi:id="_AJTxiY0MEeCgQoe2axu9fg"/>
+      </operationConfiguration>
+      <defaultBindingType xmi:id="_AJTxgI0MEeCgQoe2axu9fg"/>
+      <outboundConfiguration xsi:type="soapbt:HttpTransportConfiguration" xmi:id="_AJ5nYI0MEeCgQoe2axu9fg"/>
+    </soapbt:binding.soap.reference>
+    <scact:bindingAdjunct xmi:id="_aArqEI0KEeCgQoe2axu9fg" bindingName="SOAPReference_DeclaredDoc">
+      <sca:property xmi:id="_AJv2YI0MEeCgQoe2axu9fg" mustSupply="true" name="HttpOutboundConnectionConfig" type="http:HttpClientConfiguration" scaext:simpleValue="BAT73HttpClient_DeclaredDoc"/>
+    </scact:bindingAdjunct>
+  </sca:reference>
+  <sca:component xmi:id="_BRYbgESMEeCFV_v9PWhjUw" name="UnDeclaredDOc" compositeext:version="1.0.0.qualifier">
+    <MSFT:implementation.MSFT xmi:id="_BRYbgUSMEeCFV_v9PWhjUw" configFile="../UnDeclaredDoc/UndeclaredFault.exe.config" assemblyFile="../UnDeclaredDoc/UndeclaredFault.exe" assemblyTargetFramework="v4.0.30319" implementationClassName="UndeclaredFault.SoapException1PTImpl" domainName="MSFT_7a582c93-f7aa-4cb4-a46b-cefa5b275188" configurationName="UndeclaredFault.SoapException1PTImpl">
+      <msftClients xmi:id="_7nF3YJd7EeCdsZS-c2pEUg" contract="SoapException1PT" enabled="true" portType="http://www.example.org/SoapException1/submitSoapException1Impl#wsdl.interface(SoapException1PT)" endpointName="SOAPEventSource"/>
+      <endpoints xmi:id="_7nF3YZd7EeCdsZS-c2pEUg" portType="http://www.example.org/SoapException1/submitSoapException1Impl#wsdl.interface(SoapException1PT)" contract="SoapException1PT"/>
+    </MSFT:implementation.MSFT>
+    <sca:service xmi:id="_F_uZ8ESMEeCFV_v9PWhjUw" name="SoapException1PT">
+      <sca:interface.wsdl xmi:id="_F_uZ8USMEeCFV_v9PWhjUw" interface="http://www.example.org/SoapException1/submitSoapException1Impl#wsdl.interface(SoapException1PT)" scaext:wsdlLocation="../Service%20Descriptors/SoapException1_UnDeclaredFaultDoc_BW_EP.wsdl"/>
+    </sca:service>
+    <sca:reference xmi:id="_-uwmYESOEeCFV_v9PWhjUw" name="SOAPEventSource" wiredByImpl="false">
+      <sca:interface.wsdl xmi:id="_deX9kFRiEeCWE_LG_2tKeg" interface="http://www.example.org/SoapException1/submitSoapException1Impl#wsdl.interface(SoapException1PT)" scaext:wsdlLocation="../Service%20Descriptors/SoapException1_UnDeclaredFaultDoc_BW_EP.wsdl"/>
+    </sca:reference>
+  </sca:component>
+  <sca:component xmi:id="_Uv_hoIW5EeCkeLyobpf2pQ" name="CalculatorProxy" compositeext:version="1.0.0.qualifier">
+    <MSFT:implementation.MSFT xmi:id="_UwIrkIW5EeCkeLyobpf2pQ" configFile="../CalculatorProxy/CalculatorProxy.exe.config" assemblyFile="../CalculatorProxy/CalculatorProxy.exe" assemblyTargetFramework="v4.0.30319" implementationClassName="NS_CalculatorProxy.ProxyCalculatorImpl" domainName="MSFT_7a4831f6-36fc-4760-b0ae-44665fb9ebfe" configurationName="NS_CalculatorProxy.ProxyCalculatorImpl">
+      <msftClients xmi:id="_7pLiEJd7EeCdsZS-c2pEUg" contract="ISimpleCalculator" enabled="true" portType="http://tempuri.org/#wsdl.interface(ISimpleCalculator)" endpointName="proxy1"/>
+      <endpoints xmi:id="_7pLiEZd7EeCdsZS-c2pEUg" portType="http://tempuri.org/#wsdl.interface(ICalculatorProxy)" contract="NS_CalculatorProxyContract.ICalculatorProxy"/>
+    </MSFT:implementation.MSFT>
+    <sca:service xmi:id="_enWoUIW5EeCkeLyobpf2pQ" name="NS_CalculatorProxyContract.ICalculatorProxy">
+      <sca:interface.wsdl xmi:id="_enWoUYW5EeCkeLyobpf2pQ" interface="http://tempuri.org/#wsdl.interface(ICalculatorProxy)" scaext:wsdlLocation="../Service%20Descriptors/CalculatorProxy.wsdl"/>
+    </sca:service>
+    <sca:reference xmi:id="_enpjQIW5EeCkeLyobpf2pQ" name="proxy1" wiredByImpl="false">
+      <sca:interface.wsdl xmi:id="_enpjQYW5EeCkeLyobpf2pQ" interface="http://tempuri.org/#wsdl.interface(ISimpleCalculator)" scaext:wsdlLocation="../Service%20Descriptors/Calculator.wsdl"/>
+    </sca:reference>
+  </sca:component>
+  <sca:component xmi:id="_atT0oIW5EeCkeLyobpf2pQ" name="CalculatorPartner" compositeext:version="1.0.0.qualifier">
+    <MSFT:implementation.MSFT xmi:id="_atT0oYW5EeCkeLyobpf2pQ" configFile="../Calculator/Calculator.exe.config" assemblyFile="../Calculator/Calculator.exe" assemblyTargetFramework="v4.0.30319" implementationClassName="CalculatorImpl" domainName="MSFT_8b238267-aeb3-4c4e-8b73-2fc17dde8d2d" configurationName="CalculatorImpl">
+      <endpoints xmi:id="_7u1eIJd7EeCdsZS-c2pEUg" portType="http://tempuri.org/#wsdl.interface(ISimpleCalculator)" contract="ISimpleCalculator"/>
+    </MSFT:implementation.MSFT>
+    <sca:service xmi:id="_h7i88IW5EeCkeLyobpf2pQ" name="ISimpleCalculator">
+      <sca:interface.wsdl xmi:id="_h7i88YW5EeCkeLyobpf2pQ" interface="http://tempuri.org/#wsdl.interface(ISimpleCalculator)" scaext:wsdlLocation="../Service%20Descriptors/Calculator.wsdl"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_sWHo8IW6EeCkeLyobpf2pQ" name="DeclaredDoc" compositeext:version="1.0.0.qualifier">
+    <MSFT:implementation.MSFT xmi:id="_sWHo8YW6EeCkeLyobpf2pQ" configFile="../DecFaults/Faults.exe.config" assemblyFile="../DecFaults/Faults.exe" assemblyTargetFramework="v4.0.30319" implementationClassName="Faults.SoapException1PTImpl" domainName="MSFT_87a12e98-9208-4481-89e9-d43ac67dc4b9" configurationName="Faults.SoapException1PTImpl">
+      <msftClients xmi:id="_7wLh8Jd7EeCdsZS-c2pEUg" contract="SoapException1PT" enabled="true" portType="http://www.example.org/SoapException1/submitSoapException1Impl#wsdl.interface(SoapException1PT)" endpointName="SOAPEventSource"/>
+      <endpoints xmi:id="_7wLh8Zd7EeCdsZS-c2pEUg" portType="http://www.example.org/SoapException1/submitSoapException1Impl#wsdl.interface(SoapException1PT)" contract="SoapException1PT"/>
+    </MSFT:implementation.MSFT>
+    <sca:service xmi:id="_v1FqMIW6EeCkeLyobpf2pQ" name="SoapException1PT">
+      <sca:interface.wsdl xmi:id="_v1FqMYW6EeCkeLyobpf2pQ" interface="http://www.example.org/SoapException1/submitSoapException1Impl#wsdl.interface(SoapException1PT)" scaext:wsdlLocation="../Service%20Descriptors/SoapException1_BW_EP_Doc.wsdl"/>
+    </sca:service>
+    <sca:reference xmi:id="_KRDvgI0KEeCgQoe2axu9fg" name="SOAPEventSource" wiredByImpl="false">
+      <sca:interface.wsdl xmi:id="_KRDvgY0KEeCgQoe2axu9fg" interface="http://www.example.org/SoapException1/submitSoapException1Impl#wsdl.interface(SoapException1PT)" scaext:wsdlLocation="../Service%20Descriptors/SoapException1_BW_EP_Doc.wsdl"/>
+    </sca:reference>
+  </sca:component>
+  <sca:wire xmi:id="_inzmAIW5EeCkeLyobpf2pQ" source="CalculatorProxy/proxy1" target="CalculatorPartner/ISimpleCalculator"/>
+  <notation:diagram xsi:type="notation:Diagram" xmi:id="_r0PkgESLEeCFV_v9PWhjUw" type="Composite" element="#/" name="SCA Composite" measurementUnit="Pixel">
+    <children xmi:id="_r3qr8ESLEeCFV_v9PWhjUw" type="2001" element="#_rzy4kUSLEeCFV_v9PWhjUw">
+      <children xmi:id="_r30c8ESLEeCFV_v9PWhjUw" type="5004"/>
+      <children xmi:id="_r30c8USLEeCFV_v9PWhjUw" type="7001">
+        <children xmi:id="_ICaDZESMEeCFV_v9PWhjUw" type="3001" element="#_ICaDYESMEeCFV_v9PWhjUw">
+          <children xmi:id="_ICaDaUSMEeCFV_v9PWhjUw" type="5002"/>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_ICaDZUSMEeCFV_v9PWhjUw" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_ICaDZkSMEeCFV_v9PWhjUw" gradStartColor="14150097" gradEndColor="7844710"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_ICaDZ0SMEeCFV_v9PWhjUw"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_ICaDaESMEeCFV_v9PWhjUw"/>
+        </children>
+        <children xmi:id="_jLkaYIW5EeCkeLyobpf2pQ" type="3001" element="#_jLHucIW5EeCkeLyobpf2pQ">
+          <children xmi:id="_jLkaZYW5EeCkeLyobpf2pQ" type="5002"/>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_jLkaYYW5EeCkeLyobpf2pQ" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_jLkaYoW5EeCkeLyobpf2pQ" gradStartColor="14150097" gradEndColor="7844710"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_jLkaY4W5EeCkeLyobpf2pQ"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_jLkaZIW5EeCkeLyobpf2pQ"/>
+        </children>
+        <children xmi:id="_5hxK5IW6EeCkeLyobpf2pQ" type="3001" element="#_5hxK4IW6EeCkeLyobpf2pQ">
+          <children xmi:id="_5hxK6YW6EeCkeLyobpf2pQ" type="5002"/>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_5hxK5YW6EeCkeLyobpf2pQ" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_5hxK5oW6EeCkeLyobpf2pQ" gradStartColor="14150097" gradEndColor="7844710"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_5hxK54W6EeCkeLyobpf2pQ"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_5hxK6IW6EeCkeLyobpf2pQ"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_r30c8kSLEeCFV_v9PWhjUw"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_r30c80SLEeCFV_v9PWhjUw"/>
+      </children>
+      <children xmi:id="_r30c9ESLEeCFV_v9PWhjUw" type="7002">
+        <children xmi:id="_IZ9AskSMEeCFV_v9PWhjUw" type="3002" element="#_IZ9AsESMEeCFV_v9PWhjUw">
+          <children xmi:id="_IZ9At0SMEeCFV_v9PWhjUw" type="5003"/>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_IZ9As0SMEeCFV_v9PWhjUw" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_IZ9AtESMEeCFV_v9PWhjUw" gradStartColor="15457762" gradEndColor="11302063"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_IZ9AtUSMEeCFV_v9PWhjUw"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_IZ9AtkSMEeCFV_v9PWhjUw"/>
+        </children>
+        <children xmi:id="_ZB8w8o0KEeCgQoe2axu9fg" type="3002" element="#_ZB8w8I0KEeCgQoe2axu9fg">
+          <children xmi:id="_ZB8w940KEeCgQoe2axu9fg" type="5003"/>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_ZB8w840KEeCgQoe2axu9fg" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_ZB8w9I0KEeCgQoe2axu9fg" gradStartColor="15457762" gradEndColor="11302063"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_ZB8w9Y0KEeCgQoe2axu9fg"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_ZB8w9o0KEeCgQoe2axu9fg" x="868" y="147"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_r30c9USLEeCFV_v9PWhjUw"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_r30c9kSLEeCFV_v9PWhjUw"/>
+      </children>
+      <children xmi:id="_r30c90SLEeCFV_v9PWhjUw" type="7003">
+        <children xmi:id="_BR-4cESMEeCFV_v9PWhjUw" type="3003" element="#_BRYbgESMEeCFV_v9PWhjUw">
+          <children xmi:id="_BR-4dkSMEeCFV_v9PWhjUw" type="5001"/>
+          <children xmi:id="_BR-4d0SMEeCFV_v9PWhjUw" type="7004">
+            <children xmi:id="_F_uZ9ESMEeCFV_v9PWhjUw" type="3004" element="#_F_uZ8ESMEeCFV_v9PWhjUw">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_F_uZ9USMEeCFV_v9PWhjUw" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_F_uZ9kSMEeCFV_v9PWhjUw"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_BR-4eESMEeCFV_v9PWhjUw"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_BR-4eUSMEeCFV_v9PWhjUw"/>
+          </children>
+          <children xmi:id="_BR-4ekSMEeCFV_v9PWhjUw" type="7005">
+            <children xmi:id="_-vgNQESOEeCFV_v9PWhjUw" type="3005" element="#_-uwmYESOEeCFV_v9PWhjUw">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_-vgNQUSOEeCFV_v9PWhjUw" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_-vgNQkSOEeCFV_v9PWhjUw"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_BR-4e0SMEeCFV_v9PWhjUw"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_BR-4fESMEeCFV_v9PWhjUw"/>
+          </children>
+          <children xmi:id="_BR-4fUSMEeCFV_v9PWhjUw" type="7006">
+            <children xmi:id="_BR-4gUSMEeCFV_v9PWhjUw" visible="false" type="7600">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_BR-4gkSMEeCFV_v9PWhjUw" fontHeight="10"/>
+              <element xsi:nil="true"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_BR-4g0SMEeCFV_v9PWhjUw"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_BR-4fkSMEeCFV_v9PWhjUw"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_BR-4f0SMEeCFV_v9PWhjUw"/>
+            <styles xsi:type="compositenotation:CollapseStyle" xmi:id="_BR-4gESMEeCFV_v9PWhjUw"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_BR-4cUSMEeCFV_v9PWhjUw" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_BR-4ckSMEeCFV_v9PWhjUw" gradStartColor="16642791" gradEndColor="14072216"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_BR-4c0SMEeCFV_v9PWhjUw"/>
+          <styles xsi:type="compositenotation:CustomComponentIconStyle" xmi:id="_BR-4dESMEeCFV_v9PWhjUw"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_BR-4dUSMEeCFV_v9PWhjUw" x="292" y="3"/>
+        </children>
+        <children xmi:id="_UwSckIW5EeCkeLyobpf2pQ" type="3003" element="#_Uv_hoIW5EeCkeLyobpf2pQ">
+          <children xmi:id="_UwScloW5EeCkeLyobpf2pQ" type="5001"/>
+          <children xmi:id="_UwScl4W5EeCkeLyobpf2pQ" type="7004">
+            <children xmi:id="_enzUQIW5EeCkeLyobpf2pQ" type="3004" element="#_enWoUIW5EeCkeLyobpf2pQ">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_enzUQYW5EeCkeLyobpf2pQ" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_enzUQoW5EeCkeLyobpf2pQ"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_UwScmIW5EeCkeLyobpf2pQ"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_UwScmYW5EeCkeLyobpf2pQ"/>
+          </children>
+          <children xmi:id="_UwScmoW5EeCkeLyobpf2pQ" type="7005">
+            <children xmi:id="_enzUQ4W5EeCkeLyobpf2pQ" type="3005" element="#_enpjQIW5EeCkeLyobpf2pQ">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_enzURIW5EeCkeLyobpf2pQ" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_enzURYW5EeCkeLyobpf2pQ"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_UwScm4W5EeCkeLyobpf2pQ"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_UwScnIW5EeCkeLyobpf2pQ"/>
+          </children>
+          <children xmi:id="_UwScnYW5EeCkeLyobpf2pQ" type="7006">
+            <children xmi:id="_UwScoYW5EeCkeLyobpf2pQ" visible="false" type="7600">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_UwScooW5EeCkeLyobpf2pQ" fontHeight="10"/>
+              <element xsi:nil="true"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_UwSco4W5EeCkeLyobpf2pQ"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_UwScnoW5EeCkeLyobpf2pQ"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_UwScn4W5EeCkeLyobpf2pQ"/>
+            <styles xsi:type="compositenotation:CollapseStyle" xmi:id="_UwScoIW5EeCkeLyobpf2pQ"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_UwSckYW5EeCkeLyobpf2pQ" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_UwSckoW5EeCkeLyobpf2pQ" gradStartColor="16642791" gradEndColor="14072216"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_UwSck4W5EeCkeLyobpf2pQ"/>
+          <styles xsi:type="compositenotation:CustomComponentIconStyle" xmi:id="_UwSclIW5EeCkeLyobpf2pQ"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_UwSclYW5EeCkeLyobpf2pQ" x="292" y="123"/>
+        </children>
+        <children xmi:id="_atdloIW5EeCkeLyobpf2pQ" type="3003" element="#_atT0oIW5EeCkeLyobpf2pQ">
+          <children xmi:id="_atdlpoW5EeCkeLyobpf2pQ" type="5001"/>
+          <children xmi:id="_atdlp4W5EeCkeLyobpf2pQ" type="7004">
+            <children xmi:id="_h7i88oW5EeCkeLyobpf2pQ" type="3004" element="#_h7i88IW5EeCkeLyobpf2pQ">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_h7i884W5EeCkeLyobpf2pQ" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_h7i89IW5EeCkeLyobpf2pQ"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_atdlqIW5EeCkeLyobpf2pQ"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_atdlqYW5EeCkeLyobpf2pQ"/>
+          </children>
+          <children xmi:id="_atdlqoW5EeCkeLyobpf2pQ" type="7005">
+            <styles xsi:type="notation:SortingStyle" xmi:id="_atdlq4W5EeCkeLyobpf2pQ"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_atdlrIW5EeCkeLyobpf2pQ"/>
+          </children>
+          <children xmi:id="_atdlrYW5EeCkeLyobpf2pQ" type="7006">
+            <children xmi:id="_atdlsYW5EeCkeLyobpf2pQ" visible="false" type="7600">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_atdlsoW5EeCkeLyobpf2pQ" fontHeight="10"/>
+              <element xsi:nil="true"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_atdls4W5EeCkeLyobpf2pQ"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_atdlroW5EeCkeLyobpf2pQ"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_atdlr4W5EeCkeLyobpf2pQ"/>
+            <styles xsi:type="compositenotation:CollapseStyle" xmi:id="_atdlsIW5EeCkeLyobpf2pQ"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_atdloYW5EeCkeLyobpf2pQ" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_atdlooW5EeCkeLyobpf2pQ" gradStartColor="16642791" gradEndColor="14072216"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_atdlo4W5EeCkeLyobpf2pQ"/>
+          <styles xsi:type="compositenotation:CustomComponentIconStyle" xmi:id="_atdlpIW5EeCkeLyobpf2pQ"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_atdlpYW5EeCkeLyobpf2pQ" x="496" y="75"/>
+        </children>
+        <children xmi:id="_sWRZ8IW6EeCkeLyobpf2pQ" type="3003" element="#_sWHo8IW6EeCkeLyobpf2pQ">
+          <children xmi:id="_sWRZ9oW6EeCkeLyobpf2pQ" type="5001"/>
+          <children xmi:id="_sWRZ94W6EeCkeLyobpf2pQ" type="7004">
+            <children xmi:id="_v1FqNIW6EeCkeLyobpf2pQ" type="3004" element="#_v1FqMIW6EeCkeLyobpf2pQ">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_v1FqNYW6EeCkeLyobpf2pQ" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_v1FqNoW6EeCkeLyobpf2pQ"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_sWRZ-IW6EeCkeLyobpf2pQ"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_sWRZ-YW6EeCkeLyobpf2pQ"/>
+          </children>
+          <children xmi:id="_sWRZ-oW6EeCkeLyobpf2pQ" type="7005">
+            <children xmi:id="_KRDvgo0KEeCgQoe2axu9fg" type="3005" element="#_KRDvgI0KEeCgQoe2axu9fg">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_KRDvg40KEeCgQoe2axu9fg" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_KRDvhI0KEeCgQoe2axu9fg"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_sWRZ-4W6EeCkeLyobpf2pQ"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_sWRZ_IW6EeCkeLyobpf2pQ"/>
+          </children>
+          <children xmi:id="_sWRZ_YW6EeCkeLyobpf2pQ" type="7006">
+            <children xmi:id="_sWaj4IW6EeCkeLyobpf2pQ" visible="false" type="7600">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_sWaj4YW6EeCkeLyobpf2pQ" fontHeight="10"/>
+              <element xsi:nil="true"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_sWaj4oW6EeCkeLyobpf2pQ"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_sWRZ_oW6EeCkeLyobpf2pQ"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_sWRZ_4W6EeCkeLyobpf2pQ"/>
+            <styles xsi:type="compositenotation:CollapseStyle" xmi:id="_sWRaAIW6EeCkeLyobpf2pQ"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_sWRZ8YW6EeCkeLyobpf2pQ" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_sWRZ8oW6EeCkeLyobpf2pQ" gradStartColor="16642791" gradEndColor="14072216"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_sWRZ84W6EeCkeLyobpf2pQ"/>
+          <styles xsi:type="compositenotation:CustomComponentIconStyle" xmi:id="_sWRZ9IW6EeCkeLyobpf2pQ"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_sWRZ9YW6EeCkeLyobpf2pQ" x="304" y="243"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_r30c-ESLEeCFV_v9PWhjUw"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_r30c-USLEeCFV_v9PWhjUw"/>
+      </children>
+      <children xmi:id="_r30c-kSLEeCFV_v9PWhjUw" type="7007">
+        <children xmi:id="_r30c_USLEeCFV_v9PWhjUw" visible="false" type="7600">
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_r30c_kSLEeCFV_v9PWhjUw" fontHeight="10"/>
+          <element xsi:nil="true"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_r30c_0SLEeCFV_v9PWhjUw"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_r30c-0SLEeCFV_v9PWhjUw"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_r30c_ESLEeCFV_v9PWhjUw"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" xmi:id="_r3qr8USLEeCFV_v9PWhjUw" fontHeight="10"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_r3qr8kSLEeCFV_v9PWhjUw" x="10" y="10" width="975" height="511"/>
+    </children>
+    <styles xsi:type="notation:DiagramStyle" xmi:id="_r0PkgUSLEeCFV_v9PWhjUw"/>
+    <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_r0PkgkSLEeCFV_v9PWhjUw"/>
+    <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_r0Pkg0SLEeCFV_v9PWhjUw"/>
+    <edges xmi:id="_ICaDakSMEeCFV_v9PWhjUw" type="4002" source="#_ICaDZESMEeCFV_v9PWhjUw" target="#_F_uZ9ESMEeCFV_v9PWhjUw">
+      <styles xsi:type="notation:ConnectorStyle" xmi:id="_ICaDa0SMEeCFV_v9PWhjUw" routing="Rectilinear"/>
+      <styles xsi:type="notation:FontStyle" xmi:id="_ICaDbESMEeCFV_v9PWhjUw" fontHeight="10"/>
+      <element xsi:nil="true"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_ICaDbUSMEeCFV_v9PWhjUw" points="[33, -5, -312, -5]$[186, -5, -159, -5]$[186, 3, -159, 3]$[339, 3, -6, 3]"/>
+    </edges>
+    <edges xmi:id="_A86gAESPEeCFV_v9PWhjUw" type="4003" source="#_IZ9AskSMEeCFV_v9PWhjUw" target="#_-vgNQESOEeCFV_v9PWhjUw">
+      <styles xsi:type="notation:ConnectorStyle" xmi:id="_A86gAUSPEeCFV_v9PWhjUw" routing="Rectilinear"/>
+      <styles xsi:type="notation:FontStyle" xmi:id="_A86gAkSPEeCFV_v9PWhjUw" fontHeight="10"/>
+      <element xsi:nil="true"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_A86gA0SPEeCFV_v9PWhjUw" points="[12, 3, -545, 107]$[542, -109, -15, -5]"/>
+    </edges>
+    <edges xmi:id="_inzmAYW5EeCkeLyobpf2pQ" type="4001" element="#_inzmAIW5EeCkeLyobpf2pQ" source="#_enzUQ4W5EeCkeLyobpf2pQ" target="#_h7i88oW5EeCkeLyobpf2pQ">
+      <styles xsi:type="notation:ConnectorStyle" xmi:id="_inzmAoW5EeCkeLyobpf2pQ" routing="Rectilinear"/>
+      <styles xsi:type="notation:FontStyle" xmi:id="_inzmA4W5EeCkeLyobpf2pQ" fontHeight="10"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_inzmBIW5EeCkeLyobpf2pQ" points="[12, 3, -103, 3]$[109, 3, -6, 3]"/>
+    </edges>
+    <edges xmi:id="_jLtkUIW5EeCkeLyobpf2pQ" type="4002" source="#_jLkaYIW5EeCkeLyobpf2pQ" target="#_enzUQIW5EeCkeLyobpf2pQ">
+      <styles xsi:type="notation:ConnectorStyle" xmi:id="_jLtkUYW5EeCkeLyobpf2pQ" routing="Rectilinear"/>
+      <styles xsi:type="notation:FontStyle" xmi:id="_jLtkUoW5EeCkeLyobpf2pQ" fontHeight="10"/>
+      <element xsi:nil="true"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_jLtkU4W5EeCkeLyobpf2pQ" points="[0, 30, -387, -153]$[381, 186, -6, 3]"/>
+    </edges>
+    <edges xmi:id="_5hxK6oW6EeCkeLyobpf2pQ" type="4002" source="#_5hxK5IW6EeCkeLyobpf2pQ" target="#_v1FqNIW6EeCkeLyobpf2pQ">
+      <styles xsi:type="notation:ConnectorStyle" xmi:id="_5hxK64W6EeCkeLyobpf2pQ" routing="Rectilinear"/>
+      <styles xsi:type="notation:FontStyle" xmi:id="_5hxK7IW6EeCkeLyobpf2pQ" fontHeight="10"/>
+      <element xsi:nil="true"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_5hxK7YW6EeCkeLyobpf2pQ" points="[0, 30, -399, -273]$[393, 306, -6, 3]"/>
+    </edges>
+    <edges xmi:id="_ZB8w-I0KEeCgQoe2axu9fg" type="4003" source="#_ZB8w8o0KEeCgQoe2axu9fg" target="#_KRDvgo0KEeCgQoe2axu9fg">
+      <styles xsi:type="notation:ConnectorStyle" xmi:id="_ZB8w-Y0KEeCgQoe2axu9fg" routing="Rectilinear"/>
+      <styles xsi:type="notation:FontStyle" xmi:id="_ZB8w-o0KEeCgQoe2axu9fg" fontHeight="10"/>
+      <element xsi:nil="true"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_ZB8w-40KEeCgQoe2axu9fg" points="[20, 35, -487, -268]$[519, 306, 12, 3]"/>
+    </edges>
+  </notation:diagram>
+  <scaext:EmbeddedPolicySet xmi:id="_jDR_0Jd6EeCdsZS-c2pEUg" name="ThreadingPolicy_SOAPEventSource1" appliesTo="sca:binding.sca.reference | sca:binding.sca.service | soapbt:binding.soap.reference | soapbt:binding.soap.service">
+    <systempolicy:threadingPolicy xmi:id="_waAwYJd6EeCdsZS-c2pEUg" scaext:label="Threading Policy" invocationTimeOut="10">
+      <scaext:property xmi:id="_waAwYZd6EeCdsZS-c2pEUg" name="threadpool" type="tp:ThreadPoolConfiguration" scaext:simpleValue="BAT73ThreadPoolResource" source="$threadpool"/>
+      <scaext:description>On a service, this indicates that the message must be dispatched using the configured thread pool. On a reference, this indicates that the message must be send using the configured thread pool. If a timeout is set on a reference, it indicates that the reference invocation will timeout if the invocation takes more than the configured value.If this policy is applied to any binding other than Virtualization and SOAP, then it will take effect on the virtualization proxy between the binding and the component.If this policy is applied to any binding other than Virtualization, then it will take effect on the virtualization proxy between the binding and the component.</scaext:description>
+    </systempolicy:threadingPolicy>
+    <scaext:property xmi:id="_jDR_05d6EeCdsZS-c2pEUg" mustSupply="false" name="threadpool" type="tp:ThreadPoolConfiguration" scaext:simpleValue="BAT73ThreadPoolResource"/>
+  </scaext:EmbeddedPolicySet>
+</sca:composite>

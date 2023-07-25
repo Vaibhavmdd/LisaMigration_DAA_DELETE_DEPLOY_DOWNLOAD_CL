@@ -1,0 +1,183 @@
+<project name="host_build" default="e2e">
+        <import file="${TIBCO_AMXADMIN_HOME}/bin/taskdef.xml" />
+      
+        <import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+          
+	<target name="create.host">
+		<AMXAdminTask
+			remote="true"
+			propsFile="${remotePropsFile}"
+			action="add"
+			dataFile="${amxConfigFile}"
+			objectSelector="Host"
+			overwrite="true"
+			merge="true"
+			createIfNotExists="true"
+			failOnError="true"/>
+	</target>
+	
+	
+	<target name="install.host">
+		 <AMXAdminTask
+			remote="true"
+			propsFile="${remotePropsFile}"
+			action="install"
+			dataFile="${amxConfigFile}"
+			objectSelector="Host"
+			failOnError="true"/>
+		  </target>
+			
+	  <target name="start.host">
+		 <AMXAdminTask
+			remote="true"
+			propsFile="${remotePropsFile}"
+			action="start"
+			dataFile="${amxConfigFile}"
+			objectSelector="Host"
+			failOnError="true"/>
+	  </target>
+	  
+	 
+	  
+	  <target name="create.node">
+		<AMXAdminTask
+			action="add"
+			objectSelector="Environment/Node"
+			remote="true"
+			propsFile="${remotePropsFile}"
+			dataFile="${amxConfigFile}"
+			overwrite="true"
+			merge="true"
+			createIfNotExists="true"
+			force="true"
+			failOnError="true"/>
+	</target>
+	
+	<target name="install.node">
+		<AMXAdminTask
+			action="install"
+			objectSelector="Environment/Node"
+			remote="true"
+			propsFile="${remotePropsFile}"
+			dataFile="${amxConfigFile}"
+			overwrite="true"
+			merge="true"
+			createIfNotExists="true"
+			force="true"
+			failOnError="true"/>
+	</target>
+	
+	<target name="start.node">
+		<AMXAdminTask
+			action="start"
+			objectSelector="Environment/Node"
+			remote="true"
+			propsFile="${remotePropsFile}"
+			dataFile="${amxConfigFile}"
+			failOnError="true"/>
+	</target>
+	<target name="stop.node">
+		<AMXAdminTask
+			action="stop"
+			objectSelector="Environment/Node"
+			remote="true"
+			propsFile="${remotePropsFile}"
+			dataFile="${amxConfigFile}"
+			failOnError="true"/>
+	</target>
+	<target name="uninstall.node">
+		<AMXAdminTask
+			action="uninstall"
+			objectSelector="Environment/Node"
+			remote="true"
+			propsFile="${remotePropsFile}"
+			dataFile="${amxConfigFile}"
+			failOnError="true"/>
+	</target>
+	<target name="delete.node">
+		<AMXAdminTask
+			action="delete"
+			objectSelector="Environment/Node"
+			remote="true"
+			propsFile="${remotePropsFile}"
+			dataFile="${amxConfigFile}"
+			failOnError="true"/>
+	</target>
+	<target name="stop.host">
+		<AMXAdminTask
+			action="stop"
+			objectSelector="Host"
+			remote="true"
+			propsFile="${remotePropsFile}"
+			dataFile="${amxConfigFile}"
+			failOnError="true"/>
+       </target>   
+	   <target name="uninstall.host">
+		   <AMXAdminTask
+			remote="true"
+			propsFile="${remotePropsFile}"
+			action="uninstall"
+			dataFile="${amxConfigFile}"
+			force="false"
+			objectSelector="Host"
+			failOnError="true"/>
+	    </target>
+	<target name="delete.host">
+		<AMXAdminTask
+			remote="true"
+			propsFile="${remotePropsFile}"
+			action="delete"
+			dataFile="${amxConfigFile}"
+			objectSelector="Host"
+			force="false"
+			failOnError="true"/>
+	</target>
+	
+	<target name="update.internal.http" depends="-test.targets.order">
+		<AMXAdminTask
+			remote="true"
+			propsFile="${remotePropsFile}"
+			action="updateInternalHttpConnector"
+			dataFile="${amxConfigFile}"
+			objectSelector="ResourceTemplate"
+			overwrite="true"
+			incrementalEdit="true"
+			merge="false"
+			createIfNotExists="true"
+			force="false"
+			options="skipDefaultKeystores"
+			failOnError="true"/>			
+			<!--options="forceUpdateKeystores"-->
+	</target>
+	
+	<!-- internal targets --> 
+	<property name="failuremessage" value="Error: Main target needs to be last target" />
+
+	<target name="-test.targets.order" unless="hastargetsInOrder">
+		<echo>Invoked targets: ${ant.project.invoked-targets}</echo>
+		<condition property="hastargetsInOrder">
+			<and>
+				<!-- This or condition makes sure main target is always the last one 
+					in invoked targets else throw Error -->
+				<or>
+					<not>
+						<contains string="${ant.project.invoked-targets}]" substring="," />
+					</not> 
+				 
+					<matches pattern="^force" string="${ant.project.invoked-targets}]" />				
+				</or>
+				<not>
+					<equals arg1="${ant.project.invoked-targets}" arg2="force" />
+				</not>
+			</and>
+		</condition>
+		<fail
+			message="${failuremessage}${line.separator}          The list of specified targets must end with a Main target when invoking the Ant script [specified targets: ${ant.project.invoked-targets}]"
+			unless="hastargetsInOrder" />
+		<!-- Move on if no failture -->
+		<echo
+			message="Specified Ant targets are in order hence proceeding with Internal Http Connector Update." />
+	</target>
+
+	
+</project>

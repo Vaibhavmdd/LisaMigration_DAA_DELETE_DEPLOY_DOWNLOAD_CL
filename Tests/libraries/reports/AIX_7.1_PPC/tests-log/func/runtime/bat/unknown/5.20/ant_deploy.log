@@ -1,0 +1,110 @@
+     [echo] Script base is: "/opt/tibco/amsg/amx315V51/administrator/3.1/scripts/basic_cli.xml"
+
+deploy.app:
+     [echo] 
+     [echo] 
+     [echo] Upload DAA using:
+     [echo] dataFile: /groupfiler/tests/tests/amsg/3.0/reports/AIX_7.1_PPC/tests-log/func/runtime/bat/unknown/5.20/amxconfig.xml
+     [echo] remotePropsFile: /groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/2node_ssl_orcl.config
+     [echo] objectSelector: DAA
+     [echo] action: add
+     [echo] overwrite: true
+     [echo] merge: true
+     [echo] createIfNotExists: true
+     [echo] force: false
+     [echo] failOnError: true
+[AMXAdminTask]  INFO - Processing 1 objects
+[AMXAdminTask]  INFO - IBM Crypto provider already installed
+[AMXAdminTask]  INFO - Uploading DAA...
+[AMXAdminTask]  INFO - DAA location: bat520/Deployment Artifacts/bat520.daa
+[AMXAdminTask]  WARN - importResourceTemplates option is deprecated
+[AMXAdminTask] ERROR - Please see the cause for more details
+[AMXAdminTask] ERROR - com.tibco.amf.admin.api.core.exception.AdminException
+[AMXAdminTask] summary = Please see the cause for more details
+[AMXAdminTask] 
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.daa.AddAction.uploadDAAByServlet(AddAction.java:325)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.daa.AddAction.invoke(AddAction.java:161)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.Processor.invokeIndividualAction(Processor.java:576)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.Processor.invokeGenericAdd(Processor.java:490)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.Processor.invokeAction(Processor.java:377)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.Processor.processChild(Processor.java:261)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.Processor.process(Processor.java:148)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.Processor.processChildren(Processor.java:40)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.ant.AMXAdminTask.process(AMXAdminTask.java:352)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.ant.AMXAdminTask.execute(AMXAdminTask.java:272)
+[AMXAdminTask] 	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+[AMXAdminTask] 	at sun.reflect.GeneratedMethodAccessor8.invoke(Unknown Source)
+[AMXAdminTask] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:37)
+[AMXAdminTask] 	at java.lang.reflect.Method.invoke(Method.java:611)
+[AMXAdminTask] 	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+[AMXAdminTask] 	at org.apache.tools.ant.Task.perform(Task.java:348)
+[AMXAdminTask] 	at org.apache.tools.ant.taskdefs.Sequential.execute(Sequential.java:68)
+[AMXAdminTask] 	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+[AMXAdminTask] 	at sun.reflect.GeneratedMethodAccessor8.invoke(Unknown Source)
+[AMXAdminTask] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:37)
+[AMXAdminTask] 	at java.lang.reflect.Method.invoke(Method.java:611)
+[AMXAdminTask] 	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+[AMXAdminTask] 	at org.apache.tools.ant.Task.perform(Task.java:348)
+[AMXAdminTask] 	at org.apache.tools.ant.taskdefs.MacroInstance.execute(MacroInstance.java:398)
+[AMXAdminTask] 	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+[AMXAdminTask] 	at sun.reflect.GeneratedMethodAccessor8.invoke(Unknown Source)
+[AMXAdminTask] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:37)
+[AMXAdminTask] 	at java.lang.reflect.Method.invoke(Method.java:611)
+[AMXAdminTask] 	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+[AMXAdminTask] 	at org.apache.tools.ant.Task.perform(Task.java:348)
+[AMXAdminTask] 	at org.apache.tools.ant.Target.execute(Target.java:390)
+[AMXAdminTask] 	at org.apache.tools.ant.Target.performTasks(Target.java:411)
+[AMXAdminTask] 	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+[AMXAdminTask] 	at org.apache.tools.ant.Project.executeTarget(Project.java:1368)
+[AMXAdminTask] 	at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)
+[AMXAdminTask] 	at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+[AMXAdminTask] 	at org.apache.tools.ant.Main.runBuild(Main.java:809)
+[AMXAdminTask] 	at org.apache.tools.ant.Main.startAnt(Main.java:217)
+[AMXAdminTask] 	at org.apache.tools.ant.launch.Launcher.run(Launcher.java:280)
+[AMXAdminTask] 	at org.apache.tools.ant.launch.Launcher.main(Launcher.java:109)
+[AMXAdminTask] Caused by: java.net.SocketException: java.security.NoSuchAlgorithmException: SSLContext Default implementation not found: 
+[AMXAdminTask] 	at javax.net.ssl.DefaultSSLSocketFactory.a(SSLSocketFactory.java:11)
+[AMXAdminTask] 	at javax.net.ssl.DefaultSSLSocketFactory.createSocket(SSLSocketFactory.java:5)
+[AMXAdminTask] 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[AMXAdminTask] 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:60)
+[AMXAdminTask] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:37)
+[AMXAdminTask] 	at java.lang.reflect.Method.invoke(Method.java:611)
+[AMXAdminTask] 	at org.apache.commons.httpclient.protocol.ReflectionSocketFactory.createSocket(ReflectionSocketFactory.java:116)
+[AMXAdminTask] 	at org.apache.commons.httpclient.protocol.SSLProtocolSocketFactory.createSocket(SSLProtocolSocketFactory.java:130)
+[AMXAdminTask] 	at org.apache.commons.httpclient.HttpConnection.open(HttpConnection.java:707)
+[AMXAdminTask] 	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:387)
+[AMXAdminTask] 	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+[AMXAdminTask] 	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+[AMXAdminTask] 	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:323)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.daa.AddAction.submitRequest(AddAction.java:353)
+[AMXAdminTask] 	at com.tibco.amf.admin.cmdline.daa.AddAction.uploadDAAByServlet(AddAction.java:311)
+[AMXAdminTask] 	... 39 more
+[AMXAdminTask] Caused by: java.security.NoSuchAlgorithmException: SSLContext Default implementation not found: 
+[AMXAdminTask] 	at java.security.Provider$Service.newInstance(Provider.java:894)
+[AMXAdminTask] 	at sun.security.jca.GetInstance.getInstance(GetInstance.java:299)
+[AMXAdminTask] 	at sun.security.jca.GetInstance.getInstance(GetInstance.java:237)
+[AMXAdminTask] 	at javax.net.ssl.SSLContext.getInstance(SSLContext.java:33)
+[AMXAdminTask] 	at javax.net.ssl.SSLContext.getDefault(SSLContext.java:22)
+[AMXAdminTask] 	at javax.net.ssl.SSLSocketFactory.getDefault(SSLSocketFactory.java:29)
+[AMXAdminTask] 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[AMXAdminTask] 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:60)
+[AMXAdminTask] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:37)
+[AMXAdminTask] 	at java.lang.reflect.Method.invoke(Method.java:611)
+[AMXAdminTask] 	at org.apache.commons.httpclient.protocol.ReflectionSocketFactory.createSocket(ReflectionSocketFactory.java:112)
+[AMXAdminTask] 	... 47 more
+[AMXAdminTask] Caused by: java.lang.Exception: Truststore file does not exist: {{TIBCO_AMXADMIN_CONFIG}}/{{admin.group.name}}/samples/adminCliTruststore.jks
+[AMXAdminTask] 	at com.ibm.jsse2.ed.a(ed.java:83)
+[AMXAdminTask] 	at com.ibm.jsse2.tc.f(tc.java:6)
+[AMXAdminTask] 	at com.ibm.jsse2.tc.<init>(tc.java:2)
+[AMXAdminTask] 	at java.lang.J9VMInternals.newInstanceImpl(Native Method)
+[AMXAdminTask] 	at java.lang.Class.newInstance(Class.java:1345)
+[AMXAdminTask] 	at java.security.Provider$Service.newInstance(Provider.java:880)
+[AMXAdminTask] 	... 57 more
+[AMXAdminTask] 
+[AMXAdminTask] ERROR - Error invoking action add on DAA: Please see the cause for more details
+
+BUILD FAILED
+/groupfiler/tests/tests/amsg/3.0/tests/func/runtime/bat/5.20/amxbuild.xml:5: The following error occurred while executing this line:
+/groupfiler/tests/tests/amsg/3.0/libraries/amx/bin/amx-macrodefs.xml:2661: Failed on error
+
+Total time: 4 seconds

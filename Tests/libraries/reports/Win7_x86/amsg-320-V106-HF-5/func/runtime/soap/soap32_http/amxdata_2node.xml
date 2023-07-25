@@ -1,0 +1,936 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<amxdata_base:Enterprise 
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/trinity/server/credentialserver/cmdline/credentialserver ../schemas/CredentialServer.xsd http://tibco.com/amf/hpa/core/admin/bootstrap/types ../schemas/amxdata_bootstrap.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd http://tibco.com/amxadministrator/command/line/types_jmssr_base ../schemas/jmssr_base.xsd http://tibco.com/governance/common/cli/types_govobj ../schemas/govObj.xsd" 
+	xmlns:xalan="http://xml.apache.org/xalan" 
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types" 
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base" 
+	xmlns:cs="http://tibco.com/trinity/server/credentialserver/cmdline/credentialserver" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:amxdata_binding="http://tibco.com/amxadministrator/command/line/types_binding"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference" 
+	xmlns:amxdata_bootstrap="http://tibco.com/amf/hpa/core/admin/bootstrap/types"
+	xmlns:amxdata_jmssr="http://tibco.com/amxadministrator/command/line/types_jmssr"
+	xmlns:amxdata_jmssr_base="http://tibco.com/amxadministrator/command/line/types_jmssr_base"
+	xmlns:govobj="http://tibco.com/governance/common/cli/types_govobj">
+
+	<!-- ***************************************************
+	<
+	< 			Admin Configuration
+	<
+	******************************************************** -->
+	
+	<AdminConfiguration 
+		xsi:type="amxdata_bootstrap:AdminConfiguration" 
+		name="AMXAdmin_jpandya-dt" 
+		initialSuperuser="root" 
+		initialSuperuserPassword="t">
+		<StatusTransportDetails 
+			recoveryTimerTimeout="3000" 
+			recoveryAttemptDelay="2000" 
+			groupName="AMXAdmin_jpandya-dt" 
+			userName="admin" 
+			password="" 
+			serverURL="tcp://jpandya-dt:7222"/>
+		<AdminConfigFolders 
+			instanceWorkFolder="${TIBCO_AMXADMIN_CONFIG}/AMXAdmin_jpandya-dt/private/admin1" 
+			sharedWorkFolder="${TIBCO_AMXADMIN_CONFIG}/AMXAdmin_jpandya-dt/shared" 
+			productStagingFolder="${TIBCO_HOME}"/>
+		<AppDatabaseDetails 
+			jndiName="AdminTeneoResource" 
+			name="tibco.admin.appdb" 
+			schemaGeneration="update" 
+			dialect="org.hibernate.dialect.HSQLDialect">
+			<TeneoResource 
+				xsi:type="amxdata_bootstrap:TeneoResource">
+				<advancedProperties 
+					xsi:type="amxdata_bootstrap:Properties">
+					<Property xsi:type="amxdata_bootstrap:Property" name="maximumSqlNameLength" value="30"/>
+					<Property xsi:type="amxdata_bootstrap:Property" name="sqlCaseStratrgy" value="uppercase"/>
+					<Property xsi:type="amxdata_bootstrap:Property" name="currentSessionContextProvider" value="thread"/>
+					<Property xsi:type="amxdata_bootstrap:Property" name="emapAsTrueMap" value="false"/>
+				</advancedProperties>
+			</TeneoResource>
+			<InProcessDatabase 
+				databaseAlias="amx" 
+				dataDirectory="${TIBCO_AMXADMIN_CONFIG}/AMXAdmin_jpandya-dt/private/admin1/hsqldb/amx"/>
+		</AppDatabaseDetails>
+		<AuthRealm 
+			realmType="database" 
+			jaasJndiName="tibco.admin.authrealm.jaas" 
+			rmsJndiName="tibco.admin.authrealm.rms">
+			<DbRealmDetails>
+				<AMXApplicationDB/>
+			</DbRealmDetails>
+		</AuthRealm>
+		<AdminKeyStore 
+			adminKeyStoreJNDI="tibco.admin.default.keystore" 
+			adminKeyStorePassword="password" 
+			keyStoreRefresh="86400000"/>
+		<SCMDetails 
+			type="filesystem" 
+			location="${TIBCO_AMXADMIN_CONFIG}/AMXAdmin_jpandya-dt/shared/repo"/>
+		<TrinityCredentialServerDetails 
+			host="jpandya-dt" 
+			port="6041" 
+			username="user1" 
+			password="password1"/>
+		<SystemMessagingBus 
+			outboundSessionPoolSize="24" 
+			connectionPoolSize="12" 
+			emsReconnectAttemptCount="30" 
+			emsReconnectAttemptDelay="500" 
+			emsConnectionUsername="admin" 
+			emsConnectionPassword="" 
+			emsServerURL="tcp://jpandya-dt:7222"/>
+		<TibcoHostConfig 
+			name="SystemHost_jpandya-dt" 
+			jmxUrl="service:jmx:jmxmp://jpandya-dt:6051" 
+			serverBaseUrl="http://jpandya-dt:8120">
+			<ConnectorDetails 
+				port="8120" 
+				host="0.0.0.0"/>
+			<NodeDetails 
+				envName="SystemEnvironment_jpandya-dt" 
+				nodeName="SystemNode" 
+				portNumber="6011"/>
+		</TibcoHostConfig>
+	</AdminConfiguration>
+	
+	<!-- ***************************************************
+	<
+	< 				System Environment
+	<
+	******************************************************** -->
+	
+	<Environment 
+		xsi:type="amxdata:Environment" 
+		name="SystemEnvironment_jpandya-dt">
+		<Node 
+			xsi:type="amxdata:Node" 
+			description="System Node" 
+			contact="TIBCO QA" 
+			hostName="SystemHost_jpandya-dt" 
+			name="SystemNode" 
+			portNumber="6011">
+			
+			<ResourceInstance 	xsi:type="amxdata:ResourceInstance"
+								resourceTemplateName="tibco.admin.http.connector.internal" 
+								name="tibco.admin.http.connector.internal" />
+								
+			<!-- ************* RI For Log Service ***************** -->
+			
+			<ResourceInstance xsi:type="amxdata:ResourceInstance"
+				name="cl_logservice_jdbc"
+				resourceTemplateName="cl_logservice_jdbc"/>
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" 
+				name="cl_logservice_teneo" 
+				resourceTemplateName="cl_logservice_teneo"/>
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" 
+				name="cl_logservice_jndiConnectionConfig" 
+				resourceTemplateName="cl_logservice_jndiConnectionConfig"/>
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" 
+				name="cl_logservice_jmsConnectionFactory" 
+				resourceTemplateName="cl_logservice_jmsConnectionFactory"/>
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" 
+				name="cl_logservice_jmsDestination" 
+				resourceTemplateName="cl_logservice_jmsDestination"/>
+			
+			<!-- ************* RI For Payload Service Service ***************** -->			
+						
+			<ResourceInstance xsi:type="amxdata:ResourceInstance"
+				name="payloadJdbcSharedResource" 
+				resourceTemplateName="payloadJdbcSharedResource"/>
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" 
+				name="payloadTeneoSharedResource" 
+				resourceTemplateName="payloadTeneoSharedResource"/>
+			<ResourceInstance xsi:type="amxdata:ResourceInstance"
+				name="cl_payloadservice_jndiConnectionConfig" 
+				resourceTemplateName="cl_payloadservice_jndiConnectionConfig"/>
+			<ResourceInstance xsi:type="amxdata:ResourceInstance"
+				name="cl_payloadservice_jmsConnectionFactory" 
+				resourceTemplateName="cl_payloadservice_jmsConnectionFactory"/>
+			<ResourceInstance xsi:type="amxdata:ResourceInstance"
+				name="cl_payloadservice_jmsDestination" 
+				resourceTemplateName="cl_payloadservice_jmsDestination"/>
+
+			<!-- ************* RI For Metrics Collection Service ***************** -->
+			
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" 
+				name="GovernanceJDBCSharedResource"
+				resourceTemplateName="GovernanceJDBCSharedResource"/>
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" 
+				name="GovernanceHibernateSharedResource"
+				resourceTemplateName="GovernanceHibernateSharedResource"/>
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" 
+				name="GovernanceTeneoSharedResource"
+                resourceTemplateName="GovernanceTeneoSharedResource"/>
+			<ResourceInstance xsi:type="amxdata:ResourceInstance"
+                name="GovernanceJNDIConnectionSharedResource"
+                resourceTemplateName="GovernanceJNDIConnectionSharedResource"/>
+			<ResourceInstance xsi:type="amxdata:ResourceInstance"
+                name="GovernanceJMSConnectionFactorySharedResource"
+                resourceTemplateName="GovernanceJMSConnectionFactorySharedResource"/>
+			<ResourceInstance xsi:type="amxdata:ResourceInstance"
+                name="GovernanceJmsDestinationSharedResource"
+                resourceTemplateName="GovernanceJmsDestinationSharedResource"/>
+				
+			<!-- ******************* Loggers For QA Test ********************* -->
+				
+			<Logger xsi:type="amxdata:Logger" name ="root" additivity="false">
+			    <AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="INFO">
+					<Appender xsi:type="amxdata_reference:LogAppender_reference" name="SystemNode_ROOT"/>
+				</AppenderRef>
+		     	<AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="INFO">
+					<Appender xsi:type="amxdata_reference:LogAppender_reference" name="qaFileLogAppender0"/>
+		     	</AppenderRef>
+			</Logger>
+			<Logger xsi:type="amxdata:Logger" name ="com.tibco" additivity="false">
+			    <AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="DEBUG">
+					<Appender xsi:type="amxdata_reference:LogAppender_reference" name="SystemNode_ROOT"/>
+				</AppenderRef>
+		     	<AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="DEBUG">
+		     		<Appender xsi:type="amxdata_reference:LogAppender_reference" name="qaFileLogAppender0"/>
+		     	</AppenderRef>
+			</Logger>
+			<Logger xsi:type="amxdata:Logger" name ="com.tibco.neo" additivity="false">
+			    <AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="INFO">
+					<Appender xsi:type="amxdata_reference:LogAppender_reference" name="SystemNode_ROOT"/>
+				</AppenderRef>
+		     	<AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="INFO">
+		     		<Appender xsi:type="amxdata_reference:LogAppender_reference" name="qaFileLogAppender0"/>
+		     	</AppenderRef>
+			</Logger>
+			<Logger xsi:type="amxdata:Logger" name ="com.tibco.amf.hpa.core.common.util" additivity="false">
+			    <AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="INFO">
+					<Appender xsi:type="amxdata_reference:LogAppender_reference" name="SystemNode_ROOT"/>
+				</AppenderRef>
+		     	<AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="INFO">
+		     		<Appender xsi:type="amxdata_reference:LogAppender_reference" name="qaFileLogAppender0"/>
+		     	</AppenderRef>
+			</Logger>
+			
+			<!-- ************* Loggers For Metrics Collection Service ***************** -->
+			
+			<Logger xsi:type="amxdata:Logger" name="com.tibco.amx.governance.logger.LifecycleNotification" additivity="false">
+				<AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="INFO">
+					<Appender xsi:type="amxdata_reference:LogAppender_reference" name="amx.serviceprobe.global.log.appender"/>
+				</AppenderRef>
+			</Logger>
+			<Logger xsi:type="amxdata:Logger" name="org.hibernate" additivity="false"/>
+		</Node>
+		<Host name="SystemHost_jpandya-dt"/>
+		<Application 
+			xsi:type="amxdata:Application" 
+			name="amx.dashboard-app">
+			<Node 
+				name="SystemNode"
+				environmentName="SystemEnvironment_jpandya-dt"/>
+			<Property 
+				xsi:type="amxdata:Property" 
+				name="defaultConnector" 
+				value="amxAdminDefaultHttpConnector"/>
+			<ApplicationTemplate 
+				xsi:type="amxdata_reference:ApplicationTemplate_reference" 
+				name="com.tibco.amf.admin.dashboard"/>
+		</Application>
+		<Application 
+			xsi:type="amxdata:Application"
+			name="amx.artifactserver.app">
+			<Node 	name="SystemNode" 
+					environmentName="SystemEnvironment_jpandya-dt"/>
+			<SVar 
+				description="artifact server context root svar" 
+				value="/amxadministrator/" 
+				type="String" 
+				name="ArtifactServerContextRootSvar" 
+				xsi:type="amxdata_base:SubstitutionVariable"/>
+			<SVar 
+				description="Must be the name of an Http connector on SystemNode that should be used to serve up files in Admin for the runtime hosts and nodes" 
+				value="tibco.admin.http.connector.internal" 
+				type="String" 
+				name="ArtifactServerHTTPConnectorSvar" 
+				xsi:type="amxdata_base:SubstitutionVariable"/>
+			<SVar 
+				description="admin shared folder svar" 
+				type="String" 
+				name="ArtifactServerInternalSharedLocationSvar" 
+				xsi:type="amxdata_base:SubstitutionVariable" 
+				value="${TIBCO_AMXADMIN_CONFIG}/AMXAdmin_jpandya-dt/shared"/>
+			<ApplicationTemplate 
+				name="com.tibco.amf.admin.artifactserver" 
+				xsi:type="amxdata_reference:ApplicationTemplate_reference"/>
+		</Application>
+		<Application xsi:type="amxdata:Application" 
+			name="amx.logservice.app" 
+			contact="TIBCO Software Inc." 
+			description="com.tibco.commonlogging.logservice.daa">
+			<Node 
+				name="SystemNode" 
+				environmentName="SystemEnvironment_jpandya-dt"/>
+			<ApplicationTemplate 
+				xsi:type="amxdata_reference:ApplicationTemplate_reference" 
+				name="com.tibco.commonlogging.logservice.daa"/>
+			<Logger xsi:type="amxdata:Logger" 
+				name="CommonLogging_LogServiceLogger" 
+				additivity="false">
+				<AppenderRef 
+					xsi:type="amxdata:AppenderRef" 
+					effectiveLevel="INFO">
+					<Appender 
+						xsi:type="amxdata_reference:LogAppender_reference" 
+						name="CommonLogging_LogServiceAppender_System"/>
+				</AppenderRef>
+			</Logger>
+			<Logger xsi:type="amxdata:Logger" 
+				name="CommonLogging_HSqlLogServiceLogger" 
+				additivity="false">
+				<AppenderRef 
+					xsi:type="amxdata:AppenderRef" 
+					effectiveLevel="DEBUG">
+					<Appender 
+						xsi:type="amxdata_reference:LogAppender_reference" 
+						name="CommonLogging_HSqlLogServiceAppender_System"/>
+				</AppenderRef>
+			</Logger>      
+		</Application>
+		<Application xsi:type="amxdata:Application" 
+			name="amx.payloadservice.app" 
+			contact="TIBCO Inc." 
+			description="PayloadService">
+			<Component xsi:type="amxdata:Component" name="PayloadComp">
+				<Node 
+					name="SystemNode" 
+					environmentName="SystemEnvironment_jpandya-dt"/>
+			</Component>
+			<Node 
+				name="SystemNode" 
+				environmentName="SystemEnvironment_jpandya-dt"/>
+      <SVar description="Payload file root dir" value="./payload" type="String" name="fileRootDir" xsi:type="amxdata_base:SubstitutionVariable"/>
+			<ApplicationTemplate 
+				xsi:type="amxdata_reference:ApplicationTemplate_reference" 
+				name="com.tibco.commonlogging.payload.daa"/>
+		</Application>
+		<Application xsi:type="amxdata:Application" 
+			name="amx.governance.mcr.aggregator"
+            contact="TIBCO Software Inc."
+            description="AMX Governance aggregator application">
+			<Component xsi:type="amxdata:Component" 
+				name="LifecycleNotificationPublisherComponent">
+				<Node 
+					name="SystemNode" 
+					environmentName="SystemEnvironment_jpandya-dt"/>
+				<Logger xsi:type="amxdata:Logger"
+					name="com.tibco.amx.governance.logger.LifecycleNotification"
+					additivity="false">
+					<AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="INFO">
+						<Appender xsi:type="amxdata_reference:LogAppender_reference"
+							name="amx.serviceprobe.global.log.appender"/>
+					</AppenderRef>
+				</Logger>
+			</Component>
+			<Component xsi:type="amxdata:Component" 
+				name="Aggregator">
+				<Node 
+					name="SystemNode" 
+					environmentName="SystemEnvironment_jpandya-dt"/>
+			</Component>
+			<Component xsi:type="amxdata:Component" 
+				name="CLEventParserExtension">
+				<Node 
+					name="SystemNode" 
+					environmentName="SystemEnvironment_jpandya-dt"/>
+			</Component>
+			<Component xsi:type="amxdata:Component" 
+				name="StandardPeriodicWindowExtension">
+				<Node 
+					name="SystemNode" 
+					environmentName="SystemEnvironment_jpandya-dt"/>
+			</Component>
+			<Component xsi:type="amxdata:Component" 
+				name="StandardAggregateFunctionsExtension">
+				<Node 
+					name="SystemNode" 
+					environmentName="SystemEnvironment_jpandya-dt"/>
+			</Component>
+			<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference"
+				name="com.tibco.governance.mcr.aggregator.daa"/>
+		</Application>
+	</Environment>
+	
+	<!-- ***************************************************
+	<
+	< 			QA Environment for Test
+	<
+	******************************************************** -->
+	
+	<Environment 
+		xsi:type="amxdata:Environment" 
+		description="QA Environment" 
+		name="QAEnvironment_jpandya-dt">
+		<Node 
+			xsi:type="amxdata:Node" 
+			description="QA Node 1" 
+			contact="TIBCO QA" 
+			hostName="SystemHost_jpandya-dt" 
+			name="QANode1" 
+			portNumber="6021"
+			enableDebug="true"
+            debugPortNumber="1129">  
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="httpsKeystore" resourceTemplateName="httpsKeystore"/>
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="sslServer" resourceTemplateName="sslServer"/>
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="sslClient" resourceTemplateName="sslClient"/>
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="http_1" resourceTemplateName="http_1"/>
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="http_2" resourceTemplateName="http_2"/>
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="httpsConnector1" resourceTemplateName="httpsConnector1"/>
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="http_client_1" resourceTemplateName="http_client_1"/>
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="http_client_2" resourceTemplateName="http_client_2"/>
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="httpsClient1" resourceTemplateName="httpsClient1"/>
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="http_3" resourceTemplateName="http_3"/>		
+			<Logger xsi:type="amxdata:Logger" name ="root" additivity="false">
+				<AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="INFO">
+					<Appender xsi:type="amxdata_reference:LogAppender_reference" name="QANode1_ROOT"/>
+				</AppenderRef>
+				<AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="INFO">
+					<Appender xsi:type="amxdata_reference:LogAppender_reference" name="qaFileLogAppender1"/>
+				</AppenderRef>
+			</Logger>
+			<Logger xsi:type="amxdata:Logger" name ="com.tibco" additivity="false">
+				<AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="DEBUG">
+					<Appender xsi:type="amxdata_reference:LogAppender_reference" name="QANode1_ROOT"/>
+				</AppenderRef>
+				<AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="DEBUG">
+					<Appender xsi:type="amxdata_reference:LogAppender_reference" name="qaFileLogAppender1"/>
+				</AppenderRef>
+			</Logger>
+			<Logger xsi:type="amxdata:Logger" name ="com.tibco.neo" additivity="false">
+				<AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="INFO">
+					<Appender xsi:type="amxdata_reference:LogAppender_reference" name="QANode1_ROOT"/>
+				</AppenderRef>
+				<AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="INFO">
+					<Appender xsi:type="amxdata_reference:LogAppender_reference" name="qaFileLogAppender1"/>
+				</AppenderRef>
+			</Logger>
+			<Logger xsi:type="amxdata:Logger" name ="com.tibco.amf.hpa.core.common.util" additivity="false">
+				<AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="INFO">
+					<Appender xsi:type="amxdata_reference:LogAppender_reference" name="QANode1_ROOT"/>
+				</AppenderRef>
+				<AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="INFO">
+					<Appender xsi:type="amxdata_reference:LogAppender_reference" name="qaFileLogAppender1"/>
+				</AppenderRef>
+			</Logger>
+		</Node>
+		<Node 
+			xsi:type="amxdata:Node" 
+			description="QA Node 2" 
+			contact="TIBCO QA" 
+			hostName="SystemHost_jpandya-dt" 
+			name="QANode2" 
+			portNumber="6031"
+			enableDebug="true"
+            debugPortNumber="1139">
+			<Logger xsi:type="amxdata:Logger" name ="root" additivity="false">
+				<AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="INFO">
+					<Appender xsi:type="amxdata_reference:LogAppender_reference" name="QANode2_ROOT"/>
+				</AppenderRef>
+				<AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="INFO">
+					<Appender xsi:type="amxdata_reference:LogAppender_reference" name="qaFileLogAppender2"/>
+				</AppenderRef>
+			</Logger>
+			<Logger xsi:type="amxdata:Logger" name ="com.tibco" additivity="false">
+				<AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="DEBUG">
+					<Appender xsi:type="amxdata_reference:LogAppender_reference" name="QANode2_ROOT"/>
+				</AppenderRef>
+				<AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="DEBUG">
+					<Appender xsi:type="amxdata_reference:LogAppender_reference" name="qaFileLogAppender2"/>
+				</AppenderRef>
+			</Logger>
+			<Logger xsi:type="amxdata:Logger" name ="com.tibco.neo" additivity="false">
+				<AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="INFO">
+					<Appender xsi:type="amxdata_reference:LogAppender_reference" name="QANode2_ROOT"/>
+				</AppenderRef>
+				<AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="INFO">
+					<Appender xsi:type="amxdata_reference:LogAppender_reference" name="qaFileLogAppender2"/>
+				</AppenderRef>
+			</Logger>
+			<Logger xsi:type="amxdata:Logger" name ="com.tibco.amf.hpa.core.common.util" additivity="false">
+				<AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="INFO">
+					<Appender xsi:type="amxdata_reference:LogAppender_reference" name="QANode2_ROOT"/>
+				</AppenderRef>
+				<AppenderRef xsi:type="amxdata:AppenderRef" effectiveLevel="INFO">
+					<Appender xsi:type="amxdata_reference:LogAppender_reference" name="qaFileLogAppender2"/>
+				</AppenderRef>
+			</Logger>
+		</Node>
+		<Host name="SystemHost_jpandya-dt"/>
+		<Application 
+			xsi:type="amxdata:Application" 
+			name="com.tibco.amx.it.mediation.app" 
+			contact="TIBCO Software Inc." 
+			description="TIBCO ActiveMatrix Mediation Implementation Type">
+			<Node 
+				name="QANode1" 
+				environmentName="QAEnvironment_jpandya-dt"/>
+			<Node 
+				name="QANode2" 
+				environmentName="QAEnvironment_jpandya-dt"/>
+			<ApplicationTemplate 
+				xsi:type="amxdata_reference:ApplicationTemplate_reference" 
+				name="com.tibco.amx.it.mediation.apt"/>
+		</Application>
+	</Environment>
+	
+	<Host 	xsi:type="amxdata:Host"
+			password="" 
+			username="" 
+			hostType="TibcoHost"  
+			name="SystemHost_jpandya-dt" 
+			managementUrl="service:jmx:jmxmp://jpandya-dt:6051"/>
+			
+	<!-- ***************************************************
+	<
+	< 			Resource Templates
+	<
+	******************************************************** -->
+	
+	<!-- ************* For QA Test ***************** -->
+	
+	<ResourceTemplate xsi:type="amxdata:KeystoreCspResourceTemplate"
+        name="httpsKeystore"
+        description="This is Keystore RT for the SSL Server and SSL Client"
+        keyStoreLocation="Z:\tests\amsg\3.0\tests\func\runtime/bat/keystore/RSA1024.keystore"
+        keyStorePassword="RSA1024"
+        keyStoreType="JKS"
+        keyStoreRefreshInterval="1000"/>
+	<ResourceTemplate xsi:type="amxdata:SslServerResourceTemplate"
+        name="sslServer"
+        description="This is SSL Server RT">
+        <GeneralConfiguration xsi:type="amxdata:SslServerResourceTemplate_General"
+            identityStoreServiceProvider="httpsKeystore"
+            keyAlias="acme-sales"
+            keyPassword="acme-sales"
+            enableCredentialStoreAccess="true">
+        </GeneralConfiguration>
+        <AdvancedConfiguration xsi:type="amxdata:Ssl_Advanced"
+            sslCipherStrength="NoExportableCiphers">
+		</AdvancedConfiguration>
+    </ResourceTemplate>
+	<ResourceTemplate xsi:type="amxdata:SslClientResourceTemplate"
+        name="sslClient"
+        description="This is SSL client RT">
+        <GeneralConfiguration xsi:type="amxdata:SslClientResourceTemplate_General"
+            trustStoreServiceProvider="httpsKeystore"
+            enableAccessToTrustStore="true">
+            <EnableMutualAuthentication xsi:type="amxdata:SslClientResourceTemplate_EnableMutualAuthentication"
+                identityStoreServiceProvider="httpsKeystore"
+                keyAlias="acme-sales"
+                keyPassword="acme-sales"
+                enableCredentialStoreAccess="true"/>
+        </GeneralConfiguration>
+        <AdvancedConfiguration xsi:type="amxdata:Ssl_Advanced"
+            securityProviderForSSL=""
+            securityProtocolToUseForSSL="SSLv3"
+            sslCipherStrength="AllCiphers"
+            sslExplicitCiphers="">
+        </AdvancedConfiguration>
+    </ResourceTemplate>
+	<ResourceTemplate xsi:type="amxdata:HttpConnectorResourceTemplate"
+		name="http_1"
+		host="0.0.0.0"
+		port="8890"
+		headerBufferSize="4096"
+		requestBufferSize="8192"
+		responseBufferSize="24576"
+		maxIdleTime="200000" 
+		lowResourceMaxIdleTime="-1"
+		description="Http Connector1"/>
+	<ResourceTemplate xsi:type="amxdata:HttpConnectorResourceTemplate"
+		name="http_2" 
+		host="0.0.0.0"
+		port="8891"
+		headerBufferSize="4096"
+		requestBufferSize="8192"
+		responseBufferSize="24576"
+		maxIdleTime="200000" 
+		lowResourceMaxIdleTime="-1"
+		description="Http Connector2"/>
+	<ResourceTemplate xsi:type="amxdata:HttpConnectorResourceTemplate" 
+		name="httpsConnector1" 
+		host="0.0.0.0" 
+		port="6765"
+		sslJNDIName="sslServer"
+		headerBufferSize="4096" 
+		requestBufferSize="8192" 
+		responseBufferSize="24576" 
+		maxIdleTime="200000" 
+		lowResourceMaxIdleTime="-1" 
+		description="Https Connector1"/>
+	<ResourceTemplate xsi:type="amxdata:HttpConnectorResourceTemplate"
+		name="http_3" 
+		host="0.0.0.0"
+		port="8778"
+		headerBufferSize="4096"
+		requestBufferSize="8192"
+		responseBufferSize="24576"
+		maxIdleTime="200000" 
+		lowResourceMaxIdleTime="-1"
+		description="Http Connector3"/>
+	<ResourceTemplate xsi:type="amxdata:HttpClientResourceTemplate"
+		name="http_client_1" 
+		isAcceptRedirect="true"
+		connectionTimeout="8888"
+		host="jpandya-dt"
+		port="8891" 
+		description="Http Client1"/>
+	<ResourceTemplate xsi:type="amxdata:HttpClientResourceTemplate"
+		name="http_client_2"
+		isAcceptRedirect="true" 
+		connectionTimeout="8888" 
+		host="AMX-BACKEND-2.na.tibco.com" 
+		port="8567"
+		description="Http Client2"/>
+	<ResourceTemplate xsi:type="amxdata:HttpClientResourceTemplate"
+        name="httpsClient1"
+        isAcceptRedirect="false"
+		soBufferSize="1"
+        connectionTimeout="8888"
+        host="AMX-BACKEND-2.na.tibco.com"
+        port="6767"
+        description="Https Client1"
+        sslJNDIName="sslClient">
+		<AdvancedConfiguration
+			xsi:type="amxdata:HttpClientResourceTemplate_Advanced"
+			localSocketAddress="">
+			<EnableConnectionPooling
+				xsi:type="amxdata:EnableConnectionPooling"
+				maximumTotalConnections="5"
+				maximumTotalConnectionsPerHost="10"/>
+		</AdvancedConfiguration>	
+    </ResourceTemplate>
+	
+	<!-- ************* For Admin ***************** -->
+	
+	<ResourceTemplate xsi:type="amxdata:HttpConnectorResourceTemplate"
+						description="An http connector used by TIBCO Administrator to serve up certain files that runtime hosts and nodes need to access. Used for internal communications in the product. Do not delete this." 
+						name="tibco.admin.http.connector.internal" 
+						host="0.0.0.0" 
+						port="19767" 
+						headerBufferSize="4096" 
+						requestBufferSize="8192" 
+						responseBufferSize="24576" 
+						maxIdleTime="200000" 
+						lowResourceMaxIdleTime="-1" 
+						isSecuredWithTCS="false"/>
+						
+	<!-- ************* For Log Service ***************** -->
+	
+	<ResourceTemplate xsi:type="amxdata:JdbcResourceTemplate" 
+		name="cl_logservice_jdbc" 
+		description="TIBCO Common Logging Log Service JDBC RT" 
+		maxConnections="10">
+		<Direct xsi:type="amxdata:Direct" 
+			isTransactional="true"
+			loginTimeOut="60000" 
+			jdbcDriver="org.hsqldb.jdbcDriver" 
+			dbUrl="jdbc:hsqldb:file:${TIBCO_AMXADMIN_CONFIG}/AMXAdmin_jpandya-dt/private/admin1/hsqldb/amx"/>
+		<InlineCredentials 
+			username="sa" 
+			password=""/>
+	</ResourceTemplate>
+	<ResourceTemplate xsi:type="amxdata:TeneoResourceTemplate" 
+		name="cl_logservice_teneo" 
+		description="TIBCO Common Logging Log Service Teneo RT" 
+		contact="admin" 
+		schemaGeneration="update" 
+		sqlLogging="true" 
+		statementBatchSize="10" 
+		datasourceName="cl_logservice_jdbc" 
+		dialect="org.hibernate.dialect.HSQLDialect">
+		<advancedProperties xsi:type="amxdata:Properties">
+			<Property xsi:type="amxdata:Property" name="currentSessionContextProvider" value="thread"/>
+			<Property xsi:type="amxdata:Property" name="maximumSqlNameLength" value="30"/>
+			<Property xsi:type="amxdata:Property" name="sqlCaseStratrgy" value="uppercase"/>
+		</advancedProperties>
+	</ResourceTemplate>
+	
+	<!-- ************* For Payload Service ***************** -->
+	
+	<ResourceTemplate xsi:type="amxdata:JdbcResourceTemplate" 
+		name="payloadJdbcSharedResource" 
+		description="TIBCO Common Logging Payload Service JDBC RT" 
+		maxConnections="10">
+		<Direct xsi:type="amxdata:Direct" 
+		isTransactional="true" 
+		loginTimeOut="60000" 
+		jdbcDriver="org.hsqldb.jdbcDriver" 
+		dbUrl="jdbc:hsqldb:file:${TIBCO_AMXADMIN_CONFIG}/AMXAdmin_jpandya-dt/private/admin1/amx"/>
+		<InlineCredentials 
+			username="sa" 
+			password=""/>
+	</ResourceTemplate>
+	<ResourceTemplate xsi:type="amxdata:TeneoResourceTemplate" 
+		name="payloadTeneoSharedResource" 
+		description="This is Teneo RT for TIBCO Common Logging Payload Service" 
+		contact="admin" 
+		schemaGeneration="update" 
+		sqlLogging="true" 
+		statementBatchSize="10" 
+		datasourceName="payloadJdbcSharedResource" 
+		dialect="org.hibernate.dialect.HSQLDialect">
+		<advancedProperties xsi:type="amxdata:Properties">
+			<Property xsi:type="amxdata:Property" name="currentSessionContextProvider" value="thread"/>
+			<Property xsi:type="amxdata:Property" name="maximumSqlNameLength" value="30"/>
+			<Property xsi:type="amxdata:Property" name="sqlCaseStratrgy" value="uppercase"/>
+		</advancedProperties>
+	</ResourceTemplate>
+	
+	<!-- ************* For Metrics Collection Service ***************** -->
+	
+	<ResourceTemplate xsi:type="amxdata:JdbcResourceTemplate" 
+		name="GovernanceJDBCSharedResource"
+        description="Governance JDBC Shared Resource"
+        maxConnections="30">
+		<Direct xsi:type="amxdata:Direct" 
+			isTransactional="true" 
+			loginTimeOut="60000"
+            jdbcDriver="org.hsqldb.jdbcDriver"
+            dbUrl="jdbc:hsqldb:file:${TIBCO_AMXADMIN_CONFIG}/AMXAdmin_jpandya-dt/private/admin1/amx"/>
+		<InlineCredentials 
+			username="sa" 
+			password=""/>
+	</ResourceTemplate>
+	<ResourceTemplate xsi:type="amxdata:HibernateResourceTemplate"
+        name="GovernanceHibernateSharedResource"
+        description="Governance Hibernate Shared Resource"
+        schemaGeneration="update"
+        sqlLogging="false"
+        statementBatchSize="10"
+        datasourceName="GovernanceJDBCSharedResource"
+        dialect="org.hibernate.dialect.HSQLDialect">
+		<advancedProperties xsi:type="amxdata:Properties">
+			<Property xsi:type="amxdata:Property" 
+				name="transactionManagerLookup"
+                value="com.tibco.amf.sharedresource.runtime.core.hibernate.AMFTibcoHostTransactionManagerLookup"/>
+			<Property xsi:type="amxdata:Property" 
+				name="connectionProvider"
+                value="com.tibco.amf.sharedresource.runtime.core.hibernate.AMFConnectionProvider"/>
+			<Property xsi:type="amxdata:Property" 
+				name="currentSessionContextProvider"
+                value="com.tibco.amf.sharedresource.runtime.core.hibernate.AMFSessionContext"/>
+		</advancedProperties>
+	</ResourceTemplate>
+	<ResourceTemplate xsi:type="amxdata:TeneoResourceTemplate" 
+		name="GovernanceTeneoSharedResource"
+        description="Governance Teneo Shared Resource"
+        schemaGeneration="update"
+        sqlLogging="false"
+        statementBatchSize="1"
+        inheritanceMapping="JOINED"
+        datasourceName="GovernanceJDBCSharedResource"
+        dialect="org.hibernate.dialect.HSQLDialect">
+		<advancedProperties xsi:type="amxdata:Properties">
+			<Property xsi:type="amxdata:Property" 
+				name="transactionManagerLookup"
+                value="com.tibco.amf.sharedresource.runtime.core.hibernate.AMFTibcoHostTransactionManagerLookup"/>
+			<Property xsi:type="amxdata:Property" 
+				name="connectionProvider"
+                value="com.tibco.amf.sharedresource.runtime.core.hibernate.AMFConnectionProvider"/>
+			<Property xsi:type="amxdata:Property" 
+				name="currentSessionContextProvider"
+                value="com.tibco.amf.sharedresource.runtime.core.hibernate.AMFSessionContext"/>
+			<Property xsi:type="amxdata:Property" 
+				name="maximumSqlNameLength" 
+				value="30"/>
+		</advancedProperties>
+	</ResourceTemplate>
+	
+	<!-- ***************************************************
+	<
+	<  				Log Appenders
+	<
+	******************************************************** -->
+	
+	<!-- ************* For Log Service ***************** -->
+	
+	<LogAppender 
+		xsi:type="amxdata:FileLogAppender" 
+		name="CommonLogging_LogServiceAppender_System" 
+		description="This is CommonLogging LogService File LogAppender" 
+		filePath="../logs/CommonLogging_LogService.log" 
+		maxSize="3000000000" 
+		maxBackupNum="5"/>
+	<LogAppender 
+		xsi:type="amxdata:FileLogAppender" 
+		name="CommonLogging_HSqlLogServiceAppender_System" 
+		description="This is CommonLogging HSql LogService File LogAppender" 
+		filePath="../logs/CommonLogging_LogServiceForHSql.log" 
+		maxSize="3000000000" 
+		maxBackupNum="5"/>
+  <LogAppender 
+  	xsi:type="amxdata:JmsLogAppender"
+  	name="logservice_default_jmsappender"
+  	description="This is a default jms LogAppender created by logservice."  
+  	jmsConnectionName="cl_logservice_jndiConnectionConfig" 
+  	jmsConnectionFactoryName="cl_logservice_jmsConnectionFactory" 
+  	jmsDestination="cl_logservice_jmsDestination"/>
+  		
+	<!-- ************* For Metrics Collection Service ***************** -->
+	
+	<LogAppender 
+		xsi:type="amxdata:JmsLogAppender" 
+		name="amx.serviceprobe.global.log.appender"
+        jmsConnectionFactoryName="GovernanceJMSConnectionFactorySharedResource"
+        jmsConnectionName="GovernanceJNDIConnectionSharedResource"
+        type="jndi"
+        description="Commong Logging Appender for Service Probe Global Bus"
+        jmsDestination="GovernanceJmsDestinationSharedResource"/>
+	
+	<!-- ************* For QA Test ***************** -->
+		
+	<LogAppender
+		xsi:type="amxdata:FileLogAppender"
+		name="qaFileLogAppender0"
+		description="QA File LogAppender0"
+		filePath="Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/20.20.1/SystemNode.log"
+		maxSize="10240"
+		maxBackupNum="5"/>	
+	<LogAppender
+		xsi:type="amxdata:FileLogAppender"
+		name="qaFileLogAppender1"
+		description="QA File LogAppender1"
+		filePath="Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/20.20.1/QANode1.log"
+		maxSize="3072"
+		maxBackupNum="5"/>	
+	<LogAppender
+		xsi:type="amxdata:FileLogAppender"
+		name="qaFileLogAppender2"
+		description="QA File LogAppender2"
+		filePath="Z:/tests/amsg/3.0/reports/Win7_x86/amsg-320-V106-HF-5/func/runtime/soap/soap32_http/20.20.1/QANode2.log"
+		maxSize="3072"
+		maxBackupNum="5"/>
+	
+	<!-- ***************************************************
+	<
+	< 			Credential Server
+	<
+	******************************************************** -->
+	
+	<cs:CredentialServer name="credentialserver">
+		<cs:CommonName>AMXAdmin_jpandya-dt</cs:CommonName>
+		<cs:OrganizationUnit>Engineering</cs:OrganizationUnit>
+		<cs:Organization>TIBCO</cs:Organization>
+		<cs:City>PaloAlto</cs:City>
+		<cs:State>California</cs:State>
+		<cs:Country>USA</cs:Country>
+		<cs:ServerCertificateValidityPeriod>3650</cs:ServerCertificateValidityPeriod>
+		<cs:ClientCertificateValidityPeriod>730</cs:ClientCertificateValidityPeriod>
+		<cs:KeySize>1024</cs:KeySize>
+		<cs:KeyAlgorithm>RSA</cs:KeyAlgorithm>
+		<cs:KeySignAlgorithm>SHA256WithRSA</cs:KeySignAlgorithm>
+		<cs:KeyStoreLocation/>
+		<cs:KeyStoreType>JKS</cs:KeyStoreType>
+		<cs:KeyStoreProvider/>
+		<cs:KeyStorePassword>password</cs:KeyStorePassword>
+		<cs:KeyAlias>trinity</cs:KeyAlias>
+		<cs:KeyPassword>trinity123</cs:KeyPassword>
+		<cs:HostName>jpandya-dt</cs:HostName>
+		<cs:Port>6041</cs:Port>
+		<cs:EnableSSL>true</cs:EnableSSL>
+	</cs:CredentialServer>
+	<cs:User 
+		UserName="user1" 
+		Password="password1"/>
+	
+	<!-- ***************************************************
+	<
+	< 		JMS Resource Templates
+	<
+	******************************************************** -->
+	
+	<!-- ************* For Log Service ***************** -->
+	
+	<amxdata_jmssr:JNDIConnectionConfigurationResourceTemplate 
+		xsi:type="amxdata_jmssr:JNDIConnectionConfigurationResourceTemplate" 
+		name="cl_logservice_jndiConnectionConfig" 
+		initialContextFactory="com.tibco.tibjms.naming.TibjmsInitialContextFactory" 
+		description="TIBCO Common Logging Log Service JndiConnectionConfiguration" 
+		providerUrl="tcp://jpandya-dt:7222">
+		<InlineCredentials 
+			username="admin" 
+			password=""/>
+	</amxdata_jmssr:JNDIConnectionConfigurationResourceTemplate>
+	<amxdata_jmssr:JNDIConnectionFactoryResourceTemplate 
+		xsi:type="amxdata_jmssr:JNDIConnectionFactoryResourceTemplate" 
+		name="cl_logservice_jmsConnectionFactory" 
+		jndiName="GenericConnectionFactory" 
+		jndiConnectionConfigurationName="cl_logservice_jndiConnectionConfig" 
+		description="TIBCO Common Logging Log Service JndiConnectionFactory"/>
+	<amxdata_jmssr:JNDIDestinationResourceTemplate 
+		xsi:type="amxdata_jmssr:JNDIDestinationResourceTemplate" 
+		name="cl_logservice_jmsDestination" 
+		jndiName="cl_logservice_queue" 
+		jndiConnectionConfigurationName="cl_logservice_jndiConnectionConfig" 
+		description="TIBCO Common Logging Log Service JndiDestination"/>
+		
+   <!-- ************* For Payload Service ***************** -->
+	
+	<amxdata_jmssr:JNDIConnectionConfigurationResourceTemplate 
+		xsi:type="amxdata_jmssr:JNDIConnectionConfigurationResourceTemplate" 
+		name="cl_payloadservice_jndiConnectionConfig" 
+		initialContextFactory="com.tibco.tibjms.naming.TibjmsInitialContextFactory" 
+		description="TIBCO Common Logging Payload Service JndiConnectionConfiguration" 
+		providerUrl="tcp://jpandya-dt:7222">
+		<InlineCredentials 
+			username="admin" 
+			password=""/>
+	</amxdata_jmssr:JNDIConnectionConfigurationResourceTemplate>
+	<amxdata_jmssr:JNDIConnectionFactoryResourceTemplate 
+		xsi:type="amxdata_jmssr:JNDIConnectionFactoryResourceTemplate" 
+		name="cl_payloadservice_jmsConnectionFactory" 
+		jndiName="GenericConnectionFactory" 
+		jndiConnectionConfigurationName="cl_payloadservice_jndiConnectionConfig" 
+		description="TIBCO Common Logging Payload Service JndiConnectionFactory"/>
+	<amxdata_jmssr:JNDIDestinationResourceTemplate 
+		xsi:type="amxdata_jmssr:JNDIDestinationResourceTemplate" 
+		name="cl_payloadservice_jmsDestination" 
+		jndiName="cl_payload_queue" 
+		jndiConnectionConfigurationName="cl_payloadservice_jndiConnectionConfig" 
+		description="TIBCO Common Logging Payload Service JndiDestination"/>
+		
+	<!-- ************* For Metrics Collection Service ***************** -->
+	
+	<amxdata_jmssr:JNDIConnectionConfigurationResourceTemplate 
+		xsi:type="amxdata_jmssr:JNDIConnectionConfigurationResourceTemplate"
+        name="GovernanceJNDIConnectionSharedResource"
+        initialContextFactory="com.tibco.tibjms.naming.TibjmsInitialContextFactory"
+        description="Governance JNDI connection resource configuration"
+        providerUrl="tcp://jpandya-dt:7222">
+		<InlineCredentials 
+			username="admin"
+			password=""/>
+	</amxdata_jmssr:JNDIConnectionConfigurationResourceTemplate>
+	<amxdata_jmssr:JNDIConnectionFactoryResourceTemplate 
+		xsi:type="amxdata_jmssr:JNDIConnectionFactoryResourceTemplate"
+        name="GovernanceJMSConnectionFactorySharedResource"
+        jndiName="QueueConnectionFactory"
+        jndiConnectionConfigurationName="GovernanceJNDIConnectionSharedResource"
+        description="Governance JNDI Connection factory resource configuration">
+		<InlineCredentials 
+			username="admin"
+			password=""/>
+	</amxdata_jmssr:JNDIConnectionFactoryResourceTemplate>
+	<amxdata_jmssr:JNDIDestinationResourceTemplate 
+		xsi:type="amxdata_jmssr:JNDIDestinationResourceTemplate"
+        name="GovernanceJmsDestinationSharedResource"
+        jndiName="direct.queue.amx.governance.stats"
+        jndiConnectionConfigurationName="GovernanceJNDIConnectionSharedResource"
+        description="Governance statistics destination resource configuration"/>
+
+	<!-- ***************************************************
+	<
+	< 		Metrics Collection Service Sync
+	<
+	******************************************************** -->
+	
+	<govobj:GovernedObjectSync/>
+	
+</amxdata_base:Enterprise>

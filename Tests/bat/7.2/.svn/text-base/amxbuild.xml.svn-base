@@ -1,0 +1,43 @@
+<project default="deploy.app">
+	<import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+
+	<target name="deploy.app">
+		<upload.daa dataFile="${amxConfigFile}" />
+		<create.app dataFile="${amxConfigFile}" appName="BAT_7.2" />
+		<map.component.to.node dataFile="${amxConfigFile}" appName="BAT_7.2" />
+		<map.service.binding.to.node dataFile="${amxConfigFile}" appName="BAT_7.2" />
+		<deploy.app dataFile="${amxConfigFile}" appName="BAT_7.2" timeout="${timeout}"/>	
+	</target>
+	
+	<target name="undeploy.app">
+		<undeploy.app dataFile="${amxConfigFile}" appName="BAT_7.2" timeout="${timeout}" />
+	</target>
+	
+	<target name="conf.logging">
+		<create.log.appender dataFile="${amxConfigFile}" />
+		<set.logger.to.app dataFile="${amxConfigFile}" />
+		<deploy.action objector="Environment/Application" description="Apply Application Logger" dataFile="${amxConfigFile}" />
+		<set.action objector="Environment/Application/Component[1]/Logger" description="Set Java Logger" dataFile="${amxConfigFile}" />
+		<deploy.action objector="Environment/Application/Component[1]" description="Apply Java Logger" dataFile="${amxConfigFile}" />
+	</target>
+	
+	<target name="deploy-ejbapp">
+		<create.app dataFile="${amxConfigFile}" appName="com.tibco.amx.bt.ejb.app" />
+	    <map.app.to.node dataFile="${amxConfigFile}" appName="com.tibco.amx.bt.ejb.app"  />
+	    <deploy.app dataFile="${amxConfigFile}" appName="com.tibco.amx.bt.ejb.app"  />
+	</target>
+	
+	<target name="deploy-cppapp">          
+	    <create.app dataFile="${amxConfigFile}" appName="com.tibco.amx.it.cpp.app" />
+	    <map.app.to.node dataFile="${amxConfigFile}" appName="com.tibco.amx.it.cpp.app" />
+	    <deploy.app dataFile="${amxConfigFile}" appName="com.tibco.amx.it.cpp.app" />
+	</target>
+	
+    <target name="undeploy-cppapp">
+		<undeploy.app dataFile="${amxConfigFile}" appName="com.tibco.amx.it.cpp.app"/>
+	</target> 
+	
+    <target name="undeploy-ejbapp">
+		<undeploy.app dataFile="${amxConfigFile}" appName="com.tibco.amx.bt.ejb.app"/>
+	</target> 
+</project>

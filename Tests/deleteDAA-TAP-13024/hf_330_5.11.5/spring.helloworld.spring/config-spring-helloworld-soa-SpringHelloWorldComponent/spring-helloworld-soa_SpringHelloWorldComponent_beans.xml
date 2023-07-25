@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:sca="http://www.springframework.org/schema/sca" xmlns:tibco="http://xsd.tns.tibco.com/2008/amf/extension/spring"
+	xsi:schemaLocation="http://xsd.tns.tibco.com/2008/amf/extension/spring http://xsd.tns.tibco.com/schema/sca/tibco-ext-spring-sca.xsd http://www.springframework.org/schema/sca http://www.osoa.org/xmlns/sca/1.0/spring-sca.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="HelloWorldPTBean" class="com.sample.helloworld.HelloWorldImpl"
+		destroy-method="destroy" init-method="init">
+		<property name="springGreeting" ref="SpringGreeting" />
+	</bean>
+	<sca:service name="HelloWorldPT" target="HelloWorldPTBean"
+		type="com.tibco.ns.hello.HelloWorldPT" />
+	<tibco:service-metadata name="HelloWorldPT"
+		wsdl-location="/spring.helloworld.soa/Service Descriptors/HelloWorld1.wsdl"
+		wsdl-interface="http://ns.tibco.com/Hello/#HelloWorldPT" />
+	<sca:property id="SpringGreeting" name="SpringGreeting"
+		type="java.lang.String" />
+</beans>

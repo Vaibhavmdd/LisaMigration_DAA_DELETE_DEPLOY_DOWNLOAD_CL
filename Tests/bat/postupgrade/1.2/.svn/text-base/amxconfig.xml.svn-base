@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise 
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types" 
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base" 
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference" 
+	xmlns:amxdata_jmsssr="http://tibco.com/amxadministrator/command/line/types_jmssr" 
+	xmlns:amxdata_jmssr_base="http://tibco.com/amxadministrator/command/line/types_jmssr_base"
+	xmlns:amxdata_binding_jms="http://tibco.com/amxadministrator/command/line/types_binding_jms"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd
+	http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd 
+	http://tibco.com/amxadministrator/command/line/types_reference ../schemas/amxdata_reference.xsd 
+	http://tibco.com/amxadministrator/command/line/types_jmssr ../schemas/jmssr.xsd 
+	http://tibco.com/amxadministrator/command/line/types_jmssr_base ../schemas/jmssr_base.xsd">
+	
+	<Environment xsi:type="amxdata:Environment" name="[[new.env.name]]">
+	<Node xsi:type="amxdata:Node" hostName="[[host.name]]" name="[[new.env.node1.name]]" portNumber="8020">
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="HelloWorld_ConnFactory" resourceTemplateName="HelloWorld_ConnFactory" />
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="HelloWorld_ServiceReplyDestination" resourceTemplateName="HelloWorld_ServiceReplyDestination" />
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="HelloWorld_ServiceRequestDestination" resourceTemplateName="HelloWorld_ServiceRequestDestination" />
+	</Node>
+	<Node xsi:type="amxdata:Node" hostName="[[host.name]]" name="[[new.env.node2.name]]" portNumber="8021">
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="HelloWorld_ConnFactory" resourceTemplateName="HelloWorld_ConnFactory" />
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="HelloWorld_ServiceReplyDestination" resourceTemplateName="HelloWorld_ServiceReplyDestination" />
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="HelloWorld_ServiceRequestDestination" resourceTemplateName="HelloWorld_ServiceRequestDestination" />
+	</Node>
+    
+	<Application xsi:type="amxdata:Application" name="jms.binding.helloworld.soa" importResourceTemplates="true">
+      
+	  <Component xsi:type="amxdata_base:Component_base" name="HelloWorldComponent">
+        <Node xsi:type="amxdata_reference:Node_reference" name="[[new.env.node2.name]]" environmentName="[[new.env.name]]"/>
+      </Component>
+      
+	  <PromotedService xsi:type="amxdata_base:Service_base" name="HelloWorldService">
+        <Binding xsi:type="amxdata_base:Binding_base" name="JMSService_Binding1">
+          <Node xsi:type="amxdata_reference:Node_reference" name="[[new.env.node1.name]]" environmentName="[[new.env.name]]"/>
+          <Property xsi:type="amxdata:Property" name="ReplyDestination" value="HelloWorld_ServiceReplyDestination"/>
+          <Property xsi:type="amxdata:Property" name="RequestConnectionFactory" value="HelloWorld_ConnFactory"/>
+          <Property xsi:type="amxdata:Property" name="RequestDestination" value="HelloWorld_ServiceRequestDestination"/>
+        </Binding>
+      </PromotedService>
+      
+	  <PromotedReference xsi:type="amxdata_base:Reference_base" name="HelloWorldReference">
+        <Binding xsi:type="amxdata_base:Binding_base" name="JMSReference_Binding1">
+      	  <Node xsi:type="amxdata_reference:Node_reference" name="[[new.env.node1.name]]" environmentName="[[new.env.name]]"/>
+          <Property xsi:type="amxdata:Property" name="RequestConnectionFactory" value="HelloWorld_ConnFactory"/>
+        </Binding>
+		<Wire 
+			xsi:type="amxdata:Wire">
+				<ServiceBinding 
+					xsi:type="amxdata_reference:Binding_reference"
+					bindingName="JMSService_Binding1" 
+					serviceName="HelloWorldService"
+					ownerName="jms.binding.helloworld.soa" 
+					ownerType="Application">
+				</ServiceBinding>
+		</Wire>
+      </PromotedReference>
+
+      <ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="jms.binding.helloworld.soa" version="1.0.0.v2012-08-07-1540"/>
+	  </Application>
+	  
+	  
+	  </Environment>
+	  
+	 
+	  
+	  <DAA xsi:type="amxdata:DAA" location="C:\svn\tests\func\admin\lisatest\1.2\helloworld-queue\jms.binding.helloworld-queue.soa\Deployment Artifacts\jms.binding.helloworld.soa-queue.daa">
+      </DAA> 
+	  
+	  <Feature xsi:type="amxdata_base:FeatureID" componentID="jms.binding.helloworld-queue.soa.customfeature.id" version="1.0.0.v2012-08-07-1540"/>
+	  <AppTemplate xsi:type="amxdata_base:AppTemplateID" name="jms.binding.helloworld.soa" version="1.0.0"/>
+	  
+	   <!--Create ResourceTemplates-->
+		<amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate
+			xsi:type="amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate"
+			name="HelloWorld_JNDI"
+			initialContextFactory="com.tibco.tibjms.naming.TibjmsInitialContextFactory"
+			providerUrl="[[jndicontexturl]]"
+			description="JndiConnectionConfiguration">
+			<InlineCredentials
+				username="[[jndiuser]]"
+				password="[[jndipwd]]"/>
+	    </amxdata_jmsssr:JNDIConnectionConfigurationResourceTemplate>
+			     
+	    <amxdata_jmsssr:JNDIDestinationResourceTemplate 
+			xsi:type="amxdata_jmsssr:JNDIDestinationResourceTemplate" 
+			name="HelloWorld_ServiceRequestDestination" 
+			jndiName="queue.service.request.helloworld" 
+			jndiConnectionConfigurationName="HelloWorld_JNDI"
+			description="JndiDestination"/> 
+	         
+		<amxdata_jmsssr:JNDIDestinationResourceTemplate 
+		    xsi:type="amxdata_jmsssr:JNDIDestinationResourceTemplate" 
+		    name="HelloWorld_ServiceReplyDestination" 
+		    jndiName="queue.service.reply.helloworld" 
+		    jndiConnectionConfigurationName="HelloWorld_JNDI"
+			description="JndiDestination"/> 
+			
+		<amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate
+			xsi:type="amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate"
+			name="HelloWorld_ConnFactory"
+			jndiName="GenericConnectionFactory"
+			jndiConnectionConfigurationName="HelloWorld_JNDI"
+			description="JndiConnectionFactory">
+			<InlineCredentials
+				username="[[jmsuser]]"
+				password="[[jmspwd]]"/>
+		</amxdata_jmsssr:JNDIConnectionFactoryResourceTemplate>
+	  
+	</amxdata_base:Enterprise>

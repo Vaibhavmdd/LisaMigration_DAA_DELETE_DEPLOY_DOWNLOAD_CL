@@ -1,0 +1,22 @@
+<project default="deploy.myapp">
+	<import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+
+	<target name="deploy.myapp">	
+		<upload.daa dataFile="${amxConfigFile}" />
+		<create.app  dataFile="${amxConfigFile}" />
+		<map.component.to.node dataFile="${amxConfigFile}"/>
+		<map.service.binding.to.node dataFile="${amxConfigFile}" />
+		<set.service.binding.property  dataFile="${amxConfigFile}" />
+		<set.reference.wiring  dataFile="${amxConfigFile}" />
+		<add.action objector="Environment//Node/SVar" dataFile="${amxConfigFile}"  description="Add SVar %%connector%% to node level for the binding of AMXServiceBinding"  />
+		<set.action objector="Environment//Application[@name='AMXTestCase1.14.1']/Component/Node"   dataFile="${amxConfigFile}" description="Distribute the Java Component to node: QANode1 and QANode2"/>
+		<deploy.app  dataFile="${amxConfigFile}"/>
+	</target>
+
+	<target name="undeploy.myapp">
+		<undeploy.app dataFile="${amxConfigFile}"  />
+	</target>
+
+		
+</project>
+

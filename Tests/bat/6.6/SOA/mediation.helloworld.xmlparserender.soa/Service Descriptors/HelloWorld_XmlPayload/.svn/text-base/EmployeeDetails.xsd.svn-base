@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://com.tibco.amx.it.mediation.sample/EmployeeDetails"
+	xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://com.tibco.amx.it.mediation.sample/EmployeeDetails"
+	attributeFormDefault="unqualified"
+	elementFormDefault="qualified">
+
+    	<complexType name="EmployeeDetails">
+    		<sequence>
+    			<element name="EmployeeId" type="string"></element>
+    			<element name="Department" type="string"></element>
+    			<element name="Location" type="string"></element>
+    			<element name="Phone" type="tns:PhoneType"></element>
+    			<element name="Mobile" type="tns:PhoneType"></element>
+    			<element name="Email" type="string"></element>
+    			<element name="Room" type="int"></element>
+    		</sequence>
+    	</complexType>
+    	
+    	<simpleType name="PhoneType">
+    		<restriction base="string">
+    			<pattern value="\d{3}-\d{3}-\d{4}"></pattern>
+    		</restriction>
+    	</simpleType>
+</schema>

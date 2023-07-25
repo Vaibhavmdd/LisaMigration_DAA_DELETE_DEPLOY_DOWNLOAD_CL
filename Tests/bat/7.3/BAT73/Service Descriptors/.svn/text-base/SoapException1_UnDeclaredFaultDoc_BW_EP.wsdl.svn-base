@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created by TIBCO WSDL-->
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.example.org/SoapException1/submitSoapException1Impl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns0="http://www.example.org/SoapException1" name="Untitled" targetNamespace="http://www.example.org/SoapException1/submitSoapException1Impl">
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/SoapException1" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:complexType name="FaultDetail">
+                <xs:sequence>
+                    <xs:element name="faultDetailReason" form="unqualified" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="POJO1Values">
+                <xs:complexContent>
+                    <xs:extension base="ns0:SoapExceptionDetails"/>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="POJO2Values">
+                <xs:complexContent>
+                    <xs:extension base="ns0:SoapExceptionDetails"/>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="SoapException1RequestType">
+                <xs:sequence>
+                    <xs:element name="InputString" form="unqualified" type="xs:string"/>
+                    <xs:element name="POJO1" form="unqualified" type="ns0:POJO1Values"/>
+                    <xs:element name="POJO2" form="unqualified" type="ns0:POJO2Values"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="SoapExceptionDetails">
+                <xs:sequence>
+                    <xs:element name="faultCode" form="unqualified" type="xs:string"/>
+                    <xs:element name="faultString" form="unqualified" type="xs:string"/>
+                    <xs:element name="faultNode" form="unqualified" type="xs:string"/>
+                    <xs:element name="faultRoleOrActor" form="unqualified" type="xs:string"/>
+                    <xs:element name="detail" form="unqualified" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="FaultReason" type="xs:string"/>
+            <xs:element name="SoapException1Fault1" type="ns0:FaultDetail"/>
+            <xs:element name="SoapException1Fault2" type="xs:string"/>
+            <xs:element name="SoapException1Fault3">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element ref="ns0:FaultReason"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="SoapException1Request" type="ns0:SoapException1RequestType"/>
+            <xs:element name="SoapException1Response" type="xs:string"/>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:service name="Service__unDeclaredFaultDoc">
+        <wsdl:port name="SOAPEventSource" binding="tns:SOAPEventSourceBinding">
+            <soap:address location="http://SPIDERMAN:2424/Service/Service_unDeclaredFaultDoc"/>
+        </wsdl:port>
+    </wsdl:service>
+    <wsdl:portType name="SoapException1PT">
+        <wsdl:operation name="submitSoapException1">
+            <wsdl:input message="tns:SoapException1Request"/>
+            <wsdl:output message="tns:SoapException1Response"/>
+            <wsdl:fault name="SoapException1Fault1" message="tns:SoapException1Fault1"/>
+            <wsdl:fault name="SoapException1Fault2" message="tns:SoapException1Fault2"/>
+            <wsdl:fault name="SoapException1Fault3" message="tns:SoapException1Fault3"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="SOAPEventSourceBinding" type="tns:SoapException1PT">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="submitSoapException1">
+            <soap:operation style="document" soapAction="/Service/Service_unDeclaredFaultDoc"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="SoapException1RequestDetails"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="SoapException1ResponseDetails"/>
+            </wsdl:output>
+            <wsdl:fault name="SoapException1Fault1">
+                <soap:fault use="literal" name="SoapException1Fault1"/>
+            </wsdl:fault>
+            <wsdl:fault name="SoapException1Fault2">
+                <soap:fault use="literal" name="SoapException1Fault2"/>
+            </wsdl:fault>
+            <wsdl:fault name="SoapException1Fault3">
+                <soap:fault use="literal" name="SoapException1Fault3"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:message name="SoapException1Request">
+        <wsdl:part name="SoapException1RequestDetails" element="ns0:SoapException1Request"/>
+    </wsdl:message>
+    <wsdl:message name="SoapException1Response">
+        <wsdl:part name="SoapException1ResponseDetails" element="ns0:SoapException1Response"/>
+    </wsdl:message>
+    <wsdl:message name="SoapException1Fault1">
+        <wsdl:part name="SoapException1FaultCompType" element="ns0:SoapException1Fault1"/>
+    </wsdl:message>
+    <wsdl:message name="SoapException1Fault2">
+        <wsdl:part name="SoapException1FaultPrimString" element="ns0:SoapException1Fault2"/>
+    </wsdl:message>
+    <wsdl:message name="SoapException1Fault3">
+        <wsdl:part name="SoapException1FaultCompTypeRef" element="ns0:SoapException1Fault3"/>
+    </wsdl:message>
+</wsdl:definitions>

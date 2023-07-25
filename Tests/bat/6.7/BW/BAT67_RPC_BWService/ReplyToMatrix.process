@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns="http://www.tibco.com/xmlns/ae2xsd/2002/05/ae/SAPABCSchemas" xmlns:pfx="http://www.tibco.com/pe/SignalInActivitySchema" xmlns:ns1="http://www.tibco.com/xmlns/ae2xsd/2002/05/ae/GACSchemas" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <xs:import xmlns:xs="http://www.w3.org/2001/XMLSchema" namespace="http://www.tibco.com/xmlns/ae2xsd/2002/05/ae/GACSchemas" schemaLocation="/AESchemas/ae/GACSchemas.aeschema"/>
+    <pd:name>ReplyToMatrix.process</pd:name>
+    <pd:startName>Adapter Request-Response Server</pd:startName>
+    <pd:startX>0</pd:startX>
+    <pd:startY>0</pd:startY>
+    <pd:returnBindings/>
+    <pd:starter name="Adapter Request-Response Server">
+        <pd:type>com.tibco.plugin.ae.AERPCServerActivity</pd:type>
+        <pd:resourceType>ae.aepalette.aeRRServer</pd:resourceType>
+        <pd:x>200</pd:x>
+        <pd:y>87</pd:y>
+        <config>
+            <ae.aepalette.sharedProperties.transportChoice>default</ae.aepalette.sharedProperties.transportChoice>
+            <ae.aepalette.sharedProperties.useRequestReply>false</ae.aepalette.sharedProperties.useRequestReply>
+            <ae.aepalette.sharedProperties.adapterService>/GAC_Server.adapter#adapterService.QuerySalesOrder</ae.aepalette.sharedProperties.adapterService>
+            <tpPluginEndpointName>QuerySalesOrderEndPoint</tpPluginEndpointName>
+            <ae.aepalette.sharedProperties.transportType>rv</ae.aepalette.sharedProperties.transportType>
+            <ae.aepalette.sharedProperties.rvSubject>bat67.reference</ae.aepalette.sharedProperties.rvSubject>
+            <ae.aepalette.sharedProperties.rvSessionService>%%RvService%%</ae.aepalette.sharedProperties.rvSessionService>
+            <ae.aepalette.sharedProperties.rvSessionNetwork>%%RvNetwork%%</ae.aepalette.sharedProperties.rvSessionNetwork>
+            <ae.aepalette.sharedProperties.rvSessionDaemon>%%RvDaemon%%</ae.aepalette.sharedProperties.rvSessionDaemon>
+            <ae.aepalette.aeOpClientReqActivity.ops>GetSalesOrderById</ae.aepalette.aeOpClientReqActivity.ops>
+            <ae.aepalette.sharedProperties.outputMeta>
+                <aeMeta>/AESchemas/ae/GACSchemas.aeschema#rpcClass.GetSalesOrderById</aeMeta>
+            </ae.aepalette.sharedProperties.outputMeta>
+        </config>
+        <pd:inputBindings/>
+    </pd:starter>
+    <pd:endName>End</pd:endName>
+    <pd:endX>506</pd:endX>
+    <pd:endY>76</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1277900589048</pd:targetNamespace>
+    <pd:activity name="Respond to Adapter Request">
+        <pd:type>com.tibco.plugin.ae.AERPCServerReplyActivity</pd:type>
+        <pd:resourceType>ae.aepalette.aeOpServerReplyActivity</pd:resourceType>
+        <pd:x>362</pd:x>
+        <pd:y>89</pd:y>
+        <config>
+            <ae.aepalette.sharedProperties.transportChoice>default</ae.aepalette.sharedProperties.transportChoice>
+            <ae.aepalette.sharedProperties.useRequestReply>false</ae.aepalette.sharedProperties.useRequestReply>
+            <ae.aepalette.aeOpServerReplyActivity.endpoint>Adapter Request-Response Server</ae.aepalette.aeOpServerReplyActivity.endpoint>
+            <ae.aepalette.aeOpClientReqActivity.ops>GetSalesOrderById</ae.aepalette.aeOpClientReqActivity.ops>
+            <ae.aepalette.sharedProperties.outputMeta>/AESchemas/ae/GACSchemas.aeschema#rpcClass.GetSalesOrderById</ae.aepalette.sharedProperties.outputMeta>
+        </config>
+        <pd:inputBindings>
+            <ProcessStarterReply>
+                <ns1:__caret_reply_caret_GetSalesOrderById_caret_GetSalesOrderById>
+                    <order>
+                        <xsl:if test="$Adapter-Request-Response-Server/ProcessStarterOutput/ns1:__caret_request_caret_GetSalesOrderById_caret_GetSalesOrderById/orderID">
+                            <orderID>
+                                <xsl:copy-of select="$Adapter-Request-Response-Server/ProcessStarterOutput/ns1:__caret_request_caret_GetSalesOrderById_caret_GetSalesOrderById/orderID/@xsi:nil"/>
+                                <xsl:value-of select="$Adapter-Request-Response-Server/ProcessStarterOutput/ns1:__caret_request_caret_GetSalesOrderById_caret_GetSalesOrderById/orderID"/>
+                            </orderID>
+                        </xsl:if>
+                        <item>
+                            <xsl:value-of select="&quot;BAT automation test case 6.7&quot;"/>
+                        </item>
+                    </order>
+                </ns1:__caret_reply_caret_GetSalesOrderById_caret_GetSalesOrderById>
+            </ProcessStarterReply>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>Respond to Adapter Request</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Adapter Request-Response Server</pd:from>
+        <pd:to>Respond to Adapter Request</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>

@@ -1,0 +1,759 @@
+<?xml version="1.0" ?>
+
+
+<!-- Test Case created by LISA Test Editor -->
+<!-- On: Fri Nov 12 17:43:01 PST 2010 -->
+
+
+<TestCase name="StartTibcoHost" version="2">
+<id>aa488cd</id>
+<Documentation>Starts TIBCOHost.&#13;&#10;This sub-process tries to stop the TIBCOHost first (Mode Abort), clean up the logs, then starts it.&#13;&#10;It can be executed on a remote TIBCOHost as well as long as there is a LISA simulator running on the remote host.&#13;&#10;&#13;&#10;Note: LISA simulator port must be 2001 on the remote machine.</Documentation>
+<sig>ZWQ9MiZ0Y3Y9MiZsaXNhdj00LjYuNyAoNC42LjcuMTYpJm5vZGVzPTQ3NTM5OTQ5MA==</sig>
+<rootNode>log</rootNode>
+<subprocess>true</subprocess>
+
+<initState>
+    <Parameter>
+    <key>host</key>
+    <value>localhost</value>
+    <name>Host on which the TIBCOHost should be started</name>
+    </Parameter>
+    <Parameter>
+    <key>tibcoHostinstance</key>
+    <value>{{TIBCO_HOST_CONFIG}}/&lt;yourTHInstanceFolder&gt;/host</value>
+    <name>TIBCOHost instance directory. If host is remote, specify the TIBCOHost instance location on remote host.</name>
+    </Parameter>
+    <Parameter>
+    <key>logFile</key>
+    <value>{{tibcoHostinstance}}/logs/tibcohost.log</value>
+    <name>TIBCOHost log file to monitor to insure proper start-up</name>
+    </Parameter>
+    <Parameter>
+    <key>timeout</key>
+    <value>60</value>
+    <name>Max number of seconds to wait to allow the TIBCOHost to start</name>
+    </Parameter>
+</initState>
+
+<resultState>
+    <Parameter>
+    <key>lisa.checkLogForErrors.rsp</key>
+    <value>Set in Step checkLogForErrors</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.checkLogForErrors.rsp.time</key>
+    <value>Set in Step checkLogForErrors</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.continue.rsp</key>
+    <value>Set in Step continue</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.continue.rsp.time</key>
+    <value>Set in Step continue</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.deleteLogs.rsp</key>
+    <value>Set in Step deleteLogs</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.deleteLogs.rsp.time</key>
+    <value>Set in Step deleteLogs</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.end.rsp</key>
+    <value>Set in Step end</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.end.rsp.time</key>
+    <value>Set in Step end</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.fail.rsp</key>
+    <value>Set in Step fail</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.fail.rsp.time</key>
+    <value>Set in Step fail</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.getSimulator.rsp</key>
+    <value>Set in Step getSimulator</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.getSimulator.rsp.time</key>
+    <value>Set in Step getSimulator</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.getTimeLimit.rsp</key>
+    <value>Set in Step getTimeLimit</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.getTimeLimit.rsp.time</key>
+    <value>Set in Step getTimeLimit</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.log.rsp</key>
+    <value>Set in Step log</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.repeatingCheckLogFileExists.rsp</key>
+    <value>Set in Step repeatingCheckLogFileExists</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.repeatingCheckLogFileExists.rsp.time</key>
+    <value>Set in Step repeatingCheckLogFileExists</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.repeatingReadLog.rsp</key>
+    <value>Set in Step repeatingReadLog</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.repeatingReadLog.rsp.time</key>
+    <value>Set in Step repeatingReadLog</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.repeatingSleep.rsp</key>
+    <value>Set in Step repeatingSleep</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.sleep.rsp</key>
+    <value>Set in Step sleep</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.sleep.rsp.time</key>
+    <value>Set in Step sleep</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.startTibcoHost.rsp</key>
+    <value>Set in Step startTibcoHost</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.startTibcoHost.rsp.time</key>
+    <value>Set in Step startTibcoHost</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.stopTibcoHost.rsp</key>
+    <value>Set in Step stopTibcoHost</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.stopTibcoHost.rsp.time</key>
+    <value>Set in Step stopTibcoHost</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.success.rsp</key>
+    <value>Set in Step success</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.success.rsp.time</key>
+    <value>Set in Step success</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.successWithErrors.rsp</key>
+    <value>Set in Step successWithErrors</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.successWithErrors.rsp.time</key>
+    <value>Set in Step successWithErrors</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.timeout.rsp</key>
+    <value>Set in Step timeout</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.timeout.rsp.time</key>
+    <value>Set in Step timeout</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.validateInputVariables.rsp</key>
+    <value>Set in Step validateInputVariables</value>
+    </Parameter>
+    <Parameter>
+    <key>lisa.validateInputVariables.rsp.time</key>
+    <value>Set in Step validateInputVariables</value>
+    </Parameter>
+    <Parameter>
+    <key>simulator</key>
+    <value>Set in Step getSimulator</value>
+    </Parameter>
+    <Parameter>
+    <key>simulatorPort</key>
+    <value>Property From Config</value>
+    </Parameter>
+</resultState>
+
+<Configurations>
+<Configuration>
+<name>default</name>
+<external>false</external>
+<props>
+    <Parameter>
+    <key>simulatorPort</key>
+    <value>2001</value>
+    <name>Name</name>
+    </Parameter>
+</props>
+</Configuration>
+</Configurations>
+    <Node name="log" log=""
+          type="com.itko.lisa.test.TestNodeLogger" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="getSimulator" > 
+
+<graphx>301</graphx>
+<graphy>938</graphy>
+      <log>Starting TIBCOHost on host {{host}} at {{tibcoHostinstance}} ...</log>
+    </Node>
+
+
+    <Node name="getSimulator" log="get the simulator for the host on which tibcohost should be started."
+          type="com.itko.lisa.test.ScriptNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="true" 
+          next="validateInputVariables" > 
+
+<graphx>366</graphx>
+<graphy>0</graphy>
+<onerror>fail</onerror>
+<script>if (host == null || host.equals(&quot;&quot;))&#13;&#10; throw new Exception(&quot;host is empty!&quot;);&#13;&#10;&#13;&#10;if (host.equalsIgnoreCase(LISA_HOST) || host.equals(&quot;localhost&quot;) || host.equals(&quot;127.0.0.1&quot;))&#13;&#10; return &quot;local&quot;;&#13;&#10;else&#13;&#10; return &quot;rmi://&quot; + host + &quot;:&quot; + simulatorPort + &quot;/&quot; + host;</script>
+
+      <!-- Filters -->
+      <Filter type="com.itko.lisa.test.FilterSaveResponse">
+        <valueToFilterKey>lisa.getSimulator.rsp</valueToFilterKey>
+      <prop>simulator</prop>
+      </Filter>
+
+
+      <!-- Result Elements -->
+<CheckResult assertTrue="true" name="Any Exception Then Fail" type="com.itko.lisa.dynexec.CheckInvocationEx">
+<log>Getting Simulators has thrown Exception</log>
+<then>fail</then>
+<valueToAssertKey></valueToAssertKey>
+        <param>.*</param>
+</CheckResult>
+
+    </Node>
+
+
+    <Node name="validateInputVariables" log=""
+          type="com.itko.lisa.test.ScriptNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="stopTibcoHost" > 
+
+<graphx>10</graphx>
+<graphy>10</graphy>
+<remoteServer>{{simulator}}</remoteServer>
+<onerror>fail</onerror>
+<script>import java.io.File;&#13;&#10;&#13;&#10;String errorMsg = &quot;TIBCOHost Start-up Error&quot;;&#13;&#10;&#13;&#10;String checkInputVariables() {&#13;&#10;&#9;File thFile = null;&#13;&#10;&#13;&#10;    if ((tibcoHostinstance == null) || (tibcoHostinstance.equals(&quot;&quot;))) {&#13;&#10;&#9;&#9;return errorMsg + &quot;: tibcoHostinstance is required&quot;;&#13;&#10;&#9;}&#13;&#10;&#9;if ((host == null) || (host.equals(&quot;&quot;))) {&#13;&#10;&#9;&#9;return errorMsg + &quot;: host is required&quot;;&#13;&#10;&#9;}&#13;&#10;    if ((logFile == null) || (logFile.equals(&quot;&quot;))) {&#13;&#10;&#9;&#9;return errorMsg + &quot;: logFile is required&quot;;&#13;&#10;&#9;}&#13;&#10;&#9;if ((timeout == null) || (timeout.equals(&quot;&quot;))) {&#13;&#10;&#9;&#9;return errorMsg + &quot;: timeout is required&quot;;&#13;&#10;&#9;}&#13;&#10;&#13;&#10;    thFile = new File(testExec.parseInState(tibcoHostinstance).replace(&apos;\\&apos;, &apos;/&apos;));&#13;&#10;&#13;&#10;&#9;if (!thFile.exists()) {&#13;&#10;&#9;&#9;return errorMsg + &quot;: tibcoHostinstance is not found/cannot read it: &quot; + testExec.parseInState(tibcoHostinstance);&#13;&#10;&#9;}&#13;&#10;&#9;if (!thFile.isDirectory()) {&#13;&#10;&#9;&#9;return errorMsg + &quot;tibcoHostinstance is not a directory: &quot; + testExec.parseInState(tibcoHostinstance);&#13;&#10;&#9;}&#13;&#10;&#13;&#10;&#9;return &quot;TIBCOHost Start-up Validation Success&quot;;&#13;&#10;}&#13;&#10;&#13;&#10;return checkInputVariables();</script>
+
+      <!-- Result Elements -->
+<CheckResult assertTrue="true" name="Any Exception Then Fail" type="com.itko.lisa.dynexec.CheckInvocationEx">
+<log>Assert [Any Exception Then Fail] fired true of type Assert on Invocation Exception</log>
+<then>fail</then>
+<valueToAssertKey></valueToAssertKey>
+        <param>.*</param>
+</CheckResult>
+
+<CheckResult assertTrue="true" name="Assert215" type="com.itko.lisa.test.CheckResultContains">
+<log>{{LASTRESPONSE}}</log>
+<then>fail</then>
+<valueToAssertKey></valueToAssertKey>
+        <param>TIBCOHost Start-up Error</param>
+</CheckResult>
+
+    </Node>
+
+
+    <Node name="stopTibcoHost" log=""
+          type="com.itko.lisa.utils.ExecSubProcessNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="sleep" > 
+
+<graphx>142</graphx>
+<graphy>833</graphy>
+<remoteServer>{{simulator}}</remoteServer>
+<Subprocess>{{TIBCO_AMX_LIBRARY}}/com/tibco/tibcohost/StopTibcoHost.tst</Subprocess>
+<getEvents>0</getEvents>
+<sendConfig>true</sendConfig>
+<fullyParseProps>true</fullyParseProps>
+<sendCommonState>false</sendCommonState>
+<getCommonState>false</getCommonState>
+<onFail>continue</onFail>
+<Parameters>
+    <Parameter>
+    <key>host</key>
+    <value>{{host}}</value>
+    <name>Host on which to stop the TIBCOHost</name>
+    </Parameter>
+    <Parameter>
+    <key>tibcoHostinstance</key>
+    <value>{{tibcoHostinstance}}</value>
+    <name>TIBCOHost instance directory</name>
+    </Parameter>
+    <Parameter>
+    <key>mode</key>
+    <value>abort</value>
+    <name>Stop mode used for stopping the node (normal - immediate - abort). Default is normal.</name>
+    </Parameter>
+    <Parameter>
+    <key>wait</key>
+    <value>true</value>
+    <name>If set to true the wait becomes synchronous and only returns when all node processes were stopped. Default is false</name>
+    </Parameter>
+    <Parameter>
+    <key>timeout</key>
+    <value>{{timeout}}</value>
+    <name>Max number of seconds to wait to allow the TIBCOHost to stop</name>
+    </Parameter>
+</Parameters>
+<SaveProps>
+</SaveProps>
+    </Node>
+
+
+    <Node name="sleep" log="Sleep few seconds to allow tibcohost to stop gracefully."
+          type="com.itko.lisa.utils.ExecSubProcessNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="deleteLogs" > 
+
+<graphx>37</graphx>
+<graphy>674</graphy>
+<Documentation>Sleep a little bit to allow the release of the logs folder so that we can delete it.</Documentation>
+<Subprocess>{{TIBCO_COMMON_LIBRARY}}/com/tibco/lisa/util/Sleep.tst</Subprocess>
+<getEvents>0</getEvents>
+<sendConfig>true</sendConfig>
+<fullyParseProps>true</fullyParseProps>
+<sendCommonState>false</sendCommonState>
+<getCommonState>false</getCommonState>
+<onFail>fail</onFail>
+<Parameters>
+    <Parameter>
+    <key>windowsSleep</key>
+    <value>4</value>
+    <name>Number of seconds to sleep on Windows platforms</name>
+    </Parameter>
+    <Parameter>
+    <key>unixSleep</key>
+    <value>5</value>
+    <name>Number of seconds to sleep on Unix platforms</name>
+    </Parameter>
+</Parameters>
+<SaveProps>
+</SaveProps>
+    </Node>
+
+
+    <Node name="deleteLogs" log="delete the tibcohost logs folder"
+          type="com.itko.lisa.utils.ExecSubProcessNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="startTibcoHost" > 
+
+<graphx>0</graphx>
+<graphy>487</graphy>
+<Documentation></Documentation>
+<remoteServer>{{simulator}}</remoteServer>
+<Subprocess>{{TIBCO_COMMON_LIBRARY}}/com/tibco/lisa/file/DeleteFile.tst</Subprocess>
+<getEvents>0</getEvents>
+<sendConfig>true</sendConfig>
+<fullyParseProps>true</fullyParseProps>
+<sendCommonState>false</sendCommonState>
+<getCommonState>false</getCommonState>
+<onFail>fail</onFail>
+<Parameters>
+    <Parameter>
+    <key>file</key>
+    <value>{{logFile}}</value>
+    <name>File or directory to be deleted</name>
+    </Parameter>
+</Parameters>
+<SaveProps>
+</SaveProps>
+    </Node>
+
+
+    <Node name="startTibcoHost" log="Start the tibcohost."
+          type="com.itko.lisa.utils.ExecSubProcessNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="getTimeLimit" > 
+
+<graphx>37</graphx>
+<graphy>301</graphy>
+<remoteServer>{{simulator}}</remoteServer>
+<Subprocess>{{TIBCO_COMMON_LIBRARY}}/com/tibco/lisa/util/JVMWrapper.tst</Subprocess>
+<getEvents>0</getEvents>
+<sendConfig>true</sendConfig>
+<fullyParseProps>true</fullyParseProps>
+<sendCommonState>false</sendCommonState>
+<getCommonState>false</getCommonState>
+<onFail>fail</onFail>
+<Parameters>
+    <Parameter>
+    <key>wrapperName</key>
+    <value>{{tibcoHostinstance}}/bin/tibcohost</value>
+    <name>Absolute path to the wrapper application</name>
+    </Parameter>
+    <Parameter>
+    <key>command</key>
+    <value></value>
+    <name>One of the following command switches: --install, --uninstall, --update, --start, --stop, --run</name>
+    </Parameter>
+    <Parameter>
+    <key>propFile</key>
+    <value>{{tibcoHostinstance}}/bin/tibcohost.tra</value>
+    <name>Absolute path to the tra file used to launch the wrapper</name>
+    </Parameter>
+    <Parameter>
+    <key>extraCommand</key>
+    <value>start</value>
+    <name>Extra command a specific wrapper might need</name>
+    </Parameter>
+    <Parameter>
+    <key>startInDir</key>
+    <value>{{tibcoHostinstance}}/bin</value>
+    <name>Execute from directory</name>
+    </Parameter>
+    <Parameter>
+    <key>waitForCompletion</key>
+    <value>false</value>
+    <name>Wait for the command to complete (true or false)</name>
+    </Parameter>
+    <Parameter>
+    <key>waitBeforeOnWindows</key>
+    <value>0</value>
+    <name>Number of seconds to sleep on Windows platforms before starting the JVM wrapper</name>
+    </Parameter>
+    <Parameter>
+    <key>waitBeforeOnUnix</key>
+    <value>0</value>
+    <name>Number of seconds to sleep on Unix platforms before starting the JVM wrapper</name>
+    </Parameter>
+    <Parameter>
+    <key>waitAfterOnWindows</key>
+    <value>0</value>
+    <name>Number of seconds to sleep on Windows platforms after starting the JVM wrapper</name>
+    </Parameter>
+    <Parameter>
+    <key>waitAfterOnUnix</key>
+    <value>0</value>
+    <name>Number of seconds to sleep on Unix platforms after starting the JVM wrapper</name>
+    </Parameter>
+</Parameters>
+<SaveProps>
+</SaveProps>
+    </Node>
+
+
+    <Node name="getTimeLimit" log="get the timelimit"
+          type="com.itko.lisa.test.ScriptNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="true" 
+          next="repeatingSleep" > 
+
+<graphx>142</graphx>
+<graphy>142</graphy>
+<Documentation></Documentation>
+<remoteServer>local</remoteServer>
+<onerror>fail</onerror>
+<script>Calendar future = Calendar.getInstance();&#13;&#10;future.add(Calendar.SECOND, timeout.intValue());&#13;&#10;testExec.setStateValue(&quot;future&quot;, future);</script>
+
+      <!-- Result Elements -->
+<CheckResult assertTrue="true" name="Any Exception Then Fail" type="com.itko.lisa.dynexec.CheckInvocationEx">
+<log>getTimeLimit step has thrown Exception</log>
+<then>fail</then>
+<valueToAssertKey></valueToAssertKey>
+        <param>.*</param>
+</CheckResult>
+
+    </Node>
+
+
+    <Node name="repeatingSleep" log="repeat sleep"
+          type="com.itko.lisa.utils.ExecSubProcessNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="repeatingCheckLogFileExists" > 
+
+<graphx>301</graphx>
+<graphy>37</graphy>
+<Subprocess>{{TIBCO_COMMON_LIBRARY}}/com/tibco/lisa/util/Sleep.tst</Subprocess>
+<getEvents>0</getEvents>
+<sendConfig>true</sendConfig>
+<fullyParseProps>true</fullyParseProps>
+<sendCommonState>false</sendCommonState>
+<getCommonState>false</getCommonState>
+<onFail>fail</onFail>
+<Parameters>
+    <Parameter>
+    <key>windowsSleep</key>
+    <value>5</value>
+    <name>Number of seconds to sleep on Windows platforms</name>
+    </Parameter>
+    <Parameter>
+    <key>unixSleep</key>
+    <value>5</value>
+    <name>Number of seconds to sleep on Unix platforms</name>
+    </Parameter>
+</Parameters>
+<SaveProps>
+</SaveProps>
+    </Node>
+
+
+    <Node name="repeatingCheckLogFileExists" log="check if log file got created"
+          type="com.itko.lisa.utils.ExecSubProcessNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="repeatingReadLog" > 
+
+<graphx>488</graphx>
+<graphy>0</graphy>
+<Documentation></Documentation>
+<remoteServer>{{simulator}}</remoteServer>
+<Subprocess>{{TIBCO_COMMON_LIBRARY}}/com/tibco/lisa/file/CheckFileExists.tst</Subprocess>
+<getEvents>0</getEvents>
+<sendConfig>true</sendConfig>
+<fullyParseProps>true</fullyParseProps>
+<sendCommonState>false</sendCommonState>
+<getCommonState>false</getCommonState>
+<onFail>fail</onFail>
+<Parameters>
+    <Parameter>
+    <key>file</key>
+    <value>{{logFile}}</value>
+    <name>File or directory to be checked for existence</name>
+    </Parameter>
+</Parameters>
+<SaveProps>
+</SaveProps>
+
+      <!-- Result Elements -->
+<CheckResult assertTrue="true" name="Assert67" type="com.itko.lisa.test.AssertByScript">
+<log>TIBCOHost did not start on time</log>
+<then>timeout</then>
+<valueToAssertKey></valueToAssertKey>
+        <script>future.before(Calendar.getInstance());</script>
+</CheckResult>
+
+<CheckResult assertTrue="true" name="Assert95" type="com.itko.lisa.test.CheckResultContains">
+<log>TIBCOHost log file not found yet...</log>
+<then>repeatingSleep</then>
+<valueToAssertKey></valueToAssertKey>
+        <param>false</param>
+</CheckResult>
+
+    </Node>
+
+
+    <Node name="repeatingReadLog" log="read log and look for tibcohost started message"
+          type="com.itko.lisa.test.FileNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="repeatingSleep" > 
+
+<graphx>674</graphx>
+<graphy>37</graphy>
+<Documentation></Documentation>
+<remoteServer>{{simulator}}</remoteServer>
+<Loc>{{logFile}}</Loc>
+<PropKey></PropKey>
+<onFail>fail</onFail>
+
+      <!-- Result Elements -->
+<CheckResult assertTrue="true" name="Assert148" type="com.itko.lisa.test.CheckResultContains">
+<log>TIBCO ActiveMatrix Foundation HPA instance located at {{tibcoHostinstance}} has been started Successfully.</log>
+<then>checkLogForErrors</then>
+<valueToAssertKey></valueToAssertKey>
+        <param>TIBCO ActiveMatrix Foundation HPA instance has been started</param>
+</CheckResult>
+
+<CheckResult assertTrue="true" name="Assert150" type="com.itko.lisa.test.AssertByScript">
+<log>tibcohost located at &quot;{{tibcoHostinstance}}&quot; did not start on time</log>
+<then>timeout</then>
+<valueToAssertKey></valueToAssertKey>
+        <script>future.before(Calendar.getInstance());</script>
+</CheckResult>
+
+<CheckResult assertTrue="true" name="Assert171" type="com.itko.lisa.test.CheckResultRegEx">
+<log>TIBCO ActiveMatrix Foundation HPA instance located at {{tibcoHostinstance}}  has been started Successfully.</log>
+<then>checkLogForErrors</then>
+<valueToAssertKey></valueToAssertKey>
+        <param>TIBCO ActiveMatrix host .* started</param>
+</CheckResult>
+
+    </Node>
+
+
+    <Node name="checkLogForErrors" log="check if there are any errors in the log file"
+          type="com.itko.lisa.test.FileNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="success" > 
+
+<graphx>833</graphx>
+<graphy>142</graphy>
+<Documentation></Documentation>
+<remoteServer>{{simulator}}</remoteServer>
+<Loc>{{logFile}}</Loc>
+<PropKey>logFileContent</PropKey>
+<onFail>fail</onFail>
+
+      <!-- Result Elements -->
+<CheckResult assertTrue="true" name="Assert202" type="com.itko.lisa.test.CheckResultContains">
+<log>TIBCOHost started with errors/warnings</log>
+<then>successWithErrors</then>
+<valueToAssertKey></valueToAssertKey>
+        <param>ERROR</param>
+</CheckResult>
+
+<CheckResult assertTrue="true" name="Assert228" type="com.itko.lisa.test.CheckResultContains">
+<log>TIBCOHost started with errors/warnings</log>
+<then>successWithErrors</then>
+<valueToAssertKey></valueToAssertKey>
+        <param>WARN</param>
+</CheckResult>
+
+<CheckResult assertTrue="true" name="Assert254" type="com.itko.lisa.test.CheckResultContains">
+<log>TIBCOHost started with errors/warnings</log>
+<then>successWithErrors</then>
+<valueToAssertKey></valueToAssertKey>
+        <param>SEVERE</param>
+</CheckResult>
+
+    </Node>
+
+
+    <Node name="success" log="return success"
+          type="com.itko.lisa.test.ScriptNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="end" > 
+
+<graphx>938</graphx>
+<graphy>301</graphy>
+<Documentation></Documentation>
+<remoteServer>{{simulator}}</remoteServer>
+<onerror>fail</onerror>
+<script>return &quot;TIBCOHost located at &apos;&quot; + testExec.parseInState(tibcoHostinstance) + &quot;&apos; on host &apos;&quot; + testExec.parseInState(host) + &quot;&apos; started successfully&quot;;</script>
+
+      <!-- Result Elements -->
+<CheckResult assertTrue="true" name="Any Exception Then Fail" type="com.itko.lisa.dynexec.CheckInvocationEx">
+<log>Assert [Any Exception Then Fail] fired true of type Assert on Invocation Exception</log>
+<then>fail</then>
+<valueToAssertKey></valueToAssertKey>
+        <param>.*</param>
+</CheckResult>
+
+    </Node>
+
+
+    <Node name="successWithErrors" log="return success with errors"
+          type="com.itko.lisa.test.ScriptNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="end" > 
+
+<graphx>976</graphx>
+<graphy>488</graphy>
+<Documentation></Documentation>
+<remoteServer>{{simulator}}</remoteServer>
+<onerror>fail</onerror>
+<script>return &quot;TibcoHost located at &apos;&quot; + testExec.parseInState(tibcoHostinstance) + &quot;&apos; on host &apos;&quot;+testExec.parseInState(host) + &quot;&apos; has started with Errors/Warnings. See log below \n\n&quot; + logFileContent;</script>
+
+      <!-- Result Elements -->
+<CheckResult assertTrue="true" name="Any Exception Then Fail" type="com.itko.lisa.dynexec.CheckInvocationEx">
+<log>Assert [Any Exception Then Fail] fired true of type Assert on Invocation Exception</log>
+<then>fail</then>
+<valueToAssertKey></valueToAssertKey>
+        <param>.*</param>
+</CheckResult>
+
+    </Node>
+
+
+    <Node name="timeout" log="fail with timeout"
+          type="com.itko.lisa.test.ScriptNode" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="false" 
+          next="fail" > 
+
+<graphx>938</graphx>
+<graphy>674</graphy>
+<Documentation></Documentation>
+<remoteServer>{{simulator}}</remoteServer>
+<onerror>fail</onerror>
+<script>return &quot;TIBCOHost located at &apos;&quot; + testExec.parseInState(tibcoHostinstance) + &quot;&apos; on host &apos;&quot;+testExec.parseInState(host) + &quot;&apos; did not start on time&quot;;</script>
+
+      <!-- Result Elements -->
+<CheckResult assertTrue="true" name="Any Exception Then Fail" type="com.itko.lisa.dynexec.CheckInvocationEx">
+<log>Assert [Any Exception Then Fail] fired true of type Assert on Invocation Exception</log>
+<then>fail</then>
+<valueToAssertKey></valueToAssertKey>
+        <param>.*</param>
+</CheckResult>
+
+    </Node>
+
+
+    <Node name="end" log=""
+          type="com.itko.lisa.test.NormalEnd" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="true" 
+          next="fail" > 
+
+<graphx>674</graphx>
+<graphy>938</graphy>
+    </Node>
+
+
+    <Node name="fail" log=""
+          type="com.itko.lisa.test.Abend" 
+          version="1" 
+          think="0-0" 
+ useFilters="true" 
+ quiet="true" 
+          next="unknown" > 
+
+<graphx>488</graphx>
+<graphy>976</graphy>
+    </Node>
+
+
+</TestCase>

@@ -1,0 +1,25 @@
+<?xml  version="1.0"?>
+<!--@Overridable true-->
+<TIBCOInstallerFeatures>
+
+	<!-- main definition for the product.  Use 4 digit version -->
+	<productDef name="null, 1.0.0" version="1.0.0.000" buildNumber="FIXME"></productDef>
+
+	<installerFeature name="Runtime" parentProduct="TIBCO ActiveMatrix Implementation Type for UPGRADE" parentID="FIXMEXX" visible="true" version="FIXME">
+		<assemblyList>		
+			<assembly uid="assembly_tibco_com_tibco_amx_it_upgrade_runtime_feature version="1.0.0"/>
+			<assembly uid="assembly_tibco_com_tibco_amx_it_upgrade_model_feature version="1.0.0"/>
+			<dependency type="assembly" uid="product_tibco_amx_servicegrid" parentID="amsg" mustBeInstalled="true" version="2.0.0" description="TIBCO ActiveMatrix ServiceGrid 2.0.0" />
+		</assemblyList>
+	</installerFeature>
+
+	<installerFeature name="Design" parentProduct="TIBCO ActiveMatrix Implementation Type for UPGRADE" parentID="FIXMEXX" visible="true" version="FIXME" plat="win_x86,linux24gl23_x86,linux24gl23_x86_64">
+		<assemblyList>
+			<assembly uid="assembly_tibco_com_tibco_amx_it_upgrade_design_feature version="1.0.0"/>
+			<assembly uid="assembly_tibco_com_tibco_amx_it_upgrade_model_feature version="1.0.0"/>
+			<dependency type="assembly" uid="product_tibco_amx_servicegrid" parentID="amsg" mustBeInstalled="true" version="2.0.0" description="TIBCO ActiveMatrix ServiceGrid 2.0.0" />
+		</assemblyList>
+	</installerFeature>
+
+	<customSettings machineModel="true" multipleEnvironmentSupport="true"></customSettings>
+</TIBCOInstallerFeatures>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+   <wsdl:definitions name="QueryGDS_SearchAll"
+			targetNamespace="http://com.tibco.amx.it.mediation.sample/QueryGDS/searchAll/definitions"
+			xmlns:tns="http://com.tibco.amx.it.mediation.sample/QueryGDS/searchAll/definitions"
+		        xmlns:ns0="http://com.tibco.amx.it.mediation.sample/QueryGDS/searchAll/schemas"
+			xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    		<xs:import namespace="http://com.tibco.amx.it.mediation.sample/QueryGDS/searchAll/schemas"  schemaLocation="QueryGDS_SearchAll.xsd"/>
+    	</xs:schema>
+    </wsdl:types>
+
+    <wsdl:message name="searchAllRequest">
+    	<wsdl:part name="parameters" element="ns0:searchAll"/>
+    </wsdl:message>
+    <wsdl:message name="searchAllResponse">
+    	<wsdl:part name="parameters" element="ns0:searchAllResponse"/>
+    </wsdl:message>
+    <wsdl:message name="searchAll_faultMsg">
+    	<wsdl:part name="parameters" element="ns0:searchAll_fault"/>
+    </wsdl:message>
+    
+    <wsdl:portType name="QueryGDS">
+        <wsdl:operation name="searchAll">
+            <wsdl:input message="tns:searchAllRequest"/>
+            <wsdl:output message="tns:searchAllResponse"/>
+            <wsdl:fault name="fault" message="tns:searchAll_faultMsg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+
+</wsdl:definitions>

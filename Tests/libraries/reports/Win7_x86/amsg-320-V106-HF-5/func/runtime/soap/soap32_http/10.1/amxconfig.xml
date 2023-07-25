@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise 
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types" 
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base" 
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference" 
+	xmlns:amxdata_jmsssr="http://tibco.com/amxadministrator/command/line/types_jmssr" 
+	xmlns:amxdata_jmssr_base="http://tibco.com/amxadministrator/command/line/types_jmssr_base"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd
+	http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd 
+	http://tibco.com/amxadministrator/command/line/types_reference ../schemas/amxdata_reference.xsd 
+	http://tibco.com/amxadministrator/command/line/types_jmssr ../schemas/jmssr.xsd 
+	http://tibco.com/amxadministrator/command/line/types_jmssr_base ../schemas/jmssr_base.xsd">
+
+    <Environment xsi:type="amxdata:Environment" 
+		name="QAEnvironment_jpandya-dt" 
+		description="integration environment" 
+		contact="TIBCO">
+		
+		<Node xsi:type="amxdata:Node"
+			name="QANode2">						
+
+		<ResourceInstance xsi:type="amxdata:ResourceInstance" name="jdbc" resourceTemplateName="jdbc"/>
+		<ResourceInstance xsi:type="amxdata:ResourceInstance" name="jdbc_identity" resourceTemplateName="jdbc_identity"/>
+		<ResourceInstance xsi:type="amxdata:ResourceInstance" name="keystore" resourceTemplateName="keystore"/>				
+		<ResourceInstance xsi:type="amxdata:ResourceInstance" name="smtp" resourceTemplateName="smtp"/>
+		<ResourceInstance xsi:type="amxdata:ResourceInstance" name="smtp_identity" resourceTemplateName="smtp_identity"/>
+		
+		</Node>
+		
+		<Application xsi:type="amxdata:Application" 
+			name="10.1 - ListProperty" 
+			contact="TIBCO" 
+			description="List Property API Test" importBindings="true" importResourceTemplates="false">
+			
+				<Component xsi:type="amxdata:Component" name="Java1">
+	    			<Node name="QANode2" environmentName="QAEnvironment_jpandya-dt" />	    	              
+	            </Component>
+				<PromotedService xsi:type="amxdata_base:Service_base" name="listpropertynames">
+				<Binding xsi:type="amxdata:Binding" name="SOAPService_Binding1" >
+					<Node name="QANode1" environmentName="QAEnvironment_jpandya-dt" />
+					<Property  xsi:type="amxdata:Property" name="HttpInboundConnectionConfig"  value="http_1"/>						
+				</Binding>
+				</PromotedService>
+				<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="PropertyList"/>					
+        </Application>		
+
+    </Environment>
+	
+	<ResourceTemplate 
+		xsi:type="amxdata:SmtpResourceTemplate" 
+		name="smtp" 
+		host="AMX-BACKEND.na.tibco.com" 
+		port="25" 
+		description="This is SMTP RT">
+		<ReferencedCredentials identityJNDIName="smtp_identity"/>
+	</ResourceTemplate>
+	<ResourceTemplate 
+		xsi:type="amxdata:JdbcResourceTemplate" 
+		name="jdbc" 
+		description="jdbc non xa tx" 
+		maxConnections="10"> 
+		<Direct xsi:type="amxdata:Direct" 
+			dbUrl="jdbc:hsqldb:hsql://AMX-BACKEND.na.tibco.com:1234/amx" 
+			jdbcDriver="org.hsqldb.jdbcDriver" 
+			isTransactional="true" 
+			loginTimeOut="30000"/>
+		<ReferencedCredentials identityJNDIName="jdbc_identity"/>
+	</ResourceTemplate>	
+	<ResourceTemplate 
+		xsi:type="amxdata:SubjectIspResourceTemplate" 
+		name="smtp_identity" 
+		description="This is Subject Isp RT" 
+		identityStoreServiceProvider="keystore" 
+		keyAlias="smtp_alias" 
+		keyPassword="alias_password" 
+		enableCredentialStoreAccess="true"/>
+	<ResourceTemplate 
+		xsi:type="amxdata:SubjectIspResourceTemplate" 
+		name="jdbc_identity" 
+		description="This is Subject Isp RT" 
+		identityStoreServiceProvider="keystore" 
+		keyAlias="hsqldb_alias" 
+		keyPassword="alias_password" 
+		enableCredentialStoreAccess="true"/>	
+	<ResourceTemplate 
+		xsi:type="amxdata:KeystoreCspResourceTemplate" 
+		name="keystore" 
+		description="This is Keystore RT" 
+		keyStoreLocation="Z:\tests\amsg\3.0\tests\func\runtime/bat/keystore/bat_keystore.jceks" 
+		keyStorePassword="password" 
+		keyStoreType="JCEKS" 
+		keyStoreProvider="" 
+		keyStoreRefreshInterval="1000"/> 
+	
+	<DAA xsi:type="amxdata:DAA" 
+		description="List Property - CF API test" 
+		location="./PropertyList/Deployment Artifacts/PropertyList.daa" 
+		importResourceTemplates="false"/>	
+		
+	
+</amxdata_base:Enterprise>

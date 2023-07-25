@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.example.org/BAT521WSDL/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BAT521WSDL" targetNamespace="http://www.example.org/BAT521WSDL/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.example.org/BAT521WSDL/">
+      <xsd:element name="GreetOperation">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="in" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GreetOperationResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GreetOperation_fault">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="GreetOperation_fault"
+      				type="xsd:string">
+      			</xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="GreetOperationRequest">
+    <wsdl:part element="tns:GreetOperation" name="inParam"/>
+  </wsdl:message>
+  <wsdl:message name="GreetOperationResponse">
+    <wsdl:part element="tns:GreetOperationResponse" name="outParam"/>
+  </wsdl:message>
+  <wsdl:message name="GreetOperation_faultMsg">
+  	<wsdl:part name="faultParam" element="tns:GreetOperation_fault"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="BAT521WSDL">
+    <wsdl:operation name="GreetOperation">
+      <wsdl:input message="tns:GreetOperationRequest"/>
+      <wsdl:output message="tns:GreetOperationResponse"/>
+            <wsdl:fault name="fault" message="tns:GreetOperation_faultMsg"></wsdl:fault>
+        </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BAT521WSDLSOAP" type="tns:BAT521WSDL">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GreetOperation">
+      <soap:operation soapAction="http://www.example.org/BAT521WSDL/GreetOperation"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BAT521WSDL">
+    <wsdl:port binding="tns:BAT521WSDLSOAP" name="BAT521WSDLSOAP">
+      <soap:address location="http://www.example.org/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+	<extension	point="com.tibco.amf.tools.componenttype.implementationType">
+		<implementationType
+			componentTypeResolver="com.tibco.amx.it.upgrade.design.internal.ct.UpgradeComponentTypeResolver"
+            defaultPalette="true"
+            delegate="com.tibco.amx.it.upgrade.design.internal.ct.UpgradeImplementationDelegate"
+            icon_medium="icons/upgrade_24x24.png"
+            icon_small="icons/upgrade_16x16.png"
+            name="Upgrade IT"
+            typeId="implementation.upgrade">
+			<implementationTypeResolver
+				ecoreClass="UpgradeImplementation"
+				ecoreURI="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/upgrade">
+			</implementationTypeResolver>
+		</implementationType>
+	</extension>
+	
+	<extension	point="org.eclipse.ui.views.properties.tabbed.propertySections">
+		<propertySections	contributorId="com.tibco.amf.tools.composite.editor">
+			<propertySection
+				class="com.tibco.amx.it.upgrade.design.internal.sections.UpgradeImplementationSection"
+				enablesFor="1"
+				filter="com.tibco.amf.tools.composite.resources.ui.util.ImplementationTypeFilter: implementation.upgrade"
+				id="com.tibco.amx.it.upgrade.design.implSection"
+				tab="composite.implementation.tab">
+			</propertySection>
+		</propertySections>
+	</extension>
+	
+	<extension	point="org.eclipse.emf.validation.constraintBindings">
+		<binding
+			category="implementation.upgrade.category"
+			context="sca.validation.context">
+		</binding>
+	</extension>
+
+	<extension	point="org.eclipse.emf.validation.constraintProviders">
+		<category
+			id="implementation.upgrade.category"
+			name="Upgrade IT Validation">
+		</category>
+		<constraintProvider	cache="true">
+			<package
+				namespaceUri="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/upgrade">
+			</package>
+			<constraints
+				categories="implementation.upgrade.category">
+				<constraint
+					id="com.tibco.amx.it.upgrade.design.notconfigured"
+					lang="OCL"
+					mode="Live"
+					name="Configured Upgrade IT"
+					severity="WARNING"
+					statusCode="1001">
+					<message>
+						Upgrade IT Component is not configured yet.
+					</message>
+					<target
+						class="UpgradeImplementation">
+					</target>
+				<![CDATA[
+               configFile <> null 
+               ]]>
+				</constraint>
+				<constraint
+					class="com.tibco.amx.it.upgrade.design.internal.validation.UpgradeInvalidConfigConstraint"
+					id="com.tibco.amx.it.upgrade.design.invalidConfig"
+					lang="Java"
+					mode="Live"
+					name="Invalid Configuration"
+					severity="ERROR"
+					statusCode="1001">
+					<message>
+						Invalid configuration: {0}
+					</message>
+					<target
+						class="UpgradeImplementation">
+					</target>
+				</constraint>
+			</constraints>
+		</constraintProvider>
+		<!-- 
+		<constraintProvider cache="true">
+            <package
+                  namespaceUri="http://www.osoa.org/xmlns/sca/1.0">
+            </package>
+            <constraints categories="implementation.ruby.category">
+               <constraint
+                     class="com.tibco.amx.it.upgrade.design.internal.validation.UpgradeServiceAdditionSupport"
+                     id="com.tibco.amx.it.upgrade.design.constraints.noserviceaddition"
+                     lang="Java"
+                     mode="Live"
+                     name="%ValidationConstraints.NoServiceSupport.name"
+                     severity="ERROR"
+                     statusCode="Upgrade.IT.1152">
+                  <message>
+                     %ValidationConstraints.NoServiceSupport.message
+                  </message>
+                  <target
+                        class="ComponentService">
+                     <customEvent
+                           name="InterfaceContentChange">
+                     </customEvent>
+                  </target>
+               </constraint>
+               <constraint
+                     class="com.tibco.amx.it.upgrade.design.internal.validation.UpgradeReferenceAdditionSupport"
+                     id="com.tibco.amx.it.upgrade.design.constraints.noreferenceaddition"
+                     lang="Java"
+                     mode="Live"
+                     name="%ValidationConstraints.NoReferenceSupport.name"
+                     severity="ERROR"
+                     statusCode="Upgrade.IT.1153">
+                  <message>
+                     %ValidationConstraints.NoReferenceSupport.message
+                  </message>
+                  <target
+                        class="ComponentReference">
+                     <customEvent
+                           name="InterfaceContentChange">
+                     </customEvent>
+                  </target>
+               </constraint>
+			</constraints>
+		</constraintProvider>
+		-->
+	</extension>
+	
+	<extension	point="com.tibco.amf.sca.model.validation.scaQuickFix">
+		<quickfix
+			description="Generate Upgrade Implementation"
+			id="com.tibco.amf.sca.model.validation.constraint.ctavailable.res.upgradeit"
+			implementationTypeId="implementation.upgrade"
+			name="Generate Upgrade Implementation"
+			problemId="com.tibco.amf.sca.model.validation.constraint.ctavailable"
+			resolution="com.tibco.amx.it.upgrade.design.internal.validation.UpgradeItResolution">
+		</quickfix>
+		<quickfix
+			description="Update Upgrade Implementation"
+			id="com.tibco.amf.sca.model.validation.constraint.outofsync.res"
+			implementationTypeId="implementation.upgrade"
+			name="Update Upgrade Implementation"
+			problemId="com.tibco.amf.sca.model.validation.constraint.outofsync"
+			resolution="com.tibco.amx.it.upgrade.design.internal.validation.UpgradeItResolution">
+		</quickfix>       
+	</extension>
+   
+	<extension	point="org.eclipse.gmf.runtime.common.ui.services.dnd.dragDropListenerProviders">
+		<DragDropListenerProvider
+			class="com.tibco.amx.it.upgrade.design.internal.dnd.UpgradeDragDropListenerProvider"
+			id="com.tibco.amx.it.upgrade.design.internal.dnd.UpgradeDragDropListenerProvider">
+			<Priority
+				name="Lowest">
+			</Priority>
+			<ViewId
+				id="com.tibco.amf.tools.composite.editor.part.CompositeDiagramEditorID">
+				<ElementType
+					class="com.tibco.amf.sca.model.composite.Composite">
+					<OperationType
+						operation="drop">
+						<TransferId
+							transferId="customLocalTransfer">
+						</TransferId>
+					</OperationType>
+				</ElementType>
+			</ViewId>
+		</DragDropListenerProvider>
+	</extension>
+   
+	<extension	point="com.tibco.amf.tools.composite.resources.ui.componentCreationWizards">
+		<componentCreationWizards
+			implementationType="implementation.upgrade">
+			<bottomUpWizard
+				creator="com.tibco.amx.it.upgrade.design.internal.wizard.UpgradeComponentCreator"
+				wizard="com.tibco.amx.it.upgrade.design.internal.wizard.UpgradeComponentCreationWizard">
+			</bottomUpWizard>
+			<topDownWizard
+				generator="com.tibco.amx.it.upgrade.design.internal.wizard.UpgradeImplementationGenerator"
+				wizard="com.tibco.amx.it.upgrade.design.internal.wizard.UpgradeImplementationGenerationWizard">
+			</topDownWizard>
+		</componentCreationWizards>
+	</extension>
+   
+	<extension	point="org.eclipse.gmf.runtime.common.ui.services.action.contributionItemProviders">
+		<contributionItemProvider
+			checkPluginLoaded="false"
+			class="com.tibco.amx.it.upgrade.design.internal.actions.UpgradeContributionItemProvider">
+			<Priority
+				name="Medium">
+			</Priority>
+			<partContribution
+				class="com.tibco.amf.tools.composite.editor.part.CompositeDiagramEditor">
+				<partAction
+					global="false"
+					id="implementationtype.upgrade.createUpgradeComponentAction"
+					toolbarPath="/createComponentMenu/createComponentMenuGroup">
+				</partAction>
+			</partContribution>
+		</contributionItemProvider>  
+	</extension>
+	
+	<extension
+         point="org.eclipse.ui.handlers">
+		<handler
+			class="com.tibco.amx.it.upgrade.design.internal.actions.UpgradeOpenImplementatoinHandler"
+			commandId="com.tibco.amf.tools.composite.resources.ui.openImplementationCommand">
+			<activeWhen>
+				<and>
+					<iterate
+						ifEmpty="false"
+						operator="and">
+						<test
+							args="implementation.upgrade"
+							forcePluginActivation="true"
+							property="com.tibco.amf.tools.composite.editor.implementationType">
+						</test>
+					</iterate>
+				</and>
+			</activeWhen>
+		</handler>
+		<handler
+			class="com.tibco.amx.it.upgrade.design.internal.actions.UpgradeGenerateImplementationCommandHandler"
+			commandId="com.tibco.amx.it.upgrade.design.generateImplementationCommand">
+			<activeWhen>
+				<and>
+					<iterate ifEmpty="false" operator="and">
+						<test args="implementation.upgrade" forcePluginActivation="true"
+							property="com.tibco.amf.tools.composite.editor.implementationType">
+						</test>
+					</iterate>
+				</and>
+			</activeWhen>
+		</handler>
+		<handler
+			class="com.tibco.amx.it.upgrade.design.internal.actions.UpgradeRegenerateImplementationCommandHandler"
+			commandId="com.tibco.amx.it.upgrade.design.regenerateImplementationCommand">
+			<activeWhen>
+				<and>
+					<iterate ifEmpty="false" operator="and">
+						<test args="implementation.upgrade" forcePluginActivation="true"
+							property="com.tibco.amf.tools.composite.editor.implementationType">
+						</test>
+						<test forcePluginActivation="true"
+							property="com.tibco.amf.tools.composite.editor.hasImplementation">
+						</test>
+					</iterate>
+				</and>
+			</activeWhen>
+		</handler>
+	</extension>
+	
+	<extension point="org.eclipse.ui.commands">
+		<command description="%UpgradeComponent.GenerateImplementation_description"
+			id="com.tibco.amx.it.upgrade.design.generateImplementationCommand"
+			name="%UpgradeComponent.GenerateImplementation_name">
+		</command>
+		<command description="%UpgradeComponent.RegenerateImplementation_description"
+			id="com.tibco.amx.it.upgrade.design.regenerateImplementationCommand"
+			name="%UpgradeComponent.RegenerateImplementation_name">
+		</command>
+	</extension>
+	
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+			<command
+				commandId="com.tibco.amx.it.upgrade.design.regenerateImplementationCommand"
+				icon="icons/generate_implementation.gif" style="push">
+				<visibleWhen checkEnabled="true">
+				</visibleWhen>
+			</command>		
+			<command
+				commandId="com.tibco.amx.it.upgrade.design.generateImplementationCommand"
+				icon="icons/regenerate_implementation.gif" style="push">
+				<visibleWhen checkEnabled="true">
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+	
+	<extension
+         point="com.tibco.amf.tools.componenttype.propertyType">
+		<propertyTypeToITBinding
+			implementationTypeID="implementation.upgrade"
+			supportedPropertyType="{http://www.w3.org/2001/XMLSchema}boolean">
+		</propertyTypeToITBinding>
+		<propertyTypeToITBinding
+            implementationTypeID="implementation.upgrade"
+            supportedPropertyType="{http://www.w3.org/2001/XMLSchema}string">
+		</propertyTypeToITBinding>
+		<propertyTypeToITBinding
+            implementationTypeID="implementation.upgrade"
+            supportedPropertyType="{http://www.w3.org/2001/XMLSchema}int">
+		</propertyTypeToITBinding>
+		<propertyTypeToITBinding
+            implementationTypeID="implementation.upgrade"
+            supportedPropertyType="{http://xsd.tns.tibco.com/amf/models/sharedresource/jdbc}JdbcDataSource">
+		</propertyTypeToITBinding>
+  <propertyTypeToITBinding
+        implementationTypeID="implementation.upgrade"
+        supportedPropertyType="{http://xsd.tns.tibco.com/amf/models/sharedresource/jms}JMSConnectionFactory">
+  </propertyTypeToITBinding>      
+		<!-- other shared resources-->
+		<!--propertyTypeToITBinding
+            implementationTypeID="implementation.upgrade"
+            supportedPropertyType="{http://xsd.tns.tibco.com/amf/models/sharedresource/httpclient}HttpClientConfiguration">
+		</propertyTypeToITBinding>
+		<propertyTypeToITBinding
+            implementationTypeID="implementation.upgrade"
+            supportedPropertyType="{http://xsd.tns.tibco.com/amf/models/sharedresource/ldap}LdapConnection">
+		</propertyTypeToITBinding>
+		<propertyTypeToITBinding
+            implementationTypeID="implementation.upgrade"
+            supportedPropertyType="{http://xsd.tns.tibco.com/amf/models/sharedresource/hibernate}TeneoSessionFactory">
+		</propertyTypeToITBinding>
+		<propertyTypeToITBinding
+            implementationTypeID="implementation.upgrade"
+            supportedPropertyType="{http://xsd.tns.tibco.com/amf/models/sharedresource/hibernate}HibernateSessionFactory">
+		</propertyTypeToITBinding>
+		<propertyTypeToITBinding
+            implementationTypeID="implementation.upgrade"
+            supportedPropertyType="{http://xsd.tns.tibco.com/amf/models/sharedresource/smtp}SmtpConfiguration">
+		</propertyTypeToITBinding-->      
+	</extension>
+</plugin>

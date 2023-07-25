@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ejb="http://xsd.tns.tibco.com/amf/models/sca/binding/ejb" xmlns:componentmodel="http://xsd.tns.tibco.com/amsb/core/models/componentmodel" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:compositenotation="http://www.tibco.com/models/compositenotation" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.1/notation" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmlns:soapbt="http://xsd.tns.tibco.com/amf/models/sca/binding/soap" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmi:id="_PM9FEeWCEd-D-odCJZRzLA" targetNamespace="http://www.example.com/BAT68.composite" name="BAT68" compositeext:version="1.0.0.qualifier" compositeext:formatVersion="2">
+  <sca:service xmi:id="_lG2wkOWCEd-D-odCJZRzLA" name="CreditCardService" promote="MediationComp/CreditCardRemotePortType">
+    <sca:interface.wsdl xmi:id="_lG2wkeWCEd-D-odCJZRzLA" interface="http://ejb3.creditcard.tibco.com#wsdl.interface(CreditCardRemotePortType)" scaext:wsdlLocation="../Service%20Descriptors/CreditCardBean.wsdl"/>
+    <sca:binding.sca xmi:id="_lG2wkuWCEd-D-odCJZRzLA" name="Virtualization"/>
+    <soapbt:binding.soap.service xmi:id="_ltJ7kOWCEd-D-odCJZRzLA" name="SOAPService_Binding1" transportBindingType="HTTP" attachmentStyle="DOCUMENT" portType="../Service%20Descriptors/CreditCardBean.wsdl#//@ePortTypes.0">
+      <operationConfiguration xmi:id="_ltmAcOWCEd-D-odCJZRzLA" operation="../Service%20Descriptors/CreditCardBean.wsdl#//@ePortTypes.0/@eOperations.0" action="authorization">
+        <messageConfiguration xmi:id="_ltmAceWCEd-D-odCJZRzLA" message="../Service%20Descriptors/CreditCardBean.wsdl#//@eMessages.2">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_ltmAcuWCEd-D-odCJZRzLA" messagePart="../Service%20Descriptors/CreditCardBean.wsdl#//@eMessages.2/@eParts.0"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_ltmAc-WCEd-D-odCJZRzLA" message="../Service%20Descriptors/CreditCardBean.wsdl#//@eMessages.4" messageDirection="OUTPUT">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_ltmAdOWCEd-D-odCJZRzLA" messagePart="../Service%20Descriptors/CreditCardBean.wsdl#//@eMessages.4/@eParts.0"/>
+        </messageConfiguration>
+        <bindingType xmi:id="_ltmAdeWCEd-D-odCJZRzLA"/>
+      </operationConfiguration>
+      <operationConfiguration xmi:id="_ltmAduWCEd-D-odCJZRzLA" operation="../Service%20Descriptors/CreditCardBean.wsdl#//@ePortTypes.0/@eOperations.1" action="check">
+        <messageConfiguration xmi:id="_ltmAd-WCEd-D-odCJZRzLA" message="../Service%20Descriptors/CreditCardBean.wsdl#//@eMessages.0">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_ltmAeOWCEd-D-odCJZRzLA" messagePart="../Service%20Descriptors/CreditCardBean.wsdl#//@eMessages.0/@eParts.0"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_ltmAeeWCEd-D-odCJZRzLA" message="../Service%20Descriptors/CreditCardBean.wsdl#//@eMessages.3" messageDirection="OUTPUT">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_ltmAeuWCEd-D-odCJZRzLA" messagePart="../Service%20Descriptors/CreditCardBean.wsdl#//@eMessages.3/@eParts.0"/>
+        </messageConfiguration>
+        <bindingType xmi:id="_ltmAe-WCEd-D-odCJZRzLA"/>
+      </operationConfiguration>
+      <operationConfiguration xmi:id="_ltmAfOWCEd-D-odCJZRzLA" operation="../Service%20Descriptors/CreditCardBean.wsdl#//@ePortTypes.0/@eOperations.2" action="sayHello">
+        <messageConfiguration xmi:id="_ltmAfeWCEd-D-odCJZRzLA" message="../Service%20Descriptors/CreditCardBean.wsdl#//@eMessages.5">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_ltmAfuWCEd-D-odCJZRzLA" messagePart="../Service%20Descriptors/CreditCardBean.wsdl#//@eMessages.5/@eParts.0"/>
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_ltmAf-WCEd-D-odCJZRzLA" messagePart="../Service%20Descriptors/CreditCardBean.wsdl#//@eMessages.5/@eParts.1"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_ltmAgOWCEd-D-odCJZRzLA" message="../Service%20Descriptors/CreditCardBean.wsdl#//@eMessages.1" messageDirection="OUTPUT">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_ltmAgeWCEd-D-odCJZRzLA" messagePart="../Service%20Descriptors/CreditCardBean.wsdl#//@eMessages.1/@eParts.0"/>
+        </messageConfiguration>
+        <bindingType xmi:id="_ltmAguWCEd-D-odCJZRzLA"/>
+      </operationConfiguration>
+      <inboundConfiguration xsi:type="soapbt:HttpTransportConfiguration" xmi:id="_ltmAg-WCEd-D-odCJZRzLA" endpointURI="/creditCardRemotePortType/"/>
+      <defaultBindingType xmi:id="_ltc2gOWCEd-D-odCJZRzLA"/>
+    </soapbt:binding.soap.service>
+    <scact:bindingAdjunct xmi:id="_lG2wk-WCEd-D-odCJZRzLA" bindingName="Virtualization"/>
+    <scact:bindingAdjunct xmi:id="_ltmAhOWCEd-D-odCJZRzLA" bindingName="SOAPService_Binding1">
+      <sca:property xmi:id="_ltmAheWCEd-D-odCJZRzLA" mustSupply="true" name="HttpInboundConnectionConfig" type="xsd:string" scaext:simpleValue="httpConnector68"/>
+    </scact:bindingAdjunct>
+  </sca:service>
+  <sca:reference xmi:id="_POvNwOWCEd-D-odCJZRzLA" multiplicity="1..1" name="EJBBTReference" wiredByImpl="false" promote="MediationComp/CreditCardRemotePortType">
+    <sca:interface.wsdl xmi:id="_POvNweWCEd-D-odCJZRzLA" interface="http://ejb3.creditcard.tibco.com#wsdl.interface(CreditCardRemotePortType)" scaext:wsdlLocation="../Service%20Descriptors/CreditCardBean.wsdl"/>
+    <Ejb:binding.ejb.reference xmi:id="_XFqGsOWCEd-D-odCJZRzLA" name="EJBReference_Binding1" wsdlLocation="../Service%20Descriptors/CreditCardBean.wsdl" portType="../Service%20Descriptors/CreditCardBean.wsdl#//@ePortTypes.0" clientJarPlugInId="com.tibco.creditcard.ejb3.creditcardremote" contextFacotry="org.jnp.interfaces.NamingContextFactory" jndiDriverName="JNDI Driver for JBoss 5.0" jndiDriverVendor="JBoss" jndiDriverVersion="5.0">
+      <ejbInterface xmi:id="_XFqGseWCEd-D-odCJZRzLA" ejbVersion="3.0" beanName="CreditCardBean" ejbHome="" ejbRemote="com.tibco.creditcard.ejb3.CreditCardRemote" jndiName="CreditCardBean/remote"/>
+      <Ejb:featureDependency xmi:id="_Y1RDIOWCEd-D-odCJZRzLA" name="BAT68_EJBReference_Binding1">
+        <range xmi:id="_Y1RDIeWCEd-D-odCJZRzLA" lower="1.0.0" upper="2.0.0"/>
+      </Ejb:featureDependency>
+    </Ejb:binding.ejb.reference>
+    <scact:bindingAdjunct xmi:id="_XFqGsuWCEd-D-odCJZRzLA" bindingName="EJBReference_Binding1">
+      <sca:property xmi:id="_dJ_AoOWCEd-D-odCJZRzLA" mustSupply="true" name="EjbReferenceBindingContextURL" type="xsd:string" scaext:simpleValue="jnp://192.168.67.94:1099"/>
+    </scact:bindingAdjunct>
+  </sca:reference>
+  <sca:component xmi:id="_kaARoOWCEd-D-odCJZRzLA" name="MediationComp" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="componentmodel:MediationImplementation" xmi:id="_kaARoeWCEd-D-odCJZRzLA" mediationService="../Mediation%20Flows/MED.mediation#_hMqy8OWCEd-D-odCJZRzLA"/>
+    <sca:service xmi:id="_kaJbkOWCEd-D-odCJZRzLA" name="CreditCardRemotePortType">
+      <sca:interface.wsdl xmi:id="_kaJbkeWCEd-D-odCJZRzLA" interface="http://ejb3.creditcard.tibco.com#wsdl.interface(CreditCardRemotePortType)" scaext:wsdlLocation="../Service%20Descriptors/CreditCardBean.wsdl"/>
+    </sca:service>
+    <sca:reference xmi:id="_kaJbkuWCEd-D-odCJZRzLA" name="CreditCardRemotePortType" wiredByImpl="false">
+      <sca:interface.wsdl xmi:id="_kaJbk-WCEd-D-odCJZRzLA" interface="http://ejb3.creditcard.tibco.com#wsdl.interface(CreditCardRemotePortType)" scaext:wsdlLocation="../Service%20Descriptors/CreditCardBean.wsdl"/>
+    </sca:reference>
+  </sca:component>
+  <notation:diagram xsi:type="notation:Diagram" xmi:id="_PNi68OWCEd-D-odCJZRzLA" type="Composite" element="#/" name="SCA Composite" measurementUnit="Pixel">
+    <children xmi:id="_PnxY0OWCEd-D-odCJZRzLA" type="2001" element="#_PM9FEeWCEd-D-odCJZRzLA">
+      <children xmi:id="_Pn7J0OWCEd-D-odCJZRzLA" type="5004"/>
+      <children xmi:id="_Pn7J0eWCEd-D-odCJZRzLA" type="7001">
+        <children xmi:id="_lG2wlOWCEd-D-odCJZRzLA" type="3001" element="#_lG2wkOWCEd-D-odCJZRzLA">
+          <children xmi:id="_lG2wmeWCEd-D-odCJZRzLA" type="5002"/>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_lG2wleWCEd-D-odCJZRzLA" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_lG2wluWCEd-D-odCJZRzLA" gradStartColor="14150097" gradEndColor="7844710"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_lG2wl-WCEd-D-odCJZRzLA"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_lG2wmOWCEd-D-odCJZRzLA"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_Pn7J0uWCEd-D-odCJZRzLA"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_Pn7J0-WCEd-D-odCJZRzLA"/>
+      </children>
+      <children xmi:id="_PoE60OWCEd-D-odCJZRzLA" type="7002">
+        <children xmi:id="_Pv0hkOWCEd-D-odCJZRzLA" type="3002" element="#_POvNwOWCEd-D-odCJZRzLA">
+          <children xmi:id="_Pv0hleWCEd-D-odCJZRzLA" type="5003"/>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_Pv0hkeWCEd-D-odCJZRzLA" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_Pv0hkuWCEd-D-odCJZRzLA" gradStartColor="15457762" gradEndColor="11302063"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_Pv0hk-WCEd-D-odCJZRzLA"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_Pv0hlOWCEd-D-odCJZRzLA"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_PoE60eWCEd-D-odCJZRzLA"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_PoE60uWCEd-D-odCJZRzLA"/>
+      </children>
+      <children xmi:id="_PoE60-WCEd-D-odCJZRzLA" type="7003">
+        <children xmi:id="_kaJblOWCEd-D-odCJZRzLA" type="3003" element="#_kaARoOWCEd-D-odCJZRzLA">
+          <children xmi:id="_kaJbmuWCEd-D-odCJZRzLA" type="5001"/>
+          <children xmi:id="_kaJbm-WCEd-D-odCJZRzLA" type="7004">
+            <children xmi:id="_kaJbqOWCEd-D-odCJZRzLA" type="3004" element="#_kaJbkOWCEd-D-odCJZRzLA">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_kaJbqeWCEd-D-odCJZRzLA" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_kaJbquWCEd-D-odCJZRzLA"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_kaJbnOWCEd-D-odCJZRzLA"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_kaJbneWCEd-D-odCJZRzLA"/>
+          </children>
+          <children xmi:id="_kaJbnuWCEd-D-odCJZRzLA" type="7005">
+            <children xmi:id="_kaTMkOWCEd-D-odCJZRzLA" type="3005" element="#_kaJbkuWCEd-D-odCJZRzLA">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_kaTMkeWCEd-D-odCJZRzLA" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_kaTMkuWCEd-D-odCJZRzLA"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_kaJbn-WCEd-D-odCJZRzLA"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_kaJboOWCEd-D-odCJZRzLA"/>
+          </children>
+          <children xmi:id="_kaJboeWCEd-D-odCJZRzLA" type="7006">
+            <children xmi:id="_kaJbpeWCEd-D-odCJZRzLA" visible="false" type="7600">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_kaJbpuWCEd-D-odCJZRzLA" fontHeight="10"/>
+              <element xsi:nil="true"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_kaJbp-WCEd-D-odCJZRzLA"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_kaJbouWCEd-D-odCJZRzLA"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_kaJbo-WCEd-D-odCJZRzLA"/>
+            <styles xsi:type="compositenotation:CollapseStyle" xmi:id="_kaJbpOWCEd-D-odCJZRzLA"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_kaJbleWCEd-D-odCJZRzLA" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_kaJbluWCEd-D-odCJZRzLA" gradStartColor="16642791" gradEndColor="14072216"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_kaJbl-WCEd-D-odCJZRzLA"/>
+          <styles xsi:type="compositenotation:CustomComponentIconStyle" xmi:id="_kaJbmOWCEd-D-odCJZRzLA"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_kaJbmeWCEd-D-odCJZRzLA" x="124" y="39"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_PoE61OWCEd-D-odCJZRzLA"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_PoE61eWCEd-D-odCJZRzLA"/>
+      </children>
+      <children xmi:id="_PoE61uWCEd-D-odCJZRzLA" type="7007">
+        <children xmi:id="_PoE62eWCEd-D-odCJZRzLA" visible="false" type="7600">
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_PoE62uWCEd-D-odCJZRzLA" fontHeight="10"/>
+          <element xsi:nil="true"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_PoE62-WCEd-D-odCJZRzLA"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_PoE61-WCEd-D-odCJZRzLA"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_PoE62OWCEd-D-odCJZRzLA"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" xmi:id="_PnxY0eWCEd-D-odCJZRzLA" fontHeight="10"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_PnxY0uWCEd-D-odCJZRzLA" x="10" y="10" width="500" height="350"/>
+    </children>
+    <styles xsi:type="notation:DiagramStyle" xmi:id="_PNi68eWCEd-D-odCJZRzLA"/>
+    <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_PNi68uWCEd-D-odCJZRzLA"/>
+    <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_PNi68-WCEd-D-odCJZRzLA"/>
+    <edges xmi:id="_k0OvgOWCEd-D-odCJZRzLA" type="4003" source="#_Pv0hkOWCEd-D-odCJZRzLA" target="#_kaTMkOWCEd-D-odCJZRzLA">
+      <styles xsi:type="notation:ConnectorStyle" xmi:id="_k0OvgeWCEd-D-odCJZRzLA" routing="Rectilinear"/>
+      <styles xsi:type="notation:FontStyle" xmi:id="_k0OvguWCEd-D-odCJZRzLA" fontHeight="10"/>
+      <element xsi:nil="true"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_k0Ovg-WCEd-D-odCJZRzLA" points="[12, 3, -82, 156]$[79, -158, -15, -5]"/>
+    </edges>
+    <edges xmi:id="_lG2wmuWCEd-D-odCJZRzLA" type="4002" source="#_lG2wlOWCEd-D-odCJZRzLA" target="#_kaJbqOWCEd-D-odCJZRzLA">
+      <styles xsi:type="notation:ConnectorStyle" xmi:id="_lG2wm-WCEd-D-odCJZRzLA" routing="Rectilinear"/>
+      <styles xsi:type="notation:FontStyle" xmi:id="_lG2wnOWCEd-D-odCJZRzLA" fontHeight="10"/>
+      <element xsi:nil="true"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_lG2wneWCEd-D-odCJZRzLA" points="[0, 30, -272, -191]$[266, 224, -6, 3]"/>
+    </edges>
+  </notation:diagram>
+</sca:composite>

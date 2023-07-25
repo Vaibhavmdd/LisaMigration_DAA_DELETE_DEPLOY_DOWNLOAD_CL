@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:compositenotation="http://www.tibco.com/models/compositenotation" xmlns:http="http://xsd.tns.tibco.com/amf/models/sharedresource/httpclient" xmlns:java="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/java" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.1/notation" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmlns:soapbt="http://xsd.tns.tibco.com/amf/models/sca/binding/soap" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmi:id="_xy4v0eokEeC5CJVSDlGYaQ" targetNamespace="http://www.example.com/AMXTestCase1.5.1" name="AMXTestCase1.5.1" compositeext:version="1.0.0.qualifier" compositeext:formatVersion="2">
+  <sca:service xmi:id="_2I3RkOokEeC5CJVSDlGYaQ" name="HelloPT" promote="JavaNewComponent5/HelloPT">
+    <sca:interface.wsdl xmi:id="_2I3RkeokEeC5CJVSDlGYaQ" interface="http://ns.tibco.com/Hello/#wsdl.interface(HelloPT)" scaext:wsdlLocation="../../AMXTestCase1.6/Service%20Descriptors/InOut.wsdl"/>
+    <sca:binding.sca xmi:id="_2I3RkuokEeC5CJVSDlGYaQ" name="Virtualization"/>
+    <soapbt:binding.soap.service xmi:id="_mrIQ4OonEeC5CJVSDlGYaQ" name="AMXServiceBinding5.1" transportBindingType="HTTP" attachmentStyle="DOCUMENT" portType="../../AMXTestCase1.6/Service%20Descriptors/InOut.wsdl#//@ePortTypes.0">
+      <operationConfiguration xmi:id="_rYRLkO3vEeCoeJv8z12Qcw" operation="../../AMXTestCase1.6/Service%20Descriptors/InOut.wsdl#//@ePortTypes.0/@eOperations.0" action="sayHello">
+        <messageConfiguration xmi:id="_rYRLke3vEeCoeJv8z12Qcw" message="../../AMXTestCase1.6/Service%20Descriptors/InOut.wsdl#//@eMessages.0">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_rYRLku3vEeCoeJv8z12Qcw" messagePart="../../AMXTestCase1.6/Service%20Descriptors/InOut.wsdl#//@eMessages.0/@eParts.0"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_rYRLk-3vEeCoeJv8z12Qcw" message="../../AMXTestCase1.6/Service%20Descriptors/InOut.wsdl#//@eMessages.1" messageDirection="OUTPUT">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_rYRLlO3vEeCoeJv8z12Qcw" messagePart="../../AMXTestCase1.6/Service%20Descriptors/InOut.wsdl#//@eMessages.1/@eParts.0"/>
+        </messageConfiguration>
+        <bindingType xmi:id="_rYRLle3vEeCoeJv8z12Qcw"/>
+      </operationConfiguration>
+      <inboundConfiguration xsi:type="soapbt:HttpTransportConfiguration" xmi:id="_rYRyoO3vEeCoeJv8z12Qcw" endpointURI="/Wiring1_5/"/>
+      <defaultBindingType xmi:id="_rYQkgO3vEeCoeJv8z12Qcw"/>
+    </soapbt:binding.soap.service>
+    <scact:bindingAdjunct xmi:id="_2I3Rk-okEeC5CJVSDlGYaQ" bindingName="Virtualization"/>
+    <scact:bindingAdjunct xmi:id="_mrI38OonEeC5CJVSDlGYaQ" bindingName="AMXServiceBinding5.1">
+      <sca:property xmi:id="_rYRyoe3vEeCoeJv8z12Qcw" mustSupply="true" name="HttpInboundConnectionConfig" type="xsd:string" scaext:simpleValue="httpConnector"/>
+    </scact:bindingAdjunct>
+  </sca:service>
+  <sca:reference xmi:id="_2I34oOokEeC5CJVSDlGYaQ" multiplicity="1..1" name="AMXReference5" wiredByImpl="false" promote="JavaNewComponent5/AMXReference5">
+    <sca:interface.wsdl xmi:id="_2I34oeokEeC5CJVSDlGYaQ" interface="http://www.example.org/AMXService5/#wsdl.interface(AMXService5)" scaext:wsdlLocation="../../AMXTestCase1.5/Service%20Descriptors/AMXService5_gen.wsdl"/>
+    <soapbt:binding.soap.reference xmi:id="_jtR_sOonEeC5CJVSDlGYaQ" name="AMXServiceBinding5" transportBindingType="HTTP" portType="../../AMXTestCase1.5/Service%20Descriptors/AMXService5_gen.wsdl#//@ePortTypes.0" port="../../AMXTestCase1.5/Service%20Descriptors/AMXService5_gen.wsdl#//@eServices.0/@ePorts.0">
+      <operationConfiguration xmi:id="_xi-5QOrtEeCUyMzjVwJP7Q" operation="../../AMXTestCase1.5/Service%20Descriptors/AMXService5_gen.wsdl#//@ePortTypes.0/@eOperations.0" action="NewOperation" actionNeeded="true">
+        <messageConfiguration xmi:id="_xi-5QertEeCUyMzjVwJP7Q" message="../../AMXTestCase1.5/Service%20Descriptors/AMXService5_gen.wsdl#//@eMessages.0">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_xi-5QurtEeCUyMzjVwJP7Q" messagePart="../../AMXTestCase1.5/Service%20Descriptors/AMXService5_gen.wsdl#//@eMessages.0/@eParts.0" encoding="literal"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_xi-5Q-rtEeCUyMzjVwJP7Q" message="../../AMXTestCase1.5/Service%20Descriptors/AMXService5_gen.wsdl#//@eMessages.1" messageDirection="OUTPUT">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_xi-5ROrtEeCUyMzjVwJP7Q" messagePart="../../AMXTestCase1.5/Service%20Descriptors/AMXService5_gen.wsdl#//@eMessages.1/@eParts.0" encoding="literal"/>
+        </messageConfiguration>
+        <bindingType xmi:id="_xi-5RertEeCUyMzjVwJP7Q"/>
+      </operationConfiguration>
+      <defaultBindingType xmi:id="_xi-SMOrtEeCUyMzjVwJP7Q"/>
+      <outboundConfiguration xsi:type="soapbt:HttpTransportConfiguration" xmi:id="_xjjhAOrtEeCUyMzjVwJP7Q"/>
+    </soapbt:binding.soap.reference>
+    <scact:bindingAdjunct xmi:id="_jt7f8OonEeC5CJVSDlGYaQ" bindingName="AMXServiceBinding5">
+      <sca:property xmi:id="_xji58OrtEeCUyMzjVwJP7Q" mustSupply="true" name="HttpOutboundConnectionConfig" type="http:HttpClientConfiguration" scaext:simpleValue="HttpClient_AMXServiceBinding5"/>
+    </scact:bindingAdjunct>
+  </sca:reference>
+  <sca:reference xmi:id="_hv93EOoqEeC5CJVSDlGYaQ" multiplicity="1..1" name="AMXNewReference5" wiredByImpl="false" promote="JavaNewComponent5/AMXNewReference5">
+    <sca:interface.wsdl xmi:id="_hv93EeoqEeC5CJVSDlGYaQ" interface="http://www.example.org/AMXService5/#wsdl.interface(AMXService5)" scaext:wsdlLocation="../../AMXTestCase1.5.2/Service%20Descriptors/AMXService5_gen_2.wsdl"/>
+    <soapbt:binding.soap.reference xmi:id="_1xcBUOoqEeC5CJVSDlGYaQ" name="AMXNewReferenceBinding5" transportBindingType="HTTP" portType="../../AMXTestCase1.5.2/Service%20Descriptors/AMXService5_gen_2.wsdl#//@ePortTypes.0" port="../../AMXTestCase1.5.2/Service%20Descriptors/AMXService5_gen_2.wsdl#//@eServices.0/@ePorts.0">
+      <operationConfiguration xmi:id="_1KLd4Or3EeCUyMzjVwJP7Q" operation="../../AMXTestCase1.5.2/Service%20Descriptors/AMXService5_gen_2.wsdl#//@ePortTypes.0/@eOperations.0" action="NewOperation" actionNeeded="true">
+        <messageConfiguration xmi:id="_1KLd4er3EeCUyMzjVwJP7Q" message="../../AMXTestCase1.5.2/Service%20Descriptors/AMXService5_gen_2.wsdl#//@eMessages.0">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_1KLd4ur3EeCUyMzjVwJP7Q" messagePart="../../AMXTestCase1.5.2/Service%20Descriptors/AMXService5_gen_2.wsdl#//@eMessages.0/@eParts.0" encoding="literal"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_1KLd4-r3EeCUyMzjVwJP7Q" message="../../AMXTestCase1.5.2/Service%20Descriptors/AMXService5_gen_2.wsdl#//@eMessages.1" messageDirection="OUTPUT">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_1KLd5Or3EeCUyMzjVwJP7Q" messagePart="../../AMXTestCase1.5.2/Service%20Descriptors/AMXService5_gen_2.wsdl#//@eMessages.1/@eParts.0" encoding="literal"/>
+        </messageConfiguration>
+        <bindingType xmi:id="_1KLd5er3EeCUyMzjVwJP7Q"/>
+      </operationConfiguration>
+      <defaultBindingType xmi:id="_1KK20Or3EeCUyMzjVwJP7Q"/>
+      <outboundConfiguration xsi:type="soapbt:HttpTransportConfiguration" xmi:id="_1LbbEOr3EeCUyMzjVwJP7Q"/>
+    </soapbt:binding.soap.reference>
+    <scact:bindingAdjunct xmi:id="_1xwxcOoqEeC5CJVSDlGYaQ" bindingName="AMXNewReferenceBinding5">
+      <sca:property xmi:id="_1La0AOr3EeCUyMzjVwJP7Q" mustSupply="true" name="HttpOutboundConnectionConfig" type="http:HttpClientConfiguration" scaext:simpleValue=""/>
+    </scact:bindingAdjunct>
+  </sca:reference>
+  <sca:component xmi:id="_yM3WEOokEeC5CJVSDlGYaQ" name="JavaNewComponent5" compositeext:version="1.0.0.qualifier">
+    <sca:implementation.java xmi:id="_0ezjgOokEeC5CJVSDlGYaQ" class="com.sample.soaphttp5reference.JavaNewComponent5">
+      <scaext:packageVersionRange xmi:id="_0ezjgeokEeC5CJVSDlGYaQ" lower="1.0.0" upper="2.0.0"/>
+      <java:featureDependency xmi:id="_SnAQsOomEeC5CJVSDlGYaQ" name="AMXTestCase1.5.1.AMXTestCase1.5.1.customfeature.id">
+        <range xmi:id="_SnAQseomEeC5CJVSDlGYaQ" lower="1.0.0" upper="2.0.0"/>
+      </java:featureDependency>
+    </sca:implementation.java>
+    <sca:service xmi:id="_1XzBAOokEeC5CJVSDlGYaQ" name="HelloPT">
+      <sca:interface.wsdl xmi:id="_1XzBAeokEeC5CJVSDlGYaQ" interface="http://ns.tibco.com/Hello/#wsdl.interface(HelloPT)" scaext:wsdlLocation="../../AMXTestCase1.6/Service%20Descriptors/InOut.wsdl"/>
+    </sca:service>
+    <sca:reference xmi:id="_1uTcgOokEeC5CJVSDlGYaQ" name="AMXReference5">
+      <sca:interface.wsdl xmi:id="_1uTcgeokEeC5CJVSDlGYaQ" interface="http://www.example.org/AMXService5/#wsdl.interface(AMXService5)" scaext:wsdlLocation="../../AMXTestCase1.5/Service%20Descriptors/AMXService5_gen.wsdl"/>
+    </sca:reference>
+    <sca:reference xmi:id="_hVdsYOoqEeC5CJVSDlGYaQ" name="AMXNewReference5">
+      <sca:interface.wsdl xmi:id="_hVeTcOoqEeC5CJVSDlGYaQ" interface="http://www.example.org/AMXService5/#wsdl.interface(AMXService5)" scaext:wsdlLocation="../../AMXTestCase1.5.2/Service%20Descriptors/AMXService5_gen_2.wsdl"/>
+    </sca:reference>
+  </sca:component>
+  <notation:diagram xsi:type="notation:Diagram" xmi:id="_xy598OokEeC5CJVSDlGYaQ" type="Composite" element="#/" name="SCA Composite" measurementUnit="Pixel">
+    <children xmi:id="_xzPVIOokEeC5CJVSDlGYaQ" type="2001" element="#_xy4v0eokEeC5CJVSDlGYaQ">
+      <children xmi:id="_xzPVI-okEeC5CJVSDlGYaQ" type="5004"/>
+      <children xmi:id="_xzPVJOokEeC5CJVSDlGYaQ" type="7001">
+        <children xmi:id="_2I4fsOokEeC5CJVSDlGYaQ" type="3001" element="#_2I3RkOokEeC5CJVSDlGYaQ">
+          <children xmi:id="_2I4fteokEeC5CJVSDlGYaQ" type="5002"/>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_2I4fseokEeC5CJVSDlGYaQ" fontName="Segoe UI" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_2I4fsuokEeC5CJVSDlGYaQ" gradStartColor="14150097" gradEndColor="7844710"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_2I4fs-okEeC5CJVSDlGYaQ"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_2I4ftOokEeC5CJVSDlGYaQ"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_xzPVJeokEeC5CJVSDlGYaQ"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_xzPVJuokEeC5CJVSDlGYaQ"/>
+      </children>
+      <children xmi:id="_xzP8MOokEeC5CJVSDlGYaQ" type="7002">
+        <children xmi:id="_2I678OokEeC5CJVSDlGYaQ" type="3002" element="#_2I34oOokEeC5CJVSDlGYaQ">
+          <children xmi:id="_2I7jAOokEeC5CJVSDlGYaQ" type="5003"/>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_2I678eokEeC5CJVSDlGYaQ" fontName="Segoe UI" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_2I678uokEeC5CJVSDlGYaQ" gradStartColor="15457762" gradEndColor="11302063"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_2I678-okEeC5CJVSDlGYaQ"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_2I679OokEeC5CJVSDlGYaQ"/>
+        </children>
+        <children xmi:id="_hv-eIOoqEeC5CJVSDlGYaQ" type="3002" element="#_hv93EOoqEeC5CJVSDlGYaQ">
+          <children xmi:id="_hv-eJeoqEeC5CJVSDlGYaQ" type="5003"/>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_hv-eIeoqEeC5CJVSDlGYaQ" fontName="Segoe UI" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_hv-eIuoqEeC5CJVSDlGYaQ" gradStartColor="15457762" gradEndColor="11302063"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_hv-eI-oqEeC5CJVSDlGYaQ"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_hv-eJOoqEeC5CJVSDlGYaQ"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_xzP8MeokEeC5CJVSDlGYaQ"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_xzP8MuokEeC5CJVSDlGYaQ"/>
+      </children>
+      <children xmi:id="_xzP8M-okEeC5CJVSDlGYaQ" type="7003">
+        <children xmi:id="_yM7ngOokEeC5CJVSDlGYaQ" type="3003" element="#_yM3WEOokEeC5CJVSDlGYaQ">
+          <children xmi:id="_yM7nhuokEeC5CJVSDlGYaQ" type="5001"/>
+          <children xmi:id="_yM7nh-okEeC5CJVSDlGYaQ" type="7004">
+            <children xmi:id="_1YaFAOokEeC5CJVSDlGYaQ" type="3004" element="#_1XzBAOokEeC5CJVSDlGYaQ">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_1YaFAeokEeC5CJVSDlGYaQ" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_1YaFAuokEeC5CJVSDlGYaQ"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_yM8OkOokEeC5CJVSDlGYaQ"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_yM8OkeokEeC5CJVSDlGYaQ"/>
+          </children>
+          <children xmi:id="_yM8OkuokEeC5CJVSDlGYaQ" type="7005">
+            <children xmi:id="_1uaKMOokEeC5CJVSDlGYaQ" type="3005" element="#_1uTcgOokEeC5CJVSDlGYaQ">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_1uaKMeokEeC5CJVSDlGYaQ" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_1uaKMuokEeC5CJVSDlGYaQ"/>
+            </children>
+            <children xmi:id="_hVrHwOoqEeC5CJVSDlGYaQ" type="3005" element="#_hVdsYOoqEeC5CJVSDlGYaQ">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_hVrHweoqEeC5CJVSDlGYaQ" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_hVrHwuoqEeC5CJVSDlGYaQ"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_yM8Ok-okEeC5CJVSDlGYaQ"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_yM8OlOokEeC5CJVSDlGYaQ"/>
+          </children>
+          <children xmi:id="_yM8OleokEeC5CJVSDlGYaQ" type="7006">
+            <children xmi:id="_yM8OmeokEeC5CJVSDlGYaQ" visible="false" type="7600">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_yM8OmuokEeC5CJVSDlGYaQ" fontName="Segoe UI" fontHeight="10"/>
+              <element xsi:nil="true"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_yM8Om-okEeC5CJVSDlGYaQ"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_yM8OluokEeC5CJVSDlGYaQ"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_yM8Ol-okEeC5CJVSDlGYaQ"/>
+            <styles xsi:type="compositenotation:CollapseStyle" xmi:id="_yM8OmOokEeC5CJVSDlGYaQ"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_yM7ngeokEeC5CJVSDlGYaQ" fontName="Segoe UI" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_yM7nguokEeC5CJVSDlGYaQ" gradStartColor="16642791" gradEndColor="14072216"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_yM7ng-okEeC5CJVSDlGYaQ"/>
+          <styles xsi:type="compositenotation:CustomComponentIconStyle" xmi:id="_yM7nhOokEeC5CJVSDlGYaQ"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_yM7nheokEeC5CJVSDlGYaQ" x="385" y="202"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_xzP8NOokEeC5CJVSDlGYaQ"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_xzP8NeokEeC5CJVSDlGYaQ"/>
+      </children>
+      <children xmi:id="_xzP8NuokEeC5CJVSDlGYaQ" type="7007">
+        <children xmi:id="_xzP8OeokEeC5CJVSDlGYaQ" visible="false" type="7600">
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_xzP8OuokEeC5CJVSDlGYaQ" fontName="Segoe UI" fontHeight="10"/>
+          <element xsi:nil="true"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_xzP8O-okEeC5CJVSDlGYaQ"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_xzP8N-okEeC5CJVSDlGYaQ"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_xzP8OOokEeC5CJVSDlGYaQ"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" xmi:id="_xzPVIeokEeC5CJVSDlGYaQ" fontName="Segoe UI" fontHeight="10"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_xzPVIuokEeC5CJVSDlGYaQ" x="10" y="10" width="1144" height="586"/>
+    </children>
+    <styles xsi:type="notation:DiagramStyle" xmi:id="_xy598eokEeC5CJVSDlGYaQ"/>
+    <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_xy598uokEeC5CJVSDlGYaQ"/>
+    <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_xy598-okEeC5CJVSDlGYaQ"/>
+    <edges xmi:id="_2I5t0OokEeC5CJVSDlGYaQ" type="4002" source="#_2I4fsOokEeC5CJVSDlGYaQ" target="#_1YaFAOokEeC5CJVSDlGYaQ">
+      <styles xsi:type="notation:ConnectorStyle" xmi:id="_2I5t0eokEeC5CJVSDlGYaQ" routing="Rectilinear"/>
+      <styles xsi:type="notation:FontStyle" xmi:id="_2I5t0uokEeC5CJVSDlGYaQ" fontName="Segoe UI" fontHeight="10"/>
+      <element xsi:nil="true"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_2I5t0-okEeC5CJVSDlGYaQ" points="[0, 30, -480, -237]$[474, 270, -6, 3]"/>
+    </edges>
+    <edges xmi:id="_2I8xIOokEeC5CJVSDlGYaQ" type="4003" source="#_2I678OokEeC5CJVSDlGYaQ" target="#_1uaKMOokEeC5CJVSDlGYaQ">
+      <styles xsi:type="notation:ConnectorStyle" xmi:id="_2I8xIeokEeC5CJVSDlGYaQ" routing="Rectilinear"/>
+      <styles xsi:type="notation:FontStyle" xmi:id="_2I8xIuokEeC5CJVSDlGYaQ" fontName="Segoe UI" fontHeight="10"/>
+      <element xsi:nil="true"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_2I8xI-okEeC5CJVSDlGYaQ" points="[20, 35, -638, -232]$[670, 270, 12, 3]"/>
+    </edges>
+    <edges xmi:id="_hv_sQOoqEeC5CJVSDlGYaQ" type="4003" source="#_hv-eIOoqEeC5CJVSDlGYaQ" target="#_hVrHwOoqEeC5CJVSDlGYaQ">
+      <styles xsi:type="notation:ConnectorStyle" xmi:id="_hv_sQeoqEeC5CJVSDlGYaQ" routing="Rectilinear"/>
+      <styles xsi:type="notation:FontStyle" xmi:id="_hv_sQuoqEeC5CJVSDlGYaQ" fontName="Segoe UI" fontHeight="10"/>
+      <element xsi:nil="true"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_hv_sQ-oqEeC5CJVSDlGYaQ" points="[20, 35, -660, -258]$[692, 296, 12, 3]"/>
+    </edges>
+  </notation:diagram>
+</sca:composite>

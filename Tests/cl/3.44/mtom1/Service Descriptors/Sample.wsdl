@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='utf-8'?>
+<wsdl:definitions name="DownloadFileWS"
+targetNamespace="http://service.server.mtom.cxf/"
+xmlns:ns1="http://schemas.xmlsoap.org/soap/http"
+xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/"
+xmlns:tns="http://service.server.mtom.cxf/"
+xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xs:schema elementFormDefault="unqualified"
+    targetNamespace="http://service.server.mtom.cxf/" version="1.0"
+    xmlns:tns="http://service.server.mtom.cxf/"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="getFile" type="tns:DFile" />
+      <xs:element name="getFileResponse" type="tns:DFile" />
+      <xs:complexType name="DFile">
+        <xs:sequence>
+<!-- XOP Node -->          
+          <xs:element minOccurs="0" name="file"
+          type="xs:base64Binary" />
+          <xs:element minOccurs="0" name="fileName"
+          type="xs:string" />
+          <xs:element minOccurs="0" name="fileType"
+          type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getFileFault">
+      	<xs:complexType>
+      		<xs:sequence>
+      			<xs:element name="getFileFault" type="xs:string"></xs:element>
+      		</xs:sequence>
+      	</xs:complexType>
+      </xs:element>
+      <xs:element name="NewOperation">
+      	<xs:complexType>
+      		<xs:sequence>
+      			<xs:element name="in" type="xs:string"></xs:element>
+      		</xs:sequence>
+      	</xs:complexType>
+      </xs:element>
+      <xs:element name="NewOperationResponse">
+      	<xs:complexType>
+      		<xs:sequence>
+      			<xs:element name="out" type="xs:string"></xs:element>
+      		</xs:sequence>
+      	</xs:complexType>
+      </xs:element>
+      <xs:element name="getFileFault1">
+      	<xs:complexType>
+      		<xs:sequence>
+      			<xs:element name="getFileFault" type="xs:string"></xs:element>
+      		</xs:sequence>
+      	</xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getFileResponse">
+    <wsdl:part element="tns:getFileResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFile">
+    <wsdl:part element="tns:getFile" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFileFault">
+  	<wsdl:part name="parameters" element="tns:getFileFault"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="NewOperationRequest">
+  	<wsdl:part name="parameters" element="tns:NewOperation"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="NewOperationResponse">
+  	<wsdl:part name="parameters" element="tns:NewOperationResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFileFault1">
+  	<wsdl:part name="parameters" element="tns:getFileFault1"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="DownloadFile">
+    <wsdl:operation name="getFile">
+      <wsdl:input message="tns:getFile" name="getFile">
+      </wsdl:input>
+      <wsdl:output message="tns:getFileResponse"
+      name="getFileResponse"></wsdl:output>
+            <wsdl:fault name="fault" message="tns:getFileFault1"></wsdl:fault>
+        </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DownloadFileWSSoapBinding"
+  type="tns:DownloadFile">
+    <soap:binding style="document"
+    transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getFile">
+      <soap:operation soapAction="getFile" style="document" />
+      <wsdl:input name="getFile">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getFileResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DownloadFileWS">
+    <wsdl:port binding="tns:DownloadFileWSSoapBinding"
+    name="DownloadFileImplPort">
+      <soap:address location="http://localhost:8891/downloadFile/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

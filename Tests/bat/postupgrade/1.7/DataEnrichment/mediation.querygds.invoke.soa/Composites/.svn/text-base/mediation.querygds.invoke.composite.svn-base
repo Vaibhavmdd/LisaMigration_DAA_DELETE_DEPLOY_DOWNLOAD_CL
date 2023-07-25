@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:componentmodel="http://xsd.tns.tibco.com/amsb/core/models/componentmodel" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:compositenotation="http://www.tibco.com/models/compositenotation" xmlns:http="http://xsd.tns.tibco.com/amf/models/sharedresource/httpclient" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmlns:soapbt="http://xsd.tns.tibco.com/amf/models/sca/binding/soap" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmi:id="_EcAqMcuJEeGiIq5TCMgOeA" targetNamespace="http://www.example.com/mediation.querygds.invoke" name="mediation.querygds.invoke" compositeext:version="1.0.0.qualifier" compositeext:formatVersion="2">
+  <sca:service xmi:id="_JFRzAMuXEeGiIq5TCMgOeA" name="QueryGDS" promote="mediation.querygds.invoke/QueryGDS">
+    <sca:interface.wsdl xmi:id="_JFRzAcuXEeGiIq5TCMgOeA" interface="http://com.tibco.amx.it.mediation.sample/QueryGDS/searchAll/definitions#wsdl.interface(QueryGDS)" scaext:wsdlLocation="../Service%20Descriptors/QueryGDS_SearchAll.wsdl"/>
+    <sca:binding.sca xmi:id="_JFRzAsuXEeGiIq5TCMgOeA" name="Virtualization"/>
+    <soapbt:binding.soap.service xmi:id="_Mt3DQMuXEeGiIq5TCMgOeA" name="SOAPService_Binding1" transportBindingType="HTTP" attachmentStyle="DOCUMENT" portType="../Service%20Descriptors/QueryGDS_SearchAll.wsdl#//@ePortTypes.0" targetNamespace="http://com.tibco.amx.it.mediation.sample/QueryGDS/searchAll/definitions/QueryGDS">
+      <operationConfiguration xmi:id="_MuGT0MuXEeGiIq5TCMgOeA" operation="../Service%20Descriptors/QueryGDS_SearchAll.wsdl#//@ePortTypes.0/@eOperations.0" action="searchAll" actionNeeded="true">
+        <messageConfiguration xmi:id="_MuGT0cuXEeGiIq5TCMgOeA" message="../Service%20Descriptors/QueryGDS_SearchAll.wsdl#//@eMessages.0">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_MuG64MuXEeGiIq5TCMgOeA" messagePart="../Service%20Descriptors/QueryGDS_SearchAll.wsdl#//@eMessages.0/@eParts.0"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_MuG64cuXEeGiIq5TCMgOeA" message="../Service%20Descriptors/QueryGDS_SearchAll.wsdl#//@eMessages.1" messageDirection="OUTPUT">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_MuG64suXEeGiIq5TCMgOeA" messagePart="../Service%20Descriptors/QueryGDS_SearchAll.wsdl#//@eMessages.1/@eParts.0"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_MuG648uXEeGiIq5TCMgOeA" message="../Service%20Descriptors/QueryGDS_SearchAll.wsdl#//@eMessages.2" messageDirection="FAULT">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_MuG65MuXEeGiIq5TCMgOeA" messagePart="../Service%20Descriptors/QueryGDS_SearchAll.wsdl#//@eMessages.2/@eParts.0"/>
+        </messageConfiguration>
+        <bindingType xmi:id="_MuG65cuXEeGiIq5TCMgOeA"/>
+      </operationConfiguration>
+      <inboundConfiguration xsi:type="soapbt:HttpTransportConfiguration" xmi:id="_MuIwEMuXEeGiIq5TCMgOeA" endpointURI="/queryGDS/searchAll/"/>
+      <defaultBindingType xmi:id="_MuDQgMuXEeGiIq5TCMgOeA"/>
+    </soapbt:binding.soap.service>
+    <scact:bindingAdjunct xmi:id="_JFRzA8uXEeGiIq5TCMgOeA" bindingName="Virtualization"/>
+    <scact:bindingAdjunct xmi:id="_MuIwEcuXEeGiIq5TCMgOeA" bindingName="SOAPService_Binding1">
+      <sca:property xmi:id="_MuJXIMuXEeGiIq5TCMgOeA" mustSupply="true" name="HttpInboundConnectionConfig" type="xsd:string" scaext:simpleValue="httpConnector"/>
+    </scact:bindingAdjunct>
+  </sca:service>
+  <sca:reference xmi:id="_Jtr20MuXEeGiIq5TCMgOeA" multiplicity="1..1" name="QueryGDS1" wiredByImpl="false" promote="mediation.querygds.invoke/QueryGDS">
+    <sca:interface.wsdl xmi:id="_Jtr20cuXEeGiIq5TCMgOeA" interface="http://www.tibco.com/mediation/QueryGDS#wsdl.interface(QueryGDS)" scaext:wsdlLocation="../Service%20Descriptors/QueryGDS.wsdl"/>
+    <soapbt:binding.soap.reference xmi:id="_hYXjcMuXEeGiIq5TCMgOeA" name="SOAPReference_Binding1" transportBindingType="HTTP" portType="../Service%20Descriptors/QueryGDS.wsdl#//@ePortTypes.0" port="../Service%20Descriptors/QueryGDS.wsdl#//@eServices.0/@ePorts.0">
+      <operationConfiguration xmi:id="_hYjwsMuXEeGiIq5TCMgOeA" operation="../Service%20Descriptors/QueryGDS.wsdl#//@ePortTypes.0/@eOperations.0" action="searchAirline">
+        <messageConfiguration xmi:id="_hYjwscuXEeGiIq5TCMgOeA" message="../Service%20Descriptors/QueryGDS.wsdl#//@eMessages.0">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_hYjwssuXEeGiIq5TCMgOeA" messagePart="../Service%20Descriptors/QueryGDS.wsdl#//@eMessages.0/@eParts.0" encoding="literal"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_hYjws8uXEeGiIq5TCMgOeA" message="../Service%20Descriptors/QueryGDS.wsdl#//@eMessages.1" messageDirection="OUTPUT">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_hYjwtMuXEeGiIq5TCMgOeA" messagePart="../Service%20Descriptors/QueryGDS.wsdl#//@eMessages.1/@eParts.0" encoding="literal"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_hYjwtcuXEeGiIq5TCMgOeA" message="../Service%20Descriptors/QueryGDS.wsdl#//@eMessages.2" messageDirection="FAULT"/>
+        <bindingType xmi:id="_hYjwtsuXEeGiIq5TCMgOeA"/>
+      </operationConfiguration>
+      <operationConfiguration xmi:id="_hYjwt8uXEeGiIq5TCMgOeA" operation="../Service%20Descriptors/QueryGDS.wsdl#//@ePortTypes.0/@eOperations.1" action="searchCar">
+        <messageConfiguration xmi:id="_hYjwuMuXEeGiIq5TCMgOeA" message="../Service%20Descriptors/QueryGDS.wsdl#//@eMessages.3">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_hYjwucuXEeGiIq5TCMgOeA" messagePart="../Service%20Descriptors/QueryGDS.wsdl#//@eMessages.3/@eParts.0" encoding="literal"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_hYjwusuXEeGiIq5TCMgOeA" message="../Service%20Descriptors/QueryGDS.wsdl#//@eMessages.4" messageDirection="OUTPUT">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_hYjwu8uXEeGiIq5TCMgOeA" messagePart="../Service%20Descriptors/QueryGDS.wsdl#//@eMessages.4/@eParts.0" encoding="literal"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_hYjwvMuXEeGiIq5TCMgOeA" message="../Service%20Descriptors/QueryGDS.wsdl#//@eMessages.5" messageDirection="FAULT"/>
+        <bindingType xmi:id="_hYjwvcuXEeGiIq5TCMgOeA"/>
+      </operationConfiguration>
+      <operationConfiguration xmi:id="_hYjwvsuXEeGiIq5TCMgOeA" operation="../Service%20Descriptors/QueryGDS.wsdl#//@ePortTypes.0/@eOperations.2" action="searchHotel">
+        <messageConfiguration xmi:id="_hYjwv8uXEeGiIq5TCMgOeA" message="../Service%20Descriptors/QueryGDS.wsdl#//@eMessages.6">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_hYjwwMuXEeGiIq5TCMgOeA" messagePart="../Service%20Descriptors/QueryGDS.wsdl#//@eMessages.6/@eParts.0" encoding="literal"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_hYjwwcuXEeGiIq5TCMgOeA" message="../Service%20Descriptors/QueryGDS.wsdl#//@eMessages.7" messageDirection="OUTPUT">
+          <messagePartConfigurations xsi:type="soapbt:BodyPartConfiguration" xmi:id="_hYjwwsuXEeGiIq5TCMgOeA" messagePart="../Service%20Descriptors/QueryGDS.wsdl#//@eMessages.7/@eParts.0" encoding="literal"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_hYjww8uXEeGiIq5TCMgOeA" message="../Service%20Descriptors/QueryGDS.wsdl#//@eMessages.8" messageDirection="FAULT"/>
+        <bindingType xmi:id="_hYjwxMuXEeGiIq5TCMgOeA"/>
+      </operationConfiguration>
+      <defaultBindingType xmi:id="_hYYKgMuXEeGiIq5TCMgOeA"/>
+      <outboundConfiguration xsi:type="soapbt:HttpTransportConfiguration" xmi:id="_hZUlsMuXEeGiIq5TCMgOeA"/>
+    </soapbt:binding.soap.reference>
+    <scact:bindingAdjunct xmi:id="_hZT-oMuXEeGiIq5TCMgOeA" bindingName="SOAPReference_Binding1">
+      <sca:property xmi:id="_hZT-ocuXEeGiIq5TCMgOeA" mustSupply="true" name="HttpOutboundConnectionConfig" type="http:HttpClientConfiguration" scaext:simpleValue="HttpClient_querygds.soap.binding"/>
+    </scact:bindingAdjunct>
+  </sca:reference>
+  <sca:component xmi:id="_GIc1gMuXEeGiIq5TCMgOeA" name="mediation.querygds.invoke" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="componentmodel:MediationImplementation" xmi:id="_GIc1gcuXEeGiIq5TCMgOeA" mediationService="../Mediation%20Flows/querygds.invoke.mediation#_J4uKgMuJEeGiIq5TCMgOeA"/>
+    <sca:service xmi:id="_GIeqsMuXEeGiIq5TCMgOeA" name="QueryGDS">
+      <sca:interface.wsdl xmi:id="_GIeqscuXEeGiIq5TCMgOeA" interface="http://com.tibco.amx.it.mediation.sample/QueryGDS/searchAll/definitions#wsdl.interface(QueryGDS)" scaext:wsdlLocation="../Service%20Descriptors/QueryGDS_SearchAll.wsdl"/>
+    </sca:service>
+    <sca:reference xmi:id="_GIfRwMuXEeGiIq5TCMgOeA" name="QueryGDS" wiredByImpl="false">
+      <sca:interface.wsdl xmi:id="_GIfRwcuXEeGiIq5TCMgOeA" interface="http://www.tibco.com/mediation/QueryGDS#wsdl.interface(QueryGDS)" scaext:wsdlLocation="../Service%20Descriptors/QueryGDS.wsdl"/>
+    </sca:reference>
+  </sca:component>
+  <notation:diagram xsi:type="notation:Diagram" xmi:id="_EcCfYMuJEeGiIq5TCMgOeA" type="Composite" element="#/" name="SCA Composite" measurementUnit="Pixel">
+    <children xmi:id="_EcpjYMuJEeGiIq5TCMgOeA" type="2001" element="#_EcAqMcuJEeGiIq5TCMgOeA">
+      <children xmi:id="_EcqKcMuJEeGiIq5TCMgOeA" type="5004"/>
+      <children xmi:id="_EcqKccuJEeGiIq5TCMgOeA" type="7001">
+        <children xmi:id="_JFTBIMuXEeGiIq5TCMgOeA" type="3001" element="#_JFRzAMuXEeGiIq5TCMgOeA">
+          <children xmi:id="_JFToMMuXEeGiIq5TCMgOeA" type="5002"/>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_JFTBIcuXEeGiIq5TCMgOeA" fontName="Segoe UI" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_JFTBIsuXEeGiIq5TCMgOeA" gradStartColor="14150097" gradEndColor="7844710"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_JFTBI8uXEeGiIq5TCMgOeA"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_JFTBJMuXEeGiIq5TCMgOeA"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_EcqKcsuJEeGiIq5TCMgOeA"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_EcqKc8uJEeGiIq5TCMgOeA"/>
+      </children>
+      <children xmi:id="_EcqKdMuJEeGiIq5TCMgOeA" type="7002">
+        <children xmi:id="_JttsAMuXEeGiIq5TCMgOeA" type="3002" element="#_Jtr20MuXEeGiIq5TCMgOeA">
+          <children xmi:id="_Jtu6IMuXEeGiIq5TCMgOeA" type="5003"/>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_JttsAcuXEeGiIq5TCMgOeA" fontName="Segoe UI" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_JttsAsuXEeGiIq5TCMgOeA" gradStartColor="15457762" gradEndColor="11302063"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_JttsA8uXEeGiIq5TCMgOeA"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_JttsBMuXEeGiIq5TCMgOeA"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_EcqKdcuJEeGiIq5TCMgOeA"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_EcqKdsuJEeGiIq5TCMgOeA"/>
+      </children>
+      <children xmi:id="_EcqxgMuJEeGiIq5TCMgOeA" type="7003">
+        <children xmi:id="_GIhuAMuXEeGiIq5TCMgOeA" type="3003" element="#_GIc1gMuXEeGiIq5TCMgOeA">
+          <children xmi:id="_GIiVEMuXEeGiIq5TCMgOeA" type="5001"/>
+          <children xmi:id="_GIiVEcuXEeGiIq5TCMgOeA" type="7004">
+            <children xmi:id="_GInNkMuXEeGiIq5TCMgOeA" type="3004" element="#_GIeqsMuXEeGiIq5TCMgOeA">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_GInNkcuXEeGiIq5TCMgOeA" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_GInNksuXEeGiIq5TCMgOeA"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_GIiVEsuXEeGiIq5TCMgOeA"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_GIiVE8uXEeGiIq5TCMgOeA"/>
+          </children>
+          <children xmi:id="_GIiVFMuXEeGiIq5TCMgOeA" type="7005">
+            <children xmi:id="_GIobsMuXEeGiIq5TCMgOeA" type="3005" element="#_GIfRwMuXEeGiIq5TCMgOeA">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_GIobscuXEeGiIq5TCMgOeA" fontName="Segoe UI" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_GIobssuXEeGiIq5TCMgOeA"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_GIiVFcuXEeGiIq5TCMgOeA"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_GIiVFsuXEeGiIq5TCMgOeA"/>
+          </children>
+          <children xmi:id="_GIi8IMuXEeGiIq5TCMgOeA" type="7006">
+            <children xmi:id="_GIi8JMuXEeGiIq5TCMgOeA" visible="false" type="7600">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_GIi8JcuXEeGiIq5TCMgOeA" fontName="Segoe UI" fontHeight="10"/>
+              <element xsi:nil="true"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_GIi8JsuXEeGiIq5TCMgOeA"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_GIi8IcuXEeGiIq5TCMgOeA"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_GIi8IsuXEeGiIq5TCMgOeA"/>
+            <styles xsi:type="compositenotation:CollapseStyle" xmi:id="_GIi8I8uXEeGiIq5TCMgOeA"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_GIhuAcuXEeGiIq5TCMgOeA" fontName="Segoe UI" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_GIhuAsuXEeGiIq5TCMgOeA" gradStartColor="16642791" gradEndColor="14072216"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_GIhuA8uXEeGiIq5TCMgOeA"/>
+          <styles xsi:type="compositenotation:CustomComponentIconStyle" xmi:id="_GIhuBMuXEeGiIq5TCMgOeA"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_GIhuBcuXEeGiIq5TCMgOeA" x="232" y="12"/>
+        </children>
+        <children xsi:type="notation:Shape" xmi:id="_U4c1oOXvEeGPRuQ_Hg95iQ" type="Note" fontName="Segoe UI" fontHeight="10" description="Query GDS Mediation – Invoke, Generate Reply&#xD;&#xA;&#xD;&#xA;In this sample an incoming request on the searchAll operation &#xD;&#xA;is split into three Invoke tasks - searchAirline, searchCar, and searchHotel." fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+          <children xsi:type="notation:BasicDecorationNode" xmi:id="_U4c1pOXvEeGPRuQ_Hg95iQ" type="DiagramName">
+            <element xsi:nil="true"/>
+          </children>
+          <children xsi:type="notation:BasicDecorationNode" xmi:id="_U4c1peXvEeGPRuQ_Hg95iQ" type="Description">
+            <element xsi:nil="true"/>
+          </children>
+          <styles xsi:type="notation:TextStyle" xmi:id="_U4c1oeXvEeGPRuQ_Hg95iQ"/>
+          <styles xsi:type="notation:LineTypeStyle" xmi:id="_U4c1ouXvEeGPRuQ_Hg95iQ"/>
+          <element xsi:nil="true"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_U4c1o-XvEeGPRuQ_Hg95iQ" x="111" y="147"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_EcqxgcuJEeGiIq5TCMgOeA"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_EcqxgsuJEeGiIq5TCMgOeA"/>
+      </children>
+      <children xmi:id="_Ecqxg8uJEeGiIq5TCMgOeA" type="7007">
+        <children xmi:id="_EcqxhsuJEeGiIq5TCMgOeA" visible="false" type="7600">
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_Ecqxh8uJEeGiIq5TCMgOeA" fontName="Segoe UI" fontHeight="10"/>
+          <element xsi:nil="true"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_EcqxiMuJEeGiIq5TCMgOeA"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_EcqxhMuJEeGiIq5TCMgOeA"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_EcqxhcuJEeGiIq5TCMgOeA"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" xmi:id="_EcpjYcuJEeGiIq5TCMgOeA" fontName="Segoe UI" fontHeight="10"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_EcpjYsuJEeGiIq5TCMgOeA" x="10" y="10" width="819" height="350"/>
+    </children>
+    <styles xsi:type="notation:DiagramStyle" xmi:id="_EcCfYcuJEeGiIq5TCMgOeA"/>
+    <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_EcCfYsuJEeGiIq5TCMgOeA"/>
+    <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_EcCfY8uJEeGiIq5TCMgOeA"/>
+    <edges xmi:id="_JFVdYMuXEeGiIq5TCMgOeA" type="4002" source="#_JFTBIMuXEeGiIq5TCMgOeA" target="#_GInNkMuXEeGiIq5TCMgOeA">
+      <styles xsi:type="notation:ConnectorStyle" xmi:id="_JFVdYcuXEeGiIq5TCMgOeA" routing="Rectilinear"/>
+      <styles xsi:type="notation:FontStyle" xmi:id="_JFVdYsuXEeGiIq5TCMgOeA" fontName="Segoe UI" fontHeight="10"/>
+      <element xsi:nil="true"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_JFVdY8uXEeGiIq5TCMgOeA" points="[-3, 30, -639, -192]$[630, 225, -6, 3]"/>
+    </edges>
+    <edges xmi:id="_Jt6gUMuXEeGiIq5TCMgOeA" type="4003" source="#_JttsAMuXEeGiIq5TCMgOeA" target="#_GIobsMuXEeGiIq5TCMgOeA">
+      <styles xsi:type="notation:ConnectorStyle" xmi:id="_Jt6gUcuXEeGiIq5TCMgOeA" routing="Rectilinear"/>
+      <styles xsi:type="notation:FontStyle" xmi:id="_Jt6gUsuXEeGiIq5TCMgOeA" fontName="Segoe UI" fontHeight="10"/>
+      <element xsi:nil="true"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_Jt6gU8uXEeGiIq5TCMgOeA" points="[17, 35, -811, -187]$[840, 225, 12, 3]"/>
+    </edges>
+  </notation:diagram>
+</sca:composite>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wadl:application xmlns:GreetWsdl="http://www.example.org/GreetWsdl/" xmlns:PATH_QUERY_RrcResource="http://ns.tibco.com/RSBT/PATH_QUERY_RrcResource" xmlns:PATH_QUERY_SCHEMA="http://www.example.org/PATH_QUERY_SCHEMA" xmlns:tibrrc="http://www.tibco.com/RSBT/RRC" xmlns:wadl="http://wadl.dev.java.net/2009/02" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <wadl:grammars>
+    <wadl:include href="GreetWsdlWsdl.xsd" tibrrc:targetNamespace="http://www.example.org/GreetWsdl/"/>
+  </wadl:grammars>
+  <wadl:resources base="GreetWsdl_1_1" tibrrc:mediaType="application/xml">
+    <wadl:resource id="GreetPOST1" path="GreetPOST/{POST_PP_STRING}/{POST_PP_BOOLEAN}/{POST_PP_BYTE}/{POST_PP_SHORT}/{POST_PP_INTEGER}/{POST_PP_LONG}/{POST_PP_FLOAT}/{POST_PP_DOUBLE}">
+      <wadl:param name="POST_PP_STRING" style="template" type="xsd:string"/>
+      <wadl:param name="POST_PP_BOOLEAN" style="template" type="xsd:boolean"/>
+      <wadl:param name="POST_PP_BYTE" style="template" type="xsd:byte"/>
+      <wadl:param name="POST_PP_SHORT" style="template" type="xsd:short"/>
+      <wadl:param name="POST_PP_INTEGER" style="template" type="xsd:int"/>
+      <wadl:param name="POST_PP_LONG" style="template" type="xsd:long"/>
+      <wadl:param name="POST_PP_FLOAT" style="template" type="xsd:float"/>
+      <wadl:param name="POST_PP_DOUBLE" style="template" type="xsd:double"/>
+      <wadl:method id="GreetPOST" name="POST">
+        <wadl:request tibrrc:payload="">
+          <wadl:representation element="GreetWsdl:GreetPOST"/>
+        </wadl:request>
+        <wadl:response status="200" tibrrc:name="output" tibrrc:payload="">
+          <wadl:representation element="GreetWsdl:GreetPOSTResponse"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource id="GreetGET1" path="GreetGET/{GET_PP_STRING}/{GET_PP_BOOLEAN}/{GET_PP_BYTE}/{GET_PP_SHORT}/{GET_PP_INTEGER}/{GET_PP_LONG}/{GET_PP_FLOAT}/{GET_PP_DOUBLE}">
+      <wadl:param name="GET_PP_STRING" style="template" type="xsd:string"/>
+      <wadl:param name="GET_PP_BOOLEAN" style="template" type="xsd:boolean"/>
+      <wadl:param name="GET_PP_BYTE" style="template" type="xsd:byte"/>
+      <wadl:param name="GET_PP_SHORT" style="template" type="xsd:short"/>
+      <wadl:param name="GET_PP_INTEGER" style="template" type="xsd:int"/>
+      <wadl:param name="GET_PP_LONG" style="template" type="xsd:long"/>
+      <wadl:param name="GET_PP_FLOAT" style="template" type="xsd:float"/>
+      <wadl:param name="GET_PP_DOUBLE" style="template" type="xsd:double"/>
+      <wadl:method id="GreetGET" name="GET">
+        <wadl:request tibrrc:payload=""/>
+        <wadl:response status="200" tibrrc:name="output" tibrrc:payload="">
+          <wadl:representation element="GreetWsdl:GreetGETResponse"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource id="GreetPUT1" path="GreetPUT/{PUT_PP_STRING}/{PUT_PP_BOOLEAN}/{PUT_PP_BYTE}/{PUT_PP_SHORT}/{PUT_PP_INTEGER}/{PUT_PP_LONG}/{PUT_PP_FLOAT}/{PUT_PP_DOUBLE}">
+      <wadl:param name="PUT_PP_STRING" style="template" type="xsd:string"/>
+      <wadl:param name="PUT_PP_BOOLEAN" style="template" type="xsd:boolean"/>
+      <wadl:param name="PUT_PP_BYTE" style="template" type="xsd:byte"/>
+      <wadl:param name="PUT_PP_SHORT" style="template" type="xsd:short"/>
+      <wadl:param name="PUT_PP_INTEGER" style="template" type="xsd:int"/>
+      <wadl:param name="PUT_PP_LONG" style="template" type="xsd:long"/>
+      <wadl:param name="PUT_PP_FLOAT" style="template" type="xsd:float"/>
+      <wadl:param name="PUT_PP_DOUBLE" style="template" type="xsd:double"/>
+      <wadl:method id="GreetPUT" name="PUT">
+        <wadl:request tibrrc:payload="">
+          <wadl:representation element="GreetWsdl:GreetPUT"/>
+        </wadl:request>
+        <wadl:response status="200" tibrrc:name="output" tibrrc:payload="">
+          <wadl:representation element="GreetWsdl:GreetPUTResponse"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource id="GreetDELETE1" path="GreetDELETE/{DELETE_PP_STRING}/{DELETE_PP_BOOLEAN}/{DELETE_PP_BYTE}/{DELETE_PP_SHORT}/{DELETE_PP_INTEGER}/{DELETE_PP_LONG}/{DELETE_PP_FLOAT}/{DELETE_PP_DOUBLE}">
+      <wadl:param name="DELETE_PP_STRING" style="template" type="xsd:string"/>
+      <wadl:param name="DELETE_PP_BOOLEAN" style="template" type="xsd:boolean"/>
+      <wadl:param name="DELETE_PP_BYTE" style="template" type="xsd:byte"/>
+      <wadl:param name="DELETE_PP_SHORT" style="template" type="xsd:short"/>
+      <wadl:param name="DELETE_PP_INTEGER" style="template" type="xsd:int"/>
+      <wadl:param name="DELETE_PP_LONG" style="template" type="xsd:long"/>
+      <wadl:param name="DELETE_PP_FLOAT" style="template" type="xsd:float"/>
+      <wadl:param name="DELETE_PP_DOUBLE" style="template" type="xsd:double"/>
+      <wadl:method id="GreetDELETE" name="DELETE">
+        <wadl:request tibrrc:payload=""/>
+        <wadl:response status="200" tibrrc:name="output" tibrrc:payload="">
+          <wadl:representation element="GreetWsdl:GreetDELETEResponse"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+  </wadl:resources>
+</wadl:application>

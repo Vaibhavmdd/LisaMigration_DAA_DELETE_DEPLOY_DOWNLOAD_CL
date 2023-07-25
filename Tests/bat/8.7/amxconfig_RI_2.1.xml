@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+
+	<Environment xsi:type="amxdata:Environment" 
+		name="[[env.name]]" 
+		description="QA Environment" 
+		contact="TIBCO">
+		
+		<Node xsi:type="amxdata:Node" name="[[env.node1.name]]" >
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="BAT8.7_oracle11gJDBC2_XA_Bad" 		resourceTemplateName="BAT8.7_oracle11gJDBC2_XA_Bad"/>
+		</Node>	
+
+    </Environment>
+	
+
+
+	<ResourceTemplate
+        xsi:type="amxdata:JdbcResourceTemplate"
+        name="BAT8.7_oracle11gJDBC2_XA_Bad"
+        description="jdbc2.1 xa"
+		disableValidateConnectionOnInit="false" 
+        maxConnections="10">
+        <XAConnection
+            xsi:type="amxdata:XAConnection"
+            dataSourceClass="oracle.jdbc.xa.client.OracleXADataSource"/>
+        <connection-property xsi:type="amxdata:Property" name="URL" value="jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=10.69.76.108)(PORT=1521)))(CONNECT_DATA=(SID=ORCL)(SERVER=dedicated)))"/>
+        <InlineCredentials
+            username="amxuser1wrong"
+            password="amxuser1"/>
+    </ResourceTemplate>
+
+	  
+</amxdata_base:Enterprise>
+
+
+

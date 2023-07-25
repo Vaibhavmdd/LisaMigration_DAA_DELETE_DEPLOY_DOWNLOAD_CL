@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:compositenotation="http://www.tibco.com/models/compositenotation" xmlns:hibernate="http://xsd.tns.tibco.com/amf/models/sharedresource/hibernate" xmlns:java="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/java" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.1/notation" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmlns:webapp="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/webapp" xmi:id="_na-ewuL5Ed6fQvxsm6VZxQ" targetNamespace="http://www.example.com/webapp_hibernate_final" name="webapp_hibernate_final" compositeext:version="1.0.0.qualifier" compositeext:formatVersion="2">
+  <sca:property xmi:id="_9uiyAOL6Ed6fQvxsm6VZxQ" name="hibernateSessionFactory" type="hibernate:HibernateSessionFactory" scaext:simpleValue="hibernate"/>
+  <sca:property xmi:id="_KtIvYOL7Ed6fQvxsm6VZxQ" name="zipCode" type="XMLSchema:string" scaext:simpleValue="94089"/>
+  <sca:component xmi:id="_oqtBQOL5Ed6fQvxsm6VZxQ" name="Webapp1" compositeext:version="1.0.0.qualifier">
+    <webapp:implementation.web xmi:id="_oqtBQeL5Ed6fQvxsm6VZxQ" web-uri="web.xml"/>
+    <sca:reference xmi:id="_usquQOL6Ed6fQvxsm6VZxQ" name="AddWeatherReportPT">
+      <sca:interface.wsdl xmi:id="_usquQeL6Ed6fQvxsm6VZxQ" interface="http://www.example.org/WeatherService/#wsdl.interface(AddWeatherReportPT)" scaext:wsdlLocation="../Service%20Descriptors/WeatherService.wsdl"/>
+    </sca:reference>
+    <sca:property xmi:id="_NFY1oOL6Ed6fQvxsm6VZxQ" mustSupply="true" name="contextRoot" type="XMLSchema:string" scaext:simpleValue="Webapp1"/>
+    <sca:property xmi:id="_NVVWIOL6Ed6fQvxsm6VZxQ" mustSupply="true" name="defaultConnector" type="XMLSchema:string" scaext:simpleValue="httpConnector2"/>
+  </sca:component>
+  <sca:component xmi:id="_o8lbcOL5Ed6fQvxsm6VZxQ" name="Java1" compositeext:version="1.0.0.qualifier">
+    <sca:implementation.java xmi:id="_o8lbceL5Ed6fQvxsm6VZxQ" class="com.sample.webapp_hibernate_final_java.Java1">
+      <scaext:packageVersionRange xmi:id="_o8lbcuL5Ed6fQvxsm6VZxQ" lower="1.0.0" upper="2.0.0"/>
+      <java:featureDependency xmi:id="_Mh_iwOL8Ed6fQvxsm6VZxQ" name="webapp_hibernate_final_webapp_hibernate_final">
+        <range xmi:id="_Mh_iweL8Ed6fQvxsm6VZxQ" lower="1.0.0" upper="2.0.0"/>
+      </java:featureDependency>
+    </sca:implementation.java>
+    <sca:service xmi:id="_rxNpwOL6Ed6fQvxsm6VZxQ" name="AddWeatherReportPT">
+      <sca:interface.wsdl xmi:id="_rxNpweL6Ed6fQvxsm6VZxQ" interface="http://www.example.org/WeatherService/#wsdl.interface(AddWeatherReportPT)" scaext:wsdlLocation="../Service%20Descriptors/WeatherService.wsdl"/>
+    </sca:service>
+    <sca:property xmi:id="_O-PNoOL6Ed6fQvxsm6VZxQ" mustSupply="true" name="hibernateSessionFactory" type="hibernate:HibernateSessionFactory" scaext:simpleValue="" source="$hibernateSessionFactory"/>
+    <sca:property xmi:id="_POLuIOL6Ed6fQvxsm6VZxQ" mustSupply="true" name="zipCode" type="XMLSchema:string" scaext:simpleValue="" source="$zipCode"/>
+  </sca:component>
+  <sca:wire xmi:id="_0biVkOL6Ed6fQvxsm6VZxQ" source="Webapp1/AddWeatherReportPT" target="Java1/AddWeatherReportPT"/>
+  <notation:diagram xsi:type="notation:Diagram" xmi:id="_na-exuL5Ed6fQvxsm6VZxQ" type="Composite" element="#/" name="SCA Composite" measurementUnit="Pixel">
+    <children xmi:id="_nbk7sOL5Ed6fQvxsm6VZxQ" type="2001" element="#_na-ewuL5Ed6fQvxsm6VZxQ">
+      <children xmi:id="_nbk7s-L5Ed6fQvxsm6VZxQ" type="5004"/>
+      <children xmi:id="_nbk7tOL5Ed6fQvxsm6VZxQ" type="7001">
+        <styles xsi:type="notation:SortingStyle" xmi:id="_nbk7teL5Ed6fQvxsm6VZxQ"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_nbk7tuL5Ed6fQvxsm6VZxQ"/>
+      </children>
+      <children xmi:id="_nbk7t-L5Ed6fQvxsm6VZxQ" type="7002">
+        <styles xsi:type="notation:SortingStyle" xmi:id="_nbk7uOL5Ed6fQvxsm6VZxQ"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_nbk7ueL5Ed6fQvxsm6VZxQ"/>
+      </children>
+      <children xmi:id="_nbk7uuL5Ed6fQvxsm6VZxQ" type="7003">
+        <children xmi:id="_oqtBQ-L5Ed6fQvxsm6VZxQ" type="3003" element="#_oqtBQOL5Ed6fQvxsm6VZxQ">
+          <children xmi:id="_oqtBSeL5Ed6fQvxsm6VZxQ" type="5001"/>
+          <children xmi:id="_oqtBSuL5Ed6fQvxsm6VZxQ" type="7004">
+            <styles xsi:type="notation:SortingStyle" xmi:id="_oqtBS-L5Ed6fQvxsm6VZxQ"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_oqtBTOL5Ed6fQvxsm6VZxQ"/>
+          </children>
+          <children xmi:id="_oqtBTeL5Ed6fQvxsm6VZxQ" type="7005">
+            <children xmi:id="_us0fQOL6Ed6fQvxsm6VZxQ" type="3005" element="#_usquQOL6Ed6fQvxsm6VZxQ">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_us0fQeL6Ed6fQvxsm6VZxQ" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_us0fQuL6Ed6fQvxsm6VZxQ"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_oqtBTuL5Ed6fQvxsm6VZxQ"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_oqtBT-L5Ed6fQvxsm6VZxQ"/>
+          </children>
+          <children xmi:id="_oqtBUOL5Ed6fQvxsm6VZxQ" type="7006">
+            <children xmi:id="_oqtBVOL5Ed6fQvxsm6VZxQ" visible="false" type="7600">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_oqtBVeL5Ed6fQvxsm6VZxQ" fontHeight="10"/>
+              <element xsi:nil="true"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_oqtBVuL5Ed6fQvxsm6VZxQ"/>
+            </children>
+            <children xmi:id="_NFimoOL6Ed6fQvxsm6VZxQ" type="3006" element="#_NFY1oOL6Ed6fQvxsm6VZxQ">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_NFimoeL6Ed6fQvxsm6VZxQ" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_NFimouL6Ed6fQvxsm6VZxQ"/>
+            </children>
+            <children xmi:id="_NVfHIOL6Ed6fQvxsm6VZxQ" type="3006" element="#_NVVWIOL6Ed6fQvxsm6VZxQ">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_NVfHIeL6Ed6fQvxsm6VZxQ" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_NVfHIuL6Ed6fQvxsm6VZxQ"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_oqtBUeL5Ed6fQvxsm6VZxQ"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_oqtBUuL5Ed6fQvxsm6VZxQ"/>
+            <styles xsi:type="compositenotation:CollapseStyle" xmi:id="_oqtBU-L5Ed6fQvxsm6VZxQ"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_oqtBROL5Ed6fQvxsm6VZxQ" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_oqtBReL5Ed6fQvxsm6VZxQ" gradStartColor="16642791" gradEndColor="14072216"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_oqtBRuL5Ed6fQvxsm6VZxQ"/>
+          <styles xsi:type="compositenotation:CustomComponentIconStyle" xmi:id="_oqtBR-L5Ed6fQvxsm6VZxQ"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_oqtBSOL5Ed6fQvxsm6VZxQ" x="28" y="123"/>
+        </children>
+        <children xmi:id="_o8lbc-L5Ed6fQvxsm6VZxQ" type="3003" element="#_o8lbcOL5Ed6fQvxsm6VZxQ">
+          <children xmi:id="_o8lbeeL5Ed6fQvxsm6VZxQ" type="5001"/>
+          <children xmi:id="_o8lbeuL5Ed6fQvxsm6VZxQ" type="7004">
+            <children xmi:id="_rxgksOL6Ed6fQvxsm6VZxQ" type="3004" element="#_rxNpwOL6Ed6fQvxsm6VZxQ">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_rxgkseL6Ed6fQvxsm6VZxQ" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_rxgksuL6Ed6fQvxsm6VZxQ"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_o8lbe-L5Ed6fQvxsm6VZxQ"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_o8lbfOL5Ed6fQvxsm6VZxQ"/>
+          </children>
+          <children xmi:id="_o8lbfeL5Ed6fQvxsm6VZxQ" type="7005">
+            <styles xsi:type="notation:SortingStyle" xmi:id="_o8lbfuL5Ed6fQvxsm6VZxQ"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_o8lbf-L5Ed6fQvxsm6VZxQ"/>
+          </children>
+          <children xmi:id="_o8lbgOL5Ed6fQvxsm6VZxQ" type="7006">
+            <children xmi:id="_o8lbhOL5Ed6fQvxsm6VZxQ" visible="false" type="7600">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_o8lbheL5Ed6fQvxsm6VZxQ" fontHeight="10"/>
+              <element xsi:nil="true"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_o8lbhuL5Ed6fQvxsm6VZxQ"/>
+            </children>
+            <children xmi:id="_O-iIkOL6Ed6fQvxsm6VZxQ" type="3006" element="#_O-PNoOL6Ed6fQvxsm6VZxQ">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_O-iIkeL6Ed6fQvxsm6VZxQ" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_O-iIkuL6Ed6fQvxsm6VZxQ"/>
+            </children>
+            <children xmi:id="_POepEOL6Ed6fQvxsm6VZxQ" type="3006" element="#_POLuIOL6Ed6fQvxsm6VZxQ">
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_POepEeL6Ed6fQvxsm6VZxQ" fontHeight="10"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_POepEuL6Ed6fQvxsm6VZxQ"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle" xmi:id="_o8lbgeL5Ed6fQvxsm6VZxQ"/>
+            <styles xsi:type="notation:FilteringStyle" xmi:id="_o8lbguL5Ed6fQvxsm6VZxQ"/>
+            <styles xsi:type="compositenotation:CollapseStyle" xmi:id="_o8lbg-L5Ed6fQvxsm6VZxQ"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_o8lbdOL5Ed6fQvxsm6VZxQ" fontHeight="10"/>
+          <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_o8lbdeL5Ed6fQvxsm6VZxQ" gradStartColor="16642791" gradEndColor="14072216"/>
+          <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_o8lbduL5Ed6fQvxsm6VZxQ"/>
+          <styles xsi:type="compositenotation:CustomComponentIconStyle" xmi:id="_o8lbd-L5Ed6fQvxsm6VZxQ"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_o8lbeOL5Ed6fQvxsm6VZxQ" x="268" y="111"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_nbk7u-L5Ed6fQvxsm6VZxQ"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_nbk7vOL5Ed6fQvxsm6VZxQ"/>
+      </children>
+      <children xmi:id="_nbk7veL5Ed6fQvxsm6VZxQ" type="7007">
+        <children xmi:id="_nbk7wOL5Ed6fQvxsm6VZxQ" visible="false" type="7600">
+          <styles xsi:type="notation:ShapeStyle" xmi:id="_nbk7weL5Ed6fQvxsm6VZxQ" fontHeight="10"/>
+          <element xsi:nil="true"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_nbk7wuL5Ed6fQvxsm6VZxQ"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle" xmi:id="_nbk7vuL5Ed6fQvxsm6VZxQ"/>
+        <styles xsi:type="notation:FilteringStyle" xmi:id="_nbk7v-L5Ed6fQvxsm6VZxQ"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" xmi:id="_nbk7seL5Ed6fQvxsm6VZxQ" fontHeight="10"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_nbk7suL5Ed6fQvxsm6VZxQ" x="10" y="10" width="665" height="399"/>
+    </children>
+    <styles xsi:type="notation:DiagramStyle" xmi:id="_na-ex-L5Ed6fQvxsm6VZxQ"/>
+    <styles xsi:type="compositenotation:CustomImageStyle" xmi:id="_na-eyOL5Ed6fQvxsm6VZxQ"/>
+    <styles xsi:type="compositenotation:ShapeGradientStyle" xmi:id="_na-eyeL5Ed6fQvxsm6VZxQ"/>
+    <edges xmi:id="_0bsGkOL6Ed6fQvxsm6VZxQ" type="4001" element="#_0biVkOL6Ed6fQvxsm6VZxQ" source="#_us0fQOL6Ed6fQvxsm6VZxQ" target="#_rxgksOL6Ed6fQvxsm6VZxQ">
+      <styles xsi:type="notation:ConnectorStyle" xmi:id="_0bsGkeL6Ed6fQvxsm6VZxQ" routing="Rectilinear"/>
+      <styles xsi:type="notation:FontStyle" xmi:id="_0bsGkuL6Ed6fQvxsm6VZxQ" fontHeight="10"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_0bsGk-L6Ed6fQvxsm6VZxQ" points="[12, 3, -120, 15]$[126, -9, -6, 3]"/>
+    </edges>
+  </notation:diagram>
+</sca:composite>

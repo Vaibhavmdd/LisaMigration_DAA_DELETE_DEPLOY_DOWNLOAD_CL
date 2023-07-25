@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created by TIBCO WSDL-->
+<wsdl:definitions xmlns:ns0="http://ns.tibco.com/Hello1/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.example.com/HelloWorld1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="generatedWSDL" targetNamespace="http://www.example.com/HelloWorld1">
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ns.tibco.com/Hello1/">
+            <xs:element name="HelloWorldRequest" type="xs:string"/>
+            <xs:element name="HelloWorldResponse" type="xs:string"/>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="OperationWorldRequest">
+        <wsdl:part element="ns0:HelloWorldRequest" name="name"/>
+    </wsdl:message>
+    <wsdl:message name="OperationWorldResponse">
+        <wsdl:part element="ns0:HelloWorldResponse" name="greeting"/>
+    </wsdl:message>
+    <wsdl:portType name="HelloWorld1PT">
+        <wsdl:operation name="sayHelloWorld">
+            <wsdl:input message="tns:OperationWorldRequest"/>
+            <wsdl:output message="tns:OperationWorldResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

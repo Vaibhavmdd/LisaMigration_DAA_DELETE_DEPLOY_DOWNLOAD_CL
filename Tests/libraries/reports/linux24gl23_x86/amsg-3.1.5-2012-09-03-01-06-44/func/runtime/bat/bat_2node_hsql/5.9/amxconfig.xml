@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<amxdata_base:Enterprise
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+	xmlns:amxdata_binding="http://tibco.com/amxadministrator/command/line/types_binding"
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd http://tibco.com/amxadministrator/command/line/types_binding ../schemas/bindingdata.xsd">
+	<Environment 
+		xsi:type="amxdata:Environment" 
+		name="QAEnvironment_amxrel2qa1.na.tibco.com"
+		description="integration environment" 
+		contact="TIBCO">
+		
+		<Node 
+			xsi:type="amxdata:Node" 
+			name="QANode1">
+			<SVar 
+				xsi:type="amxdata_base:SubstitutionVariable" 
+				name="NodeName"
+				type="String" 
+				value="QANode1" 
+				description="" />
+		</Node>
+		<Node 
+			xsi:type="amxdata:Node" 
+			name="QANode2">
+			<SVar 
+				xsi:type="amxdata_base:SubstitutionVariable" 
+				name="NodeName"
+				type="String" 
+				value="QANode2" 
+				description="" />
+		</Node>
+
+		<Application 
+			xsi:type="amxdata:Application" 
+			name="bat5.9-app1"
+			contact="AMX30 TAP QA" 
+			description="v1" 
+			importBindings="true">
+			<Component 
+				xsi:type="amxdata:Component" 
+				name="java2">
+				<Node 
+					name="QANode2" 
+					environmentName="QAEnvironment_amxrel2qa1.na.tibco.com" />
+			</Component>
+			<Component 
+				xsi:type="amxdata:Component" 
+				name="java1">
+				<Node 
+					name="QANode2" 
+					environmentName="QAEnvironment_amxrel2qa1.na.tibco.com" />
+			</Component>
+			<SVar 
+				xsi:type="amxdata_base:SubstitutionVariable" 
+				name="time"
+				type="Integer" 
+				value="30" 
+				description="svar" />
+			<SVar 
+				xsi:type="amxdata_base:SubstitutionVariable" 
+				name="NodeName"
+				type="String" 
+				value="%%NodeName%%" 
+				description="svar" />
+			<PromotedService 
+				xsi:type="amxdata_base:Service_base"
+				name="bat.case5.91">
+				<Binding 
+					xsi:type="amxdata_base:Binding_base" 
+					name="SOAPServiceBinding1">
+					<Node 
+						name="QANode1" 
+						environmentName="QAEnvironment_amxrel2qa1.na.tibco.com" />
+					<Property 
+						xsi:type="amxdata:Property" 
+						name="HttpInboundConnectionConfig"
+						value="httpConnector1" />
+				</Binding>
+			</PromotedService>
+			<PromotedReference 
+				xsi:type="amxdata_base:Reference_base"
+				name="bat.case5.91">
+				<Wire 
+					xsi:type="amxdata:Wire" 
+					clientResourceInstanceJNDIName="AutoHttpClientTwo">
+					<ServiceBinding 
+						xsi:type="amxdata_reference:Binding_reference"
+						bindingName="Virtualization" 
+						serviceName="bat.case5.91"
+						ownerName="bat5.9-app2" 
+						ownerType="Application" />
+				</Wire>
+			</PromotedReference>
+			<ApplicationTemplate
+				xsi:type="amxdata_reference:ApplicationTemplate_reference" 
+				name="com.tibco.adminqa.bat.case5.9" />
+		</Application>
+
+		<Application 
+			xsi:type="amxdata:Application" 
+			name="bat5.9-app2"
+			contact="AMX30 TAP QA" 
+			description="v1" 
+			importBindings="true">
+			<Component 
+				xsi:type="amxdata:Component" 
+				name="java1">
+				<Node 
+					name="QANode2" 
+					environmentName="QAEnvironment_amxrel2qa1.na.tibco.com" />
+			</Component>
+			<SVar 
+				xsi:type="amxdata_base:SubstitutionVariable" 
+				name="time"
+				type="Integer" 
+				value="40" 
+				description="svar" />
+			<SVar 
+				xsi:type="amxdata_base:SubstitutionVariable" 
+				name="NodeName"
+				type="String" 
+				value="%%NodeName%%" 
+				description="svar" />
+			<PromotedService 
+				xsi:type="amxdata_base:Service_base"
+				name="bat.case5.91">
+				<Binding 
+					xsi:type="amxdata_base:Binding_base" 
+					name="SOAPServiceBinding1">
+					<Node 
+						name="QANode1" 
+						environmentName="QAEnvironment_amxrel2qa1.na.tibco.com" />
+					<Property 
+						xsi:type="amxdata:Property" 
+						name="HttpInboundConnectionConfig"
+						value="httpConnector1" />
+				</Binding>
+			</PromotedService>
+			<ApplicationTemplate
+				xsi:type="amxdata_reference:ApplicationTemplate_reference" 
+				name="com.tibco.adminqa.bat.case5.9.app2" />
+		</Application>
+	</Environment>
+
+	<DAA 
+		xsi:type="amxdata:DAA" 
+		description="appupgrade case DAA"
+		location="./project/com.tibco.adminqa.bat.case5.9/Deployment Artifacts/com.tibco.adminqa.bat.case5.9.daa"
+		importResourceTemplates="false" 
+		importFeatures="true" />
+	<DAA 
+		xsi:type="amxdata:DAA" 
+		description="appupgrade case DAA"
+		location="./project/com.tibco.adminqa.bat.case5.9/Deployment Artifacts/com.tibco.adminqa.bat.case5.9.app2.daa"
+		importResourceTemplates="false" 
+		importFeatures="true" />
+
+</amxdata_base:Enterprise>

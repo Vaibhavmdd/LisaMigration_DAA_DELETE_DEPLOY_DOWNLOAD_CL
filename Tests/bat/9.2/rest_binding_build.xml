@@ -1,0 +1,47 @@
+<project name="rest_binding_build" default="all">
+
+   <import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml" />
+	<target name="add">
+		<AMXAdminTask
+			remote="true"
+			propsFile="${remotePropsFile}"
+			action="add"
+			dataFile="${amxConfigFile}"
+			objectSelector="Environment//Application//Binding"
+			overwrite="false"
+			merge="false"
+			createIfNotExists="true"
+			force="true"
+			failOnError="false"/>
+	</target>
+	
+	<!-- update Service/Reference Binding as per dataFile -->
+	<target name="update">
+		<AMXAdminTask
+			remote="true"
+			propsFile="${remotePropsFile}"
+			action="edit"
+			dataFile="${amxConfigFile}"
+			objectSelector="Environment//Application//Binding"
+			overwrite="false"
+			merge="false"
+			createIfNotExists="true"
+			failOnError="false"/>
+	</target>
+	
+	<!-- delete Service/Reference Binding as per dataFile -->
+	<target name="delete">
+		<AMXAdminTask
+			remote="true"
+			propsFile="${remotePropsFile}"
+			action="delete"
+			dataFile="${amxConfigFile}"
+			objectSelector="Environment//Application//Binding"
+			overwrite="false"
+			merge="false"
+			createIfNotExists="true"
+			force="true"
+			failOnError="false"/>
+	</target>
+	
+</project>

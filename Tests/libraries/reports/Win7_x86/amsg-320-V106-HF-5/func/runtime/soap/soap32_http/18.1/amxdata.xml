@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise 
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types" 
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base" 
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference" 
+	xmlns:amxdata_jmsssr="http://tibco.com/amxadministrator/command/line/types_jmssr" 
+	xmlns:amxdata_jmssr_base="http://tibco.com/amxadministrator/command/line/types_jmssr_base"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd
+	http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd 
+	http://tibco.com/amxadministrator/command/line/types_reference ../schemas/amxdata_reference.xsd 
+	http://tibco.com/amxadministrator/command/line/types_jmssr ../schemas/jmssr.xsd 
+	http://tibco.com/amxadministrator/command/line/types_jmssr_base ../schemas/jmssr_base.xsd">
+
+    <Environment xsi:type="amxdata:Environment" 
+		name="QAEnvironment_jpandya-dt" 
+		description="test environment" 
+		contact="TIBCO">
+		
+		<Node xsi:type="amxdata:Node"
+			name="QANode1">
+		<ResourceInstance xsi:type="amxdata:ResourceInstance" name="httpConnector" resourceTemplateName="httpConnector"/>	
+		</Node>						
+		
+		<Application xsi:type="amxdata:Application" 
+			name="EmptySOAPAction" 
+			contact="TIBCO Inc." 
+			description="SOAP~JMS --> Java" importResourceTemplates="false">
+				<Component xsi:type="amxdata:Component" name="Java1">
+	    			<Node name="QANode1" environmentName="QAEnvironment_jpandya-dt" />	    	              
+	            </Component>
+				<PromotedService xsi:type="amxdata_base:Service_base" name="GreetWSDL">
+					<Binding xsi:type="amxdata_base:Binding_base" name="SOAPService_Binding1">
+					<Node xsi:type="amxdata_reference:Node_reference" name="QANode1" environmentName="QAEnvironment_jpandya-dt"/>
+			<Property  xsi:type="amxdata:Property" name="HttpInboundConnectionConfig"  value="httpConnector"/></Binding> </PromotedService>
+        		<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference"			
+				name="EmptySOAPAction"/>					
+        </Application>		
+
+    </Environment>
+	<ResourceTemplate xsi:type="amxdata:HttpConnectorResourceTemplate"
+		name="httpConnector"
+		host="0.0.0.0"
+		port="9898"
+		headerBufferSize="4096"
+		requestBufferSize="8192"
+		responseBufferSize="24576"
+		maxIdleTime="200000" 
+		lowResourceMaxIdleTime="-1"
+		description="Http Connector"/>
+		<DAA xsi:type="amxdata:DAA" 
+		description="SOAP~JMS --> Java" 
+		location="EmptySOAPAction/Deployment Artifacts/EmptySOAPAction.daa" 
+		importResourceTemplates="false"/>
+</amxdata_base:Enterprise>

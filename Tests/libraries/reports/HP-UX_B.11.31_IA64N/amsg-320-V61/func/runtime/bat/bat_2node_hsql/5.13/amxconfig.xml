@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<amxdata_base:Enterprise
+	xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types"
+	xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base"
+	xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types_base ../schemas/amxdata_base.xsd http://tibco.com/amxadministrator/command/line/types ../schemas/amxdata.xsd">
+
+	<Environment xsi:type="amxdata:Environment" 
+		name="QAEnvironment_hpita17" 
+		description="QA Environment" 
+		contact="TIBCO">
+		
+		<Node xsi:type="amxdata:Node" name="QANode1" >
+  			<Feature xsi:type="amxdata_base:FeatureID" componentID="com.tibco.qa.oracle11g.driver.customfeature" version="1.0.0" />
+			<!--Feature xsi:type="amxdata_base:FeatureID" componentID="com.tibco.tpcl.org.postgresql.feature" version="8.4.1" /-->
+		 
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="BAT_5_13_jdbc_1" resourceTemplateName="BAT_5_13_jdbc_1"/>
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="BAT_5_13_jdbc_2" resourceTemplateName="BAT_5_13_jdbc_2"/>
+			<ResourceInstance xsi:type="amxdata:ResourceInstance" name="BAT_5_13_jdbc_3" resourceTemplateName="BAT_5_13_jdbc_3"/>
+		</Node>
+		
+		<Application xsi:type="amxdata:Application" name="BAT_5_13" contact="TIBCO Inc." description="One Way Txn">
+            <Component xsi:type="amxdata:Component" name="Java1">
+				        <Node name="QANode1" environmentName="QAEnvironment_hpita17"/>
+			</Component>
+			<Component xsi:type="amxdata:Component" name="Spring1">
+				        <Node name="QANode1" environmentName="QAEnvironment_hpita17"/>
+			</Component>
+			<Component xsi:type="amxdata:Component" name="Java2">
+						<Node name="QANode1" environmentName="QAEnvironment_hpita17"/>
+			</Component>
+			<PromotedService xsi:type="amxdata_base:Service_base" name="HelloPT1">
+				<Binding xsi:type="amxdata:Binding" name="SOAPService_Binding1">
+		            <Node name="QANode1" environmentName="QAEnvironment_hpita17" />                
+					<Property  xsi:type="amxdata:Property" name="HttpInboundConnectionConfig"  value="httpConnector2"/>
+				</Binding>
+			</PromotedService>
+			<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="BAT_5_13" />
+        </Application>
+		
+		 <!--Application xsi:type="amxdata:Application" name="BAT_5_13_DbReader" contact="TIBCO Inc." description="DbReder">
+            <Component xsi:type="amxdata:Component" name="Java1">
+				        <Node name="QANode1" environmentName="QAEnvironment_hpita17"/>
+			</Component>
+			<PromotedService xsi:type="amxdata_base:Service_base" name="EchoString">
+				<Binding xsi:type="amxdata:Binding" name="SOAPService_Binding1">
+		            <Node name="QANode1" environmentName="QAEnvironment_hpita17" />                
+					<Property  xsi:type="amxdata:Property" name="HttpInboundConnectionConfig"  value="httpConnector2"/>
+				</Binding>
+			</PromotedService>
+			<ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="dbReader" />
+        </Application-->
+		
+		
+    </Environment>
+	
+	<!-- ORACLE Setup -->
+	
+	<ResourceTemplate
+        xsi:type="amxdata:JdbcResourceTemplate"
+        name="BAT_5_13_jdbc_1"
+        description="jdbc1 xa"
+        maxConnections="10">
+        <XAConnection
+            xsi:type="amxdata:XAConnection"
+            dataSourceClass="oracle.jdbc.xa.client.OracleXADataSource"/>
+        <connection-property xsi:type="amxdata:Property" name="URL" value="jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=AMX-BACKEND-7)(PORT=1521)))(CONNECT_DATA=(SID=qaorcl)(SERVER=dedicated)))"/>
+        <InlineCredentials
+            username="amxuser1"
+            password="amxuser1"/>
+    </ResourceTemplate>
+	
+	<ResourceTemplate
+        xsi:type="amxdata:JdbcResourceTemplate"
+        name="BAT_5_13_jdbc_2"
+        description="jdbc2 xa"
+        maxConnections="10">
+        <XAConnection
+            xsi:type="amxdata:XAConnection"
+            dataSourceClass="oracle.jdbc.xa.client.OracleXADataSource"/>
+        <connection-property xsi:type="amxdata:Property" name="URL" value="jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=AMX-BACKEND-7)(PORT=1521)))(CONNECT_DATA=(SID=qaorcl)(SERVER=dedicated)))"/>
+        <InlineCredentials
+            username="amxuser2"
+            password="amxuser2"/>
+    </ResourceTemplate>
+	
+	<ResourceTemplate
+        xsi:type="amxdata:JdbcResourceTemplate"
+        name="BAT_5_13_jdbc_3"
+        description="jdbc3 xa"
+        maxConnections="10">
+        <XAConnection
+            xsi:type="amxdata:XAConnection"
+            dataSourceClass="oracle.jdbc.xa.client.OracleXADataSource"/>
+        <connection-property xsi:type="amxdata:Property" name="URL" value="jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=AMX-BACKEND-7)(PORT=1521)))(CONNECT_DATA=(SID=qaorcl)(SERVER=dedicated)))"/>
+        <InlineCredentials
+            username="amxuser3"
+            password="amxuser3"/>
+    </ResourceTemplate>
+	
+	
+    <DAA xsi:type="amxdata:DAA" 
+		description="Oracle 11g Driver Feature" 
+		location="./com.tibco.qa.oracle11g.driver.feature/com.tibco.qa.oracle11g.driver.daa" 
+		importResourceTemplates="false"/>
+	
+	
+	<!-- Postgres setup
+	<ResourceTemplate
+					        xsi:type="amxdata:JdbcResourceTemplate"
+					        name="BAT_5_13_jdbc_1"
+					        description="jdbc xa"
+					        maxConnections="8888">
+					        <XAConnection
+					            xsi:type="amxdata:XAConnection"
+					            dataSourceClass="org.postgresql.xa.PGXADataSource"/>
+		    			        <connection-property xsi:type="amxdata:Property" name="portNumber" value="5432"/>
+					        <connection-property xsi:type="amxdata:Property" name="serverName" value="localhost"/>
+					        <connection-property xsi:type="amxdata:Property" name="databaseName" value="test_1"/>
+					        <InlineCredentials username="postgres" password="T1b1nmQE"/>
+	    </ResourceTemplate>
+	<ResourceTemplate
+					        xsi:type="amxdata:JdbcResourceTemplate"
+					        name="BAT_5_13_jdbc_2"
+					        description="jdbc xa"
+					        maxConnections="8888">
+					        <XAConnection
+					            xsi:type="amxdata:XAConnection"
+					            dataSourceClass="org.postgresql.xa.PGXADataSource"/>
+		    			        <connection-property xsi:type="amxdata:Property" name="portNumber" value="5432"/>
+					        <connection-property xsi:type="amxdata:Property" name="serverName" value="localhost"/>
+					        <connection-property xsi:type="amxdata:Property" name="databaseName" value="test_2"/>
+					        <InlineCredentials username="postgres" password="T1b1nmQE"/>
+	    </ResourceTemplate>
+	
+		<ResourceTemplate
+						        xsi:type="amxdata:JdbcResourceTemplate"
+						        name="BAT_5_13_jdbc_3"
+						        description="jdbc xa"
+						        maxConnections="8888">
+						        <XAConnection
+						            xsi:type="amxdata:XAConnection"
+						            dataSourceClass="org.postgresql.xa.PGXADataSource"/>
+			    			        <connection-property xsi:type="amxdata:Property" name="portNumber" value="5432"/>
+						        <connection-property xsi:type="amxdata:Property" name="serverName" value="localhost"/>
+						        <connection-property xsi:type="amxdata:Property" name="databaseName" value="test_3"/>
+						        <InlineCredentials username="postgres" password="T1b1nmQE"/>
+		    </ResourceTemplate>
+	
+	<DAA
+		xsi:type="amxdata:DAA"
+		description="Postgres feature"
+		location="./SoaProject1010Postgres/Deployment Artifacts/Usecase1010Postgres.daa"
+		importResourceTemplates="true">
+	</DAA>
+	-->
+	
+	<DAA xsi:type="amxdata:DAA" 
+		 description="DAA for oneWayTransaction" 
+		 location="./BAT_5_13/Deployment Artifacts/BAT_5_13.daa" 
+		 importResourceTemplates="false"/>
+		 
+	<!--DAA xsi:type="amxdata:DAA" 
+		 description="DAA for oneWayTransaction" 
+		 location="./BAT_5_13/Deployment Artifacts/dbReader.daa" 
+		 importResourceTemplates="false"/-->
+		 
+
+</amxdata_base:Enterprise>
+
+
+

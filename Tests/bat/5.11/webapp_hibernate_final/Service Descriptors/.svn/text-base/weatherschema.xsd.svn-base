@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.example.org/weatherschema" targetNamespace="http://www.example.org/weatherschema">
+
+    <element name="WeatherRequest" type="tns:WeatherRequestType"/>
+
+    <complexType name="WeatherRequestType">
+    	<sequence>
+    		<element name="city" type="string"/>
+    		<element name="state" type="string"/>
+    		<element name="zip" type="string"/>
+    	</sequence>
+    </complexType>
+
+    <complexType name="WeatherResponseType">
+    	<sequence>
+    		<element name="high" type="float"/>
+    		<element name="low" type="float"/>
+    		<element name="forecast" type="string"/>
+    	</sequence>
+    </complexType>
+
+   <element name="WeatherResponse" type="tns:WeatherResponseType"/>
+    
+   <element name="AddWeatherRequest" type="tns:AddWeatherRequestType"/>
+
+    <complexType name="AddWeatherRequestType">
+    	<sequence>
+    		<element name="city" type="string"/>
+    		<element name="state" type="string"/>
+    		<element name="zip" type="string"/>
+    		<element name="high" type="string"/>
+    		<element name="low" type="string"/>
+    		<element name="forecast" type="string"/>
+    	</sequence>
+    </complexType>
+    
+    <element name="AddWeatherResponse" type="tns:AddWeatherResponseType"/>
+
+    <complexType name="AddWeatherResponseType">
+    	<sequence>
+    		<element name="result" type="string"/>
+    	</sequence>
+    </complexType>
+</schema>

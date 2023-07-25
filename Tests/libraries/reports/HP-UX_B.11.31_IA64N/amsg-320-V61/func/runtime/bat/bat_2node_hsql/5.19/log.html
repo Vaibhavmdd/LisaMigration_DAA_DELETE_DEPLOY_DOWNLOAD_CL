@@ -1,0 +1,37 @@
+<html> <body><FONT FACE='arial'> <table width='100%' border='2' cellpadding='4' cellspacing='3'><tr bgcolor='yellow'> <th width='10%'>Event</th> <th width='14%'>Short Description</th> <th width='42%'>Long Description</th><th width='21%'>TimeStamp</th><tr bgcolor='lime'><td>EVENT_START</td><td></td><td></td><td>Wed Aug 08 13:05:50 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TRANSACTION</td><td>supportedOrNot</td><td><pre></pre></td><td>Wed Aug 08 13:05:50 PDT 2012</td> </tr><tr bgcolor='#87CEEB'><td>EVENT_TRANSACTION</td><td>supportedOrNot</td><td><pre></pre></td><td>Wed Aug 08 13:05:50 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_REQUEST</td><td></td><td><pre>/*
+if (os_name.contains("Linux")) { // supported
+ return true;
+}
+
+if (os_name.contains("Windows")) { // supported 
+ return true;
+}
+
+if (os_name.contains("SunOS")) { // supported
+ return true;
+}
+
+if (os_name.contains("HP-UX")) { // not supported
+ return false;
+}
+
+if (os_name.contains("AIX")) { // not supported
+ return false;
+}
+
+if (os_name.contains("Mac")) { // not supported
+ return false;
+}
+
+// by default, just skip that test case
+return false;
+*/
+import java.io.File;
+String ext = "";
+if (os_name.contains("Windows"))
+ ext = ".exe";
+File exe = new File(TIBCO_BS_HOME.replace("\\","/") + "/eclipse/amx_eclipse_ant" + ext);
+if (exe.exists())
+ return true;
+else
+ return false;</pre></td><td>Wed Aug 08 13:05:50 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_NODERESPONSE</td><td>supportedOrNot</td><td><pre>false</pre></td><td>Wed Aug 08 13:05:50 PDT 2012</td> </tr><tr bgcolor='#CC9933'><td>EVENT_ASSERT</td><td>supportedOrNot [Assert145] </td><td><pre>Test case is skipped. Feature not supported on this OS</pre></td><td>Wed Aug 08 13:05:50 PDT 2012</td> </tr><tr bgcolor='lime'><td>EVENT_NORMALEND</td><td></td><td></td><td>Wed Aug 08 13:05:50 PDT 2012</td> </tr><tr bgcolor='#CCCC99'><td>EVENT_TESTEND</td><td></td><td></td><td>Wed Aug 08 13:05:50 PDT 2012</td> </tr></table></body></html>

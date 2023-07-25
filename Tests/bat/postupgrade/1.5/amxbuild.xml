@@ -1,0 +1,24 @@
+<project name="change notification server" default="setNotifyConfig">
+
+    <!-- This property lets you safely define all paths relative to the absolute location
+         of this Ant file. -->
+    <!-- This import defines the custom AMXAdminTask. -->
+    <import file="${TIBCO_AMXADMIN_CONFIG}/${AMXadmin}/samples/admin-scripts-base.xml"/>
+	  
+	<property name="dataFile" value="./amxconfig.xml"/>
+	
+    
+    
+    <target name="setNotifyConfig">
+		<AMXAdminTask
+			remote="true"
+			action="editStatusTransport"
+			propsFile="${remotePropsFile}"
+			dataFile="${dataFile}"
+			objectSelector="AdminConfiguration/StatusTransportDetails"
+			overwrite="true"
+			merge="true"
+			createIfNotExists="true"
+			failOnError="false"/>
+	</target>
+</project>

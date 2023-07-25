@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:tns="http://tibco.com/matrix/qa/wsdl/group_gen" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns0="http://tibco.com/matrix/qa/xsd/group" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="EmployeePortType" targetNamespace="http://tibco.com/matrix/qa/wsdl/group_gen">
+    <wsdl:types>
+        <xsd:schema xmlns="http://tibco.com/matrix/qa/xsd/group" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://tibco.com/matrix/qa/xsd/group" elementFormDefault="qualified" attributeFormDefault="unqualified">
+           	<xsd:element name="EmployeeId" type="xsd:int"/>
+            <xsd:element name="Employee">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="Name" type="xsd:string"/>
+                        <xsd:element name="HiringDate" type="xsd:date"/>
+                        <xsd:element name="Id" type="xsd:int"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="EmployeeFault" type="xsd:string"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="GetEmployeeInput">
+        <wsdl:part name="InPart" element="ns0:EmployeeId"/>
+    </wsdl:message>
+    <wsdl:message name="GetEmployeeOutput">
+        <wsdl:part name="OutPart" element="ns0:Employee"/>
+    </wsdl:message>
+    <wsdl:message name="GetEmployeeFault">
+        <wsdl:part name="fault" element="ns0:EmployeeFault"/>
+    </wsdl:message>
+    <wsdl:portType name="EmployeePortType">
+        <wsdl:operation name="GetEmployeeById">
+            <wsdl:input message="tns:GetEmployeeInput"/>
+            <wsdl:output message="tns:GetEmployeeOutput"/>
+            <wsdl:fault name="fault" message="tns:GetEmployeeFault"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

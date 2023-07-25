@@ -1,0 +1,27 @@
+<project name="app create and deploy after upgrade" default="setNotifyConfig">
+<import file="${TIBCO_AMX_LIBRARY}/bin/amx-macrodefs.xml"/>
+    <!-- This import defines the custom AMXAdminTask. -->
+     <import file="${TIBCO_AMXADMIN_CONFIG}/${AMXadmin}/samples/admin-scripts-base.xml"/>
+    
+   <target name="create.app.test">
+		<upload.daa dataFile="${amxConfigFile}" objectSelector="DAA[@description = 'App1']"/>
+		<create.app dataFile="${amxConfigFile}" appName="app1.sample"/>
+	</target>
+	
+	<target name="deploy.app.test">
+		<!--<upload.daa dataFile="${amxConfigFile}" objectSelector="DAA[@location='C:\Users\pkaur\Downloads\app1.daa']" />-->
+		<!--<create.app dataFile="${amxConfigFile}" appName="hello.world.sample" />-->
+		<map.component.to.node dataFile="${amxConfigFile}" appName="app1.sample" />
+		<!--<add.app.svars dataFile="${amxConfigFile}" appName="hello.world" />-->
+		<deploy.app dataFile="${amxConfigFile}" appName="app1.sample"/>
+	</target>
+	
+	<target name="create.rt">
+		<create.rt dataFile="${amxConfigFile}" resourceTemplateName="http_1" />
+	</target>
+	
+	<target name="setup.ri">
+		<create.ri dataFile="${amxConfigFile}"/>
+		<install.ri dataFile="${amxConfigFile}"/>
+	</target>
+</project>

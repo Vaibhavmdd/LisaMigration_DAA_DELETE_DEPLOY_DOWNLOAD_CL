@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wadl:application xmlns:GreetWsdl="http://www.example.org/GreetWsdl/" xmlns:PATH_QUERY_RrcResource="http://ns.tibco.com/RSBT/PATH_QUERY_RrcResource" xmlns:PATH_QUERY_SCHEMA="http://www.example.org/PATH_QUERY_SCHEMA" xmlns:tibrrc="http://www.tibco.com/RSBT/RRC" xmlns:wadl="http://wadl.dev.java.net/2009/02" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <wadl:grammars>
+    <wadl:include href="GreetWsdlWsdl.xsd" tibrrc:targetNamespace="http://www.example.org/GreetWsdl/"/>
+  </wadl:grammars>
+  <wadl:resources base="GreetWsdl_1_2" tibrrc:mediaType="application/xml">
+    <wadl:resource id="GreetPOST1" path="GreetPOST">
+      <wadl:method id="GreetPOST" name="POST">
+        <wadl:request tibrrc:payload="">
+          <wadl:param name="POST_QP_STRING" style="query" type="xsd:string"/>
+          <wadl:param name="POST_QP_BOOLEAN" style="query" type="xsd:boolean"/>
+          <wadl:param name="POST_QP_BYTE" style="query" type="xsd:byte"/>
+          <wadl:param name="POST_QP_SHORT" style="query" type="xsd:short"/>
+          <wadl:param name="POST_QP_INTEGER" style="query" type="xsd:int"/>
+          <wadl:param name="POST_QP_LONG" style="query" type="xsd:long"/>
+          <wadl:param name="POST_QP_FLOAT" style="query" type="xsd:float"/>
+          <wadl:param name="POST_QP_DOUBLE" style="query" type="xsd:double"/>
+          <wadl:representation element="GreetWsdl:GreetPOST"/>
+        </wadl:request>
+        <wadl:response status="200" tibrrc:name="output" tibrrc:payload="">
+          <wadl:representation element="GreetWsdl:GreetPOSTResponse"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource id="GreetGET1" path="GreetGET">
+      <wadl:method id="GreetGET" name="GET">
+        <wadl:request tibrrc:payload="">
+          <wadl:param name="GET_QP_STRING" style="query" type="xsd:string"/>
+          <wadl:param name="GET_QP_BOOLEAN" style="query" type="xsd:boolean"/>
+          <wadl:param name="GET_QP_BYTE" style="query" type="xsd:byte"/>
+          <wadl:param name="GET_QP_SHORT" style="query" type="xsd:short"/>
+          <wadl:param name="GET_QP_INTEGER" style="query" type="xsd:int"/>
+          <wadl:param name="GET_QP_LONG" style="query" type="xsd:long"/>
+          <wadl:param name="GET_QP_FLOAT" style="query" type="xsd:float"/>
+          <wadl:param name="GET_QP_DOUBLE" style="query" type="xsd:double"/>
+          <wadl:param name="inputParam" style="query" type="xsd:string"/>
+        </wadl:request>
+        <wadl:response status="200" tibrrc:name="output" tibrrc:payload="">
+          <wadl:representation element="GreetWsdl:GreetGETResponse"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource id="GreetPUT1" path="GreetPUT">
+      <wadl:method id="GreetPUT" name="PUT">
+        <wadl:request tibrrc:payload="">
+          <wadl:param name="PUT_QP_STRING" style="query" type="xsd:string"/>
+          <wadl:param name="PUT_QP_BOOLEAN" style="query" type="xsd:boolean"/>
+          <wadl:param name="PUT_QP_BYTE" style="query" type="xsd:byte"/>
+          <wadl:param name="PUT_QP_SHORT" style="query" type="xsd:short"/>
+          <wadl:param name="PUT_QP_INTEGER" style="query" type="xsd:int"/>
+          <wadl:param name="PUT_QP_LONG" style="query" type="xsd:long"/>
+          <wadl:param name="PUT_QP_FLOAT" style="query" type="xsd:float"/>
+          <wadl:param name="PUT_QP_DOUBLE" style="query" type="xsd:double"/>
+          <wadl:representation element="GreetWsdl:GreetPUT"/>
+        </wadl:request>
+        <wadl:response status="200" tibrrc:name="output" tibrrc:payload="">
+          <wadl:representation element="GreetWsdl:GreetPUTResponse"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource id="GreetDELETE1" path="GreetDELETE">
+      <wadl:method id="GreetDELETE" name="DELETE">
+        <wadl:request tibrrc:payload="">
+          <wadl:param name="DELETE_QP_STRING" style="query" type="xsd:string"/>
+          <wadl:param name="DELETE_QP_BOOLEAN" style="query" type="xsd:boolean"/>
+          <wadl:param name="DELETE_QP_BYTE" style="query" type="xsd:byte"/>
+          <wadl:param name="DELETE_QP_SHORT" style="query" type="xsd:short"/>
+          <wadl:param name="DELETE_QP_INTEGER" style="query" type="xsd:int"/>
+          <wadl:param name="DELETE_QP_LONG" style="query" type="xsd:long"/>
+          <wadl:param name="DELETE_QP_FLOAT" style="query" type="xsd:float"/>
+          <wadl:param name="DELETE_QP_DOUBLE" style="query" type="xsd:double"/>
+          <wadl:param name="inputParam" style="query" type="xsd:string"/>
+        </wadl:request>
+        <wadl:response status="200" tibrrc:name="output" tibrrc:payload="">
+          <wadl:representation element="GreetWsdl:GreetDELETEResponse"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+  </wadl:resources>
+</wadl:application>

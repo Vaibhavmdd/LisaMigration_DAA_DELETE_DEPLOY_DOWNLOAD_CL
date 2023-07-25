@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<amxdata_base:Enterprise xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amxdata="http://tibco.com/amxadministrator/command/line/types" xmlns:amxdata_base="http://tibco.com/amxadministrator/command/line/types_base" xmlns:amxdata_reference="http://tibco.com/amxadministrator/command/line/types_reference" xsi:schemaLocation="http://tibco.com/amxadministrator/command/line/types platform:/plugin/com.tibco.amf.tools.admincligen/model/cli_data.ecore#//types http://tibco.com/amxadministrator/command/line/types_base platform:/plugin/com.tibco.amf.tools.admincligen/model/cli_data.ecore http://tibco.com/amxadministrator/command/line/types_reference platform:/plugin/com.tibco.amf.tools.admincligen/model/cli_data.ecore#//types/types_reference">
+  <Environment xsi:type="amxdata:Environment" name="DevEnvironment">
+    <Node xsi:type="amxdata:Node" name="abc">
+      <ResourceInstance xsi:type="amxdata:ResourceInstance" name="hsqldb" resourceTemplateName="hsqldb"/>
+    </Node>
+    <Node xsi:type="amxdata:Node" name="xyz">
+      <ResourceInstance xsi:type="amxdata:ResourceInstance" name="httpConnector" resourceTemplateName="httpConnector"/>
+    </Node>
+    <Application xsi:type="amxdata:Application" name="jv.phonebook.soa" importResourceTemplates="true">
+      <Component xsi:type="amxdata_base:Component_base" name="JavaPhonebookComponent">
+        <Node xsi:type="amxdata_reference:Node_reference" name="abc" environmentName="DevEnvironment"/>
+      </Component>
+      <Property xsi:type="amxdata:Property" name="database" value="hsqldb"/>
+      <PromotedService xsi:type="amxdata_base:Service_base" name="PhonebookPT">
+        <Binding xsi:type="amxdata_base:Binding_base" name="PhonebookSOAP">
+          <Node xsi:type="amxdata_reference:Node_reference" name="xyz" environmentName="DevEnvironment"/>
+          <Property xsi:type="amxdata:Property" name="HttpInboundConnectionConfig" value="httpConnector"/>
+        </Binding>
+      </PromotedService>
+      <ApplicationTemplate xsi:type="amxdata_reference:ApplicationTemplate_reference" name="jv.phonebook.soa" version="1.0.0.v2012-04-06-1409"/>
+      <ImportResourceTemplateName>hsqldb</ImportResourceTemplateName>
+    </Application>
+  </Environment>
+  <ResourceTemplate xsi:type="amxdata:HttpConnectorResourceTemplate" name="httpConnector" headerBufferSize="4096" host="0.0.0.0" port="9090" requestBufferSize="8192"/>
+  <DAA xsi:type="amxdata:DAA" location="C:\samples\phonebook\jv.phonebook.soa\Deployment Artifacts\jv.phonebook.soa.daa">
+    <importFeatureIdentifier>jv.phonebook.soa.customfeature.id:1.0.0.v2012-04-06-1409</importFeatureIdentifier>
+  </DAA>
+  <Feature xsi:type="amxdata_base:FeatureID" componentID="jv.phonebook.soa.customfeature.id" version="1.0.0.v2012-04-06-1409"/>
+  <AppTemplate xsi:type="amxdata_base:AppTemplateID" name="jv.phonebook.soa" version="1.0.0"/>
+</amxdata_base:Enterprise>

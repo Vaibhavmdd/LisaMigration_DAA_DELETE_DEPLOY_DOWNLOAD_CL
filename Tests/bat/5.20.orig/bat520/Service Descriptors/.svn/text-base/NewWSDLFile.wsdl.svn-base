@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.example.org/NewWSDLFile/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="NewWSDLFile" targetNamespace="http://www.example.org/NewWSDLFile/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.example.org/NewWSDLFile/">
+      <xsd:element name="NewOperation">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="in" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="NewOperationResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="NewOperationFault">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="NewOperationFault"
+      				type="xsd:string">
+      			</xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="NewOperationIn">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="in" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="NewOperationInResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="out" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="NewOperationInFault">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="NewOperationInFault"
+      				type="xsd:string">
+      			</xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="NewOperationRequest">
+    <wsdl:part element="tns:NewOperation" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="NewOperationResponse">
+    <wsdl:part element="tns:NewOperationResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="NewOperation_faultMsg">
+  	<wsdl:part name="parameters" element="tns:NewOperationFault"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="NewOperationInRequest">
+  	<wsdl:part name="parameters" element="tns:NewOperationIn"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="NewOperationInResponse">
+  	<wsdl:part name="parameters" element="tns:NewOperationInResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="NewOperationIn_faultMsg">
+  	<wsdl:part name="parameters" element="tns:NewOperationInFault"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="NewWSDLFile">
+    <wsdl:operation name="NewOperation">
+      <wsdl:input message="tns:NewOperationRequest"/>
+      <wsdl:output message="tns:NewOperationResponse"/>
+            <wsdl:fault name="fault" message="tns:NewOperation_faultMsg"></wsdl:fault>
+        </wsdl:operation>
+    <wsdl:operation name="NewOperationIn">
+    	<wsdl:input message="tns:NewOperationInRequest"></wsdl:input>
+        </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>
